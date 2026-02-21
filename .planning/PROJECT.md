@@ -1,4 +1,4 @@
-# KQGame — A King's Quest-Inspired Adventure
+# Uncrowned — A King's Quest-Inspired Adventure
 
 ## Current State
 

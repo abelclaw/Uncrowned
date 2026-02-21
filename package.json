@@ -1,6 +1,6 @@
 {
-    "name": "kqgame",
-    "description": "A King's Quest-inspired browser adventure game with LLM text parsing",
+    "name": "uncrowned",
+    "description": "A sardonic adventure game where an ordinary tinker saves a petrifying kingdom through paperwork",
     "version": "0.1.0",
     "private": true,
     "scripts": {

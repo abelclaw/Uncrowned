@@ -1,7 +1,7 @@
 /**
  * Art Generation Build Script
  *
- * Generates pixel art assets for KQ Game via ComfyUI REST API.
+ * Generates pixel art assets for Uncrowned via ComfyUI REST API.
  * Reads prompts from art-manifest.json, submits to ComfyUI, downloads results,
  * and post-processes with sharp to correct dimensions.
  *
@@ -365,7 +365,7 @@ function parseArgs(): CLIArgs {
 
 function printHelp(): void {
     console.log(`
-Art Generation Script for KQ Game
+Art Generation Script for Uncrowned
 ==================================
 
 Usage: npx tsx scripts/generate-art.ts [options]
@@ -514,7 +514,7 @@ async function main(): Promise<void> {
         process.exit(1);
     }
 
-    console.log(`\nKQ Game Art Generation`);
+    console.log(`\nUncrowned Art Generation`);
     console.log(`${'='.repeat(50)}`);
     console.log(`Type: ${args.type}${args.room ? ` (room: ${args.room})` : ''}`);
     console.log(`Entries: ${entries.length}`);

@@ -1,4 +1,4 @@
-# Requirements: KQGame v2.0 Art & Polish
+# Requirements: Uncrowned v2.0 Art & Polish
 
 **Defined:** 2026-02-21
 **Core Value:** The text parser must feel magical -- players type natural language commands and the game understands them.

@@ -25,7 +25,7 @@ export class MainMenuScene extends Scene {
         this.add.rectangle(480, 270, 960, 540, 0x1a1a2e);
 
         // Title
-        this.add.text(480, 140, "King's Quest", {
+        this.add.text(480, 140, "Uncrowned", {
             fontFamily: 'monospace',
             fontSize: '36px',
             color: '#c8c8d4',

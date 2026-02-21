@@ -151,7 +151,7 @@
     "class_type": "SaveImage",
     "inputs": {
       "images": ["14", 0],
-      "filename_prefix": "kqgame"
+      "filename_prefix": "uncrowned"
     },
     "_meta": {
       "title": "Save Image"
