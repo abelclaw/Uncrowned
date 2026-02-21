@@ -142,13 +142,13 @@ Plans:
   3. Death scenarios are frequent and varied across the entire game, with unique narrator commentary for each one
   4. No player can reach an unwinnable game state -- every puzzle remains solvable regardless of prior actions
   5. Scene art generated via the Flux pipeline maintains visual consistency across the entire game
-**Plans**: TBD
+**Plans**: 4 plans
 
 Plans:
-- [ ] 08-01: TBD
-- [ ] 08-02: TBD
-- [ ] 08-03: TBD
-- [ ] 08-04: TBD
+- [ ] 08-01-PLAN.md -- Story bible, puzzle dependency graph, and room connection map for the complete adventure
+- [ ] 08-02-PLAN.md -- Demo chapter (Act 1a): room JSONs, items, NPCs, ink dialogue, Preloader registration
+- [ ] 08-03-PLAN.md -- Acts 1b and 2: room JSONs, items, NPCs, ink dialogue, Preloader registration
+- [ ] 08-04-PLAN.md -- Act 3 (climax/resolution): room JSONs, items, NPCs, ink dialogue, full game validation
 
 ## Progress
 
