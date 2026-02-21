@@ -4,7 +4,7 @@
  * produce actions using these same verbs.
  */
 export type Verb = 'look' | 'take' | 'use' | 'go' | 'talk' | 'open' | 'push' | 'pull'
-    | 'inventory' | 'save' | 'load' | 'combine';
+    | 'inventory' | 'save' | 'load' | 'combine' | 'hint';
 
 /**
  * A structured game action produced by parsing player input.

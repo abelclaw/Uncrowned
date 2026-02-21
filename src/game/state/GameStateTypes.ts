@@ -2,7 +2,7 @@
  * Current save format version. Bumped on schema changes.
  * v1 = original (no version field), v2 = added version field.
  */
-export const CURRENT_SAVE_VERSION = 2;
+export const CURRENT_SAVE_VERSION = 3;
 
 /**
  * Serializable game state data structure.
@@ -21,6 +21,10 @@ export interface GameStateData {
     deathCount: number;
     /** Per-NPC ink story state JSON strings for dialogue persistence */
     dialogueStates: Record<string, string>;
+    /** Per-puzzle hint tier tracking (puzzleId -> current tier 0-2) */
+    hintTiers: Record<string, number>;
+    /** Per-puzzle failed attempt counter (puzzleId -> count) */
+    failedAttempts: Record<string, number>;
 }
 
 /**
@@ -38,5 +42,7 @@ export function getDefaultState(): GameStateData {
         playTimeMs: 0,
         deathCount: 0,
         dialogueStates: {},
+        hintTiers: {},
+        failedAttempts: {},
     };
 }

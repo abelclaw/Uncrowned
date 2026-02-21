@@ -83,6 +83,24 @@ export class GameState {
         this.data.dialogueStates = states;
     }
 
+    // --- Hint tracking ---
+
+    getHintTier(puzzleId: string): number {
+        return this.data.hintTiers[puzzleId] ?? 0;
+    }
+
+    setHintTier(puzzleId: string, tier: number): void {
+        this.data.hintTiers[puzzleId] = tier;
+    }
+
+    getFailedAttempts(puzzleId: string): number {
+        return this.data.failedAttempts[puzzleId] ?? 0;
+    }
+
+    incrementFailedAttempts(puzzleId: string): void {
+        this.data.failedAttempts[puzzleId] = (this.data.failedAttempts[puzzleId] ?? 0) + 1;
+    }
+
     // --- Serialization ---
 
     serialize(): string {

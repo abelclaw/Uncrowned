@@ -2,6 +2,15 @@ import type { PuzzleDefinition } from './PuzzleData';
 import type { RoomNpcData } from './NpcData';
 
 /**
+ * Progressive hint definition for a puzzle.
+ * Three tiers of increasingly specific hints.
+ */
+export interface PuzzleHint {
+    puzzleId: string;
+    tiers: [string, string, string];
+}
+
+/**
  * Audio configuration for a room: background music and ambient layers.
  */
 export interface RoomAudioData {
@@ -129,4 +138,6 @@ export interface RoomData {
     npcs?: RoomNpcData[];
     /** Audio configuration: background music and ambient loops */
     audio?: RoomAudioData;
+    /** Progressive hint definitions for puzzles in this room */
+    puzzleHints?: PuzzleHint[];
 }

@@ -1,6 +1,7 @@
 import type { GameStateData } from '../GameStateTypes.ts';
 import { CURRENT_SAVE_VERSION } from '../GameStateTypes.ts';
 import { migrateV1toV2 } from './v1-to-v2.ts';
+import { migrateV2toV3 } from './v2-to-v3.ts';
 
 export { CURRENT_SAVE_VERSION };
 
@@ -10,6 +11,7 @@ type MigrationFn = (data: Record<string, unknown>) => Record<string, unknown>;
 /** Registry of migration functions keyed by source version. */
 const migrations: Record<number, MigrationFn> = {
     1: migrateV1toV2,
+    2: migrateV2toV3,
 };
 
 /**
