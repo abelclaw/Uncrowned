@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** Phase 7 in progress: Audio and Polish
+**Current focus:** Phase 7 complete: Audio and Polish
 
 ## Current Position
 
 Phase: 7 of 8 (Audio and Polish)
-Plan: 1 of 2 in current phase (07-01 complete)
-Status: Executing Phase 7
-Last activity: 2026-02-21 -- Completed 07-01-PLAN.md (Audio Infrastructure)
+Plan: 2 of 2 in current phase (07-02 complete)
+Status: Phase 7 Complete
+Last activity: 2026-02-21 -- Completed 07-02-PLAN.md (Audio Integration)
 
-Progress: [████████░░] 85%
+Progress: [█████████░] 90%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 17
+- Total plans completed: 18
 - Average duration: 2.7min
-- Total execution time: 0.74 hours
+- Total execution time: 0.77 hours
 
 **By Phase:**
 
@@ -51,6 +51,7 @@ Progress: [████████░░] 85%
 | Phase 06 P02 | 3min | 2 tasks | 8 files |
 | Phase 06 P03 | 3min | 2 tasks | 3 files |
 | Phase 07 P01 | 3min | 2 tasks | 16 files |
+| Phase 07 P02 | 2min | 3 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -117,6 +118,9 @@ Recent decisions affecting current work:
 - [Phase 07]: WAV format for placeholder audio -- Phaser supports natively, avoids ffmpeg dependency for generation
 - [Phase 07]: Python wave module for audio generation -- standard library, zero dependencies, reproducible via committed script
 - [Phase 07]: AudioManager singleton wraps Phaser global Sound Manager -- three layers (SFX, music, ambient) with EventBus-driven SFX
+- [Phase 07]: WAV extension for all Preloader audio loads -- matching Plan 01 generated placeholder files
+- [Phase 07]: AudioManager.init() before EventBus command listeners -- SFX works from first player command
+- [Phase 07]: cleanup() on shutdown removes listeners but preserves audio -- music persists for crossfade into next scene
 
 ### Pending Todos
 
@@ -131,5 +135,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 07-01-PLAN.md (Audio Infrastructure)
+Stopped at: Completed 07-02-PLAN.md (Audio Integration) -- Phase 7 complete
 Resume file: None
