@@ -9,14 +9,14 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Game Engine
 
-- [ ] **ENG-01**: Game renders pixel art scene backgrounds on HTML5 Canvas at consistent resolution
+- [x] **ENG-01**: Game renders pixel art scene backgrounds on HTML5 Canvas at consistent resolution
 - [ ] **ENG-02**: Player character displays with walk cycle animation and interaction poses
 - [ ] **ENG-03**: Player moves to clicked location via pathfinding over walkable areas
 - [ ] **ENG-04**: Scenes have defined exits that transition to other scenes
 - [ ] **ENG-05**: Scene transitions use fade/slide animations between rooms
-- [ ] **ENG-06**: Assets preload with a loading screen before gameplay starts
+- [x] **ENG-06**: Assets preload with a loading screen before gameplay starts
 - [ ] **ENG-07**: Scenes support parallax scrolling backgrounds for depth
-- [ ] **ENG-08**: Game loop runs at consistent frame rate via requestAnimationFrame
+- [x] **ENG-08**: Game loop runs at consistent frame rate via requestAnimationFrame
 
 ### Text Parser
 
@@ -119,14 +119,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ENG-01 | Phase 1 | Pending |
+| ENG-01 | Phase 1 | Complete |
 | ENG-02 | Phase 2 | Pending |
 | ENG-03 | Phase 2 | Pending |
 | ENG-04 | Phase 2 | Pending |
 | ENG-05 | Phase 2 | Pending |
-| ENG-06 | Phase 1 | Pending |
+| ENG-06 | Phase 1 | Complete |
 | ENG-07 | Phase 1 | Pending |
-| ENG-08 | Phase 1 | Pending |
+| ENG-08 | Phase 1 | Complete |
 | PARSE-01 | Phase 3 | Pending |
 | PARSE-02 | Phase 3 | Pending |
 | PARSE-03 | Phase 5 | Pending |
