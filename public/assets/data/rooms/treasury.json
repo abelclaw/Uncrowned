@@ -1,0 +1,142 @@
+{
+    "id": "treasury",
+    "name": "Royal Treasury",
+    "description": "The Royal Treasury is a monument to a kingdom's wealth -- or what remains of it. Empty pedestals line the walls where treasures once sat, claimed by centuries of financial emergencies, diplomatic gifts, and at least one very expensive funeral. Cobwebs connect the remaining items like a network of neglect. In the center, on a velvet cushion surrounded by dust, sits the Kingdom Administrative Seal -- different from the Royal Seal, bureaucratically distinct, and critical to the Rite. A shelf near the door holds a few remaining items, including a dusty vial. The treasury is nearly empty, but what remains is exactly what you need.",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-dungeon",
+            "zone": { "x": 0, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "dungeon",
+            "spawnPoint": { "x": 820, "y": 430 },
+            "transition": "slide-left",
+            "direction": "west",
+            "label": "dungeon"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "empty-pedestals",
+            "name": "Empty Pedestals",
+            "zone": { "x": 600, "y": 355, "width": 120, "height": 60 },
+            "interactionPoint": { "x": 660, "y": 420 },
+            "responses": {
+                "look": "Rows of empty pedestals where treasures once rested. Small plaques describe what used to be there: 'Crown of Aldric the Fastidious -- Donated to Kingdom Defense Fund,' 'Golden Scepter -- Pawned (see receipt #4471),' 'Diamond Tiara -- Lost in a card game by King Mortimer III.' The kingdom's financial management was... creative.",
+                "use": "The pedestals hold nothing. The kingdom's wealth has been comprehensively distributed elsewhere. Mostly to creditors.",
+                "take": "You pocket a plaque. 'Golden Scepter -- Pawned.' A souvenir from a bankrupt kingdom. How very fitting.",
+                "default": "You examine the empty pedestals. Each absence tells a story of a kingdom slowly spending itself into the ground."
+            }
+        },
+        {
+            "id": "velvet-cushion",
+            "name": "Velvet Display Cushion",
+            "zone": { "x": 380, "y": 380, "width": 100, "height": 50 },
+            "interactionPoint": { "x": 430, "y": 420 },
+            "responses": {
+                "look": "A deep purple velvet cushion on a stone pedestal, surrounded by dust. The Kingdom Administrative Seal sits atop it, catching what little light enters the treasury. The cushion is the most luxurious thing left in here, which says everything about the state of the kingdom's finances.",
+                "use": "The cushion's sole purpose is displaying the Kingdom Seal. It has fulfilled this purpose for centuries with admirable dedication.",
+                "default": "You examine the velvet cushion. It has been faithfully displaying the Kingdom Seal for longer than most dynasties last."
+            }
+        },
+        {
+            "id": "treasury-shelf",
+            "name": "Remaining Shelf",
+            "zone": { "x": 150, "y": 370, "width": 100, "height": 50 },
+            "interactionPoint": { "x": 200, "y": 420 },
+            "responses": {
+                "look": "A shelf near the door holds the treasury's remaining inventory: a dusty vial of clock oil (labeled 'For Clock Tower Maintenance -- Annual Budget: 2 Copper'), an empty coin purse, and a note reading 'IOU: One Kingdom. Signed, The Curse.'",
+                "use": "You browse the remaining shelf. Slim pickings. The kingdom's treasury has been cleaned out by centuries of fiscal mismanagement and one very expensive apocalypse.",
+                "default": "You inspect the shelf. The treasury's remaining assets are less 'crown jewels' and more 'things nobody remembered to steal.'"
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "kingdom-seal",
+            "name": "Kingdom Administrative Seal",
+            "zone": { "x": 400, "y": 390, "width": 40, "height": 20 },
+            "interactionPoint": { "x": 420, "y": 420 },
+            "responses": {
+                "look": "The Kingdom Administrative Seal sits on its velvet cushion, heavy and ornate. Unlike the Royal Seal (which bears the disgruntled badger), this seal shows the kingdom's full coat of arms: a badger arguing with a filing cabinet, flanked by two quill pens. It is used for official governmental closures -- ending treaties, finalizing laws, and apparently, breaking curses. Bureaucracy demands precision.",
+                "use": "The Kingdom Seal is needed for the Rite of Administrative Closure. It's the official stamp that will close the curse's filing."
+            }
+        },
+        {
+            "id": "clock-oil",
+            "name": "Clock Oil",
+            "zone": { "x": 170, "y": 385, "width": 25, "height": 20 },
+            "interactionPoint": { "x": 183, "y": 420 },
+            "responses": {
+                "look": "A vial of mechanical lubricant, still liquid after all these years. The label reads 'Clock Tower Maintenance Oil -- For Official Use Only.' The annual maintenance budget was two copper coins. The clock hasn't been oiled in decades. This explains several things.",
+                "use": "Clock oil without a clock is just oil. You need the clock tower mechanism to use this properly."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "take-kingdom-seal",
+            "trigger": { "verb": "take", "subject": "kingdom-seal" },
+            "conditions": [
+                { "type": "item-not-taken", "item": "kingdom-seal" }
+            ],
+            "actions": [
+                { "type": "add-item", "item": "kingdom-seal" },
+                { "type": "narrator-say", "text": "You lift the Kingdom Administrative Seal from its velvet cushion. It's heavier than you expected -- not just physically, but symbolically. This seal has closed treaties, finalized laws, and ended governmental proceedings for centuries. Now it will close a curse. The cushion sighs, relieved of its centuries-long duty. The seal is warm in your hand. It knows what it's for." }
+            ],
+            "once": true
+        },
+        {
+            "id": "take-clock-oil",
+            "trigger": { "verb": "take", "subject": "clock-oil" },
+            "conditions": [
+                { "type": "item-not-taken", "item": "clock-oil" }
+            ],
+            "actions": [
+                { "type": "add-item", "item": "clock-oil" },
+                { "type": "narrator-say", "text": "You take the vial of clock oil. The annual clock tower maintenance budget was two copper coins. No one has oiled the clock in years. This vial has been sitting in the treasury, waiting for a maintenance schedule that never came. Bureaucratic neglect, it turns out, leaves useful things in forgotten places." }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "take-wrong-item",
+            "trigger": { "verb": "take", "subject": "empty-pedestals" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "treasury-trap" }
+            ]
+        }
+    ],
+    "deaths": {
+        "treasury-trap": {
+            "title": "Death by Avarice",
+            "narratorText": "You reach for something on one of the empty pedestals. The pedestal isn't empty -- it's booby-trapped. A pressure plate detects the change in weight (from something to nothing, or in this case, from nothing to your hand). Ancient security measures activate. Crossbow bolts fire from the walls with the enthusiasm of a system that has been loaded and waiting for centuries. The irony of dying in a treasury with nothing left to steal is not lost on the narrator. The treasury was booby-trapped. The wealth is gone, but the security budget was apparently eternal."
+        }
+    },
+    "dynamicDescriptions": {
+        "kingdom-seal-taken": "The treasury feels emptier without the Kingdom Seal on its velvet cushion. The cushion sits alone, a purple island in a sea of cobwebs and absent wealth. You have what you came for."
+    },
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            { "key": "amb-cave-drips", "volume": 0.5 },
+            { "key": "amb-wind-light", "volume": 0.3 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}

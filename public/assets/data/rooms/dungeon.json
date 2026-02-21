@@ -1,0 +1,208 @@
+{
+    "id": "dungeon",
+    "name": "Castle Dungeon",
+    "description": "The dungeon beneath Castle Erelhain is less a prison and more an office with bars. Filing cabinets line the cells. A desk sits in the central chamber, piled with forms and stamped documents. This is where the Clerk retreated when the cavern test was completed -- back to his original office, the bureaucratic heart of the kingdom's subterranean administration. The Clerk sits behind his desk, spectacles gleaming, processing paperwork with the mechanical fury of someone whose entire worldview has been challenged. A trap door in the floor is helpfully marked 'TRAP DOOR -- DO NOT STEP.'",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-courtyard-act3",
+            "zone": { "x": 440, "y": 350, "width": 80, "height": 80 },
+            "targetRoom": "castle_courtyard_act3",
+            "spawnPoint": { "x": 580, "y": 430 },
+            "transition": "fade",
+            "direction": "north",
+            "label": "courtyard"
+        },
+        {
+            "id": "to-treasury",
+            "zone": { "x": 880, "y": 380, "width": 80, "height": 150 },
+            "targetRoom": "treasury",
+            "spawnPoint": { "x": 100, "y": 430 },
+            "transition": "slide-right",
+            "direction": "east",
+            "label": "treasury",
+            "conditions": [
+                { "type": "flag-set", "flag": "treasury_opened" }
+            ]
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "clerk-desk",
+            "name": "Clerk's Desk",
+            "zone": { "x": 350, "y": 380, "width": 120, "height": 50 },
+            "interactionPoint": { "x": 410, "y": 420 },
+            "responses": {
+                "look": "The Clerk's desk is identical to the one in the cavern entrance hall. The same stamps. The same forms. The same organizational precision. He's been doing this for so long that the desk has become an extension of his identity. Among the stacks of paperwork, a heavy ornate key serves as a paperweight. The key looks old. And important. And like it opens something the Clerk has forgotten about.",
+                "use": "The desk is the Clerk's domain. Touching it without permission would trigger a bureaucratic incident of unprecedented proportions.",
+                "take": "You can't take the Clerk's desk. He'd notice. He notices everything.",
+                "default": "You examine the desk. It's the most organized surface in the kingdom, which is saying something given the kingdom is mostly rubble."
+            }
+        },
+        {
+            "id": "trap-door",
+            "name": "Trap Door",
+            "zone": { "x": 200, "y": 430, "width": 80, "height": 40 },
+            "interactionPoint": { "x": 240, "y": 420 },
+            "responses": {
+                "look": "A trap door in the floor, helpfully labeled 'TRAP DOOR -- DO NOT STEP.' Below it: absolute darkness and the sound of something dripping. The dungeon was built with security measures that were simultaneously obvious and lethal. The sign is either a warning or an invitation, depending on your interpretation of bureaucratic signage.",
+                "use": "The sign says 'DO NOT STEP.' For once in your adventure, you consider following instructions. The darkness below does not encourage investigation.",
+                "take": "You cannot take a trap door. It's embedded in the floor. And it's a trap. Two good reasons.",
+                "default": "You study the trap door from a safe distance. The sign is clear. The consequences are clearer."
+            }
+        },
+        {
+            "id": "filing-cells",
+            "name": "Filing Cells",
+            "zone": { "x": 650, "y": 355, "width": 100, "height": 60 },
+            "interactionPoint": { "x": 700, "y": 420 },
+            "responses": {
+                "look": "The dungeon cells have been converted to filing storage. Each cell contains meticulously organized cabinets -- centuries of test records, applicant files, and rejection notices. Cell 3 holds what appears to be the Clerk's personal files, including a folder labeled 'MEMORIES (SUPPRESSED -- DO NOT OPEN).' Ironic, given that the folder is empty.",
+                "use": "You flip through the filing cells. Every applicant who ever attempted the Bureaucratic Test of Sovereign Worthiness is recorded here. The rejection rate is 100%. Until you.",
+                "default": "You browse the filing cells. The dungeon is the most organized prison you've ever seen. The inmates are paperwork."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "treasury-key",
+            "name": "Treasury Key",
+            "zone": { "x": 400, "y": 390, "width": 30, "height": 15 },
+            "interactionPoint": { "x": 415, "y": 420 },
+            "responses": {
+                "look": "An ornate key sitting on the Clerk's desk, serving as a paperweight. It's heavy, gold-plated, and engraved with the kingdom's seal. The Clerk has been using it to keep his forms from blowing away. He has no idea what it opens. Neither does he care -- it's a perfectly functional paperweight.",
+                "use": "The treasury key needs a treasury. The dungeon is east of the treasury door."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "take-treasury-key",
+            "trigger": { "verb": "take", "subject": "treasury-key" },
+            "conditions": [
+                { "type": "item-not-taken", "item": "treasury-key" }
+            ],
+            "actions": [
+                { "type": "add-item", "item": "treasury-key" },
+                { "type": "narrator-say", "text": "You take the treasury key from the Clerk's desk. The Clerk watches you remove his paperweight with an expression of mild bureaucratic displeasure. 'That is government property,' he says. Then he pauses. 'But then, everything in this dungeon is government property. Including, technically, you, since you're standing on government floor.' He returns to his paperwork. The key is ornate, heavy, and clearly opens something important. Something the Clerk has been sitting on -- literally and figuratively -- for centuries." }
+            ],
+            "once": true
+        },
+        {
+            "id": "use-treasury-key",
+            "trigger": { "verb": "use", "subject": "treasury-key", "target": "filing-cells" },
+            "conditions": [
+                { "type": "has-item", "item": "treasury-key" },
+                { "type": "flag-not-set", "flag": "treasury_opened" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "treasury-key" },
+                { "type": "set-flag", "flag": "treasury_opened" },
+                { "type": "open-exit", "exit": "to-treasury" },
+                { "type": "narrator-say", "text": "You try the ornate key on the locked door beside the filing cells. It turns with a deep, satisfying click. The door swings open to reveal a passage to the Royal Treasury. The Clerk looks up. 'Ah. That's what that key opened.' His tone suggests this revelation is mildly interesting and entirely irrelevant to his filing." }
+            ],
+            "once": true
+        },
+        {
+            "id": "confront-clerk",
+            "trigger": { "verb": "talk", "subject": "the_clerk" },
+            "conditions": [
+                { "type": "flag-not-set", "flag": "clerk_confronted" }
+            ],
+            "actions": [
+                { "type": "set-flag", "flag": "clerk_confronted" },
+                { "type": "narrator-say", "text": "The Clerk sets down his pen. 'You passed the test,' he says. 'This has not happened in four hundred years. The paperwork this generates is...' He pauses. 'Considerable.' His expression is unreadable -- not angry, not pleased, just processing. 'I followed you here because procedure demands it. The test administrator must be present for the outcome, whatever that outcome may be.' He adjusts his spectacles. There's something behind those eyes. Something he doesn't remember." }
+            ],
+            "once": true
+        },
+        {
+            "id": "show-memory-crystal",
+            "trigger": { "verb": "use", "subject": "clerk-memory-crystal", "target": "the_clerk" },
+            "conditions": [
+                { "type": "has-item", "item": "clerk-memory-crystal" },
+                { "type": "flag-set", "flag": "clerk_confronted" },
+                { "type": "flag-not-set", "flag": "clerk_allied" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "clerk-memory-crystal" },
+                { "type": "set-flag", "flag": "clerk_remembers" },
+                { "type": "set-flag", "flag": "clerk_allied" },
+                { "type": "narrator-say", "text": "You hold the memory crystal before the Clerk. His spectacles catch its light. His eyes widen -- the first genuine expression you've seen on his face. The crystal pulses. Memories flood back. His hands tremble. 'I...' His voice cracks. For the first time in centuries, it sounds human. 'I was Marlowe. The wizard. I cast the curse because of a parking spot. A PARKING SPOT.' He takes off his spectacles and presses his palms to his eyes. 'Four hundred years of administration. Of forms and stamps and procedures. All to maintain a curse I cast because I couldn't park my cart at a feast.' The horror in his voice is real. 'I need to help fix this. What do you need?' The Clerk -- Marlowe -- is now your ally. The bureaucrat who built the system will help you file the paperwork to destroy it." }
+            ],
+            "once": true
+        },
+        {
+            "id": "outwit-clerk",
+            "trigger": { "verb": "use", "subject": "original-curse-contract", "target": "the_clerk" },
+            "conditions": [
+                { "type": "has-item", "item": "original-curse-contract" },
+                { "type": "flag-set", "flag": "clerk_confronted" },
+                { "type": "flag-not-set", "flag": "clerk_allied" }
+            ],
+            "actions": [
+                { "type": "set-flag", "flag": "clerk_outwitted" },
+                { "type": "set-flag", "flag": "clerk_allied" },
+                { "type": "narrator-say", "text": "You unfurl the Original Curse Contract before the Clerk. His eyes snap to it with the intensity of a bureaucrat confronted with procedure. You point to Clause 47-B. 'The curse has an expiration clause,' you say. 'Filed under Section C-7 of the Royal Archive. Per Administrative Code, any curse with an expiration clause MUST be closed when closure is requested by a registered applicant.' The Clerk reads the clause. And reads it again. His jaw tightens. 'This is... procedurally correct.' The words cost him physically. 'The closure clause is valid. The curse has proper administrative channels for termination.' He stands. 'I am obligated by my own rules to assist in the closure. This is... unprecedented.' He adjusts his spectacles. 'Very well. I will officiate. Under protest. But procedurally valid protest.' The Clerk is now your ally. Outwitted by his own bureaucracy." }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "step-on-trap",
+            "trigger": { "verb": "go", "subject": "trap-door" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "dungeon-pit" }
+            ]
+        },
+        {
+            "id": "step-on-trap-use",
+            "trigger": { "verb": "use", "subject": "trap-door" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "dungeon-pit" }
+            ]
+        }
+    ],
+    "deaths": {
+        "dungeon-pit": {
+            "title": "Death by Architecture",
+            "narratorText": "You step on the trap door. The sign said 'DO NOT STEP.' The sign was not being ironic. The door swings open beneath you with the smooth efficiency of a mechanism that has been waiting for this moment. The fall is long, dark, and accompanied by the distant sound of the Clerk stamping 'DECEASED' on a form he apparently had pre-prepared. Trap floors: the original terms and conditions nobody reads. Except, in this case, you read them. You read the sign. You stepped anyway. The narrator is at a loss for sympathy."
+        }
+    },
+    "dynamicDescriptions": {
+        "clerk_allied": "The dungeon is quieter now. The Clerk -- Marlowe -- sits at his desk, but the mechanical fury of his paperwork has been replaced with something like reflection. His spectacles sit on the desk. For the first time in centuries, he looks like a person, not a process.",
+        "treasury_opened": "The passage to the Royal Treasury stands open, the ornate door unlocked. The Clerk has resumed his paperwork, but with notably less enthusiasm. The dungeon feels less like an office and more like a place where someone is having a very long think."
+    },
+    "npcs": [
+        {
+            "id": "the_clerk",
+            "position": { "x": 400, "y": 395 },
+            "interactionPoint": { "x": 360, "y": 420 },
+            "zone": { "x": 370, "y": 370, "width": 60, "height": 60 }
+        }
+    ],
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            { "key": "amb-cave-drips", "volume": 0.7 },
+            { "key": "amb-wind-light", "volume": 0.2 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}

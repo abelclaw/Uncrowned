@@ -185,6 +185,42 @@
             "name": "Crystal of Mundanity",
             "description": "The legendary Crystal of Mundanity. It is, fittingly, completely unremarkable. A plain grey crystal.",
             "combinable": false
+        },
+        {
+            "id": "original-curse-contract",
+            "name": "Original Curse Contract",
+            "description": "A legal document binding the curse to the kingdom. Clause 47b contains the expiration terms. Of course it does.",
+            "combinable": false
+        },
+        {
+            "id": "kingdom-seal",
+            "name": "Kingdom Administrative Seal",
+            "description": "The official seal of the Kingdom of Erelhain, used for closing governmental proceedings. Different from the royal seal. Bureaucracy demands precision.",
+            "combinable": false
+        },
+        {
+            "id": "treasury-key",
+            "name": "Treasury Key",
+            "description": "An ornate key found in the dungeon. The Clerk had been using it as a paperweight.",
+            "combinable": false
+        },
+        {
+            "id": "clerk-memory-crystal",
+            "name": "Clerk's Memory Crystal",
+            "description": "A crystal containing the Clerk's suppressed memories. It glows with the light of forgotten regret.",
+            "combinable": false
+        },
+        {
+            "id": "gear-spring",
+            "name": "Gear Spring",
+            "description": "A coiled metal spring from the wizard's workshop. Still has bounce, unlike your hopes.",
+            "combinable": false
+        },
+        {
+            "id": "clock-oil",
+            "name": "Clock Oil",
+            "description": "A vial of mechanical lubricant. It smells like progress and mineral spirits.",
+            "combinable": false
         }
     ]
 }

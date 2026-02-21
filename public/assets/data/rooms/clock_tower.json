@@ -1,0 +1,174 @@
+{
+    "id": "clock_tower",
+    "name": "Clock Tower",
+    "description": "The kingdom's clock tower is a marvel of engineering in its death throes. A massive clockwork mechanism fills the space, gears the size of wagon wheels interlocking in a frozen symphony of precision. The clock stopped when the curse reached it -- the main spring seized, the pendulum froze, and time in Erelhain became theoretical. Through gaps in the stone walls, you can see the curse spreading across the landscape below. The clock's face, visible from outside, reads 3:47. It has read 3:47 for a very long time.",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-courtyard-act3",
+            "zone": { "x": 440, "y": 350, "width": 80, "height": 80 },
+            "targetRoom": "castle_courtyard_act3",
+            "spawnPoint": { "x": 480, "y": 450 },
+            "transition": "fade",
+            "direction": "north",
+            "label": "courtyard"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "clock-mechanism",
+            "name": "Clock Mechanism",
+            "zone": { "x": 350, "y": 340, "width": 200, "height": 80 },
+            "interactionPoint": { "x": 450, "y": 420 },
+            "responses": {
+                "look": "The clock mechanism is a masterwork of interlocking gears, springs, and counterweights. It's been frozen by the curse -- the main spring is seized, and several gears have petrified. But the mechanism itself is sound. With a new spring and some oil, it could run again. The curse contract mentioned a date -- 3:47 on the day of the feast. If the clock were set to the correct time, it might slow the curse's advance.",
+                "use": "The clock needs two things: a gear spring to replace the seized main spring, and clock oil to lubricate the frozen gears. Without both, the mechanism is an impressive sculpture.",
+                "default": "You examine the clock mechanism. It's frozen in time, which is either poetic or literal. In this kingdom, it's both."
+            }
+        },
+        {
+            "id": "clock-face",
+            "name": "Clock Face",
+            "zone": { "x": 600, "y": 350, "width": 100, "height": 60 },
+            "interactionPoint": { "x": 650, "y": 420 },
+            "responses": {
+                "look": "The clock face reads 3:47. The curse began at the feast, which started at 3:47 PM -- the exact moment the wizard's parking was denied. The clock stopped at the moment of the curse's casting. If the clock were repaired and set to the correct time, it would re-synchronize with the curse's temporal anchor and slow its advance.",
+                "use": "You can't adjust the clock face without the mechanism running. The hands are frozen, just like everything else.",
+                "default": "You study the frozen clock face. 3:47. The most petty moment in the kingdom's history, preserved in clockwork."
+            }
+        },
+        {
+            "id": "tower-exterior",
+            "name": "Tower Window",
+            "zone": { "x": 800, "y": 360, "width": 80, "height": 60 },
+            "interactionPoint": { "x": 840, "y": 420 },
+            "responses": {
+                "look": "Through the tower's window, you can see the kingdom spread below. The petrification is visible -- a grey wave rolling inward from the edges. Fields, villages, forests, all turning to stone. From up here, it looks almost beautiful, in the way that endings sometimes are. You can see how much time is left. Not much.",
+                "use": "You lean toward the window for a better view. The wind pushes back, which is either weather or a warning.",
+                "default": "You gaze out at the cursed landscape. The view is comprehensive and thoroughly depressing."
+            }
+        }
+    ],
+    "items": [],
+    "puzzles": [
+        {
+            "id": "repair-clock",
+            "trigger": { "verb": "use", "subject": "gear-spring", "target": "clock-mechanism" },
+            "conditions": [
+                { "type": "has-item", "item": "gear-spring" },
+                { "type": "has-item", "item": "clock-oil" },
+                { "type": "flag-not-set", "flag": "clock_time_set" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "gear-spring" },
+                { "type": "remove-item", "item": "clock-oil" },
+                { "type": "set-flag", "flag": "clock_time_set" },
+                { "type": "set-flag", "flag": "clock-fixed" },
+                { "type": "narrator-say", "text": "You replace the seized spring with the gear spring from the wizard's tower and oil the frozen gears. The mechanism resists, groans, and then -- with a sound like a kingdom exhaling -- begins to move. Gears turn. The pendulum swings. The clock hands sweep forward from 3:47. The curse's temporal anchor shudders. Outside, you hear it -- the grey advance slows. The petrification hasn't stopped, but it's buying you time. The clock chimes once, a deep resonant tone that echoes across the kingdom. Time moves again in Erelhain. Not much time. But enough." }
+            ],
+            "once": true
+        },
+        {
+            "id": "repair-clock-oil-first",
+            "trigger": { "verb": "use", "subject": "clock-oil", "target": "clock-mechanism" },
+            "conditions": [
+                { "type": "has-item", "item": "gear-spring" },
+                { "type": "has-item", "item": "clock-oil" },
+                { "type": "flag-not-set", "flag": "clock_time_set" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "gear-spring" },
+                { "type": "remove-item", "item": "clock-oil" },
+                { "type": "set-flag", "flag": "clock_time_set" },
+                { "type": "set-flag", "flag": "clock-fixed" },
+                { "type": "narrator-say", "text": "You oil the frozen gears first, then slot in the new spring. The mechanism coughs, sputters, and catches. Gears begin to turn. The pendulum swings. The clock lives again. Outside, the curse's advance visibly slows -- the grey wave loses momentum. The clock chimes, and for the first time in a long time, Erelhain has borrowed time. Use it wisely." }
+            ],
+            "once": true
+        },
+        {
+            "id": "need-both-parts",
+            "trigger": { "verb": "use", "subject": "gear-spring", "target": "clock-mechanism" },
+            "conditions": [
+                { "type": "has-item", "item": "gear-spring" },
+                { "type": "flag-not-set", "flag": "clock_time_set" }
+            ],
+            "actions": [
+                { "type": "narrator-say", "text": "You slot the gear spring into the mechanism. It fits perfectly. But the gears are still frozen -- they need lubrication. Clock oil, specifically. Without it, the spring has nothing to drive." }
+            ]
+        },
+        {
+            "id": "need-spring",
+            "trigger": { "verb": "use", "subject": "clock-oil", "target": "clock-mechanism" },
+            "conditions": [
+                { "type": "has-item", "item": "clock-oil" },
+                { "type": "flag-not-set", "flag": "clock_time_set" }
+            ],
+            "actions": [
+                { "type": "narrator-say", "text": "You pour oil on the frozen gears. They gleam, lubricated but still immobile. The main spring is seized -- you need a replacement spring before the oil can do any good." }
+            ]
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "climb-gears",
+            "trigger": { "verb": "use", "subject": "clock-face" },
+            "conditions": [
+                { "type": "flag-set", "flag": "clock_time_set" }
+            ],
+            "actions": [
+                { "type": "trigger-death", "deathId": "clock-crush" }
+            ]
+        },
+        {
+            "id": "climb-outside",
+            "trigger": { "verb": "go", "subject": "tower-exterior" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "clock-fall" }
+            ]
+        },
+        {
+            "id": "climb-outside-use",
+            "trigger": { "verb": "use", "subject": "tower-exterior" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "clock-fall" }
+            ]
+        }
+    ],
+    "deaths": {
+        "clock-crush": {
+            "title": "Death by Clockwork",
+            "narratorText": "You reach into the now-running clock mechanism to adjust the face. The gears, which were politely frozen moments ago, are now enthusiastically operational. They catch your sleeve first, then your arm, and then the rest of you with the mechanical indifference of precise engineering. The clock's gears continue to turn. You no longer do. Time waits for no one, least of all people who stick their hands into active machinery."
+        },
+        "clock-fall": {
+            "title": "Death by Altitude",
+            "narratorText": "You climb through the tower window for a better view. The wind has opinions about this. Strong opinions. The ledge outside is narrow, icy with condensation, and entirely uninterested in supporting your weight. You slip. The view from the clock tower is spectacular on the way down. The view from the ground, less so. The clock tower has claimed another sightseer. At least the view was worth it. Briefly."
+        }
+    },
+    "dynamicDescriptions": {
+        "clock-fixed": "The clock tower is alive with motion. Gears turn, the pendulum swings, and the clock face shows the correct time. Through the windows, the curse's advance has visibly slowed. The chiming echoes across the kingdom -- a heartbeat restored to a body that nearly died."
+    },
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            { "key": "amb-wind-light", "volume": 0.8 },
+            { "key": "amb-cave-drips", "volume": 0.2 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}

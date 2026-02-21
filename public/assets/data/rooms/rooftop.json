@@ -1,0 +1,103 @@
+{
+    "id": "rooftop",
+    "name": "Castle Rooftop",
+    "description": "The castle rooftop offers a panoramic view of the end of the world. Or at least, the end of Erelhain. From up here, the petrification is visible in its full terrible scope -- a grey tide rolling inward from every direction, turning forests to stone, fields to granite, rivers to frozen channels of rock. The wind is cold and carries the smell of dust and dying magic. A low parapet runs the edge, crumbling in places. The throne room lies below through a staircase. Up here, you can see everything that's at stake. It's beautiful, and it's dying.",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-throne-room-act3",
+            "zone": { "x": 440, "y": 450, "width": 80, "height": 80 },
+            "targetRoom": "throne_room_act3",
+            "spawnPoint": { "x": 480, "y": 400 },
+            "transition": "fade",
+            "direction": "south",
+            "label": "throne room"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "panoramic-view",
+            "name": "Panoramic View",
+            "zone": { "x": 300, "y": 340, "width": 300, "height": 60 },
+            "interactionPoint": { "x": 450, "y": 410 },
+            "responses": {
+                "look": "From the rooftop, you can see it all. The forest where you arrived, now grey stone. The village where you met the old man, half-petrified. The bridge where Bertram stood. The path to the Screaming Caverns. Every place you've been, turning to stone. Every person you've met, freezing in place. The curse is nearly complete. Only the castle itself still resists, and not for much longer. Cracks are spreading up the walls from below. You can hear the stone groaning. The kingdom needs you. Not a hero. Not a prophecy. Just someone who will do the paperwork.",
+                "use": "You shade your eyes and look out at the cursed landscape. It's comprehensive devastation, viewed from a comfortable vantage point. The irony of watching the world end from a rooftop is not lost on you.",
+                "default": "You take in the panoramic view. It would be breathtaking if it weren't also heartbreaking."
+            }
+        },
+        {
+            "id": "parapet",
+            "name": "Crumbling Parapet",
+            "zone": { "x": 700, "y": 370, "width": 100, "height": 40 },
+            "interactionPoint": { "x": 750, "y": 420 },
+            "responses": {
+                "look": "The parapet is crumbling, half-petrified itself. Gaps in the stonework reveal the dizzying drop to the courtyard below. The wind tugs at your clothes, suggesting activities that your survival instinct firmly vetoes.",
+                "use": "You lean against the parapet. It shifts slightly. You un-lean against the parapet. Quickly.",
+                "push": "You test the parapet's structural integrity. It fails the test. A chunk breaks off and tumbles into the courtyard below. The sound of impact is educational.",
+                "default": "You eye the crumbling parapet with appropriate caution."
+            }
+        },
+        {
+            "id": "castle-spire",
+            "name": "Castle Spire",
+            "zone": { "x": 450, "y": 320, "width": 60, "height": 50 },
+            "interactionPoint": { "x": 480, "y": 400 },
+            "responses": {
+                "look": "The castle's highest spire rises above you, its stone partially grey with the advancing curse. A flag hangs limp at the top -- the kingdom's banner, a disgruntled badger on a field of blue. The badger looks especially disgruntled today, which seems fair.",
+                "take": "You cannot reach the spire. And even if you could, stealing a kingdom's flag while trying to save that kingdom would be an unusual choice.",
+                "default": "You look up at the castle spire. The flag watches the kingdom's end with the same expression the badger always wears: deeply unimpressed."
+            }
+        }
+    ],
+    "items": [],
+    "puzzles": [],
+    "deathTriggers": [
+        {
+            "id": "lean-over-parapet",
+            "trigger": { "verb": "go", "subject": "parapet" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "rooftop-fall" }
+            ]
+        },
+        {
+            "id": "climb-parapet",
+            "trigger": { "verb": "use", "subject": "parapet" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "rooftop-fall" }
+            ]
+        }
+    ],
+    "deaths": {
+        "rooftop-fall": {
+            "title": "Death by Sightseeing",
+            "narratorText": "You lean over the parapet for a better view of the curse's progress. The parapet, which has been crumbling since before you were born, chooses this exact moment to complete its structural journey. The stone gives way under your weight with a resigned crumble. You pitch forward. The view on the way down is spectacular -- you can see the entire kingdom, the spreading curse, the sunset, and the rapidly approaching courtyard. You leaned out to see the curse spreading. The curse appreciated your enthusiasm. Gravity did not."
+        }
+    },
+    "dynamicDescriptions": {
+        "curse-broken": "The rooftop offers a transformed view. Color floods back across the landscape -- green returns to forests, blue to rivers, warmth to stone. People below are moving, shouting, celebrating. The flag on the castle spire catches the wind and snaps proudly. The disgruntled badger looks... slightly less disgruntled. The kingdom lives."
+    },
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            { "key": "amb-wind-light", "volume": 1.0 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}

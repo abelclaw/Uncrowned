@@ -1,0 +1,175 @@
+{
+    "id": "castle_courtyard_act3",
+    "name": "Castle Courtyard (Petrified)",
+    "description": "Castle Erelhain's courtyard is a monument to the curse's progress. The guards who once challenged you at the gate are now frozen statues, swords raised in an eternal salute to nothing. The well has turned to solid stone -- no water flows here anymore. Weeds have petrified mid-growth, creating an eerie garden of grey thorns. Only Captain Aldric remains partly alive, his right side stone, his left side stubbornly flesh. He stands at his post because that's what captains do, even when half their body has given up.",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-petrified-forest",
+            "zone": { "x": 0, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "petrified_forest",
+            "spawnPoint": { "x": 820, "y": 430 },
+            "transition": "fade",
+            "direction": "west",
+            "label": "forest"
+        },
+        {
+            "id": "to-throne-room-act3",
+            "zone": { "x": 440, "y": 350, "width": 80, "height": 80 },
+            "targetRoom": "throne_room_act3",
+            "spawnPoint": { "x": 480, "y": 430 },
+            "transition": "fade",
+            "direction": "north",
+            "label": "throne room"
+        },
+        {
+            "id": "to-royal-archive",
+            "zone": { "x": 880, "y": 350, "width": 80, "height": 80 },
+            "targetRoom": "royal_archive",
+            "spawnPoint": { "x": 100, "y": 430 },
+            "transition": "slide-right",
+            "direction": "east",
+            "label": "archive"
+        },
+        {
+            "id": "to-clock-tower",
+            "zone": { "x": 440, "y": 460, "width": 80, "height": 80 },
+            "targetRoom": "clock_tower",
+            "spawnPoint": { "x": 480, "y": 400 },
+            "transition": "fade",
+            "direction": "south",
+            "label": "clock tower"
+        },
+        {
+            "id": "to-wizard-tower",
+            "zone": { "x": 200, "y": 350, "width": 80, "height": 80 },
+            "targetRoom": "wizard_tower",
+            "spawnPoint": { "x": 480, "y": 430 },
+            "transition": "fade",
+            "direction": "north",
+            "label": "wizard tower"
+        },
+        {
+            "id": "to-mirror-hall",
+            "zone": { "x": 700, "y": 450, "width": 80, "height": 80 },
+            "targetRoom": "mirror_hall",
+            "spawnPoint": { "x": 100, "y": 430 },
+            "transition": "fade",
+            "direction": "east",
+            "label": "hall of mirrors"
+        },
+        {
+            "id": "to-dungeon",
+            "zone": { "x": 600, "y": 460, "width": 80, "height": 60 },
+            "targetRoom": "dungeon",
+            "spawnPoint": { "x": 480, "y": 400 },
+            "transition": "fade",
+            "direction": "down",
+            "label": "dungeon"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "frozen-guards",
+            "name": "Petrified Guards",
+            "zone": { "x": 100, "y": 370, "width": 80, "height": 70 },
+            "interactionPoint": { "x": 140, "y": 420 },
+            "responses": {
+                "look": "The guards who once challenged you for proof of purpose are now stone statues, frozen in their duty. One still has his hand extended, demanding identification from visitors who will never come. Their expressions are stern but not afraid -- they turned to stone while doing their jobs, which is either admirable or deeply unfair. Probably both.",
+                "talk": "You address the stone guards. They maintain their eternal vigil in silence. Their dedication to duty has outlasted their biology.",
+                "use": "The petrified guards are beyond help. Or use. They've been promoted to the rank of Permanent Fixture.",
+                "default": "You study the frozen guards. Their stone faces show no pain, just duty. Perhaps that's a kindness."
+            }
+        },
+        {
+            "id": "stone-well",
+            "name": "Petrified Well",
+            "zone": { "x": 350, "y": 410, "width": 80, "height": 50 },
+            "interactionPoint": { "x": 390, "y": 430 },
+            "responses": {
+                "look": "The well where you once filled a chalice is now solid stone -- bucket, rope, water, all of it. The surface of what was once water is now a grey disc, perfectly smooth, like a mirror that reflects nothing. The curse has frozen even the concept of refreshment.",
+                "use": "The well is stone. The water is stone. The bucket is stone. Everything is stone. You're beginning to see a pattern.",
+                "take": "You cannot draw water from a stone well. This metaphor has become unpleasantly literal.",
+                "default": "You examine the petrified well. It is a monument to the kingdom's hydration infrastructure, now permanently decommissioned."
+            }
+        },
+        {
+            "id": "crumbling-walls",
+            "name": "Crumbling Castle Walls",
+            "zone": { "x": 550, "y": 350, "width": 120, "height": 60 },
+            "interactionPoint": { "x": 610, "y": 420 },
+            "responses": {
+                "look": "The castle walls are cracking. Not from age -- from the curse. Petrified stone has a different density than carved stone, and the conflicting materials are tearing the architecture apart. Cracks spider-web across the surface. Chunks have fallen. The castle is eating itself.",
+                "push": "You push on a crumbling section. It groans. Dust falls. A stone the size of your head breaks free and thuds to the ground. Perhaps stop pushing the structural components of the building you're inside.",
+                "default": "You observe the crumbling walls. The castle has survived centuries. It may not survive the week."
+            }
+        }
+    ],
+    "items": [],
+    "puzzles": [
+        {
+            "id": "set-curse-flag",
+            "trigger": { "verb": "look", "subject": "frozen-guards" },
+            "conditions": [
+                { "type": "flag-not-set", "flag": "curse_accelerating" }
+            ],
+            "actions": [
+                { "type": "set-flag", "flag": "curse_accelerating" },
+                { "type": "narrator-say", "text": "The curse has accelerated since you entered the caverns. What was creeping is now striding. The kingdom is running out of time, and it doesn't have much of a head start." }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "wait-too-long",
+            "trigger": { "verb": "use", "subject": "stone-well" },
+            "conditions": [
+                { "type": "flag-not-set", "flag": "clock-fixed" }
+            ],
+            "actions": [
+                { "type": "trigger-death", "deathId": "petrify-slow" }
+            ]
+        }
+    ],
+    "deaths": {
+        "petrify-slow": {
+            "title": "Death by Procrastination",
+            "narratorText": "You linger in the courtyard, examining the petrified well, and the curse catches up. It starts with your boots -- your feet go heavy, then rigid. By the time you look down, grey has climbed to your knees. You try to run, but running requires legs, and yours have been permanently reassigned to the mineral kingdom. The petrification climbs your torso. Your arms. Your neck. In your final moments, you become a monument to indecision. Pigeons will nest on you. Tourists will take photographs. The curse does not discriminate between heroes and time-wasters."
+        }
+    },
+    "dynamicDescriptions": {
+        "clock-fixed": "The courtyard is still petrified, but the curse's advance has slowed -- the clock tower's repaired mechanism is buying time. The guards remain stone, but the cracks in the walls have stopped spreading. Captain Aldric stands at his post, his stone half unchanged, his living half slightly more hopeful.",
+        "curse-broken": "The courtyard is... changing. Grey is receding from the walls. The guards are still stone, but there's color returning at the edges -- pink in their cheeks, warmth in the flagstones. The well gurgles. Water returns. The kingdom is waking up."
+    },
+    "npcs": [
+        {
+            "id": "petrified_guard",
+            "position": { "x": 300, "y": 395 },
+            "interactionPoint": { "x": 260, "y": 420 },
+            "zone": { "x": 270, "y": 370, "width": 60, "height": 70 }
+        }
+    ],
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            { "key": "amb-wind-light", "volume": 0.8 },
+            { "key": "amb-cave-drips", "volume": 0.2 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}

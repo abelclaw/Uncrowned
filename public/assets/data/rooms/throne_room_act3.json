@@ -1,0 +1,232 @@
+{
+    "id": "throne_room_act3",
+    "name": "Throne Room (Final)",
+    "description": "The throne room has changed since your last visit. The crumbling throne has been replaced by cracks in the floor and ceiling, grey stone creeping across every surface. The Ghost King hovers near the empty throne, his translucent form flickering with urgency he never showed in life. The room feels like it's holding its breath. On the floor, a circle of ancient runes pulses faintly -- the Rite circle, waiting for the ceremony that will break the curse or seal the kingdom's fate. This is where it ends. One way or another.",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-courtyard-act3",
+            "zone": { "x": 440, "y": 450, "width": 80, "height": 80 },
+            "targetRoom": "castle_courtyard_act3",
+            "spawnPoint": { "x": 480, "y": 400 },
+            "transition": "fade",
+            "direction": "south",
+            "label": "courtyard"
+        },
+        {
+            "id": "to-rooftop",
+            "zone": { "x": 440, "y": 350, "width": 80, "height": 80 },
+            "targetRoom": "rooftop",
+            "spawnPoint": { "x": 480, "y": 430 },
+            "transition": "fade",
+            "direction": "north",
+            "label": "rooftop"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "rite-circle",
+            "name": "Rite Circle",
+            "zone": { "x": 350, "y": 400, "width": 200, "height": 60 },
+            "interactionPoint": { "x": 450, "y": 420 },
+            "responses": {
+                "look": "A circle of ancient runes carved into the throne room floor, pulsing with faint magical energy. The runes spell out the formal requirements of the Rite of Administrative Closure: 'The Crystal of Mundanity as Witness. The Kingdom Seal as Authority. The Curse Contract as Subject. An Allied Administrator as Officiant.' It's a bureaucratic ceremony carved in stone. Of course it is.",
+                "use": "The rite circle needs three items: the Crystal of Mundanity, the Kingdom Seal, and the Original Curse Contract. You also need the Clerk's cooperation. One does not simply perform a rite without proper administrative support.",
+                "take": "You cannot take runes carved into a floor. The floor objects to being dismantled.",
+                "default": "You study the rite circle. The runes glow brighter when you stand near them, as if sensing the Crystal of Mundanity in your possession."
+            }
+        },
+        {
+            "id": "cracked-throne",
+            "name": "Ruined Throne",
+            "zone": { "x": 400, "y": 350, "width": 100, "height": 60 },
+            "interactionPoint": { "x": 450, "y": 400 },
+            "responses": {
+                "look": "The throne that collapsed under your weight (if you sat on it before) -- or simply under the weight of centuries -- lies in ruins. Stone fragments scattered across the dais. No one will sit here again. The kingdom needs a new symbol of authority, and a pile of rocks isn't it.",
+                "use": "The throne is rubble. Sitting on it would be an exercise in optimism that even you can't manage.",
+                "take": "You pocket a small fragment of the throne. A souvenir from the end of a dynasty. How very sentimental of you. And useless.",
+                "default": "You contemplate the ruined throne. A kingdom without a seat of power. The metaphor writes itself."
+            }
+        },
+        {
+            "id": "ceiling-cracks",
+            "name": "Cracking Ceiling",
+            "zone": { "x": 200, "y": 340, "width": 150, "height": 40 },
+            "interactionPoint": { "x": 275, "y": 400 },
+            "responses": {
+                "look": "Cracks spread across the throne room ceiling like a map of the kingdom's problems. Stone dust falls in thin streams. The curse is working from the outside in, and the throne room -- the heart of the kingdom -- is last to turn. But not by much. The cracks are widening.",
+                "default": "You watch stone dust drift from the ceiling. The room has hours. Maybe less."
+            }
+        }
+    ],
+    "items": [],
+    "puzzles": [
+        {
+            "id": "prepare-rite",
+            "trigger": { "verb": "use", "subject": "crystal-of-mundanity", "target": "rite-circle" },
+            "conditions": [
+                { "type": "has-item", "item": "crystal-of-mundanity" },
+                { "type": "has-item", "item": "kingdom-seal" },
+                { "type": "has-item", "item": "original-curse-contract" },
+                { "type": "flag-set", "flag": "clerk_allied" },
+                { "type": "flag-not-set", "flag": "rite_prepared" }
+            ],
+            "actions": [
+                { "type": "set-flag", "flag": "rite_prepared" },
+                { "type": "narrator-say", "text": "You place the Crystal of Mundanity at the center of the rite circle. The runes blaze to life, golden light flooding the throne room. The Ghost King straightens -- as much as a ghost can straighten -- and nods solemnly. 'It's time,' he says. 'Place the contract. Ready the seal. The Rite of Administrative Closure... begins.' He pauses. 'I never thought I'd say those words with gravitas. And yet, here we are.' Use the kingdom seal on the rite circle to perform the Rite." }
+            ],
+            "once": true
+        },
+        {
+            "id": "prepare-rite-alt",
+            "trigger": { "verb": "use", "subject": "kingdom-seal", "target": "rite-circle" },
+            "conditions": [
+                { "type": "has-item", "item": "crystal-of-mundanity" },
+                { "type": "has-item", "item": "kingdom-seal" },
+                { "type": "has-item", "item": "original-curse-contract" },
+                { "type": "flag-set", "flag": "clerk_allied" },
+                { "type": "flag-not-set", "flag": "rite_prepared" }
+            ],
+            "actions": [
+                { "type": "set-flag", "flag": "rite_prepared" },
+                { "type": "narrator-say", "text": "You bring the Kingdom Seal to the rite circle. As you approach, the Crystal of Mundanity pulls itself from your pack and settles at the circle's center. The runes ignite. The contract unfurls. The Ghost King rises to his full spectral height. 'All components present. The Rite of Administrative Closure may proceed.' His voice echoes with an authority he never quite had in life. Use the crystal on the rite circle to complete the ceremony." }
+            ],
+            "once": true
+        },
+        {
+            "id": "perform-rite",
+            "trigger": { "verb": "use", "subject": "kingdom-seal", "target": "rite-circle" },
+            "conditions": [
+                { "type": "flag-set", "flag": "rite_prepared" },
+                { "type": "flag-not-set", "flag": "curse-broken" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "kingdom-seal" },
+                { "type": "remove-item", "item": "original-curse-contract" },
+                { "type": "set-flag", "flag": "rite_started" },
+                { "type": "set-flag", "flag": "curse-broken" },
+                { "type": "set-flag", "flag": "game-complete" },
+                { "type": "narrator-say", "text": "The Ghost King reads the Rite. It is, as promised, a bureaucratic form. 'By the authority vested in the Kingdom of Erelhain, Section 47-B of the Original Curse Contract, Clause of Expiration, the undersigned hereby declares this curse...' He looks at you. You stamp the contract with the Kingdom Seal. The crystal flares brilliant white. '...CLOSED.' The word echoes through the castle. Through the kingdom. Through the stone itself. The curse contract catches fire -- spectral, golden fire that consumes the parchment and spreads outward in a wave of warm light. The cracks in the ceiling seal. The grey retreats. Color floods back into the stone like blood returning to frozen limbs. Outside, you hear it: stone cracking, crumbling, falling away. Trees shedding their granite shells. Water flowing again. People gasping as they wake from stone sleep. The Ghost King watches the kingdom return to life. His expression is unreadable. Then he smiles -- genuinely, for the first time in centuries. 'Well,' he says. 'That was overdue.' The Clerk, standing in the corner, adjusts his spectacles. 'I will need to file the closure paperwork.' Some things never change. The curse is broken. The kingdom lives. Pip, the traveling tinker who came looking for directions and a warm meal, has saved Erelhain. Not through prophecy. Not through destiny. Through paperwork. How fitting." }
+            ],
+            "once": true
+        },
+        {
+            "id": "perform-rite-crystal",
+            "trigger": { "verb": "use", "subject": "crystal-of-mundanity", "target": "rite-circle" },
+            "conditions": [
+                { "type": "flag-set", "flag": "rite_prepared" },
+                { "type": "flag-not-set", "flag": "curse-broken" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "kingdom-seal" },
+                { "type": "remove-item", "item": "original-curse-contract" },
+                { "type": "set-flag", "flag": "rite_started" },
+                { "type": "set-flag", "flag": "curse-broken" },
+                { "type": "set-flag", "flag": "game-complete" },
+                { "type": "narrator-say", "text": "You raise the Crystal of Mundanity above the rite circle. The Ghost King speaks the words of the Rite -- a bureaucratic incantation, dry as centuries-old parchment and twice as powerful. You stamp the curse contract with the Kingdom Seal. The crystal blazes. The curse shatters. Golden light races through the castle, through the kingdom, through the very earth. Stone cracks and falls away. Color returns. Life returns. The Ghost King watches his kingdom heal and, for the first time in his death, looks at peace. 'Not bad,' he says, 'for a tinker with no qualifications.' Pip saved the kingdom. Not with a sword. Not with destiny. With a seal, a contract, and a crystal that was, fittingly, completely unremarkable." }
+            ],
+            "once": true
+        },
+        {
+            "id": "rite-not-ready",
+            "trigger": { "verb": "use", "subject": "crystal-of-mundanity", "target": "rite-circle" },
+            "conditions": [
+                { "type": "flag-not-set", "flag": "clerk_allied" }
+            ],
+            "actions": [
+                { "type": "narrator-say", "text": "The rite circle pulses faintly, but nothing happens. The Ghost King shakes his spectral head. 'The Rite requires an allied administrator. The Clerk must cooperate -- willingly. Find him. Convince him. Or outwit him. The bureaucracy demands consensus, even at the end of the world.'" }
+            ]
+        },
+        {
+            "id": "rite-missing-items",
+            "trigger": { "verb": "use", "subject": "rite-circle" },
+            "conditions": [
+                { "type": "flag-not-set", "flag": "rite_prepared" }
+            ],
+            "actions": [
+                { "type": "narrator-say", "text": "The rite circle glows faintly. You need three things: the Crystal of Mundanity, the Kingdom Administrative Seal, and the Original Curse Contract. And you need the Clerk's cooperation. The bureaucracy of ending a curse is, ironically, just as bureaucratic as everything else in this kingdom." }
+            ]
+        },
+        {
+            "id": "accept-throne",
+            "trigger": { "verb": "use", "subject": "cracked-throne" },
+            "conditions": [
+                { "type": "flag-set", "flag": "curse-broken" },
+                { "type": "flag-not-set", "flag": "throne_accepted" },
+                { "type": "flag-not-set", "flag": "throne_declined" }
+            ],
+            "actions": [
+                { "type": "set-flag", "flag": "throne_accepted" },
+                { "type": "narrator-say", "text": "You sit on the ruins of the throne. It's uncomfortable, broken, and entirely symbolic. But the Ghost King bows -- actually bows -- and says, 'The kingdom could do worse. It has done worse. Repeatedly.' The Clerk begins drafting your coronation paperwork. It will take approximately six months. Welcome to governance, Your Unexpected Majesty." }
+            ],
+            "once": true
+        },
+        {
+            "id": "decline-throne",
+            "trigger": { "verb": "look", "subject": "cracked-throne" },
+            "conditions": [
+                { "type": "flag-set", "flag": "curse-broken" },
+                { "type": "flag-not-set", "flag": "throne_accepted" },
+                { "type": "flag-not-set", "flag": "throne_declined" }
+            ],
+            "actions": [
+                { "type": "set-flag", "flag": "throne_declined" },
+                { "type": "narrator-say", "text": "You look at the ruined throne and shake your head. 'I came for directions and a warm meal,' you say. The Ghost King nods, unsurprised. 'Then take them. The kitchen is operational again, and Martha makes excellent soup.' You walk away from the throne. Behind you, the kingdom begins the long process of rebuilding. Ahead of you, the road stretches toward the next town, the next odd job, the next adventure. Pip the tinker saved the world and asked for nothing but lunch. This is the best kind of hero." }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "wrong-rite",
+            "trigger": { "verb": "use", "subject": "royal-seal", "target": "rite-circle" },
+            "conditions": [
+                { "type": "has-item", "item": "royal-seal" },
+                { "type": "flag-not-set", "flag": "rite_prepared" }
+            ],
+            "actions": [
+                { "type": "trigger-death", "deathId": "rite-fail" }
+            ]
+        }
+    ],
+    "deaths": {
+        "rite-fail": {
+            "title": "Death by Incorrect Paperwork",
+            "narratorText": "You attempt the Rite with the wrong seal. The Royal Seal, not the Kingdom Seal. A distinction that matters to bureaucracy, even magical bureaucracy. Especially magical bureaucracy. The rite circle flares red. The curse, sensing an incompetent closure attempt, accelerates catastrophically. Grey stone races up the walls, across the floor, over your feet, your legs, your -- well, all of you. The Ghost King sighs. 'Wrong seal. It was the Kingdom Administrative Seal. Not the Royal Seal. Different departments.' His disappointment is the last thing you hear before geology claims you permanently. Filing errors have consequences."
+        }
+    },
+    "dynamicDescriptions": {
+        "rite_prepared": "The throne room blazes with golden light from the rite circle. The Crystal of Mundanity, the Kingdom Seal, and the Curse Contract are in position. The Ghost King stands ready. The Clerk lurks in the corner, spectacles gleaming. This is the moment. Perform the Rite.",
+        "curse-broken": "The throne room is alive with color again. Cracks have sealed, stone has softened back to carved marble, and light streams through windows that haven't been clean in centuries. The Ghost King hovers peacefully near the empty throne, his duty complete. The kingdom is saved. The paperwork is done."
+    },
+    "npcs": [
+        {
+            "id": "ghost_king",
+            "position": { "x": 420, "y": 370 },
+            "interactionPoint": { "x": 380, "y": 420 },
+            "zone": { "x": 390, "y": 345, "width": 60, "height": 70 }
+        }
+    ],
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            { "key": "amb-wind-light", "volume": 0.5 },
+            { "key": "amb-cave-drips", "volume": 0.3 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}

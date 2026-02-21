@@ -28,6 +28,20 @@
             "label": "exit"
         },
         {
+            "id": "to-petrified-forest",
+            "zone": { "x": 300, "y": 450, "width": 80, "height": 80 },
+            "targetRoom": "petrified_forest",
+            "spawnPoint": { "x": 820, "y": 430 },
+            "transition": "fade",
+            "direction": "west",
+            "label": "forest",
+            "conditions": [
+                { "type": "has-item", "item": "crystal-of-mundanity" },
+                { "type": "flag-set", "flag": "guardian-defeated" },
+                { "type": "flag-set", "flag": "clerk-satisfied" }
+            ]
+        },
+        {
             "id": "to-library",
             "zone": { "x": 440, "y": 350, "width": 80, "height": 80 },
             "targetRoom": "cavern_library",

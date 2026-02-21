@@ -1,0 +1,182 @@
+{
+    "id": "wizard_tower",
+    "name": "Wizard's Tower",
+    "description": "The wizard's tower is a disaster of arcane proportions. Shelves of bubbling potions, scattered star charts, and half-finished spell components cover every surface. A blackened scorch mark on one wall suggests a previous experiment that went poorly. Or well, depending on the wizard's definition of success. Books lie open to pages about curses, memory modification, and -- oddly -- parking regulations. The wizard who lived here was clearly brilliant, clearly unhinged, and clearly had a grudge about a parking spot. A spectral figure drifts between the shelves, muttering about reagent prices.",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-courtyard-act3",
+            "zone": { "x": 440, "y": 450, "width": 80, "height": 80 },
+            "targetRoom": "castle_courtyard_act3",
+            "spawnPoint": { "x": 250, "y": 430 },
+            "transition": "fade",
+            "direction": "south",
+            "label": "courtyard"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "potion-shelves",
+            "name": "Potion Shelves",
+            "zone": { "x": 100, "y": 350, "width": 100, "height": 70 },
+            "interactionPoint": { "x": 150, "y": 420 },
+            "responses": {
+                "look": "Shelves of potions in every color, most bubbling quietly despite having been brewed centuries ago. Labels include 'Memory Suppressant (Extra Strength),' 'Parking Curse Mk. VII,' and 'Definitely Not Poison (It Is Poison).' The wizard's organizational system was 'wherever there's space,' which means everywhere.",
+                "use": "You contemplate sampling the potions. The one labeled 'Definitely Not Poison' practically dares you. Your survival instincts, for once, prevail.",
+                "take": "You pocket a small vial. Then put it back. Then pick it up again. Then remember the last time you drank a mysterious liquid and put it back permanently.",
+                "default": "You examine the potions. They examine you back, bubbling judgmentally."
+            }
+        },
+        {
+            "id": "spell-notes",
+            "name": "Spell Notes",
+            "zone": { "x": 350, "y": 360, "width": 120, "height": 50 },
+            "interactionPoint": { "x": 410, "y": 420 },
+            "responses": {
+                "look": "Scattered notes in a frantic hand: 'Parking spot 47-B DENIED. DENIED! After 300 years of service! The feast committee will pay for this. The KINGDOM will pay for this. I'll show them all. Curse Mk. VII should do it. Include expiration clause per section 47-B of Administrative Code -- even curses must follow procedure.' The wizard was a bureaucrat before he was a wizard. The curse has an exit clause because the caster followed the rules even while breaking them. Incredible.",
+                "take": "You take the spell notes. Then realize they're covered in magical residue that makes your fingers tingle. You put them back and wipe your hands on your clothes.",
+                "default": "You read the spell notes. The wizard's rage about parking is... passionate. And surprisingly well-documented."
+            }
+        },
+        {
+            "id": "trapped-chest",
+            "name": "Iron Chest",
+            "zone": { "x": 700, "y": 400, "width": 80, "height": 40 },
+            "interactionPoint": { "x": 740, "y": 430 },
+            "responses": {
+                "look": "A heavy iron chest with arcane symbols carved into its surface. A sign reads: 'PERSONAL BELONGINGS -- DO NOT OPEN. ESPECIALLY YOU, MARLOWE. (Wait, I am Marlowe. Note to self: change sign.)' The chest is clearly trapped. The symbols glow faintly when you approach.",
+                "use": "The chest is trapped. The symbols on it promise unpleasant things to unauthorized openers. You'd need to be very careful -- or very foolish -- to open it.",
+                "default": "You eye the trapped chest. It eyes you back, magically."
+            }
+        },
+        {
+            "id": "scorch-mark",
+            "name": "Scorch Mark",
+            "zone": { "x": 550, "y": 350, "width": 100, "height": 60 },
+            "interactionPoint": { "x": 600, "y": 420 },
+            "responses": {
+                "look": "A massive black scorch mark covers one wall, the shape of a wizard silhouetted in char. This is probably how Wizard Marlowe died -- standing too close to his own experiment. The silhouette's arms are raised in what could be triumph or panic. Given the outcome, probably panic.",
+                "use": "You touch the scorch mark. Your finger comes away black with soot and faintly warm, even after centuries. Magic leaves a lasting impression. So does incompetence.",
+                "default": "You study the scorch mark. It tells the entire story of a wizard who was very good at magic and very bad at safety protocols."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "clerk-memory-crystal",
+            "name": "Clerk's Memory Crystal",
+            "zone": { "x": 600, "y": 390, "width": 30, "height": 20 },
+            "interactionPoint": { "x": 615, "y": 420 },
+            "responses": {
+                "look": "A small crystal on the wizard's desk, glowing with suppressed light. A label reads: 'Extracted Memories -- Clerk Identity, Pre-Immortality. DO NOT RETURN TO SUBJECT without consent (or spite).' This is the Clerk's memory -- the wizard extracted his own memories of casting the curse before transforming himself into the immortal bureaucrat. The crystal holds the truth of who the Clerk was.",
+                "use": "The memory crystal needs to be shown to the Clerk. It contains his suppressed memories -- proof that the immortal bureaucrat and the disgruntled wizard are the same person."
+            }
+        },
+        {
+            "id": "gear-spring",
+            "name": "Gear Spring",
+            "zone": { "x": 130, "y": 400, "width": 30, "height": 20 },
+            "interactionPoint": { "x": 145, "y": 420 },
+            "responses": {
+                "look": "A tightly coiled metal spring among the wizard's mechanical components. It looks like it was part of a clock mechanism -- the wizard apparently tinkered with temporal devices in addition to curses. Still has bounce, unlike your hopes.",
+                "use": "A gear spring without a clock is just a coil with ambitions. You need the clock tower to use this."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "take-memory-crystal",
+            "trigger": { "verb": "take", "subject": "clerk-memory-crystal" },
+            "conditions": [
+                { "type": "item-not-taken", "item": "clerk-memory-crystal" }
+            ],
+            "actions": [
+                { "type": "add-item", "item": "clerk-memory-crystal" },
+                { "type": "set-flag", "flag": "wizard_explored" },
+                { "type": "narrator-say", "text": "You take the memory crystal. It pulses warmly in your hand, full of centuries of suppressed identity. Somewhere in this crystal is the truth: the Clerk was once a wizard named Marlowe, who cast the curse in a rage about a parking spot, then erased his own memory and became an immortal bureaucrat to administer the test he created. The irony is staggering. The therapy bills would be worse." }
+            ],
+            "once": true
+        },
+        {
+            "id": "take-gear-spring",
+            "trigger": { "verb": "take", "subject": "gear-spring" },
+            "conditions": [
+                { "type": "item-not-taken", "item": "gear-spring" }
+            ],
+            "actions": [
+                { "type": "add-item", "item": "gear-spring" },
+                { "type": "narrator-say", "text": "You pocket the gear spring. It's been sitting among the wizard's collection for centuries, waiting for someone who needs to fix a clock. The universe has a way of providing exactly what you need, buried under exactly the right amount of dust and existential despair." }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "open-trapped-chest",
+            "trigger": { "verb": "open", "subject": "trapped-chest" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "wizard-trap" }
+            ]
+        },
+        {
+            "id": "open-trapped-chest-use",
+            "trigger": { "verb": "use", "subject": "trapped-chest" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "wizard-trap" }
+            ]
+        },
+        {
+            "id": "mix-potions",
+            "trigger": { "verb": "use", "subject": "potion-shelves" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "wizard-explosion" }
+            ]
+        }
+    ],
+    "deaths": {
+        "wizard-trap": {
+            "title": "Death by Greed",
+            "narratorText": "You open the wizard's chest. The arcane symbols flare. A magical trap triggers -- not fire, not lightning, but something worse. The chest simply closes on your hand and refuses to let go. Then the chest begins pulling. Not physically -- magically. It pulls your essence, your vitality, your everything, into the chest. You are filed. Permanently. The wizard trapped his belongings against theft, and his traps do not distinguish between thieves and curious adventurers. The chest closes. It is full. Your consciousness joins the wizard's old socks in the darkness. At least you're organized."
+        },
+        "wizard-explosion": {
+            "title": "Death by Chemistry",
+            "narratorText": "You mix two random potions together. The wizard labeled them, but you didn't read the labels. 'Memory Suppressant' and 'Parking Curse Mk. VII' do not combine well. They combine explosively. The resulting detonation is magical, chemical, and deeply personal -- the explosion seems specifically annoyed at you. The scorch mark on the wall gets a companion. Future adventurers will note the two wizard-shaped silhouettes and wonder about the aesthetic choices. Mixing random magical components: the alchemical equivalent of pressing buttons in an elevator and hoping for the best."
+        }
+    },
+    "dynamicDescriptions": {
+        "wizard_explored": "The wizard's tower feels less mysterious now. You've found the memory crystal, read the spell notes, and understand the truth: the Clerk and the wizard are the same person. The tower is a monument to one man's parking-related rage. History will remember this as the most petty apocalypse ever triggered."
+    },
+    "npcs": [
+        {
+            "id": "wizard_ghost",
+            "position": { "x": 500, "y": 390 },
+            "interactionPoint": { "x": 460, "y": 420 },
+            "zone": { "x": 470, "y": 365, "width": 60, "height": 60 }
+        }
+    ],
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            { "key": "amb-cave-drips", "volume": 0.4 },
+            { "key": "amb-wind-light", "volume": 0.5 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}
