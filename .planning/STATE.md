@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 ## Current Position
 
 Phase: 4 of 8 (Core Gameplay Systems)
-Plan: 4 of 5 in current phase
+Plan: 5 of 5 in current phase
 Status: In Progress
-Last activity: 2026-02-21 -- Completed 04-04-PLAN.md (MainMenuScene and DeathScene)
+Last activity: 2026-02-21 -- Completed 04-03-PLAN.md (CommandDispatcher overhaul and room data enrichment)
 
-Progress: [█████░░░░░] 48%
+Progress: [██████░░░░] 52%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 9
+- Total plans completed: 10
 - Average duration: 3.0min
-- Total execution time: 0.45 hours
+- Total execution time: 0.50 hours
 
 **By Phase:**
 
@@ -43,6 +43,7 @@ Progress: [█████░░░░░] 48%
 | Phase 04 P02 | 3min | 2 tasks | 6 files |
 | Phase 04 P01 | 6min | 2 tasks | 10 files |
 | Phase 04 P04 | 1min | 2 tasks | 2 files |
+| Phase 04 P03 | 3min | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -82,6 +83,10 @@ Recent decisions affecting current work:
 - [Phase 04]: Phaser text objects for menu (not HTML) -- full-screen scenes use native Phaser rendering
 - [Phase 04]: DeathScene as overlay via scene.launch -- RoomScene stays loaded underneath
 - [Phase 04]: Direct deathCount mutation via cast rather than adding GameState method -- minimal change
+- [Phase 04]: Evaluation order puzzles before death triggers -- prevents dying when player has correct solution
+- [Phase 04]: Use X on Y resolution: X inventory-first, Y room-first -- matches natural language pattern
+- [Phase 04]: Items only consumed by explicit puzzle actions, never by failed attempts -- prevents unwinnable states
+- [Phase 04]: Combine handler checks both orderings (A+B and B+A) -- prevents frustrating order sensitivity
 
 ### Pending Todos
 
@@ -96,5 +101,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 04-04-PLAN.md (MainMenuScene, DeathScene)
+Stopped at: Completed 04-03-PLAN.md (CommandDispatcher overhaul, room data enrichment)
 Resume file: None

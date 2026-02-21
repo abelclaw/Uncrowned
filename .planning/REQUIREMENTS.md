@@ -30,16 +30,16 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Inventory & Items
 
-- [ ] **INV-01**: Player can pick up items from scenes and add them to inventory
-- [ ] **INV-02**: Player can examine items in inventory to read descriptions
-- [ ] **INV-03**: Player can use inventory items on scene hotspots
-- [ ] **INV-04**: Player can combine two inventory items to create new items
+- [x] **INV-01**: Player can pick up items from scenes and add them to inventory
+- [x] **INV-02**: Player can examine items in inventory to read descriptions
+- [x] **INV-03**: Player can use inventory items on scene hotspots
+- [x] **INV-04**: Player can combine two inventory items to create new items
 - [x] **INV-05**: Inventory panel displays all held items visually
 
 ### Puzzles
 
-- [ ] **PUZ-01**: Inventory combination puzzles -- combine or use items to solve problems
-- [ ] **PUZ-02**: Environmental/logic puzzles -- observe patterns, manipulate scene elements
+- [x] **PUZ-01**: Inventory combination puzzles -- combine or use items to solve problems
+- [x] **PUZ-02**: Environmental/logic puzzles -- observe patterns, manipulate scene elements
 - [ ] **PUZ-03**: Conversation-based puzzles -- gather info from NPCs, persuade, negotiate
 - [x] **PUZ-04**: All puzzles defined in data files (JSON), not hardcoded in engine
 - [x] **PUZ-05**: Puzzle condition/action system evaluates game state flags and triggers results
@@ -50,9 +50,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [ ] **NARR-01**: Complete fantasy adventure story with beginning, middle, and satisfying end
 - [ ] **NARR-02**: Story provides ~5 hours of gameplay content across multiple acts
-- [ ] **NARR-03**: Dark comedy narrator provides sardonic commentary throughout
+- [x] **NARR-03**: Dark comedy narrator provides sardonic commentary throughout
 - [x] **NARR-04**: Narrator text displays with typewriter effect in dialogue box
-- [ ] **NARR-05**: Scene descriptions available via "look" command
+- [x] **NARR-05**: Scene descriptions available via "look" command
 - [ ] **NARR-06**: Narrator references past events and player actions (dynamic personality)
 - [ ] **NARR-07**: Narrative scripted with inkjs for complex branching dialogue and story state
 
@@ -65,8 +65,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Death System
 
-- [ ] **DEATH-01**: Frequent death scenarios triggered by specific player actions
-- [ ] **DEATH-02**: Each death has a unique, funny narrator commentary (dark comedy)
+- [x] **DEATH-01**: Frequent death scenarios triggered by specific player actions
+- [x] **DEATH-02**: Each death has a unique, funny narrator commentary (dark comedy)
 - [x] **DEATH-03**: Game auto-saves on every room transition
 - [x] **DEATH-04**: Death instantly resets to last auto-save -- no progress lost beyond current room
 - [x] **DEATH-05**: Player can never reach an unwinnable game state ("dead man walking" prevention)
@@ -134,13 +134,13 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PARSE-05 | Phase 5 | Pending |
 | PARSE-06 | Phase 5 | Pending |
 | PARSE-07 | Phase 3 | Complete |
-| INV-01 | Phase 4 | Pending |
-| INV-02 | Phase 4 | Pending |
-| INV-03 | Phase 4 | Pending |
-| INV-04 | Phase 4 | Pending |
+| INV-01 | Phase 4 | Complete |
+| INV-02 | Phase 4 | Complete |
+| INV-03 | Phase 4 | Complete |
+| INV-04 | Phase 4 | Complete |
 | INV-05 | Phase 4 | Complete |
-| PUZ-01 | Phase 4 | Pending |
-| PUZ-02 | Phase 4 | Pending |
+| PUZ-01 | Phase 4 | Complete |
+| PUZ-02 | Phase 4 | Complete |
 | PUZ-03 | Phase 6 | Pending |
 | PUZ-04 | Phase 4 | Complete |
 | PUZ-05 | Phase 4 | Complete |
@@ -148,17 +148,17 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PUZ-07 | Phase 4 | Complete |
 | NARR-01 | Phase 8 | Pending |
 | NARR-02 | Phase 8 | Pending |
-| NARR-03 | Phase 4 | Pending |
+| NARR-03 | Phase 4 | Complete |
 | NARR-04 | Phase 4 | Complete |
-| NARR-05 | Phase 4 | Pending |
+| NARR-05 | Phase 4 | Complete |
 | NARR-06 | Phase 6 | Pending |
 | NARR-07 | Phase 6 | Pending |
 | NPC-01 | Phase 6 | Pending |
 | NPC-02 | Phase 6 | Pending |
 | NPC-03 | Phase 6 | Pending |
 | NPC-04 | Phase 6 | Pending |
-| DEATH-01 | Phase 4 | Pending |
-| DEATH-02 | Phase 4 | Pending |
+| DEATH-01 | Phase 4 | Complete |
+| DEATH-02 | Phase 4 | Complete |
 | DEATH-03 | Phase 4 | Complete |
 | DEATH-04 | Phase 4 | Complete |
 | DEATH-05 | Phase 4 | Complete |
