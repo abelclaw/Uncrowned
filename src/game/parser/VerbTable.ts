@@ -34,6 +34,7 @@ export const VERB_TABLE: VerbDefinition[] = [
         canonical: 'look',
         synonyms: ['look', 'examine', 'inspect', 'check', 'study', 'read', 'l', 'x'],
         patterns: [
+            /^(?:look|l)\s+(?:around|here|room)$/i,
             /^(?:look|examine|inspect|check|study|read|l|x)\s+(?:at\s+)?(.+)$/i,
             /^(?:look|l)$/i,
         ],
