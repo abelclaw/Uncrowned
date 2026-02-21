@@ -62,10 +62,11 @@ Plans:
   2. Standard verbs (look, take, use, go, talk, open, push, pull) are recognized and produce correct game actions
   3. The game is fully playable using only the keyword/regex parser -- no command requires an LLM to execute
   4. Unrecognized commands produce a clear, in-character "I don't understand" response (not a crash or silence)
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 03-01: TBD
+- [ ] 03-01-PLAN.md -- TDD: GameAction types, TextParser with VerbTable and NounResolver, test suite
+- [ ] 03-02-PLAN.md -- TextInputBar UI, CommandDispatcher, room JSON text content, RoomScene wiring
 
 ### Phase 4: Core Gameplay Systems
 **Goal**: The complete adventure game loop works: player picks up items, solves puzzles, dies humorously, saves progress, and hears the narrator's sardonic voice
@@ -157,7 +158,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 |-------|----------------|--------|-----------|
 | 1. Foundation and Rendering | 2/2 | Complete    | 2026-02-21 |
 | 2. Scene System and Player Movement | 0/2 | Planned | - |
-| 3. Text Parser (Deterministic) | 0/1 | Not started | - |
+| 3. Text Parser (Deterministic) | 0/2 | Planned | - |
 | 4. Core Gameplay Systems | 0/4 | Not started | - |
 | 5. LLM Integration | 0/2 | Not started | - |
 | 6. NPCs and Dialogue | 0/2 | Not started | - |
