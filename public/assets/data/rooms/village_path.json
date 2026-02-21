@@ -46,5 +46,35 @@
             }
         }
     ],
+    "puzzles": [
+        {
+            "id": "look-with-torch",
+            "trigger": { "verb": "look" },
+            "conditions": [
+                { "type": "has-item", "item": "makeshift-torch" }
+            ],
+            "actions": [
+                { "type": "narrator-say", "text": "The torch casts an eerie blue glow across the village path, revealing shadows that you're not entirely sure were there before." }
+            ]
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "wander-off-path",
+            "trigger": { "verb": "go", "subject": "forest" },
+            "conditions": [
+                { "type": "flag-not-set", "flag": "forest-safe" }
+            ],
+            "actions": [
+                { "type": "trigger-death", "deathId": "lost-death" }
+            ]
+        }
+    ],
+    "deaths": {
+        "lost-death": {
+            "title": "Death by Poor Navigation",
+            "narratorText": "You wander off the path into the deep forest. In retrospect, the sign that said 'CERTAIN DEATH THIS WAY' should have been more persuasive."
+        }
+    },
     "playerSpawn": { "x": 480, "y": 430 }
 }

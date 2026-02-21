@@ -1,0 +1,34 @@
+{
+    "items": [
+        {
+            "id": "rusty-key",
+            "name": "Rusty Key",
+            "description": "A key so corroded it might unlock a door or give you tetanus. Possibly both.",
+            "combinable": false
+        },
+        {
+            "id": "glowing-mushroom",
+            "name": "Glowing Mushroom",
+            "description": "A bioluminescent fungus that pulses with an eerie blue light. Nutritional value: questionable. Aesthetic value: undeniable.",
+            "combinable": true
+        },
+        {
+            "id": "stick",
+            "name": "Sturdy Stick",
+            "description": "A stick. Not just any stick -- this one has character. And splinters.",
+            "combinable": true
+        },
+        {
+            "id": "makeshift-torch",
+            "name": "Makeshift Torch",
+            "description": "A stick with a glowing mushroom wedged on top. MacGyver would be... not exactly proud, but perhaps mildly amused.",
+            "combinable": false
+        },
+        {
+            "id": "mysterious-bottle",
+            "name": "Mysterious Bottle",
+            "description": "A small glass bottle containing something that's either medicine, poison, or an ancient smoothie recipe. The label has long since decomposed.",
+            "combinable": false
+        }
+    ]
+}

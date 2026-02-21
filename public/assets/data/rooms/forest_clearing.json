@@ -43,7 +43,86 @@
                 "talk": "You whisper sweet nothings to the stump. It maintains a dignified silence, which is more than most conversation partners manage.",
                 "default": "You poke at the old stump. Nothing interesting happens, which is exactly what the stump wanted."
             }
+        },
+        {
+            "id": "beehive",
+            "name": "Suspicious Beehive",
+            "zone": { "x": 420, "y": 310, "width": 50, "height": 40 },
+            "interactionPoint": { "x": 445, "y": 380 },
+            "responses": {
+                "look": "A papery wasp nest clings to a branch above the stump. It hums with the quiet menace of a thousand tiny landlords who do not appreciate visitors.",
+                "take": "You reach toward the beehive. Every survival instinct you possess screams in unison. You lower your hand. Good choice.",
+                "talk": "You address the bees politely. They do not acknowledge your existence, which is probably the best outcome here.",
+                "use": "You're not sure what 'using' a beehive entails, but you're fairly certain the bees have strong opinions about it.",
+                "default": "You regard the beehive from what you hope is a safe distance."
+            }
         }
     ],
+    "items": [
+        {
+            "id": "rusty-key",
+            "name": "Rusty Key",
+            "zone": { "x": 415, "y": 360, "width": 30, "height": 20 },
+            "interactionPoint": { "x": 430, "y": 420 },
+            "responses": {
+                "look": "A small, corroded key wedged into a crack in the stump. It's the color of regret and oxidation.",
+                "use": "Use it on what? You're standing in a forest. Trees don't have locks. Usually."
+            }
+        },
+        {
+            "id": "stick",
+            "name": "Sturdy Stick",
+            "zone": { "x": 300, "y": 470, "width": 60, "height": 20 },
+            "interactionPoint": { "x": 330, "y": 460 },
+            "responses": {
+                "look": "A sturdy-looking stick lying on the ground. Nature's multi-tool. Or at least nature's poking device."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "take-rusty-key",
+            "trigger": { "verb": "take", "subject": "rusty-key" },
+            "conditions": [
+                { "type": "item-not-taken", "item": "rusty-key" }
+            ],
+            "actions": [
+                { "type": "add-item", "item": "rusty-key" },
+                { "type": "narrator-say", "text": "You pry the rusty key from the stump's crack. It leaves orange residue on your fingers. Lovely." }
+            ],
+            "once": true
+        },
+        {
+            "id": "take-stick",
+            "trigger": { "verb": "take", "subject": "stick" },
+            "conditions": [
+                { "type": "item-not-taken", "item": "stick" }
+            ],
+            "actions": [
+                { "type": "add-item", "item": "stick" },
+                { "type": "narrator-say", "text": "You pick up a sturdy stick. Your parents would be so proud of how far you've come." }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "poke-beehive",
+            "trigger": { "verb": "push", "subject": "beehive" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "bee-death" }
+            ]
+        }
+    ],
+    "deaths": {
+        "bee-death": {
+            "title": "Death by Enthusiasm",
+            "narratorText": "You shove the beehive because... why? What possible good outcome did you envision? The bees have a very clear opinion about property rights. It's the last debate you'll ever lose."
+        }
+    },
+    "dynamicDescriptions": {
+        "rusty-key-taken": "You stand in a sun-dappled forest clearing. The old stump's crack is now empty -- you already pocketed whatever was glinting in there."
+    },
     "playerSpawn": { "x": 200, "y": 430 }
 }

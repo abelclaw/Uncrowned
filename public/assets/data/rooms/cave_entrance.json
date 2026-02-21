@@ -53,7 +53,137 @@
                 "pull": "You try to pull the cave entrance wider. Geology disagrees with your approach.",
                 "default": "You contemplate the cave mouth. It contemplates you right back."
             }
+        },
+        {
+            "id": "locked-door",
+            "name": "Heavy Oak Door",
+            "zone": { "x": 480, "y": 380, "width": 60, "height": 80 },
+            "interactionPoint": { "x": 510, "y": 440 },
+            "responses": {
+                "look": "A heavy oak door bound in iron. A rusted keyhole suggests someone once cared about privacy.",
+                "use": "It's locked. You'd need a key. Preferably one that isn't currently disintegrating.",
+                "open": "It's locked. The door rattles in its frame but holds firm. Somewhere, a locksmith is smirking.",
+                "push": "You lean into the door with all your weight. The door laughs silently at your efforts.",
+                "pull": "You pull on the door handle. Locked. From the other side. Of course.",
+                "take": "You can't take an entire door. Well, you could, but you'd need a much bigger inventory.",
+                "talk": "You knock politely. Nobody answers. Rude.",
+                "default": "You examine the locked door. It remains steadfastly locked."
+            }
         }
     ],
+    "items": [
+        {
+            "id": "mysterious-bottle",
+            "name": "Mysterious Bottle",
+            "zone": { "x": 650, "y": 390, "width": 25, "height": 30 },
+            "interactionPoint": { "x": 663, "y": 430 },
+            "responses": {
+                "look": "A small glass bottle perched on a rock ledge. The liquid inside shifts between colors you're fairly sure shouldn't exist in nature.",
+                "use": "Drink it? Here? Without even reading the label? Well, the label decomposed centuries ago, so that's a moot point."
+            }
+        },
+        {
+            "id": "glowing-mushroom",
+            "name": "Glowing Mushroom",
+            "zone": { "x": 350, "y": 370, "width": 30, "height": 30 },
+            "interactionPoint": { "x": 365, "y": 420 },
+            "responses": {
+                "look": "A mushroom growing on the cave wall, pulsing with an eerie blue bioluminescence. It's either magical or radioactive. Possibly both."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "take-mushroom",
+            "trigger": { "verb": "take", "subject": "glowing-mushroom" },
+            "conditions": [
+                { "type": "item-not-taken", "item": "glowing-mushroom" }
+            ],
+            "actions": [
+                { "type": "add-item", "item": "glowing-mushroom" },
+                { "type": "narrator-say", "text": "You pluck the glowing mushroom from the wall. It pulses warmly in your hand, like a nightlight for the terminally adventurous." }
+            ],
+            "once": true
+        },
+        {
+            "id": "take-bottle",
+            "trigger": { "verb": "take", "subject": "mysterious-bottle" },
+            "conditions": [
+                { "type": "item-not-taken", "item": "mysterious-bottle" }
+            ],
+            "actions": [
+                { "type": "add-item", "item": "mysterious-bottle" },
+                { "type": "narrator-say", "text": "You pocket the mysterious bottle. The liquid sloshes ominously. This is definitely the kind of decision that looks great in hindsight. Or terrible. One of those." }
+            ],
+            "once": true
+        },
+        {
+            "id": "use-key-on-door",
+            "trigger": { "verb": "use", "subject": "rusty-key", "target": "locked-door" },
+            "conditions": [
+                { "type": "has-item", "item": "rusty-key" },
+                { "type": "flag-not-set", "flag": "door-unlocked" }
+            ],
+            "actions": [
+                { "type": "set-flag", "flag": "door-unlocked" },
+                { "type": "remove-item", "item": "rusty-key" },
+                { "type": "open-exit", "exit": "to-depths" },
+                { "type": "narrator-say", "text": "The rusty key grinds into the lock with a sound that makes your teeth ache. With a reluctant clunk, the door swings open. The key crumbles to rust dust in your hand. One-time use, apparently." }
+            ],
+            "once": true
+        },
+        {
+            "id": "combine-stick-mushroom",
+            "trigger": { "verb": "combine", "subject": "stick", "target": "glowing-mushroom" },
+            "conditions": [
+                { "type": "has-item", "item": "stick" },
+                { "type": "has-item", "item": "glowing-mushroom" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "stick" },
+                { "type": "remove-item", "item": "glowing-mushroom" },
+                { "type": "add-item", "item": "makeshift-torch" },
+                { "type": "narrator-say", "text": "You wedge the glowing mushroom onto the stick. It holds, mostly. You've created a makeshift torch that casts an eerie blue glow. MacGyver would be... not exactly proud, but perhaps mildly amused." }
+            ],
+            "once": true
+        },
+        {
+            "id": "use-stick-on-mushroom",
+            "trigger": { "verb": "use", "subject": "stick", "target": "glowing-mushroom" },
+            "conditions": [
+                { "type": "has-item", "item": "stick" },
+                { "type": "has-item", "item": "glowing-mushroom" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "stick" },
+                { "type": "remove-item", "item": "glowing-mushroom" },
+                { "type": "add-item", "item": "makeshift-torch" },
+                { "type": "narrator-say", "text": "You wedge the glowing mushroom onto the stick. It holds, mostly. You've created a makeshift torch that casts an eerie blue glow. MacGyver would be... not exactly proud, but perhaps mildly amused." }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "drink-bottle",
+            "trigger": { "verb": "use", "subject": "mysterious-bottle" },
+            "conditions": [
+                { "type": "has-item", "item": "mysterious-bottle" },
+                { "type": "flag-not-set", "flag": "bottle-safe" }
+            ],
+            "actions": [
+                { "type": "trigger-death", "deathId": "poison-death" }
+            ]
+        }
+    ],
+    "deaths": {
+        "poison-death": {
+            "title": "Death by Curiosity",
+            "narratorText": "You drink the mysterious liquid. It tastes like regret and bad decisions. Which, coincidentally, is exactly what it is. You crumple to the floor in a heap of poor judgment."
+        }
+    },
+    "dynamicDescriptions": {
+        "door-unlocked": "A yawning cave mouth gapes before you. The heavy oak door now hangs open, revealing deeper passages beyond. The cold air carries a faint whisper of adventure -- or possibly just a draft."
+    },
     "playerSpawn": { "x": 480, "y": 430 }
 }

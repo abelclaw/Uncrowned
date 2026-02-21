@@ -1,3 +1,5 @@
+import type { PuzzleDefinition } from './PuzzleData';
+
 /**
  * Background layer definition for parallax rendering.
  */
@@ -59,8 +61,33 @@ export interface HotspotData {
 }
 
 /**
+ * Item placed in a room that can be picked up / interacted with.
+ * Must have a matching entry in items.json.
+ */
+export interface RoomItemData {
+    id: string;
+    /** Display name */
+    name: string;
+    /** Rectangle zone that defines the item area */
+    zone: { x: number; y: number; width: number; height: number };
+    /** Where the player walks to before interacting */
+    interactionPoint: { x: number; y: number };
+    /** Verb-specific text responses (same structure as hotspot responses) */
+    responses?: HotspotResponses;
+}
+
+/**
+ * A death scenario definition. Referenced by deathId from trigger-death actions.
+ */
+export interface DeathDefinition {
+    title: string;
+    narratorText: string;
+}
+
+/**
  * Complete room definition loaded from JSON.
- * Defines background layers, walkable area, exits, hotspots, and player spawn.
+ * Defines background layers, walkable area, exits, hotspots, items, puzzles,
+ * death triggers, death definitions, and player spawn.
  */
 export interface RoomData {
     id: string;
@@ -77,4 +104,14 @@ export interface RoomData {
     hotspots: HotspotData[];
     /** Default spawn position when entering the room */
     playerSpawn: { x: number; y: number };
+    /** Takeable/interactable items placed in the room */
+    items?: RoomItemData[];
+    /** Puzzle definitions evaluated by PuzzleEngine on player commands */
+    puzzles?: PuzzleDefinition[];
+    /** Death trigger definitions checked after puzzles */
+    deathTriggers?: PuzzleDefinition[];
+    /** Death scenario definitions referenced by trigger-death actions */
+    deaths?: Record<string, DeathDefinition>;
+    /** Dynamic description overrides based on flags: { flagName: description } */
+    dynamicDescriptions?: Record<string, string>;
 }
