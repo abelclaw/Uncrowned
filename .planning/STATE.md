@@ -5,21 +5,21 @@
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** Phase 6 in progress: Dialogue System
+**Current focus:** Phase 6 complete: NPCs and Dialogue -- ready for Phase 7
 
 ## Current Position
 
-Phase: 6 of 8 (NPCs and Dialogue)
-Plan: 2 of 3 in current phase (06-02 complete)
-Status: In Progress
-Last activity: 2026-02-21 -- Completed 06-02-PLAN.md (NPC Content Data and Ink Dialogue)
+Phase: 6 of 8 (NPCs and Dialogue) -- PHASE COMPLETE
+Plan: 3 of 3 in current phase (06-03 complete)
+Status: Phase 6 Complete
+Last activity: 2026-02-21 -- Completed 06-03-PLAN.md (Dialogue System Integration)
 
 Progress: [████████░░] 80%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 15
+- Total plans completed: 16
 - Average duration: 2.7min
 - Total execution time: 0.69 hours
 
@@ -49,6 +49,7 @@ Progress: [████████░░] 80%
 | Phase 05 P02 | 2min | 2 tasks | 3 files |
 | Phase 06 P01 | 2min | 2 tasks | 6 files |
 | Phase 06 P02 | 3min | 2 tasks | 8 files |
+| Phase 06 P03 | 3min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -109,6 +110,9 @@ Recent decisions affecting current work:
 - [Phase 06]: inkjs Compiler class for pre-compilation -- reliable ink authoring pipeline vs hand-written JSON
 - [Phase 06]: Ink else-if uses nested conditionals with - else: blocks, not extra conditions in same block
 - [Phase 06]: dialogue- cache key prefix links NpcDefinition.dialogueKey to Preloader asset registration
+- [Phase 06]: Dialogue mode input routing before HybridParser.parse() -- numbers go directly to ink choices without parser/LLM overhead
+- [Phase 06]: NPC zones rendered as synthetic hotspots reusing existing click pipeline -- no separate click handler needed
+- [Phase 06]: Narrator_history runs as non-interactive one-shot conversation (start, continueAll, end) without entering dialogue mode
 
 ### Pending Todos
 
@@ -123,5 +127,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 06-02-PLAN.md (NPC Content Data and Ink Dialogue)
+Stopped at: Completed 06-03-PLAN.md (Dialogue System Integration) -- Phase 6 fully complete
 Resume file: None

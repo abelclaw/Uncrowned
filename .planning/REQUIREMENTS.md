@@ -59,7 +59,7 @@ Requirements for initial release. Each maps to roadmap phases.
 ### NPCs & Dialogue
 
 - [x] **NPC-01**: NPCs exist in scenes with authored knowledge and personalities
-- [ ] **NPC-02**: Player can talk to NPCs via text commands
+- [x] **NPC-02**: Player can talk to NPCs via text commands
 - [x] **NPC-03**: NPC dialogue supports branching conversation trees
 - [x] **NPC-04**: NPCs provide information, hints, and advance the plot
 
@@ -154,7 +154,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | NARR-06 | Phase 6 | Complete |
 | NARR-07 | Phase 6 | Complete |
 | NPC-01 | Phase 6 | Complete |
-| NPC-02 | Phase 6 | Pending |
+| NPC-02 | Phase 6 | Complete |
 | NPC-03 | Phase 6 | Complete |
 | NPC-04 | Phase 6 | Complete |
 | DEATH-01 | Phase 4 | Complete |
