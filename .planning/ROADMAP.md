@@ -133,7 +133,7 @@ Plans:
 - [ ] 07-02-PLAN.md -- Preloader audio loading, room JSON audio fields, RoomScene AudioManager integration, verification
 
 ### Phase 8: Content Production
-**Goal**: A complete 5-hour fantasy adventure is authored, art-generated, and playtested -- starting with a 30-60 minute demo chapter to validate the experience, then scaling to the full game
+**Goal**: A complete 5-hour fantasy adventure is authored and playtested -- starting with a 30-60 minute demo chapter to validate the experience, then scaling to the full game (art generation via Flux deferred to v2)
 **Depends on**: Phases 6, 7
 **Requirements**: NARR-01, NARR-02
 **Success Criteria** (what must be TRUE):
@@ -141,7 +141,7 @@ Plans:
   2. All three puzzle types (inventory, environmental, conversation) appear throughout the game with logical solutions that feel inevitable in hindsight
   3. Death scenarios are frequent and varied across the entire game, with unique narrator commentary for each one
   4. No player can reach an unwinnable game state -- every puzzle remains solvable regardless of prior actions
-  5. Scene art generated via the Flux pipeline maintains visual consistency across the entire game
+  5. (Deferred to v2) Scene art generated via the Flux pipeline maintains visual consistency across the entire game
 **Plans**: 4 plans
 
 Plans:
