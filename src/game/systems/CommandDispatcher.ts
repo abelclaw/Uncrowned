@@ -180,7 +180,7 @@ export class CommandDispatcher {
         const loaded = SaveManager.loadFromSlot(this.state, slot);
         if (loaded) {
             const roomId = this.state.getData().currentRoom;
-            EventBus.emit('load-game', roomId);
+            EventBus.emit('load-game', { roomId });
             return {
                 response: 'Game loaded.',
                 handled: true,
