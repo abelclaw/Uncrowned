@@ -9,9 +9,9 @@ Requirements for the Art & Polish milestone. Each maps to roadmap phases.
 
 ### Infrastructure
 
-- [ ] **INFRA-01**: GameState save schema includes version field and migration support for v1->v2 saves
-- [ ] **INFRA-02**: MetaGameState persists cross-playthrough data (death gallery, ending discoveries) in separate localStorage key that survives new-game resets
-- [ ] **INFRA-03**: Save data export to JSON file and import from JSON file works correctly
+- [x] **INFRA-01**: GameState save schema includes version field and migration support for v1->v2 saves
+- [x] **INFRA-02**: MetaGameState persists cross-playthrough data (death gallery, ending discoveries) in separate localStorage key that survives new-game resets
+- [x] **INFRA-03**: Save data export to JSON file and import from JSON file works correctly
 
 ### Art Pipeline
 
@@ -98,9 +98,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INFRA-01 | Phase 9 | Pending |
-| INFRA-02 | Phase 9 | Pending |
-| INFRA-03 | Phase 9 | Pending |
+| INFRA-01 | Phase 9 | Complete |
+| INFRA-02 | Phase 9 | Complete |
+| INFRA-03 | Phase 9 | Complete |
 | ART-01 | Phase 9 | Pending |
 | ART-02 | Phase 9 | Pending |
 | ART-03 | Phase 9 | Pending |

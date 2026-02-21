@@ -11,11 +11,11 @@ See: .planning/PROJECT.md (updated 2026-02-21)
 
 Milestone: v2.0 Art & Polish
 Phase: 9 of 13 (Art Pipeline & Schema Foundation)
-Plan: 0 of 3 in current phase
-Status: Ready to plan
-Last activity: 2026-02-21 -- Roadmap created for v2.0 milestone (5 phases, 32 requirements)
+Plan: 2 of 3 in current phase
+Status: Executing
+Last activity: 2026-02-21 -- Completed 09-02: Art pipeline tooling (generate-art.ts, manifest, workflow, style guide)
 
-Progress: [░░░░░░░░░░] 0% (v2.0)
+Progress: [█░░░░░░░░░] ~13% (v2.0)
 
 ## Performance Metrics
 
@@ -23,7 +23,7 @@ Progress: [░░░░░░░░░░] 0% (v2.0)
 - Phases: 8, Plans: 22, Commits: 95, Files: 207, LOC: 35,394
 
 **v2.0:**
-- Total plans completed: 0
+- Total plans completed: 2
 - Phases: 5 (Phases 9-13)
 - Requirements: 32
 
@@ -37,6 +37,10 @@ Recent decisions affecting current work:
 - v2.0 roadmap: Art pipeline + schema foundation first (longest lead time, cross-cutting prerequisite)
 - v2.0 roadmap: Death gallery before hints (validates MetaGameState with low risk)
 - v2.0 roadmap: Mobile last (needs all UI surfaces stable before responsive layout)
+- 09-01: MetaGameState uses own localStorage key (kqgame-meta) independent of save slots
+- 09-01: Migration chain uses sequential version-to-version functions in migrations/ directory
+- 09-01: Export envelope format: { format: 'kqgame-save', version: 1, gameState, metaState }
+- 09-01: parseImportData returns gameState as JSON string so deserialize() handles migration
 
 ### Pending Todos
 
@@ -51,5 +55,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: v2.0 roadmap created, Phase 9 ready to plan
+Stopped at: Completed 09-01-PLAN.md
 Resume file: None
