@@ -5,17 +5,17 @@
 See: .planning/PROJECT.md (updated 2026-02-21)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** v2.0 Art & Polish -- Phase 11: Progressive Hints (In Progress)
+**Current focus:** v2.0 Art & Polish -- Phase 11: Progressive Hints (Complete)
 
 ## Current Position
 
 Milestone: v2.0 Art & Polish
 Phase: 11 of 13 (Progressive Hints)
-Plan: 1 of 2 in current phase
-Status: In Progress
-Last activity: 2026-02-21 -- Completed 11-01: HintSystem runtime, GameState v3, hint verb integration
+Plan: 2 of 2 in current phase (COMPLETE)
+Status: Phase Complete
+Last activity: 2026-02-21 -- Completed 11-02: Puzzle hint content for all 24 rooms (41 hint chains, 123 texts)
 
-Progress: [█████░░░░░] ~40% (v2.0)
+Progress: [██████░░░░] ~50% (v2.0)
 
 ## Performance Metrics
 
@@ -33,6 +33,7 @@ Progress: [█████░░░░░] ~40% (v2.0)
 | 10 | 01 | 5min | 2 | 5 |
 | 10 | 02 | 3min | 2 | 4 |
 | 11 | 01 | 5min | 3 | 13 |
+| 11 | 02 | 35min | 2 | 24 |
 
 ## Accumulated Context
 
@@ -63,6 +64,10 @@ Recent decisions affecting current work:
 - 11-01: Hint auto-escalation thresholds: 3 failed attempts -> tier 1, 5 -> tier 2
 - 11-01: Hint relevance scoring prioritizes puzzles with most failed attempts
 - 11-01: PuzzleHint uses fixed 3-element tuple for tier text
+- 11-02: Skipped simple takes (item-not-taken only) -- 11 rooms have no hintable puzzles
+- 11-02: Canonical/first puzzle ID used for dedup of alternate syntaxes
+- 11-02: Guardian riddle hints: tier 1-2 hint at sources, only tier 3 reveals answers
+- 11-02: Hint voice: Tier 1=coy, Tier 2=exasperated/naming objects, Tier 3=bluntly explicit
 
 ### Pending Todos
 
@@ -77,5 +82,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 11-01-PLAN.md
+Stopped at: Completed 11-02-PLAN.md (Phase 11 complete)
 Resume file: None

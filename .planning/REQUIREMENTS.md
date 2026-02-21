@@ -29,7 +29,7 @@ Requirements for the Art & Polish milestone. Each maps to roadmap phases.
 - [x] **HINT-02**: Hints are tiered (3 levels: vague -> medium -> explicit) per puzzle
 - [x] **HINT-03**: Hint system tracks failed attempts and escalates hint specificity automatically
 - [x] **HINT-04**: Narrator delivers hints in character (sardonic tone, not breaking immersion)
-- [ ] **HINT-05**: All puzzles across 36 rooms have authored hint chains
+- [x] **HINT-05**: All puzzles across 36 rooms have authored hint chains
 
 ### Death Gallery
 
@@ -112,7 +112,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | HINT-02 | Phase 11 | Complete |
 | HINT-03 | Phase 11 | Complete |
 | HINT-04 | Phase 11 | Complete |
-| HINT-05 | Phase 11 | Pending |
+| HINT-05 | Phase 11 | Complete |
 | GALR-01 | Phase 10 | Complete |
 | GALR-02 | Phase 10 | Complete |
 | GALR-03 | Phase 10 | Complete |
