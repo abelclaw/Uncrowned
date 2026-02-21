@@ -34,8 +34,8 @@ Requirements for the Art & Polish milestone. Each maps to roadmap phases.
 ### Death Gallery
 
 - [x] **GALR-01**: Each unique death discovered is recorded in MetaGameState permanently
-- [ ] **GALR-02**: Death Gallery scene displays grid of all 43 possible deaths (discovered vs locked)
-- [ ] **GALR-03**: Death Gallery accessible from main menu and death scene
+- [x] **GALR-02**: Death Gallery scene displays grid of all 43 possible deaths (discovered vs locked)
+- [x] **GALR-03**: Death Gallery accessible from main menu and death scene
 - [x] **GALR-04**: Each discovered death entry shows title, narrator text, room name, and category
 - [x] **GALR-05**: Locked deaths show cryptic hint about how to discover them
 - [x] **GALR-06**: Death scene shows "X/43 deaths discovered" counter and "New!" badge for first discoveries
@@ -114,8 +114,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | HINT-04 | Phase 11 | Pending |
 | HINT-05 | Phase 11 | Pending |
 | GALR-01 | Phase 10 | Complete |
-| GALR-02 | Phase 10 | Pending |
-| GALR-03 | Phase 10 | Pending |
+| GALR-02 | Phase 10 | Complete |
+| GALR-03 | Phase 10 | Complete |
 | GALR-04 | Phase 10 | Complete |
 | GALR-05 | Phase 10 | Complete |
 | GALR-06 | Phase 10 | Complete |

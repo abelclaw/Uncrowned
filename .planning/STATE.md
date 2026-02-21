@@ -5,17 +5,17 @@
 See: .planning/PROJECT.md (updated 2026-02-21)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** v2.0 Art & Polish -- Phase 10: Death Gallery
+**Current focus:** v2.0 Art & Polish -- Phase 10: Death Gallery (Complete)
 
 ## Current Position
 
 Milestone: v2.0 Art & Polish
 Phase: 10 of 13 (Death Gallery)
-Plan: 1 of 2 in current phase
-Status: In Progress
-Last activity: 2026-02-21 -- Completed 10-01: Death registry data, recording pipeline, counter/badge
+Plan: 2 of 2 in current phase
+Status: Phase Complete
+Last activity: 2026-02-21 -- Completed 10-02: Death Gallery UI with paginated grid and navigation
 
-Progress: [███░░░░░░░] ~28% (v2.0)
+Progress: [████░░░░░░] ~33% (v2.0)
 
 ## Performance Metrics
 
@@ -23,7 +23,7 @@ Progress: [███░░░░░░░] ~28% (v2.0)
 - Phases: 8, Plans: 22, Commits: 95, Files: 207, LOC: 35,394
 
 **v2.0:**
-- Total plans completed: 4
+- Total plans completed: 5
 - Phases: 5 (Phases 9-13)
 - Requirements: 32
 
@@ -31,6 +31,7 @@ Progress: [███░░░░░░░] ~28% (v2.0)
 |-------|------|----------|-------|-------|
 | 09 | 03 | 6min | 3 | 131 |
 | 10 | 01 | 5min | 2 | 5 |
+| 10 | 02 | 3min | 2 | 4 |
 
 ## Accumulated Context
 
@@ -56,6 +57,8 @@ Recent decisions affecting current work:
 - 09-03: Item sprites stored in Map for cleanup on pickup; NPC sprites similarly managed
 - [Phase 10]: Death registry uses actual room JSON roomIds (corrected 5 plan mapping errors via cross-reference)
 - [Phase 10]: DeathSceneData interface uses optional fields for backward compatibility
+- [Phase 10]: Renamed internal field to deathRegistry to avoid Phaser Scene.registry base class conflict
+- [Phase 10]: Gallery button in DeathScene uses subdued styling to keep Try Again as primary action
 
 ### Pending Todos
 
@@ -70,5 +73,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 10-01-PLAN.md
+Stopped at: Completed 10-02-PLAN.md (Phase 10 complete)
 Resume file: None
