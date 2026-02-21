@@ -4,25 +4,53 @@
     "description": "A long hall lined with mirrors of every size and era. Some are grand, floor-to-ceiling, framed in gold. Others are small and cracked, hung at odd angles. The mirrors should reflect the hall's stone walls and your own bewildered face, but they don't. Each mirror shows something different: a forest clearing, a castle in ruins, a figure that might be you but older, younger, or wearing a crown. One mirror in the center glows with soft blue light, and within it, a face watches you -- not your own. A spirit lives in the reflections, and it has been waiting for someone who needs to see the truth.",
     "background": {
         "layers": [
-            { "key": "bg-sky", "scrollFactor": 0 },
-            { "key": "bg-mountains", "scrollFactor": 0.1 },
-            { "key": "bg-trees", "scrollFactor": 0.4 },
-            { "key": "bg-ground", "scrollFactor": 1 }
+            {
+                "key": "bg-shared-act3-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act3-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-mirror_hall",
+                "scrollFactor": 1
+            }
         ],
         "worldWidth": 1920
     },
     "walkableArea": [
-        { "x": 50, "y": 385 },
-        { "x": 910, "y": 385 },
-        { "x": 910, "y": 520 },
-        { "x": 50, "y": 520 }
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
     ],
     "exits": [
         {
             "id": "to-courtyard-act3",
-            "zone": { "x": 0, "y": 350, "width": 80, "height": 200 },
+            "zone": {
+                "x": 0,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
             "targetRoom": "castle_courtyard_act3",
-            "spawnPoint": { "x": 700, "y": 430 },
+            "spawnPoint": {
+                "x": 700,
+                "y": 430
+            },
             "transition": "fade",
             "direction": "west",
             "label": "courtyard"
@@ -32,8 +60,16 @@
         {
             "id": "central-mirror",
             "name": "Glowing Mirror",
-            "zone": { "x": 400, "y": 340, "width": 100, "height": 80 },
-            "interactionPoint": { "x": 450, "y": 420 },
+            "zone": {
+                "x": 400,
+                "y": 340,
+                "width": 100,
+                "height": 80
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 420
+            },
             "responses": {
                 "look": "The central mirror glows with blue light. A face watches you from within -- neither young nor old, neither male nor female. It shifts, reflecting something that isn't your appearance but might be your essence. The Mirror Spirit has been trapped here since the castle was built, watching everyone who passes through. It knows you. It has always known you.",
                 "use": "The mirror responds to conversation, not contact. Talk to the Mirror Spirit to learn what it knows.",
@@ -44,8 +80,16 @@
         {
             "id": "reflection-mirrors",
             "name": "Strange Reflections",
-            "zone": { "x": 650, "y": 355, "width": 120, "height": 70 },
-            "interactionPoint": { "x": 710, "y": 420 },
+            "zone": {
+                "x": 650,
+                "y": 355,
+                "width": 120,
+                "height": 70
+            },
+            "interactionPoint": {
+                "x": 710,
+                "y": 420
+            },
             "responses": {
                 "look": "The other mirrors show scenes from your journey. One shows the forest clearing as it was -- green, alive, before the curse claimed it. Another shows the throne room with someone sitting on the throne. A third shows... you. But different. Older. Holding a crown. Or dropping one. The mirrors show possibility, not prophecy. They show what could be, what was, what wasn't.",
                 "use": "You wave at the reflections. Some wave back. Some don't. One waves in the wrong direction, which is unsettling.",
@@ -56,8 +100,16 @@
         {
             "id": "cracked-mirror",
             "name": "Cracked Mirror",
-            "zone": { "x": 200, "y": 370, "width": 80, "height": 60 },
-            "interactionPoint": { "x": 240, "y": 420 },
+            "zone": {
+                "x": 200,
+                "y": 370,
+                "width": 80,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 240,
+                "y": 420
+            },
             "responses": {
                 "look": "A cracked mirror in a tarnished frame. Through the cracks, the reflection is fragmented -- pieces of you scattered across broken glass. It's the most honest mirror in the hall. You are not one thing. You are not a hero. You are not a prophecy. You are a collection of choices, cracked and imperfect, held together by stubbornness.",
                 "use": "You press your finger to a crack. The glass shifts, the reflection realigns for a moment, then shatters back to fragments. Some things can't be made whole. They can only be accepted as they are.",
@@ -69,13 +121,25 @@
     "puzzles": [
         {
             "id": "mirror-truth",
-            "trigger": { "verb": "talk", "subject": "mirror_spirit" },
+            "trigger": {
+                "verb": "talk",
+                "subject": "mirror_spirit"
+            },
             "conditions": [
-                { "type": "flag-not-set", "flag": "mirror_truth_revealed" }
+                {
+                    "type": "flag-not-set",
+                    "flag": "mirror_truth_revealed"
+                }
             ],
             "actions": [
-                { "type": "set-flag", "flag": "mirror_truth_revealed" },
-                { "type": "narrator-say", "text": "The Mirror Spirit speaks. Its voice comes from everywhere and nowhere, reflected between the glass surfaces until it sounds like a chorus. 'You are not the Uncrowned Sovereign,' it says. 'There is no Uncrowned Sovereign. The prophecy was written by a committee, approved by a subcommittee, and filed without verification. You are Pip. A tinker. A wanderer. Someone who came looking for directions and a warm meal.' The spirit pauses. 'And yet. You opened the cave. You crossed the bridge. You passed the test. You found the crystal. Not because destiny demanded it, but because you kept walking forward when every sensible person would have walked away.' The mirror glows brighter. 'The kingdom does not need a prophesied hero. It needs someone stubborn enough to do the paperwork. That, tinker, is you.' The spirit fades. The truth settles over you like a blanket that is warm but also deeply unflattering." }
+                {
+                    "type": "set-flag",
+                    "flag": "mirror_truth_revealed"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "The Mirror Spirit speaks. Its voice comes from everywhere and nowhere, reflected between the glass surfaces until it sounds like a chorus. 'You are not the Uncrowned Sovereign,' it says. 'There is no Uncrowned Sovereign. The prophecy was written by a committee, approved by a subcommittee, and filed without verification. You are Pip. A tinker. A wanderer. Someone who came looking for directions and a warm meal.' The spirit pauses. 'And yet. You opened the cave. You crossed the bridge. You passed the test. You found the crystal. Not because destiny demanded it, but because you kept walking forward when every sensible person would have walked away.' The mirror glows brighter. 'The kingdom does not need a prophesied hero. It needs someone stubborn enough to do the paperwork. That, tinker, is you.' The spirit fades. The truth settles over you like a blanket that is warm but also deeply unflattering."
+                }
             ],
             "once": true
         }
@@ -83,18 +147,30 @@
     "deathTriggers": [
         {
             "id": "break-mirror",
-            "trigger": { "verb": "push", "subject": "central-mirror" },
+            "trigger": {
+                "verb": "push",
+                "subject": "central-mirror"
+            },
             "conditions": [],
             "actions": [
-                { "type": "trigger-death", "deathId": "mirror-shatter" }
+                {
+                    "type": "trigger-death",
+                    "deathId": "mirror-shatter"
+                }
             ]
         },
         {
             "id": "break-mirror-use",
-            "trigger": { "verb": "use", "subject": "cracked-mirror" },
+            "trigger": {
+                "verb": "use",
+                "subject": "cracked-mirror"
+            },
             "conditions": [],
             "actions": [
-                { "type": "trigger-death", "deathId": "mirror-shatter" }
+                {
+                    "type": "trigger-death",
+                    "deathId": "mirror-shatter"
+                }
             ]
         }
     ],
@@ -110,17 +186,37 @@
     "npcs": [
         {
             "id": "mirror_spirit",
-            "position": { "x": 450, "y": 370 },
-            "interactionPoint": { "x": 410, "y": 420 },
-            "zone": { "x": 420, "y": 350, "width": 60, "height": 60 }
+            "position": {
+                "x": 450,
+                "y": 370
+            },
+            "interactionPoint": {
+                "x": 410,
+                "y": 420
+            },
+            "zone": {
+                "x": 420,
+                "y": 350,
+                "width": 60,
+                "height": 60
+            }
         }
     ],
     "audio": {
         "music": "music-cave",
         "ambient": [
-            { "key": "amb-cave-drips", "volume": 0.3 },
-            { "key": "amb-wind-light", "volume": 0.6 }
+            {
+                "key": "amb-cave-drips",
+                "volume": 0.3
+            },
+            {
+                "key": "amb-wind-light",
+                "volume": 0.6
+            }
         ]
     },
-    "playerSpawn": { "x": 480, "y": 430 }
+    "playerSpawn": {
+        "x": 480,
+        "y": 430
+    }
 }

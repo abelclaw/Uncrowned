@@ -4,25 +4,53 @@
     "description": "A dome-shaped cavern with acoustics so precise that a whisper carries from wall to wall. Stalactites hang from the ceiling in rows, each one resonating at a different pitch when struck. The sound of dripping water creates a natural rhythm. Ancient carvings on the wall depict a figure speaking, sound waves radiating outward. Coal deposits glint black among the stalactites -- ancient fuel compressed by millennia of geological patience.",
     "background": {
         "layers": [
-            { "key": "bg-sky", "scrollFactor": 0 },
-            { "key": "bg-mountains", "scrollFactor": 0.1 },
-            { "key": "bg-trees", "scrollFactor": 0.4 },
-            { "key": "bg-ground", "scrollFactor": 1 }
+            {
+                "key": "bg-shared-act2-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act2-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-echo_chamber",
+                "scrollFactor": 1
+            }
         ],
         "worldWidth": 1920
     },
     "walkableArea": [
-        { "x": 50, "y": 385 },
-        { "x": 910, "y": 385 },
-        { "x": 910, "y": 520 },
-        { "x": 50, "y": 520 }
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
     ],
     "exits": [
         {
             "id": "to-west-wing",
-            "zone": { "x": 440, "y": 450, "width": 80, "height": 80 },
+            "zone": {
+                "x": 440,
+                "y": 450,
+                "width": 80,
+                "height": 80
+            },
             "targetRoom": "cavern_west_wing",
-            "spawnPoint": { "x": 480, "y": 400 },
+            "spawnPoint": {
+                "x": 480,
+                "y": 400
+            },
             "transition": "fade",
             "direction": "south",
             "label": "west wing"
@@ -32,8 +60,16 @@
         {
             "id": "stalactites",
             "name": "Resonating Stalactites",
-            "zone": { "x": 300, "y": 340, "width": 200, "height": 40 },
-            "interactionPoint": { "x": 400, "y": 420 },
+            "zone": {
+                "x": 300,
+                "y": 340,
+                "width": 200,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 400,
+                "y": 420
+            },
             "responses": {
                 "look": "Rows of stalactites hang from the ceiling, each varying in size and thickness. Tapping them produces musical tones -- the cavern's natural pipe organ. Among the limestone formations, dark chunks of coal cling to the ceiling, deposited by ancient geological processes. Some stalactites look fragile. Others look load-bearing. Telling them apart requires more geological expertise than you possess.",
                 "use": "You tap a stalactite. It rings with a clear note that bounces around the chamber, echoing and re-echoing. The sound pattern reveals something -- letters, formed by the echoes: 'SERVICE.' The third guardian answer? The echo seems deliberate.",
@@ -44,8 +80,16 @@
         {
             "id": "wall-carvings",
             "name": "Wall Carvings",
-            "zone": { "x": 650, "y": 360, "width": 80, "height": 50 },
-            "interactionPoint": { "x": 690, "y": 420 },
+            "zone": {
+                "x": 650,
+                "y": 360,
+                "width": 80,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 690,
+                "y": 420
+            },
             "responses": {
                 "look": "Ancient carvings depict a figure speaking into the chamber, with sound waves radiating outward. Below the image, text reads: 'The echo speaks truth. The Guardian's third answer is carried in resonance. Strike and listen.' It's both a clue and a warning about volume.",
                 "use": "You trace the carvings with your fingers. The stone is worn smooth by centuries of other fingers doing the same thing. The message is clear: use sound to find the third answer.",
@@ -55,8 +99,16 @@
         {
             "id": "coal-deposits",
             "name": "Coal Deposits",
-            "zone": { "x": 200, "y": 350, "width": 80, "height": 40 },
-            "interactionPoint": { "x": 240, "y": 420 },
+            "zone": {
+                "x": 200,
+                "y": 350,
+                "width": 80,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 240,
+                "y": 420
+            },
             "responses": {
                 "look": "Black chunks of ancient coal embedded in the cavern ceiling, near the base of several stalactites. The coal is old enough to have opinions about the Carboniferous period. Breaking it free would require careful extraction to avoid bringing the stalactites down.",
                 "use": "You could try to extract the coal, but you'd need to be careful. The stalactites around it look structural.",
@@ -68,8 +120,16 @@
         {
             "id": "coal",
             "name": "Forge Coal",
-            "zone": { "x": 220, "y": 370, "width": 30, "height": 20 },
-            "interactionPoint": { "x": 240, "y": 420 },
+            "zone": {
+                "x": 220,
+                "y": 370,
+                "width": 30,
+                "height": 20
+            },
+            "interactionPoint": {
+                "x": 240,
+                "y": 420
+            },
             "responses": {
                 "look": "Chunks of ancient coal, black and dense. They've been compressed by geological forces for millennia, which means they'll burn hot and long. Perfect for a forge.",
                 "use": "Coal is fuel. It needs a forge, a fire, or at minimum something that burns. By itself, it's just a very old rock."
@@ -79,26 +139,53 @@
     "puzzles": [
         {
             "id": "take-coal",
-            "trigger": { "verb": "take", "subject": "coal" },
+            "trigger": {
+                "verb": "take",
+                "subject": "coal"
+            },
             "conditions": [
-                { "type": "item-not-taken", "item": "coal" }
+                {
+                    "type": "item-not-taken",
+                    "item": "coal"
+                }
             ],
             "actions": [
-                { "type": "add-item", "item": "coal" },
-                { "type": "narrator-say", "text": "You carefully extract chunks of coal from around the stalactites. The coal is dense, warm to the touch, and has been waiting since before humanity invented fire. It's the geological equivalent of someone who bought concert tickets decades early. Your hands are now black. This is the least of your problems." }
+                {
+                    "type": "add-item",
+                    "item": "coal"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You carefully extract chunks of coal from around the stalactites. The coal is dense, warm to the touch, and has been waiting since before humanity invented fire. It's the geological equivalent of someone who bought concert tickets decades early. Your hands are now black. This is the least of your problems."
+                }
             ],
             "once": true
         },
         {
             "id": "solve-echo-puzzle",
-            "trigger": { "verb": "use", "subject": "stalactites" },
+            "trigger": {
+                "verb": "use",
+                "subject": "stalactites"
+            },
             "conditions": [
-                { "type": "flag-not-set", "flag": "echo_puzzle_solved" }
+                {
+                    "type": "flag-not-set",
+                    "flag": "echo_puzzle_solved"
+                }
             ],
             "actions": [
-                { "type": "set-flag", "flag": "echo_puzzle_solved" },
-                { "type": "set-flag", "flag": "knows_third_answer" },
-                { "type": "narrator-say", "text": "You tap the stalactites in sequence. Each one rings at a different pitch, and the echoes combine, bounce, layer, and reform. In the reverberating silence between notes, the echoes spell out a word: 'SERVICE.' The Guardian's third answer -- the purpose of the kingdom's bureaucracy. Service. The echo chamber stores this answer in resonance, and now it stores it in your memory. Three answers: 847, Aldric the Fastidious, Service." }
+                {
+                    "type": "set-flag",
+                    "flag": "echo_puzzle_solved"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "knows_third_answer"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You tap the stalactites in sequence. Each one rings at a different pitch, and the echoes combine, bounce, layer, and reform. In the reverberating silence between notes, the echoes spell out a word: 'SERVICE.' The Guardian's third answer -- the purpose of the kingdom's bureaucracy. Service. The echo chamber stores this answer in resonance, and now it stores it in your memory. Three answers: 847, Aldric the Fastidious, Service."
+                }
             ],
             "once": true
         }
@@ -106,26 +193,44 @@
     "deathTriggers": [
         {
             "id": "scream-in-chamber",
-            "trigger": { "verb": "talk", "subject": "echo_chamber" },
+            "trigger": {
+                "verb": "talk",
+                "subject": "echo_chamber"
+            },
             "conditions": [],
             "actions": [
-                { "type": "trigger-death", "deathId": "echo-scream" }
+                {
+                    "type": "trigger-death",
+                    "deathId": "echo-scream"
+                }
             ]
         },
         {
             "id": "break-stalactite",
-            "trigger": { "verb": "push", "subject": "stalactites" },
+            "trigger": {
+                "verb": "push",
+                "subject": "stalactites"
+            },
             "conditions": [],
             "actions": [
-                { "type": "trigger-death", "deathId": "stalactite-fall" }
+                {
+                    "type": "trigger-death",
+                    "deathId": "stalactite-fall"
+                }
             ]
         },
         {
             "id": "break-stalactite-pull",
-            "trigger": { "verb": "pull", "subject": "stalactites" },
+            "trigger": {
+                "verb": "pull",
+                "subject": "stalactites"
+            },
             "conditions": [],
             "actions": [
-                { "type": "trigger-death", "deathId": "stalactite-fall" }
+                {
+                    "type": "trigger-death",
+                    "deathId": "stalactite-fall"
+                }
             ]
         }
     ],
@@ -145,8 +250,14 @@
     "audio": {
         "music": "music-cave",
         "ambient": [
-            { "key": "amb-cave-drips", "volume": 0.9 }
+            {
+                "key": "amb-cave-drips",
+                "volume": 0.9
+            }
         ]
     },
-    "playerSpawn": { "x": 480, "y": 430 }
+    "playerSpawn": {
+        "x": 480,
+        "y": 430
+    }
 }

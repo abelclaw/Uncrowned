@@ -69,6 +69,10 @@ export class RoomScene extends Phaser.Scene {
     private roomUpdateHandler!: (action: any) => void;
     private itemPickedUpHandler!: (itemId: string) => void;
 
+    // Phase 9 lazy-loaded sprites
+    private itemSprites: Map<string, Phaser.GameObjects.Image> = new Map();
+    private npcSprites: Map<string, Phaser.GameObjects.Image> = new Map();
+
     constructor() {
         super('RoomScene');
     }
@@ -111,15 +115,70 @@ export class RoomScene extends Phaser.Scene {
         this.hotspotZones = [];
         this.inDialogue = false;
         this.activeNpcId = null;
+        this.itemSprites = new Map();
+        this.npcSprites = new Map();
     }
 
     create(): void {
-        // 1. Background layers with parallax scroll factors
-        this.roomData.background.layers.forEach((layer, index) => {
-            this.add.image(0, 0, layer.key)
-                .setOrigin(0, 0)
-                .setScrollFactor(layer.scrollFactor)
-                .setDepth(index);
+        // 1. Lazy-load room assets (backgrounds, item sprites, NPC sprites)
+        const loadingText = this.add.text(480, 270, 'Loading...', {
+            fontFamily: 'monospace', fontSize: '14px', color: '#ffffff'
+        }).setOrigin(0.5).setScrollFactor(0).setDepth(999);
+
+        this.loadRoomAssets().then(() => {
+            loadingText.destroy();
+
+            // Create background layers with parallax scroll factors
+            this.roomData.background.layers.forEach((layer, index) => {
+                this.add.image(0, 0, layer.key)
+                    .setOrigin(0, 0)
+                    .setScrollFactor(layer.scrollFactor)
+                    .setDepth(index);
+            });
+
+            // Render item sprites for items present in the room (not yet taken)
+            if (this.roomData.items) {
+                for (const item of this.roomData.items) {
+                    if (this.gameState.isRoomItemRemoved(this.roomData.id, item.id)) continue;
+                    const spriteKey = `item-${item.id}`;
+                    if (this.textures.exists(spriteKey)) {
+                        const itemSprite = this.add.image(
+                            item.zone.x + item.zone.width / 2,
+                            item.zone.y + item.zone.height / 2,
+                            spriteKey
+                        ).setDepth(5);
+                        this.itemSprites.set(item.id, itemSprite);
+                    }
+                }
+            }
+
+            // Render NPC sprites for NPCs present in the room
+            if (this.roomData.npcs) {
+                for (const npc of this.roomData.npcs) {
+                    // Check visibility conditions
+                    if (npc.conditions && npc.conditions.length > 0) {
+                        const visible = npc.conditions.every(cond => {
+                            if (cond.type === 'flag-set' && cond.flag) {
+                                return this.gameState.isFlagSet(cond.flag);
+                            }
+                            if (cond.type === 'flag-not-set' && cond.flag) {
+                                return !this.gameState.isFlagSet(cond.flag);
+                            }
+                            return true;
+                        });
+                        if (!visible) continue;
+                    }
+                    const spriteKey = `npc-${npc.id}`;
+                    if (this.textures.exists(spriteKey)) {
+                        const npcSprite = this.add.image(
+                            npc.zone.x + npc.zone.width / 2,
+                            npc.zone.y + npc.zone.height / 2,
+                            spriteKey
+                        ).setDepth(5);
+                        this.npcSprites.set(npc.id, npcSprite);
+                    }
+                }
+            }
         });
 
         // 2. Navigation system from walkable area polygon
@@ -460,6 +519,12 @@ export class RoomScene extends Phaser.Scene {
         // Item picked up handler (from PuzzleEngine add-item action)
         this.itemPickedUpHandler = (itemId: string) => {
             this.gameState.markRoomItemRemoved(this.roomData.id, itemId);
+            // Destroy the item sprite if it exists
+            const sprite = this.itemSprites.get(itemId);
+            if (sprite) {
+                sprite.destroy();
+                this.itemSprites.delete(itemId);
+            }
         };
         EventBus.on('item-picked-up', this.itemPickedUpHandler);
 
@@ -542,6 +607,12 @@ export class RoomScene extends Phaser.Scene {
             EventBus.off('room-update', this.roomUpdateHandler);
             EventBus.off('item-picked-up', this.itemPickedUpHandler);
 
+            // Phase 9 sprite cleanup
+            this.itemSprites.forEach(sprite => sprite.destroy());
+            this.itemSprites.clear();
+            this.npcSprites.forEach(sprite => sprite.destroy());
+            this.npcSprites.clear();
+
             // Phase 7 audio cleanup (remove EventBus listeners, keep audio playing for crossfade)
             this.audioManager.cleanup();
 
@@ -565,6 +636,67 @@ export class RoomScene extends Phaser.Scene {
                 return;
             }
         }
+    }
+
+    /**
+     * Lazily load room-specific assets (backgrounds, item sprites, NPC sprites).
+     * Skips assets already cached in Phaser's texture manager.
+     * Returns a promise that resolves when all assets are loaded.
+     */
+    private loadRoomAssets(): Promise<void> {
+        let needsLoad = false;
+
+        // Load background layers
+        for (const layer of this.roomData.background.layers) {
+            if (!this.textures.exists(layer.key)) {
+                let assetPath: string;
+                if (layer.key.startsWith('bg-shared-')) {
+                    // e.g. bg-shared-act1-sky -> assets/backgrounds/shared/act1-sky.png
+                    const rest = layer.key.replace('bg-shared-', '');
+                    assetPath = `assets/backgrounds/shared/${rest}.png`;
+                } else if (layer.key.startsWith('bg-rooms-')) {
+                    // e.g. bg-rooms-forest_clearing -> assets/backgrounds/rooms/forest_clearing.png
+                    const rest = layer.key.replace('bg-rooms-', '');
+                    assetPath = `assets/backgrounds/rooms/${rest}.png`;
+                } else {
+                    continue;
+                }
+                this.load.image(layer.key, assetPath);
+                needsLoad = true;
+            }
+        }
+
+        // Load item sprites for items present in the room (not yet taken)
+        if (this.roomData.items) {
+            for (const item of this.roomData.items) {
+                if (this.gameState.isRoomItemRemoved(this.roomData.id, item.id)) continue;
+                const key = `item-${item.id}`;
+                if (!this.textures.exists(key)) {
+                    this.load.image(key, `assets/sprites/items/${item.id}.png`);
+                    needsLoad = true;
+                }
+            }
+        }
+
+        // Load NPC sprites for NPCs present in the room
+        if (this.roomData.npcs) {
+            for (const npc of this.roomData.npcs) {
+                const key = `npc-${npc.id}`;
+                if (!this.textures.exists(key)) {
+                    this.load.image(key, `assets/sprites/npcs/${npc.id}.png`);
+                    needsLoad = true;
+                }
+            }
+        }
+
+        if (!needsLoad) {
+            return Promise.resolve();
+        }
+
+        return new Promise<void>((resolve) => {
+            this.load.once(Phaser.Loader.Events.COMPLETE, () => resolve());
+            this.load.start();
+        });
     }
 
     /**

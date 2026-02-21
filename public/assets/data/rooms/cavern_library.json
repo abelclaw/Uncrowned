@@ -4,25 +4,53 @@
     "description": "A vast underground library carved into the cavern walls. Bookshelves stretch from floor to ceiling, stuffed with texts so ancient they predate the concept of an index. The air is thick with dust, knowledge, and the faint smell of scholarly despair. Several shelves have collapsed entirely, their contents scattered across the floor in an academic avalanche. A reading desk sits in the center, illuminated by a cluster of glowing crystals embedded in the ceiling.",
     "background": {
         "layers": [
-            { "key": "bg-sky", "scrollFactor": 0 },
-            { "key": "bg-mountains", "scrollFactor": 0.1 },
-            { "key": "bg-trees", "scrollFactor": 0.4 },
-            { "key": "bg-ground", "scrollFactor": 1 }
+            {
+                "key": "bg-shared-act2-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act2-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-cavern_library",
+                "scrollFactor": 1
+            }
         ],
         "worldWidth": 1920
     },
     "walkableArea": [
-        { "x": 50, "y": 385 },
-        { "x": 910, "y": 385 },
-        { "x": 910, "y": 520 },
-        { "x": 50, "y": 520 }
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
     ],
     "exits": [
         {
             "id": "to-entrance-hall",
-            "zone": { "x": 440, "y": 450, "width": 80, "height": 80 },
+            "zone": {
+                "x": 440,
+                "y": 450,
+                "width": 80,
+                "height": 80
+            },
             "targetRoom": "cavern_entrance_hall",
-            "spawnPoint": { "x": 480, "y": 400 },
+            "spawnPoint": {
+                "x": 480,
+                "y": 400
+            },
             "transition": "fade",
             "direction": "south",
             "label": "entrance hall"
@@ -32,8 +60,16 @@
         {
             "id": "bookshelves",
             "name": "Ancient Bookshelves",
-            "zone": { "x": 200, "y": 345, "width": 120, "height": 60 },
-            "interactionPoint": { "x": 260, "y": 420 },
+            "zone": {
+                "x": 200,
+                "y": 345,
+                "width": 120,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 260,
+                "y": 420
+            },
             "responses": {
                 "look": "Rows of bookshelves crammed with texts in languages that range from 'archaic' to 'possibly invented.' Titles include 'A Bureaucrat's Guide to Immortality,' 'Mushroom Patterns and Their Meanings,' and 'How to Answer Guardian Questions Without Dying (Third Edition).' Several are bookmarked at suspiciously relevant pages.",
                 "use": "You browse the shelves. Most texts are incomprehensible, but one book -- 'Mushroom Patterns' -- contains a diagram showing a specific sequence: left, right, center, left, center. It's circled in ancient ink. Someone wanted this pattern remembered.",
@@ -44,8 +80,16 @@
         {
             "id": "reading-desk",
             "name": "Reading Desk",
-            "zone": { "x": 450, "y": 380, "width": 80, "height": 40 },
-            "interactionPoint": { "x": 490, "y": 420 },
+            "zone": {
+                "x": 450,
+                "y": 380,
+                "width": 80,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 490,
+                "y": 420
+            },
             "responses": {
                 "look": "A stone reading desk lit by ceiling crystals. An open book lies on it, turned to a page about the Guardian Chamber: 'The Guardian asks three questions. The first concerns the kingdom's founding year. The second concerns the name of the first bureaucrat. The third... the page is torn. Of course it is.",
                 "use": "You sit at the desk and read. The open book reveals clues about the guardian's test. Founding year: 847. First bureaucrat: Aldric the Fastidious. Third question: missing. You'll need to find that answer elsewhere.",
@@ -55,8 +99,16 @@
         {
             "id": "collapsed-shelves",
             "name": "Collapsed Shelves",
-            "zone": { "x": 650, "y": 370, "width": 100, "height": 50 },
-            "interactionPoint": { "x": 700, "y": 420 },
+            "zone": {
+                "x": 650,
+                "y": 370,
+                "width": 100,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 700,
+                "y": 420
+            },
             "responses": {
                 "look": "A section of shelving that has collapsed, spilling books and broken wood across the floor. Among the debris, several intact wooden planks could be salvaged. The books themselves are ruined -- water damage from an underground seep has turned most to pulp.",
                 "use": "You rummage through the debris. The books are unsalvageable, but the wooden shelving planks are solid -- thick oak that hasn't rotted despite centuries underground. These could be useful.",
@@ -69,8 +121,16 @@
         {
             "id": "ancient-ink",
             "name": "Ancient Ink",
-            "zone": { "x": 470, "y": 395, "width": 20, "height": 20 },
-            "interactionPoint": { "x": 480, "y": 420 },
+            "zone": {
+                "x": 470,
+                "y": 395,
+                "width": 20,
+                "height": 20
+            },
+            "interactionPoint": {
+                "x": 480,
+                "y": 420
+            },
             "responses": {
                 "look": "A stoppered bottle of ink on the reading desk. The ink is black as night and slightly iridescent. The label reads 'Official Bureaucratic Ink -- Expires: Never.' It has opinions, apparently.",
                 "use": "The ink needs something to write on. A form, perhaps. An important, bureaucratic form."
@@ -79,8 +139,16 @@
         {
             "id": "wood-planks",
             "name": "Wood Planks",
-            "zone": { "x": 680, "y": 400, "width": 40, "height": 20 },
-            "interactionPoint": { "x": 700, "y": 420 },
+            "zone": {
+                "x": 680,
+                "y": 400,
+                "width": 40,
+                "height": 20
+            },
+            "interactionPoint": {
+                "x": 700,
+                "y": 420
+            },
             "responses": {
                 "look": "Solid oak planks from the collapsed shelving. Thick, sturdy, and still in good condition despite their age. They'd be useful for building or repairing something that needs to float. Or not collapse.",
                 "use": "Planks are building material, not a finished product. You'd need something specific to build."
@@ -90,49 +158,97 @@
     "puzzles": [
         {
             "id": "take-ink",
-            "trigger": { "verb": "take", "subject": "ancient-ink" },
+            "trigger": {
+                "verb": "take",
+                "subject": "ancient-ink"
+            },
             "conditions": [
-                { "type": "item-not-taken", "item": "ancient-ink" }
+                {
+                    "type": "item-not-taken",
+                    "item": "ancient-ink"
+                }
             ],
             "actions": [
-                { "type": "add-item", "item": "ancient-ink" },
-                { "type": "narrator-say", "text": "You pocket the ancient ink. It's warm to the touch and slightly vibrating, as though the ink itself is eager to fill out paperwork. After centuries in a library, it's finally going to see some action. The ink is, genuinely, the most enthusiastic thing in the caverns." }
+                {
+                    "type": "add-item",
+                    "item": "ancient-ink"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You pocket the ancient ink. It's warm to the touch and slightly vibrating, as though the ink itself is eager to fill out paperwork. After centuries in a library, it's finally going to see some action. The ink is, genuinely, the most enthusiastic thing in the caverns."
+                }
             ],
             "once": true
         },
         {
             "id": "take-planks",
-            "trigger": { "verb": "take", "subject": "wood-planks" },
+            "trigger": {
+                "verb": "take",
+                "subject": "wood-planks"
+            },
             "conditions": [
-                { "type": "item-not-taken", "item": "wood-planks" }
+                {
+                    "type": "item-not-taken",
+                    "item": "wood-planks"
+                }
             ],
             "actions": [
-                { "type": "add-item", "item": "wood-planks" },
-                { "type": "narrator-say", "text": "You salvage several solid oak planks from the wreckage. The library's loss is your gain, though the books scattered around them seem to judge you for prioritizing lumber over literature. Pragmatism over education -- the adventurer's creed." }
+                {
+                    "type": "add-item",
+                    "item": "wood-planks"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You salvage several solid oak planks from the wreckage. The library's loss is your gain, though the books scattered around them seem to judge you for prioritizing lumber over literature. Pragmatism over education -- the adventurer's creed."
+                }
             ],
             "once": true
         },
         {
             "id": "read-mushroom-book",
-            "trigger": { "verb": "use", "subject": "bookshelves" },
+            "trigger": {
+                "verb": "use",
+                "subject": "bookshelves"
+            },
             "conditions": [
-                { "type": "flag-not-set", "flag": "knows_mushroom_pattern" }
+                {
+                    "type": "flag-not-set",
+                    "flag": "knows_mushroom_pattern"
+                }
             ],
             "actions": [
-                { "type": "set-flag", "flag": "knows_mushroom_pattern" },
-                { "type": "narrator-say", "text": "You find the mushroom pattern book. The diagram is clear: activate mushrooms in the sequence left, right, center, left, center. The book notes: 'This pattern reveals the Crystal Chamber viewing passage from the West Wing. Do NOT eat the mushrooms. This warning should not be necessary but historical data suggests otherwise.'" }
+                {
+                    "type": "set-flag",
+                    "flag": "knows_mushroom_pattern"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You find the mushroom pattern book. The diagram is clear: activate mushrooms in the sequence left, right, center, left, center. The book notes: 'This pattern reveals the Crystal Chamber viewing passage from the West Wing. Do NOT eat the mushrooms. This warning should not be necessary but historical data suggests otherwise.'"
+                }
             ],
             "once": true
         },
         {
             "id": "read-guardian-book",
-            "trigger": { "verb": "use", "subject": "reading-desk" },
+            "trigger": {
+                "verb": "use",
+                "subject": "reading-desk"
+            },
             "conditions": [
-                { "type": "flag-not-set", "flag": "knows_guardian_answers" }
+                {
+                    "type": "flag-not-set",
+                    "flag": "knows_guardian_answers"
+                }
             ],
             "actions": [
-                { "type": "set-flag", "flag": "knows_guardian_answers" },
-                { "type": "narrator-say", "text": "You study the open book carefully. The Guardian's questions: First -- 'In what year was the kingdom founded?' Answer: 847. Second -- 'What was the name of the first kingdom bureaucrat?' Answer: Aldric the Fastidious. Third -- the page is torn. The answer to the third question must be elsewhere in the caverns." }
+                {
+                    "type": "set-flag",
+                    "flag": "knows_guardian_answers"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You study the open book carefully. The Guardian's questions: First -- 'In what year was the kingdom founded?' Answer: 847. Second -- 'What was the name of the first kingdom bureaucrat?' Answer: Aldric the Fastidious. Third -- the page is torn. The answer to the third question must be elsewhere in the caverns."
+                }
             ],
             "once": true
         }
@@ -140,18 +256,30 @@
     "deathTriggers": [
         {
             "id": "climb-shelves",
-            "trigger": { "verb": "go", "subject": "bookshelves" },
+            "trigger": {
+                "verb": "go",
+                "subject": "bookshelves"
+            },
             "conditions": [],
             "actions": [
-                { "type": "trigger-death", "deathId": "shelf-collapse" }
+                {
+                    "type": "trigger-death",
+                    "deathId": "shelf-collapse"
+                }
             ]
         },
         {
             "id": "climb-shelves-use",
-            "trigger": { "verb": "pull", "subject": "bookshelves" },
+            "trigger": {
+                "verb": "pull",
+                "subject": "bookshelves"
+            },
             "conditions": [],
             "actions": [
-                { "type": "trigger-death", "deathId": "shelf-collapse" }
+                {
+                    "type": "trigger-death",
+                    "deathId": "shelf-collapse"
+                }
             ]
         }
     ],
@@ -167,8 +295,14 @@
     "audio": {
         "music": "music-cave",
         "ambient": [
-            { "key": "amb-cave-drips", "volume": 0.6 }
+            {
+                "key": "amb-cave-drips",
+                "volume": 0.6
+            }
         ]
     },
-    "playerSpawn": { "x": 480, "y": 430 }
+    "playerSpawn": {
+        "x": 480,
+        "y": 430
+    }
 }

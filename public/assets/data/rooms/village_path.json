@@ -4,34 +4,70 @@
     "description": "A well-worn dirt path winds toward a village in the distance. A stone well stands nearby, looking suspiciously like the kind of well people throw wishes -- and occasionally themselves -- into. An old man sits on a rock, staring at you with the unsettling intensity of someone who has been expecting you for decades.",
     "background": {
         "layers": [
-            { "key": "bg-sky", "scrollFactor": 0 },
-            { "key": "bg-mountains", "scrollFactor": 0.1 },
-            { "key": "bg-trees", "scrollFactor": 0.4 },
-            { "key": "bg-ground", "scrollFactor": 1 }
+            {
+                "key": "bg-shared-act1-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act1-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-village_path",
+                "scrollFactor": 1
+            }
         ],
         "worldWidth": 1920
     },
     "walkableArea": [
-        { "x": 50, "y": 385 },
-        { "x": 910, "y": 385 },
-        { "x": 910, "y": 520 },
-        { "x": 50, "y": 520 }
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
     ],
     "exits": [
         {
             "id": "to-cave",
-            "zone": { "x": 0, "y": 350, "width": 80, "height": 200 },
+            "zone": {
+                "x": 0,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
             "targetRoom": "cave_entrance",
-            "spawnPoint": { "x": 820, "y": 430 },
+            "spawnPoint": {
+                "x": 820,
+                "y": 430
+            },
             "transition": "slide-left",
             "direction": "west",
             "label": "cave"
         },
         {
             "id": "to-village-square",
-            "zone": { "x": 880, "y": 350, "width": 80, "height": 200 },
+            "zone": {
+                "x": 880,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
             "targetRoom": "village_square",
-            "spawnPoint": { "x": 100, "y": 430 },
+            "spawnPoint": {
+                "x": 100,
+                "y": 430
+            },
             "transition": "slide-right",
             "direction": "east",
             "label": "village"
@@ -41,8 +77,16 @@
         {
             "id": "well",
             "name": "Stone Well",
-            "zone": { "x": 600, "y": 350, "width": 70, "height": 70 },
-            "interactionPoint": { "x": 635, "y": 420 },
+            "zone": {
+                "x": 600,
+                "y": 350,
+                "width": 70,
+                "height": 70
+            },
+            "interactionPoint": {
+                "x": 635,
+                "y": 420
+            },
             "responses": {
                 "look": "A sturdy stone well with a wooden bucket hanging from a frayed rope. The water below is dark and still. You can see your reflection, and frankly, it could use some work.",
                 "take": "The well weighs approximately four tons. Your back weighs approximately one hernia. Let's not.",
@@ -57,8 +101,16 @@
         {
             "id": "signpost",
             "name": "Weathered Signpost",
-            "zone": { "x": 200, "y": 370, "width": 40, "height": 60 },
-            "interactionPoint": { "x": 220, "y": 420 },
+            "zone": {
+                "x": 200,
+                "y": 370,
+                "width": 40,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 220,
+                "y": 420
+            },
             "responses": {
                 "look": "A weathered signpost at the path's fork. One arrow points west toward 'Cave' and another east toward 'Village.' A third arrow, pointing straight down, reads 'You Are Here.' Helpful.",
                 "take": "You try to uproot the signpost. It's cemented in. The local council may be incompetent at governance, but their signpost installation is impeccable.",
@@ -69,8 +121,16 @@
         {
             "id": "forest-edge",
             "name": "Dark Forest Edge",
-            "zone": { "x": 100, "y": 350, "width": 80, "height": 40 },
-            "interactionPoint": { "x": 140, "y": 400 },
+            "zone": {
+                "x": 100,
+                "y": 350,
+                "width": 80,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 140,
+                "y": 400
+            },
             "responses": {
                 "look": "The forest beyond the path is thick and unwelcoming. The trees crowd together like gossips, and the undergrowth is the kind that swallows ankles and ambitions alike. A faded sign reads: 'CERTAIN DEATH THIS WAY.'",
                 "use": "You gaze into the dark forest and wisely decide against entering. Your survival instincts, dormant for most of your life, have chosen this moment to awaken.",
@@ -83,12 +143,21 @@
     "deathTriggers": [
         {
             "id": "wander-off-path",
-            "trigger": { "verb": "go", "subject": "forest" },
+            "trigger": {
+                "verb": "go",
+                "subject": "forest"
+            },
             "conditions": [
-                { "type": "flag-not-set", "flag": "forest-safe" }
+                {
+                    "type": "flag-not-set",
+                    "flag": "forest-safe"
+                }
             ],
             "actions": [
-                { "type": "trigger-death", "deathId": "lost-death" }
+                {
+                    "type": "trigger-death",
+                    "deathId": "lost-death"
+                }
             ]
         }
     ],
@@ -104,17 +173,37 @@
     "npcs": [
         {
             "id": "old_man",
-            "position": { "x": 700, "y": 400 },
-            "interactionPoint": { "x": 670, "y": 430 },
-            "zone": { "x": 680, "y": 370, "width": 40, "height": 80 }
+            "position": {
+                "x": 700,
+                "y": 400
+            },
+            "interactionPoint": {
+                "x": 670,
+                "y": 430
+            },
+            "zone": {
+                "x": 680,
+                "y": 370,
+                "width": 40,
+                "height": 80
+            }
         }
     ],
     "audio": {
         "music": "music-village",
         "ambient": [
-            { "key": "amb-forest-birds", "volume": 0.5 },
-            { "key": "amb-wind-light", "volume": 0.2 }
+            {
+                "key": "amb-forest-birds",
+                "volume": 0.5
+            },
+            {
+                "key": "amb-wind-light",
+                "volume": 0.2
+            }
         ]
     },
-    "playerSpawn": { "x": 480, "y": 430 }
+    "playerSpawn": {
+        "x": 480,
+        "y": 430
+    }
 }

@@ -4,34 +4,70 @@
     "description": "The East Wing is half-flooded -- dark water fills the lower passages, reflecting your torch-light in oily ripples. The corridor slopes downward into deeper water. Stone walkways remain above the waterline, but barely. The sound of rushing water echoes from deeper within, suggesting a river or underground current. The air is cold and damp, and everything smells like minerals and ancient plumbing.",
     "background": {
         "layers": [
-            { "key": "bg-sky", "scrollFactor": 0 },
-            { "key": "bg-mountains", "scrollFactor": 0.1 },
-            { "key": "bg-trees", "scrollFactor": 0.4 },
-            { "key": "bg-ground", "scrollFactor": 1 }
+            {
+                "key": "bg-shared-act2-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act2-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-cavern_east_wing",
+                "scrollFactor": 1
+            }
         ],
         "worldWidth": 1920
     },
     "walkableArea": [
-        { "x": 50, "y": 385 },
-        { "x": 910, "y": 385 },
-        { "x": 910, "y": 520 },
-        { "x": 50, "y": 520 }
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
     ],
     "exits": [
         {
             "id": "to-entrance-hall",
-            "zone": { "x": 0, "y": 350, "width": 80, "height": 200 },
+            "zone": {
+                "x": 0,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
             "targetRoom": "cavern_entrance_hall",
-            "spawnPoint": { "x": 750, "y": 430 },
+            "spawnPoint": {
+                "x": 750,
+                "y": 430
+            },
             "transition": "fade",
             "direction": "west",
             "label": "entrance hall"
         },
         {
             "id": "to-underground-river",
-            "zone": { "x": 880, "y": 350, "width": 80, "height": 200 },
+            "zone": {
+                "x": 880,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
             "targetRoom": "underground_river",
-            "spawnPoint": { "x": 100, "y": 430 },
+            "spawnPoint": {
+                "x": 100,
+                "y": 430
+            },
             "transition": "slide-right",
             "direction": "east",
             "label": "river"
@@ -41,8 +77,16 @@
         {
             "id": "dark-water",
             "name": "Dark Water",
-            "zone": { "x": 300, "y": 420, "width": 300, "height": 50 },
-            "interactionPoint": { "x": 450, "y": 420 },
+            "zone": {
+                "x": 300,
+                "y": 420,
+                "width": 300,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 420
+            },
             "responses": {
                 "look": "Dark water fills the lower passages, still and lightless. Your torch reflects off the surface, revealing nothing beneath. The water is deep -- how deep is impossible to tell. Something moves in the darkness below. Probably fish. Hopefully fish. The kind of fish that doesn't have teeth.",
                 "use": "You dip a hand in. The water is freezing. Something brushes your fingers. You pull your hand out faster than you've ever pulled anything in your life.",
@@ -53,8 +97,16 @@
         {
             "id": "stone-walkway",
             "name": "Stone Walkway",
-            "zone": { "x": 500, "y": 390, "width": 100, "height": 30 },
-            "interactionPoint": { "x": 550, "y": 420 },
+            "zone": {
+                "x": 500,
+                "y": 390,
+                "width": 100,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 550,
+                "y": 420
+            },
             "responses": {
                 "look": "A narrow stone walkway runs above the waterline, connecting the entrance to the deeper passages. It's slick with moisture and barely wide enough for one person. The ancient engineers who built this apparently assumed everyone was thin. And had excellent balance.",
                 "default": "You follow the walkway carefully. It's slippery but solid. The water below makes helpful gurgling sounds that are either calming or ominous."
@@ -66,18 +118,30 @@
     "deathTriggers": [
         {
             "id": "swim-dark-water",
-            "trigger": { "verb": "go", "subject": "dark-water" },
+            "trigger": {
+                "verb": "go",
+                "subject": "dark-water"
+            },
             "conditions": [],
             "actions": [
-                { "type": "trigger-death", "deathId": "dark-water" }
+                {
+                    "type": "trigger-death",
+                    "deathId": "dark-water"
+                }
             ]
         },
         {
             "id": "swim-dark-water-use",
-            "trigger": { "verb": "use", "subject": "dark-water" },
+            "trigger": {
+                "verb": "use",
+                "subject": "dark-water"
+            },
             "conditions": [],
             "actions": [
-                { "type": "trigger-death", "deathId": "dark-water" }
+                {
+                    "type": "trigger-death",
+                    "deathId": "dark-water"
+                }
             ]
         }
     ],
@@ -91,9 +155,18 @@
     "audio": {
         "music": "music-cave",
         "ambient": [
-            { "key": "amb-cave-drips", "volume": 0.8 },
-            { "key": "amb-wind-light", "volume": 0.2 }
+            {
+                "key": "amb-cave-drips",
+                "volume": 0.8
+            },
+            {
+                "key": "amb-wind-light",
+                "volume": 0.2
+            }
         ]
     },
-    "playerSpawn": { "x": 480, "y": 430 }
+    "playerSpawn": {
+        "x": 480,
+        "y": 430
+    }
 }

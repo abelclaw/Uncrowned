@@ -4,25 +4,53 @@
     "description": "The Royal Archive is a cathedral of paperwork. Shelves stretch from floor to ceiling, packed with scrolls, ledgers, and documents bound in leather that predates several kings. The air smells of old parchment and institutional authority. Dust motes float in shafts of grey light from narrow windows. Many shelves are turning to stone -- their contents petrifying mid-sentence, preserving laws and decrees in a medium considerably more permanent than parchment. A section labeled 'CURSES, HEXES, AND RELATED GRIEVANCES (Filing Section C-7)' catches your eye.",
     "background": {
         "layers": [
-            { "key": "bg-sky", "scrollFactor": 0 },
-            { "key": "bg-mountains", "scrollFactor": 0.1 },
-            { "key": "bg-trees", "scrollFactor": 0.4 },
-            { "key": "bg-ground", "scrollFactor": 1 }
+            {
+                "key": "bg-shared-act3-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act3-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-royal_archive",
+                "scrollFactor": 1
+            }
         ],
         "worldWidth": 1920
     },
     "walkableArea": [
-        { "x": 50, "y": 385 },
-        { "x": 910, "y": 385 },
-        { "x": 910, "y": 520 },
-        { "x": 50, "y": 520 }
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
     ],
     "exits": [
         {
             "id": "to-courtyard-act3",
-            "zone": { "x": 0, "y": 350, "width": 80, "height": 200 },
+            "zone": {
+                "x": 0,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
             "targetRoom": "castle_courtyard_act3",
-            "spawnPoint": { "x": 820, "y": 430 },
+            "spawnPoint": {
+                "x": 820,
+                "y": 430
+            },
             "transition": "slide-left",
             "direction": "west",
             "label": "courtyard"
@@ -32,8 +60,16 @@
         {
             "id": "curse-section",
             "name": "Curse Filing Section",
-            "zone": { "x": 400, "y": 350, "width": 120, "height": 70 },
-            "interactionPoint": { "x": 460, "y": 420 },
+            "zone": {
+                "x": 400,
+                "y": 350,
+                "width": 120,
+                "height": 70
+            },
+            "interactionPoint": {
+                "x": 460,
+                "y": 420
+            },
             "responses": {
                 "look": "Section C-7: Curses, Hexes, and Related Grievances. The shelves are organized by date, severity, and petulance level of the caster. Most are marked 'Resolved.' One near the back is marked 'ACTIVE -- DO NOT TAMPER.' Its edges are singed, which is either a filing notation or a warning.",
                 "use": "You rifle through the curse filings. Most are mundane -- cursed cow, hexed well, a very specific grudge against someone's turnip crop. The active one is filed at the very back, behind a stack of resolved hexes.",
@@ -44,8 +80,16 @@
         {
             "id": "petrified-shelves",
             "name": "Stone Shelves",
-            "zone": { "x": 700, "y": 355, "width": 100, "height": 70 },
-            "interactionPoint": { "x": 750, "y": 420 },
+            "zone": {
+                "x": 700,
+                "y": 355,
+                "width": 100,
+                "height": 70
+            },
+            "interactionPoint": {
+                "x": 750,
+                "y": 420
+            },
             "responses": {
                 "look": "Half the archive has turned to stone. Scrolls and their shelves alike, frozen in grey. You can read the stone text if you look closely -- laws about taxes, grazing rights, and a surprisingly detailed regulation about the acceptable width of hats. The kingdom's bureaucracy is preserved forever. Whether that's a loss or a mercy is debatable.",
                 "take": "You try to pull a stone scroll from the shelf. It snaps. Centuries of legal precedent, shattered. The kingdom's lawyers would weep, if they weren't also stone.",
@@ -55,8 +99,16 @@
         {
             "id": "archive-desk",
             "name": "Archivist's Desk",
-            "zone": { "x": 200, "y": 400, "width": 100, "height": 40 },
-            "interactionPoint": { "x": 250, "y": 420 },
+            "zone": {
+                "x": 200,
+                "y": 400,
+                "width": 100,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 250,
+                "y": 420
+            },
             "responses": {
                 "look": "The archivist's desk is half-stone, the chair pushed back as though the archivist left in a hurry. A mug of tea sits petrified mid-steam. Notes on the desk read: 'Curse contract -- Section C-7, shelf 3, row 12. DO NOT file under Miscellaneous. The auditor was very clear about this.'",
                 "use": "You sit at the archivist's desk. For a moment, you feel the weight of centuries of filing. It is not a pleasant feeling. You stand up.",
@@ -68,8 +120,16 @@
         {
             "id": "original-curse-contract",
             "name": "Original Curse Contract",
-            "zone": { "x": 430, "y": 380, "width": 40, "height": 20 },
-            "interactionPoint": { "x": 450, "y": 420 },
+            "zone": {
+                "x": 430,
+                "y": 380,
+                "width": 40,
+                "height": 20
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 420
+            },
             "responses": {
                 "look": "A thick parchment document with a wax seal, filed in Section C-7. The title reads: 'CONTRACT OF PETRIFICATION -- BINDING CURSE (Active).' Below, in small print: 'Clause 47-B: This curse may be terminated through the Rite of Administrative Closure, requiring the Crystal of Mundanity, the Kingdom Administrative Seal, and proper filing.' Someone actually built an exit clause into a curse. Bureaucracy truly is universal.",
                 "use": "The contract is a legal document. You need it for the Rite of Administrative Closure. It's the curse's own terms and conditions, and you intend to enforce them."
@@ -79,14 +139,29 @@
     "puzzles": [
         {
             "id": "take-curse-contract",
-            "trigger": { "verb": "take", "subject": "original-curse-contract" },
+            "trigger": {
+                "verb": "take",
+                "subject": "original-curse-contract"
+            },
             "conditions": [
-                { "type": "item-not-taken", "item": "original-curse-contract" }
+                {
+                    "type": "item-not-taken",
+                    "item": "original-curse-contract"
+                }
             ],
             "actions": [
-                { "type": "add-item", "item": "original-curse-contract" },
-                { "type": "set-flag", "flag": "found_curse_contract" },
-                { "type": "narrator-say", "text": "You pull the Original Curse Contract from its filing slot. The parchment is warm -- magical documents retain their power, even in a crumbling archive. Clause 47-B is right there in black and white: the curse has an expiration procedure. Someone -- the original caster -- built in a bureaucratic exit clause. This contract is both the problem and the solution. You tuck it carefully into your pack. The archive, having served its purpose for the first time in centuries, seems to exhale." }
+                {
+                    "type": "add-item",
+                    "item": "original-curse-contract"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "found_curse_contract"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You pull the Original Curse Contract from its filing slot. The parchment is warm -- magical documents retain their power, even in a crumbling archive. Clause 47-B is right there in black and white: the curse has an expiration procedure. Someone -- the original caster -- built in a bureaucratic exit clause. This contract is both the problem and the solution. You tuck it carefully into your pack. The archive, having served its purpose for the first time in centuries, seems to exhale."
+                }
             ],
             "once": true
         }
@@ -94,18 +169,30 @@
     "deathTriggers": [
         {
             "id": "pull-wrong-book",
-            "trigger": { "verb": "take", "subject": "petrified-shelves" },
+            "trigger": {
+                "verb": "take",
+                "subject": "petrified-shelves"
+            },
             "conditions": [],
             "actions": [
-                { "type": "trigger-death", "deathId": "archive-collapse" }
+                {
+                    "type": "trigger-death",
+                    "deathId": "archive-collapse"
+                }
             ]
         },
         {
             "id": "pull-wrong-book-use",
-            "trigger": { "verb": "pull", "subject": "petrified-shelves" },
+            "trigger": {
+                "verb": "pull",
+                "subject": "petrified-shelves"
+            },
             "conditions": [],
             "actions": [
-                { "type": "trigger-death", "deathId": "archive-collapse" }
+                {
+                    "type": "trigger-death",
+                    "deathId": "archive-collapse"
+                }
             ]
         }
     ],
@@ -121,9 +208,18 @@
     "audio": {
         "music": "music-cave",
         "ambient": [
-            { "key": "amb-cave-drips", "volume": 0.3 },
-            { "key": "amb-wind-light", "volume": 0.4 }
+            {
+                "key": "amb-cave-drips",
+                "volume": 0.3
+            },
+            {
+                "key": "amb-wind-light",
+                "volume": 0.4
+            }
         ]
     },
-    "playerSpawn": { "x": 480, "y": 430 }
+    "playerSpawn": {
+        "x": 480,
+        "y": 430
+    }
 }

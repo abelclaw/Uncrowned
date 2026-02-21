@@ -4,39 +4,78 @@
     "description": "An underground river carves through the cavern, its current swift and dark. The water rushes past with the confidence of something that knows exactly where it's going -- downstream, off a waterfall, into oblivion. An old boat is pulled up on a rocky shore, its hull cracked and its sails nonexistent. It floats, technically. Whether it will continue to float with you in it is a matter of optimistic engineering.",
     "background": {
         "layers": [
-            { "key": "bg-sky", "scrollFactor": 0 },
-            { "key": "bg-mountains", "scrollFactor": 0.1 },
-            { "key": "bg-trees", "scrollFactor": 0.4 },
-            { "key": "bg-ground", "scrollFactor": 1 }
+            {
+                "key": "bg-shared-act2-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act2-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-underground_river",
+                "scrollFactor": 1
+            }
         ],
         "worldWidth": 1920
     },
     "walkableArea": [
-        { "x": 50, "y": 385 },
-        { "x": 910, "y": 385 },
-        { "x": 910, "y": 520 },
-        { "x": 50, "y": 520 }
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
     ],
     "exits": [
         {
             "id": "to-east-wing",
-            "zone": { "x": 0, "y": 350, "width": 80, "height": 200 },
+            "zone": {
+                "x": 0,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
             "targetRoom": "cavern_east_wing",
-            "spawnPoint": { "x": 820, "y": 430 },
+            "spawnPoint": {
+                "x": 820,
+                "y": 430
+            },
             "transition": "slide-left",
             "direction": "west",
             "label": "east wing"
         },
         {
             "id": "to-forge",
-            "zone": { "x": 440, "y": 350, "width": 80, "height": 80 },
+            "zone": {
+                "x": 440,
+                "y": 350,
+                "width": 80,
+                "height": 80
+            },
             "targetRoom": "forge_chamber",
-            "spawnPoint": { "x": 480, "y": 430 },
+            "spawnPoint": {
+                "x": 480,
+                "y": 430
+            },
             "transition": "fade",
             "direction": "north",
             "label": "forge",
             "conditions": [
-                { "type": "flag-set", "flag": "boat_repaired" }
+                {
+                    "type": "flag-set",
+                    "flag": "boat_repaired"
+                }
             ]
         }
     ],
@@ -44,8 +83,16 @@
         {
             "id": "river-current",
             "name": "River Current",
-            "zone": { "x": 300, "y": 360, "width": 200, "height": 50 },
-            "interactionPoint": { "x": 400, "y": 420 },
+            "zone": {
+                "x": 300,
+                "y": 360,
+                "width": 200,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 400,
+                "y": 420
+            },
             "responses": {
                 "look": "The underground river rushes past with alarming speed. The current flows north toward the forge and south toward... the sound of a waterfall. A very loud, very final-sounding waterfall. Going upstream requires a boat. Going downstream requires a death wish.",
                 "use": "You test the current with your foot. It nearly pulls you in. This river has opinions about foot traffic.",
@@ -55,8 +102,16 @@
         {
             "id": "rocky-shore",
             "name": "Rocky Shore",
-            "zone": { "x": 600, "y": 400, "width": 100, "height": 40 },
-            "interactionPoint": { "x": 650, "y": 420 },
+            "zone": {
+                "x": 600,
+                "y": 400,
+                "width": 100,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 650,
+                "y": 420
+            },
             "responses": {
                 "look": "A small rocky shore where the boat is beached. The rocks are smooth from water erosion and covered in a thin layer of cave slime. Various debris has washed up: sticks, stones, and the remains of what might have been another boat. A cautionary tale in driftwood.",
                 "default": "You examine the shore. It's the safest spot by the river, which is like saying it's the driest spot in the ocean."
@@ -67,8 +122,16 @@
         {
             "id": "old-boat",
             "name": "Old Boat",
-            "zone": { "x": 620, "y": 380, "width": 80, "height": 40 },
-            "interactionPoint": { "x": 660, "y": 420 },
+            "zone": {
+                "x": 620,
+                "y": 380,
+                "width": 80,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 660,
+                "y": 420
+            },
             "responses": {
                 "look": "A small wooden boat, beached on the rocky shore. Its hull has two significant cracks and a missing plank. It floats in the loosest possible definition -- the kind where 'float' and 'sink slowly' are considered synonyms. It needs repairs: wood for the hull and rope to bind it.",
                 "use": "The boat isn't seaworthy. River-worthy? Also no. You'd need wood planks for the hull and rope to secure them. Without repairs, this boat is less 'vessel' and more 'elaborate drowning apparatus.'"
@@ -78,66 +141,146 @@
     "puzzles": [
         {
             "id": "repair-boat",
-            "trigger": { "verb": "use", "subject": "wood-planks", "target": "old-boat" },
+            "trigger": {
+                "verb": "use",
+                "subject": "wood-planks",
+                "target": "old-boat"
+            },
             "conditions": [
-                { "type": "has-item", "item": "wood-planks" },
-                { "type": "has-item", "item": "rope" },
-                { "type": "flag-not-set", "flag": "boat_repaired" }
+                {
+                    "type": "has-item",
+                    "item": "wood-planks"
+                },
+                {
+                    "type": "has-item",
+                    "item": "rope"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "boat_repaired"
+                }
             ],
             "actions": [
-                { "type": "remove-item", "item": "wood-planks" },
-                { "type": "remove-item", "item": "rope" },
-                { "type": "set-flag", "flag": "boat_repaired" },
-                { "type": "open-exit", "exit": "to-forge" },
-                { "type": "narrator-say", "text": "You patch the hull with oak planks from the library and bind them tight with the balcony rope. The boat goes from 'barely floating' to 'probably floating.' You push it into the current and it holds. The river carries it north, toward the forge. You have a boat. It's not pretty, but it's yours, and it floats. For now." }
+                {
+                    "type": "remove-item",
+                    "item": "wood-planks"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "rope"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "boat_repaired"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-forge"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You patch the hull with oak planks from the library and bind them tight with the balcony rope. The boat goes from 'barely floating' to 'probably floating.' You push it into the current and it holds. The river carries it north, toward the forge. You have a boat. It's not pretty, but it's yours, and it floats. For now."
+                }
             ],
             "once": true
         },
         {
             "id": "repair-boat-rope",
-            "trigger": { "verb": "use", "subject": "rope", "target": "old-boat" },
+            "trigger": {
+                "verb": "use",
+                "subject": "rope",
+                "target": "old-boat"
+            },
             "conditions": [
-                { "type": "has-item", "item": "wood-planks" },
-                { "type": "has-item", "item": "rope" },
-                { "type": "flag-not-set", "flag": "boat_repaired" }
+                {
+                    "type": "has-item",
+                    "item": "wood-planks"
+                },
+                {
+                    "type": "has-item",
+                    "item": "rope"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "boat_repaired"
+                }
             ],
             "actions": [
-                { "type": "remove-item", "item": "wood-planks" },
-                { "type": "remove-item", "item": "rope" },
-                { "type": "set-flag", "flag": "boat_repaired" },
-                { "type": "open-exit", "exit": "to-forge" },
-                { "type": "narrator-say", "text": "Planks, rope, boat. You lash the oak planks over the hull cracks and tie them secure. The boat achieves the status of 'seaworthy' -- or at least 'river-adjacent.' The current accepts it northward. Your engineering is questionable but functional." }
+                {
+                    "type": "remove-item",
+                    "item": "wood-planks"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "rope"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "boat_repaired"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-forge"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "Planks, rope, boat. You lash the oak planks over the hull cracks and tie them secure. The boat achieves the status of 'seaworthy' -- or at least 'river-adjacent.' The current accepts it northward. Your engineering is questionable but functional."
+                }
             ],
             "once": true
         },
         {
             "id": "repair-boat-no-materials",
-            "trigger": { "verb": "use", "subject": "old-boat" },
+            "trigger": {
+                "verb": "use",
+                "subject": "old-boat"
+            },
             "conditions": [
-                { "type": "flag-not-set", "flag": "boat_repaired" }
+                {
+                    "type": "flag-not-set",
+                    "flag": "boat_repaired"
+                }
             ],
             "actions": [
-                { "type": "narrator-say", "text": "The boat has two cracks and a missing plank. You'd need wood planks to patch the hull and rope to secure them. Without both, this boat is just a slightly curved piece of future driftwood." }
+                {
+                    "type": "narrator-say",
+                    "text": "The boat has two cracks and a missing plank. You'd need wood planks to patch the hull and rope to secure them. Without both, this boat is just a slightly curved piece of future driftwood."
+                }
             ]
         }
     ],
     "deathTriggers": [
         {
             "id": "sail-broken-boat",
-            "trigger": { "verb": "go", "subject": "river-current" },
+            "trigger": {
+                "verb": "go",
+                "subject": "river-current"
+            },
             "conditions": [
-                { "type": "flag-not-set", "flag": "boat_repaired" }
+                {
+                    "type": "flag-not-set",
+                    "flag": "boat_repaired"
+                }
             ],
             "actions": [
-                { "type": "trigger-death", "deathId": "drown-river" }
+                {
+                    "type": "trigger-death",
+                    "deathId": "drown-river"
+                }
             ]
         },
         {
             "id": "go-downstream",
-            "trigger": { "verb": "go", "subject": "south" },
+            "trigger": {
+                "verb": "go",
+                "subject": "south"
+            },
             "conditions": [],
             "actions": [
-                { "type": "trigger-death", "deathId": "waterfall-death" }
+                {
+                    "type": "trigger-death",
+                    "deathId": "waterfall-death"
+                }
             ]
         }
     ],
@@ -157,9 +300,18 @@
     "audio": {
         "music": "music-cave",
         "ambient": [
-            { "key": "amb-cave-drips", "volume": 1.0 },
-            { "key": "amb-wind-light", "volume": 0.5 }
+            {
+                "key": "amb-cave-drips",
+                "volume": 1
+            },
+            {
+                "key": "amb-wind-light",
+                "volume": 0.5
+            }
         ]
     },
-    "playerSpawn": { "x": 480, "y": 430 }
+    "playerSpawn": {
+        "x": 480,
+        "y": 430
+    }
 }

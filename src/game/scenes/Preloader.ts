@@ -47,11 +47,12 @@ export class Preloader extends Scene {
             percentText.destroy();
         });
 
-        // Parallax background layers
-        this.load.image('bg-sky', 'assets/backgrounds/sky.png');
-        this.load.image('bg-mountains', 'assets/backgrounds/mountains.png');
-        this.load.image('bg-trees', 'assets/backgrounds/trees.png');
-        this.load.image('bg-ground', 'assets/backgrounds/ground.png');
+        // Shared parallax layers for starting act (Act 1)
+        this.load.image('bg-shared-act1-sky', 'assets/backgrounds/shared/act1-sky.png');
+        this.load.image('bg-shared-act1-mid', 'assets/backgrounds/shared/act1-mid.png');
+
+        // Starting room ground layer (lazy loader handles all others)
+        this.load.image('bg-rooms-forest_clearing', 'assets/backgrounds/rooms/forest_clearing.png');
 
         // Player spritesheet (16 frames: idle 0-3, walk 4-11, interact 12-15)
         this.load.spritesheet('player', 'assets/sprites/player.png', {

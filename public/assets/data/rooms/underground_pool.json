@@ -4,25 +4,53 @@
     "description": "A subterranean pool fills most of this chamber, its surface perfectly still and eerily reflective. The water glows faintly from minerals below, casting rippling light patterns across the ceiling. Something glimmers at the bottom -- a crystal, catching your torch-light and throwing it back with quiet defiance.",
     "background": {
         "layers": [
-            { "key": "bg-sky", "scrollFactor": 0 },
-            { "key": "bg-mountains", "scrollFactor": 0.1 },
-            { "key": "bg-trees", "scrollFactor": 0.4 },
-            { "key": "bg-ground", "scrollFactor": 1 }
+            {
+                "key": "bg-shared-act1-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act1-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-underground_pool",
+                "scrollFactor": 1
+            }
         ],
         "worldWidth": 1920
     },
     "walkableArea": [
-        { "x": 50, "y": 400 },
-        { "x": 910, "y": 400 },
-        { "x": 910, "y": 520 },
-        { "x": 50, "y": 520 }
+        {
+            "x": 50,
+            "y": 400
+        },
+        {
+            "x": 910,
+            "y": 400
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
     ],
     "exits": [
         {
             "id": "to-depths",
-            "zone": { "x": 440, "y": 350, "width": 80, "height": 80 },
+            "zone": {
+                "x": 440,
+                "y": 350,
+                "width": 80,
+                "height": 80
+            },
             "targetRoom": "cave_depths",
-            "spawnPoint": { "x": 480, "y": 430 },
+            "spawnPoint": {
+                "x": 480,
+                "y": 430
+            },
             "transition": "fade",
             "direction": "south",
             "label": "depths"
@@ -32,8 +60,16 @@
         {
             "id": "pool-surface",
             "name": "Pool Surface",
-            "zone": { "x": 300, "y": 380, "width": 300, "height": 60 },
-            "interactionPoint": { "x": 450, "y": 420 },
+            "zone": {
+                "x": 300,
+                "y": 380,
+                "width": 300,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 420
+            },
             "responses": {
                 "look": "The pool's surface is mirror-still, reflecting the cave ceiling with unsettling clarity. Your reflection stares back at you, looking distinctly more worried than you feel. Or perhaps exactly as worried as you feel. In the depths, something crystalline catches the light.",
                 "use": "You dip your fingers in. The water is ice-cold and tastes faintly of minerals and ancient secrets. Your reflection disapproves of this.",
@@ -45,8 +81,16 @@
         {
             "id": "cave-crystals",
             "name": "Crystal Formations",
-            "zone": { "x": 700, "y": 370, "width": 80, "height": 50 },
-            "interactionPoint": { "x": 740, "y": 420 },
+            "zone": {
+                "x": 700,
+                "y": 370,
+                "width": 80,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 740,
+                "y": 420
+            },
             "responses": {
                 "look": "Crystal formations jut from the cave walls, refracting your torch-light into dozens of tiny rainbows. They're beautiful, in the way that things you can't eat or sell are beautiful. One cluster near the pool's edge seems particularly vibrant.",
                 "take": "You try to break off a crystal. It's harder than it looks, and it looks very hard. These crystals have been growing for millennia and are not interested in being relocated.",
@@ -57,8 +101,16 @@
         {
             "id": "pool-reflection",
             "name": "Strange Reflection",
-            "zone": { "x": 400, "y": 420, "width": 100, "height": 40 },
-            "interactionPoint": { "x": 450, "y": 430 },
+            "zone": {
+                "x": 400,
+                "y": 420,
+                "width": 100,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 430
+            },
             "responses": {
                 "look": "You look more closely at the pool's reflection. For a moment, the reflected cave ceiling seems to show... letters? Words? No, it's just the mineral patterns in the water. But for a moment, you could have sworn you saw 'LOOK DEEPER' written in the ripples. The crystal at the bottom glows more brightly.",
                 "use": "You wave your torch over the reflection. The light refracts through the water, and for a brief moment, a pattern of light on the ceiling spells out something you can't quite read. The crystal at the bottom pulses in response.",
@@ -70,8 +122,16 @@
         {
             "id": "cave-crystal-shard",
             "name": "Cave Crystal Shard",
-            "zone": { "x": 430, "y": 440, "width": 30, "height": 20 },
-            "interactionPoint": { "x": 445, "y": 430 },
+            "zone": {
+                "x": 430,
+                "y": 440,
+                "width": 30,
+                "height": 20
+            },
+            "interactionPoint": {
+                "x": 445,
+                "y": 430
+            },
             "responses": {
                 "look": "A small crystal shard at the pool's edge, partially submerged. It hums with faint magical resonance -- warm to the touch, faintly glowing, and deeply unimpressive in appearance. It looks like a piece of enchanted gravel.",
                 "use": "You hold the crystal shard up. It catches the light and throws tiny rainbows across the cave walls. Pretty. Useless, but pretty."
@@ -81,56 +141,107 @@
     "puzzles": [
         {
             "id": "investigate-pool",
-            "trigger": { "verb": "look", "subject": "pool-surface" },
+            "trigger": {
+                "verb": "look",
+                "subject": "pool-surface"
+            },
             "conditions": [
-                { "type": "flag-not-set", "flag": "pool_investigated" }
+                {
+                    "type": "flag-not-set",
+                    "flag": "pool_investigated"
+                }
             ],
             "actions": [
-                { "type": "set-flag", "flag": "pool_investigated" },
-                { "type": "narrator-say", "text": "As you peer into the pool, the reflections shift and shimmer. The mineral-laden water catches your torch-light and throws it back in patterns that almost look deliberate. At the pool's shallow edge, a small crystal shard becomes visible, half-buried in silt. It pulses with a faint warmth." }
+                {
+                    "type": "set-flag",
+                    "flag": "pool_investigated"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "As you peer into the pool, the reflections shift and shimmer. The mineral-laden water catches your torch-light and throws it back in patterns that almost look deliberate. At the pool's shallow edge, a small crystal shard becomes visible, half-buried in silt. It pulses with a faint warmth."
+                }
             ],
             "once": true
         },
         {
             "id": "take-crystal-shard",
-            "trigger": { "verb": "take", "subject": "cave-crystal-shard" },
+            "trigger": {
+                "verb": "take",
+                "subject": "cave-crystal-shard"
+            },
             "conditions": [
-                { "type": "item-not-taken", "item": "cave-crystal-shard" },
-                { "type": "flag-set", "flag": "pool_investigated" }
+                {
+                    "type": "item-not-taken",
+                    "item": "cave-crystal-shard"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "pool_investigated"
+                }
             ],
             "actions": [
-                { "type": "add-item", "item": "cave-crystal-shard" },
-                { "type": "narrator-say", "text": "You reach into the cold water and pluck the crystal shard from the silt. It's warm in your hand -- warmer than anything in this cave has any right to be. It hums with faint magical resonance, which is either promising or ominous. In your experience, those two things are the same." }
+                {
+                    "type": "add-item",
+                    "item": "cave-crystal-shard"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You reach into the cold water and pluck the crystal shard from the silt. It's warm in your hand -- warmer than anything in this cave has any right to be. It hums with faint magical resonance, which is either promising or ominous. In your experience, those two things are the same."
+                }
             ],
             "once": true
         },
         {
             "id": "take-crystal-no-investigate",
-            "trigger": { "verb": "take", "subject": "cave-crystal-shard" },
+            "trigger": {
+                "verb": "take",
+                "subject": "cave-crystal-shard"
+            },
             "conditions": [
-                { "type": "item-not-taken", "item": "cave-crystal-shard" },
-                { "type": "flag-not-set", "flag": "pool_investigated" }
+                {
+                    "type": "item-not-taken",
+                    "item": "cave-crystal-shard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "pool_investigated"
+                }
             ],
             "actions": [
-                { "type": "narrator-say", "text": "You can see something at the pool's edge, but you haven't looked closely enough to tell what it is. Try examining the pool first." }
+                {
+                    "type": "narrator-say",
+                    "text": "You can see something at the pool's edge, but you haven't looked closely enough to tell what it is. Try examining the pool first."
+                }
             ]
         }
     ],
     "deathTriggers": [
         {
             "id": "swim-in-pool",
-            "trigger": { "verb": "use", "subject": "pool-surface" },
+            "trigger": {
+                "verb": "use",
+                "subject": "pool-surface"
+            },
             "conditions": [],
             "actions": [
-                { "type": "trigger-death", "deathId": "drown-death" }
+                {
+                    "type": "trigger-death",
+                    "deathId": "drown-death"
+                }
             ]
         },
         {
             "id": "swim-command",
-            "trigger": { "verb": "go", "subject": "pool" },
+            "trigger": {
+                "verb": "go",
+                "subject": "pool"
+            },
             "conditions": [],
             "actions": [
-                { "type": "trigger-death", "deathId": "drown-death" }
+                {
+                    "type": "trigger-death",
+                    "deathId": "drown-death"
+                }
             ]
         }
     ],
@@ -146,8 +257,14 @@
     "audio": {
         "music": "music-cave",
         "ambient": [
-            { "key": "amb-cave-drips", "volume": 1.0 }
+            {
+                "key": "amb-cave-drips",
+                "volume": 1
+            }
         ]
     },
-    "playerSpawn": { "x": 480, "y": 430 }
+    "playerSpawn": {
+        "x": 480,
+        "y": 430
+    }
 }

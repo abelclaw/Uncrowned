@@ -4,48 +4,95 @@
     "description": "A yawning cave mouth gapes before you, exhaling a breath of cold, stale air. The darkness inside is the kind that makes you question your life choices. A heavy oak door is set into the rock face, because apparently someone once thought this cave needed better security.",
     "background": {
         "layers": [
-            { "key": "bg-sky", "scrollFactor": 0 },
-            { "key": "bg-mountains", "scrollFactor": 0.1 },
-            { "key": "bg-trees", "scrollFactor": 0.4 },
-            { "key": "bg-ground", "scrollFactor": 1 }
+            {
+                "key": "bg-shared-act1-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act1-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-cave_entrance",
+                "scrollFactor": 1
+            }
         ],
         "worldWidth": 1920
     },
     "walkableArea": [
-        { "x": 50, "y": 390 },
-        { "x": 910, "y": 390 },
-        { "x": 910, "y": 520 },
-        { "x": 50, "y": 520 }
+        {
+            "x": 50,
+            "y": 390
+        },
+        {
+            "x": 910,
+            "y": 390
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
     ],
     "exits": [
         {
             "id": "to-forest",
-            "zone": { "x": 0, "y": 350, "width": 80, "height": 200 },
+            "zone": {
+                "x": 0,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
             "targetRoom": "forest_clearing",
-            "spawnPoint": { "x": 820, "y": 430 },
+            "spawnPoint": {
+                "x": 820,
+                "y": 430
+            },
             "transition": "slide-left",
             "direction": "west",
             "label": "forest"
         },
         {
             "id": "to-village",
-            "zone": { "x": 880, "y": 350, "width": 80, "height": 200 },
+            "zone": {
+                "x": 880,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
             "targetRoom": "village_path",
-            "spawnPoint": { "x": 100, "y": 430 },
+            "spawnPoint": {
+                "x": 100,
+                "y": 430
+            },
             "transition": "slide-right",
             "direction": "east",
             "label": "village"
         },
         {
             "id": "to-depths",
-            "zone": { "x": 480, "y": 360, "width": 60, "height": 80 },
+            "zone": {
+                "x": 480,
+                "y": 360,
+                "width": 60,
+                "height": 80
+            },
             "targetRoom": "cave_depths",
-            "spawnPoint": { "x": 480, "y": 430 },
+            "spawnPoint": {
+                "x": 480,
+                "y": 430
+            },
             "transition": "fade",
             "direction": "south",
             "label": "depths",
             "conditions": [
-                { "type": "flag-set", "flag": "door-unlocked" }
+                {
+                    "type": "flag-set",
+                    "flag": "door-unlocked"
+                }
             ]
         }
     ],
@@ -53,8 +100,16 @@
         {
             "id": "cave-mouth",
             "name": "Dark Cave Mouth",
-            "zone": { "x": 450, "y": 340, "width": 100, "height": 80 },
-            "interactionPoint": { "x": 500, "y": 420 },
+            "zone": {
+                "x": 450,
+                "y": 340,
+                "width": 100,
+                "height": 80
+            },
+            "interactionPoint": {
+                "x": 500,
+                "y": 420
+            },
             "responses": {
                 "look": "The cave entrance looms like an open maw. Stalactites hang from the ceiling like nature's worst dental work. A faint dripping echoes from within, counting down to something. Probably nothing.",
                 "take": "You consider taking the cave. Where would you even put it? Your pockets aren't that big.",
@@ -69,8 +124,16 @@
         {
             "id": "locked-door",
             "name": "Heavy Oak Door",
-            "zone": { "x": 480, "y": 380, "width": 60, "height": 80 },
-            "interactionPoint": { "x": 510, "y": 440 },
+            "zone": {
+                "x": 480,
+                "y": 380,
+                "width": 60,
+                "height": 80
+            },
+            "interactionPoint": {
+                "x": 510,
+                "y": 440
+            },
             "responses": {
                 "look": "A heavy oak door bound in iron, set deep into the cave wall. A rusted keyhole suggests someone once cared about privacy down here. The door is old enough to have opinions about modern craftsmanship.",
                 "use": "It's locked. You'd need a key. Preferably one that isn't currently disintegrating.",
@@ -85,8 +148,16 @@
         {
             "id": "rock-ledge",
             "name": "Rock Ledge",
-            "zone": { "x": 630, "y": 370, "width": 80, "height": 30 },
-            "interactionPoint": { "x": 670, "y": 430 },
+            "zone": {
+                "x": 630,
+                "y": 370,
+                "width": 80,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 670,
+                "y": 430
+            },
             "responses": {
                 "look": "A natural rock shelf near the cave entrance. Damp and covered in a thin layer of moss. Various objects have been abandoned here over the years by people who clearly had better things to do.",
                 "take": "The ledge is part of the cave wall. You'd need a pickaxe and significantly more ambition.",
@@ -99,8 +170,16 @@
         {
             "id": "mysterious-bottle",
             "name": "Mysterious Bottle",
-            "zone": { "x": 650, "y": 390, "width": 25, "height": 30 },
-            "interactionPoint": { "x": 663, "y": 430 },
+            "zone": {
+                "x": 650,
+                "y": 390,
+                "width": 25,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 663,
+                "y": 430
+            },
             "responses": {
                 "look": "A small glass bottle perched on a rock ledge. The liquid inside shifts between colors you're fairly sure shouldn't exist in nature. The label decomposed sometime during the previous dynasty.",
                 "use": "Drink it? Here? Without even reading the label? Well, the label decomposed centuries ago, so that's a moot point. Still, the liquid is doing things no honest liquid should."
@@ -109,8 +188,16 @@
         {
             "id": "glowing-mushroom",
             "name": "Glowing Mushroom",
-            "zone": { "x": 350, "y": 370, "width": 30, "height": 30 },
-            "interactionPoint": { "x": 365, "y": 420 },
+            "zone": {
+                "x": 350,
+                "y": 370,
+                "width": 30,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 365,
+                "y": 420
+            },
             "responses": {
                 "look": "A mushroom growing on the cave wall, pulsing with an eerie blue bioluminescence. It's either magical, radioactive, or nature's attempt at a nightlight. Possibly all three."
             }
@@ -119,85 +206,197 @@
     "puzzles": [
         {
             "id": "take-mushroom",
-            "trigger": { "verb": "take", "subject": "glowing-mushroom" },
+            "trigger": {
+                "verb": "take",
+                "subject": "glowing-mushroom"
+            },
             "conditions": [
-                { "type": "item-not-taken", "item": "glowing-mushroom" }
+                {
+                    "type": "item-not-taken",
+                    "item": "glowing-mushroom"
+                }
             ],
             "actions": [
-                { "type": "add-item", "item": "glowing-mushroom" },
-                { "type": "narrator-say", "text": "You pluck the glowing mushroom from the wall. It pulses warmly in your hand, like a nightlight for the terminally adventurous. Your pockets will smell of fungus for weeks." }
+                {
+                    "type": "add-item",
+                    "item": "glowing-mushroom"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You pluck the glowing mushroom from the wall. It pulses warmly in your hand, like a nightlight for the terminally adventurous. Your pockets will smell of fungus for weeks."
+                }
             ],
             "once": true
         },
         {
             "id": "take-bottle",
-            "trigger": { "verb": "take", "subject": "mysterious-bottle" },
+            "trigger": {
+                "verb": "take",
+                "subject": "mysterious-bottle"
+            },
             "conditions": [
-                { "type": "item-not-taken", "item": "mysterious-bottle" }
+                {
+                    "type": "item-not-taken",
+                    "item": "mysterious-bottle"
+                }
             ],
             "actions": [
-                { "type": "add-item", "item": "mysterious-bottle" },
-                { "type": "narrator-say", "text": "You pocket the mysterious bottle. The liquid sloshes ominously. This is definitely the kind of decision that looks great in hindsight. Or terrible. One of those." }
+                {
+                    "type": "add-item",
+                    "item": "mysterious-bottle"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You pocket the mysterious bottle. The liquid sloshes ominously. This is definitely the kind of decision that looks great in hindsight. Or terrible. One of those."
+                }
             ],
             "once": true
         },
         {
             "id": "use-key-on-door",
-            "trigger": { "verb": "use", "subject": "rusty-key", "target": "locked-door" },
+            "trigger": {
+                "verb": "use",
+                "subject": "rusty-key",
+                "target": "locked-door"
+            },
             "conditions": [
-                { "type": "has-item", "item": "rusty-key" },
-                { "type": "flag-not-set", "flag": "door-unlocked" }
+                {
+                    "type": "has-item",
+                    "item": "rusty-key"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "door-unlocked"
+                }
             ],
             "actions": [
-                { "type": "set-flag", "flag": "door-unlocked" },
-                { "type": "remove-item", "item": "rusty-key" },
-                { "type": "open-exit", "exit": "to-depths" },
-                { "type": "narrator-say", "text": "The rusty key grinds into the lock with a sound that makes your teeth ache. With a reluctant clunk, the door swings open, revealing stairs descending into darkness. The key crumbles to rust dust in your hand. One-time use, apparently. Just like your courage." }
+                {
+                    "type": "set-flag",
+                    "flag": "door-unlocked"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "rusty-key"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-depths"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "The rusty key grinds into the lock with a sound that makes your teeth ache. With a reluctant clunk, the door swings open, revealing stairs descending into darkness. The key crumbles to rust dust in your hand. One-time use, apparently. Just like your courage."
+                }
             ],
             "once": true
         },
         {
             "id": "combine-stick-mushroom",
-            "trigger": { "verb": "combine", "subject": "stick", "target": "glowing-mushroom" },
+            "trigger": {
+                "verb": "combine",
+                "subject": "stick",
+                "target": "glowing-mushroom"
+            },
             "conditions": [
-                { "type": "has-item", "item": "stick" },
-                { "type": "has-item", "item": "glowing-mushroom" }
+                {
+                    "type": "has-item",
+                    "item": "stick"
+                },
+                {
+                    "type": "has-item",
+                    "item": "glowing-mushroom"
+                }
             ],
             "actions": [
-                { "type": "remove-item", "item": "stick" },
-                { "type": "remove-item", "item": "glowing-mushroom" },
-                { "type": "add-item", "item": "makeshift-torch" },
-                { "type": "narrator-say", "text": "You wedge the glowing mushroom onto the stick. It holds, mostly. You've created a makeshift torch that casts an eerie blue glow. MacGyver would be... not exactly proud, but perhaps mildly amused." }
+                {
+                    "type": "remove-item",
+                    "item": "stick"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "glowing-mushroom"
+                },
+                {
+                    "type": "add-item",
+                    "item": "makeshift-torch"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You wedge the glowing mushroom onto the stick. It holds, mostly. You've created a makeshift torch that casts an eerie blue glow. MacGyver would be... not exactly proud, but perhaps mildly amused."
+                }
             ],
             "once": true
         },
         {
             "id": "combine-mushroom-stick",
-            "trigger": { "verb": "combine", "subject": "glowing-mushroom", "target": "stick" },
+            "trigger": {
+                "verb": "combine",
+                "subject": "glowing-mushroom",
+                "target": "stick"
+            },
             "conditions": [
-                { "type": "has-item", "item": "stick" },
-                { "type": "has-item", "item": "glowing-mushroom" }
+                {
+                    "type": "has-item",
+                    "item": "stick"
+                },
+                {
+                    "type": "has-item",
+                    "item": "glowing-mushroom"
+                }
             ],
             "actions": [
-                { "type": "remove-item", "item": "stick" },
-                { "type": "remove-item", "item": "glowing-mushroom" },
-                { "type": "add-item", "item": "makeshift-torch" },
-                { "type": "narrator-say", "text": "You wedge the glowing mushroom onto the stick. It holds, mostly. You've created a makeshift torch that casts an eerie blue glow. MacGyver would be... not exactly proud, but perhaps mildly amused." }
+                {
+                    "type": "remove-item",
+                    "item": "stick"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "glowing-mushroom"
+                },
+                {
+                    "type": "add-item",
+                    "item": "makeshift-torch"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You wedge the glowing mushroom onto the stick. It holds, mostly. You've created a makeshift torch that casts an eerie blue glow. MacGyver would be... not exactly proud, but perhaps mildly amused."
+                }
             ],
             "once": true
         },
         {
             "id": "use-stick-on-mushroom",
-            "trigger": { "verb": "use", "subject": "stick", "target": "glowing-mushroom" },
+            "trigger": {
+                "verb": "use",
+                "subject": "stick",
+                "target": "glowing-mushroom"
+            },
             "conditions": [
-                { "type": "has-item", "item": "stick" },
-                { "type": "has-item", "item": "glowing-mushroom" }
+                {
+                    "type": "has-item",
+                    "item": "stick"
+                },
+                {
+                    "type": "has-item",
+                    "item": "glowing-mushroom"
+                }
             ],
             "actions": [
-                { "type": "remove-item", "item": "stick" },
-                { "type": "remove-item", "item": "glowing-mushroom" },
-                { "type": "add-item", "item": "makeshift-torch" },
-                { "type": "narrator-say", "text": "You wedge the glowing mushroom onto the stick. It holds, mostly. You've created a makeshift torch that casts an eerie blue glow. MacGyver would be... not exactly proud, but perhaps mildly amused." }
+                {
+                    "type": "remove-item",
+                    "item": "stick"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "glowing-mushroom"
+                },
+                {
+                    "type": "add-item",
+                    "item": "makeshift-torch"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You wedge the glowing mushroom onto the stick. It holds, mostly. You've created a makeshift torch that casts an eerie blue glow. MacGyver would be... not exactly proud, but perhaps mildly amused."
+                }
             ],
             "once": true
         }
@@ -205,13 +404,25 @@
     "deathTriggers": [
         {
             "id": "drink-bottle",
-            "trigger": { "verb": "use", "subject": "mysterious-bottle" },
+            "trigger": {
+                "verb": "use",
+                "subject": "mysterious-bottle"
+            },
             "conditions": [
-                { "type": "has-item", "item": "mysterious-bottle" },
-                { "type": "flag-not-set", "flag": "bottle-safe" }
+                {
+                    "type": "has-item",
+                    "item": "mysterious-bottle"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bottle-safe"
+                }
             ],
             "actions": [
-                { "type": "trigger-death", "deathId": "poison-death" }
+                {
+                    "type": "trigger-death",
+                    "deathId": "poison-death"
+                }
             ]
         }
     ],
@@ -227,8 +438,14 @@
     "audio": {
         "music": "music-cave",
         "ambient": [
-            { "key": "amb-cave-drips", "volume": 0.7 }
+            {
+                "key": "amb-cave-drips",
+                "volume": 0.7
+            }
         ]
     },
-    "playerSpawn": { "x": 480, "y": 430 }
+    "playerSpawn": {
+        "x": 480,
+        "y": 430
+    }
 }
