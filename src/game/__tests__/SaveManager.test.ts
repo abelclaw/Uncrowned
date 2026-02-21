@@ -183,7 +183,7 @@ describe('SaveManager', () => {
 
             expect(exportData.gameState.version).toBe(2);
             expect(exportData.gameState.inventory).toContain('sword');
-            expect(exportData.gameState.flags['armed']).toBe(true);
+            expect((exportData.gameState.flags as Record<string, boolean>)['armed']).toBe(true);
             expect(exportData.gameState.currentRoom).toBe('forest_clearing');
         });
 

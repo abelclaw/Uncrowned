@@ -1,4 +1,5 @@
 import type { GameState } from './GameState.ts';
+import type { MetaGameState, MetaGameStateData } from './MetaGameState.ts';
 
 const SAVE_PREFIX = 'kqgame';
 const AUTO_SAVE_KEY = `${SAVE_PREFIX}-autosave`;
@@ -104,4 +105,110 @@ export class SaveManager {
         }
         return slots;
     }
+
+    // --- Export / Import ---
+
+    /**
+     * Create export data bundle containing both GameState and MetaGameState.
+     * Pure data method -- returns a serializable object. UI triggers actual file download.
+     */
+    static createExportData(state: GameState, meta: MetaGameState): SaveExportData {
+        return {
+            format: 'kqgame-save',
+            version: 1,
+            exportedAt: new Date().toISOString(),
+            gameState: JSON.parse(state.serialize()),
+            metaState: meta.getData(),
+        };
+    }
+
+    /**
+     * Trigger browser file download of exported save data.
+     * Creates a Blob and clicks a temporary <a> element.
+     */
+    static exportSaveToFile(state: GameState, meta: MetaGameState): void {
+        const data = SaveManager.createExportData(state, meta);
+        const json = JSON.stringify(data, null, 2);
+        const blob = new Blob([json], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const date = new Date().toISOString().slice(0, 10);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `kqgame-save-${date}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+
+    /**
+     * Parse and validate an import JSON string.
+     * Returns gameState as JSON string (for state.deserialize()) and metaState data.
+     * The caller should call state.deserialize(result.gameState) which runs migration automatically.
+     */
+    static parseImportData(jsonString: string): { gameState: string; metaState: MetaGameStateData } {
+        const data = JSON.parse(jsonString);
+
+        if (data.format !== 'kqgame-save') {
+            throw new Error('Invalid save file format');
+        }
+        if (!data.gameState) {
+            throw new Error('Save file missing gameState');
+        }
+        if (!data.metaState) {
+            throw new Error('Save file missing metaState');
+        }
+
+        return {
+            gameState: JSON.stringify(data.gameState),
+            metaState: data.metaState as MetaGameStateData,
+        };
+    }
+
+    /**
+     * Open a file picker and import save data from a JSON file.
+     * Returns a Promise with parsed gameState and metaState.
+     */
+    static importSaveFromFile(): Promise<{ gameState: string; metaState: MetaGameStateData }> {
+        return new Promise((resolve, reject) => {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.style.display = 'none';
+
+            input.addEventListener('change', () => {
+                const file = input.files?.[0];
+                if (!file) {
+                    reject(new Error('No file selected'));
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = () => {
+                    try {
+                        const result = SaveManager.parseImportData(reader.result as string);
+                        resolve(result);
+                    } catch (e) {
+                        reject(e);
+                    }
+                };
+                reader.onerror = () => reject(new Error('Failed to read file'));
+                reader.readAsText(file);
+            });
+
+            // Trigger file picker
+            document.body.appendChild(input);
+            input.click();
+            document.body.removeChild(input);
+        });
+    }
+}
+
+/**
+ * Shape of an exported save file.
+ */
+export interface SaveExportData {
+    format: 'kqgame-save';
+    version: number;
+    exportedAt: string;
+    gameState: Record<string, unknown>;
+    metaState: MetaGameStateData;
 }
