@@ -1,0 +1,304 @@
+{
+  "version": 1,
+  "sharedBackgrounds": {
+    "act1-sky": {
+      "prompt": "vast open sky with fluffy clouds, golden hour sunlight, fantasy kingdom backdrop, warm amber tones, peaceful afternoon sky",
+      "seed": 100001,
+      "output": "public/assets/backgrounds/shared/act1-sky.png",
+      "dimensions": { "width": 1920, "height": 540 }
+    },
+    "act1-mid": {
+      "prompt": "distant rolling green hills, crumbling castle towers on horizon, misty forest treeline, warm golden light, fantasy woodland mid-ground",
+      "seed": 100002,
+      "output": "public/assets/backgrounds/shared/act1-mid.png",
+      "dimensions": { "width": 1920, "height": 540 }
+    },
+    "act2-sky": {
+      "prompt": "dark underground cavern ceiling, stalactites hanging down, bioluminescent crystal clusters glowing blue and teal, deep cave atmosphere",
+      "seed": 100003,
+      "output": "public/assets/backgrounds/shared/act2-sky.png",
+      "dimensions": { "width": 1920, "height": 540 }
+    },
+    "act2-mid": {
+      "prompt": "cavern mid-ground with glowing crystal formations, dark purple rock walls, filing cabinets carved into stone, underground bureaucratic office ambiance",
+      "seed": 100004,
+      "output": "public/assets/backgrounds/shared/act2-mid.png",
+      "dimensions": { "width": 1920, "height": 540 }
+    },
+    "act3-sky": {
+      "prompt": "twilight sky with aurora borealis, corrupted golden light, petrified grey clouds, magical energy streaks across darkening heavens",
+      "seed": 100005,
+      "output": "public/assets/backgrounds/shared/act3-sky.png",
+      "dimensions": { "width": 1920, "height": 540 }
+    },
+    "act3-mid": {
+      "prompt": "petrified forest treeline turning to grey stone, castle silhouette wreathed in curse mist, twilight purple haze, decaying grandeur mid-ground",
+      "seed": 100006,
+      "output": "public/assets/backgrounds/shared/act3-mid.png",
+      "dimensions": { "width": 1920, "height": 540 }
+    }
+  },
+  "roomBackgrounds": {
+    "forest_clearing": {
+      "prompt": "sun-dappled forest clearing with gnarled old tree stump among ferns, wildflowers carpeting the ground, dappled sunlight filtering through canopy, mossy ground, cheerful fantasy forest glade",
+      "seed": 200001,
+      "output": "public/assets/backgrounds/rooms/forest_clearing.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act1"
+    },
+    "cave_entrance": {
+      "prompt": "yawning cave mouth in rocky hillside, cold dark interior, heavy oak door set into rock face, stale air wisps, ominous darkness beyond, mossy stone surroundings",
+      "seed": 200002,
+      "output": "public/assets/backgrounds/rooms/cave_entrance.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act1"
+    },
+    "village_path": {
+      "prompt": "well-worn dirt path winding toward distant village, stone well beside the path, old weathered rocks for sitting, rolling countryside, warm afternoon light, rural fantasy road",
+      "seed": 200003,
+      "output": "public/assets/backgrounds/rooms/village_path.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act1"
+    },
+    "cave_depths": {
+      "prompt": "vast underground chamber accessed by stone stairs, pitch darkness, damp stone walls, faint mineral glow, thick oppressive atmosphere, deep cave interior",
+      "seed": 200004,
+      "output": "public/assets/backgrounds/rooms/cave_depths.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act1"
+    },
+    "underground_pool": {
+      "prompt": "subterranean pool with perfectly still reflective water surface, glowing minerals beneath water, rippling light patterns on cave ceiling, crystal glimmering at bottom, serene underground grotto",
+      "seed": 200005,
+      "output": "public/assets/backgrounds/rooms/underground_pool.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act1"
+    },
+    "village_square": {
+      "prompt": "village square with dry stone fountain at center, petrified figures atop fountain, notice board plastered with documents, market stalls, faded grandeur, cobblestone ground",
+      "seed": 200006,
+      "output": "public/assets/backgrounds/rooms/village_square.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act1"
+    },
+    "old_watchtower": {
+      "prompt": "crumbling stone watchtower rising from village edge, ivy-covered walls, rusted telescope on observation platform, broken railing, decayed masonry held together by stubborn ivy",
+      "seed": 200007,
+      "output": "public/assets/backgrounds/rooms/old_watchtower.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act1"
+    },
+    "forest_bridge": {
+      "prompt": "rickety wooden bridge spanning deep gorge, churning river far below, toll booth at bridge midpoint, weathered wooden planks, rope railings, forested gorge walls",
+      "seed": 200008,
+      "output": "public/assets/backgrounds/rooms/forest_bridge.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act1"
+    },
+    "castle_courtyard": {
+      "prompt": "castle courtyard with cracked flagstones sprouting weeds, two guard positions flanking entrance, overgrown garden to one side, stone well in corner, declining grandeur, warm stone walls",
+      "seed": 200009,
+      "output": "public/assets/backgrounds/rooms/castle_courtyard.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act1"
+    },
+    "castle_hallway": {
+      "prompt": "long stone corridor with portraits of monarchs lining walls, branching doorways, bone-shaped locked door, faded threadbare carpet, torch-lit medieval hallway, castle interior",
+      "seed": 200010,
+      "output": "public/assets/backgrounds/rooms/castle_hallway.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act1"
+    },
+    "throne_room": {
+      "prompt": "magnificent throne room in decline, massive stone throne on raised dais with moth-eaten cushion, faded banners hanging from ceiling, dust motes in light shafts, cracked grandeur",
+      "seed": 200011,
+      "output": "public/assets/backgrounds/rooms/throne_room.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act1"
+    },
+    "royal_kitchen": {
+      "prompt": "royal kitchen with copper pots hanging from ceiling hooks, massive iron stove radiating heat, chopping block, flour-dusted surfaces, warm firelight, bustling medieval kitchen",
+      "seed": 200012,
+      "output": "public/assets/backgrounds/rooms/royal_kitchen.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act1"
+    },
+    "castle_garden": {
+      "prompt": "overgrown castle garden with tangled wilderness, stone paths vanishing under ivy, statues poking through overgrowth, petrified ornamental trees, leaning gardener shed, nature reclaiming formal gardens",
+      "seed": 200013,
+      "output": "public/assets/backgrounds/rooms/castle_garden.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act1"
+    },
+    "servants_quarters": {
+      "prompt": "narrow servants quarters with bunk beds lining walls, threadbare blankets, writing desk in corner with dusty diary, stacked wooden crates, dim candlelight, humble living space",
+      "seed": 200014,
+      "output": "public/assets/backgrounds/rooms/servants_quarters.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act1"
+    },
+    "cavern_entrance_hall": {
+      "prompt": "grand cavern entrance hall carved from living rock, vaulted ceiling into darkness, numbered doors and filing cabinets lining walls, contradictory direction signs, registration desk at center, underground bureaucratic office",
+      "seed": 200015,
+      "output": "public/assets/backgrounds/rooms/cavern_entrance_hall.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act2"
+    },
+    "cavern_library": {
+      "prompt": "vast underground library carved into cavern walls, floor-to-ceiling bookshelves stuffed with ancient texts, collapsed shelves with scattered books, reading desk illuminated by glowing ceiling crystals, dusty scholarly atmosphere",
+      "seed": 200016,
+      "output": "public/assets/backgrounds/rooms/cavern_library.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act2"
+    },
+    "filing_room": {
+      "prompt": "endless rows of filing cabinets stretching into cavern gloom, labeled with complex codes, old paper and dust atmosphere, overwhelming bureaucratic archive, underground office storage",
+      "seed": 200017,
+      "output": "public/assets/backgrounds/rooms/filing_room.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act2"
+    },
+    "waiting_room": {
+      "prompt": "cavernous waiting room with rows of stone benches, numbered display board, tally marks covering walls, faded motivational posters, institutional underground waiting area, dim blue-teal lighting",
+      "seed": 200018,
+      "output": "public/assets/backgrounds/rooms/waiting_room.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act2"
+    },
+    "cavern_west_wing": {
+      "prompt": "natural cavern corridor lined with bioluminescent mushrooms in pale blue green and violet, pulsing glow in darkness, fungal clusters on cave walls, ethereal underground passage",
+      "seed": 200019,
+      "output": "public/assets/backgrounds/rooms/cavern_west_wing.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act2"
+    },
+    "crystal_chamber": {
+      "prompt": "vast natural chamber with grey crystal floating above stone pedestal, shimmering force barrier surrounding crystal, warning signs in many languages, dramatic underground cavern with crystalline focus",
+      "seed": 200020,
+      "output": "public/assets/backgrounds/rooms/crystal_chamber.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act2"
+    },
+    "cavern_balcony": {
+      "prompt": "natural stone balcony jutting over vast crystal chamber below, vertigo-inducing drop, coiled rope anchored to rocks, no railing, dramatic cave overlook with distant crystal glow beneath",
+      "seed": 200021,
+      "output": "public/assets/backgrounds/rooms/cavern_balcony.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act2"
+    },
+    "echo_chamber": {
+      "prompt": "dome-shaped cavern with precise acoustics, stalactites hanging in rows at different heights, dripping water creating natural rhythm, ancient carvings on walls depicting sound waves, coal deposits glinting among stalactites",
+      "seed": 200022,
+      "output": "public/assets/backgrounds/rooms/echo_chamber.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act2"
+    },
+    "cavern_east_wing": {
+      "prompt": "half-flooded cavern corridor with dark water filling lower passages, stone walkways barely above waterline, oily water reflections, rushing water echoing from deeper tunnels, cold damp mineral atmosphere",
+      "seed": 200023,
+      "output": "public/assets/backgrounds/rooms/cavern_east_wing.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act2"
+    },
+    "underground_river": {
+      "prompt": "underground river carving through cavern, swift dark current, old cracked boat pulled up on rocky shore, waterfall in distance, rushing water with confident current, underground waterway",
+      "seed": 200024,
+      "output": "public/assets/backgrounds/rooms/underground_river.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act2"
+    },
+    "forge_chamber": {
+      "prompt": "ancient dwarven forge with massive blackened anvil, cold stone forge with bellows and chimney, tools hanging on walls hammers tongs files, spectral blue glow from foundation, underground smithy",
+      "seed": 200025,
+      "output": "public/assets/backgrounds/rooms/forge_chamber.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act2"
+    },
+    "guardian_chamber": {
+      "prompt": "circular chamber with vaulted ceiling covered in ancient carvings, massive stone guardian figure at center with arms crossed, stone pedestal with seal-shaped indentation, solemn underground guardian room",
+      "seed": 200026,
+      "output": "public/assets/backgrounds/rooms/guardian_chamber.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act2"
+    },
+    "petrified_forest": {
+      "prompt": "forest clearing with trees turned to rigid grey stone, branches frozen mid-sway like reaching arms, granite wildflowers, crumbling rock grass, castle visible through stone canopy, grey petrification curse spreading",
+      "seed": 200027,
+      "output": "public/assets/backgrounds/rooms/petrified_forest.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act3"
+    },
+    "castle_courtyard_act3": {
+      "prompt": "castle courtyard consumed by petrification curse, guard statues frozen mid-salute, stone well turned solid, petrified weeds as grey thorns, half-stone half-flesh atmosphere, grey desolation",
+      "seed": 200028,
+      "output": "public/assets/backgrounds/rooms/castle_courtyard_act3.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act3"
+    },
+    "throne_room_act3": {
+      "prompt": "throne room with grey stone creeping across every surface, cracks in floor and ceiling, ancient rune circle pulsing faintly on floor, empty throne, oppressive urgency, ceremonial chamber for final rite",
+      "seed": 200029,
+      "output": "public/assets/backgrounds/rooms/throne_room_act3.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act3"
+    },
+    "royal_archive": {
+      "prompt": "cathedral of paperwork with floor-to-ceiling shelves packed with scrolls and ledgers, dust motes in grey light from narrow windows, shelves turning to stone mid-sentence, section labeled curses and hexes",
+      "seed": 200030,
+      "output": "public/assets/backgrounds/rooms/royal_archive.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act3"
+    },
+    "wizard_tower": {
+      "prompt": "chaotic wizard tower interior with shelves of bubbling potions, scattered star charts, half-finished spell components, blackened scorch mark on wall, open books about curses, arcane disaster zone",
+      "seed": 200031,
+      "output": "public/assets/backgrounds/rooms/wizard_tower.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act3"
+    },
+    "clock_tower": {
+      "prompt": "massive clockwork mechanism filling tower interior, wagon-wheel sized gears frozen mid-turn, pendulum seized in place, clock face reading 3:47 forever, stone walls with gaps showing cursed landscape below",
+      "seed": 200032,
+      "output": "public/assets/backgrounds/rooms/clock_tower.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act3"
+    },
+    "dungeon": {
+      "prompt": "dungeon that looks like office with bars, filing cabinets lining cells, desk piled with forms and stamped documents, trap door in floor, bureaucratic underground prison office, spectacles gleaming desk lamp",
+      "seed": 200033,
+      "output": "public/assets/backgrounds/rooms/dungeon.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act3"
+    },
+    "mirror_hall": {
+      "prompt": "long hall lined with mirrors of every size and era, grand gold-framed floor-to-ceiling mirrors, small cracked mirrors at odd angles, mirrors showing different scenes not reflections, one central mirror glowing soft blue",
+      "seed": 200034,
+      "output": "public/assets/backgrounds/rooms/mirror_hall.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act3"
+    },
+    "rooftop": {
+      "prompt": "castle rooftop with panoramic view of kingdom turning to stone, grey petrification tide rolling from every direction, low crumbling parapet at edge, cold wind atmosphere, beautiful dying landscape, twilight sky",
+      "seed": 200035,
+      "output": "public/assets/backgrounds/rooms/rooftop.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act3"
+    },
+    "treasury": {
+      "prompt": "royal treasury with empty pedestals where treasures once sat, cobweb networks connecting remaining items, velvet cushion with administrative seal at center, dusty vial on shelf, nearly empty vault, faded wealth",
+      "seed": 200036,
+      "output": "public/assets/backgrounds/rooms/treasury.png",
+      "dimensions": { "width": 960, "height": 540 },
+      "act": "act3"
+    }
+  },
+  "playerSprite": {
+    "prompt": "young tinker character, traveling adventurer, leather vest, messy hair, pixel art character sprite sheet, idle pose, walk cycle, interact pose",
+    "seed": 300001,
+    "output": "public/assets/sprites/player.png",
+    "dimensions": { "width": 768, "height": 64 },
+    "spriteConfig": { "frameWidth": 48, "frameHeight": 64, "frameCount": 16 }
+  },
+  "items": {},
+  "npcs": {}
+}

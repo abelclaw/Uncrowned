@@ -1,0 +1,87 @@
+{
+  "pixelDensity": "2x (480x270 native upscaled to 960x540)",
+  "generationResolution": { "width": 1024, "height": 1024 },
+  "outputResolution": { "width": 960, "height": 540 },
+  "wideOutputResolution": { "width": 1920, "height": 540 },
+  "loraModel": "Flux-2D-Game-Assets-LoRA.safetensors",
+  "loraTrigger": "GRPZA",
+  "loraStrength": 0.8,
+  "sampler": "euler",
+  "scheduler": "simple",
+  "steps": 20,
+  "guidance": 3.5,
+  "acts": {
+    "act1": {
+      "name": "The Forest & Castle",
+      "palette": "Warm greens, golden sunlight, mossy grays, amber accents. Soft fantasy woodland with crumbling stone structures.",
+      "rooms": [
+        "forest_clearing",
+        "cave_entrance",
+        "village_path",
+        "cave_depths",
+        "underground_pool",
+        "village_square",
+        "old_watchtower",
+        "forest_bridge",
+        "castle_courtyard",
+        "castle_hallway",
+        "throne_room",
+        "royal_kitchen",
+        "castle_garden",
+        "servants_quarters"
+      ]
+    },
+    "act2": {
+      "name": "The Screaming Caverns",
+      "palette": "Deep blues, glowing crystals, dark purples, bioluminescent teal. Underground cavern with bureaucratic office elements.",
+      "rooms": [
+        "cavern_entrance_hall",
+        "cavern_library",
+        "filing_room",
+        "waiting_room",
+        "cavern_west_wing",
+        "crystal_chamber",
+        "cavern_balcony",
+        "echo_chamber",
+        "cavern_east_wing",
+        "underground_river",
+        "forge_chamber",
+        "guardian_chamber"
+      ]
+    },
+    "act3": {
+      "name": "The Rite of Administrative Closure",
+      "palette": "Twilight purples, corrupted golds, petrified grays, magical aurora greens. Decaying grandeur with bureaucratic surrealism.",
+      "rooms": [
+        "petrified_forest",
+        "castle_courtyard_act3",
+        "throne_room_act3",
+        "royal_archive",
+        "wizard_tower",
+        "clock_tower",
+        "dungeon",
+        "mirror_hall",
+        "rooftop",
+        "treasury"
+      ]
+    }
+  },
+  "promptPrefix": "GRPZA, pixel art game background, 2D side-scrolling adventure game,",
+  "promptSuffix": ", detailed pixel art, retro game aesthetic, clean lines, vibrant colors",
+  "spritePromptPrefix": "GRPZA, pixel art game sprite, 2D character,",
+  "spritePromptSuffix": ", white background, game asset, clean pixel art, transparent background ready",
+  "itemPromptPrefix": "GRPZA, pixel art game item icon, 2D,",
+  "itemPromptSuffix": ", white background, game asset, clean pixel art, centered, small object",
+  "parallaxLayers": {
+    "shared": {
+      "description": "2 shared layers per act: sky and mid-ground. Same across all rooms in an act.",
+      "skyScrollFactor": 0,
+      "midScrollFactor": 0.3
+    },
+    "unique": {
+      "description": "1 unique ground layer per room. Shows room-specific terrain and features.",
+      "groundScrollFactor": 1
+    }
+  },
+  "seedStrategy": "Each room gets a fixed seed for reproducibility. Seeds are stored in art-manifest.json. Re-running with same seed + prompt produces identical output."
+}
