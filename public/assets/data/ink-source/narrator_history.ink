@@ -161,4 +161,93 @@ EXTERNAL getDeathCount()
     The Clerk has been satisfied. Grudgingly. Your VIP stamp has bypassed centuries of queue management, and the Clerk's left eye will never stop twitching. You've done more damage to his filing system than time itself.
 }
 
+// Act 2->3 transition
+{visitedRoom("petrified_forest"):
+    The forest is stone now. The place where you first arrived -- the clearing, the wildflowers, the stump -- all grey granite. The curse has eaten the edges of the kingdom and is working inward. Whatever you're going to do, the time to do it is now. The time to do it was actually yesterday, but you were busy navigating bureaucratic cave systems.
+}
+
+// Act 3 room commentary
+{visitedRoom("castle_courtyard_act3"):
+    The castle courtyard, revisited. The guards who challenged you are statues now. The well is stone. Captain Aldric holds his post with half a body and twice the determination. Erelhain's final hours are counting down.
+}
+
+{visitedRoom("royal_archive"):
+    The Royal Archive. Centuries of paperwork, most of it now stone. But the curse contract -- the one document that matters -- was filed correctly. Of course it was. This kingdom may be dying, but its filing system is impeccable.
+}
+
+{visitedRoom("wizard_tower"):
+    The wizard's tower. Marlowe's tower. The place where a parking grudge became an apocalypse. Every great catastrophe starts with a petty grievance. This one just happened to come with an administrative exit clause.
+}
+
+{visitedRoom("clock_tower") && hasFlag("clock-fixed"):
+    The clock runs again. Time flows. The curse slows. A gear spring and some oil -- the kingdom's salvation was a maintenance task. The annual clock budget was two copper coins. Underfunding has consequences.
+- else:
+    {visitedRoom("clock_tower"):
+        The clock tower stands frozen at 3:47. The moment the curse began. The moment a wizard lost his parking spot and the kingdom lost its future. Time is the enemy, and time has stopped cooperating.
+    }
+}
+
+{visitedRoom("dungeon") && hasFlag("clerk_allied"):
+    The Clerk is an ally now. The immortal bureaucrat who created the curse is helping you destroy it. Redemption through paperwork. Only in Erelhain.
+- else:
+    {visitedRoom("dungeon"):
+        The dungeon. The Clerk's true office. Filing cabinets where cells should be. A trap door helpfully labeled. The bureaucratic heart of the kingdom, beating with stamps and disapproval.
+    }
+}
+
+{visitedRoom("mirror_hall") && hasFlag("mirror_truth_revealed"):
+    The Mirror Spirit showed you the truth. You are not the Uncrowned Sovereign. There is no Uncrowned Sovereign. There is just Pip, a tinker who kept walking forward because no one told you convincingly enough to stop. The most honest mirror in the kingdom showed you something better than destiny: adequacy.
+}
+
+{visitedRoom("rooftop"):
+    The rooftop. The kingdom spread below like a map of failure. Grey in every direction. But also: a view worth saving. Fields, forests, rivers, villages -- all of it worth one more attempt. One more puzzle. One more form filed correctly.
+}
+
+{visitedRoom("treasury"):
+    The Royal Treasury. Nearly empty. The kingdom spent its wealth on wars, feasts, and one very expensive funeral. What remains is a seal on a cushion and a vial of oil. The essentials, as it turns out.
+}
+
+// Act 3 progression milestones
+{hasFlag("found_curse_contract"):
+    The curse contract is in your hands. Clause 47-B: Administrative Closure. The wizard who cast the curse followed the rules even while breaking them. Bureaucracy is inescapable, even for apocalypses.
+}
+
+{hasFlag("clerk_remembers"):
+    The Clerk remembers. Marlowe remembers. The immortal bureaucrat who has been running the test for four hundred years now knows he created it. He cast the curse. Over a parking spot. The therapy bills would be staggering, but at least he's helping fix it now.
+}
+
+{hasFlag("clerk_outwitted"):
+    You outwitted the Clerk with his own rules. Clause 47-B, procedurally valid closure request, registered applicant. He couldn't argue. His own bureaucracy defeated him. The irony is so thick you could file it.
+}
+
+{hasFlag("guard_last_orders"):
+    Captain Aldric gave his final orders. Archive. Treasury. Clerk. Throne room. A half-petrified man giving military directives. Duty doesn't stop for curses. Apparently.
+}
+
+{hasFlag("mirror_truth_revealed"):
+    You know the truth now. No prophecy. No destiny. Just a tinker with a collection of items and a willingness to do the work. The kingdom's savior is the least qualified person in the room. As usual.
+}
+
+// Death count milestones (Act 3 tiers)
+{getDeathCount() > 40:
+    Deaths: {getDeathCount()}. You have died more times than some kingdoms have existed. The afterlife has installed a revolving door for you specifically. Your persistence in the face of repeated mortality is either inspiring or a cosmic clerical error.
+- else:
+    {getDeathCount() > 30:
+        You've died {getDeathCount()} times. At this point, Death doesn't even stand up when you arrive. He just waves you through. 'Back again? Third door on the left. You know the way.'
+    - else:
+        {getDeathCount() > 25:
+            Deaths: {getDeathCount()}. A quarter-century of deaths. You've experienced more ends than most people experience beginnings. The narrator has run out of novel ways to express sympathy.
+        }
+    }
+}
+
+// Endgame commentary
+{hasFlag("rite_prepared"):
+    Everything is in place. The Crystal. The Seal. The Contract. The Clerk. The Ghost King. The rite circle glows. This is the moment. All the deaths, all the puzzles, all the paperwork -- it comes down to this. One final stamp. One final filing. One final bureaucratic act to save a kingdom.
+}
+
+{hasFlag("curse-broken"):
+    The curse is broken. The kingdom lives. Color returns to stone. Water flows from wells. People wake from granite sleep. And at the center of it all: Pip. A tinker. An ordinary person who did extraordinary paperwork. The narrator has watched many heroes. None of them saved a kingdom by filing a form. This is, perhaps, the most honest kind of heroism: showing up, doing the work, and asking for nothing but directions and a warm meal. Well done, Pip. Well done.
+}
+
 -> END

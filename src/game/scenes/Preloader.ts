@@ -91,6 +91,18 @@ export class Preloader extends Scene {
         this.load.json('room-forge_chamber', 'assets/data/rooms/forge_chamber.json');
         this.load.json('room-guardian_chamber', 'assets/data/rooms/guardian_chamber.json');
 
+        // Room data JSON files -- Act 3 (The Rite of Administrative Closure)
+        this.load.json('room-petrified_forest', 'assets/data/rooms/petrified_forest.json');
+        this.load.json('room-castle_courtyard_act3', 'assets/data/rooms/castle_courtyard_act3.json');
+        this.load.json('room-throne_room_act3', 'assets/data/rooms/throne_room_act3.json');
+        this.load.json('room-royal_archive', 'assets/data/rooms/royal_archive.json');
+        this.load.json('room-wizard_tower', 'assets/data/rooms/wizard_tower.json');
+        this.load.json('room-clock_tower', 'assets/data/rooms/clock_tower.json');
+        this.load.json('room-dungeon', 'assets/data/rooms/dungeon.json');
+        this.load.json('room-mirror_hall', 'assets/data/rooms/mirror_hall.json');
+        this.load.json('room-rooftop', 'assets/data/rooms/rooftop.json');
+        this.load.json('room-treasury', 'assets/data/rooms/treasury.json');
+
         // Item definitions registry
         this.load.json('items', 'assets/data/items.json');
 
@@ -111,6 +123,11 @@ export class Preloader extends Scene {
         this.load.json('dialogue-the_clerk', 'assets/data/dialogue/the_clerk.ink.json');
         this.load.json('dialogue-queue_ghost', 'assets/data/dialogue/queue_ghost.ink.json');
         this.load.json('dialogue-dwarven_spirit', 'assets/data/dialogue/dwarven_spirit.ink.json');
+
+        // NPC dialogue compiled ink JSON files -- Act 3 (The Rite of Administrative Closure)
+        this.load.json('dialogue-petrified_guard', 'assets/data/dialogue/petrified_guard.ink.json');
+        this.load.json('dialogue-mirror_spirit', 'assets/data/dialogue/mirror_spirit.ink.json');
+        this.load.json('dialogue-wizard_ghost', 'assets/data/dialogue/wizard_ghost.ink.json');
 
         // Audio registry (event-to-SFX mapping)
         this.load.json('audio-registry', 'assets/data/audio-registry.json');

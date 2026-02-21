@@ -63,6 +63,30 @@
       "knowledge": ["metalworking", "ancient seals", "kingdom founding", "forge operation", "dwarven crafting techniques"],
       "dialogueKey": "dialogue-dwarven_spirit",
       "defaultGreeting": "The spectral dwarven figure opens one eye, evaluates you with the critical gaze of a master craftsman, and closes it again. You have not yet earned his attention."
+    },
+    {
+      "id": "petrified_guard",
+      "name": "Captain Aldric",
+      "personality": "Half-petrified guard captain. Stoic, dutiful, slowly turning to stone but still giving orders. Deeply loyal to the kingdom. His right side is stone, his left still flesh. He refuses to abandon his post.",
+      "knowledge": ["castle defense", "dungeon layout", "the Clerk's habits", "treasury location", "guard duty", "kingdom's final hours"],
+      "dialogueKey": "dialogue-petrified_guard",
+      "defaultGreeting": "Captain Aldric stands at attention -- or as close to attention as a half-petrified man can manage. His one living eye fixes on you with the intensity of someone who has been waiting for exactly this moment."
+    },
+    {
+      "id": "mirror_spirit",
+      "name": "Mirror Spirit",
+      "personality": "An entity that lives in the Hall of Mirrors. Shows truth through reflections. Speaks in a chorus of reflected voices. Neither kind nor cruel -- simply honest, which is often worse.",
+      "knowledge": ["Pip's true nature", "the prophecy's meaning", "self-knowledge", "reflection magic", "the truth about heroes"],
+      "dialogueKey": "dialogue-mirror_spirit",
+      "defaultGreeting": "The face in the mirror watches you approach. It is not your face. It is something older, wiser, and considerably less impressed."
+    },
+    {
+      "id": "wizard_ghost",
+      "name": "Wizard Marlowe",
+      "personality": "The ghost of the wizard who cast the curse. Doesn't remember casting it. Thinks he's still alive. Very confused. Mutters about reagent prices and parking regulations. Harmless but unhelpful.",
+      "knowledge": ["spell components", "tower layout", "the curse (fragmented)", "parking regulations", "memory crystals", "potion brewing"],
+      "dialogueKey": "dialogue-wizard_ghost",
+      "defaultGreeting": "A spectral figure drifts between the shelves, muttering about the rising cost of bat guano. He startles when he sees you. 'A customer! No, wait. A visitor? I don't get visitors. Or do I? I can't remember.'"
     }
   ]
 }
