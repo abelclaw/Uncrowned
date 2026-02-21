@@ -1,0 +1,103 @@
+{
+    "id": "waiting_room",
+    "name": "The Waiting Room",
+    "description": "A cavernous room furnished with rows of stone benches and a numbered display board reading 'NOW SERVING: 3.' Your ticket says 847. A translucent figure sits on one of the benches -- a ghost who appears to have been waiting for a very, very long time. The walls are covered in tally marks, motivational posters that have aged into irony, and one sign reading 'YOUR PATIENCE IS APPRECIATED (BUT NOT REQUIRED -- YOU HAVE NO CHOICE).'",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-entrance-hall",
+            "zone": { "x": 880, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "cavern_entrance_hall",
+            "spawnPoint": { "x": 200, "y": 430 },
+            "transition": "slide-right",
+            "direction": "east",
+            "label": "entrance hall"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "number-display",
+            "name": "Number Display",
+            "zone": { "x": 400, "y": 345, "width": 120, "height": 40 },
+            "interactionPoint": { "x": 460, "y": 420 },
+            "responses": {
+                "look": "A stone display board reads 'NOW SERVING: 3.' It has read 'NOW SERVING: 3' for approximately two hundred years. The ghost on the bench confirms this. The queue system is, in a word, deliberate.",
+                "use": "You press buttons on the display. Nothing changes. The number 3 regards you with the permanence of a mathematical constant.",
+                "default": "You stare at the display. The display stares at the number 3. The number 3 stares into eternity."
+            }
+        },
+        {
+            "id": "stone-benches",
+            "name": "Stone Benches",
+            "zone": { "x": 200, "y": 400, "width": 150, "height": 40 },
+            "interactionPoint": { "x": 275, "y": 420 },
+            "responses": {
+                "look": "Stone benches worn smooth by centuries of waiting. Each one has a small brass plaque reading 'PLEASE REMAIN SEATED.' Some have tally marks scratched into them -- the longest set reaches 73,847. Someone was keeping count. They presumably stopped when they ran out of stone.",
+                "use": "You sit on a bench. It's cold, hard, and immediately makes you want to stand up. The ghost nearby nods in solidarity.",
+                "default": "You examine the benches. They've hosted more patience than any piece of furniture should have to bear."
+            }
+        },
+        {
+            "id": "motivational-posters",
+            "name": "Motivational Posters",
+            "zone": { "x": 650, "y": 355, "width": 80, "height": 50 },
+            "interactionPoint": { "x": 690, "y": 420 },
+            "responses": {
+                "look": "'HANG IN THERE!' reads one poster, featuring a cat clinging to a branch. The poster is 400 years old. The cat is long dead. The irony writes itself. Another reads 'GOOD THINGS COME TO THOSE WHO WAIT' in a font that suggests the author was being sarcastic.",
+                "use": "You read the posters more carefully. One, half-hidden behind the others, reads: 'For faster service, seek VIP authorization. Check the filing room.' This feels like a hint. Or a trap. In the Screaming Caverns, the distinction is academic.",
+                "default": "You peruse the motivational posters. They motivate nothing except existential dread."
+            }
+        }
+    ],
+    "items": [],
+    "puzzles": [],
+    "deathTriggers": [
+        {
+            "id": "wait-too-long",
+            "trigger": { "verb": "use", "subject": "stone-benches" },
+            "conditions": [
+                { "type": "flag-not-set", "flag": "vip_stamped" }
+            ],
+            "actions": [
+                { "type": "trigger-death", "deathId": "boredom-death" }
+            ]
+        }
+    ],
+    "deaths": {
+        "boredom-death": {
+            "title": "Death by Patience",
+            "narratorText": "You sit down to wait. And wait. And wait. Time passes. Seasons change above ground. Empires rise and fall. The number display remains at 3. Your body slows, your breathing shallows, and eventually you simply... stop. The ghost nearby pats your shoulder sympathetically. 'Don't worry,' he says. 'You get used to it. After the first century.' Your skeleton continues to wait. It is very patient now."
+        }
+    },
+    "dynamicDescriptions": {},
+    "npcs": [
+        {
+            "id": "queue_ghost",
+            "position": { "x": 300, "y": 395 },
+            "interactionPoint": { "x": 270, "y": 420 },
+            "zone": { "x": 270, "y": 375, "width": 60, "height": 60 }
+        }
+    ],
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            { "key": "amb-cave-drips", "volume": 0.2 },
+            { "key": "amb-wind-light", "volume": 0.2 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}

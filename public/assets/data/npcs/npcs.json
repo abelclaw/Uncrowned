@@ -15,6 +15,54 @@
       "knowledge": ["the curse", "kingdom trade routes", "crystal shards", "village history", "petrification symptoms"],
       "dialogueKey": "dialogue-stone_merchant",
       "defaultGreeting": "The merchant's one mobile eye tracks your approach. His stone lips crack into something that was probably meant to be a welcoming smile."
+    },
+    {
+      "id": "bridge_troll",
+      "name": "Bertram the Bridge Troll",
+      "personality": "A friendly, well-read troll who is contractually obligated to block the bridge. Apologetic about it. Has a book club, a mortgage, and very little tolerance for rudeness.",
+      "knowledge": ["bridge history", "riddle answers", "kingdom geography", "troll labor law", "book recommendations"],
+      "dialogueKey": "dialogue-bridge_troll",
+      "defaultGreeting": "A large, surprisingly well-groomed troll adjusts his reading glasses and looks up from his book. He has the patient expression of a professional who takes his work seriously."
+    },
+    {
+      "id": "ghost_king",
+      "name": "Ghost King",
+      "personality": "Sardonic dead monarch. Bitter about dying from an olive. Self-aware about his failures. Dry wit. He's had centuries to think about his mistakes and has catalogued every one.",
+      "knowledge": ["kingdom history", "the curse origin", "royal bureaucratic procedures", "the Rite", "royal family secrets", "administrative seals"],
+      "dialogueKey": "dialogue-ghost_king",
+      "defaultGreeting": "The translucent figure of King Mortimer hovers above the throne, radiating spectral irritation and the faint smell of ectoplasm."
+    },
+    {
+      "id": "castle_cook",
+      "name": "Martha the Cook",
+      "personality": "Practical, no-nonsense, exasperated by everyone. Has kept the castle running single-handedly. Best character in the game and she knows it. Wields a cleaver with authority.",
+      "knowledge": ["castle layout", "servant gossip", "where things are hidden", "recipe for spirit-brew hint", "rat problem", "kitchen secrets"],
+      "dialogueKey": "dialogue-castle_cook",
+      "defaultGreeting": "Martha the Cook looks up from her chopping block with the expression of someone who has been the only competent person in a building for far too long."
+    },
+    {
+      "id": "the_clerk",
+      "name": "The Clerk",
+      "personality": "Immortal bureaucrat with zero personality and infinite patience. Speaks exclusively in administrative jargon. Secretly the original curse-caster but does not remember. His entire identity is procedure.",
+      "knowledge": ["all bureaucratic procedures", "form numbers", "filing systems", "the test", "queue management", "administrative law"],
+      "dialogueKey": "dialogue-the_clerk",
+      "defaultGreeting": "The Clerk regards you over his spectacles with the expression of someone who has processed ten million applicants and found fault with nine million nine hundred and ninety-nine thousand of them."
+    },
+    {
+      "id": "queue_ghost",
+      "name": "Patient Ghost",
+      "personality": "A ghost who has been waiting in the queue for 200 years. Remarkably patient. Has numbered every crack in the ceiling. Cheerful despite circumstances. Finds waiting meditative.",
+      "knowledge": ["VIP bypass", "queue system exploits", "waiting room history", "ceiling crack count", "patience techniques"],
+      "dialogueKey": "dialogue-queue_ghost",
+      "defaultGreeting": "A translucent figure waves from a stone bench. He's been sitting there for 200 years and seems genuinely happy to see someone new."
+    },
+    {
+      "id": "dwarven_spirit",
+      "name": "Forge Spirit",
+      "personality": "Ancient dwarven smith. Gruff but fair. Respects craftsmanship above all else. Will only help if you show proper respect for the forge. Speaks rarely, but when he does, it matters.",
+      "knowledge": ["metalworking", "ancient seals", "kingdom founding", "forge operation", "dwarven crafting techniques"],
+      "dialogueKey": "dialogue-dwarven_spirit",
+      "defaultGreeting": "The spectral dwarven figure opens one eye, evaluates you with the critical gaze of a master craftsman, and closes it again. You have not yet earned his attention."
     }
   ]
 }

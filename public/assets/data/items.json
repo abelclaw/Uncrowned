@@ -119,6 +119,72 @@
             "name": "Castle Map",
             "description": "A map of the kingdom showing routes to the Screaming Caverns. Includes a helpful 'You are here' arrow pointing at nothing.",
             "combinable": false
+        },
+        {
+            "id": "form-27b-stroke-6",
+            "name": "Form 27-B Stroke 6",
+            "description": "A bureaucratic form of such stunning complexity that reading it counts as a puzzle in itself.",
+            "combinable": false
+        },
+        {
+            "id": "ancient-ink",
+            "name": "Ancient Ink",
+            "description": "Ink so old it has developed opinions. Still writes, grudgingly.",
+            "combinable": false
+        },
+        {
+            "id": "queue-ticket",
+            "name": "Queue Ticket #847",
+            "description": "A numbered ticket. You are number 847. Currently serving: 3. This may take a while.",
+            "combinable": false
+        },
+        {
+            "id": "vip-stamp",
+            "name": "VIP Authorization Stamp",
+            "description": "An unauthorized stamp that says 'VIP -- SKIP ALL QUEUES.' Someone left it in a filing cabinet. Bless them.",
+            "combinable": false
+        },
+        {
+            "id": "old-boat",
+            "name": "Old Boat",
+            "description": "A boat in the loosest possible definition. It floats. Mostly. When it feels like it.",
+            "combinable": true
+        },
+        {
+            "id": "rope",
+            "name": "Climbing Rope",
+            "description": "A length of rope that looks like it was last inspected during the previous dynasty. It holds. Probably.",
+            "combinable": true
+        },
+        {
+            "id": "wood-planks",
+            "name": "Wood Planks",
+            "description": "Planks salvaged from broken shelving. The library's loss is your boat's gain.",
+            "combinable": true
+        },
+        {
+            "id": "broken-seal-stamp",
+            "name": "Broken Seal Stamp",
+            "description": "An ancient version of the kingdom's seal, cracked in two. It depicts the same disgruntled badger, but angrier.",
+            "combinable": true
+        },
+        {
+            "id": "coal",
+            "name": "Forge Coal",
+            "description": "Chunks of ancient coal. They've been waiting centuries for someone to burn them. The anticipation is palpable.",
+            "combinable": false
+        },
+        {
+            "id": "ancient-seal",
+            "name": "Ancient Kingdom Seal",
+            "description": "The kingdom's original administrative seal, reforged. The badger on it looks slightly less disgruntled. Progress.",
+            "combinable": false
+        },
+        {
+            "id": "crystal-of-mundanity",
+            "name": "Crystal of Mundanity",
+            "description": "The legendary Crystal of Mundanity. It is, fittingly, completely unremarkable. A plain grey crystal.",
+            "combinable": false
         }
     ]
 }

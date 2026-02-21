@@ -92,4 +92,73 @@ EXTERNAL getDeathCount()
     At least you know not to drink the mysterious bottle now. Small victories. In a kingdom turning to stone, you take what you can get.
 }
 
+// Death count milestones (higher tiers)
+{getDeathCount() > 20:
+    You've died {getDeathCount()} times. You should have a frequent-dying card by now. Tenth death free. Except they're all free. And permanent. Usually.
+- else:
+    {getDeathCount() > 15:
+        Deaths: {getDeathCount()}. At this rate, the afterlife is going to need a bigger lobby. You're single-handedly overloading the system.
+    }
+}
+
+// Act 1b room commentary
+{visitedRoom("forest_bridge"):
+    Bertram's bridge. The troll with a book club and a mortgage. The kingdom's infrastructure may be crumbling, but the bridge tolling industry remains robust.
+}
+
+{visitedRoom("castle_courtyard") && visitedRoom("castle_hallway"):
+    Castle Erelhain. Once grand. Now grand in the way that ruins are grand -- impressively sad. The guards maintain standards despite having nothing left to guard but standards.
+- else:
+    {visitedRoom("castle_courtyard"):
+        The castle courtyard. Weeds in the flagstones, guards at the gate, and the general atmosphere of an empire in its final PowerPoint presentation.
+    }
+}
+
+{visitedRoom("throne_room") && hasFlag("met_ghost_king"):
+    You've met the Ghost King. A dead monarch who haunts his own throne room and makes jokes about his death by olive. Erelhain's leadership situation has not improved since his passing.
+}
+
+{visitedRoom("royal_kitchen") && hasFlag("cook_befriended"):
+    Martha the Cook. The most competent person in the castle. Possibly the most competent person in the kingdom. She runs the kitchen with an iron fist and a very sharp cleaver. You brought her flour. She considers you family now.
+}
+
+{visitedRoom("servants_quarters") && hasFlag("rats_caught"):
+    The rat problem in the servants' quarters has been resolved. Democracy has been restored among the surviving rodents, who have relocated to parts of the castle that are Someone Else's Problem.
+}
+
+// Act 1b progression
+{hasFlag("decree-sealed") && hasFlag("ghost_approved_decree"):
+    You forged a royal decree and got a ghost to approve it. In any other kingdom, this would be a crime. In Erelhain, it's a leadership quality.
+}
+
+{hasFlag("skeleton-key-used"):
+    The skeleton key opened the locked door and revealed the route to the Screaming Caverns. The map shows the way. Your better judgment shows the exit. You're following the map.
+}
+
+// Act transition commentary
+{visitedRoom("cavern_entrance_hall"):
+    The Screaming Caverns. Where bureaucracy goes to become architecture. The Clerk awaits. The test beckons. The paperwork is eternal.
+}
+
+// Act 2 room commentary
+{visitedRoom("filing_room") && visitedRoom("waiting_room"):
+    You've navigated the filing room and the waiting room. The bureaucratic gauntlet is behind you. The physical gauntlet lies ahead. Both are equally hostile, but only one involves paperwork.
+}
+
+{visitedRoom("cavern_west_wing") && hasFlag("mushroom_pattern_solved"):
+    The mushroom pattern is solved. Bioluminescent navigation: left, right, center, left, center. The caverns glow with living light, which is beautiful and also deeply unnecessary for a cave system designed to test bureaucrats.
+}
+
+{visitedRoom("forge_chamber") && hasFlag("forge_lit"):
+    The ancient forge burns again. After centuries of cold darkness, fire returns. The dwarven spirit approves. Good metal is being shaped once more.
+}
+
+{hasFlag("guardian-defeated"):
+    The guardian's test is passed. 847, Aldric the Fastidious, Service. Three answers that summarize a kingdom's entire philosophy. The crystal is yours.
+}
+
+{hasFlag("clerk-satisfied"):
+    The Clerk has been satisfied. Grudgingly. Your VIP stamp has bypassed centuries of queue management, and the Clerk's left eye will never stop twitching. You've done more damage to his filing system than time itself.
+}
+
 -> END

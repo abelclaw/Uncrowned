@@ -1,0 +1,118 @@
+{
+    "id": "cavern_west_wing",
+    "name": "West Wing Corridor",
+    "description": "The West Wing is a natural cavern corridor lined with bioluminescent mushrooms -- clusters of pale blue, green, and violet fungi that pulse gently in the darkness. The mushrooms can be activated by touch, each one lighting up or dimming in sequence. A pattern is needed -- somewhere in the caverns, someone recorded the correct sequence. Passages lead north to a balcony overlooking a crystal chamber, and south to an echo-filled chamber.",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-entrance-hall",
+            "zone": { "x": 880, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "cavern_entrance_hall",
+            "spawnPoint": { "x": 250, "y": 430 },
+            "transition": "fade",
+            "direction": "east",
+            "label": "entrance hall"
+        },
+        {
+            "id": "to-crystal-chamber",
+            "zone": { "x": 0, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "crystal_chamber",
+            "spawnPoint": { "x": 820, "y": 430 },
+            "transition": "slide-left",
+            "direction": "west",
+            "label": "crystal chamber",
+            "conditions": [
+                { "type": "flag-set", "flag": "mushroom_pattern_solved" }
+            ]
+        },
+        {
+            "id": "to-balcony",
+            "zone": { "x": 440, "y": 350, "width": 80, "height": 80 },
+            "targetRoom": "cavern_balcony",
+            "spawnPoint": { "x": 480, "y": 430 },
+            "transition": "fade",
+            "direction": "north",
+            "label": "balcony"
+        },
+        {
+            "id": "to-echo-chamber",
+            "zone": { "x": 440, "y": 450, "width": 80, "height": 80 },
+            "targetRoom": "echo_chamber",
+            "spawnPoint": { "x": 480, "y": 430 },
+            "transition": "fade",
+            "direction": "south",
+            "label": "echo chamber"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "mushroom-clusters",
+            "name": "Bioluminescent Mushrooms",
+            "zone": { "x": 300, "y": 360, "width": 300, "height": 50 },
+            "interactionPoint": { "x": 450, "y": 420 },
+            "responses": {
+                "look": "Clusters of bioluminescent mushrooms line the walls in three groups: left, center, and right. Each cluster can be touched to activate it -- they glow brightly when activated and dim after a moment. There must be a specific sequence. The mushrooms pulse patiently, waiting for someone who knows the pattern.",
+                "use": "You touch the mushrooms randomly. They light up in a cascade of color, then dim. Nothing happens. The pattern needs to be specific. Perhaps a book in the library mentioned the correct sequence.",
+                "take": "You consider picking a mushroom. The others pulse menacingly. Mushroom solidarity is real.",
+                "default": "You examine the mushroom clusters. They're arranged in three groups -- left, center, right -- each waiting for activation in the correct order."
+            }
+        }
+    ],
+    "items": [],
+    "puzzles": [
+        {
+            "id": "solve-mushroom-pattern",
+            "trigger": { "verb": "use", "subject": "mushroom-clusters" },
+            "conditions": [
+                { "type": "flag-set", "flag": "knows_mushroom_pattern" },
+                { "type": "flag-not-set", "flag": "mushroom_pattern_solved" }
+            ],
+            "actions": [
+                { "type": "set-flag", "flag": "mushroom_pattern_solved" },
+                { "type": "open-exit", "exit": "to-crystal-chamber" },
+                { "type": "narrator-say", "text": "Left, right, center, left, center. You touch each mushroom cluster in sequence. They flare to life -- blue, green, violet, blue, violet -- and hold their glow. The cavern fills with bioluminescent light, and a passage to the west grinds open, revealing the Crystal Chamber beyond. The mushrooms pulse contentedly. Someone finally got the pattern right." }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "eat-mushroom",
+            "trigger": { "verb": "take", "subject": "mushroom-clusters" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "mushroom-poison" }
+            ]
+        }
+    ],
+    "deaths": {
+        "mushroom-poison": {
+            "title": "Death by Bioluminescent Snacking",
+            "narratorText": "You pluck a glowing mushroom and eat it. The taste is initially pleasant -- earthy, with notes of cave soil and bad decisions. Then the bioluminescence kicks in. Your stomach glows. Your veins glow. Your eyes glow. You briefly become the most visible thing in the Screaming Caverns, which would be impressive if you weren't also dying. The mushroom was a light source, not a food source. This distinction, like most important distinctions, is learned too late."
+        }
+    },
+    "dynamicDescriptions": {
+        "mushroom_pattern_solved": "The West Wing glows with permanent bioluminescent light. The mushroom clusters hold their activation pattern -- left, right, center, left, center -- illuminating the passage to the Crystal Chamber. The cavern has transformed from darkness to a cathedral of living light."
+    },
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            { "key": "amb-cave-drips", "volume": 0.7 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}

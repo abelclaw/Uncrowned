@@ -1,0 +1,244 @@
+{
+    "id": "cavern_entrance_hall",
+    "name": "Cavern Entrance Hall",
+    "description": "The Screaming Caverns open into a grand entrance hall carved from living rock. The ceiling vaults upward into darkness, and the walls are lined with numbered doors, filing cabinets, and signs pointing in contradictory directions. A registration desk sits at the center, manned by a gaunt figure in spectacles who radiates the energy of someone who has been doing this job for centuries and intends to do it for centuries more. A plaque on the desk reads: 'THE BUREAUCRATIC TEST OF SOVEREIGN WORTHINESS -- Please Take A Number.'",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-bridge",
+            "zone": { "x": 440, "y": 450, "width": 80, "height": 80 },
+            "targetRoom": "forest_bridge",
+            "spawnPoint": { "x": 480, "y": 400 },
+            "transition": "fade",
+            "direction": "south",
+            "label": "exit"
+        },
+        {
+            "id": "to-library",
+            "zone": { "x": 440, "y": 350, "width": 80, "height": 80 },
+            "targetRoom": "cavern_library",
+            "spawnPoint": { "x": 480, "y": 430 },
+            "transition": "fade",
+            "direction": "north",
+            "label": "library"
+        },
+        {
+            "id": "to-filing",
+            "zone": { "x": 880, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "filing_room",
+            "spawnPoint": { "x": 100, "y": 430 },
+            "transition": "slide-right",
+            "direction": "east",
+            "label": "filing room"
+        },
+        {
+            "id": "to-waiting",
+            "zone": { "x": 0, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "waiting_room",
+            "spawnPoint": { "x": 820, "y": 430 },
+            "transition": "slide-left",
+            "direction": "west",
+            "label": "waiting room",
+            "conditions": [
+                { "type": "has-item", "item": "queue-ticket" }
+            ]
+        },
+        {
+            "id": "to-west-wing",
+            "zone": { "x": 200, "y": 350, "width": 80, "height": 80 },
+            "targetRoom": "cavern_west_wing",
+            "spawnPoint": { "x": 820, "y": 430 },
+            "transition": "fade",
+            "direction": "west",
+            "label": "west wing",
+            "conditions": [
+                { "type": "flag-set", "flag": "west_wing_unlocked" }
+            ]
+        },
+        {
+            "id": "to-east-wing",
+            "zone": { "x": 700, "y": 350, "width": 80, "height": 80 },
+            "targetRoom": "cavern_east_wing",
+            "spawnPoint": { "x": 100, "y": 430 },
+            "transition": "fade",
+            "direction": "east",
+            "label": "east wing",
+            "conditions": [
+                { "type": "flag-set", "flag": "east_wing_accessed" }
+            ]
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "registration-desk",
+            "name": "Registration Desk",
+            "zone": { "x": 400, "y": 370, "width": 120, "height": 50 },
+            "interactionPoint": { "x": 460, "y": 420 },
+            "responses": {
+                "look": "A massive stone desk piled with forms, stamps, and the accumulated paperwork of centuries. A sign reads: 'FORM 27-B STROKE 6 REQUIRED FOR ALL TEST APPLICANTS. NO EXCEPTIONS. NO EXCUSES. NO CRYING.' The desk has more filing systems than some governments.",
+                "use": "The desk is the Clerk's domain. Using it without permission would be like sitting in a pilot's seat and pressing buttons -- technically possible, bureaucratically catastrophic.",
+                "take": "You cannot take a stone desk. The Clerk watches you consider it. His expression suggests he's seen people try.",
+                "default": "You examine the registration desk. It radiates the quiet authority of organized tedium."
+            }
+        },
+        {
+            "id": "numbered-doors",
+            "name": "Numbered Doors",
+            "zone": { "x": 650, "y": 355, "width": 80, "height": 60 },
+            "interactionPoint": { "x": 690, "y": 420 },
+            "responses": {
+                "look": "Doors line the cavern walls, each numbered and labeled in a font so small it requires squinting. 'Door 1: West Wing (Authorized Personnel Only),' 'Door 2: East Wing (Also Authorized Only),' 'Door 3: Broom Closet (Authorized Brooms Only).' The authorization requirements are exhaustive.",
+                "open": "The doors are locked. All of them. Bureaucratically locked. You'd need the Clerk's approval, which requires forms, which require ink, which requires finding ink, which requires forms. It's bureaucracy all the way down.",
+                "use": "Every door requires authorization. The Clerk has a monopoly on authorization. Welcome to the Screaming Caverns.",
+                "default": "You count the doors. There are more doors than seems architecturally necessary. Bureaucracy expands to fill available wall space."
+            }
+        },
+        {
+            "id": "contradictory-signs",
+            "name": "Directional Signs",
+            "zone": { "x": 250, "y": 360, "width": 80, "height": 40 },
+            "interactionPoint": { "x": 290, "y": 420 },
+            "responses": {
+                "look": "Signs point in every direction. 'WEST WING: This Way' points east. 'EXIT: Follow Arrow' points at the ceiling. 'YOU ARE HERE' points at a different sign that says 'NO YOU AREN'T.' Whoever designed the signage was either incompetent or actively hostile.",
+                "use": "You follow a sign. It leads to another sign. Which leads to another sign. Which leads back to the first sign. The Clerk watches your confusion with professional disinterest.",
+                "default": "You study the signs. They are confidently, aggressively wrong."
+            }
+        }
+    ],
+    "items": [],
+    "puzzles": [
+        {
+            "id": "submit-filled-form",
+            "trigger": { "verb": "use", "subject": "form-27b-stroke-6", "target": "the_clerk" },
+            "conditions": [
+                { "type": "has-item", "item": "form-27b-stroke-6" },
+                { "type": "flag-set", "flag": "form_filled" },
+                { "type": "flag-not-set", "flag": "registered_with_clerk" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "form-27b-stroke-6" },
+                { "type": "set-flag", "flag": "registered_with_clerk" },
+                { "type": "add-item", "item": "queue-ticket" },
+                { "type": "narrator-say", "text": "The Clerk examines your form with the intensity of someone who has read ten million forms and found fault with nine million nine hundred and ninety-nine thousand of them. His eyes scan each line. His pen hovers. Then -- miraculously -- he stamps it. 'Form 27-B Stroke 6. Correctly completed.' He sounds almost disappointed. 'Take a ticket. Proceed to the Waiting Room.' He slides you a numbered ticket: 847." }
+            ],
+            "once": true
+        },
+        {
+            "id": "submit-filled-form-desk",
+            "trigger": { "verb": "use", "subject": "form-27b-stroke-6", "target": "registration-desk" },
+            "conditions": [
+                { "type": "has-item", "item": "form-27b-stroke-6" },
+                { "type": "flag-set", "flag": "form_filled" },
+                { "type": "flag-not-set", "flag": "registered_with_clerk" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "form-27b-stroke-6" },
+                { "type": "set-flag", "flag": "registered_with_clerk" },
+                { "type": "add-item", "item": "queue-ticket" },
+                { "type": "narrator-say", "text": "You place the completed form on the desk. The Clerk snatches it up, adjusts his spectacles, and reads every line. Twice. 'Acceptable,' he says, in a tone that implies 'barely.' He stamps it with a stamp the size of your fist and hands you a queue ticket. Number 847. 'The Waiting Room is to the west. Patience is a requirement, not a suggestion.'" }
+            ],
+            "once": true
+        },
+        {
+            "id": "submit-unfilled-form",
+            "trigger": { "verb": "use", "subject": "form-27b-stroke-6", "target": "the_clerk" },
+            "conditions": [
+                { "type": "has-item", "item": "form-27b-stroke-6" },
+                { "type": "flag-not-set", "flag": "form_filled" }
+            ],
+            "actions": [
+                { "type": "narrator-say", "text": "The Clerk takes one look at the blank form and slides it back. 'This form is not completed. Forms must be filled out in ink -- proper ink, not finger paint, not blood, not tears. Ancient ink is acceptable. Find some.' His expression does not change. It may never have changed." }
+            ]
+        },
+        {
+            "id": "show-vip-ticket",
+            "trigger": { "verb": "use", "subject": "queue-ticket", "target": "the_clerk" },
+            "conditions": [
+                { "type": "has-item", "item": "queue-ticket" },
+                { "type": "flag-set", "flag": "vip_stamped" },
+                { "type": "flag-not-set", "flag": "clerk-satisfied" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "queue-ticket" },
+                { "type": "set-flag", "flag": "clerk-satisfied" },
+                { "type": "set-flag", "flag": "west_wing_unlocked" },
+                { "type": "set-flag", "flag": "east_wing_accessed" },
+                { "type": "open-exit", "exit": "to-west-wing" },
+                { "type": "open-exit", "exit": "to-east-wing" },
+                { "type": "narrator-say", "text": "The Clerk takes your VIP-stamped ticket. His left eye twitches. 'VIP authorization. This stamp is...' He examines it. 'This stamp is technically valid.' His voice carries the weight of a man whose bureaucratic fortress has been breached. 'Very well. Both wings are now accessible. The test awaits.' He unlocks the west and east wing doors with two separate keys, each requiring a separate form that he fills out himself, silently, with the grim efficiency of a professional." }
+            ],
+            "once": true
+        },
+        {
+            "id": "show-vip-ticket-desk",
+            "trigger": { "verb": "use", "subject": "queue-ticket", "target": "registration-desk" },
+            "conditions": [
+                { "type": "has-item", "item": "queue-ticket" },
+                { "type": "flag-set", "flag": "vip_stamped" },
+                { "type": "flag-not-set", "flag": "clerk-satisfied" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "queue-ticket" },
+                { "type": "set-flag", "flag": "clerk-satisfied" },
+                { "type": "set-flag", "flag": "west_wing_unlocked" },
+                { "type": "set-flag", "flag": "east_wing_accessed" },
+                { "type": "open-exit", "exit": "to-west-wing" },
+                { "type": "open-exit", "exit": "to-east-wing" },
+                { "type": "narrator-say", "text": "You place the VIP ticket on the desk. The Clerk picks it up, reads it, reads it again, and his left eye performs a twitch so subtle it could be seismic. 'VIP access. Granted.' He opens both wing doors. His disapproval is palpable but procedurally invalid." }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "submit-wrong-3",
+            "trigger": { "verb": "use", "subject": "form-27b-stroke-6", "target": "the_clerk" },
+            "conditions": [
+                { "type": "flag-set", "flag": "wrong_form_count_2" }
+            ],
+            "actions": [
+                { "type": "trigger-death", "deathId": "clerk-stamped" }
+            ]
+        }
+    ],
+    "deaths": {
+        "clerk-stamped": {
+            "title": "Death by Bureaucracy",
+            "narratorText": "You submit the wrong form for the third time. The Clerk's expression does not change -- it has never changed -- but something shifts in the air. He reaches for his stamp. Not the approval stamp. The OTHER stamp. The one marked 'DENIED (PERMANENTLY).' He stamps you. Not the form. You. The stamp hits your forehead with the force of administrative finality. The ink burns. The bureaucratic magic takes hold. You are filed under 'D' for 'Deceased.' Your application has been permanently rejected."
+        }
+    },
+    "dynamicDescriptions": {
+        "clerk-satisfied": "The Cavern Entrance Hall's bureaucratic atmosphere has shifted slightly. The Clerk sits at his desk, processing paperwork with marginally less hostility. Both wing doors stand open. The test awaits in the depths beyond.",
+        "registered_with_clerk": "The entrance hall hums with institutional energy. You've been registered -- the Clerk's stamp of approval (grudging as it was) opens the waiting room. Your queue ticket burns a hole in your pocket with the urgency of number 847."
+    },
+    "npcs": [
+        {
+            "id": "the_clerk",
+            "position": { "x": 460, "y": 385 },
+            "interactionPoint": { "x": 420, "y": 420 },
+            "zone": { "x": 430, "y": 365, "width": 60, "height": 60 }
+        }
+    ],
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            { "key": "amb-cave-drips", "volume": 0.5 },
+            { "key": "amb-wind-light", "volume": 0.3 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}

@@ -68,6 +68,29 @@ export class Preloader extends Scene {
         this.load.json('room-village_square', 'assets/data/rooms/village_square.json');
         this.load.json('room-old_watchtower', 'assets/data/rooms/old_watchtower.json');
 
+        // Room data JSON files -- Act 1b (The Royal Mess)
+        this.load.json('room-forest_bridge', 'assets/data/rooms/forest_bridge.json');
+        this.load.json('room-castle_courtyard', 'assets/data/rooms/castle_courtyard.json');
+        this.load.json('room-castle_hallway', 'assets/data/rooms/castle_hallway.json');
+        this.load.json('room-throne_room', 'assets/data/rooms/throne_room.json');
+        this.load.json('room-royal_kitchen', 'assets/data/rooms/royal_kitchen.json');
+        this.load.json('room-castle_garden', 'assets/data/rooms/castle_garden.json');
+        this.load.json('room-servants_quarters', 'assets/data/rooms/servants_quarters.json');
+
+        // Room data JSON files -- Act 2 (The Screaming Caverns)
+        this.load.json('room-cavern_entrance_hall', 'assets/data/rooms/cavern_entrance_hall.json');
+        this.load.json('room-cavern_library', 'assets/data/rooms/cavern_library.json');
+        this.load.json('room-filing_room', 'assets/data/rooms/filing_room.json');
+        this.load.json('room-waiting_room', 'assets/data/rooms/waiting_room.json');
+        this.load.json('room-cavern_west_wing', 'assets/data/rooms/cavern_west_wing.json');
+        this.load.json('room-crystal_chamber', 'assets/data/rooms/crystal_chamber.json');
+        this.load.json('room-cavern_balcony', 'assets/data/rooms/cavern_balcony.json');
+        this.load.json('room-echo_chamber', 'assets/data/rooms/echo_chamber.json');
+        this.load.json('room-cavern_east_wing', 'assets/data/rooms/cavern_east_wing.json');
+        this.load.json('room-underground_river', 'assets/data/rooms/underground_river.json');
+        this.load.json('room-forge_chamber', 'assets/data/rooms/forge_chamber.json');
+        this.load.json('room-guardian_chamber', 'assets/data/rooms/guardian_chamber.json');
+
         // Item definitions registry
         this.load.json('items', 'assets/data/items.json');
 
@@ -78,6 +101,16 @@ export class Preloader extends Scene {
         this.load.json('dialogue-old_man', 'assets/data/dialogue/old_man.ink.json');
         this.load.json('dialogue-stone_merchant', 'assets/data/dialogue/stone_merchant.ink.json');
         this.load.json('dialogue-narrator_history', 'assets/data/dialogue/narrator_history.ink.json');
+
+        // NPC dialogue compiled ink JSON files -- Act 1b (The Royal Mess)
+        this.load.json('dialogue-bridge_troll', 'assets/data/dialogue/bridge_troll.ink.json');
+        this.load.json('dialogue-ghost_king', 'assets/data/dialogue/ghost_king.ink.json');
+        this.load.json('dialogue-castle_cook', 'assets/data/dialogue/castle_cook.ink.json');
+
+        // NPC dialogue compiled ink JSON files -- Act 2 (The Screaming Caverns)
+        this.load.json('dialogue-the_clerk', 'assets/data/dialogue/the_clerk.ink.json');
+        this.load.json('dialogue-queue_ghost', 'assets/data/dialogue/queue_ghost.ink.json');
+        this.load.json('dialogue-dwarven_spirit', 'assets/data/dialogue/dwarven_spirit.ink.json');
 
         // Audio registry (event-to-SFX mapping)
         this.load.json('audio-registry', 'assets/data/audio-registry.json');

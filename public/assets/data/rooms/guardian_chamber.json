@@ -1,0 +1,201 @@
+{
+    "id": "guardian_chamber",
+    "name": "Guardian Chamber",
+    "description": "A circular chamber with a vaulted ceiling covered in ancient carvings. At its center stands a stone guardian -- a massive humanoid figure carved from the same grey rock as the cavern walls. It stands motionless, arms crossed, eyes closed. A stone pedestal before it has an indentation shaped like a seal. The guardian's expression suggests it has been waiting for someone, and it is not pleased about the delay.",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-forge",
+            "zone": { "x": 440, "y": 450, "width": 80, "height": 80 },
+            "targetRoom": "forge_chamber",
+            "spawnPoint": { "x": 480, "y": 400 },
+            "transition": "fade",
+            "direction": "south",
+            "label": "forge"
+        },
+        {
+            "id": "to-crystal",
+            "zone": { "x": 440, "y": 350, "width": 80, "height": 80 },
+            "targetRoom": "crystal_chamber",
+            "spawnPoint": { "x": 480, "y": 430 },
+            "transition": "fade",
+            "direction": "north",
+            "label": "crystal",
+            "conditions": [
+                { "type": "flag-set", "flag": "guardian-defeated" }
+            ]
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "stone-guardian",
+            "name": "Stone Guardian",
+            "zone": { "x": 400, "y": 340, "width": 120, "height": 80 },
+            "interactionPoint": { "x": 460, "y": 420 },
+            "responses": {
+                "look": "A massive stone guardian, twice your height and several times your weight. Its carved features are stern but not cruel -- the face of a judge, not an executioner. The eyes are closed, but the posture suggests it could open them at any moment. The craftsmanship is extraordinary. Every muscle, every fold of stone clothing, is rendered with precision.",
+                "use": "The guardian is dormant. It needs to be awakened by placing the ancient seal on its pedestal. Then the test begins.",
+                "talk": "You address the guardian. Silence. It's stone. For now. That 'for now' is the unsettling part.",
+                "push": "You push the guardian. It does not move. You did not expect it to move, but you are still slightly disappointed.",
+                "default": "You examine the guardian. It examines nothing. Yet."
+            }
+        },
+        {
+            "id": "seal-pedestal",
+            "name": "Seal Pedestal",
+            "zone": { "x": 420, "y": 420, "width": 80, "height": 30 },
+            "interactionPoint": { "x": 460, "y": 430 },
+            "responses": {
+                "look": "A stone pedestal before the guardian, with a seal-shaped indentation. The indentation matches the ancient kingdom seal -- place the seal here, and the guardian awakens. The pedestal is carved with the words: 'PROVE YOUR WORTH. ANSWER THREE. OR ANSWER NONE.'",
+                "use": "The indentation needs a seal. The ancient kingdom seal, specifically. Not the royal seal -- the administrative one. Bureaucracy, even in guardian activation, demands precision.",
+                "default": "You study the pedestal. The seal-shaped indentation waits with geological patience."
+            }
+        }
+    ],
+    "items": [],
+    "puzzles": [
+        {
+            "id": "activate-guardian",
+            "trigger": { "verb": "use", "subject": "ancient-seal", "target": "seal-pedestal" },
+            "conditions": [
+                { "type": "has-item", "item": "ancient-seal" },
+                { "type": "flag-not-set", "flag": "guardian_awakened" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "ancient-seal" },
+                { "type": "set-flag", "flag": "guardian_awakened" },
+                { "type": "narrator-say", "text": "You place the ancient seal into the pedestal. It clicks. The ground trembles. The guardian's eyes open -- not stone anymore, but glowing with amber light. It unfolds its arms, straightens to its full height, and looks down at you with the expression of something that has been sleeping for centuries and is not a morning person. 'THREE QUESTIONS,' it says, in a voice like grinding boulders. 'ANSWER CORRECTLY AND PASS. ANSWER INCORRECTLY...' It cracks its stone knuckles. 'AND DON'T.' Talk to the guardian to begin the test." }
+            ],
+            "once": true
+        },
+        {
+            "id": "activate-guardian-on-guardian",
+            "trigger": { "verb": "use", "subject": "ancient-seal", "target": "stone-guardian" },
+            "conditions": [
+                { "type": "has-item", "item": "ancient-seal" },
+                { "type": "flag-not-set", "flag": "guardian_awakened" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "ancient-seal" },
+                { "type": "set-flag", "flag": "guardian_awakened" },
+                { "type": "narrator-say", "text": "You press the ancient seal against the guardian's pedestal. It locks into place. The guardian awakens with tectonic slowness, amber eyes blazing. 'THREE QUESTIONS,' it rumbles. 'BEGIN WHEN READY.' Its patience, like its construction, is monumental." }
+            ],
+            "once": true
+        },
+        {
+            "id": "answer-question-1",
+            "trigger": { "verb": "talk", "subject": "stone-guardian" },
+            "conditions": [
+                { "type": "flag-set", "flag": "guardian_awakened" },
+                { "type": "flag-not-set", "flag": "guardian_q1_correct" }
+            ],
+            "actions": [
+                { "type": "set-flag", "flag": "guardian_q1_correct" },
+                { "type": "narrator-say", "text": "The guardian speaks: 'QUESTION THE FIRST: IN WHAT YEAR WAS THE KINGDOM OF ERELHAIN FOUNDED?' You answer: '847.' The guardian's eyes dim briefly -- processing. Then: 'CORRECT.' The word sounds like it costs the guardian physical pain to say. 'TWO REMAIN.'" }
+            ],
+            "once": true
+        },
+        {
+            "id": "answer-question-2",
+            "trigger": { "verb": "talk", "subject": "stone-guardian" },
+            "conditions": [
+                { "type": "flag-set", "flag": "guardian_q1_correct" },
+                { "type": "flag-not-set", "flag": "guardian_q2_correct" }
+            ],
+            "actions": [
+                { "type": "set-flag", "flag": "guardian_q2_correct" },
+                { "type": "narrator-say", "text": "'QUESTION THE SECOND: WHAT WAS THE NAME OF THE KINGDOM'S FIRST BUREAUCRAT?' You answer: 'Aldric the Fastidious.' A long pause. 'CORRECT,' the guardian admits, with even less enthusiasm. 'ONE REMAINS. THE FINAL QUESTION DETERMINES ALL.'" }
+            ],
+            "once": true
+        },
+        {
+            "id": "answer-question-3",
+            "trigger": { "verb": "talk", "subject": "stone-guardian" },
+            "conditions": [
+                { "type": "flag-set", "flag": "guardian_q2_correct" },
+                { "type": "flag-not-set", "flag": "guardian_q3_correct" },
+                { "type": "flag-set", "flag": "knows_third_answer" }
+            ],
+            "actions": [
+                { "type": "set-flag", "flag": "guardian_q3_correct" },
+                { "type": "set-flag", "flag": "guardian-defeated" },
+                { "type": "set-flag", "flag": "crystal_barrier_down" },
+                { "type": "open-exit", "exit": "to-crystal" },
+                { "type": "narrator-say", "text": "'QUESTION THE FINAL: WHAT IS THE TRUE PURPOSE OF THE KINGDOM'S BUREAUCRACY?' The echo chamber's answer rings in your mind. 'Service,' you say. The guardian is silent. Then its eyes blaze bright. 'CORRECT. SERVICE. NOT POWER. NOT CONTROL. SERVICE.' The guardian steps aside. 'THE CRYSTAL IS YOURS. THE BARRIER FALLS.' A distant hum ceases -- the force barrier around the Crystal of Mundanity has been deactivated. 'GO,' the guardian says. 'AND REMEMBER THE ANSWER.' It closes its eyes and returns to stone." }
+            ],
+            "once": true
+        },
+        {
+            "id": "answer-question-3-no-knowledge",
+            "trigger": { "verb": "talk", "subject": "stone-guardian" },
+            "conditions": [
+                { "type": "flag-set", "flag": "guardian_q2_correct" },
+                { "type": "flag-not-set", "flag": "guardian_q3_correct" },
+                { "type": "flag-not-set", "flag": "knows_third_answer" }
+            ],
+            "actions": [
+                { "type": "narrator-say", "text": "'QUESTION THE FINAL: WHAT IS THE TRUE PURPOSE OF THE KINGDOM'S BUREAUCRACY?' You hesitate. You don't know this answer. The echo chamber in the West Wing might hold the clue -- the carvings mentioned that echoes speak truth. You should explore there before answering." }
+            ]
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "attack-guardian",
+            "trigger": { "verb": "push", "subject": "stone-guardian" },
+            "conditions": [
+                { "type": "flag-set", "flag": "guardian_awakened" }
+            ],
+            "actions": [
+                { "type": "trigger-death", "deathId": "guardian-smash" }
+            ]
+        },
+        {
+            "id": "wrong-answers",
+            "trigger": { "verb": "talk", "subject": "stone-guardian" },
+            "conditions": [
+                { "type": "flag-set", "flag": "guardian_q2_correct" },
+                { "type": "flag-not-set", "flag": "guardian_q3_correct" },
+                { "type": "flag-not-set", "flag": "knows_third_answer" },
+                { "type": "flag-set", "flag": "guardian_wrong_attempt" }
+            ],
+            "actions": [
+                { "type": "trigger-death", "deathId": "guardian-wrong" }
+            ]
+        }
+    ],
+    "deaths": {
+        "guardian-smash": {
+            "title": "Death by Misplaced Aggression",
+            "narratorText": "You attack the stone guardian. With your bare hands. It is a twenty-foot statue made of enchanted granite, and you are a tinker who weighs less than its left foot. The guardian does not need to hit back -- you've essentially punched a mountain. Physics handles the rest. Your knuckles shatter. Then your wrist. The guardian watches with the patience of something that has centuries of practice in not reacting to foolishness."
+        },
+        "guardian-wrong": {
+            "title": "Death by Ignorance",
+            "narratorText": "You guess the third answer. The guardian asked three questions. You answered two correctly. You guessed the third. The guardian's expression does not change -- it is incapable of expressions -- but the amber glow in its eyes shifts from neutral to terminal. 'INCORRECT,' it says. 'THE TEST IS FAILED. THE APPLICANT IS... PROCESSED.' The guardian's stone fist is the size of your torso. It moves slowly. You do not. The difference in speed does not matter. The difference in mass does."
+        }
+    },
+    "dynamicDescriptions": {
+        "guardian-defeated": "The Guardian Chamber is still. The guardian has returned to stone, its duty complete. The passage to the Crystal Chamber stands open. On the pedestal, the ancient seal glows faintly, a permanent fixture now. The test is over. You passed."
+    },
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            { "key": "amb-cave-drips", "volume": 0.4 },
+            { "key": "amb-wind-light", "volume": 0.6 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}

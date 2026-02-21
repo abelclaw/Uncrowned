@@ -1,0 +1,113 @@
+{
+    "id": "cavern_balcony",
+    "name": "Cavern Balcony",
+    "description": "A natural stone balcony juts out over the Crystal Chamber far below. The view is vertigo-inducing -- you can see the crystal's pedestal, the force barrier shimmer, and a dizzying drop to the chamber floor. A coil of old rope is anchored to a rock formation near the edge. The railing situation is nonexistent, which is either a design choice or a test of nerve.",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-west-wing",
+            "zone": { "x": 440, "y": 450, "width": 80, "height": 80 },
+            "targetRoom": "cavern_west_wing",
+            "spawnPoint": { "x": 480, "y": 400 },
+            "transition": "fade",
+            "direction": "south",
+            "label": "west wing"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "balcony-edge",
+            "name": "Balcony Edge",
+            "zone": { "x": 350, "y": 360, "width": 200, "height": 30 },
+            "interactionPoint": { "x": 450, "y": 400 },
+            "responses": {
+                "look": "The edge of the balcony drops away into the Crystal Chamber below. There's no railing, no barrier, no safety net. Just air, gravity, and the distant glint of the crystal. The Screaming Caverns' architects were not concerned with occupational health and safety.",
+                "use": "You lean forward slightly. Your stomach disagrees. The drop is sufficient to make vertigo a medical certainty.",
+                "default": "You regard the edge from a respectful distance. The distance is respectful because closer would be fatal."
+            }
+        },
+        {
+            "id": "rock-formation",
+            "name": "Rock Anchor",
+            "zone": { "x": 600, "y": 370, "width": 60, "height": 40 },
+            "interactionPoint": { "x": 630, "y": 420 },
+            "responses": {
+                "look": "A sturdy rock formation near the balcony edge, smoothed by age. A rope is coiled around it, anchored with what appears to be a very old but very solid knot. Someone planned ahead.",
+                "use": "The rock anchor is solid. Whatever rope was attached to it could probably support a person. Or a very ambitious goat.",
+                "default": "You examine the rock formation. It's the most trustworthy thing on this balcony."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "rope",
+            "name": "Climbing Rope",
+            "zone": { "x": 620, "y": 395, "width": 30, "height": 25 },
+            "interactionPoint": { "x": 635, "y": 420 },
+            "responses": {
+                "look": "A length of rope coiled around the rock anchor. It looks old but still has the tensile strength of something that was made to last. The weave is tight and the fibers intact. It was last inspected during the previous dynasty, but rope ages better than monarchs.",
+                "use": "Rope is useful for tying, climbing, repairing, and making poor decisions seem marginally less poor. But you'd need something specific to use it on."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "take-rope",
+            "trigger": { "verb": "take", "subject": "rope" },
+            "conditions": [
+                { "type": "item-not-taken", "item": "rope" }
+            ],
+            "actions": [
+                { "type": "add-item", "item": "rope" },
+                { "type": "narrator-say", "text": "You uncoil the rope from its anchor. It's long, strong, and smells like centuries of cave air. The rope joins your increasingly eclectic inventory. You're carrying a torch, various bureaucratic documents, and now a rope. You're either an adventurer or a very well-equipped hobo." }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "lean-over-edge",
+            "trigger": { "verb": "use", "subject": "balcony-edge" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "balcony-fall" }
+            ]
+        },
+        {
+            "id": "go-edge",
+            "trigger": { "verb": "go", "subject": "edge" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "balcony-fall" }
+            ]
+        }
+    ],
+    "deaths": {
+        "balcony-fall": {
+            "title": "Death by Vertigo",
+            "narratorText": "You lean over the balcony edge. For a moment, you have a spectacular view of the Crystal Chamber below -- the pedestal, the barrier, the ancient stonework. Then gravity reminds you that looking down was optional but falling is not. The descent is long enough for reflection and short enough to prevent useful conclusions. The Crystal of Mundanity watches your arrival at the chamber floor with the indifference of an artifact that has seen this happen before."
+        }
+    },
+    "dynamicDescriptions": {},
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            { "key": "amb-wind-light", "volume": 0.8 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}

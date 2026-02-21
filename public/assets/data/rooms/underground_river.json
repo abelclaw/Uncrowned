@@ -1,0 +1,165 @@
+{
+    "id": "underground_river",
+    "name": "Underground River",
+    "description": "An underground river carves through the cavern, its current swift and dark. The water rushes past with the confidence of something that knows exactly where it's going -- downstream, off a waterfall, into oblivion. An old boat is pulled up on a rocky shore, its hull cracked and its sails nonexistent. It floats, technically. Whether it will continue to float with you in it is a matter of optimistic engineering.",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-east-wing",
+            "zone": { "x": 0, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "cavern_east_wing",
+            "spawnPoint": { "x": 820, "y": 430 },
+            "transition": "slide-left",
+            "direction": "west",
+            "label": "east wing"
+        },
+        {
+            "id": "to-forge",
+            "zone": { "x": 440, "y": 350, "width": 80, "height": 80 },
+            "targetRoom": "forge_chamber",
+            "spawnPoint": { "x": 480, "y": 430 },
+            "transition": "fade",
+            "direction": "north",
+            "label": "forge",
+            "conditions": [
+                { "type": "flag-set", "flag": "boat_repaired" }
+            ]
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "river-current",
+            "name": "River Current",
+            "zone": { "x": 300, "y": 360, "width": 200, "height": 50 },
+            "interactionPoint": { "x": 400, "y": 420 },
+            "responses": {
+                "look": "The underground river rushes past with alarming speed. The current flows north toward the forge and south toward... the sound of a waterfall. A very loud, very final-sounding waterfall. Going upstream requires a boat. Going downstream requires a death wish.",
+                "use": "You test the current with your foot. It nearly pulls you in. This river has opinions about foot traffic.",
+                "default": "You observe the river. It is going places. Specifically, north to the forge and south to a waterfall. Only one of those destinations is survivable."
+            }
+        },
+        {
+            "id": "rocky-shore",
+            "name": "Rocky Shore",
+            "zone": { "x": 600, "y": 400, "width": 100, "height": 40 },
+            "interactionPoint": { "x": 650, "y": 420 },
+            "responses": {
+                "look": "A small rocky shore where the boat is beached. The rocks are smooth from water erosion and covered in a thin layer of cave slime. Various debris has washed up: sticks, stones, and the remains of what might have been another boat. A cautionary tale in driftwood.",
+                "default": "You examine the shore. It's the safest spot by the river, which is like saying it's the driest spot in the ocean."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "old-boat",
+            "name": "Old Boat",
+            "zone": { "x": 620, "y": 380, "width": 80, "height": 40 },
+            "interactionPoint": { "x": 660, "y": 420 },
+            "responses": {
+                "look": "A small wooden boat, beached on the rocky shore. Its hull has two significant cracks and a missing plank. It floats in the loosest possible definition -- the kind where 'float' and 'sink slowly' are considered synonyms. It needs repairs: wood for the hull and rope to bind it.",
+                "use": "The boat isn't seaworthy. River-worthy? Also no. You'd need wood planks for the hull and rope to secure them. Without repairs, this boat is less 'vessel' and more 'elaborate drowning apparatus.'"
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "repair-boat",
+            "trigger": { "verb": "use", "subject": "wood-planks", "target": "old-boat" },
+            "conditions": [
+                { "type": "has-item", "item": "wood-planks" },
+                { "type": "has-item", "item": "rope" },
+                { "type": "flag-not-set", "flag": "boat_repaired" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "wood-planks" },
+                { "type": "remove-item", "item": "rope" },
+                { "type": "set-flag", "flag": "boat_repaired" },
+                { "type": "open-exit", "exit": "to-forge" },
+                { "type": "narrator-say", "text": "You patch the hull with oak planks from the library and bind them tight with the balcony rope. The boat goes from 'barely floating' to 'probably floating.' You push it into the current and it holds. The river carries it north, toward the forge. You have a boat. It's not pretty, but it's yours, and it floats. For now." }
+            ],
+            "once": true
+        },
+        {
+            "id": "repair-boat-rope",
+            "trigger": { "verb": "use", "subject": "rope", "target": "old-boat" },
+            "conditions": [
+                { "type": "has-item", "item": "wood-planks" },
+                { "type": "has-item", "item": "rope" },
+                { "type": "flag-not-set", "flag": "boat_repaired" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "wood-planks" },
+                { "type": "remove-item", "item": "rope" },
+                { "type": "set-flag", "flag": "boat_repaired" },
+                { "type": "open-exit", "exit": "to-forge" },
+                { "type": "narrator-say", "text": "Planks, rope, boat. You lash the oak planks over the hull cracks and tie them secure. The boat achieves the status of 'seaworthy' -- or at least 'river-adjacent.' The current accepts it northward. Your engineering is questionable but functional." }
+            ],
+            "once": true
+        },
+        {
+            "id": "repair-boat-no-materials",
+            "trigger": { "verb": "use", "subject": "old-boat" },
+            "conditions": [
+                { "type": "flag-not-set", "flag": "boat_repaired" }
+            ],
+            "actions": [
+                { "type": "narrator-say", "text": "The boat has two cracks and a missing plank. You'd need wood planks to patch the hull and rope to secure them. Without both, this boat is just a slightly curved piece of future driftwood." }
+            ]
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "sail-broken-boat",
+            "trigger": { "verb": "go", "subject": "river-current" },
+            "conditions": [
+                { "type": "flag-not-set", "flag": "boat_repaired" }
+            ],
+            "actions": [
+                { "type": "trigger-death", "deathId": "drown-river" }
+            ]
+        },
+        {
+            "id": "go-downstream",
+            "trigger": { "verb": "go", "subject": "south" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "waterfall-death" }
+            ]
+        }
+    ],
+    "deaths": {
+        "drown-river": {
+            "title": "Death by Optimistic Engineering",
+            "narratorText": "You climb into the unrepaired boat and push off. The boat makes it approximately fifteen seconds before the cracks in the hull remember they're cracks and the missing plank remembers it's missing. Water floods in with the enthusiasm of a liquid that has been waiting centuries for this exact opportunity. The boat sinks. You sink with it. The river continues, indifferent to your engineering philosophy of 'it'll probably be fine.'"
+        },
+        "waterfall-death": {
+            "title": "Death by Gravity (Assisted by Water)",
+            "narratorText": "You follow the river downstream. The sound of the waterfall grows louder -- from 'distant rumble' to 'imminent catastrophe' in about thirty seconds. The current accelerates. The cavern ceiling lowers. And then the floor disappears. The waterfall is tall enough that you have time to contemplate the word 'downstream' -- it's a direction, not a suggestion. Nature's way of reminding you that water goes down, and you, being mostly water, go with it."
+        }
+    },
+    "dynamicDescriptions": {
+        "boat_repaired": "The underground river flows past the rocky shore where the now-repaired boat sits ready. The oak planks hold, the rope binding is tight, and the boat is, against all reasonable expectations, seaworthy. The current flows north toward the forge."
+    },
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            { "key": "amb-cave-drips", "volume": 1.0 },
+            { "key": "amb-wind-light", "volume": 0.5 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}

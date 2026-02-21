@@ -1,0 +1,131 @@
+{
+    "id": "crystal_chamber",
+    "name": "Crystal Chamber",
+    "description": "A vast natural chamber dominated by a single, unremarkable grey crystal floating above a stone pedestal. This is the Crystal of Mundanity -- the legendary artifact that will save the kingdom. It is, fittingly, the most boring-looking crystal you've ever seen. A shimmering force barrier surrounds it, humming with energy that makes your teeth itch. Warning signs are posted in fourteen languages, all saying variations of 'DO NOT TOUCH THE BARRIER.'",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-west-wing",
+            "zone": { "x": 880, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "cavern_west_wing",
+            "spawnPoint": { "x": 100, "y": 430 },
+            "transition": "slide-right",
+            "direction": "east",
+            "label": "west wing"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "force-barrier",
+            "name": "Force Barrier",
+            "zone": { "x": 380, "y": 350, "width": 160, "height": 80 },
+            "interactionPoint": { "x": 460, "y": 420 },
+            "responses": {
+                "look": "A shimmering barrier of magical energy surrounds the crystal's pedestal. It hums at a frequency that makes your bones resonate. The barrier is visible, audible, and posted with warning signs. It is, by every metric, something you should not touch.",
+                "use": "You consider touching the barrier. The barrier crackles. Fourteen warning signs in fourteen languages all say the same thing. Some lessons don't need to be learned firsthand.",
+                "take": "You can't take a force barrier. Force barriers take you.",
+                "default": "You observe the barrier. It observes nothing -- it's a barrier. But it's very good at its job."
+            }
+        },
+        {
+            "id": "crystal-pedestal",
+            "name": "Stone Pedestal",
+            "zone": { "x": 430, "y": 370, "width": 60, "height": 50 },
+            "interactionPoint": { "x": 460, "y": 420 },
+            "responses": {
+                "look": "A stone pedestal carved with symbols that match the ones in the Guardian Chamber. The Crystal of Mundanity hovers above it, grey and utterly unremarkable. For the most important artifact in the kingdom, it's impressively unimpressive. Like a bureaucrat in crystal form.",
+                "default": "You study the pedestal. It's ancient, carved with precision, and currently inaccessible behind a barrier that would very much like you to stop looking at it."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "crystal-of-mundanity",
+            "name": "Crystal of Mundanity",
+            "zone": { "x": 445, "y": 375, "width": 30, "height": 25 },
+            "interactionPoint": { "x": 460, "y": 420 },
+            "responses": {
+                "look": "The Crystal of Mundanity. Grey. Plain. Hovering. It is the most important artifact in the kingdom, and it looks like a piece of enchanted gravel. The universe has a sense of humor, and that humor is anticlimactic.",
+                "use": "The crystal is behind the force barrier. You can see it, you can want it, but you cannot have it. Not yet."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "take-crystal",
+            "trigger": { "verb": "take", "subject": "crystal-of-mundanity" },
+            "conditions": [
+                { "type": "flag-set", "flag": "crystal_barrier_down" },
+                { "type": "item-not-taken", "item": "crystal-of-mundanity" }
+            ],
+            "actions": [
+                { "type": "add-item", "item": "crystal-of-mundanity" },
+                { "type": "narrator-say", "text": "You reach through the space where the barrier used to be and take the Crystal of Mundanity. It's warm, slightly heavy, and profoundly ordinary. This grey lump is going to save a kingdom. The crystal settles into your palm with the comfortable weight of destiny meeting low expectations. You are now carrying the most important unremarkable object in the world." }
+            ],
+            "once": true
+        },
+        {
+            "id": "take-crystal-barrier-up",
+            "trigger": { "verb": "take", "subject": "crystal-of-mundanity" },
+            "conditions": [
+                { "type": "flag-not-set", "flag": "crystal_barrier_down" }
+            ],
+            "actions": [
+                { "type": "narrator-say", "text": "The force barrier crackles between you and the crystal. You can see it. You can almost taste the mundanity. But the barrier remains firm. The Guardian Chamber holds the key to dropping it." }
+            ]
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "touch-barrier",
+            "trigger": { "verb": "use", "subject": "force-barrier" },
+            "conditions": [
+                { "type": "flag-not-set", "flag": "crystal_barrier_down" }
+            ],
+            "actions": [
+                { "type": "trigger-death", "deathId": "barrier-zap" }
+            ]
+        },
+        {
+            "id": "push-barrier",
+            "trigger": { "verb": "push", "subject": "force-barrier" },
+            "conditions": [
+                { "type": "flag-not-set", "flag": "crystal_barrier_down" }
+            ],
+            "actions": [
+                { "type": "trigger-death", "deathId": "barrier-zap" }
+            ]
+        }
+    ],
+    "deaths": {
+        "barrier-zap": {
+            "title": "Death by Impatience",
+            "narratorText": "You touch the force barrier. The magical energy was clearly visible, audibly humming, and posted with warning signs in fourteen languages. You touched it anyway. The barrier does not discriminate -- it delivers its electrical response with the democratic enthusiasm of a system that treats all organic matter equally. You become, briefly, the most illuminated person in the Screaming Caverns. Then you become the most deceased. The warning signs remain, for the next applicant."
+        }
+    },
+    "dynamicDescriptions": {
+        "crystal_barrier_down": "The Crystal Chamber is quiet now. The force barrier has dissolved, leaving the stone pedestal exposed and empty -- you've already taken the Crystal of Mundanity. The warning signs seem almost wistful without anything to warn about."
+    },
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            { "key": "amb-cave-drips", "volume": 0.4 },
+            { "key": "amb-wind-light", "volume": 0.5 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}

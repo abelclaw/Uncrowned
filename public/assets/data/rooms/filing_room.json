@@ -1,0 +1,207 @@
+{
+    "id": "filing_room",
+    "name": "Filing Room",
+    "description": "Row upon row of filing cabinets stretch into the cavern gloom, each labeled with codes that make tax forms look like light reading. The cabinets are organized by a system so complex that understanding it qualifies as an academic achievement. The air smells of old paper, dust, and the faint despair of everyone who has ever had to find a specific form in an infinite filing system.",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-entrance-hall",
+            "zone": { "x": 0, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "cavern_entrance_hall",
+            "spawnPoint": { "x": 820, "y": 430 },
+            "transition": "slide-left",
+            "direction": "west",
+            "label": "entrance hall"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "filing-cabinets",
+            "name": "Filing Cabinets",
+            "zone": { "x": 300, "y": 350, "width": 200, "height": 60 },
+            "interactionPoint": { "x": 400, "y": 420 },
+            "responses": {
+                "look": "Hundreds of filing cabinets, each with tiny labels: '27-A through 27-A Stroke 14,' '27-B through 27-B Stroke 12,' '27-C (CLASSIFIED),' '28-A through 42-Z (DO NOT OPEN).' The system would make a librarian weep. Finding the right form requires patience, literacy, and a willingness to accept that some filing systems are adversarial by design.",
+                "use": "You start searching the cabinets. Drawer after drawer of forms: tax declarations, death certificates, fishing licenses, a form for filing complaints about forms. The organization is hostile but thorough.",
+                "open": "You open a cabinet drawer. It slides out with a metallic screech and reveals thousands of identical-looking forms. Finding the right one will require careful searching.",
+                "default": "You face the filing cabinets. They face you back with the quiet confidence of systems designed to outlast civilizations."
+            }
+        },
+        {
+            "id": "hidden-drawer",
+            "name": "Bottom Drawer",
+            "zone": { "x": 700, "y": 400, "width": 60, "height": 30 },
+            "interactionPoint": { "x": 730, "y": 420 },
+            "responses": {
+                "look": "A bottom drawer on the last cabinet, slightly ajar. Unlike the others, it's not labeled. Someone has scratched 'SKIP' into the metal -- either a filing code or advice. The drawer sticks when you try to pull it.",
+                "open": "You pull the drawer. It sticks, then slides open with reluctance. Inside: a single rubber stamp marked 'VIP -- SKIP ALL QUEUES.' Someone hid this here. Someone who got very tired of waiting.",
+                "use": "The drawer needs to be opened first. It's stuck, but not locked -- just stubborn. Like most things in this filing system.",
+                "default": "You examine the bottom drawer. It's the only unlabeled drawer in the entire room, which makes it either unimportant or the most important drawer here."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "form-27b-stroke-6",
+            "name": "Form 27-B Stroke 6",
+            "zone": { "x": 420, "y": 395, "width": 30, "height": 20 },
+            "interactionPoint": { "x": 435, "y": 420 },
+            "responses": {
+                "look": "A bureaucratic form of stunning complexity. 'FORM 27-B STROKE 6: Application for Sovereign Worthiness Test.' It has forty-seven fields, three of which are 'Name' (first, last, and bureaucratic). The fine print requires a microscope and a law degree.",
+                "use": "The form is blank. You'd need ink to fill it out. Ancient, official ink. The kind that takes bureaucracy personally."
+            }
+        },
+        {
+            "id": "vip-stamp",
+            "name": "VIP Authorization Stamp",
+            "zone": { "x": 715, "y": 410, "width": 25, "height": 15 },
+            "interactionPoint": { "x": 730, "y": 420 },
+            "responses": {
+                "look": "An unauthorized stamp that reads 'VIP -- SKIP ALL QUEUES.' Someone left it in a hidden drawer, a small act of rebellion against the system. The rubber is still good. The authorization is technically valid. The Clerk would be furious.",
+                "use": "The stamp needs something to stamp. A ticket, perhaps. A queue ticket that could use some... elevation."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "take-form",
+            "trigger": { "verb": "take", "subject": "form-27b-stroke-6" },
+            "conditions": [
+                { "type": "item-not-taken", "item": "form-27b-stroke-6" }
+            ],
+            "actions": [
+                { "type": "add-item", "item": "form-27b-stroke-6" },
+                { "type": "narrator-say", "text": "You take Form 27-B Stroke 6. The form practically vibrates with bureaucratic energy. Forty-seven fields await your attention, your ink, and your will to live. This is the form that stands between you and the Screaming Caverns test. It looks exactly as intimidating as that sounds." }
+            ],
+            "once": true
+        },
+        {
+            "id": "take-vip-stamp",
+            "trigger": { "verb": "take", "subject": "vip-stamp" },
+            "conditions": [
+                { "type": "item-not-taken", "item": "vip-stamp" }
+            ],
+            "actions": [
+                { "type": "add-item", "item": "vip-stamp" },
+                { "type": "narrator-say", "text": "You pocket the VIP stamp. It's a small rubber stamp with enormous implications. Whoever hid it here was either a genius or someone who snapped after waiting in the queue for too long. Either way, they've just saved you from waiting behind number 846 other applicants. Bless their bureaucratically rebellious soul." }
+            ],
+            "once": true
+        },
+        {
+            "id": "fill-form",
+            "trigger": { "verb": "use", "subject": "ancient-ink", "target": "form-27b-stroke-6" },
+            "conditions": [
+                { "type": "has-item", "item": "ancient-ink" },
+                { "type": "has-item", "item": "form-27b-stroke-6" },
+                { "type": "flag-not-set", "flag": "form_filled" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "ancient-ink" },
+                { "type": "set-flag", "flag": "form_filled" },
+                { "type": "narrator-say", "text": "You uncork the ancient ink and begin filling out Form 27-B Stroke 6. The ink flows eagerly, as though it has been waiting centuries for this moment. Name: Pip. Occupation: Tinker (reluctant). Reason for visit: Saving the kingdom (allegedly). The form fills itself for the more arcane fields -- bureaucratic ink knows bureaucratic forms. When you're done, the completed form glows faintly. It's ready for the Clerk." }
+            ],
+            "once": true
+        },
+        {
+            "id": "fill-form-reverse",
+            "trigger": { "verb": "use", "subject": "form-27b-stroke-6", "target": "ancient-ink" },
+            "conditions": [
+                { "type": "has-item", "item": "ancient-ink" },
+                { "type": "has-item", "item": "form-27b-stroke-6" },
+                { "type": "flag-not-set", "flag": "form_filled" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "ancient-ink" },
+                { "type": "set-flag", "flag": "form_filled" },
+                { "type": "narrator-say", "text": "You apply ink to form. The ancient ink auto-completes the bureaucratic fields with evident delight. The form is filled, glowing faintly with official power. Ready for the Clerk's scrutiny." }
+            ],
+            "once": true
+        },
+        {
+            "id": "stamp-ticket",
+            "trigger": { "verb": "use", "subject": "vip-stamp", "target": "queue-ticket" },
+            "conditions": [
+                { "type": "has-item", "item": "vip-stamp" },
+                { "type": "has-item", "item": "queue-ticket" },
+                { "type": "flag-not-set", "flag": "vip_stamped" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "vip-stamp" },
+                { "type": "set-flag", "flag": "vip_stamped" },
+                { "type": "narrator-say", "text": "You stamp the queue ticket with the VIP authorization. The stamp leaves a deep red impression: 'VIP -- SKIP ALL QUEUES.' Your ticket number 847 is now ticket number 847-VIP, which means absolutely nothing numerically but everything bureaucratically. The Clerk will hate this. Which makes it perfect." }
+            ],
+            "once": true
+        },
+        {
+            "id": "stamp-ticket-reverse",
+            "trigger": { "verb": "use", "subject": "queue-ticket", "target": "vip-stamp" },
+            "conditions": [
+                { "type": "has-item", "item": "vip-stamp" },
+                { "type": "has-item", "item": "queue-ticket" },
+                { "type": "flag-not-set", "flag": "vip_stamped" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "vip-stamp" },
+                { "type": "set-flag", "flag": "vip_stamped" },
+                { "type": "narrator-say", "text": "VIP stamp meets queue ticket. Red ink meets bureaucratic destiny. Your ticket now bears the sacred words of queue-skipping authority. The stamp crumbles after use -- it was, like all good rebellions, single-use." }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "trapped-cabinet",
+            "trigger": { "verb": "open", "subject": "filing-cabinets" },
+            "conditions": [
+                { "type": "flag-set", "flag": "form_filled" }
+            ],
+            "actions": [
+                { "type": "trigger-death", "deathId": "filed-away" }
+            ]
+        },
+        {
+            "id": "form-weapon",
+            "trigger": { "verb": "use", "subject": "form-27b-stroke-6", "target": "the_clerk" },
+            "conditions": [
+                { "type": "has-item", "item": "form-27b-stroke-6" },
+                { "type": "flag-not-set", "flag": "form_filled" },
+                { "type": "flag-set", "flag": "wrong_form_count_2" }
+            ],
+            "actions": [
+                { "type": "trigger-death", "deathId": "paper-cut" }
+            ]
+        }
+    ],
+    "deaths": {
+        "filed-away": {
+            "title": "Death by Organization",
+            "narratorText": "You open a random cabinet. This one is trapped -- a spring-loaded mechanism fires a wall of razor-sharp filing tabs directly at your face. The Clerk's filing system is thorough, organized, and apparently weaponized. You are filed under 'D' for 'Deceased,' which is at least alphabetically correct. The cabinet clicks shut behind you with the satisfaction of a system that works exactly as designed."
+        },
+        "paper-cut": {
+            "title": "Death by Irony",
+            "narratorText": "You attempt to weaponize the bureaucratic form. Bureaucracy weaponizes you first. The form's edges are sharper than they have any right to be -- centuries of administrative magic have honed them to a monomolecular edge. The paper cut starts at your finger and keeps going. It turns out forms 27-B are classified as lethal weapons in three jurisdictions. You are now a cautionary tale in the Clerk's incident report."
+        }
+    },
+    "dynamicDescriptions": {},
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            { "key": "amb-cave-drips", "volume": 0.3 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}
