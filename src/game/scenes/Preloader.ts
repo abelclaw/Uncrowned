@@ -59,10 +59,14 @@ export class Preloader extends Scene {
             frameHeight: 64,
         });
 
-        // Room data JSON files
+        // Room data JSON files -- Demo Chapter (Act 1a)
         this.load.json('room-forest_clearing', 'assets/data/rooms/forest_clearing.json');
         this.load.json('room-cave_entrance', 'assets/data/rooms/cave_entrance.json');
         this.load.json('room-village_path', 'assets/data/rooms/village_path.json');
+        this.load.json('room-cave_depths', 'assets/data/rooms/cave_depths.json');
+        this.load.json('room-underground_pool', 'assets/data/rooms/underground_pool.json');
+        this.load.json('room-village_square', 'assets/data/rooms/village_square.json');
+        this.load.json('room-old_watchtower', 'assets/data/rooms/old_watchtower.json');
 
         // Item definitions registry
         this.load.json('items', 'assets/data/items.json');
@@ -70,8 +74,9 @@ export class Preloader extends Scene {
         // NPC registry
         this.load.json('npcs', 'assets/data/npcs/npcs.json');
 
-        // NPC dialogue compiled ink JSON files
+        // NPC dialogue compiled ink JSON files -- Demo Chapter (Act 1a)
         this.load.json('dialogue-old_man', 'assets/data/dialogue/old_man.ink.json');
+        this.load.json('dialogue-stone_merchant', 'assets/data/dialogue/stone_merchant.ink.json');
         this.load.json('dialogue-narrator_history', 'assets/data/dialogue/narrator_history.ink.json');
 
         // Audio registry (event-to-SFX mapping)

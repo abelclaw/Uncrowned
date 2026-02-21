@@ -4,9 +4,17 @@
       "id": "old_man",
       "name": "Old Man",
       "personality": "A cryptic, slightly unhinged hermit who speaks in riddles and dark humor. He knows far more than he lets on, but extracting useful information requires patience and the right conversation choices.",
-      "knowledge": ["cave", "key", "bottle", "village history", "forest dangers"],
+      "knowledge": ["cave", "key", "bottle", "village history", "forest dangers", "screaming caverns", "guardian test"],
       "dialogueKey": "dialogue-old_man",
       "defaultGreeting": "The old man stares at you with unsettling intensity. He might be wise, or he might just be old."
+    },
+    {
+      "id": "stone_merchant",
+      "name": "Stone Merchant",
+      "personality": "A half-petrified merchant frozen mid-sales-pitch. Eternally optimistic despite literally turning to stone. Can still talk, slowly, through stone lips. His right arm and most of his torso are grey stone, but his left arm gestures enthusiastically.",
+      "knowledge": ["the curse", "kingdom trade routes", "crystal shards", "village history", "petrification symptoms"],
+      "dialogueKey": "dialogue-stone_merchant",
+      "defaultGreeting": "The merchant's one mobile eye tracks your approach. His stone lips crack into something that was probably meant to be a welcoming smile."
     }
   ]
 }
