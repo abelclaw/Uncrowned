@@ -78,13 +78,14 @@ Plans:
   3. Dangerous actions trigger unique death scenes with funny narrator commentary, then instantly reset to the last auto-save with no progress lost beyond the current room
   4. The narrator displays sardonic text with a typewriter effect and provides scene descriptions via the "look" command
   5. Player can manually save to multiple slots, load from any slot, start a new game from the main menu, and the game auto-saves on every room transition
-**Plans**: TBD
+**Plans**: 5 plans
 
 Plans:
-- [ ] 04-01: TBD
-- [ ] 04-02: TBD
-- [ ] 04-03: TBD
-- [ ] 04-04: TBD
+- [ ] 04-01-PLAN.md -- TDD: GameState singleton, PuzzleEngine condition/action evaluator, SaveManager, type definitions
+- [ ] 04-02-PLAN.md -- NarratorDisplay typewriter effect, InventoryPanel HTML UI, parser verb/noun extensions
+- [ ] 04-03-PLAN.md -- CommandDispatcher overhaul with PuzzleEngine integration, enriched room JSON data with items/puzzles/deaths
+- [ ] 04-04-PLAN.md -- MainMenuScene and DeathScene overlay Phaser scenes
+- [ ] 04-05-PLAN.md -- Full RoomScene integration, auto-save wiring, gameplay loop verification
 
 ### Phase 5: LLM Integration
 **Goal**: Natural language commands like "maybe I should pick up that shiny thing" work seamlessly, making the text parser feel magical
@@ -159,7 +160,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 | 1. Foundation and Rendering | 2/2 | Complete    | 2026-02-21 |
 | 2. Scene System and Player Movement | 2/2 | Complete | 2026-02-21 |
 | 3. Text Parser (Deterministic) | 2/2 | Complete | 2026-02-21 |
-| 4. Core Gameplay Systems | 0/4 | Not started | - |
+| 4. Core Gameplay Systems | 0/5 | Not started | - |
 | 5. LLM Integration | 0/2 | Not started | - |
 | 6. NPCs and Dialogue | 0/2 | Not started | - |
 | 7. Audio and Polish | 0/2 | Not started | - |
