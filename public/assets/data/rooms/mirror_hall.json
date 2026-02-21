@@ -138,10 +138,11 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "The Mirror Spirit speaks. Its voice comes from everywhere and nowhere, reflected between the glass surfaces until it sounds like a chorus. 'You are not the Uncrowned Sovereign,' it says. 'There is no Uncrowned Sovereign. The prophecy was written by a committee, approved by a subcommittee, and filed without verification. You are Pip. A tinker. A wanderer. Someone who came looking for directions and a warm meal.' The spirit pauses. 'And yet. You opened the cave. You crossed the bridge. You passed the test. You found the crystal. Not because destiny demanded it, but because you kept walking forward when every sensible person would have walked away.' The mirror glows brighter. 'The kingdom does not need a prophesied hero. It needs someone stubborn enough to do the paperwork. That, tinker, is you.' The spirit fades. The truth settles over you like a blanket that is warm but also deeply unflattering."
+                    "text": "The Mirror Spirit speaks. Its voice comes from everywhere and nowhere, reflected between the glass surfaces until it sounds like a chorus. 'You are not the Uncrowned Sovereign,' it says. 'There is no Uncrowned Sovereign. The prophecy was written by a committee, approved by a subcommittee, and filed without verification. You are Pip. A tinker. A wanderer. Someone who came looking for directions and a warm meal.' The spirit pauses. 'And yet. You opened the cave. You crossed the bridge. You passed the test. You found the crystal. Not because destiny demanded it, but because you kept walking forward when every sensible person would have walked away.' The mirror glows brighter. 'The kingdom does not need a prophesied hero. It needs someone stubborn enough to do the paperwork. That, tinker, is you.' The spirit fades. The truth settles over you like a blanket that is warm but also deeply unflattering. The mirror's truth, once seen, cannot be unseen. Some truths follow you to the end."
                 }
             ],
-            "once": true
+            "once": true,
+            "endingInfluence": true
         }
     ],
     "deathTriggers": [

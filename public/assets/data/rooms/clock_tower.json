@@ -157,10 +157,11 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "You replace the seized spring with the gear spring from the wizard's tower and oil the frozen gears. The mechanism resists, groans, and then -- with a sound like a kingdom exhaling -- begins to move. Gears turn. The pendulum swings. The clock hands sweep forward from 3:47. The curse's temporal anchor shudders. Outside, you hear it -- the grey advance slows. The petrification hasn't stopped, but it's buying you time. The clock chimes once, a deep resonant tone that echoes across the kingdom. Time moves again in Erelhain. Not much time. But enough."
+                    "text": "You replace the seized spring with the gear spring from the wizard's tower and oil the frozen gears. The mechanism resists, groans, and then -- with a sound like a kingdom exhaling -- begins to move. Gears turn. The pendulum swings. The clock hands sweep forward from 3:47. The curse's temporal anchor shudders. Outside, you hear it -- the grey advance slows. The petrification hasn't stopped, but it's buying you time. The clock chimes once, a deep resonant tone that echoes across the kingdom. Time moves again in Erelhain. Not much time. But enough. The clock ticks. For the first time in centuries, something in this kingdom is precisely on time. That feels like it matters."
                 }
             ],
-            "once": true
+            "once": true,
+            "endingInfluence": true
         },
         {
             "id": "repair-clock-oil-first",
@@ -202,10 +203,11 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "You oil the frozen gears first, then slot in the new spring. The mechanism coughs, sputters, and catches. Gears begin to turn. The pendulum swings. The clock lives again. Outside, the curse's advance visibly slows -- the grey wave loses momentum. The clock chimes, and for the first time in a long time, Erelhain has borrowed time. Use it wisely."
+                    "text": "You oil the frozen gears first, then slot in the new spring. The mechanism coughs, sputters, and catches. Gears begin to turn. The pendulum swings. The clock lives again. Outside, the curse's advance visibly slows -- the grey wave loses momentum. The clock chimes, and for the first time in a long time, Erelhain has borrowed time. Use it wisely. The clock ticks. For the first time in centuries, something in this kingdom is precisely on time. That feels like it matters."
                 }
             ],
-            "once": true
+            "once": true,
+            "endingInfluence": true
         },
         {
             "id": "need-both-parts",

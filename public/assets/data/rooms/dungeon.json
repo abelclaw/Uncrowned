@@ -282,10 +282,11 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "You hold the memory crystal before the Clerk. His spectacles catch its light. His eyes widen -- the first genuine expression you've seen on his face. The crystal pulses. Memories flood back. His hands tremble. 'I...' His voice cracks. For the first time in centuries, it sounds human. 'I was Marlowe. The wizard. I cast the curse because of a parking spot. A PARKING SPOT.' He takes off his spectacles and presses his palms to his eyes. 'Four hundred years of administration. Of forms and stamps and procedures. All to maintain a curse I cast because I couldn't park my cart at a feast.' The horror in his voice is real. 'I need to help fix this. What do you need?' The Clerk -- Marlowe -- is now your ally. The bureaucrat who built the system will help you file the paperwork to destroy it."
+                    "text": "You hold the memory crystal before the Clerk. His spectacles catch its light. His eyes widen -- the first genuine expression you've seen on his face. The crystal pulses. Memories flood back. His hands tremble. 'I...' His voice cracks. For the first time in centuries, it sounds human. 'I was Marlowe. The wizard. I cast the curse because of a parking spot. A PARKING SPOT.' He takes off his spectacles and presses his palms to his eyes. 'Four hundred years of administration. Of forms and stamps and procedures. All to maintain a curse I cast because I couldn't park my cart at a feast.' The horror in his voice is real. 'I need to help fix this. What do you need?' The Clerk -- Marlowe -- is now your ally. The bureaucrat who built the system will help you file the paperwork to destroy it. Something shifts in the air. The kind of shift that changes how stories end."
                 }
             ],
-            "once": true
+            "once": true,
+            "endingInfluence": true
         },
         {
             "id": "outwit-clerk",
@@ -319,10 +320,11 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "You unfurl the Original Curse Contract before the Clerk. His eyes snap to it with the intensity of a bureaucrat confronted with procedure. You point to Clause 47-B. 'The curse has an expiration clause,' you say. 'Filed under Section C-7 of the Royal Archive. Per Administrative Code, any curse with an expiration clause MUST be closed when closure is requested by a registered applicant.' The Clerk reads the clause. And reads it again. His jaw tightens. 'This is... procedurally correct.' The words cost him physically. 'The closure clause is valid. The curse has proper administrative channels for termination.' He stands. 'I am obligated by my own rules to assist in the closure. This is... unprecedented.' He adjusts his spectacles. 'Very well. I will officiate. Under protest. But procedurally valid protest.' The Clerk is now your ally. Outwitted by his own bureaucracy."
+                    "text": "You unfurl the Original Curse Contract before the Clerk. His eyes snap to it with the intensity of a bureaucrat confronted with procedure. You point to Clause 47-B. 'The curse has an expiration clause,' you say. 'Filed under Section C-7 of the Royal Archive. Per Administrative Code, any curse with an expiration clause MUST be closed when closure is requested by a registered applicant.' The Clerk reads the clause. And reads it again. His jaw tightens. 'This is... procedurally correct.' The words cost him physically. 'The closure clause is valid. The curse has proper administrative channels for termination.' He stands. 'I am obligated by my own rules to assist in the closure. This is... unprecedented.' He adjusts his spectacles. 'Very well. I will officiate. Under protest. But procedurally valid protest.' The Clerk is now your ally. Outwitted by his own bureaucracy. The Clerk's cooperation, such as it is, feels like it will echo. Some choices shape more than the moment."
                 }
             ],
-            "once": true
+            "once": true,
+            "endingInfluence": true
         }
     ],
     "deathTriggers": [
