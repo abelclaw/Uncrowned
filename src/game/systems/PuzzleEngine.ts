@@ -54,6 +54,7 @@ export class PuzzleEngine {
         switch (action.type) {
             case 'add-item':
                 this.state.addItem(action.item);
+                EventBus.emit('item-picked-up', action.item);
                 return null;
             case 'remove-item':
                 this.state.removeItem(action.item);
