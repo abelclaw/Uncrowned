@@ -16,10 +16,10 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Scene System and Player Movement** - Navigable scenes with animated player character, pathfinding, transitions, and room navigation
 - [x] **Phase 3: Text Parser (Deterministic)** - Text input bar with keyword/regex parser that handles all standard adventure game verbs
 - [x] **Phase 4: Core Gameplay Systems** - Inventory, puzzle engine, narrator, death system, save/load, and game state management
-- [ ] **Phase 5: LLM Integration** - Ollama-powered natural language parsing layered over the deterministic fallback
-- [ ] **Phase 6: NPCs and Dialogue** - NPC characters with conversation trees, inkjs narrative scripting, and conversation puzzles
-- [ ] **Phase 7: Audio and Polish** - Sound effects, music, ambient audio, and UI refinement
-- [ ] **Phase 8: Content Production** - Complete 5-hour fantasy adventure: story, scenes, puzzles, deaths, art pipeline; demo chapter first, then full game
+- [x] **Phase 5: LLM Integration** - Ollama-powered natural language parsing layered over the deterministic fallback
+- [x] **Phase 6: NPCs and Dialogue** - NPC characters with conversation trees, inkjs narrative scripting, and conversation puzzles
+- [x] **Phase 7: Audio and Polish** - Sound effects, music, ambient audio, and UI refinement
+- [x] **Phase 8: Content Production** - Complete 5-hour fantasy adventure: story, scenes, puzzles, deaths, art pipeline; demo chapter first, then full game
 
 ## Phase Details
 
@@ -100,7 +100,7 @@ Plans: 5/5 complete
 
 Plans:
 - [x] 05-01-PLAN.md -- OllamaClient fetch wrapper, PromptBuilder context assembly, ResponseMapper with NounResolver noun resolution
-- [ ] 05-02-PLAN.md -- HybridParser orchestrator, RoomScene async command wiring, Preloader model warm-up
+- [x] 05-02-PLAN.md -- HybridParser orchestrator, RoomScene async command wiring, Preloader model warm-up
 
 ### Phase 6: NPCs and Dialogue
 **Goal**: NPCs populate the world with personalities, branching conversations, and puzzle-relevant information driven by inkjs narrative scripting
@@ -114,9 +114,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 06-01-PLAN.md -- Dialogue engine foundation: inkjs, NPC types, DialogueManager, DialogueUI, GameState extension
-- [ ] 06-02-PLAN.md -- NPC content: npcs.json registry, ink dialogue scripts, room JSON NPC entries, Preloader loading
-- [ ] 06-03-PLAN.md -- Command pipeline integration: CommandDispatcher NPC detection, RoomScene dialogue mode, verification
+- [x] 06-01-PLAN.md -- Dialogue engine foundation: inkjs, NPC types, DialogueManager, DialogueUI, GameState extension
+- [x] 06-02-PLAN.md -- NPC content: npcs.json registry, ink dialogue scripts, room JSON NPC entries, Preloader loading
+- [x] 06-03-PLAN.md -- Command pipeline integration: CommandDispatcher NPC detection, RoomScene dialogue mode, verification
 
 ### Phase 7: Audio and Polish
 **Goal**: The game world feels alive with sound and the experience is polished for players
@@ -129,8 +129,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 07-01-PLAN.md -- AudioManager singleton, RoomData audio types, audio registry, placeholder audio files
-- [ ] 07-02-PLAN.md -- Preloader audio loading, room JSON audio fields, RoomScene AudioManager integration, verification
+- [x] 07-01-PLAN.md -- AudioManager singleton, RoomData audio types, audio registry, placeholder audio files
+- [x] 07-02-PLAN.md -- Preloader audio loading, room JSON audio fields, RoomScene AudioManager integration, verification
 
 ### Phase 8: Content Production
 **Goal**: A complete 5-hour fantasy adventure is authored and playtested -- starting with a 30-60 minute demo chapter to validate the experience, then scaling to the full game (art generation via Flux deferred to v2)
@@ -145,10 +145,10 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [ ] 08-01-PLAN.md -- Story bible, puzzle dependency graph, and room connection map for the complete adventure
-- [ ] 08-02-PLAN.md -- Demo chapter (Act 1a): room JSONs, items, NPCs, ink dialogue, Preloader registration
-- [ ] 08-03-PLAN.md -- Acts 1b and 2: room JSONs, items, NPCs, ink dialogue, Preloader registration
-- [ ] 08-04-PLAN.md -- Act 3 (climax/resolution): room JSONs, items, NPCs, ink dialogue, full game validation
+- [x] 08-01-PLAN.md -- Story bible, puzzle dependency graph, and room connection map for the complete adventure
+- [x] 08-02-PLAN.md -- Demo chapter (Act 1a): room JSONs, items, NPCs, ink dialogue, Preloader registration
+- [x] 08-03-PLAN.md -- Acts 1b and 2: room JSONs, items, NPCs, ink dialogue, Preloader registration
+- [x] 08-04-PLAN.md -- Act 3 (climax/resolution): room JSONs, items, NPCs, ink dialogue, full game validation
 
 ## Progress
 
@@ -162,7 +162,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 | 2. Scene System and Player Movement | 2/2 | Complete | 2026-02-21 |
 | 3. Text Parser (Deterministic) | 2/2 | Complete | 2026-02-21 |
 | 4. Core Gameplay Systems | 5/5 | Complete | 2026-02-21 |
-| 5. LLM Integration | 1/2 | In progress | - |
-| 6. NPCs and Dialogue | 0/3 | Not started | - |
-| 7. Audio and Polish | 0/2 | Not started | - |
-| 8. Content Production | 0/4 | Not started | - |
+| 5. LLM Integration | 2/2 | Complete | 2026-02-21 |
+| 6. NPCs and Dialogue | 3/3 | Complete | 2026-02-21 |
+| 7. Audio and Polish | 2/2 | Complete | 2026-02-21 |
+| 8. Content Production | 4/4 | Complete | 2026-02-21 |

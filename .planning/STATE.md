@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** Phase 8: Content Production -- Acts 1b-2 authored (26 rooms), Acts 3-4 and testing remain
+**Current focus:** Phase 8: Content Production -- COMPLETE. Full 36-room adventure playable start to finish.
 
 ## Current Position
 
 Phase: 8 of 8 (Content Production)
-Plan: 4 of 4 in current phase (08-01, 08-02, 08-03 complete)
-Status: In Progress
-Last activity: 2026-02-21 -- Completed 08-03-PLAN.md (Acts 1b-2 Content Authoring)
+Plan: 4 of 4 in current phase (08-01, 08-02, 08-03, 08-04 complete)
+Status: Complete
+Last activity: 2026-02-21 -- Completed 08-04-PLAN.md (Act 3, Endgame, Full Game Validation)
 
-Progress: [██████████] 97%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 20
-- Average duration: 3.3min
-- Total execution time: 1.15 hours
+- Total plans completed: 21
+- Average duration: 3.5min
+- Total execution time: 1.38 hours
 
 **By Phase:**
 
@@ -55,6 +55,7 @@ Progress: [██████████] 97%
 | Phase 08 P01 | 9min | 2 tasks | 3 files |
 | Phase 08 P02 | 10min | 2 tasks | 17 files |
 | Phase 08 P03 | 14min | 2 tasks | 37 files |
+| Phase 08 P04 | 14min | 2 tasks | 23 files |
 
 ## Accumulated Context
 
@@ -139,6 +140,11 @@ Recent decisions affecting current work:
 - [Phase 08]: Guardian chamber sequential 3-question test with progressive flag gates (q1_correct, q2_correct, q3_correct)
 - [Phase 08]: Spirit-brew crafting chain: empty-chalice -> fill at well -> water-chalice -> combine with dried-sage -> spirit-brew
 - [Phase 08]: VIP stamp hidden in filing room drawer as alternative to 347-year queue wait
+- [Phase 08]: Act 2->3 gate on cavern_entrance_hall requires crystal-of-mundanity + guardian-defeated + clerk-satisfied
+- [Phase 08]: Mirror Spirit reveals Pip is NOT the Uncrowned Sovereign -- heroism from stubbornness, not destiny
+- [Phase 08]: Clerk confrontation has two paths: memory crystal (emotional) or curse contract argument (intellectual)
+- [Phase 08]: Clock tower repair optional but slows curse -- game completable without it
+- [Phase 08]: Rite of Administrative Closure accepts multiple trigger items for flexible puzzle interaction
 
 ### Pending Todos
 
@@ -153,5 +159,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 08-03-PLAN.md (Acts 1b-2 Content Authoring)
+Stopped at: Completed 08-04-PLAN.md (Act 3, Endgame, Full Game Validation) -- ALL PHASES COMPLETE
 Resume file: None
