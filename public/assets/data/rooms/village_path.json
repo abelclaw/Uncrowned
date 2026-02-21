@@ -1,0 +1,37 @@
+{
+    "id": "village_path",
+    "name": "Village Path",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-cave",
+            "zone": { "x": 0, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "cave_entrance",
+            "spawnPoint": { "x": 820, "y": 430 },
+            "transition": "fade"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "well",
+            "name": "Stone Well",
+            "zone": { "x": 600, "y": 350, "width": 70, "height": 70 },
+            "interactionPoint": { "x": 635, "y": 420 }
+        }
+    ],
+    "playerSpawn": { "x": 480, "y": 430 }
+}

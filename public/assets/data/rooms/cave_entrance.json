@@ -1,0 +1,44 @@
+{
+    "id": "cave_entrance",
+    "name": "Cave Entrance",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 390 },
+        { "x": 910, "y": 390 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-forest",
+            "zone": { "x": 0, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "forest_clearing",
+            "spawnPoint": { "x": 820, "y": 430 },
+            "transition": "fade"
+        },
+        {
+            "id": "to-village",
+            "zone": { "x": 880, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "village_path",
+            "spawnPoint": { "x": 100, "y": 430 },
+            "transition": "fade"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "cave-mouth",
+            "name": "Dark Cave Mouth",
+            "zone": { "x": 450, "y": 340, "width": 100, "height": 80 },
+            "interactionPoint": { "x": 500, "y": 420 }
+        }
+    ],
+    "playerSpawn": { "x": 480, "y": 430 }
+}

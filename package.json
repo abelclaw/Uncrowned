@@ -12,6 +12,7 @@
         "vite": "^6.3.1"
     },
     "dependencies": {
+        "navmesh": "^2.3.1",
         "phaser": "^3.90.0",
         "terser": "^5.39.0"
     }

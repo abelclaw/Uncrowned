@@ -1,0 +1,37 @@
+{
+    "id": "forest_clearing",
+    "name": "Forest Clearing",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 380 },
+        { "x": 910, "y": 380 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-cave",
+            "zone": { "x": 880, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "cave_entrance",
+            "spawnPoint": { "x": 100, "y": 430 },
+            "transition": "fade"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "old-stump",
+            "name": "Old Tree Stump",
+            "zone": { "x": 400, "y": 350, "width": 80, "height": 60 },
+            "interactionPoint": { "x": 440, "y": 420 }
+        }
+    ],
+    "playerSpawn": { "x": 200, "y": 430 }
+}

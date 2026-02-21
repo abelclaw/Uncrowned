@@ -51,6 +51,17 @@ export class Preloader extends Scene {
         this.load.image('bg-mountains', 'assets/backgrounds/mountains.png');
         this.load.image('bg-trees', 'assets/backgrounds/trees.png');
         this.load.image('bg-ground', 'assets/backgrounds/ground.png');
+
+        // Player spritesheet (16 frames: idle 0-3, walk 4-11, interact 12-15)
+        this.load.spritesheet('player', 'assets/sprites/player.png', {
+            frameWidth: 48,
+            frameHeight: 64,
+        });
+
+        // Room data JSON files
+        this.load.json('room-forest_clearing', 'assets/data/rooms/forest_clearing.json');
+        this.load.json('room-cave_entrance', 'assets/data/rooms/cave_entrance.json');
+        this.load.json('room-village_path', 'assets/data/rooms/village_path.json');
     }
 
     create() {
