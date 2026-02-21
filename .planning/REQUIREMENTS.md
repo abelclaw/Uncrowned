@@ -44,8 +44,8 @@ Requirements for the Art & Polish milestone. Each maps to roadmap phases.
 
 - [x] **MOBI-01**: Game canvas scales correctly on mobile viewports (portrait and landscape)
 - [x] **MOBI-02**: Quick verb buttons (Look, Take, Use, Go, Talk, Inventory) appear on mobile for tap-based interaction
-- [ ] **MOBI-03**: Text input triggers native mobile keyboard and game layout adjusts without canvas squishing
-- [ ] **MOBI-04**: Touch-to-move works for player navigation (tap location = walk target)
+- [x] **MOBI-03**: Text input triggers native mobile keyboard and game layout adjusts without canvas squishing
+- [x] **MOBI-04**: Touch-to-move works for player navigation (tap location = walk target)
 - [x] **MOBI-05**: Input font size is 16px+ on mobile to prevent iOS auto-zoom
 - [x] **MOBI-06**: Viewport meta tag includes maximum-scale=1.0, user-scalable=no, viewport-fit=cover
 
@@ -121,8 +121,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | GALR-06 | Phase 10 | Complete |
 | MOBI-01 | Phase 13 | Complete |
 | MOBI-02 | Phase 13 | Complete |
-| MOBI-03 | Phase 13 | Pending |
-| MOBI-04 | Phase 13 | Pending |
+| MOBI-03 | Phase 13 | Complete |
+| MOBI-04 | Phase 13 | Complete |
 | MOBI-05 | Phase 13 | Complete |
 | MOBI-06 | Phase 13 | Complete |
 | ENDS-01 | Phase 12 | Complete |
