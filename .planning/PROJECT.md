@@ -31,9 +31,16 @@
 
 The text parser must feel magical — players type natural language commands and the game understands them, creating that classic adventure game feeling of conversing with a world. Everything else (graphics, puzzles, story) builds on this foundation.
 
-## Next Milestone Goals
+## Current Milestone: v2.0 Art & Polish
 
-Not yet defined. Run `/gsd:new-milestone` to start v1.1 or v2.0 planning.
+**Goal:** Replace placeholder assets with generated pixel art, add progressive hints, death gallery, mobile support, and multiple endings.
+
+**Target features:**
+- Flux-based art generation pipeline for room backgrounds, item sprites, and character art
+- Progressive hint system that nudges stuck players without spoiling puzzles
+- Death gallery with achievements for discovering all death scenes
+- Mobile-responsive layout with touch controls and virtual keyboard
+- Multiple story endings based on player choices and puzzle completion paths
 
 ## Context
 
@@ -60,7 +67,7 @@ Not yet defined. Run `/gsd:new-milestone` to start v1.1 or v2.0 planning.
 | Features-before-content approach | Build engine with placeholders, validate fun, then scale | Validated in v1.0 |
 | Deterministic parser before LLM | Proves gameplay works without AI dependency | Validated in v1.0 |
 | Demo chapter before full game | Validate experience at small scale before 5-hour commitment | Validated in v1.0 |
-| Flux art deferred to v2 | Focus v1 on gameplay, art pipeline needs separate validation | Pending for v2 |
+| Flux art deferred to v2 | Focus v1 on gameplay, art pipeline needs separate validation | In progress for v2.0 |
 
 <details>
 <summary>v1.0 Original Project Brief</summary>
@@ -75,4 +82,4 @@ Not yet defined. Run `/gsd:new-milestone` to start v1.1 or v2.0 planning.
 </details>
 
 ---
-*Last updated: 2026-02-21 after v1.0 milestone completion*
+*Last updated: 2026-02-21 after v2.0 milestone started*
