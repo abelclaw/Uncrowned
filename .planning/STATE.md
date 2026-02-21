@@ -5,17 +5,17 @@
 See: .planning/PROJECT.md (updated 2026-02-21)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** v2.0 Art & Polish -- Phase 9: Art Pipeline & Schema Foundation (COMPLETE)
+**Current focus:** v2.0 Art & Polish -- Phase 10: Death Gallery
 
 ## Current Position
 
 Milestone: v2.0 Art & Polish
-Phase: 9 of 13 (Art Pipeline & Schema Foundation) -- COMPLETE
-Plan: 3 of 3 in current phase (all complete)
-Status: Phase Complete
-Last activity: 2026-02-21 -- Completed 09-03: Art asset integration (lazy loading, placeholder art, manifest updates)
+Phase: 10 of 13 (Death Gallery)
+Plan: 1 of 2 in current phase
+Status: In Progress
+Last activity: 2026-02-21 -- Completed 10-01: Death registry data, recording pipeline, counter/badge
 
-Progress: [██░░░░░░░░] ~20% (v2.0)
+Progress: [███░░░░░░░] ~28% (v2.0)
 
 ## Performance Metrics
 
@@ -23,13 +23,14 @@ Progress: [██░░░░░░░░] ~20% (v2.0)
 - Phases: 8, Plans: 22, Commits: 95, Files: 207, LOC: 35,394
 
 **v2.0:**
-- Total plans completed: 3
+- Total plans completed: 4
 - Phases: 5 (Phases 9-13)
 - Requirements: 32
 
 | Phase | Plan | Duration | Tasks | Files |
 |-------|------|----------|-------|-------|
 | 09 | 03 | 6min | 3 | 131 |
+| 10 | 01 | 5min | 2 | 5 |
 
 ## Accumulated Context
 
@@ -53,6 +54,8 @@ Recent decisions affecting current work:
 - 09-03: Background key convention: bg-shared-actN-{layer}, bg-rooms-{roomId}
 - 09-03: Lazy loading gates only visual rendering; navigation/exits/hotspots remain synchronous
 - 09-03: Item sprites stored in Map for cleanup on pickup; NPC sprites similarly managed
+- [Phase 10]: Death registry uses actual room JSON roomIds (corrected 5 plan mapping errors via cross-reference)
+- [Phase 10]: DeathSceneData interface uses optional fields for backward compatibility
 
 ### Pending Todos
 
@@ -67,5 +70,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 09-02-PLAN.md
+Stopped at: Completed 10-01-PLAN.md
 Resume file: None
