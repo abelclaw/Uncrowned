@@ -12,7 +12,7 @@ KQGame is built features-before-content: a complete adventure game engine valida
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation and Rendering** - Game loop, pixel-perfect canvas rendering, asset loading, event bus, and project scaffolding
+- [x] **Phase 1: Foundation and Rendering** - Game loop, pixel-perfect canvas rendering, asset loading, event bus, and project scaffolding
 - [ ] **Phase 2: Scene System and Player Movement** - Navigable scenes with animated player character, pathfinding, transitions, and room navigation
 - [ ] **Phase 3: Text Parser (Deterministic)** - Text input bar with keyword/regex parser that handles all standard adventure game verbs
 - [ ] **Phase 4: Core Gameplay Systems** - Inventory, puzzle engine, narrator, death system, save/load, and game state management
@@ -35,8 +35,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 2 plans
 
 Plans:
-- [ ] 01-01-PLAN.md -- Project scaffolding, pixel-perfect game config, Boot/Preloader/Game scene chain, EventBus
-- [ ] 01-02-PLAN.md -- Parallax scrolling backgrounds, placeholder art assets, visual verification
+- [x] 01-01-PLAN.md -- Project scaffolding, pixel-perfect game config, Boot/Preloader/Game scene chain, EventBus
+- [x] 01-02-PLAN.md -- Parallax scrolling backgrounds, placeholder art assets, visual verification
 
 ### Phase 2: Scene System and Player Movement
 **Goal**: Player navigates between interconnected rooms with an animated character that walks to clicked locations
@@ -155,7 +155,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation and Rendering | 1/2 | In Progress | - |
+| 1. Foundation and Rendering | 2/2 | Complete | 2026-02-20 |
 | 2. Scene System and Player Movement | 0/2 | Not started | - |
 | 3. Text Parser (Deterministic) | 0/1 | Not started | - |
 | 4. Core Gameplay Systems | 0/4 | Not started | - |

@@ -15,7 +15,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **ENG-04**: Scenes have defined exits that transition to other scenes
 - [ ] **ENG-05**: Scene transitions use fade/slide animations between rooms
 - [x] **ENG-06**: Assets preload with a loading screen before gameplay starts
-- [ ] **ENG-07**: Scenes support parallax scrolling backgrounds for depth
+- [x] **ENG-07**: Scenes support parallax scrolling backgrounds for depth
 - [x] **ENG-08**: Game loop runs at consistent frame rate via requestAnimationFrame
 
 ### Text Parser
@@ -125,7 +125,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ENG-04 | Phase 2 | Pending |
 | ENG-05 | Phase 2 | Pending |
 | ENG-06 | Phase 1 | Complete |
-| ENG-07 | Phase 1 | Pending |
+| ENG-07 | Phase 1 | Complete |
 | ENG-08 | Phase 1 | Complete |
 | PARSE-01 | Phase 3 | Pending |
 | PARSE-02 | Phase 3 | Pending |
