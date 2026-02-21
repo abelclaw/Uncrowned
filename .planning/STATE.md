@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** Phase 5 in progress: LLM Integration
+**Current focus:** Phase 5 complete. Ready for Phase 6: Dialogue System
 
 ## Current Position
 
-Phase: 5 of 8 (LLM Integration)
-Plan: 1 of 2 in current phase (05-01 complete)
-Status: In Progress
-Last activity: 2026-02-21 -- Completed 05-01-PLAN.md (LLM foundation modules)
+Phase: 5 of 8 (LLM Integration) -- COMPLETE
+Plan: 2 of 2 in current phase (05-02 complete)
+Status: Phase Complete
+Last activity: 2026-02-21 -- Completed 05-02-PLAN.md (HybridParser integration)
 
-Progress: [██████░░░░] 61%
+Progress: [██████░░░░] 65%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 12
-- Average duration: 2.9min
-- Total execution time: 0.58 hours
+- Total plans completed: 13
+- Average duration: 2.8min
+- Total execution time: 0.61 hours
 
 **By Phase:**
 
@@ -46,6 +46,7 @@ Progress: [██████░░░░] 61%
 | Phase 04 P03 | 3min | 2 tasks | 7 files |
 | Phase 04 P05 | 3min | 3 tasks | 6 files |
 | Phase 05 P01 | 2min | 2 tasks | 3 files |
+| Phase 05 P02 | 2min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -97,6 +98,9 @@ Recent decisions affecting current work:
 - [Phase 05]: AbortSignal.any combines timeout + manual abort for race condition prevention on rapid input
 - [Phase 05]: GAME_ACTION_SCHEMA excludes save/load meta-commands from LLM verb space
 - [Phase 05]: NounResolver reused from parser module -- no duplication of noun resolution logic
+- [Phase 05]: Separate OllamaClient instances in Preloader and HybridParser -- no shared state needed beyond availability boolean
+- [Phase 05]: Thinking indicator ('...') shown via showInstant before async parse -- instant feedback while LLM processes
+- [Phase 05]: Post-await isTransitioning re-check prevents stale action dispatch after scene change during LLM wait
 
 ### Pending Todos
 
@@ -111,5 +115,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 05-01-PLAN.md (LLM foundation modules -- OllamaClient, PromptBuilder, ResponseMapper)
+Stopped at: Completed 05-02-PLAN.md (HybridParser integration -- Phase 5 complete)
 Resume file: None
