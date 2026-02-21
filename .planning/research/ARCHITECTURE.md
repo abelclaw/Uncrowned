@@ -1,597 +1,799 @@
-# Architecture Research
+# Architecture Research: v2.0 Art & Polish Integration
 
-**Domain:** Browser-based graphic adventure game with LLM text parsing
-**Researched:** 2026-02-20
-**Confidence:** HIGH (architecture patterns well-established; LLM integration layer is MEDIUM)
+**Domain:** Feature integration into existing Phaser 3 adventure game
+**Researched:** 2026-02-21
+**Confidence:** HIGH for existing architecture analysis, MEDIUM for Flux pipeline specifics
 
-## Standard Architecture
+## Executive Summary
 
-### System Overview
+The v2.0 features -- Flux art pipeline, progressive hints, death gallery, mobile layout, and multiple endings -- integrate into the existing architecture through well-defined extension points. The codebase already follows data-driven patterns (JSON room files, EventBus decoupling, singleton state) that make most features additive rather than invasive. The critical architectural insight is that **none of these features require rewriting existing systems**; they extend them through new components that hook into existing EventBus events, GameState data, and the JSON room data schema.
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                       PRESENTATION LAYER                            │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐              │
-│  │ Canvas       │  │ UI Overlay   │  │ Audio        │              │
-│  │ Renderer     │  │ (HTML/CSS)   │  │ Manager      │              │
-│  │ (scenes,     │  │ (inventory,  │  │ (music, SFX, │              │
-│  │  sprites,    │  │  text input, │  │  narrator     │              │
-│  │  animations) │  │  dialogs,    │  │  voice)       │              │
-│  │              │  │  narrator)   │  │              │              │
-│  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘              │
-│         │                 │                 │                       │
-├─────────┴─────────────────┴─────────────────┴───────────────────────┤
-│                         GAME LOOP                                   │
-│  ┌──────────────────────────────────────────────────────────────┐   │
-│  │  requestAnimationFrame -> Input -> Update -> Render -> repeat │   │
-│  └──────────────────────────────────────────────────────────────┘   │
-├─────────────────────────────────────────────────────────────────────┤
-│                       GAME LOGIC LAYER                              │
-│  ┌────────────┐  ┌────────────┐  ┌────────────┐  ┌────────────┐   │
-│  │ Scene      │  │ Player     │  │ Puzzle     │  │ Death      │   │
-│  │ Manager    │  │ Controller │  │ Engine     │  │ System     │   │
-│  │ (FSM)      │  │ (movement, │  │ (triggers, │  │ (narrator, │   │
-│  │            │  │  actions)  │  │  conditions│  │  respawn)  │   │
-│  └─────┬──────┘  └─────┬──────┘  └─────┬──────┘  └─────┬──────┘   │
-│        │               │               │               │           │
-│  ┌─────┴──────┐  ┌─────┴──────┐  ┌─────┴──────────────┴──────┐    │
-│  │ Inventory  │  │ Pathfinding│  │ Event Bus                 │    │
-│  │ Manager    │  │ (A* on     │  │ (decoupled communication) │    │
-│  │            │  │  walkable  │  │                            │    │
-│  │            │  │  areas)    │  │                            │    │
-│  └────────────┘  └────────────┘  └────────────────────────────┘    │
-├─────────────────────────────────────────────────────────────────────┤
-│                     LLM INTEGRATION LAYER                           │
-│  ┌──────────────────────────────────────────────────────────────┐   │
-│  │ Text Parser Service                                          │   │
-│  │ ┌────────────┐  ┌────────────┐  ┌────────────┐              │   │
-│  │ │ Input      │  │ Ollama     │  │ Response   │              │   │
-│  │ │ Sanitizer  │→ │ Client     │→ │ Mapper     │              │   │
-│  │ │ & Context  │  │ (REST API) │  │ (JSON →    │              │   │
-│  │ │ Builder    │  │            │  │  GameAction)│              │   │
-│  │ └────────────┘  └────────────┘  └────────────┘              │   │
-│  └──────────────────────────────────────────────────────────────┘   │
-├─────────────────────────────────────────────────────────────────────┤
-│                        DATA LAYER                                   │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐              │
-│  │ Scene        │  │ Game State   │  │ Asset        │              │
-│  │ Definitions  │  │ Store        │  │ Registry     │              │
-│  │ (JSON data   │  │ (current     │  │ (sprites,    │              │
-│  │  files)      │  │  state,      │  │  audio,      │              │
-│  │              │  │  save/load)  │  │  scene imgs) │              │
-│  └──────────────┘  └──────────────┘  └──────────────┘              │
-└─────────────────────────────────────────────────────────────────────┘
-```
+The Flux art pipeline is the only feature that operates outside runtime -- it is a build-time/offline tool that produces assets consumed by the existing Preloader. All other features are runtime additions that integrate through the established patterns.
 
-### Component Responsibilities
+---
 
-| Component | Responsibility | Typical Implementation |
-|-----------|----------------|------------------------|
-| Canvas Renderer | Drawing scene backgrounds, sprites, animations, walkable area debug overlays | Single HTML5 Canvas element, layered drawing with z-sorting, sprite sheet clipping |
-| UI Overlay | Text input bar, inventory panel, dialog boxes, narrator text, death screen, menus | HTML/CSS elements positioned over the canvas -- NOT drawn on canvas |
-| Audio Manager | Background music per scene, sound effects, narrator audio cues | Howler.js wrapping Web Audio API; audio sprites for SFX efficiency |
-| Game Loop | Fixed timestep update, variable render; orchestrates input/update/render cycle | requestAnimationFrame with delta time accumulation |
-| Scene Manager | Room transitions, loading/unloading scene data, managing active scene state | Finite State Machine where each room is a state |
-| Player Controller | Character movement along walkable areas, click-to-move, action execution | Position tracking, A* pathfinding on walkable polygons, animation state |
-| Puzzle Engine | Evaluating puzzle conditions, tracking item combinations, triggering outcomes | Data-driven condition/action system reading from scene definitions |
-| Death System | Tracking death triggers, playing narrator commentary, managing respawn | Event-driven hooks into puzzle engine and scene hazards |
-| Inventory Manager | Adding/removing items, item combination logic, item-on-scene-object interactions | Array-based inventory with item definition objects |
-| Pathfinding | Computing walkable paths for character movement within scenes | A* on polygon navmesh or grid overlay of walkable areas |
-| Event Bus | Decoupled communication between all game systems | Publish/subscribe pattern; typed events |
-| Text Parser Service | Translating natural language input into structured game commands via LLM | Ollama REST client with prompt engineering and JSON schema output |
-| Scene Definitions | Declarative room data: backgrounds, hotspots, exits, items, puzzle conditions | JSON files loaded at runtime; one file per room or grouped by area |
-| Game State Store | Single source of truth for all mutable game state | Plain object with structured sections; serialized to localStorage/IndexedDB |
-| Asset Registry | Loading, caching, and serving game assets (images, audio, data files) | Promise-based preloader with progress tracking |
+## Current Architecture Map
 
-## Recommended Project Structure
+### System Topology (As-Built)
 
 ```
-src/
-├── core/                    # Engine fundamentals
-│   ├── GameLoop.ts          # requestAnimationFrame loop with fixed timestep
-│   ├── EventBus.ts          # Pub/sub event system
-│   ├── AssetLoader.ts       # Image/audio/data preloading with progress
-│   └── InputManager.ts      # Mouse click, keyboard, text input handling
-├── rendering/               # All drawing concerns
-│   ├── CanvasRenderer.ts    # Main canvas drawing, camera, z-sorting
-│   ├── SpriteSheet.ts       # Sprite sheet parsing and frame extraction
-│   ├── AnimationPlayer.ts   # Frame-based animation state machine
-│   └── ParticleSystem.ts    # Simple particles (dust, sparkles, etc.)
-├── scenes/                  # Scene/room management
-│   ├── SceneManager.ts      # FSM for room transitions
-│   ├── Scene.ts             # Base scene class (background, hotspots, exits)
-│   └── SceneTransition.ts   # Fade, slide, cut transitions
-├── entities/                # Game objects
-│   ├── Player.ts            # Player character with movement and animation
-│   ├── NPC.ts               # Non-player characters
-│   ├── Hotspot.ts           # Clickable/interactable regions in a scene
-│   └── SceneObject.ts       # Items, doors, environmental objects
-├── systems/                 # Game logic systems
-│   ├── InventoryManager.ts  # Item tracking, combination logic
-│   ├── PuzzleEngine.ts      # Condition evaluation, trigger execution
-│   ├── DeathSystem.ts       # Death triggers, narrator quips, respawn
-│   ├── DialogSystem.ts      # NPC conversations, branching dialog
-│   ├── Pathfinding.ts       # A* over walkable area polygons
-│   └── SaveSystem.ts        # Serialize/deserialize game state
-├── llm/                     # LLM text parser integration
-│   ├── OllamaClient.ts      # HTTP client for Ollama REST API
-│   ├── PromptBuilder.ts     # Context-aware prompt construction
-│   ├── ResponseMapper.ts    # JSON response -> GameAction mapping
-│   └── FallbackParser.ts    # Regex/keyword fallback when LLM unavailable
-├── narrator/                # Narrator personality system
-│   ├── NarratorEngine.ts    # Text generation, timing, queue
-│   ├── DeathQuips.ts        # Death-specific dark comedy responses
-│   └── NarratorPersonality.ts # Tone, style, context awareness
-├── audio/                   # Sound management
-│   ├── AudioManager.ts      # Music and SFX playback via Howler.js
-│   └── MusicTracker.ts      # Scene-based music transitions
-├── ui/                      # HTML/CSS overlay components
-│   ├── TextInput.ts         # Command input bar
-│   ├── InventoryPanel.ts    # Visual inventory display
-│   ├── DialogBox.ts         # NPC/narrator text display
-│   ├── DeathScreen.ts       # Death overlay with narrator text
-│   └── MainMenu.ts          # Title, save slots, settings
-├── data/                    # Game content (loaded at runtime)
-│   ├── scenes/              # Scene definition JSON files
-│   ├── items/               # Item definition JSON files
-│   ├── puzzles/             # Puzzle definition JSON files
-│   ├── dialogs/             # Dialog tree JSON files
-│   └── narrator/            # Narrator text banks
-├── assets/                  # Static game assets
-│   ├── sprites/             # Character sprite sheets (PNG)
-│   ├── backgrounds/         # Scene background images (PNG)
-│   ├── ui/                  # UI element graphics
-│   ├── audio/               # Music and SFX files
-│   └── fonts/               # Pixel fonts
-└── index.ts                 # Entry point: init, preload, start game loop
+                    +-----------------------+
+                    |      index.html       |
+                    |   #app > #game-container
+                    +----------+------------+
+                               |
+              +----------------+----------------+
+              |                                 |
+   +----------v-----------+          +----------v-----------+
+   |    Phaser Canvas      |          |    HTML Overlays      |
+   |    (960x540, FIT)     |          |  TextInputBar         |
+   |                       |          |  NarratorDisplay       |
+   |  Scenes:              |          |  InventoryPanel        |
+   |   Boot -> Preloader   |          |  DialogueUI            |
+   |   -> MainMenuScene    |          +----------+-------------+
+   |   -> RoomScene        |                     |
+   |   -> DeathScene       |                     |
+   +----------+------------+                     |
+              |                                  |
+   +----------v----------------------------------v-----------+
+   |                    EventBus (Phaser.Events)              |
+   |  Events: command-submitted, trigger-death, go-command,   |
+   |  item-picked-up, inventory-toggle, load-game,            |
+   |  room-update, start-dialogue, scene-ready                |
+   +----+----------+----------+----------+----------+---------+
+        |          |          |          |          |
+   +----v---+ +----v---+ +----v---+ +----v---+ +----v---+
+   |Command | |Puzzle  | |Game    | |Save    | |Audio   |
+   |Dispatch| |Engine  | |State   | |Manager | |Manager |
+   +--------+ +--------+ +--------+ +--------+ +--------+
+        |
+   +----v-----------+
+   |  HybridParser   |
+   |  (TextParser +  |
+   |   OllamaClient) |
+   +----------------+
 ```
 
-### Structure Rationale
+### Key Extension Points Identified
 
-- **core/:** Engine-level code that has zero knowledge of game content. Reusable across projects. No game-specific logic here.
-- **rendering/:** Isolated from game logic. Renderer receives draw commands; it does not decide what to draw. This separation means you can swap rendering approaches without touching game logic.
-- **scenes/ vs data/scenes/:** `src/scenes/` contains the Scene *engine* (manager, transitions). `src/data/scenes/` contains the *content* (JSON definitions). This separation is critical -- the engine interprets data, it does not hardcode room behavior.
-- **systems/:** Each system is an independent module that communicates via the EventBus. Systems do not directly reference each other; they emit and listen to events.
-- **llm/:** Completely isolated from the rest of the game. The LLM layer receives text and returns a `GameAction` struct. The game never knows or cares that an LLM was involved. This makes the fallback parser trivially swappable.
-- **ui/:** HTML/CSS components, NOT canvas-drawn. This is deliberate: HTML handles text rendering, input fields, and accessibility far better than canvas. The canvas handles only the game world.
-- **data/ vs assets/:** `data/` is structured game content (JSON). `assets/` is binary media (images, audio). Different loading strategies for each.
+| Extension Point | Mechanism | Used By v2 Features |
+|----------------|-----------|---------------------|
+| `GameStateData` interface + `GameState` singleton | Add new fields, serialize/deserialize automatically | Death gallery, multiple endings, hint tracking |
+| `EventBus` events | Add new event types, existing systems listen | Hints (puzzle-attempt-failed), death gallery (death-recorded) |
+| `RoomData` JSON schema | Add optional fields to room JSON | Hints (per-puzzle hints), art assets (new background keys), endings (branch points) |
+| `PuzzleAction` union type | Add new action types to the discriminated union | Multiple endings (trigger-ending), hints (show-hint) |
+| `PuzzleCondition` union type | Add new condition types | Multiple endings (ending-path conditions) |
+| `DeathScene` overlay | Extend with gallery link, death-specific art | Death gallery |
+| `Preloader` asset loading | Add new asset load calls | Flux-generated backgrounds, item sprites, ending scenes |
+| `style.css` + HTML overlay pattern | CSS media queries, new HTML elements | Mobile layout |
+| `Phaser.Scale` config in `main.ts` | Adjust scale mode, add resize handlers | Mobile responsive |
 
-## Architectural Patterns
+---
 
-### Pattern 1: Data-Driven Scene Definitions
+## Feature 1: Flux Art Generation Pipeline
 
-**What:** All game content (rooms, puzzles, items, dialogs) is defined in JSON data files, not in code. The engine reads these files and interprets them at runtime.
-**When to use:** Always. This is the foundational pattern for the entire game.
-**Trade-offs:** More upfront design work for the data schema, but massively easier content creation, iteration, and debugging. Content changes require zero code changes.
+### Architecture Decision: Offline Tool, Not Runtime
 
-**Example:**
+The Flux pipeline is a **build-time/offline asset generation tool**, NOT a runtime system. It produces PNG files that replace placeholder assets in `public/assets/`. The game engine does not change -- it already loads images by key from the Preloader.
+
+### Component Architecture
+
+```
+OFFLINE PIPELINE (not part of game runtime)
+============================================
+
+  +------------------+     +------------------+     +------------------+
+  |  Art Manifest    |---->|  Generation      |---->|  Post-Processing |
+  |  (JSON config)   |     |  Script          |     |  (pixelate,      |
+  |                  |     |  (Python/Node)   |     |   palette,       |
+  |  Per-room:       |     |                  |     |   resize)        |
+  |  - prompt        |     |  ComfyUI API     |     +--------+---------+
+  |  - style refs    |     |  or diffusers    |              |
+  |  - dimensions    |     +------------------+              v
+  |  - seed/cfg      |                              +--------+---------+
+  +------------------+                              |  Output to       |
+                                                    |  public/assets/  |
+                                                    |  backgrounds/    |
+                                                    |  sprites/        |
+                                                    +------------------+
+```
+
+### New Components
+
+| Component | Location | Purpose |
+|-----------|----------|---------|
+| `tools/art-pipeline/manifest.json` | Project root (not src/) | Defines all assets to generate: room backgrounds, item sprites, character art. Maps room IDs to prompts, style parameters, dimensions |
+| `tools/art-pipeline/generate.py` | Project root | Python script that reads manifest, calls ComfyUI API or diffusers pipeline, saves outputs |
+| `tools/art-pipeline/postprocess.py` | Project root | Pixel art post-processing: downscale to native resolution, apply palette constraints, ensure consistent style |
+| `tools/art-pipeline/style-guide.json` | Project root | Style parameters shared across all generations: color palette, pixel density, art direction keywords |
+
+### Integration With Existing Architecture
+
+**Zero runtime changes required.** The pipeline produces files that slot directly into the existing asset loading flow:
+
+1. Pipeline generates `public/assets/backgrounds/cave_entrance_bg.png` (replacing placeholder `bg-ground`)
+2. Room JSON already references background layer keys: `{ "key": "bg-cave-entrance", "scrollFactor": 1 }`
+3. Preloader already loads by key: `this.load.image('bg-cave-entrance', 'assets/backgrounds/cave_entrance_bg.png')`
+4. RoomScene already renders layers by key with parallax
+
+**Modification needed in Preloader.ts:** Replace placeholder background load calls with room-specific background loads. Currently all rooms share the same 4 placeholder layers (`bg-sky`, `bg-mountains`, `bg-trees`, `bg-ground`). With Flux art, each room gets unique backgrounds.
+
+**Modification needed in room JSONs:** Update `background.layers[].key` values from shared placeholders to room-specific asset keys.
+
+### Data Flow
+
+```
+manifest.json --> generate.py --> ComfyUI/diffusers --> raw PNG
+                                                         |
+                                                         v
+                                              postprocess.py --> pixel art PNG
+                                                                      |
+                                                                      v
+                                                          public/assets/backgrounds/
+                                                                      |
+                                                                      v
+                                                     Preloader.ts loads by key
+                                                                      |
+                                                                      v
+                                                 RoomScene.create() renders layers
+```
+
+### Asset Manifest Schema
+
 ```typescript
-// data/scenes/darkForest.json
+// tools/art-pipeline/manifest.json
+interface ArtManifest {
+  style: {
+    basePromptSuffix: string;  // "pixel art, 16-bit, fantasy adventure game"
+    negativePrompt: string;
+    colorPalette: string[];    // Hex colors for palette constraint
+    pixelScale: number;        // Target pixel size (e.g., 2 = 480x270 upscaled to 960x540)
+  };
+  rooms: Record<string, {
+    layers: Array<{
+      key: string;             // Matches Phaser asset key
+      prompt: string;          // Generation prompt
+      dimensions: { width: number; height: number };  // Output size
+      scrollFactor: number;    // Parallax factor (for reference)
+      seed?: number;           // Fixed seed for reproducibility
+    }>;
+  }>;
+  sprites: Record<string, {
+    prompt: string;
+    dimensions: { width: number; height: number };
+    frameCount?: number;       // For sprite sheets
+    seed?: number;
+  }>;
+}
+```
+
+### Why ComfyUI Over Raw diffusers
+
+ComfyUI provides a node-based workflow that can be saved and reproduced, supports ControlNet for pose/composition consistency, has native LoRA support for pixel art models like Pixel-Art-XL, and exposes a REST API for programmatic generation. The workflow file becomes a version-controlled artifact that ensures all team members generate assets with identical parameters.
+
+**Confidence: MEDIUM** -- ComfyUI API integration patterns are well-documented but the specific pixel art workflow quality depends on model/LoRA selection that needs iterative testing.
+
+---
+
+## Feature 2: Progressive Hint System
+
+### Architecture Decision: EventBus-Driven Hint Manager
+
+The hint system hooks into the existing command dispatch flow. When a player attempts an action that fails (puzzle conditions not met, wrong verb/subject), the HintManager tracks these attempts and offers progressively more specific hints.
+
+### Component Architecture
+
+```
+                    command-submitted
+                          |
+                          v
+                    HybridParser.parse()
+                          |
+                          v
+                    CommandDispatcher.dispatch()
+                          |
+                   +------+------+
+                   |             |
+              (success)    (failure / no match)
+                   |             |
+                   v             v
+              normal flow   EventBus.emit('hint-opportunity', {
+                              roomId, verb, subject, target,
+                              puzzleContext })
+                                  |
+                                  v
+                            +-----+-------+
+                            | HintManager |
+                            +-----+-------+
+                                  |
+                    (check attempt count for this puzzle area)
+                                  |
+                    +-------------+-------------+
+                    |             |             |
+                 (1-2 tries)  (3-5 tries)   (6+ tries)
+                    |             |             |
+                    v             v             v
+              "Hmm, maybe    "That door    "Use the rusty
+               look around    needs a key   key on the
+               more..."       of some       locked door."
+                              kind..."
+                                  |
+                                  v
+                    NarratorDisplay.typewrite(hint)
+```
+
+### New Components
+
+| Component | Location | Purpose |
+|-----------|----------|---------|
+| `src/game/systems/HintManager.ts` | Systems | Tracks failed attempts per puzzle area, selects appropriate hint tier, emits hints through NarratorDisplay |
+| `public/assets/data/hints.json` | Data | Central hint registry mapping puzzle IDs to tiered hint arrays |
+
+### Modifications to Existing Components
+
+| Component | Change | Impact |
+|-----------|--------|--------|
+| `CommandDispatcher.ts` | Emit `hint-opportunity` event when dispatch returns `handled: false` or puzzle conditions fail | LOW -- add 3-5 lines after existing failure paths |
+| `PuzzleEngine.ts` | Return richer failure info (which puzzle almost matched, what condition failed) | LOW -- add optional return data to `tryPuzzle` null result |
+| `RoomScene.ts` | Create HintManager instance, wire EventBus listener, add "hint" command | LOW -- same pattern as existing system wiring |
+| `GameStateData` | Add `hintAttempts: Record<string, number>` for tracking | LOW -- one field addition |
+| `VerbTable.ts` | Add "hint" / "help" verb | LOW -- one entry |
+
+### Hint Data Schema
+
+```typescript
+// public/assets/data/hints.json
+interface HintRegistry {
+  puzzles: Record<string, {  // Key = puzzle ID from room JSON
+    tiers: string[];          // Index 0 = vague, last = explicit
+    triggerContext: {          // What player actions trigger hint tracking
+      verbs: string[];        // Verbs that indicate player is in this puzzle area
+      subjects: string[];     // Subjects that relate to this puzzle
+    };
+  }>;
+  generalHints: Record<string, string[]>;  // Room-level hints when no specific puzzle detected
+}
+```
+
+### Example Hint Tiers
+
+```json
 {
-  "id": "dark_forest",
-  "name": "The Dark Forest",
-  "background": "backgrounds/dark_forest.png",
-  "music": "forest_ambience",
-  "walkableArea": [
-    { "x": 50, "y": 300 }, { "x": 750, "y": 300 },
-    { "x": 750, "y": 550 }, { "x": 50, "y": 550 }
-  ],
-  "hotspots": [
-    {
-      "id": "old_tree",
-      "name": "Gnarled Tree",
-      "bounds": { "x": 200, "y": 150, "w": 120, "h": 200 },
-      "look": "A tree so old it remembers when this forest wasn't dark.",
-      "use": { "requires": "axe", "triggers": "puzzle_fell_tree" },
-      "deathTrigger": null
-    },
-    {
-      "id": "suspicious_mushroom",
-      "name": "Suspicious Mushroom",
-      "bounds": { "x": 500, "y": 400, "w": 40, "h": 40 },
-      "look": "It glows invitingly. Nature's neon 'eat me' sign.",
-      "take": { "gives": "suspicious_mushroom" },
-      "eat": { "triggers": "death_mushroom_poison" }
+  "use-key-on-door": {
+    "tiers": [
+      "That door looks sturdy. You'd need something to convince it to open.",
+      "Doors have locks. Locks have keyholes. Keyholes want keys. It's a whole ecosystem.",
+      "Perhaps that rusty key you found would fit the lock on this door?"
+    ],
+    "triggerContext": {
+      "verbs": ["open", "use", "push", "pull"],
+      "subjects": ["door", "locked-door", "cave-mouth"]
     }
-  ],
-  "exits": [
-    { "id": "to_village", "bounds": { "x": 0, "y": 300, "w": 50, "h": 250 }, "target": "village_square", "edge": "left" },
-    { "id": "to_cave", "bounds": { "x": 700, "y": 200, "w": 100, "h": 150 }, "target": "cave_entrance", "requires": "torch" }
-  ],
-  "onEnter": [
-    { "condition": "!flag.visited_dark_forest", "action": "narrator_say", "text": "Oh good, the dark forest. This always ends well." },
-    { "condition": "!flag.visited_dark_forest", "action": "set_flag", "flag": "visited_dark_forest" }
-  ]
+  }
 }
 ```
 
-### Pattern 2: Event Bus for System Communication
+### Integration Pattern
 
-**What:** A centralized publish/subscribe system where game components emit typed events and subscribe to events they care about. No direct coupling between systems.
-**When to use:** All inter-system communication. The PuzzleEngine should never directly call DeathSystem.kill(); instead it emits a `DEATH_TRIGGERED` event.
-**Trade-offs:** Slight indirection makes debugging harder (you need to trace events). But the decoupling is essential -- it prevents the spaghetti that kills adventure games mid-development.
+The HintManager follows the exact same pattern as AudioManager -- singleton, initialized per-scene, EventBus-driven, cleanup on shutdown:
 
-**Example:**
 ```typescript
-// core/EventBus.ts
-type GameEvent =
-  | { type: 'PLAYER_CLICKED'; target: Hotspot; verb: string }
-  | { type: 'ITEM_ACQUIRED'; itemId: string }
-  | { type: 'ITEM_USED'; itemId: string; targetId: string }
-  | { type: 'PUZZLE_SOLVED'; puzzleId: string }
-  | { type: 'DEATH_TRIGGERED'; deathId: string }
-  | { type: 'SCENE_CHANGE'; fromScene: string; toScene: string }
-  | { type: 'NARRATOR_SAY'; text: string; style?: 'normal' | 'death' | 'hint' }
-  | { type: 'COMMAND_PARSED'; action: GameAction }
-  | { type: 'SAVE_REQUESTED' }
-  | { type: 'LOAD_REQUESTED'; slotId: string };
+// In RoomScene.create():
+this.hintManager = HintManager.getInstance();
+this.hintManager.init(this.roomData, this.narratorDisplay);
 
-class EventBus {
-  private listeners = new Map<string, Set<Function>>();
-
-  on<T extends GameEvent['type']>(
-    type: T,
-    handler: (event: Extract<GameEvent, { type: T }>) => void
-  ): () => void {
-    if (!this.listeners.has(type)) this.listeners.set(type, new Set());
-    this.listeners.get(type)!.add(handler);
-    return () => this.listeners.get(type)?.delete(handler); // unsubscribe
-  }
-
-  emit(event: GameEvent): void {
-    this.listeners.get(event.type)?.forEach(fn => fn(event));
-  }
-}
+// In RoomScene shutdown:
+this.hintManager.cleanup();
 ```
 
-### Pattern 3: LLM as a Service with Structured Output
+**Confidence: HIGH** -- This follows established EventBus patterns already proven in the codebase. The hint data schema mirrors the existing puzzle data patterns.
 
-**What:** The LLM text parser is wrapped behind a clean service interface that accepts player text and returns a typed `GameAction`. The LLM is prompted to return JSON matching a strict schema using Ollama's structured output feature. A fallback regex parser handles cases when Ollama is unavailable or slow.
-**When to use:** Every player text input goes through this pipeline.
-**Trade-offs:** LLM adds latency (200-2000ms depending on model/hardware). The fallback parser ensures the game remains playable without Ollama running. The structured output schema constrains the LLM to valid game commands.
+---
 
-**Example:**
+## Feature 3: Death Gallery Achievements
+
+### Architecture Decision: Extend Existing Death System
+
+The death system already tracks `deathCount` in GameState and processes death through a clean `trigger-death` -> `DeathScene` overlay flow. The gallery extends this by recording WHICH deaths occurred, not just how many.
+
+### Component Architecture
+
+```
+EXISTING DEATH FLOW (unchanged):
+  CommandDispatcher -> PuzzleEngine -> trigger-death event
+       -> RoomScene handler -> DeathScene overlay
+
+NEW ADDITIONS:
+  +- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -+
+  |                                                             |
+  |  trigger-death event                                        |
+  |       |                                                     |
+  |       +---> DeathGallery.recordDeath(deathId, roomId)       |
+  |                   |                                         |
+  |                   v                                         |
+  |            GameState.deathsDiscovered[] updated              |
+  |                                                             |
+  |  DeathScene overlay (MODIFIED):                             |
+  |       +---> Shows "Deaths discovered: X/Y"                  |
+  |       +---> NEW indicator if this death is first discovery  |
+  |       +---> "Gallery" button -> DeathGalleryScene           |
+  |                                                             |
+  |  DeathGalleryScene (NEW):                                   |
+  |       +---> Grid of all possible deaths                     |
+  |       +---> Discovered = title + narrator text + room       |
+  |       +---> Undiscovered = silhouette/question mark         |
+  |       +---> Completion percentage                           |
+  |       +---> Accessible from MainMenuScene too               |
+  +- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -+
+```
+
+### New Components
+
+| Component | Location | Purpose |
+|-----------|----------|---------|
+| `src/game/systems/DeathGallery.ts` | Systems | Records discovered deaths, checks completion, provides gallery data. Singleton mirroring AudioManager pattern |
+| `src/game/scenes/DeathGalleryScene.ts` | Scenes | Full-screen scene showing all deaths as a collectible grid |
+| `public/assets/data/death-registry.json` | Data | Master list of ALL possible deaths across all rooms, with metadata for gallery display |
+
+### Modifications to Existing Components
+
+| Component | Change | Impact |
+|-----------|--------|--------|
+| `GameStateData` | Add `deathsDiscovered: string[]` (array of deathId strings) | LOW -- one field |
+| `DeathScene.ts` | Add "X/Y deaths found" text, "New!" badge for first discovery, "Gallery" button | MEDIUM -- adds ~30 lines to create() |
+| `MainMenuScene.ts` | Add "Death Gallery" menu option | LOW -- one menu item |
+| `main.ts` | Register `DeathGalleryScene` in scene list | LOW -- one line |
+| `Preloader.ts` | Load `death-registry.json` | LOW -- one line |
+
+### Death Registry Schema
+
 ```typescript
-// llm/ResponseMapper.ts
-interface GameAction {
-  verb: 'look' | 'take' | 'use' | 'give' | 'talk' | 'go' | 'combine' | 'eat' | 'open' | 'push' | 'pull';
-  subject: string | null;    // "mushroom", "old tree", "door"
-  target: string | null;     // for "use X on Y" -> Y is target
-  confidence: number;        // 0-1, how sure the LLM is
-  rawInterpretation: string; // LLM's explanation for debugging
+// public/assets/data/death-registry.json
+interface DeathRegistry {
+  deaths: Array<{
+    id: string;              // Matches deathId in room JSON
+    roomId: string;          // Which room this death occurs in
+    title: string;           // "Death by Curiosity"
+    category: string;        // "Poison" | "Fall" | "Combat" | "Stupidity" | etc.
+    galleryHint: string;     // Cryptic hint for undiscovered: "Something in the cave entrance is not meant to be consumed..."
+    rarity: 'common' | 'uncommon' | 'rare' | 'legendary';  // For visual flair
+  }>;
+  totalDeaths: number;       // Pre-computed total for percentage display
 }
-
-// The Ollama format schema sent with requests:
-const GAME_ACTION_SCHEMA = {
-  type: "object",
-  properties: {
-    verb: { type: "string", enum: ["look","take","use","give","talk","go","combine","eat","open","push","pull"] },
-    subject: { type: "string", nullable: true },
-    target: { type: "string", nullable: true },
-    confidence: { type: "number", minimum: 0, maximum: 1 },
-    rawInterpretation: { type: "string" }
-  },
-  required: ["verb", "subject", "confidence", "rawInterpretation"]
-};
 ```
 
-### Pattern 4: Scene Manager as Finite State Machine
+### Save/Load Integration
 
-**What:** Each room/scene is a state in a finite state machine. The SceneManager holds the current scene, handles transitions (enter/exit hooks), and ensures only one scene is active at a time. Uses a pushdown automaton variant for overlay scenes (e.g., inventory screen, death screen).
-**When to use:** All room navigation and game screen management.
-**Trade-offs:** Simple and predictable. Limits you to one active scene (which is correct for this game type). The pushdown stack handles temporary overlays without losing room state.
+The `deathsDiscovered` array serializes automatically via the existing `GameState.serialize()` / `deserialize()` flow since it is a simple string array on `GameStateData`. No SaveManager changes needed.
 
-**Example:**
+**Important:** `deathsDiscovered` should persist across save slots as a meta-progression field (player keeps death gallery progress even when loading an earlier save). This requires a separate localStorage key outside the save slot system.
+
 ```typescript
-// scenes/SceneManager.ts
-class SceneManager {
-  private currentScene: Scene | null = null;
-  private overlayStack: Scene[] = [];
-  private scenes: Map<string, SceneDefinition> = new Map();
+// DeathGallery stores meta-progression independently
+const DEATH_GALLERY_KEY = 'kqgame-death-gallery';
+localStorage.setItem(DEATH_GALLERY_KEY, JSON.stringify(deathsDiscovered));
+```
 
-  async changeScene(sceneId: string): Promise<void> {
-    const definition = this.scenes.get(sceneId);
-    if (!definition) throw new Error(`Unknown scene: ${sceneId}`);
+**Confidence: HIGH** -- Direct extension of the existing death system with minimal coupling. The pattern of "record event -> check against registry -> display in gallery" is straightforward.
 
-    if (this.currentScene) {
-      await this.currentScene.onExit();
-    }
+---
 
-    const scene = new Scene(definition, this.assetRegistry);
-    await scene.onEnter();
-    this.currentScene = scene;
+## Feature 4: Mobile-Responsive Layout
 
-    this.eventBus.emit({
-      type: 'SCENE_CHANGE',
-      fromScene: this.currentScene?.id ?? '',
-      toScene: sceneId
-    });
+### Architecture Decision: CSS-First With Minimal JS Adaptation
+
+The existing layout uses `Phaser.Scale.FIT` with `CENTER_BOTH`, which already handles canvas resizing. The challenge is the HTML overlays (TextInputBar, NarratorDisplay, InventoryPanel) and touch input for the text parser.
+
+### Layout Architecture
+
+```
+DESKTOP (current, 960x540+):
++------------------------------------------+
+|              Phaser Canvas               |
+|              960 x 540                   |
+|                                          |
++------------------------------------------+
+| [parser-response text area              ]|
+| [> parser-input field                   ]|
++------------------------------------------+
+
+MOBILE PORTRAIT (<768px):
++-------------------------+
+|     Phaser Canvas       |
+|     (scaled to fit)     |
+|                         |
+|   [touch tap zones]     |
++-------------------------+
+| [narrator text         ]|
+| [input / touch kbd btn ]|
++--+----+----+----+----+--+
+|  | Go | Look|Take|Use |  |  <-- Quick verb buttons
++--+----+----+----+----+--+
+
+MOBILE LANDSCAPE (<768px height):
++------------------------------------------+
+|         Phaser Canvas (wider)            |
+|                                          |
++------------------------------------------+
+| [narrator] [input field] [verb buttons]  |
++------------------------------------------+
+```
+
+### New Components
+
+| Component | Location | Purpose |
+|-----------|----------|---------|
+| `src/game/ui/MobileControls.ts` | UI | Touch-friendly verb buttons, tap-to-interact zones, virtual keyboard trigger |
+| `src/game/ui/ResponsiveLayout.ts` | UI | Detects viewport, manages layout mode switching, coordinates HTML overlay positioning |
+
+### Modifications to Existing Components
+
+| Component | Change | Impact |
+|-----------|--------|--------|
+| `style.css` | Add CSS media queries for mobile breakpoints, flex layout adjustments | MEDIUM -- significant CSS additions |
+| `main.ts` (Phaser config) | Keep `Scale.FIT` but add `resize` callback for layout updates | LOW -- 2-3 lines |
+| `TextInputBar.ts` | Add mobile mode: show/hide keyboard button, compact layout | MEDIUM -- conditional rendering |
+| `NarratorDisplay.ts` | Adjust font sizes for mobile viewport | LOW -- CSS handles most of this |
+| `InventoryPanel.ts` | Touch-friendly item sizing, swipe-to-scroll | MEDIUM -- touch event handling |
+| `RoomScene.ts` | Add tap-to-interact alternative to click-to-move (long-press for walk, tap for interact) | MEDIUM -- new input handler branch |
+| `index.html` | Add viewport meta tag for mobile (already exists: `width=device-width, initial-scale=1.0`) | NONE -- already present |
+
+### Mobile Touch Input Strategy
+
+The text parser is the core interaction -- it MUST work on mobile. Two approaches, recommended to implement both:
+
+**Approach A: Quick Verb Buttons**
+- Horizontal bar of common verbs (Look, Take, Use, Go, Talk, Inventory)
+- Tap verb, then tap hotspot/exit in scene
+- Builds the command automatically: "look at [tapped hotspot]"
+- No typing required for 90% of interactions
+
+**Approach B: Virtual Keyboard Input**
+- Tap the input field to trigger mobile keyboard
+- Works with existing TextInputBar since it is a real HTML `<input>` element
+- Mobile keyboard will push the viewport; handle with `visualViewport` API
+- Use `window.visualViewport.addEventListener('resize', ...)` to detect keyboard open/close and adjust layout
+
+### CSS Media Query Strategy
+
+```css
+/* Mobile portrait */
+@media (max-width: 767px) {
+  #game-container {
+    flex-direction: column;
   }
-
-  pushOverlay(overlay: Scene): void {
-    this.overlayStack.push(overlay);
+  #text-parser-ui {
+    font-size: 16px;  /* Prevent iOS zoom on input focus */
   }
+  #parser-input {
+    font-size: 16px;  /* Critical: iOS auto-zooms on <16px inputs */
+  }
+  .mobile-verb-bar {
+    display: flex;
+  }
+}
 
-  popOverlay(): void {
-    this.overlayStack.pop();
+/* Desktop */
+@media (min-width: 768px) {
+  .mobile-verb-bar {
+    display: none;
   }
 }
 ```
 
-### Pattern 5: Condition/Action Puzzle System
+### Critical Mobile Pitfall: iOS Input Zoom
 
-**What:** Puzzles are defined as a set of conditions (flags, inventory items, scene state) and actions (give item, set flag, change scene, trigger death, play narrator text). The PuzzleEngine evaluates conditions against current game state and executes actions when all conditions are met.
-**When to use:** Every puzzle, interaction, and game progression gate.
-**Trade-offs:** Requires a well-designed condition vocabulary upfront. But once established, designers can create all puzzles purely in JSON without touching code.
+iOS Safari auto-zooms the page when focusing an `<input>` with `font-size` below 16px. The current `#parser-input` uses 14px. This MUST change to 16px on mobile to prevent the jarring zoom effect. The fix is purely CSS.
 
-**Example:**
+**Confidence: HIGH** -- The existing `Scale.FIT` + HTML overlay architecture is already mobile-friendly by design. The main work is CSS responsive design and the verb button UI addition. The Phaser canvas scaling already works on mobile.
+
+---
+
+## Feature 5: Multiple Endings
+
+### Architecture Decision: Flag-Accumulated Branching
+
+Rather than a branching tree (exponential content), use the existing flag system to accumulate "ending scores" based on player choices throughout the game. The final act evaluates these accumulated flags to determine which ending plays.
+
+### Ending Architecture
+
+```
+THROUGHOUT THE GAME:
+  Player choices set flags that influence ending:
+    - helped_troll -> ending_compassion++
+    - bribed_troll -> ending_pragmatism++
+    - solved_all_puzzles -> ending_completionist++
+    - death_count < 3 -> ending_skilled
+    - found_secret_items -> ending_explorer
+
+ACT 3 CLIMAX (existing throne_room_act3):
+  PuzzleEngine evaluates ending conditions:
+    +---------------------------------------------------+
+    |  Ending conditions checked in priority order:      |
+    |                                                    |
+    |  1. "Perfect" ending: all_secrets + low_deaths     |
+    |  2. "Compassion" ending: helped_all_npcs           |
+    |  3. "Pragmatic" ending: bribed/fought through      |
+    |  4. "Default" ending: minimum requirements met     |
+    |  5. "Bad" ending: specific bad-choice flags        |
+    +---------------------------------------------------+
+              |
+              v
+    PuzzleAction: { type: 'trigger-ending', endingId: 'compassion' }
+              |
+              v
+    EventBus.emit('trigger-ending', endingId)
+              |
+              v
+    EndingScene (new) plays ending sequence
+```
+
+### New Components
+
+| Component | Location | Purpose |
+|-----------|----------|---------|
+| `src/game/scenes/EndingScene.ts` | Scenes | Plays ending sequence: narrator text, ending-specific art, credits, epilogue |
+| `public/assets/data/endings.json` | Data | Defines all possible endings with text, conditions, and art references |
+
+### Modifications to Existing Components
+
+| Component | Change | Impact |
+|-----------|--------|--------|
+| `PuzzleAction` type | Add `{ type: 'trigger-ending'; endingId: string }` | LOW -- one union member |
+| `PuzzleEngine.ts` | Handle `trigger-ending` action: emit EventBus event | LOW -- one case in switch |
+| `PuzzleCondition` type | Possibly add `{ type: 'death-count-below'; count: number }` for ending conditions | LOW -- one union member |
+| `GameStateData` | Add `endingReached?: string` for save/meta-progression | LOW -- one field |
+| Room JSONs (Act 3 climax rooms) | Add ending-trigger puzzles with flag conditions | MEDIUM -- new puzzle entries in existing JSON |
+| `main.ts` | Register `EndingScene` | LOW -- one line |
+| `MainMenuScene.ts` | Show "Endings Discovered: X/Y" if any endings reached | LOW -- small addition |
+| `RoomScene.ts` | Wire `trigger-ending` EventBus handler | LOW -- same pattern as `trigger-death` |
+
+### Ending Definition Schema
+
 ```typescript
-// data/puzzles/fellTree.json
-{
-  "id": "puzzle_fell_tree",
-  "conditions": [
-    { "type": "has_item", "item": "axe" },
-    { "type": "in_scene", "scene": "dark_forest" },
-    { "type": "flag_not_set", "flag": "tree_felled" }
-  ],
-  "actions": [
-    { "type": "remove_item", "item": "axe" },
-    { "type": "set_flag", "flag": "tree_felled" },
-    { "type": "narrator_say", "text": "You hack at the tree with surprising competence. It crashes down, revealing a hidden path. The tree did not consent to this." },
-    { "type": "modify_scene", "scene": "dark_forest", "changes": {
-      "removeHotspot": "old_tree",
-      "addExit": { "id": "to_hidden_path", "bounds": { "x": 200, "y": 250, "w": 120, "h": 100 }, "target": "hidden_path" }
-    }},
-    { "type": "play_sfx", "sound": "tree_falling" }
-  ]
+// public/assets/data/endings.json
+interface EndingDefinition {
+  id: string;
+  title: string;              // "The Compassionate Crown"
+  priority: number;           // Higher = checked first
+  conditions: PuzzleCondition[];  // Reuse existing condition system!
+  sequences: Array<{
+    type: 'narration' | 'scene-change' | 'art-display' | 'credits';
+    text?: string;
+    artKey?: string;
+    duration?: number;
+  }>;
+  epilogueText: string;       // Brief "what happened after" text
 }
 ```
 
-## Data Flow
+### Why Flag Accumulation Over Tree Branching
 
-### Main Game Loop Flow
+1. **Content efficiency:** 5 endings require 5 epilogue sequences. A branching tree for 36 rooms would require hundreds of variants.
+2. **Existing infrastructure:** The flag system (`GameState.flags`) already supports this. No new state mechanism needed.
+3. **Player agency:** Choices throughout the ENTIRE game contribute to the ending, not just a final binary choice. This feels more earned.
+4. **Testability:** Each ending is a set of flag conditions evaluated by the existing PuzzleEngine. Easy to test with flag presets.
 
-```
-┌──────────┐     ┌──────────┐     ┌──────────┐     ┌──────────┐
-│  Input   │ ──→ │  Update  │ ──→ │  Render  │ ──→ │  Wait    │
-│  Phase   │     │  Phase   │     │  Phase   │     │  (rAF)   │
-└──────────┘     └──────────┘     └──────────┘     └──────────┘
-     │                │                │                │
-     │ Read mouse,    │ Scene logic,   │ Draw bg,       │ requestAnimation
-     │ keyboard,      │ puzzle eval,   │ sprites,       │ Frame callback
-     │ text input     │ pathfinding,   │ UI overlays    │
-     │                │ event dispatch │                │
-     └────────────────┴────────────────┴────────────────┘
-```
+**Confidence: HIGH** -- The flag/condition system is battle-tested across 36 rooms of puzzles. Endings are just another set of condition-checked triggers.
 
-### Text Command Flow (LLM Path)
+---
+
+## Component Dependency Map
+
+### New Component Dependencies
 
 ```
-Player types "use the rusty key on the old chest"
-    │
-    ▼
-┌─────────────────┐
-│ InputManager     │  Captures text, emits TEXT_SUBMITTED event
-└────────┬────────┘
-         ▼
-┌─────────────────┐
-│ PromptBuilder    │  Builds context: current scene, inventory, nearby objects
-│                  │  Creates system prompt + user message for Ollama
-└────────┬────────┘
-         ▼
-┌─────────────────┐
-│ OllamaClient    │  POST http://localhost:11434/api/chat
-│                  │  { model, messages, format: GAME_ACTION_SCHEMA, stream: false }
-│                  │  (OR stream: true for responsive feel)
-└────────┬────────┘
-         ▼
-┌─────────────────┐
-│ ResponseMapper   │  Validates JSON against schema
-│                  │  Maps "rusty key" -> inventory item "rusty_key"
-│                  │  Maps "old chest" -> hotspot "old_chest" in current scene
-│                  │  Returns: { verb: "use", subject: "rusty_key", target: "old_chest" }
-└────────┬────────┘
-         ▼
-┌─────────────────┐
-│ EventBus         │  Emits COMMAND_PARSED event with GameAction
-└────────┬────────┘
-         ▼
-┌─────────────────┐
-│ PuzzleEngine     │  Receives GameAction, checks conditions against game state
-│                  │  If conditions met -> execute actions (set flags, give items, etc.)
-│                  │  If not met -> emit NARRATOR_SAY with contextual failure text
-└────────┬────────┘
-         ▼
-┌─────────────────┐
-│ Scene/UI Update  │  State changes propagate: inventory updates, scene modifications,
-│                  │  narrator text display, death screen if applicable
-└─────────────────┘
+                    +------------------+
+                    |   Preloader.ts   |  (MODIFIED: load new assets, registries)
+                    +--------+---------+
+                             |
+              +--------------+---------------+
+              |              |               |
+    +---------v---+  +-------v-------+  +----v-----------+
+    | Art assets  |  | hints.json    |  | death-registry |
+    | (Flux gen.) |  | endings.json  |  | .json          |
+    +-------------+  +-------+-------+  +----+-----------+
+                             |               |
+                    +--------v-------+  +----v-----------+
+                    | HintManager.ts |  | DeathGallery.ts|
+                    | (new system)   |  | (new system)   |
+                    +--------+-------+  +----+-----------+
+                             |               |
+    +------------------------v---------------v-----------+
+    |                    RoomScene.ts                     |
+    |  (MODIFIED: wire HintManager, DeathGallery,        |
+    |   mobile controls, ending handler)                 |
+    +----+-----+-----+-----+-----+-----+-----+----------+
+         |     |     |     |     |     |     |
+    +----v+  +-v---+ |  +--v-+  +v---+ |  +-v----------+
+    |Death|  |Main | |  |End |  |Dead| |  |Mobile      |
+    |Scene|  |Menu | |  |ing |  |Gall| |  |Controls.ts |
+    |(MOD)| |(MOD) | |  |Scn | |ery | |  |(new UI)    |
+    +-----+ +------+ |  |(new)| |Scn | |  +------------+
+                      |  +----+ |(new)| |
+                      |         +-----+ |
+                      |                 |
+                +-----v------+    +-----v---------+
+                |Responsive  |    |style.css      |
+                |Layout.ts   |    |(MODIFIED)     |
+                |(new UI)    |    +---------------+
+                +------------+
 ```
 
-### Text Command Flow (Fallback Path)
+### Modification Impact Summary
 
+| File | Changes | Risk |
+|------|---------|------|
+| `GameStateData.ts` | Add 2-3 fields | NONE -- additive |
+| `GameState.ts` | Add convenience methods for new fields | LOW |
+| `PuzzleAction` type | Add 1-2 union members | LOW |
+| `PuzzleCondition` type | Add 1 union member | LOW |
+| `PuzzleEngine.ts` | Handle new action types (2 cases) | LOW |
+| `CommandDispatcher.ts` | Emit hint events on failure, add "hint" verb | LOW |
+| `DeathScene.ts` | Add gallery count, button | MEDIUM |
+| `MainMenuScene.ts` | Add gallery + ending menu items | LOW |
+| `RoomScene.ts` | Wire 3 new systems (same pattern x3) | MEDIUM (bulk, not complexity) |
+| `Preloader.ts` | Load new registries + room-specific art | MEDIUM (many asset lines) |
+| `main.ts` | Register 2 new scenes | NONE |
+| `style.css` | Add mobile responsive rules | MEDIUM |
+| `TextInputBar.ts` | Mobile font size, optional verb buttons | MEDIUM |
+| `VerbTable.ts` | Add "hint" verb | NONE |
+
+---
+
+## Data Flow Changes
+
+### New EventBus Events
+
+| Event | Emitter | Listener(s) | Data |
+|-------|---------|-------------|------|
+| `hint-opportunity` | CommandDispatcher | HintManager | `{ roomId, verb, subject, target, puzzleContext }` |
+| `show-hint` | HintManager | NarratorDisplay (via RoomScene) | `{ text, tier }` |
+| `death-recorded` | DeathGallery | DeathScene (for badge) | `{ deathId, isNew, totalFound, totalPossible }` |
+| `trigger-ending` | PuzzleEngine | RoomScene -> EndingScene | `{ endingId }` |
+
+### Modified Data Flows
+
+**Death Flow (extended):**
 ```
-Player types "use key on chest"
-    │
-    ▼
-┌─────────────────┐
-│ FallbackParser   │  Regex: /^(use|take|look|go|...)\s+(.+?)(?:\s+on\s+(.+))?$/i
-│                  │  Fuzzy match subject/target against scene hotspots + inventory
-│                  │  Returns: { verb: "use", subject: "rusty_key", target: "old_chest" }
-└────────┬────────┘
-         ▼
-    (same EventBus -> PuzzleEngine path as LLM)
-```
-
-### Save/Load Flow
-
-```
-SAVE:
-  GameState (flags, inventory, currentScene, player position, puzzle state)
-      │
-      ▼
-  JSON.stringify(gameState)
-      │
-      ▼
-  localStorage.setItem(`save_slot_${n}`, serialized)
-  (IndexedDB for large save data or asset caching)
-
-LOAD:
-  localStorage.getItem(`save_slot_${n}`)
-      │
-      ▼
-  JSON.parse(serialized) -> GameState
-      │
-      ▼
-  Restore: set flags, restore inventory, change scene, position player
-```
-
-### Key Data Flows
-
-1. **Player Action Flow:** Click/text input -> InputManager -> (LLM or Fallback) Parser -> GameAction -> EventBus -> PuzzleEngine/SceneManager -> State Update -> Renderer/UI update
-2. **Scene Navigation Flow:** Player reaches exit -> SceneManager.changeScene() -> current scene onExit() -> load new scene data -> new scene onEnter() -> trigger onEnter events -> render new background
-3. **Death Flow:** Hazard triggered -> DeathSystem receives DEATH_TRIGGERED event -> selects quip from death bank -> pushes DeathScreen overlay -> narrator text plays -> player chooses retry -> pop overlay, restore last checkpoint
-4. **Narrator Flow:** Any system emits NARRATOR_SAY -> NarratorEngine queues text -> types out text letter-by-letter in DialogBox -> optional audio cue plays
-
-## Scaling Considerations
-
-| Scale | Architecture Adjustments |
-|-------|--------------------------|
-| 5-10 rooms (prototype) | All data can live in a single JSON file. No lazy loading needed. Load all assets up front during preloader. |
-| 20-50 rooms (full game ~5hrs) | Split scene data into per-room JSON files. Lazy-load assets per area (group rooms into areas). Preload adjacent rooms for seamless transitions. |
-| 50+ rooms (expansion) | Area-based asset bundles. Progressive loading with loading screens between areas. Consider IndexedDB cache for downloaded assets. Compress sprite sheets. |
-
-### Scaling Priorities
-
-1. **First bottleneck: Asset memory.** With pixel art at 320x240 native resolution upscaled, individual assets are small. But 50+ rooms with unique backgrounds and sprite sheets add up. Solution: area-based loading, unloading distant scenes, and sprite sheet atlasing.
-2. **Second bottleneck: LLM response time.** Ollama on consumer hardware takes 200ms-2s per request depending on model size. Solution: use a small model (7B-8B parameter), non-streaming for simple commands, show "thinking" animation during processing, and always have the fallback parser for instant responses.
-3. **Third bottleneck: Save data size.** With 50+ rooms of flags and state, save data grows. Solution: only store deltas from default state, not full scene copies. A complete game state should stay under 100KB easily.
-
-## Anti-Patterns
-
-### Anti-Pattern 1: Drawing UI on Canvas
-
-**What people do:** Render text input fields, inventory grids, and dialog boxes using Canvas drawing commands.
-**Why it's wrong:** Canvas has no text selection, no accessibility, no native input handling, terrible text rendering at small sizes, and you must rebuild every standard UI behavior from scratch (scrolling, focus, cursor blinking, etc.).
-**Do this instead:** Use HTML/CSS for all UI elements. Position them absolutely over the canvas. Use CSS `pointer-events` to control click-through. The canvas handles ONLY the game world (backgrounds, sprites, walkable areas).
-
-### Anti-Pattern 2: Hardcoded Scene Logic
-
-**What people do:** Write one TypeScript file per room with all interactions, puzzles, and dialogs coded as imperative logic. `if (player.hasItem('key') && currentRoom === 'cellar') { ... }`.
-**Why it's wrong:** Adding or modifying a room requires code changes, rebuilds, and risk of regression. With 50+ rooms, the codebase becomes unmaintainable. Content iteration grinds to a halt.
-**Do this instead:** Data-driven scene definitions (Pattern 1). The engine evaluates JSON conditions. Code changes are needed only when you add new *types* of conditions or actions, not new content.
-
-### Anti-Pattern 3: God Object Game State
-
-**What people do:** One massive `gameState` object that every system reads and writes to directly, with no structure or access control.
-**Why it's wrong:** Race conditions between systems, impossible to debug state changes, save/load becomes fragile because any system can shove arbitrary data into the state.
-**Do this instead:** Structured state with clear sections (inventory, flags, currentScene, playerPosition, puzzleState). Access through methods, not direct property mutation. Log state changes for debugging.
-
-### Anti-Pattern 4: Synchronous LLM Calls Blocking the Game Loop
-
-**What people do:** `await ollama.chat()` inside the update loop, freezing the game until the LLM responds.
-**Why it's wrong:** The game freezes for 200ms-2s on every text command. Animations stop, audio stutters, the game feels broken.
-**Do this instead:** Fire the LLM call asynchronously. Show a "thinking" indicator (narrator typing dots, hourglass cursor). When the response arrives, inject the GameAction into the event bus. The game loop continues rendering smoothly throughout.
-
-### Anti-Pattern 5: Tight Coupling Between Puzzle and Death Systems
-
-**What people do:** PuzzleEngine directly calls `deathSystem.kill('poison')` and `narrator.say('You died')`.
-**Why it's wrong:** Systems become interdependent. Adding a new death animation requires modifying PuzzleEngine. Testing puzzles requires initializing the death system.
-**Do this instead:** PuzzleEngine emits `DEATH_TRIGGERED` event. DeathSystem and NarratorEngine each independently subscribe to it. Each system handles its own response. Systems can be tested in isolation.
-
-## Integration Points
-
-### External Services
-
-| Service | Integration Pattern | Notes |
-|---------|---------------------|-------|
-| Ollama (local LLM) | REST API calls to `http://localhost:11434/api/chat` | Requires CORS config: `OLLAMA_ORIGINS="*"` on macOS via `launchctl setenv`. Use `stream: false` for simple commands, `stream: true` for narrator generation. Format parameter enforces JSON schema output. |
-| Browser localStorage | `JSON.stringify` / `JSON.parse` for save data | 5-10MB limit. Sufficient for game state (flags, inventory, positions). Not suitable for caching large binary assets. |
-| Browser IndexedDB | `idb-keyval` wrapper for asset caching | Use for caching loaded sprite sheets and audio if implementing offline/progressive loading. Not needed for MVP. |
-
-### Internal Boundaries
-
-| Boundary | Communication | Notes |
-|----------|---------------|-------|
-| Core Engine <-> Game Logic | EventBus (pub/sub) | Engine emits input events, logic emits state change events |
-| Game Logic <-> LLM Layer | GameAction interface | LLM layer returns typed GameAction; game logic never sees raw LLM output |
-| Game Logic <-> Data Layer | Scene/Puzzle definitions (JSON) | Logic reads data; never writes to definitions. State changes go to GameState store |
-| Rendering <-> Game Logic | Draw command list | Logic produces a list of what to draw; renderer draws it. Renderer has no game knowledge |
-| UI Overlay <-> Game State | One-way data binding | UI reads from game state to display. User interactions go through InputManager -> EventBus |
-| Audio <-> Game Logic | EventBus events | Systems emit sound events (`PLAY_SFX`, `PLAY_MUSIC`); AudioManager handles playback |
-
-## Build Order (Dependency Chain)
-
-The architecture has clear dependency layers that dictate build order:
-
-```
-Phase 1: Foundation (no game content needed)
-  ├── GameLoop (everything depends on this)
-  ├── EventBus (all systems communicate through this)
-  ├── InputManager (mouse/keyboard capture)
-  ├── CanvasRenderer (basic drawing capability)
-  └── AssetLoader (ability to load images/audio)
-
-Phase 2: Scene System (minimal playable prototype)
-  ├── Scene + SceneManager (room loading, transitions)
-  ├── Player (character rendering, click-to-move)
-  ├── Pathfinding (walkable area navigation)
-  ├── Hotspot (clickable scene regions)
-  └── Scene data schema (JSON format for rooms)
-
-Phase 3: Game Systems (gameplay loop)
-  ├── InventoryManager (item tracking)
-  ├── PuzzleEngine (condition/action evaluation)
-  ├── FallbackParser (regex text commands -- playable without LLM)
-  └── NarratorEngine (text display, typing effect)
-
-Phase 4: LLM Integration (enhanced text parsing)
-  ├── OllamaClient (REST API wrapper)
-  ├── PromptBuilder (context-aware prompts)
-  ├── ResponseMapper (JSON -> GameAction)
-  └── Parser switching (LLM with fallback)
-
-Phase 5: Polish Systems
-  ├── AudioManager + Howler.js integration
-  ├── DeathSystem (death triggers, quips, respawn)
-  ├── SaveSystem (localStorage serialization)
-  ├── UI Overlay (inventory panel, menus, dialogs)
-  └── Scene transitions (fades, cuts)
-
-Phase 6: Content Creation (data, not code)
-  ├── All scene JSON definitions
-  ├── All puzzle definitions
-  ├── Narrator text banks
-  ├── Dialog trees
-  └── Asset production (sprites, backgrounds, audio)
+trigger-death -> RoomScene handler -> DeathGallery.recordDeath(deathId)
+                                   -> DeathScene.launch({ ...data, galleryInfo })
 ```
 
-**Why this order:**
-- Phase 1 must come first because every other system depends on the game loop, event bus, and rendering.
-- Phase 2 must precede Phase 3 because puzzles and inventory operate on scenes and hotspots.
-- Phase 3 includes the FallbackParser deliberately: the game should be fully playable with simple text commands before LLM integration. This validates the entire puzzle/interaction system without LLM latency and complexity.
-- Phase 4 is isolated because LLM integration is an enhancement layer, not a dependency. If Ollama integration proves problematic, the fallback parser keeps the game fully functional.
-- Phase 5 is polish because audio, death animations, and save/load are important but not required for core gameplay testing.
-- Phase 6 is last because content creation should only begin after the engine is proven. Creating content for an unfinished engine leads to rework.
+**Command Failure Flow (new):**
+```
+CommandDispatcher.dispatch() returns handled:false
+  -> emit 'hint-opportunity' with context
+  -> HintManager checks attempt count
+  -> if threshold reached, appends hint to narrator response
+```
+
+### GameStateData Extension
+
+```typescript
+// ADDITIONS to existing GameStateData interface
+export interface GameStateData {
+  // ... existing fields unchanged ...
+  currentRoom: string;
+  inventory: string[];
+  flags: Record<string, boolean | string>;
+  visitedRooms: string[];
+  removedItems: Record<string, string[]>;
+  playTimeMs: number;
+  deathCount: number;
+  dialogueStates: Record<string, string>;
+
+  // NEW v2.0 fields
+  hintAttempts: Record<string, number>;     // puzzleId -> attempt count
+  endingReached?: string;                    // Which ending the player got (if any)
+}
+
+// SEPARATE from save data (meta-progression):
+// Stored in localStorage key 'kqgame-death-gallery'
+// deathsDiscovered: string[]
+// endingsDiscovered: string[]
+```
+
+---
+
+## Recommended Build Order
+
+Based on dependency analysis, the features should be built in this order:
+
+### Phase 1: Flux Art Pipeline (offline tool)
+**Rationale:** Independent of all other features. Can run in parallel with any runtime work. Produces assets that all other features benefit from (death gallery looks better with real art, ending scenes need art).
+
+**Dependencies:** None (offline tool)
+**Blocks:** Nothing technically, but other features benefit from having real assets
+
+### Phase 2: GameState Extensions + Death Gallery
+**Rationale:** The GameState changes (new fields) are needed by hints AND endings. Build them first with death gallery as the simplest consumer. Death gallery is self-contained and validates the meta-progression pattern (localStorage outside save slots).
+
+**Dependencies:** None beyond existing architecture
+**Blocks:** Hints and endings need the extended GameState
+
+### Phase 3: Progressive Hint System
+**Rationale:** Requires the hint tracking in GameState (from phase 2). Integrates with CommandDispatcher and PuzzleEngine. Hint content can be authored in parallel with implementation.
+
+**Dependencies:** Extended GameState (phase 2)
+**Blocks:** Nothing
+
+### Phase 4: Multiple Endings
+**Rationale:** Requires the ending-related PuzzleAction/Condition extensions. Needs content authored (ending sequences, flag placement in Act 3 rooms). Most complex content-wise.
+
+**Dependencies:** Extended PuzzleAction/Condition types (phase 2), Act 3 room content exists
+**Blocks:** Nothing
+
+### Phase 5: Mobile Responsive Layout
+**Rationale:** Last because it affects the entire UI layer and benefits from all other features being stable. Testing mobile layout is easier when all features are in place. CSS changes are low-risk but touch everything.
+
+**Dependencies:** All other features should be functionally complete
+**Blocks:** Nothing
+
+### Parallel Track: Art Asset Generation
+The Flux pipeline (Phase 1) can run continuously throughout all phases, generating and refining assets. Art integration (swapping Preloader references) can happen at any point.
+
+---
+
+## Anti-Patterns to Avoid
+
+### Anti-Pattern 1: Runtime Image Generation
+**What:** Calling ComfyUI/Flux from the browser at runtime to generate backgrounds on-the-fly.
+**Why bad:** 5-30 second generation times per image. Requires local GPU server running. Users without GPU cannot play. Unpredictable art quality per session.
+**Instead:** Generate all art offline. The game loads pre-generated PNGs just like it loads placeholder PNGs today.
+
+### Anti-Pattern 2: Monolithic Hint Logic in CommandDispatcher
+**What:** Adding if/else hint logic directly into the dispatch method.
+**Why bad:** CommandDispatcher is already 700 lines. Adding hint logic couples hint behavior to command routing. Testing hints requires testing the entire dispatch chain.
+**Instead:** Emit events. Let HintManager handle all hint logic independently. Same pattern as AudioManager.
+
+### Anti-Pattern 3: Death Gallery in GameState Save Slots
+**What:** Storing `deathsDiscovered` inside the regular GameStateData that gets saved/loaded per slot.
+**Why bad:** Loading a save from before a death discovery erases the gallery entry. Players who discovered 20 deaths then load an early save lose their gallery progress.
+**Instead:** Meta-progression stored in a separate localStorage key, independent of save slots. Gallery progress is cumulative and permanent.
+
+### Anti-Pattern 4: Mobile Layout via Canvas-Drawn UI
+**What:** Drawing verb buttons and touch controls using Phaser canvas drawing because "it's a game."
+**Why bad:** Canvas has no text accessibility, no native touch scroll, no proper form input handling. The existing HTML overlay approach is correct -- extend it, do not replace it.
+**Instead:** Keep HTML overlays. Add new HTML elements for verb buttons. Use CSS media queries for responsive layout.
+
+### Anti-Pattern 5: Branching Ending Trees
+**What:** Creating 5 different versions of Act 3 for 5 endings, with unique room sequences per ending.
+**Why bad:** 5x content multiplication. Maintenance nightmare. Inconsistent quality across branches.
+**Instead:** Single Act 3 with flag-based ending determination at the climax point. One EndingScene with data-driven sequences per ending. Same rooms, different final evaluation.
+
+---
+
+## Scalability Considerations
+
+| Concern | At v2.0 (36 rooms) | At v3.0 (100+ rooms) |
+|---------|---------------------|----------------------|
+| Asset loading | All Flux backgrounds in Preloader (~36 unique backgrounds, ~20MB) | Area-based lazy loading needed; Preloader loads current area + adjacent |
+| Hint data | Single hints.json (~50KB) | Split by act/area if file exceeds 200KB |
+| Death registry | Single death-registry.json (~30 deaths, <10KB) | Still single file at 100 deaths |
+| Ending conditions | 5 endings evaluated at climax | Flag accumulation scales linearly, no branching cost |
+| Mobile performance | 960x540 canvas is lightweight on modern phones | May need quality tiers for very old devices |
+| Art generation | ~40 images, few hours of generation | Batch automation critical; manifest-driven pipeline pays off |
+
+---
 
 ## Sources
 
-- [Phaser.io - HTML5 game framework](https://phaser.io/) -- market leader for HTML5 2D games, architecture reference
-- [Game Programming Patterns - State](https://gameprogrammingpatterns.com/state.html) -- FSM, pushdown automata, hierarchical states
-- [Adventure Game Studio Manual](https://adventuregamestudio.github.io/ags-manual/Settingupthegame.html) -- room/scene/inventory architecture from leading adventure game tool
-- [Ollama API Documentation](https://github.com/ollama/ollama/blob/main/docs/api.md) -- REST API endpoints, structured output, streaming
-- [Ollama Structured Outputs](https://docs.ollama.com/capabilities/structured-outputs) -- JSON schema format parameter
-- [Ollama CORS Configuration](https://objectgraph.com/blog/ollama-cors/) -- CORS setup for browser access
-- [nav2d - 2D Navigation Meshes](https://github.com/frapa/nav2d) -- polygon navmesh with A* pathfinding for JS
-- [PathFinding.js](https://github.com/qiao/PathFinding.js) -- grid-based A* pathfinding library
-- [Howler.js](https://howlerjs.com/) -- Web Audio API wrapper for cross-browser game audio
-- [Spicy Yoghurt - HTML5 Canvas Game Loop](https://spicyyoghurt.com/tutorials/html5-javascript-game-development/create-a-proper-game-loop-with-requestanimationframe) -- requestAnimationFrame game loop patterns
-- [GameDev.net - State Machines in Games](https://www.gamedev.net/articles/programming/general-and-gameplay-programming/state-machines-in-games-r2982/) -- FSM patterns for scene management
-- [GameDev.net - Navigation Meshes and Pathfinding](https://www.gamedev.net/tutorials/programming/artificial-intelligence/navigation-meshes-and-pathfinding-r4880/) -- navmesh A* implementation
-- [IceFall Games - Adventure Puzzle Design](https://mtnphil.wordpress.com/2016/09/13/adventure-game-puzzle-design/) -- puzzle dependency graphs
-- [GameDev.net - Point and Click Engine Design](https://www.gamedev.net/forums/topic/649892-coding-a-point-click-adventure-game-engine-from-scratch/) -- custom adventure engine architecture
-- [Ollama Blog - Building LLM-Powered Web Apps](https://ollama.com/blog/building-llm-powered-web-apps) -- browser-to-Ollama integration patterns
+- [Black Forest Labs - FLUX models](https://bfl.ai/) -- Official Flux model family
+- [ComfyUI - Pixel Art Workflow](https://www.kokutech.com/blog/gamedev/tips/art/pixel-art-generation-with-comfyui) -- Pixel art generation with ComfyUI
+- [ComfyUI PixelArt Detector](https://github.com/dimtoneff/ComfyUI-PixelArt-Detector) -- Palette and pixel consistency tooling
+- [Tau Games - Progressive Hint System](https://taugames.ca/blog/hints.html) -- Hint system design with sub-goals
+- [Game Developer - Low Spoiler Hints](https://www.gamedeveloper.com/design/how-and-why-to-write-low-spoiler-hints-for-adventure-games-) -- Tiered hint writing methodology
+- [TextAdventures.co.uk - Hint System](https://docs.textadventures.co.uk/quest/guides/a_hint_system.html) -- Stage-gate hint implementation
+- [Envato Tuts+ - Unlockable Achievements](https://gamedevelopment.tutsplus.com/tutorials/how-to-code-unlockable-achievements-for-your-game-a-simple-approach--gamedev-6012) -- Achievement property/constraint pattern
+- [Game Developer - Robust Achievement Systems](https://www.gamedeveloper.com/design/designing-and-building-a-robust-comprehensive-achievement-system) -- Achievement metric tracking
+- [Phaser Scale Manager](https://rexrainbow.github.io/phaser3-rex-notes/docs/site/scalemanager/) -- FIT/RESIZE scaling modes
+- [Phaser Forum - Mobile Keyboard](https://phaser.discourse.group/t/how-to-force-mobile-keyboard-to-appear/11477) -- HTML input overlay for mobile
+- [MDN - Mobile Touch Controls](https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Mobile_touch) -- Touch input patterns
+- [Standard Patterns in Choice-Based Games](https://heterogenoustasks.wordpress.com/2015/01/26/standard-patterns-in-choice-based-games/) -- Time Cave, Quest, Branch-and-Bottleneck patterns
+- [Kreonit - Nonlinear Gameplay](https://kreonit.com/programming-and-games-development/nonlinear-gameplay/) -- Branching vs. flag-accumulation tradeoffs
+- [openedai-images-flux](https://github.com/matatonic/openedai-images-flux) -- OpenAI-compatible local Flux API server
 
 ---
-*Architecture research for: Browser-based King's Quest-style adventure game with LLM text parsing*
-*Researched: 2026-02-20*
+*Architecture research for: KQGame v2.0 Art & Polish integration*
+*Researched: 2026-02-21*

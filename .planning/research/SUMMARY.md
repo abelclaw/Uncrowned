@@ -1,202 +1,249 @@
 # Project Research Summary
 
-**Project:** KQGame -- A King's Quest-Inspired Adventure
-**Domain:** Browser-based graphic adventure game with LLM text parsing and local AI image generation
-**Researched:** 2026-02-20
+**Project:** KQGame v2.0 "Art & Polish"
+**Domain:** Browser-based adventure game — Flux art pipeline, progressive hints, death gallery, mobile responsiveness, multiple endings
+**Researched:** 2026-02-21
 **Confidence:** MEDIUM-HIGH
 
 ## Executive Summary
 
-KQGame is a browser-based graphic adventure game in the King's Quest tradition, differentiated by a local LLM-powered natural language parser (Ollama) that replaces the rigid keyword parsers of the 1980s. The expert consensus is clear: build this with Phaser 3 as the game engine, TypeScript for safety, inkjs for narrative scripting, and a data-driven architecture where all game content (scenes, puzzles, items, dialogue) lives in JSON files interpreted by a generic engine. The rendering layer, game logic, and LLM integration must be cleanly separated. The LLM is an enhancement layer over a deterministic fallback parser -- never the sole path to game actions.
+KQGame v2.0 adds five feature areas to a validated v1.0 engine (Phaser 3, TypeScript, Vite, inkjs, Ollama, navmesh). The defining architectural insight from research is that **none of the five v2.0 features require rewriting existing systems**. The codebase's data-driven patterns — EventBus decoupling, GameState singleton, JSON room schemas, and scene-based rendering — provide clean extension points for every feature. The only new npm dependency is `sharp` (image post-processing) as a dev dependency for the offline art pipeline. Everything else builds on what already exists.
 
-The recommended approach is features-before-content: build the complete engine with 3-5 placeholder scenes, validate that the core loop (type command, LLM parses, game responds, narrator comments) is fun and responsive, then scale to full content. The art pipeline (Flux/ComfyUI) generates pixel art scene backgrounds at build time, not runtime. The architecture follows five established patterns: data-driven scene definitions, event bus for system communication, LLM-as-a-service with structured output, scene manager as finite state machine, and condition/action puzzle system. These patterns are well-documented in game development literature and directly applicable.
+The Flux art pipeline is the highest-risk, highest-effort, and longest lead-time feature. It is an offline, build-time tool that generates static PNG assets consumed by the existing Preloader — it does not touch the runtime engine. However, it introduces two serious integration risks that must be addressed before bulk generation begins: generated art will likely have different spatial composition than placeholder backgrounds, requiring per-room coordinate re-authoring in all 36 room JSONs; and the current eager Preloader strategy becomes untenable with real per-room art (potentially 20-50 MB initial load). A `MetaGameState` class (separate localStorage key, never reset on new game) is a cross-cutting prerequisite that must also exist before death gallery, hints, or endings are implemented.
 
-The three highest risks are: (1) LLM response latency destroying game flow -- mitigated by streaming responses, model preloading, common-command caching, and a regex fallback parser; (2) content scope explosion -- 5 hours of adventure game content is massive, requiring disciplined phasing from a 30-minute demo to full game; and (3) unwinnable game states (the classic Sierra "dead man walking" problem) -- mitigated by structural design rules, automated puzzle dependency graph testing, and the project's own requirement that players can never get permanently stuck. Every critical pitfall has a known prevention strategy; none require novel engineering.
+The four runtime features are all low-to-medium risk additions. Death gallery and hints integrate via existing EventBus and GameState patterns with minimal modification. Multiple endings leverage inkjs's existing conditional branching and the flag system proven across 36 rooms. Mobile layout is the second-highest-risk feature: the critical pitfall is the virtual keyboard destroying the canvas layout, and the fundamental UX challenge is that text input is hostile to mobile users — a verb-button system must be the primary mobile input, not a workaround. Schema versioning and migration for `GameStateData` is a cross-cutting concern that must be addressed before any other v2.0 feature modifies game state.
 
 ## Key Findings
 
 ### Recommended Stack
 
-The stack centers on Phaser 3.90.0 (the final stable v3 release), chosen over Phaser 4 RC6 for ecosystem maturity, plugin support (RexUI for in-canvas UI components), and production stability. Phaser 4 is pre-release with sparse documentation and no RexUI port. The LLM integration uses the official `ollama` npm package with its browser export, targeting Llama 3.1 8B for sub-2-second response times on consumer hardware. All tooling is Vite 7 for dev/build and Vitest 4 for testing.
+The existing stack requires only one new npm dependency. The Flux art pipeline uses external tooling — ComfyUI (local server), Flux.1 Dev GGUF-quantized model, and the Flux-2D-Game-Assets-LoRA — all installed separately from npm. The `sharp` library (`^0.34.5`) is the only npm addition, used in the post-processing pipeline script to resize and convert generated images. ComfyUI's REST API (`POST /prompt`, `GET /history/{id}`, `GET /view`) is simple enough that plain `fetch()` in a build script suffices — no npm client wrapper is needed. All runtime features use existing Phaser, inkjs, and browser APIs.
 
-**Core technologies:**
-- **Phaser 3.90.0:** 2D game engine -- batteries-included (scene management, physics, input, tweens, audio, Aseprite sprite import); dominant HTML5 game framework with massive ecosystem
-- **TypeScript 5.7:** Type safety -- catches bugs in complex game state (inventory, puzzles, save/load); Phaser ships full type definitions
-- **Vite 7:** Dev server and bundler -- official Phaser template, instant HMR, pre-configured for canvas/WebGL
-- **ollama (npm) 0.6.x:** LLM client -- browser export for local Ollama server; chat, generate, streaming, and structured output APIs
-- **inkjs 2.4.x:** Narrative scripting -- zero-dependency ink runtime for branching dialogue and story state
-- **ComfyUI + Flux.1 Schnell:** Build-time scene art generation -- REST API workflow for batch pixel art creation (NOT runtime)
-- **localforage 1.10.x:** Save/load persistence -- async IndexedDB wrapper with localStorage fallback
-- **phaser3-rex-plugins 1.80.x:** In-canvas UI -- text input, dialog boxes, and panels without DOM overlay hacking
+**Core technology additions:**
+- **ComfyUI + Flux.1 Dev GGUF (Q5):** Local image generation server and model — runs on Apple Silicon (16GB+), ~1-5 min per image; build-time only, not runtime
+- **Flux-2D-Game-Assets-LoRA (gokaygokay, Apache 2.0):** Pixel art game asset style consistency; trigger word `GRPZA`; designed for game assets with white backgrounds for easy sprite extraction
+- **sharp (`^0.34.5`, devDependency):** Batch image post-processing (resize 1024x1024 → 960x540, WebP conversion); the only new npm dependency
+- **Phaser ScaleManager (built-in):** Already configured as `Scale.FIT`; handles mobile canvas scaling without additional libraries
+- **CSS media queries (native):** Mobile layout adaptation — no CSS framework needed (the game has exactly 3 styled UI elements)
+- **inkjs conditional branching (existing):** Multiple endings use `{ flag: -> ending_knot }` — ink was designed for exactly this use case
+
+**What to explicitly avoid:** phaser3-rex-plugins (not needed for any v2.0 feature), any CSS framework, Capacitor/Cordova, state management libraries, WebGL shaders, and any runtime AI/ML (Flux runs at build time only).
+
+See [STACK.md](.planning/research/STACK.md) for full alternatives analysis.
 
 ### Expected Features
 
-**Must have (table stakes):**
-- Scene rendering with pixel art backgrounds (40-60 scenes at full scope)
-- Animated player character with walk cycle and interaction poses
-- Text input parser powered by LLM (the core innovation)
-- Inventory system with take, examine, use, and combine
-- Room/scene navigation with clear exits
-- Scene descriptions and "look" command
-- Object interaction (examine, take, use on)
-- NPC dialogue with authored knowledge and LLM delivery
-- Save/load with auto-save per room transition
-- Death sequences with humorous narrator and safe instant reset
-- Complete story arc with beginning, middle, and end
-- Narrator text output with dark comedy personality
-- Sound effects, ambient audio, and background music
+The five v2.0 feature areas have different complexity profiles and dependencies. Art pipeline is the longest critical path (generation hours plus pipeline validation). Death gallery is the fastest win. Hints and mobile layout are parallel tracks. Multiple endings should come last because it references puzzle flags that should stabilize after hints are added.
+
+**Must have (table stakes for v2.0):**
+- Consistent pixel art style across all 36 rooms — visual coherence is the whole point of the art milestone
+- Parallax-compatible layer output — rooms use 4-layer parallax; monolithic images will not work
+- Per-puzzle tiered hints (3-4 levels, vague to explicit) — the Universal Hint System model since 1988
+- Death tracking persistence across sessions — 43 deaths already exist with titles; tracking needs one schema addition
+- Gallery UI showing discovered vs. undiscovered deaths (silhouette/???) — core discovery loop
+- Touch-to-move plus verb button input on mobile — text input alone is not viable on phones
+- At least 3 distinct endings (bad/normal/good) determined by accumulated flags — player agency must feel real
 
 **Should have (differentiators):**
-- LLM-powered natural language parser (THE differentiator -- "pick up that shiny thing" works)
-- Dynamic narrator personality that reacts to player behavior patterns
-- Death collection gallery (transform deaths into collectibles)
-- Inventory combination puzzles
-- Contextual narrator roasts for wrong actions ("You try to eat the door. The door is unimpressed.")
-- Adaptive hint system via narrator (escalating hints in-character)
-- Flux-generated scene art pipeline for unique visual identity
+- Diegetic hint delivery through the sardonic narrator voice — "Oh, must I? Fine." aligns with game tone
+- Context-aware hint targeting based on current room, inventory, and partial puzzle progress
+- Death completionist secret ending (all 43 deaths found → unlocks secret ending) — ties gallery to story payoff
+- Narrator-personalized ending monologues referencing specific player choices via ink conditionals
+- Command suggestion verb buttons as primary mobile input — handles 80% of interactions without typing
+- Post-game stats screen (play time, deaths, hints used, rooms visited)
+- Death scene illustrations generated via Flux pipeline (43 vignettes, deferred from day-one)
 
-**Defer (v2+):**
-- Full 5-hour story (ship 30-60 minute demo first)
-- Conversation puzzles (hardest LLM feature -- get basic NPC dialogue right first)
-- Easter eggs and hidden interactions
-- Multiple save slots
-- Full scene art consistency pass
+**Defer to post-v2.0:**
+- Drag-and-drop inventory on mobile (requires visual item icons and complex touch handling)
+- "Replay Death" from gallery (complex save snapshot management for marginal benefit)
+- In-canvas virtual keyboard (over-engineered; verb buttons solve the problem)
+- 10+ endings (diminishing returns; 3-4 is the right number)
+- Real-time in-game Flux generation (85-145 seconds per image; not feasible at runtime)
 
-**Rejected anti-features:** Fully procedural story (LLM narratives are incoherent over long sessions), multiplayer (destroys pacing), voice acting (TTS undermines dark comedy; text is the narrator's voice), combat system (antithetical to puzzle-solving), branching storylines (multiplies content exponentially), real-time/timed puzzles (hostile with text input + LLM latency), point-and-click alongside text parser (undermines the LLM differentiator).
+See [FEATURES.md](.planning/research/FEATURES.md) for the full feature dependency map.
 
 ### Architecture Approach
 
-The architecture is a layered system with four clean boundaries: presentation (canvas renderer + HTML/CSS UI overlay + audio), game logic (scene manager FSM, player controller, puzzle engine, inventory, death system, all communicating via typed event bus), LLM integration (input sanitizer, Ollama client, response mapper producing typed GameAction structs, with regex fallback), and data (JSON scene/puzzle/item definitions, game state store, asset registry). The critical design principle is that the LLM layer is fully isolated -- the game engine never knows an LLM was involved; it receives a typed GameAction and validates it against game state. UI is HTML/CSS overlaying the canvas, NOT drawn on canvas (canvas handles only the game world).
+The existing architecture has well-defined extension points that each v2.0 feature slots into cleanly. New systems follow the AudioManager pattern: singleton, EventBus-driven, per-scene `init()`/`cleanup()`. GameStateData extensions are purely additive (new fields with defaults). New Phaser scenes follow existing patterns (DeathScene, MainMenuScene). The most invasive change is to `RoomScene.ts`, which wires three new systems (HintManager, DeathGallery, mobile controls) using the same boilerplate pattern three times. The one architectural decision requiring special care is death gallery persistence: it must live in a separate `MetaGameState` (its own localStorage key) that never resets when the player starts a new game.
 
-**Major components:**
-1. **Scene Manager (FSM):** Each room is a state; handles transitions, enter/exit hooks, pushdown stack for overlays (inventory, death screen)
-2. **Puzzle Engine:** Data-driven condition/action system -- evaluates JSON puzzle definitions against game state, executes outcomes; all puzzles authored in JSON, zero code per puzzle
-3. **Text Parser Service:** Three-layer parser -- deterministic keyword/regex (always works, instant), LLM-enhanced (Ollama, adds natural language understanding), graceful "I don't understand" fallback
-4. **Event Bus:** Typed pub/sub for all inter-system communication; systems never directly reference each other
-5. **Game State Store:** Single source of truth with structured sections (inventory, flags, scene, position, puzzle state); serialized to localforage for save/load
-6. **Narrator Engine:** Text generation with typing effect, death quips, personality system, hint escalation
+**Major new components:**
+1. **`scripts/generate-art.ts`** (offline, not bundled) — ComfyUI API caller, reads art manifest, post-processes via sharp, outputs to `public/assets/`
+2. **`tools/art-pipeline/manifest.json`** — maps room IDs to prompts, dimensions, seeds; the reproducibility artifact for the pipeline
+3. **`src/game/systems/HintManager.ts`** — singleton, EventBus-driven; tracks hint attempts per puzzle, delivers tiered hints through NarratorDisplay
+4. **`src/game/systems/DeathGallery.ts`** — singleton; records discovered deaths to MetaGameState (separate localStorage key, never reset on new game)
+5. **`src/game/scenes/DeathGalleryScene.ts`** — grid UI of all 43 deaths; discovered vs. silhouette; accessible from DeathScene and MainMenu
+6. **`src/game/scenes/EndingScene.ts`** — data-driven ending sequences with narrator text, ending-specific art, and epilogue
+7. **`src/game/ui/MobileControls.ts`** — verb button bar (Look/Take/Use/Go/Talk); constructs `{verb, subject, target}` without requiring text parser
+8. **`src/game/ui/ResponsiveLayout.ts`** — detects viewport, coordinates HTML overlay positioning with Phaser canvas resize events
+
+**Modifications to existing components (impact summary):**
+
+| File | Changes | Risk |
+|------|---------|------|
+| `GameStateData` interface | Add `schemaVersion`, `hintAttempts`, `endingReached?` | NONE — additive |
+| `PuzzleAction` / `PuzzleCondition` types | One new union member each | LOW |
+| `PuzzleEngine.ts` | Handle `trigger-ending` action (one switch case) | LOW |
+| `CommandDispatcher.ts` | Emit `hint-opportunity` on failure; add "hint" verb | LOW (3-5 lines) |
+| `DeathScene.ts` | Gallery count, "new!" badge, Gallery button | MEDIUM |
+| `RoomScene.ts` | Wire HintManager, DeathGallery, ending handler, mobile input | MEDIUM (bulk, not complexity) |
+| `Preloader.ts` | Lazy loading by room area + new registry files | MEDIUM (significant refactor) |
+| `style.css` | Mobile breakpoints, verb bar, 16px font-size fixes | MEDIUM |
+
+See [ARCHITECTURE.md](.planning/research/ARCHITECTURE.md) for full component dependency map and data flow diagrams.
 
 ### Critical Pitfalls
 
-1. **LLM response latency destroying game flow** -- Set `keep_alive: "2h"`, use streaming responses, cap output with `num_predict`, preload model on game start, cache common commands ("look", "inventory") to bypass LLM entirely, always show "thinking" animation
-2. **Unwinnable game states (dead man walking)** -- Build puzzle dependency graph as first-class data structure, run automated graph traversal tests on every content change, ensure all key items remain reachable, follow Ron Gilbert's design rules
-3. **LLM output nondeterminism breaking game logic** -- Never trust raw LLM output; validate against JSON schema, implement layered parsing (JSON parse -> regex extraction -> keyword match -> "I don't understand"), use Ollama's `format: "json"` mode, log every response
-4. **Content scope explosion** -- 5 hours = massive scope; ship engine first with 3-5 scenes, expand content only after engine is proven; scope by scenes and puzzles not hours; ship Chapter 1 (30-60 min) as MVP
-5. **AI-generated art style inconsistency** -- Establish strict style guide before generating art, use consistent seeds/prompts/LoRA, post-process through standardized pipeline (palette reduction, resolution normalization), validate on 3-5 test scenes before mass production
-6. **Pixel art rendering destroyed by browser scaling** -- Set `image-rendering: pixelated`, disable `imageSmoothingEnabled`, render at native resolution and CSS-scale up, always use integer coordinates (`Math.floor()`); must be solved at canvas setup before any art is rendered
+1. **Flux art breaks hotspot and walkable area alignment** — Generated backgrounds will have different spatial composition than placeholders. Every hotspot zone, exit zone, and walkable area polygon across all 36 rooms will be misaligned. Prevention: generate art constrained to spatial templates (composition grid in prompt or ControlNet reference); use the existing `DEBUG = true` overlay to visually verify zones against new backgrounds; budget 15-30 minutes per room for coordinate re-authoring (36 rooms = 9-18 hours total). Validate on 3 test rooms before bulk generation.
+
+2. **Pixel art style drift across 36 rooms** — Flux without a LoRA produces inconsistent pixel grid sizes, color temperatures, and outline styles across four distinct environment types. Prevention: use Flux-2D-Game-Assets-LoRA; enforce a strict 16-32 color palette via palette quantization post-processing on every generated image; generate all rooms for one act in a single batch session with identical settings and seed ranges.
+
+3. **Mobile virtual keyboard destroys canvas layout** — When the virtual keyboard opens, `window.innerHeight` shrinks, Phaser's `Scale.FIT` re-fits the canvas to a tiny strip above the keyboard, and the text input may be hidden behind the keyboard. Prevention: intercept ScaleManager resize when the input is focused (check `document.activeElement`); use `visualViewport` API instead of `window.innerHeight`; make verb buttons the primary mobile input so the keyboard is only needed for complex commands.
+
+4. **Save state schema change breaks v1.0 saves** — The current `GameStateData` has no `schemaVersion` and `deserialize()` does a blind `JSON.parse()`. Adding new fields without migration causes TypeErrors on all existing saves. Prevention: add `schemaVersion: number` to GameStateData immediately as the first v2.0 code change; implement migration in `deserialize()`; store MetaGameState (death gallery, endings) in a separate localStorage key outside save slots.
+
+5. **Multiple endings create untestable state space** — With boolean flags per decision, 10 branching points produces 2^10 possible combinations, most of them invalid. Prevention: use score accumulators (`mercyScore`, `justiceScore`, etc.) instead of individual boolean flags; limit ending-critical decision points to 5-8 across the entire game; build automated playthrough scripts to verify each ending is reachable.
+
+6. **Preloader balloons to 20-50 MB with real art** — The current eager Preloader loads all assets upfront. With per-room Flux backgrounds (36 rooms x 4 layers x ~200-500 KB), initial load becomes unacceptable on mobile cellular. Prevention: implement lazy loading of room backgrounds during scene transitions; only eager-load shared assets and adjacent rooms.
+
+See [PITFALLS.md](.planning/research/PITFALLS.md) for the full pitfall analysis including moderate and minor pitfalls.
 
 ## Implications for Roadmap
 
-Based on research, the architecture has a clear dependency chain that dictates build order. The golden rule from both architecture and pitfalls research: **features before content**. Build the complete engine, validate it works, then create content within the proven engine.
+Based on dependency analysis and risk assessment across all four research files, the recommended build order has five phases. Art pipeline and schema hardening go first because they are prerequisites for everything else. Death gallery comes second, validating the MetaGameState pattern with low risk. Hints come third. Endings come fourth after hints stabilize puzzle design. Mobile comes last because it touches the entire UI layer and benefits from all features being stable.
 
-### Phase 1: Foundation and Rendering Engine
-**Rationale:** Every system depends on the game loop, event bus, canvas renderer, and asset loader. Pixel art rendering must be correct from day one (Pitfall 6). Audio architecture must account for autoplay policy (Pitfall 7).
-**Delivers:** Working game loop, event bus, canvas with pixel-perfect rendering, asset preloader, input manager, basic HTML/CSS UI shell, audio system with autoplay handling
-**Addresses:** Scene rendering (table stakes), foundational infrastructure
-**Avoids:** Pixel art rendering blur (Pitfall 6), audio autoplay issues (Pitfall 7), memory leaks from improper resource lifecycle (Pitfall 10)
+### Phase 1: Art Pipeline + Schema Foundation
 
-### Phase 2: Scene System and Player Movement
-**Rationale:** Scenes and player movement are prerequisites for all gameplay. The scene manager FSM and data-driven scene definitions must exist before puzzles, inventory, or NPC systems can operate.
-**Delivers:** Scene manager FSM with transitions, player character with walk cycle and pathfinding on walkable areas, hotspot system, scene navigation between rooms, scene data JSON schema, 2-3 placeholder scenes
-**Addresses:** Scene navigation, animated player character, room transitions (table stakes)
-**Avoids:** Hardcoded scene logic anti-pattern -- data-driven from the start
+**Rationale:** The art pipeline has the longest wall-clock time (generation is hours) and must start immediately as a parallel track. Schema versioning is a cross-cutting prerequisite — if any other feature modifies `GameStateData` before migration exists, existing saves are permanently broken. These are grouped as foundational infrastructure, not visible features.
 
-### Phase 3: Core Game Systems
-**Rationale:** The gameplay loop requires inventory, puzzle engine, text parser, narrator, and save/load. The fallback regex parser is built FIRST so the game is fully playable without LLM -- this validates the entire puzzle/interaction system without LLM latency concerns.
-**Delivers:** Inventory manager, puzzle engine (condition/action JSON system), fallback regex text parser, narrator engine with typing effect, save/load with versioned schema, death system with auto-save and instant reset, game state store
-**Addresses:** Inventory system, object interaction, save/load, death sequences, narrator voice, text parser (table stakes)
-**Avoids:** Unwinnable game states (Pitfall 2 -- puzzle dependency graph built here), save corruption (Pitfall 8 -- versioned from day one), god object state anti-pattern
+**Delivers:** Build-time art generation script (`scripts/generate-art.ts`), `tools/art-pipeline/manifest.json` with prompts and seeds for all 36 rooms, validated pipeline producing consistent pixel art for 3 test rooms (one per environment type), `schemaVersion` on `GameStateData`, `deserialize()` migration function, `MetaGameState` class in its own localStorage key, lazy loading in Preloader (loads current-area rooms only), WebP variants of backgrounds.
 
-### Phase 4: LLM Integration
-**Rationale:** LLM parsing is the key differentiator but architecturally it is an enhancement layer, not a dependency. The game must work without it (Phase 3 proves this). Isolating LLM integration lets you focus on latency, nondeterminism, and prompt engineering without blocking core gameplay.
-**Delivers:** Ollama client with streaming, prompt builder with scene context injection, response mapper (JSON -> GameAction), parser switching (LLM with fallback), model preloading, common-command caching, "thinking" animation
-**Addresses:** LLM-powered natural language parser (the differentiator), contextual narrator responses
-**Avoids:** LLM latency destroying game flow (Pitfall 1), LLM nondeterminism breaking logic (Pitfall 3), synchronous LLM calls blocking game loop (Anti-pattern 4), prompt injection (Pitfall 9 -- design narrator to handle it with humor)
+**Addresses:** Art pipeline table stakes (consistent pixel art, correct resolution, reproducible pipeline), schema safety for all subsequent features.
 
-### Phase 5: Content MVP (Demo Chapter)
-**Rationale:** Only begin content production after the engine is proven. A 30-60 minute demo chapter (3-5 scenes, 5-8 puzzles, one complete puzzle chain, multiple death scenarios) validates the full experience without committing to 5 hours of content.
-**Delivers:** 3-5 fully authored scenes with art, complete puzzle chain, NPC dialogue for 2-3 characters, multiple death sequences with narrator quips, playable demo from start to mini-conclusion
-**Addresses:** Story arc (phased), NPC dialogue, inventory combination puzzles, death gallery
-**Avoids:** Content scope explosion (Pitfall 4 -- small scope validates before scaling), puzzle logic bias (Pitfall 11 -- blind playtest this demo)
+**Avoids:** Pitfall 1 (hotspot misalignment — validate spatial composition on 3 test rooms before bulk generation), Pitfall 2 (style drift — validate LoRA and post-processing pipeline before bulk generation), Pitfall 4 (schema breaks — versioning before any other feature), Pitfall 10 (Preloader bloat — lazy loading built alongside art integration).
 
-### Phase 6: Art Pipeline and Polish
-**Rationale:** The Flux/ComfyUI art pipeline should be validated on 3-5 scenes before mass production. Audio, visual polish, and UX improvements are layered in after gameplay is proven.
-**Delivers:** Validated art generation pipeline (ComfyUI workflow, style guide, post-processing), sound effects and ambient audio per scene, background music, UI polish (inventory panel, dialog boxes), scene transitions (fades, cuts), hint system
-**Addresses:** Scene art pipeline (differentiator), sound/music (table stakes), adaptive hint system
-**Avoids:** AI art style inconsistency (Pitfall 5 -- style guide and pipeline validated before mass production), narrator repetition (Pitfall 14)
+**Research flag:** Needs deeper research during planning. The LoRA selection, ComfyUI workflow JSON structure, parallax layer strategy (shared backdrop layers per act vs. per-room layers), and palette quantization tooling all need iterative validation on test rooms before committing to the full 36. Budget 1-2 weeks for pipeline development before any final art is generated.
 
-### Phase 7: Full Content Production
-**Rationale:** With proven engine, validated art pipeline, and playtested demo chapter, scale to full game content. This is the longest phase -- pure content authoring, not engineering.
-**Delivers:** Full 5-hour game with 15-25+ scenes, complete story arc, all puzzles, all death scenarios, conversation puzzles, easter eggs, examine-everything depth
-**Addresses:** Complete story, conversation puzzles (v2 feature), easter eggs, full scope
-**Avoids:** Content scope explosion (Pitfall 4 -- tracked via content spreadsheet), unwinnable states (automated graph tests run on every content addition)
+### Phase 2: Death Gallery
+
+**Rationale:** Lowest complexity, highest reward relative to effort. All 43 death IDs already exist in room JSONs with titles and narrator text. The death tracking infrastructure is nearly complete — a surgical 20-line change to `DeathScene.handleRetry()` records which specific death occurred. The gallery UI is one new scene following established patterns. This phase also validates the MetaGameState architecture (from Phase 1) with a concrete consumer before hints and endings depend on it.
+
+**Delivers:** `DeathGallery.ts` singleton, `DeathGalleryScene.ts` (grid of 43 deaths, discovered vs. silhouette), `public/assets/data/death-registry.json` (master list with titles, categories, rarity, cryptic hints for undiscovered), MetaGameState population on death trigger, gallery link in DeathScene and MainMenuScene, completion percentage display, achievement threshold unlocks (First Blood at 1, Serial Victim at 10, Completionist of Doom at 43).
+
+**Addresses:** Persistent death tracking, gallery UI, sardonic narrator gallery descriptions, discovery gamification.
+
+**Avoids:** Pitfall 7 (death gallery data conflicts with save system — MetaGameState pattern keeps it independent of save slots, never reset on new game).
+
+**Research flag:** Standard patterns — well-documented collectible gallery UX. No deeper research needed. Content authoring (gallery-specific quip per death) is the main writing effort.
+
+### Phase 3: Progressive Hint System
+
+**Rationale:** Depends on Phase 1 (extended GameState for `hintAttempts`) and benefits from Phase 2 being complete (the most common stuck point for players is immediately after a death; hint availability during retry improves the loop). This phase is primarily content work (authoring ~100-150 hint chains across 36 rooms) with straightforward engineering. It must precede multiple endings because hints help players reach all the flag states that determine endings.
+
+**Delivers:** `HintManager.ts` singleton, `public/assets/data/hints.json` registry, "hint" verb in VerbTable and CommandDispatcher, `hint-opportunity` EventBus event wired from CommandDispatcher failure path, 3-tier hints for all puzzles across all 36 rooms, sardonic narrator delivery through existing NarratorDisplay.
+
+**Addresses:** Multi-tier hint escalation, per-puzzle hint sets, player-initiated access, context-aware targeting (detects most relevant unsolved puzzle based on room and partial prerequisites), diegetic narrator delivery.
+
+**Avoids:** Pitfall 6 (hints too spoilery or useless — player-initiated only, narrator voice, 3-4 tiers, validated against players who have not seen the puzzle).
+
+**Research flag:** Standard patterns for hint architecture. Content authoring (100-150 hint chains) is the main effort — no engineering research needed, but budget significant writing time.
+
+### Phase 4: Multiple Endings
+
+**Rationale:** Comes after hints because puzzle balance should be stable before defining which flag states determine endings. With hints in place, players can reach all areas, reducing the risk that an ending flag is effectively inaccessible due to obscured puzzles. This phase is primarily narrative design and content work — the flag system and inkjs conditional branching already support it fully.
+
+**Delivers:** 3-4 ending definitions in `public/assets/data/endings.json`, `EndingScene.ts`, flag-based ending determination function (score accumulators, not per-decision booleans), 5-8 ending-critical decision points identified and confirmed in room JSONs, ink ending scripts with narrator commentary personalized via flag conditionals, post-game stats screen (time/deaths/hints/rooms), death completionist secret ending (checks `MetaGameState.discoveredDeaths.length === 43`).
+
+**Addresses:** Distinct endings, endings determined by player choices throughout the game, replayability signal, King's Quest VI short-path/long-path model (optional puzzles unlock better ending).
+
+**Avoids:** Pitfall 5 (state space explosion — score accumulators instead of per-decision booleans, 5-8 critical decision points max, automated playthrough tests verify all endings reachable), Pitfall 13 (hint-ending ambiguity — design endings to diverge late in Act 3, hints focus on shared objectives).
+
+**Research flag:** Narrative design (which existing puzzle flags are ending-relevant, where to add optional paths) needs documented design decisions before implementation. No technical research needed — inkjs conditional branching is well-understood from v1.0.
+
+### Phase 5: Mobile Responsive Layout
+
+**Rationale:** Last because it affects the entire UI layer and is easiest to implement and test when all features are stable. Every surface that Phase 5 must make mobile-friendly — death gallery, hint button, ending scenes, inventory panel — needs to exist first. Mobile layout also benefits from art being finalized (art must look good at 480px wide).
+
+**Delivers:** `MobileControls.ts` verb button bar (Look/Take/Use/Go/Talk), `ResponsiveLayout.ts` layout coordinator, CSS media queries for all breakpoints (480px, 768px), font-size 16px fix on all inputs (prevents iOS auto-zoom), `visualViewport` API integration to prevent canvas collapse on keyboard open, programmatic touch target expansion to 48px minimum on all hotspot zones, death gallery and hint UI mobile-friendly layouts.
+
+**Addresses:** Touch-to-move (already works via Phaser's unified pointer system), responsive canvas scaling, text input on mobile, readable text at mobile sizes, inventory touch access, portrait orientation handling.
+
+**Avoids:** Pitfall 3 (virtual keyboard destroys layout — `visualViewport` intercept plus verb buttons reduce keyboard dependency to complex commands only), Pitfall 8 (touch targets too small — programmatic expansion at runtime, no JSON changes needed), Pitfall 9 (text input wrong UX on mobile — verb grid is primary, text is optional advanced input), Pitfall 14 (CSS overlay misalignment — responsive CSS plus canvas-size-synchronized overlay widths).
+
+**Research flag:** Needs real-device testing throughout — browser emulators do not simulate virtual keyboard viewport changes. The `visualViewport` API keyboard intercept pattern needs verification on iOS Safari and Android Chrome before finalizing the mobile architecture. Budget significant QA time.
 
 ### Phase Ordering Rationale
 
-- **Phases 1-2 before Phase 3:** Game systems operate on scenes and hotspots; the scene system must exist first.
-- **Phase 3 before Phase 4:** Building the fallback parser first validates the entire gameplay loop without LLM complexity. If the game is fun with regex parsing, the LLM will only make it better. If it is not fun without the LLM, the LLM will not save it.
-- **Phase 4 before Phase 5:** LLM integration should be working before content production begins, so content authors can write for the natural language parser rather than the regex fallback.
-- **Phase 5 before Phases 6-7:** A small content demo validates the full vertical slice before investing in art pipeline optimization or mass content production.
-- **Sound/music is independent** and can be layered in at Phase 5 or 6 without blocking anything.
+- Schema hardening (Phase 1) is a prerequisite for every feature that modifies `GameStateData`. Doing it first prevents save-breaking bugs from being baked into shipped code.
+- Art pipeline (Phase 1) starts immediately for wall-clock reasons — generation is hours and runs as a parallel track throughout all subsequent phases. Art integration (swapping Preloader references) happens incrementally.
+- Death gallery (Phase 2) validates the MetaGameState architecture before hints and endings depend on it.
+- Hints (Phase 3) before endings (Phase 4) because puzzle flag stability is a prerequisite for confident ending design.
+- Mobile (Phase 5) last because all UI surfaces must exist before responsive layout can be applied and tested holistically.
 
 ### Research Flags
 
-Phases likely needing deeper research during planning:
-- **Phase 4 (LLM Integration):** Ollama prompt engineering for game parsing is not well-documented; the structured output schema and context injection strategy will need experimentation. Latency benchmarks on target hardware are essential.
-- **Phase 6 (Art Pipeline):** ComfyUI workflow design, LoRA selection for pixel art style, and post-processing pipeline need hands-on validation. The Flux model choice (Schnell vs Dev) depends on available VRAM.
-- **Phase 5/7 (Content):** Puzzle dependency graph design and automated validation tooling need research during planning.
+Phases needing deeper research during planning:
+- **Phase 1 (Art Pipeline):** LoRA evaluation, parallax layer decomposition strategy, ComfyUI workflow JSON structure, and palette quantization tooling all need iterative validation on 3 test rooms. Plan for 1-2 weeks of pipeline development before bulk generation.
+- **Phase 5 (Mobile):** Real-device testing matrix and `visualViewport` keyboard intercept behavior on iOS Safari and Android Chrome need verification before finalizing the mobile architecture.
 
-Phases with standard patterns (skip research-phase):
-- **Phase 1 (Foundation):** Well-documented HTML5 Canvas game loop, event bus, and asset loading patterns. Phaser handles most of this.
-- **Phase 2 (Scene System):** FSM scene management and A* pathfinding are textbook game development patterns. Phaser's scene system provides the foundation.
-- **Phase 3 (Game Systems):** Inventory, puzzle engines, and save/load are well-established adventure game patterns with extensive documentation.
+Phases with standard patterns (no additional research needed):
+- **Phase 2 (Death Gallery):** Collectible gallery pattern is well-documented. Architecture research is complete and highly confident.
+- **Phase 3 (Hints):** EventBus integration pattern is proven in the codebase. Hint tier model (UHS) is well-established since 1988. Effort is content authoring, not architecture.
+- **Phase 4 (Endings):** Flag accumulation plus inkjs conditional branching is the proven pattern. Design work (which flags matter) is the main decision, not engineering.
 
 ## Confidence Assessment
 
 | Area | Confidence | Notes |
 |------|------------|-------|
-| Stack | MEDIUM-HIGH | Phaser 3, TypeScript, Vite are proven and well-documented. Ollama browser integration has good official docs but fewer production examples in games specifically. ComfyUI API is documented but art pipeline consistency is unproven for this use case. |
-| Features | HIGH | Adventure game feature expectations are extremely well-documented across 40 years of the genre. The competitor analysis (King's Quest, Thimbleweed Park, AI Dungeon) provides clear differentiation guidance. Anti-feature decisions are well-reasoned. |
-| Architecture | HIGH | Layered game architecture, FSM scene management, event bus, and data-driven content are textbook patterns with extensive documentation. The LLM integration layer design is sound but less battle-tested (MEDIUM for that specific component). |
-| Pitfalls | HIGH | Every critical pitfall has multiple authoritative sources. Ron Gilbert's adventure game design rules, MDN Canvas/Audio documentation, and Ollama API docs provide concrete prevention strategies. LLM nondeterminism research is thorough. |
+| Stack | HIGH | One new npm dependency (sharp). All other tools are external or existing. Sources are official docs (ComfyUI, Phaser, inkjs, HuggingFace model pages). Alternatives thoroughly analyzed and rejected with clear rationale. |
+| Features | MEDIUM-HIGH | Well-established patterns (UHS hints, Sierra death collection, KQ6 endings). Feature complexity estimates grounded in direct codebase analysis. Flux generation time benchmarks are MEDIUM confidence (community-sourced for Apple Silicon). |
+| Architecture | HIGH for runtime features, MEDIUM for art pipeline | Runtime feature integration is HIGH confidence based on direct codebase analysis (extension points identified by file and line number). Art pipeline architecture (ComfyUI workflow quality, parallax layer strategy) is MEDIUM and requires iterative validation on test rooms. |
+| Pitfalls | HIGH for integration pitfalls, MEDIUM for Flux-specific | Integration pitfalls (schema break, keyboard layout, touch targets) are HIGH confidence from Phaser forum, MDN, and codebase analysis. Flux pixel art consistency pitfalls are MEDIUM confidence from community sources. |
 
 **Overall confidence:** MEDIUM-HIGH
 
 ### Gaps to Address
 
-- **LLM parsing quality at game-speed:** No research found benchmarking Llama 3.1 8B specifically for structured game command extraction. The sub-2-second target is theoretically achievable but needs hardware-specific validation early in Phase 4.
-- **Flux pixel art consistency with LoRA:** No validated LoRA model identified for the specific pixel art style needed. The art pipeline phase must include LoRA evaluation or training on reference scenes.
-- **inkjs integration with LLM-driven dialogue:** inkjs handles branching narrative, but the interaction pattern between ink story state and LLM-generated NPC responses is not documented. This hybrid approach needs design during Phase 3/4.
-- **Phaser 3 + HTML/CSS UI overlay pattern:** The architecture recommends HTML/CSS for UI over Phaser canvas, but most Phaser examples use either full-canvas UI (via RexUI) or full-DOM UI. The hybrid approach (Phaser canvas for game world, HTML/CSS for text input and panels) needs validation. RexUI may be sufficient and simpler.
-- **Save data migration across development versions:** The strategy is clear (versioned schema + migration functions) but no template or library was identified for this in a Phaser/browser game context. Will need custom implementation.
+- **Parallax layer decomposition strategy:** Generating 4 separate transparent layers per room vs. shared backdrop layers per act vs. full scene compositing is unresolved. Option C (shared backdrop layers per act + unique ground layer per room) is recommended but needs validation with a test batch in Phase 1.
+- **Flux generation time on developer hardware:** Benchmarks are community-sourced for M3/M4 Max (85-145 seconds per image). The developer's actual hardware may differ significantly. Run a timing test on 3 rooms immediately in Phase 1 to calibrate the timeline.
+- **iOS Safari `visualViewport` behavior:** The `interactive-widget=resizes-visual` viewport meta tag (Chrome 108+, Safari 16+) and `visualViewport` API behavior on iOS Safari need real-device verification before finalizing Phase 5 architecture.
+- **LoRA trigger word and strength calibration:** The `GRPZA` trigger word for Flux-2D-Game-Assets-LoRA is confirmed from the HuggingFace model card, but the effective LoRA weight (strength 0.7-1.0 range) and interaction with the game's specific environment prompts needs empirical testing in Phase 1.
+- **Death completionist secret ending feasibility:** The secret ending requires `MetaGameState.discoveredDeaths.length === 43`. Whether players will realistically find all 43 deaths and whether this is a satisfying completion mechanic needs design validation — potentially playtest after Phase 2 ships.
 
 ## Sources
 
 ### Primary (HIGH confidence)
-- [Phaser GitHub releases](https://github.com/phaserjs/phaser/releases) -- v3.90.0 stable confirmed
-- [ollama-js GitHub](https://github.com/ollama/ollama-js) -- browser export, API methods, streaming
-- [Ollama API docs](https://github.com/ollama/ollama/blob/main/docs/api.md) -- REST endpoints, structured output, keep_alive
-- [inkjs GitHub](https://github.com/y-lohse/inkjs) -- runtime compatibility, TypeScript types
-- [MDN: Canvas optimization](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Optimizing_canvas) -- rendering performance
-- [MDN: Crisp pixel art look](https://developer.mozilla.org/en-US/docs/Games/Techniques/Crisp_pixel_art_look) -- pixel art rendering
-- [Chrome: Web Audio Autoplay Policy](https://developer.chrome.com/blog/web-audio-autoplay) -- audio restrictions
-- [localforage GitHub](https://github.com/localForage/localForage) -- IndexedDB wrapper, fallback chain
-- [ComfyUI docs](https://docs.comfy.org/get_started/first_generation) -- API workflow
-- [Ron Gilbert, "Why Adventure Games Suck" (1989)](https://grumpygamer.com/why_adventure_games_suck/) -- foundational design principles
+- [ComfyUI REST API Documentation](https://docs.comfy.org/development/comfyui-server/comms_routes) — POST /prompt, GET /history, GET /view endpoints
+- [ComfyUI macOS Desktop Installation](https://docs.comfy.org/installation/desktop/macos) — Apple Silicon setup, MPS acceleration
+- [ComfyUI-GGUF GitHub (city96)](https://github.com/city96/ComfyUI-GGUF) — GGUF model loader custom node
+- [Flux.1 Dev GGUF on HuggingFace (city96)](https://huggingface.co/city96/FLUX.1-dev-gguf) — Model variants, quantization levels, VRAM requirements
+- [Flux-2D-Game-Assets-LoRA on HuggingFace (gokaygokay)](https://huggingface.co/gokaygokay/Flux-2D-Game-Assets-LoRA) — Trigger word GRPZA, Apache 2.0, example outputs
+- [sharp npm (v0.34.5)](https://www.npmjs.com/package/sharp) — Image processing API, Node 18.17+ compatibility
+- [Phaser ScaleManager Documentation](https://docs.phaser.io/api-documentation/class/scale-scalemanager) — FIT mode, resize events, orientation events
+- [Phaser Scale Events](https://docs.phaser.io/api-documentation/event/scale-events) — ORIENTATION_CHANGE, RESIZE
+- [inkjs GitHub](https://github.com/y-lohse/inkjs) — Conditional branching, variable support
+- [ink Writing Documentation](https://github.com/inkle/ink/blob/master/Documentation/WritingWithInk.md) — Conditional diverts, variables, knots
+- [Phaser Forum: ScaleManager Ignore Virtual Keyboard](https://phaser.discourse.group/t/scalemanager-ignore-virtual-keyboard/1361) — Canvas resize on mobile keyboard open (community-verified)
+- [Phaser Forum: Force Mobile Keyboard](https://phaser.discourse.group/t/how-to-force-mobile-keyboard-to-appear/11477) — HTML input overlay approach
+- [MDN: Mobile Touch Controls](https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Mobile_touch) — Touch input patterns
+- [Universal Hint System Wikipedia](https://en.wikipedia.org/wiki/Universal_Hint_System) — UHS tiered hint structure
+- [Thimbleweed Park Hint System Forum](https://forums.thimbleweedpark.com/t/hint-system-tech/3139) — In-world hint delivery (Ron Gilbert's team)
+- [King's Quest VI Endings (Fandom)](https://kingsquest.fandom.com/wiki/Possible_Endings_for_King's_Quest_VI) — Short-path/long-path model
+- [The 14 Deadly Sins of Graphic-Adventure Design](https://www.filfre.net/2015/07/the-14-deadly-sins-of-graphic-adventure-design/) — Ron Gilbert anti-patterns
+- [Standard Patterns in Choice-Based Games](https://heterogenoustasks.wordpress.com/2015/01/26/standard-patterns-in-choice-based-games/) — Branch and bottleneck narrative structure
+- [MDN: Storage Quotas and Eviction Criteria](https://developer.mozilla.org/en-US/docs/Web/API/Storage_API/Storage_quotas_and_eviction_criteria) — localStorage limits for MetaGameState sizing
 
 ### Secondary (MEDIUM confidence)
-- [Phaser v4 RC6 announcement](https://phaser.io/news/2025/12/phaser-v4-release-candidate-6-is-out) -- pre-release status
-- [Ollama blog: LLM-powered web apps](https://ollama.com/blog/building-llm-powered-web-apps) -- browser integration patterns
-- [Flux vs SD comparison 2026](https://pxz.ai/blog/flux-vs-stable-diffusion) -- model specs, VRAM requirements
-- [Intra: LLM-driven text adventure design notes](https://ianbicking.org/blog/2025/07/intra-llm-text-adventure) -- LLM game design patterns
-- [FlowHunt: Defeating Non-Determinism in LLMs](https://www.flowhunt.io/blog/defeating-non-determinism-in-llms/) -- LLM reproducibility
-- [Thimbleweed Park Blog: Dialog Puzzles](https://blog.thimbleweedpark.com/dialog_puzzles.html) -- puzzle design by Ron Gilbert
-- [Game Programming Patterns: State](https://gameprogrammingpatterns.com/state.html) -- FSM patterns
-
-### Tertiary (LOW confidence)
-- [Ollama models comparison 2025](https://collabnix.com/best-ollama-models-in-2025-complete-performance-comparison/) -- Llama 3.1 8B benchmarks (needs hardware-specific validation)
-- [Wayline: Scope Creep in Indie Games](https://www.wayline.io/blog/scope-creep-indie-games-avoiding-development-hell) -- scope management (general, not adventure-game-specific)
+- [Flux Apple Silicon Performance Guide 2025](https://apatero.com/blog/flux-apple-silicon-m1-m2-m3-m4-complete-performance-guide-2025) — M-series generation benchmarks (85-145 seconds per image)
+- [Running Flux on 6-8GB VRAM with ComfyUI](https://civitai.com/articles/6846/running-flux-on-68-gb-vram-using-comfyui) — GGUF quantization levels mapped to VRAM
+- [Flux Dev vs Schnell Comparison](https://pxz.ai/blog/flux-dev-vs-schnell) — Quality vs. speed tradeoffs; Dev recommended for final assets
+- [Pixel Art ComfyUI Workflow Guide](https://inzaniak.github.io/blog/articles/the-pixel-art-comfyui-workflow-guide.html) — Resolution, LoRA, sampler settings
+- [Retro Diffusion: Authentic Pixel Art with AI at Scale](https://runware.ai/blog/retro-diffusion-creating-authentic-pixel-art-with-ai-at-scale) — Consistency challenges, post-processing pipeline recommendations
+- [How and Why to Write Low Spoiler Hints](https://www.gamedeveloper.com/design/how-and-why-to-write-low-spoiler-hints-for-adventure-games-) — Progressive hint authoring best practices
+- [Multiple Endings in Games — GameDeveloper](https://www.gamedeveloper.com/design/multiple-endings-in-games) — Ending design patterns and pitfalls
+- [How to Execute Multiple Game Endings Well](https://indiecator.org/2021/05/08/multiple-game-endings/) — Quality over quantity analysis
+- [Designing Memorable Achievements — RetroAchievements](https://docs.retroachievements.org/developer-docs/achievement-design.html) — Achievement design principles
+- [FLUX.1 Kontext (arXiv)](https://arxiv.org/html/2506.15742v2) — Multi-reference consistency approach for style coherence
 
 ---
-*Research completed: 2026-02-20*
+*Research completed: 2026-02-21*
 *Ready for roadmap: yes*

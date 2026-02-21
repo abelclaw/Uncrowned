@@ -1,216 +1,414 @@
-# Feature Research
+# Feature Landscape: v2.0 Art & Polish
 
-**Domain:** Browser-based King's Quest-style graphic adventure game with LLM-powered text parser
-**Researched:** 2026-02-20
-**Confidence:** HIGH (core adventure game features are well-documented; LLM integration patterns are MEDIUM confidence)
+**Domain:** Browser-based adventure game -- art pipeline, hint system, death gallery, mobile responsive, multiple endings
+**Researched:** 2026-02-21
+**Overall confidence:** MEDIUM-HIGH (well-established patterns with some implementation-specific unknowns)
 
-## Feature Landscape
+> This document replaces the v1.0 feature research. v1.0 features are shipped. This covers only v2.0 new features.
 
-### Table Stakes (Users Expect These)
+---
 
-Features users assume exist. Missing these = product feels incomplete.
+## Feature Area 1: Flux Art Generation Pipeline
 
-| Feature | Why Expected | Complexity | Notes |
-|---------|--------------|------------|-------|
-| **Scene rendering with pixel art backgrounds** | Defines the genre visually; players expect illustrated rooms to explore | HIGH | Each scene needs a unique background. Flux-generated art must be consistent in style across all scenes. Budget ~40-60 scenes for 5 hours of gameplay |
-| **Animated player character with movement** | A static character feels broken. Walking animation across the scene is the most basic interaction | MEDIUM | Minimum: 4-frame walk cycle in 4 directions, idle animation, and a few interaction poses. Sprite sheet at ~20 FPS |
-| **Text input parser** | Defines this as a "parser" adventure vs point-and-click. The core interaction model | HIGH | LLM-powered parser is the project's central innovation. Must handle "get rock", "use key on door", "talk to wizard", and natural language variants |
-| **Inventory system** | Inventory puzzles are the backbone of adventure games. Without inventory, there are no puzzles | MEDIUM | Visual inventory panel showing collected items. Must support: pick up, examine, use on scene object, combine two items. Classic grid or list UI |
-| **Room/scene navigation** | Players must be able to move between connected locations. This is how exploration works | MEDIUM | Scene graph connecting rooms with exits (north, south, enter door, etc.). Must be clear which exits exist. Character walks to edge and transitions |
-| **Scene descriptions and "look" command** | Players type "look" and expect to learn about their surroundings. Fundamental to text parser games | LOW | LLM generates contextual descriptions based on scene state. Must reflect items already taken, NPCs present, and puzzle state |
-| **Object interaction (examine, take, use)** | Core verbs. Players expect to examine anything interesting, take portable objects, and use items on things | MEDIUM | Each scene needs interactable objects with examine text, take behavior, and use-on logic. LLM handles natural language mapping to these actions |
-| **NPC dialogue** | Adventure games need characters to talk to. Information gathering, humor, and story delivery all happen through dialogue | HIGH | NPCs respond to player text input. LLM generates in-character responses. Must stay on-script for puzzle-critical information while being flexible for flavor |
-| **Save/load system** | Players will close the browser tab. Losing hours of progress is unacceptable | MEDIUM | localStorage or IndexedDB. Save full game state: current scene, inventory, puzzle flags, NPC states. Support multiple save slots. Auto-save per room |
-| **Death sequences with safe reset** | This IS King's Quest. Frequent deaths are a feature, not a bug. The project description explicitly calls this out | MEDIUM | Narrator delivers a humorous death message. Player resets to last safe state (auto-save before the deadly action). No progress lost beyond the current room |
-| **Story arc (beginning, middle, end)** | Players expect a complete narrative. A sandbox with no ending feels unfinished | HIGH | Content creation is the bottleneck, not tech. Needs written story outline, scene-by-scene puzzle flow, and satisfying conclusion. ~5 hours = massive scope |
-| **Narrator text output** | The narrator IS the game's voice. All scene descriptions, responses, and death messages flow through the narrator | MEDIUM | Dark comedy tone. LLM generates narrator text with consistent personality. System prompt defines voice: sarcastic, literary, mocking-but-affectionate (Space Quest / Stanley Parable style) |
-| **Sound effects and ambient audio** | Silent games feel eerie in a bad way. Ambient sound grounds the player in the scene | MEDIUM | Per-scene ambient loops (forest sounds, dungeon drips, tavern murmur). Interaction SFX (pickup, door open, death sting). Web Audio API handles layering and crossfades |
-| **Background music** | Sets mood and signals scene changes. Players notice its absence more than its presence | MEDIUM | Looping tracks per area (town, forest, dungeon, castle). Crossfade on scene transition. Can be procedural/generated or licensed royalty-free chiptune |
+### Table Stakes
 
-### Differentiators (Competitive Advantage)
+Features that must work for the art pipeline to be usable.
 
-Features that set the product apart. Not required, but valuable.
+| Feature | Why Expected | Complexity | Dependencies on v1.0 |
+|---------|-------------|------------|---------------------|
+| Consistent pixel art style across all 36 rooms | Placeholder art is currently uniform; new art must maintain visual coherence room-to-room | High | Background layer system (`bg-sky`, `bg-mountains`, `bg-trees`, `bg-ground` keys in RoomData) |
+| Parallax-compatible layer output | Rooms use 4-layer parallax backgrounds at different scroll factors. Art must be generated as separate layers, not monolithic images | High | `BackgroundLayer[]` in RoomData with scrollFactor values (0, 0.1, 0.4, 1.0) |
+| Correct resolution output (960x540 base, up to 1920px worldWidth) | Game renders at 960x540 with `pixelArt: true`. Wide rooms go up to 1920px. Art must match exactly | Medium | Phaser config `width: 960, height: 540`, worldWidth varies per room JSON |
+| Transparent layer support | Background layers other than sky need transparency for parallax compositing | Medium | Phaser image rendering with scrollFactor-based layering |
+| Reproducible prompt-to-art pipeline | Must regenerate or iterate on individual rooms without manual intervention. Pipeline should be scriptable | Medium | None (new system) |
+| Item sprite generation | 37 items need sprites for inventory panel display. Currently text-only | Medium | `ItemDefinition` type, `InventoryPanel` component |
+| Character sprite generation | Player and 11 NPCs need sprite art. Player spritesheet is 16 frames (idle/walk/interact) | High | Player spritesheet format: 48x64px per frame, 16 frames |
+
+### Differentiators
 
 | Feature | Value Proposition | Complexity | Notes |
-|---------|-------------------|------------|-------|
-| **LLM-powered natural language parser (Ollama)** | Unlike classic parsers that reject "I don't understand that", the LLM understands intent from free-form English. "Maybe I should try picking up that shiny thing" works as well as "get gem". This is THE differentiator | HIGH | Ollama runs locally. Parser must: (1) extract intent from natural language, (2) map to game actions, (3) handle ambiguity gracefully, (4) reject impossible actions with in-character narrator responses. Latency target: <2 seconds per input |
-| **Dynamic narrator personality** | Instead of static text, the narrator reacts to player behavior patterns. Repeat a dumb action? Narrator gets increasingly exasperated. Try something creative? Narrator is impressed. This creates emergent comedy | HIGH | LLM generates narrator responses conditioned on action history. System prompt defines personality. Must maintain consistency across sessions. Track "relationship" state with player |
-| **Death collection/gallery** | Transform deaths from punishment into collectibles. Track unique death types, display them in a gallery. Encourages exploration of failure states | LOW | Simple counter + description storage. UI page showing discovered deaths with thumbnails and narrator quips. "You've found 23 of 47 ways to die!" |
-| **Inventory combination puzzles** | Combining two inventory items to create a third. Classic King's Quest mechanic but rare in modern games. Satisfying "aha!" moments | MEDIUM | Needs combination recipe system. LLM can hint at possible combinations through narrator. "Those two items seem like they'd get along." Must avoid moon logic -- combinations should be intuitive |
-| **Conversation puzzles** | Must say the right thing to an NPC to progress. Not just "exhaust all dialogue options" but actual puzzle-solving through word choice | HIGH | LLM evaluates whether player's dialogue achieves the puzzle goal (persuade, deceive, extract information). Hard to get right: must be fair but not trivial. Needs clear success/failure signals |
-| **Contextual narrator responses for "wrong" actions** | Instead of "You can't do that", the narrator roasts you. "You try to eat the door. The door is unimpressed. So am I." Every failed action becomes entertainment | MEDIUM | LLM generates unique rejection text based on the specific ridiculous action attempted. Must not repeat. Huge replay value and screenshot/share potential |
-| **Adaptive hint system via narrator** | When player is stuck, narrator gradually provides hints in-character. "You seem lost. Perhaps the answer is staring you in the face... literally." Escalates from vague to specific | MEDIUM | Track time-since-last-progress and failed-action-count per puzzle. LLM generates hints at 3 tiers: vague nudge, moderate pointer, near-explicit. Stays in narrator voice throughout |
-| **Scene art generated by Flux** | AI-generated pixel art gives unique visual identity and enables rapid content creation. Each scene is visually distinct without requiring a dedicated artist | HIGH | Flux model generates scene backgrounds. Challenge: style consistency across 40-60 scenes. Needs careful prompt engineering and possibly post-processing. This is a production pipeline, not a runtime feature |
-| **Easter eggs and hidden interactions** | Reward players for trying absurd things. Type "xyzzy" and get a response. Try to "dance" in every room. Secret areas | LOW | LLM naturally handles unexpected input. Curate a list of easter egg triggers with special responses. Low effort, high delight |
-| **Examine-everything depth** | Every visible object in a scene has a unique, witty examine response. Players who examine the mundane are rewarded with humor | MEDIUM | Increases content volume significantly but the LLM can assist. Each scene needs an object list with examine text (or LLM generation guidelines). The narrator voice makes even "It's a rock" funny |
+|---------|------------------|------------|-------|
+| LoRA-fine-tuned style consistency | Using a pixel-art LoRA (e.g., Flux-2D-Game-Assets-LoRA or Retro-Pixel-Flux-LoRA) produces much more consistent results than raw Flux | Medium | gokaygokay/Flux-2D-Game-Assets-LoRA on HuggingFace generates clean pixel art with white backgrounds. HIGH confidence -- verified on HuggingFace |
+| Batch pipeline with ComfyUI API | Script all 36 rooms as a batch job instead of manual one-by-one generation. ComfyUI has a queue/API for automation | Medium | ComfyUI workflow JSON can be templated and batch-submitted |
+| Death scene illustration | Each of the 43 unique death scenarios gets a small illustration or vignette displayed on the DeathScene overlay | High | 43 unique `deathId` values across 36 rooms. Integrates with `DeathScene.create()` |
+| NPC portrait art | Show character portraits during dialogue sequences. Adds personality beyond text | Medium | `DialogueUI` component, ink tag system already parses `#speaker:` tags |
 
-### Anti-Features (Commonly Requested, Often Problematic)
+### Anti-Features
 
-Features that seem good but create problems.
+| Anti-Feature | Why Avoid | What to Do Instead |
+|--------------|-----------|-------------------|
+| Real-time in-game Flux generation | Generation takes 85-145 seconds per image on Apple Silicon. Players cannot wait | Pre-generate all art offline, bundle as static assets |
+| Full photorealistic art style | Clashes with pixel art aesthetic, larger file sizes, inconsistent with game tone | Use pixel-art LoRA, target 16-32px palette-limited style |
+| AI-generated animations | Flux animation support is experimental/unreleased. Frame-by-frame generation has consistency issues | Hand-craft sprite animations or use simple programmatic tweens |
+| Cloud API for generation | Project constraint: "No external API dependencies at runtime -- everything runs locally" | Use local Flux via ComfyUI. GGUF Q8 model runs on 8GB+ VRAM, Q6 on Apple Silicon 16GB+ |
 
-| Feature | Why Requested | Why Problematic | Alternative |
-|---------|---------------|-----------------|-------------|
-| **Fully procedural/generated story** | "Let the LLM write the whole game!" Seems like it would enable infinite content | LLMs produce inconsistent, incoherent narratives over long sessions. AI Dungeon proved this: 40% state error rate per turn compounds catastrophically. Puzzles require authored logic; generated puzzles are either trivial or unsolvable. 5 hours of authored content beats 50 hours of mush | **Author the story, puzzles, and scene graph by hand. Use LLM for parser, narrator voice, and dynamic flavor text only.** The LLM enhances authored content; it does not replace it |
-| **Multiplayer/co-op** | "Adventure games with friends!" Social gaming is trendy | Massively increases complexity (state sync, turn order, shared inventory). Adventure games are inherently single-player pacing experiences. Conversation puzzles become chaos with multiple inputs. The narrator voice works because it addresses ONE player | **Single-player only.** Share the experience by watching someone play or sharing death galleries |
-| **Open world / non-linear exploration** | "Let me go anywhere!" Modern game expectations | Adventure games need gating to prevent sequence-breaking puzzles. A fully open world means every puzzle must account for any inventory state. King's Quest games were "open" but carefully gated by item requirements. Untested state combinations create bugs | **Semi-linear structure with hub-and-spoke areas.** Each chapter opens a new hub with multiple rooms to explore, but chapters are sequential. Within a hub, exploration order is flexible |
-| **Voice acting / text-to-speech** | "Modern games have voice acting!" Feels more polished | Enormous production cost for 5 hours of content. TTS sounds uncanny and undermines the dark comedy tone. The narrator's voice works better in the player's head, like reading a novel. Text lets players read at their own pace | **Text-only with excellent typography.** Use a typewriter-style text reveal animation. The narrator text IS the voice. Invest in writing quality, not audio quality |
-| **Combat system** | "King's Quest had some action sequences!" True but they were universally hated | Combat is antithetical to the cerebral puzzle-solving that makes adventure games work. It requires entirely separate game mechanics (health, damage, reflexes). Every dev hour on combat is an hour stolen from puzzles and narrative | **Replace combat with clever puzzle encounters.** Boss encounters are conversation puzzles or logic puzzles, not reflex tests. A dragon is defeated by wit, not swordplay |
-| **Crafting system** | "Inventory combinations = crafting!" Similar mechanics surface-level | Crafting implies grinding, resource gathering, and dozens of recipes. Adventure game item combinations are authored puzzle solutions, not a system. Crafting dilutes the "aha!" moment into busywork | **Authored inventory combinations only.** Each combination is a specific puzzle solution, not a generalizable system. Maybe 10-15 unique combinations total across the game |
-| **Branching storylines with multiple endings** | "Player choice matters!" Narrative games often feature this | Multiplies content by the number of branches. For a 5-hour game, 3 endings means essentially writing 3 games. Branching early creates exponential complexity. Testing all paths is a nightmare | **Single main story with minor variations.** Narrator acknowledges player choices and style. Maybe one "good" ending and one "bad" ending based on a simple virtue score (did you steal things, did you help people). Not a branching tree |
-| **Real-time elements / timed puzzles** | "Add urgency!" Some Sierra games had timed sequences | Timed puzzles in text-input games are hostile. Players can't type fast enough. LLM response latency adds to pressure unfairly. Accessibility nightmare. Frustration, not fun | **No real-time pressure.** The game waits for the player. Urgency comes from narrative tension ("The dragon is waking up!") not actual timers |
-| **Point-and-click interface alongside text parser** | "Why not both?" Seems like it adds accessibility | Maintaining two input systems doubles UI complexity and testing surface. Point-and-click undermines the LLM parser differentiator -- players will default to clicking, never experiencing the natural language magic. Verb coins and context menus add visual clutter | **Text parser only, with clickable scene objects as shortcuts.** Clicking an object types "examine [object]" into the parser. This teaches the parser vocabulary without replacing it |
-| **Procedural NPC dialogue** | "NPCs should talk about anything!" Infinite conversation seems cool | NPCs that can discuss anything discuss nothing well. Players probe boundaries, find hallucinations, break immersion. Key information gets lost in chatter. NPC "personality" drifts across conversations | **Authored NPC dialogue trees with LLM flavor.** Each NPC has scripted knowledge and puzzle-critical lines. LLM adds natural language variation to delivery, handles off-topic questions with in-character deflections ("I don't want to talk about that. Have you seen the fountain?") |
+### Complexity Assessment
 
-## Feature Dependencies
+**Overall: HIGH.** This is the largest workload in v2.0. 36 rooms x 4 layers = 144 background images minimum. Plus 37 item sprites, 12+ character sprites, and optionally 43 death vignettes. The pipeline design (prompt templates, LoRA selection, batch automation) must be validated before bulk generation begins.
+
+**Key risk:** Parallax layer decomposition. Generating a room as 4 separate transparent layers with matching style is non-trivial. Options: (a) generate full scene, then manually split into layers; (b) generate each layer separately with careful prompting; (c) generate full scene for ground layer and simpler/generic layers for sky/mountains/trees. Option (c) is recommended -- sky and mountain layers can be shared across rooms within an act, reducing generation to ~36 ground layers + 8-12 shared backdrop layers.
+
+**VRAM/performance reality check (MEDIUM confidence):**
+- Apple Silicon M3/M4 Max (32GB+): ~85-145 seconds per 1024x1024 image with Flux Dev GGUF
+- NVIDIA 12GB: comfortable with GGUF Q8
+- NVIDIA 8GB: use Q6 quantization, ~90 seconds per image
+- Full pipeline for 36 rooms (ground layer only + shared backdrops): ~2-3 hours minimum generation time
+- Full pipeline including all layers, items, characters: ~8-12 hours of generation time
+
+---
+
+## Feature Area 2: Progressive Hint System
+
+### Table Stakes
+
+| Feature | Why Expected | Complexity | Dependencies on v1.0 |
+|---------|-------------|------------|---------------------|
+| Multi-tier hint escalation | Players expect to get nudged, then directed, then told the answer -- never just the answer directly. UHS/Invisiclues standard since 1988 | Medium | PuzzleEngine puzzle definitions in room JSONs |
+| Per-puzzle hint sets | Each solvable puzzle needs its own hint chain. Generic "explore more" hints feel worthless | Medium-High | 36 rooms of puzzles, each with unique `PuzzleDefinition` entries |
+| Stuck detection or voluntary access | System must either detect when player is stuck (time/failed-attempts) or let player explicitly request hints | Low-Medium | `GameState.playTimeMs`, `deathCount`, could track failed commands |
+| No accidental spoilers | Requesting a hint for Puzzle A must never reveal information about Puzzle B. Hint navigation must be puzzle-scoped | Medium | Room-based puzzle isolation already exists in room JSONs |
+| Hint availability awareness | System should know which puzzles are currently solvable (have all prerequisites) vs. not-yet-accessible | Medium | PuzzleEngine condition evaluation (`evaluateConditions`) already does this |
+
+### Differentiators
+
+| Feature | Value Proposition | Complexity | Notes |
+|---------|------------------|------------|-------|
+| Diegetic hint delivery via narrator | Instead of a UI menu, deliver hints through the sardonic narrator voice. "TYPE HINT" command triggers escalating sass | Low | Aligns with game tone. TextParser already handles commands. NarratorDisplay handles typewriter output |
+| Context-aware hint targeting | System auto-detects which puzzle the player is likely stuck on based on current room, inventory, and flags | Medium | Check which room puzzles have unmet conditions where player has partial prerequisites |
+| Thimbleweed Park-style in-world access | Integrate hints into the game world (e.g., a hint book item, or the narrator breaks fourth wall) | Medium | Thimbleweed Park used in-game phones dialing "4468" (HINT). This game could use a narrator aside or "hint" command |
+| Narrator commentary on hint usage | Narrator roasts the player progressively harder for using more hints. "Oh, we're doing THIS now, are we?" | Low | Pure content work, fits existing narrator voice perfectly |
+
+### Anti-Features
+
+| Anti-Feature | Why Avoid | What to Do Instead |
+|--------------|-----------|-------------------|
+| Full walkthrough mode | Removes all gameplay. Players who want a walkthrough will find one online | Provide hints only, never auto-solve |
+| Real-time LLM-generated hints | Ollama is a fallback parser, not always available. Hints must work offline | Author all hints as static data in puzzle/room JSONs |
+| Hint currency or limited hint tokens | Artificial friction. Browser game with no monetization | Free hints, unlimited access, but with escalating narrator judgment |
+| Auto-triggering hint popups | Interrupts flow, feels patronizing, breaks immersion | Player must explicitly request via "hint" command or UI button |
+| Hint usage penalizing endings | Punishing players for using accessibility features is bad design | Narrator can comment on hint usage but it must not affect ending quality |
+
+### Implementation Pattern (Recommended)
+
+The proven UHS/Invisiclues model adapted for this game's sardonic narrator:
 
 ```
-[Scene Rendering]
-    |--requires--> [Scene Art Pipeline (Flux)]
-    |--requires--> [Scene Graph / Room Navigation]
-
-[Text Input Parser (LLM)]
-    |--requires--> [Ollama Local Setup]
-    |--requires--> [Game State Manager]
-    |--enables---> [Object Interaction]
-    |--enables---> [NPC Dialogue]
-    |--enables---> [Conversation Puzzles]
-    |--enables---> [Contextual Narrator Responses]
-
-[Inventory System]
-    |--requires--> [Object Interaction (take)]
-    |--enables---> [Inventory Combination Puzzles]
-    |--enables---> [Use Item on Scene Object]
-
-[Death Sequences]
-    |--requires--> [Save/Load System (auto-save)]
-    |--requires--> [Narrator Text Output]
-    |--enables---> [Death Collection Gallery]
-
-[NPC Dialogue]
-    |--requires--> [Text Input Parser]
-    |--requires--> [Game State Manager]
-    |--enables---> [Conversation Puzzles]
-
-[Adaptive Hint System]
-    |--requires--> [Narrator Text Output]
-    |--requires--> [Puzzle State Tracking]
-    |--requires--> [Progress Timer]
-
-[Story Arc]
-    |--requires--> [Scene Graph]
-    |--requires--> [All Puzzle Systems]
-    |--requires--> [Scene Art for all locations]
-
-[Sound/Music]
-    |--independent (can be layered in at any phase)
+Hint data structure per puzzle:
+{
+  "puzzleId": "use-key-on-door",
+  "hints": [
+    "The door looks like it might yield to the right persuasion.",
+    "You've seen something rusty that might fit that keyhole.",
+    "Use the rusty key on the locked door in the cave entrance."
+  ],
+  "narratorCommentary": [
+    "A gentle nudge in the right direction. You're welcome.",
+    "Getting warmer. The narrator believes in you. Mostly.",
+    "Fine. Here's the answer. The narrator is trying not to judge."
+  ]
+}
 ```
 
-### Dependency Notes
+**Delivery mechanism:** Add "hint" as a recognized verb in VerbTable/TextParser. When player types "hint" or "help", CommandDispatcher routes to a HintSystem. HintSystem checks current room puzzles, identifies the most relevant unsolved puzzle (one where player has partial prerequisites), and delivers the next tier of hint for that puzzle.
 
-- **Text Parser requires Ollama**: The entire input pipeline depends on the LLM being available and responsive. If Ollama is down, the game is unplayable. Need a graceful fallback or clear error state.
-- **Inventory requires Object Interaction**: Players must be able to "take" things before inventory matters. Object interaction is the foundation.
-- **Death Sequences require Auto-Save**: Without auto-save, frequent deaths become punishment instead of comedy. The save system must be rock-solid before deaths are fun.
-- **Conversation Puzzles require both NPC Dialogue and Parser**: These are the hardest feature to get right because they depend on LLM understanding intent AND matching it against puzzle requirements.
-- **Story Arc requires everything else**: Content creation is last-mile. All systems must be working before you can author the full game.
-- **Sound/Music is independent**: Can be added at any phase without blocking or being blocked. Good candidate for "polish" phase.
+### Complexity Assessment
 
-## MVP Definition
+**Overall: MEDIUM.** The system design is straightforward (tiered data + delivery mechanism). The bulk of work is content authoring: writing 3 tiers of hints for every puzzle across 36 rooms. The hint data can live alongside puzzle definitions in room JSONs or in a parallel hints JSON registry. Estimated: ~100-150 hint chains needed for all puzzles.
 
-### Launch With (v1)
+---
 
-Minimum viable product -- what's needed to validate the concept.
+## Feature Area 3: Death Gallery Achievements
 
-- [ ] **Scene rendering with 3-5 rooms** -- Enough to prove the visual pipeline works
-- [ ] **Text parser with LLM (Ollama)** -- THE core innovation. Must work for basic verbs: look, take, use, go, talk
-- [ ] **Inventory system (take, examine, use)** -- At least one inventory puzzle solvable
-- [ ] **Narrator with consistent dark comedy voice** -- System prompt nailed down, generating witty responses
-- [ ] **One complete puzzle chain** -- Item A + Item B solves obstacle, leading to new area
-- [ ] **One death sequence with auto-save reset** -- Prove the death-as-comedy loop works
-- [ ] **Scene navigation between rooms** -- Walk to exits, transition to connected rooms
-- [ ] **Basic save/load (localStorage)** -- Don't lose progress on refresh
+### Table Stakes
 
-### Add After Validation (v1.x)
+| Feature | Why Expected | Complexity | Dependencies on v1.0 |
+|---------|-------------|------------|---------------------|
+| Persistent death tracking | Track which of the 43 unique deaths the player has discovered, persisted across sessions | Low | `GameState.flags` can store `death-seen:${deathId}` flags. SaveManager already persists all flags |
+| Gallery UI showing discovered vs. undiscovered deaths | Grid or list view. Discovered deaths show title + narrator text. Undiscovered show silhouette or question mark | Medium | New scene or overlay. 43 entries to display |
+| Death count per type | Show how many times each death has been triggered, not just discovered or not | Low | Add `deathCounts: Record<string, number>` to `GameStateData` |
+| Total death counter (already exists) | `deathCount` is already tracked in GameState and displayed on DeathScene | Already built | `GameState.getData().deathCount` on death overlay |
+| Accessible from main menu or pause | Player should browse gallery without being in active gameplay | Low | New menu option in MainMenuScene or accessible via command |
 
-Features to add once core is working.
+### Differentiators
 
-- [ ] **NPC dialogue with 2-3 characters** -- Trigger: core parser loop is fun and responsive
-- [ ] **Inventory combination puzzles** -- Trigger: basic inventory works smoothly
-- [ ] **Death collection gallery** -- Trigger: multiple death types exist and are funny
-- [ ] **Adaptive hint system** -- Trigger: playtesters get stuck (they will)
-- [ ] **Sound effects and ambient audio** -- Trigger: visual experience feels empty
-- [ ] **Background music** -- Trigger: sound effects are in place
-- [ ] **Contextual narrator roasts for wrong actions** -- Trigger: players are typing creative nonsense
+| Feature | Value Proposition | Complexity | Notes |
+|---------|------------------|------------|-------|
+| Sardonic narrator gallery descriptions | Gallery entries feature unique narrator commentary beyond the death screen text. "Ah yes, the classic 'drink the mystery liquid' approach" | Low-Medium | Content authoring. Reuse existing `DeathDefinition.narratorText` plus add gallery-specific quip |
+| Death scene illustrations (cross-feature) | Each gallery entry shows a small pixel art vignette of the death. Ties into Flux art pipeline | High | 43 unique illustrations needed. Depends on art pipeline |
+| Completion percentage and milestones | "You've discovered 23 of 43 ways to die. The narrator is... impressed?" | Low | Simple count / total calculation |
+| Achievement unlocks at thresholds | "First Blood" (1 death), "Serial Victim" (10 unique), "Completionist of Doom" (all 43) | Low | Flag-based triggers on death count thresholds |
+| Room-grouped organization | Group deaths by room or act for navigation. Player can see which areas they have not fully explored death-wise | Low-Medium | Death IDs already map to rooms via `deathTriggers` in room JSONs |
 
-### Future Consideration (v2+)
+### Anti-Features
 
-Features to defer until product-market fit is established.
+| Anti-Feature | Why Avoid | What to Do Instead |
+|--------------|-----------|-------------------|
+| "Replay Death" button from gallery | Jumping to a save state near a death requires complex save snapshot management | Let player naturally re-encounter deaths through replay. Provide room name as a hint |
+| Deaths that require grinding | Deaths should be discoverable through exploration and curiosity, not repetitive actions | Each death has unique trigger conditions already -- no farming needed |
+| Social sharing or leaderboards | Over-engineering for a single-player browser game | Local gallery only, completion percentage |
+| Gallery spoiling undiscovered death triggers | Showing HOW to trigger undiscovered deaths reveals puzzle info | Undiscovered = locked icon + "???" only. No location or trigger hints |
+| Deaths gated behind payment | Browser game, no monetization, deaths are the comedy core | All deaths visible once discovered, all free |
 
-- [ ] **Full 5-hour story with 40-60 scenes** -- Defer because content authoring is the slowest bottleneck. Validate the engine first with a short demo (30-60 minutes)
-- [ ] **Conversation puzzles** -- Defer because these are the hardest LLM feature. Get basic NPC dialogue right first
-- [ ] **Easter eggs and hidden interactions** -- Defer because these are dessert, not dinner
-- [ ] **Multiple save slots** -- Defer because localStorage single-slot works for MVP
-- [ ] **Scene art style consistency pass** -- Defer because early Flux output will be inconsistent; batch-fix later
+### Existing Code Touchpoints
 
-## Feature Prioritization Matrix
+The current `DeathScene.handleRetry()` (line 83-101 in `DeathScene.ts`) increments `deathCount` but does NOT record which specific death occurred. The fix is surgical:
 
-| Feature | User Value | Implementation Cost | Priority |
-|---------|------------|---------------------|----------|
-| Text parser (LLM) | HIGH | HIGH | P1 |
-| Scene rendering | HIGH | HIGH | P1 |
-| Inventory system | HIGH | MEDIUM | P1 |
-| Scene navigation | HIGH | MEDIUM | P1 |
-| Narrator voice | HIGH | MEDIUM | P1 |
-| Save/load | HIGH | LOW | P1 |
-| Death sequences + reset | HIGH | MEDIUM | P1 |
-| Object interaction | HIGH | MEDIUM | P1 |
-| Story arc (full game) | HIGH | VERY HIGH | P1 (but phased) |
-| NPC dialogue | HIGH | HIGH | P2 |
-| Sound effects | MEDIUM | MEDIUM | P2 |
-| Background music | MEDIUM | MEDIUM | P2 |
-| Inventory combinations | MEDIUM | MEDIUM | P2 |
-| Adaptive hint system | MEDIUM | MEDIUM | P2 |
-| Death gallery | MEDIUM | LOW | P2 |
-| Contextual wrong-action responses | MEDIUM | LOW | P2 |
-| Conversation puzzles | MEDIUM | HIGH | P3 |
-| Easter eggs | LOW | LOW | P3 |
-| Examine-everything depth | MEDIUM | HIGH (content) | P3 |
-| Flux art pipeline (full game) | HIGH | HIGH | P3 (scales with content) |
+1. `DeathSceneData` interface already has `title` and `narratorText` -- add `deathId: string`
+2. The `trigger-death` EventBus event already carries the `deathId` string
+3. In the death trigger handler (RoomScene line 418-437), pass `deathId` in launch data
+4. In `handleRetry()`, record `deathId` to `deathsSeen[]` and increment `deathCounts[deathId]`
 
-**Priority key:**
-- P1: Must have for launch (playable demo)
-- P2: Should have, add when possible (complete experience)
-- P3: Nice to have, future consideration (polish and scale)
+The data flows are already there -- they just need to be captured and persisted.
 
-## Competitor Feature Analysis
+### State Schema Extension
 
-| Feature | King's Quest (Sierra, 1984-1998) | Thimbleweed Park (2017) | AI Dungeon (2019-present) | Intra (2025) | Our Approach |
-|---------|----------------------------------|------------------------|---------------------------|--------------|--------------|
-| Input method | Text parser (early) / Point-and-click (later) | Point-and-click with verb bar | Free text to LLM | Free text to LLM | Free text to LLM via Ollama (local) |
-| Puzzle style | Inventory, environment, some logic | Inventory, dialogue, logic | None (freeform narrative) | Action resolution with difficulty | Inventory, dialogue, logic, and NPC conversation |
-| Death mechanic | Frequent, often unfair, sometimes funny | Rare (LucasArts philosophy) | N/A (narrative continues) | N/A | Frequent, always funny, always safe reset (best of Sierra + modern fairness) |
-| Narrator | Text descriptions, sometimes snarky (Space Quest) | Fully voiced narrator | LLM-generated narration | LLM-generated narration | LLM-generated dark comedy narrator (Space Quest meets Stanley Parable) |
-| Art style | Pixel art (EGA/VGA era) | High-res pixel art | Text only | Text only | Flux-generated pixel art backgrounds + sprite character |
-| Story structure | Linear with open exploration zones | Linear with parallel puzzles | Procedural/emergent (incoherent) | Semi-structured emergent | Authored linear story with hub-and-spoke exploration per chapter |
-| NPC interaction | Limited keyword-based | Dialogue trees | Freeform LLM chat | Freeform with NPC perspectives | Authored knowledge + LLM natural language delivery |
-| Save system | Manual save anywhere | Auto-save + manual | Cloud persistence | Session-based | Auto-save per room + manual slots |
-| Hint system | None (call the Sierra hint line!) | None built-in | N/A | N/A | Adaptive in-character narrator hints |
-| Sound/Music | MIDI music, basic SFX | Full soundtrack + voice | None | None | Ambient audio + chiptune music, no voice acting |
+```typescript
+// Add to GameStateData:
+deathsSeen: string[];                    // unique death IDs discovered
+deathCounts: Record<string, number>;     // per-death-type count
+```
+
+### Death Inventory (verified from codebase)
+
+43 unique death IDs across 36 rooms:
+- Act 1a (7 rooms): bee-death, poison-death, dark-death, lost-death, drown-death, fall-death, stone-touch
+- Act 1b (7 rooms): troll-rage, guard-arrest, portrait-curse, throne-collapse, ghost-wrath, kitchen-fire, poison-herb, rat-swarm
+- Act 2 (12 rooms): clerk-stamped, boredom-death, mushroom-poison, barrier-zap, balcony-fall, echo-scream, stalactite-fall, dark-water, drown-river, waterfall-death, forge-burn, guardian-smash, guardian-wrong, shelf-collapse, filed-away, paper-cut
+- Act 3 (10 rooms): petrify-touch, petrify-slow, rite-fail, archive-collapse, wizard-trap, wizard-explosion, clock-crush, clock-fall, dungeon-pit, mirror-shatter, rooftop-fall, treasury-trap
+
+Rooms with multiple deaths: clock_tower (3), wizard_tower (2), echo_chamber (2), filing_room (2), underground_river (2), guardian_chamber (2), throne_room (2).
+
+### Complexity Assessment
+
+**Overall: LOW-MEDIUM.** The death tracking infrastructure is nearly there already. Main work: (a) gallery UI scene with grid/list layout, (b) content authoring for gallery-specific text per death, (c) state schema extension (2 new fields), and (d) optionally death illustrations (which is part of the art pipeline). This is the lowest-risk, highest-reward feature in v2.0.
+
+---
+
+## Feature Area 4: Mobile-Responsive Layout
+
+### Table Stakes
+
+| Feature | Why Expected | Complexity | Dependencies on v1.0 |
+|---------|-------------|------------|---------------------|
+| Touch-to-move (tap = click) | Point-and-click already works with mouse. Phaser handles pointer events for both mouse and touch. Must verify it works | Low | `pointerdown` events already used in RoomScene. Phaser auto-bridges touch and mouse |
+| Responsive canvas scaling | Game must fill mobile viewport without distortion. Currently uses `Phaser.Scale.FIT` with `CENTER_BOTH` | Low | Already configured in `main.ts`. FIT mode scales to fit container. Likely works on mobile already |
+| Text input on mobile | The DOM-based `TextInputBar` uses a standard HTML `<input>` element. Tapping it must raise the virtual keyboard | Medium | `TextInputBar` is a DOM input. Mobile browsers auto-show keyboard on focus. But canvas resize when keyboard opens is the hard problem |
+| Readable text at mobile sizes | Narrator text, dialogue, death messages must be legible on phone screens (320-430px wide) | Medium | Current font sizes (14-16px monospace) may be too small at scaled-down resolutions |
+| Inventory accessible via touch | `InventoryPanel` toggle must be touch-friendly with no hover-dependent interactions | Low-Medium | Current toggle via EventBus `inventory-toggle` event. Need a visible touch-friendly button |
+| Portrait orientation handling | Many mobile users hold phone in portrait. Game is 16:9 landscape (960x540). Must handle gracefully | Medium | Options: force landscape, reflow layout for portrait, or show rotation prompt |
+
+### Differentiators
+
+| Feature | Value Proposition | Complexity | Notes |
+|---------|------------------|------------|-------|
+| Command suggestion buttons | Show common verb buttons (Look, Take, Use, Go, Talk) above text input. Tap verb, then tap hotspot. Avoids typing entirely for 80% of commands | Medium | Alternative to text input for mobile. Key UX innovation for touch play |
+| Quick-action radial menu | Tap-and-hold on hotspot shows radial menu with context-appropriate verbs | Medium-High | More sophisticated than buttons but higher engineering cost |
+| Swipe for room navigation | Swipe left/right at screen edges to traverse exits | Low-Medium | Map swipe direction to exit zone detection |
+| Touch-friendly inventory panel | Drag-and-drop items onto game world for "use X on Y" | Medium | Current inventory is text-list. Would need visual item icons (ties to art pipeline) |
+
+### Anti-Features
+
+| Anti-Feature | Why Avoid | What to Do Instead |
+|--------------|-----------|-------------------|
+| Separate mobile app build | Unnecessary complexity. Browser game should be one codebase | Responsive design within single web app |
+| Removing text parser on mobile | Text parser IS the core value proposition | Keep text input, supplement with touch shortcuts |
+| Complex gesture system | Adventure game players want to explore, not learn gestures | Simple tap-to-move, tap-to-interact, optional verb buttons |
+| Native mobile keyboard as primary input | Virtual keyboard covers 40-50% of screen, resizes canvas, breaks immersion | Command suggestion buttons as primary mobile input, keyboard as fallback for complex commands |
+| In-canvas virtual keyboard | Massive engineering effort for marginal benefit over button-based input | Use command suggestion buttons instead |
+
+### Key Technical Challenge: Virtual Keyboard + Canvas
+
+When the OS virtual keyboard opens on mobile:
+1. Browser viewport shrinks by 40-50%
+2. Phaser's `Scale.FIT` recalculates, squishing the canvas
+3. Game becomes hard to see during text input
+
+**Recommended solution (in priority order):**
+
+1. **Command suggestion buttons (primary):** Show verb buttons above text input. Most commands are `look [thing]`, `take [thing]`, `use [item] on [thing]`, `go [direction]`. Buttons handle 80% of interactions with zero typing. Only complex commands need the keyboard.
+
+2. **Fixed viewport meta tag:** Use `<meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-visual">` (Chrome 108+, Safari 16+). Canvas stays fixed size; keyboard overlays bottom of page rather than resizing the viewport.
+
+3. **Dynamic viewport units:** Replace `100vh` with `100dvh` in CSS for iOS Safari compatibility. Current `style.css` uses `100vh` on `#app` which is unreliable on mobile (includes browser chrome).
+
+### CSS Changes Needed
+
+Current `style.css` issues for mobile:
+- `overflow: hidden` on body -- correct, keep
+- `100vh` on #app -- replace with `100dvh` or JS-calculated height
+- `max-width: 960px` on game-container -- fine, FIT mode handles downscaling
+- Text parser UI at bottom -- needs to be positioned relative to visible viewport, not full viewport
+- No media queries for small screens -- add font size adjustments
+
+### Complexity Assessment
+
+**Overall: MEDIUM.** Basic tap-to-move and canvas scaling very likely work already (Phaser handles this automatically). The hard part is text input on mobile. The command suggestion buttons approach is the pragmatic solution: it preserves the text parser for complex commands while making 80% of interactions tap-only on mobile. Estimated breakdown: ~20% effort on responsive CSS, ~50% on command suggestion buttons, ~30% on testing and edge cases (keyboard, orientation, small screens).
+
+---
+
+## Feature Area 5: Multiple Story Endings
+
+### Table Stakes
+
+| Feature | Why Expected | Complexity | Dependencies on v1.0 |
+|---------|-------------|------------|---------------------|
+| At least 3 distinct endings | One "bad" ending, one "normal/good" ending, and one "secret/best" ending. Players expect meaningful variation | Medium-High | Story content authoring + new ending scenes |
+| Ending determined by player choices | Endings must feel earned. Choices throughout the game should visibly or subtly steer toward different outcomes | Medium | `GameState.flags` already tracks decisions. Need to define which flags matter |
+| Replayability signal | After completing the game, player should know other endings exist and have motivation to replay | Low | Post-credits screen showing "Ending 1 of 3" or similar |
+| Ending-specific content | Each ending needs unique narrator monologue, scene description, and thematic resolution. Not just a different final sentence | Medium | New ending scenes or variations of final room interactions |
+| Save compatibility | Existing saves must still work. Ending system reads flags that were set throughout the game | Low | Flags already in `GameStateData`. New ending logic reads existing flag patterns |
+
+### Differentiators
+
+| Feature | Value Proposition | Complexity | Notes |
+|---------|------------------|------------|-------|
+| King's Quest VI "short path / long path" model | Optional puzzles unlock the better ending. Completionists get rewarded; casual players still finish | Medium | KQ6 had roughly half optional puzzles with a more satisfying ending for completing them. Proven pattern for the genre |
+| Narrator-aware ending commentary | Narrator's final monologue references specific player choices. "Remember that time you drank the cave potion? The narrator certainly does" | Medium | Ink script for ending can use flags to gate text variants. Already have the `narrator_history` ink pattern doing exactly this |
+| Death count affects ending tone | Players who died many times get different narrator commentary. "You died 47 times. The narrator lost count at 30" | Low | `deathCount` already tracked. Simple conditional in ending ink script |
+| Secret ending for death completionists | Finding all 43 deaths unlocks a special meta ending. Ties death gallery to story payoff | Medium | Cross-feature with death gallery. Check `deathsSeen.length === 43` |
+| Post-game stats screen | Show play time, deaths, hints used, puzzles solved, rooms visited. Contextualize the journey | Low | All metrics already tracked in GameState |
+
+### Anti-Features
+
+| Anti-Feature | Why Avoid | What to Do Instead |
+|--------------|-----------|-------------------|
+| 10+ endings | Diminishing returns. Content explosion without proportional player value | 3-4 endings maximum (bad, normal, good, secret) |
+| Endings requiring full replays of identical content | Player should not need to replay 4 hours of identical content for a different 5-minute ending | Divergence points in mid-to-late game; post-game hints at what would change |
+| Visible morality meter (good/evil) | Feels mechanical and gamey. Bioshock's binary moral choice is widely criticized as reductive | Organic flag accumulation from puzzle choices, no visible meter |
+| Telltale-style false choices | "Your choices don't matter" is the worst outcome. Every ending-relevant decision must create real consequences | Fewer but meaningful decision points (5-8) rather than many cosmetic ones |
+| Endings locked behind difficulty modes | No difficulty modes exist and adding them would split the experience | All endings accessible in single playthrough |
+| Punishing hint usage in endings | Penalizing accessibility features alienates the players who need them most | Narrator may comment on hints used, but it must not gate ending quality |
+
+### Implementation Pattern (Recommended)
+
+**Flag-based ending determination** using existing `GameState.flags`:
+
+1. **Define ending-relevant flags:** Identify 5-8 key decision points across Acts 1-3 where player choices set meaningful flags:
+   - Optional puzzle completions (e.g., `helped-ghost-king`, `freed-dwarven-spirit`)
+   - Moral-ish choices (e.g., `spared-the-troll`, `returned-stolen-item`)
+   - Thoroughness markers (e.g., `explored-all-caverns`, `read-all-archives`)
+
+2. **Ending determination function:**
+```typescript
+function determineEnding(state: GameStateData): 'bad' | 'normal' | 'good' | 'secret' {
+  const endingFlags = [
+    'helped-ghost-king', 'freed-dwarven-spirit', 'spared-the-troll',
+    'completed-archive-quest', 'reunited-mirror-spirits'
+  ];
+  const completed = endingFlags.filter(f => state.flags[f]).length;
+
+  if (state.deathsSeen?.length === 43) return 'secret';  // Death completionist
+  if (completed >= 4) return 'good';
+  if (completed >= 2) return 'normal';
+  return 'bad';
+}
+```
+
+3. **Ending scenes:** 3-4 ending ink scripts with narrator monologues. Use ink conditional text (`{flag_name: text if true | text if false}`) to reference specific player flags for personalized commentary. The `narrator_history` ink pattern already demonstrates this exact technique.
+
+4. **Post-game screen:** Show ending name, completion percentage, deaths discovered, hints used, and cryptic hints at other endings to encourage replay.
+
+### Complexity Assessment
+
+**Overall: MEDIUM.** The flag infrastructure exists. The `narrator_history` ink script already demonstrates flag-conditional narration. Main work: (a) identify which existing puzzle flags matter for endings, (b) add a few new optional puzzle paths and choices where needed, (c) write 3-4 ending scenes with personalized narrator content, and (d) build ending determination logic and post-game screen. This is primarily a content and design challenge, not an engineering one.
+
+---
+
+## Feature Dependencies Map
+
+```
+Art Pipeline ---------> Death Scene Illustrations (optional enhancement)
+                             |
+                             v
+Death Gallery <--------- Death Tracking State Extension
+     |
+     v
+Multiple Endings (secret ending for death completionist -- soft dependency)
+
+Progressive Hints ------- independent (reads existing puzzle data)
+
+Mobile Responsive ------- independent (adapts existing UI/input)
+
+Art Pipeline ------------ independent (offline tool, outputs static assets)
+```
+
+**Critical path:** Art Pipeline has the longest wall-clock time (generation alone is hours). Start first.
+
+**Zero dependencies:** Progressive Hints and Mobile Responsive have no dependencies on other v2.0 features. Build in parallel with anything.
+
+**Soft dependency:** Death Gallery benefits from art pipeline (death illustrations) but ships fine without them (text-only gallery is still good).
+
+**Cross-feature:** Multiple Endings has a soft dependency on Death Gallery (secret ending checks death completionism) but can use a simple death count check without gallery UI.
+
+## Feature Interactions
+
+| Feature A | Feature B | Interaction | Priority |
+|-----------|-----------|-------------|----------|
+| Art Pipeline | Death Gallery | Death illustrations populate gallery entries | Nice-to-have |
+| Death Gallery | Multiple Endings | Death completionism unlocks secret ending | Design decision -- keep |
+| Progressive Hints | Multiple Endings | Hint usage could affect ending (penalty?) | AVOID -- punishing hint use is bad design |
+| Mobile Responsive | Progressive Hints | Hint button must be touch-friendly on mobile | Table stakes |
+| Mobile Responsive | Death Gallery | Gallery UI must work on mobile screens | Table stakes |
+| Mobile Responsive | Text Parser | Command suggestion buttons reduce typing need | Key differentiator for mobile |
+| Art Pipeline | Mobile Responsive | Generated art must look good at mobile scales (480px wide) | Design constraint on art pipeline |
+
+---
+
+## MVP Recommendation for v2.0
+
+### Build First (lowest risk, highest reward, or longest lead time)
+
+1. **Art Pipeline** -- longest lead time due to generation hours. Validate pipeline with 3 test rooms before bulk generation. Start here because everything else can proceed in parallel.
+
+2. **Death Gallery** -- lowest complexity, highest reward relative to effort. 43 deaths already exist with titles and narrator text. State tracking is a 20-line change. Gallery UI is a single new scene. Ships independently.
+
+3. **Progressive Hints** -- medium complexity, significant accessibility win. Author hints alongside existing puzzle review. Content-heavy but no architectural risk.
+
+### Build Second (higher complexity or depends on first batch)
+
+4. **Mobile Responsive** -- medium-high complexity due to the text input challenge. Command suggestion buttons are the key deliverable. Benefits from all UI being finalized first.
+
+5. **Multiple Endings** -- medium complexity, primarily content work. Best done last because ending flags reference specific puzzles, and puzzle balance should be finalized after hints are added.
+
+### Defer to Post-v2.0
+
+- **Death scene illustrations:** Only after room backgrounds prove the pipeline works. 43 vignettes are a luxury, not a requirement.
+- **In-canvas virtual keyboard:** Over-engineered. Command suggestion buttons solve 80% of mobile input.
+- **"Replay Death" from gallery:** Requires complex save state management for marginal benefit.
+- **Pinch-to-zoom on wide rooms:** Nice but not essential for point-and-click.
+- **Drag-and-drop inventory on mobile:** Requires visual item icons (art pipeline dependency) and complex touch handling.
+
+---
 
 ## Sources
 
-- [Intra: Design notes on an LLM-driven text adventure](https://ianbicking.org/blog/2025/07/intra-llm-text-adventure) -- MEDIUM confidence (single developer's experience, but detailed and recent)
-- [Sierra Deaths Were Great (and How to Make Them Greater)](https://slattstudio.com/2021/02/09/sierra-deaths-were-great-and-how-to-make-them-greater/) -- MEDIUM confidence (game design blog with specific recommendations)
-- [How to Design Brillo Point and Click Adventure Game Puzzles](https://www.gamedeveloper.com/design/how-to-design-brillo-point-and-click-adventure-game-puzzles) -- MEDIUM confidence (Gamasutra/Game Developer, established industry source)
-- [5 Graphic Adventure Game Goofs (and How to Fix Them)](https://www.gamedeveloper.com/design/5-graphic-adventure-game-goofs-and-how-to-fix-them-) -- MEDIUM confidence (industry publication)
-- [Thimbleweed Park Blog: Dialog Puzzles](https://blog.thimbleweedpark.com/dialog_puzzles.html) -- HIGH confidence (Ron Gilbert, legendary adventure game designer)
-- [King's Quest - Wikipedia](https://en.wikipedia.org/wiki/King's_Quest) -- HIGH confidence (factual series information)
-- [10 Most Hilarious Deaths From Classic Sierra Adventure Games](https://www.thegamer.com/sierra-adventure-games-funniest-deaths/) -- LOW confidence (listicle, but useful examples)
-- [Great moments in PC gaming: Dying in Sierra adventure games](https://www.pcgamer.com/great-moments-in-pc-gaming-dying-in-sierra-adventure-games/) -- MEDIUM confidence (PC Gamer, established outlet)
-- [Audio for Web games - MDN](https://developer.mozilla.org/en-US/docs/Games/Techniques/Audio_for_Web_Games) -- HIGH confidence (Mozilla official documentation)
-- [Adventure Game Puzzle Design Feature](http://www.adventureclassicgaming.com/index.php/site/features/423/) -- MEDIUM confidence (niche but dedicated adventure game publication)
-- [TextQuests: How Good are LLMs at Text-Based Video Games?](https://huggingface.co/blog/textquests) -- MEDIUM confidence (Hugging Face research blog)
-- [Branching Conversation Systems and the Working Writer](https://www.gamedeveloper.com/design/branching-conversation-systems-and-the-working-writer-part-1-introduction) -- MEDIUM confidence (Game Developer industry publication)
+### Art Pipeline
+- [Flux-2D-Game-Assets-LoRA on HuggingFace](https://huggingface.co/gokaygokay/Flux-2D-Game-Assets-LoRA) -- pixel art LoRA for Flux (HIGH confidence)
+- [Retro Diffusion pixel art with AI](https://runware.ai/blog/retro-diffusion-creating-authentic-pixel-art-with-ai-at-scale) -- pixel art generation at scale (MEDIUM confidence)
+- [Flux Apple Silicon Performance Guide 2025](https://apatero.com/blog/flux-apple-silicon-m1-m2-m3-m4-complete-performance-guide-2025) -- M-series generation benchmarks (MEDIUM confidence)
+- [Low VRAM Flux Dev GGUF Guide](https://www.nextdiffusion.ai/tutorials/how-to-run-flux-dev-gguf-in-comfyui-low-vram-guide) -- GGUF setup for local generation (MEDIUM confidence)
+- [ComfyUI Flux workflow guide](https://comfyui-wiki.com/en/tutorial/advanced/image/flux/flux-1-dev-t2i) -- workflow setup and LoRA integration (MEDIUM confidence)
+- [Pixel game assets Flux LoRA on Civitai](https://civitai.com/models/945266/pixel-game-assets-flux-by-dever) -- alternative pixel art LoRA (MEDIUM confidence)
 
----
-*Feature research for: Browser-based King's Quest-style adventure game with LLM text parser*
-*Researched: 2026-02-20*
+### Progressive Hints
+- [How and Why to Write Low Spoiler Hints (Gamedeveloper)](https://www.gamedeveloper.com/design/how-and-why-to-write-low-spoiler-hints-for-adventure-games-) -- incremental hint authoring best practices (HIGH confidence)
+- [UHS-Hints -- How Game Guides Were Meant to Be](https://kinglink-reviews.com/2021/03/16/uhs-hints-how-game-guides-were-meant-to-be/) -- UHS model analysis (MEDIUM confidence)
+- [Thimbleweed Park Hint System Forum Discussion](https://forums.thimbleweedpark.com/t/hint-system-tech/3139) -- in-world hint delivery via phone (HIGH confidence -- Ron Gilbert's team)
+- [Universal Hint System Wikipedia](https://en.wikipedia.org/wiki/Universal_Hint_System) -- UHS history and structure (HIGH confidence)
+
+### Death Gallery
+- [Designing Memorable Achievements (RetroAchievements)](https://docs.retroachievements.org/developer-docs/achievement-design.html) -- achievement design principles (MEDIUM confidence)
+- [Collectible Achievements Design Pattern](https://ui-patterns.com/patterns/CollectibleAchievements) -- UI pattern for collectible systems (MEDIUM confidence)
+- [Space Quest Deaths Wiki](https://spacequest.fandom.com/wiki/Category:Deaths) -- Sierra death collection precedent (HIGH confidence)
+- [Game UI Database -- Codex and Journal](https://www.gameuidatabase.com/index.php?scrn=92&set=1&tag=7) -- gallery/journal UI references (MEDIUM confidence)
+
+### Mobile Responsive
+- [Phaser 3 ScaleManager and Virtual Keyboard](https://phaser.discourse.group/t/scalemanager-ignore-virtual-keyboard/1361) -- keyboard resize issue (HIGH confidence -- Phaser forum)
+- [MDN Mobile Touch Controls](https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Mobile_touch) -- touch control patterns (HIGH confidence)
+- [Phaser 3 Touch Events reference](https://rexrainbow.github.io/phaser3-rex-notes/docs/site/touchevents/) -- Phaser touch API (HIGH confidence)
+
+### Multiple Endings
+- [Multiple Endings in Games (Gamedeveloper)](https://www.gamedeveloper.com/design/multiple-endings-in-games) -- ending design patterns (MEDIUM confidence)
+- [How to Execute Multiple Game Endings Well (Indiecator)](https://indiecator.org/2021/05/08/multiple-game-endings/) -- quality over quantity analysis (MEDIUM confidence)
+- [King's Quest VI Endings (Fandom)](https://kingsquest.fandom.com/wiki/Possible_Endings_for_King's_Quest_VI) -- Sierra short-path/long-path model (HIGH confidence)
+- [King's Quest Multiple Endings (Fandom)](https://kingsquest.fandom.com/wiki/Multiple_Endings) -- series-wide ending patterns (HIGH confidence)

@@ -1,237 +1,343 @@
-# Stack Research
+# Technology Stack: v2.0 Art & Polish
 
-**Domain:** Browser-based graphic adventure game with LLM text parsing and local AI image generation
-**Researched:** 2026-02-20
-**Confidence:** MEDIUM-HIGH
+**Project:** KQGame v2.0
+**Researched:** 2026-02-21
+**Scope:** Stack ADDITIONS for v2.0 features only. Existing v1.0 stack (Phaser 3, TypeScript, Vite, inkjs, Ollama, navmesh) is validated and unchanged.
 
-## Recommended Stack
+## Existing Stack (Validated, DO NOT Change)
 
-### Core Technologies
+| Technology | Version | Status |
+|------------|---------|--------|
+| Phaser | 3.90.0 | Locked |
+| TypeScript | ~5.7.2 | Locked |
+| Vite | ^6.3.1 | Locked |
+| inkjs | ^2.4.0 | Locked |
+| navmesh | ^2.3.1 | Locked |
+| Vitest | ^4.0.18 | Locked |
 
-| Technology | Version | Purpose | Why Recommended |
-|------------|---------|---------|-----------------|
-| Phaser | 3.90.0 (stable) | 2D game engine / renderer | The dominant HTML5 game framework. Batteries-included: scene management, physics, input, tweens, audio, tilemaps, and native Aseprite sprite import. Phaser 4 (RC6) exists but is still pre-release as of Feb 2026 -- use stable v3 to avoid chasing breaking changes on a content-heavy project. |
-| TypeScript | ~5.7 | Language / type safety | Catches bugs before runtime in a game with complex state (inventory, puzzles, save/load). Phaser 3 ships full type definitions. Every Phaser + Vite template defaults to TS. |
-| Vite | 7.x | Dev server + bundler | Official Phaser template uses Vite. Instant HMR during scene iteration, pre-configured for canvas/WebGL, handles asset imports. Vite 7 is latest stable (Node 20.19+). |
-| ollama (npm) | 0.6.x | LLM text parsing client | Official Ollama JS library with dedicated browser export (`ollama/browser`). Provides chat, generate, streaming, and structured output APIs over HTTP to local Ollama server on port 11434. |
-| ComfyUI | latest | Local image generation backend | Node-based workflow engine for Flux/SD models. Exposes REST API (`/prompt` endpoint) and WebSocket progress updates. Workflows are exportable JSON -- perfect for programmatic scene art generation. |
-| inkjs | 2.4.x | Narrative scripting runtime | JavaScript port of inkle's ink language. Zero dependencies, browser-compatible, full TypeScript types. Handles branching dialogue, narrator text, and story state. Used in 80 Days, Heaven's Vault, and hundreds of indie games. |
+## New Stack Additions for v2.0
 
-### Supporting Libraries
+### 1. Flux Art Generation Pipeline (Build-Time Tooling)
 
-| Library | Version | Purpose | When to Use |
-|---------|---------|---------|-------------|
-| phaser3-rex-plugins | 1.80.x | UI components (text input, textbox, dialogs) | Text input field for player commands. RexUI provides InputText, TextBox, and TextAreaInput components that work within the Phaser canvas -- no DOM overlay hacking needed. |
-| localforage | 1.10.x | Save/load game state | Wraps IndexedDB with localStorage fallback. Async API prevents main thread blocking. Stores complex JS objects (inventory, puzzle state, scene progress) beyond localStorage's 5MB limit. |
-| howler.js | 2.2.x | Audio (music, SFX, narrator voice) | Phaser has built-in audio, but Howler provides sprite-based audio, spatial audio, and better cross-browser WebAudio fallback if Phaser's audio proves insufficient. Start with Phaser audio; reach for Howler only if needed. |
-| Aseprite | 1.3.x | Pixel art creation + animation | Industry standard for pixel art sprites. Exports PNG + JSON spritesheets that Phaser imports natively via `this.load.aseprite()`. Tags map directly to Phaser animation names. |
-| Tiled | 1.11.x | Scene/room layout editor | Free tilemap editor. Exports JSON that Phaser loads via `this.load.tilemapTiledJSON()`. Multi-layer support for backgrounds, walkable areas, and interactive hotspots. |
+The art pipeline is a build-time tool, NOT runtime. Generated images ship as static PNG assets.
 
-### Development Tools
+| Technology | Version | Purpose | Why |
+|------------|---------|---------|-----|
+| ComfyUI | latest (Desktop or manual) | Local image generation server | Node-based workflow engine that exposes REST API (`POST /prompt`, `GET /history/{id}`, `GET /view`) and WebSocket progress tracking. Workflows export as JSON for repeatable batch generation. Runs on macOS Apple Silicon via Metal Performance Shaders (MPS). |
+| Flux.1 Dev (GGUF Q5) | latest | Base image model | Higher quality than Schnell for final art assets. GGUF quantization (Q5) runs on 10-12GB unified memory on Apple Silicon. 20-30 step generation. Use for all 36 room backgrounds and character sprites. |
+| Flux-2D-Game-Assets-LoRA | v1.0 | Pixel art game asset style | Trigger word: `GRPZA`. Prompt format: `GRPZA, <<description>>, white background, game asset, pixel art`. Built on FLUX.1-dev base. Apache 2.0 license. Source: `gokaygokay/Flux-2D-Game-Assets-LoRA` on HuggingFace. |
+| sharp | ^0.34.5 | Post-processing pipeline | Batch resize, crop, format conversion of generated images. Fastest Node.js image processor (libvips). Use to: (1) resize 1024x1024 Flux output to 960x540 room backgrounds, (2) extract sprites from white backgrounds, (3) generate WebP variants for smaller bundles. |
+| ComfyUI-GGUF custom node | latest | GGUF model loader | Required to load quantized Flux models in ComfyUI. Install via ComfyUI Manager. Source: `city96/ComfyUI-GGUF` on GitHub. |
 
-| Tool | Purpose | Notes |
-|------|---------|-------|
-| Vitest | Unit/integration testing | 4.x stable. Native Vite integration -- shares config, transforms, and resolve. Test game logic (parser, inventory, puzzle state) without touching the renderer. |
-| ESLint + Prettier | Code quality | Standard tooling. Use `@typescript-eslint` for TS-aware linting. |
-| Ollama (server) | Local LLM runtime | Runs models like Llama 3.1 8B or Mistral 7B locally. Requires 8-16GB RAM depending on model. Set `OLLAMA_ORIGINS` to allow browser CORS from Vite dev server. |
-| ComfyUI Desktop | Image generation UI | Pipeline for generating scene art with Flux.1 Dev/Schnell models. Export workflow as JSON, call via API from build scripts. Requires 16-24GB VRAM for Flux Dev (FP8), or 8GB for Schnell. |
+**Art Pipeline Architecture:**
 
-## Phaser 3 vs Phaser 4 Decision
+```
+[Node.js script] --> POST /prompt --> [ComfyUI server]
+                                           |
+                                    [Flux.1 Dev GGUF + LoRA]
+                                           |
+                                    [Generated PNG 1024x1024]
+                                           |
+                              [sharp: resize to 960x540, optimize]
+                                           |
+                              [public/assets/backgrounds/room_name.png]
+```
 
-**Recommendation: Use Phaser 3.90.0 (final stable v3 release)**
+**ComfyUI API Integration (build script, NOT npm dependency):**
 
-| Factor | Phaser 3 | Phaser 4 RC6 |
-|--------|----------|--------------|
-| Stability | Production-proven, used in thousands of shipped games | Pre-release (RC6, Dec 2025). "No further RCs anticipated" but not GA. |
-| Ecosystem | Massive plugin ecosystem (RexUI, Tiled integration, community) | Plugins need migration. RexUI not yet ported. |
-| Documentation | Comprehensive docs, tutorials, examples | Sparse docs, migration guides in progress |
-| TypeScript | Full type definitions, community TS templates | Native TypeScript (ported from JS), but less battle-tested |
-| Aseprite support | `this.load.aseprite()` -- built-in since v3.50 | Should carry forward but unverified in RC6 |
-| Risk | None -- final v3 release, will receive security patches | Breaking changes still possible before GA |
+The ComfyUI REST API is simple enough that a build script using plain `fetch()` is sufficient. No need for `@stable-canvas/comfyui-client` or other npm wrappers because:
+- Only 3 endpoints needed: `POST /prompt`, `GET /history/{id}`, `GET /view`
+- Build script runs infrequently (art generation, not per-build)
+- Fewer dependencies = less maintenance burden
 
-**Rationale:** This project is content-heavy (~5 hours of gameplay). Stability and ecosystem maturity matter more than bleeding-edge features. Phaser 4's main benefit (native TypeScript) is achievable with Phaser 3 + TS definitions. If Phaser 4 reaches GA during development, migration is documented as straightforward since v4 is not an API rewrite.
-
-## LLM Model Recommendation for Text Parsing
-
-**Primary: Llama 3.1 8B via Ollama**
-
-| Model | Size | Speed | Quality | Use Case |
-|-------|------|-------|---------|----------|
-| Llama 3.1 8B | ~4.7GB | 40-70 tok/s on modern GPU | Good for structured extraction | Primary text parser -- extract verb/noun/target from player input |
-| Mistral 7B | ~4.1GB | 50+ tok/s | Strong general reasoning | Alternative if Llama quality is insufficient |
-| Llama 3.3 8B | ~4.7GB | 40-70 tok/s | Improved over 3.1 | Upgrade path if available in Ollama library |
-
-**Why 8B models:** Player expects near-instant response (<1-2 seconds). Larger models (70B) drop to 10-15 tok/s, creating unacceptable latency in a game loop. 8B models fit in 8GB RAM and respond fast enough for interactive parsing.
-
-**Structured output approach:** Use Ollama's JSON mode to extract structured commands:
 ```typescript
-// Prompt template for text parsing
-const systemPrompt = `You are a text adventure parser. Given player input, extract:
-- action: the verb (look, take, use, talk, go, open, etc.)
-- target: the noun/object
-- modifier: optional secondary object (e.g., "use key on door" -> modifier: "door")
-Respond ONLY in JSON format.`;
+// scripts/generate-art.ts (standalone build script, NOT part of game bundle)
+async function generateRoomArt(roomName: string, prompt: string): Promise<Buffer> {
+    // 1. Load workflow JSON template
+    // 2. Inject prompt text and LoRA settings
+    // 3. POST to http://127.0.0.1:8188/prompt
+    // 4. Poll /history/{prompt_id} until complete
+    // 5. GET /view?filename=... to download PNG
+    // 6. sharp(png).resize(960, 540).toFile(`public/assets/backgrounds/${roomName}.png`)
+}
 ```
 
-## Image Generation Pipeline
+**Model File Placement:**
 
-**ComfyUI + Flux.1 Schnell for scene art generation**
+```
+comfyui/models/unet/     -> flux1-dev-Q5_K_S.gguf
+comfyui/models/clip/     -> t5-v1_1-xxl-encoder-Q5_K_M.gguf, clip_l.safetensors
+comfyui/models/vae/      -> flux_ae.safetensors
+comfyui/models/loras/    -> Flux-2D-Game-Assets-LoRA.safetensors
+```
 
-This is a build-time tool, NOT runtime. Scene art is pre-generated during development and bundled as static assets.
+### 2. Mobile-Responsive Layout (Runtime)
 
-| Component | Choice | Rationale |
-|-----------|--------|-----------|
-| Backend | ComfyUI | REST API, workflow-as-JSON, supports any model. More flexible than Automatic1111. |
-| Model | Flux.1 Schnell | 4-step generation, Apache 2.0 license (free for commercial use), runs on 8GB VRAM. Use Flux.1 Dev for higher quality hero scenes. |
-| Style enforcement | Pixel art LoRA | Load a pixel art LoRA into the ComfyUI workflow for consistent style across all generated scenes. |
-| Output format | PNG 512x512 or 640x480 | Classic adventure game resolution. Upscale in Aseprite for pixel-perfect consistency. |
-| Automation | Node.js build script | Script calls ComfyUI API with scene descriptions, downloads outputs to `assets/scenes/`. |
+| Technology | Version | Purpose | Why |
+|------------|---------|---------|-----|
+| Phaser ScaleManager (built-in) | (in Phaser 3.90) | Canvas scaling + orientation | Already configured as `Scale.FIT` with `CENTER_BOTH`. Handles canvas resize and aspect ratio preservation. Provides `orientationchange` and `resize` events. No library needed. |
+| CSS media queries | (native CSS) | Layout adaptation | Rearrange `#game-container`, `#text-parser-ui`, and potential touch controls based on viewport width. CSS is the right tool -- not a library. |
+| Phaser DOM element (built-in) | (in Phaser 3.90) | Mobile text input | Requires `dom: { createContainer: true }` in game config. Allows HTML input elements over the canvas. The existing `TextInputBar` already uses HTML DOM elements outside the canvas, which is actually BETTER for mobile -- native `<input>` triggers the OS keyboard automatically. |
 
-## Installation
+**What is NOT needed for mobile:**
+
+| Avoid | Why Not |
+|-------|---------|
+| phaser3-rex-plugins VirtualJoystick | This is a point-and-click adventure game, not a platformer. Players tap to move, not joystick. The existing click-to-move handler already works with touch via Phaser's unified pointer system. |
+| phaser3-rex-plugins InputText | The existing `TextInputBar` uses a native HTML `<input>` element below the canvas. This is superior on mobile because it naturally triggers the OS virtual keyboard. A canvas-rendered input would NOT trigger the virtual keyboard. |
+| Hammer.js / touch gesture library | Phaser's built-in pointer system handles tap, drag, and multi-touch. No pinch-to-zoom or swipe gestures needed for this genre. |
+| Any virtual keyboard library | The native OS keyboard appears automatically when the HTML `<input>` receives focus on mobile. This already works. |
+
+**Mobile Layout Strategy (CSS only):**
+
+```css
+/* Portrait phone: stack canvas above text input, reduce canvas height */
+@media (max-width: 600px) and (orientation: portrait) {
+    #game-container { max-width: 100vw; }
+    #text-parser-ui { font-size: 16px; /* prevent iOS zoom on focus */ }
+    #parser-input { font-size: 16px; padding: 12px; }
+}
+
+/* Landscape phone: text input overlaps bottom of canvas */
+@media (max-height: 400px) and (orientation: landscape) {
+    #text-parser-ui { position: fixed; bottom: 0; left: 0; right: 0; }
+}
+```
+
+**Viewport meta tag update needed in index.html:**
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+```
+
+The `viewport-fit=cover` handles iOS notch/safe areas. The `user-scalable=no` prevents double-tap zoom interfering with game input.
+
+### 3. Progressive Hint System (Runtime)
+
+**No new library needed.** This is pure game logic built on existing infrastructure.
+
+| Component | Implementation | Why No Library |
+|-----------|---------------|----------------|
+| Hint data | JSON fields in room/puzzle data files | Follows existing data-driven pattern. Each puzzle gets a `hints: string[]` array, ordered from vague to explicit. |
+| Hint timer | Phaser `time.delayedCall()` or frame-counting in GameState | Phaser already provides timing. Track `timeSinceLastAction` in GameState. |
+| Hint display | Existing `NarratorDisplay.typewrite()` | The narrator is the natural voice for hints. "Perhaps examining the door more carefully would be wise..." |
+| Hint state | GameState `flags` (e.g., `hint_puzzle_x_level: number`) | Existing flag system handles this. Increment per hint request. |
+| "HINT" command | Add to existing `VerbTable` + `CommandDispatcher` | Parser already handles text commands. Add "hint" as a recognized verb. |
+
+**Architecture:**
+
+```typescript
+// In puzzle JSON data (extends existing PuzzleData)
+{
+    "id": "bridge_riddle",
+    "hints": [
+        "The troll seems to value wit over brawn.",          // Level 0: vague
+        "Think about what bridges connect...",                // Level 1: medium
+        "Try answering the riddle with 'a bridge'.",         // Level 2: explicit
+        "Type: tell troll 'a bridge'"                        // Level 3: spoiler
+    ],
+    "hintDelayMs": 120000  // 2 minutes between auto-hints
+}
+```
+
+### 4. Death Gallery / Achievements (Runtime)
+
+**No new library needed.** This is a data structure + UI scene.
+
+| Component | Implementation | Why No Library |
+|-----------|---------------|----------------|
+| Achievement definitions | JSON data file (`assets/data/achievements.json`) | Follows existing data-driven pattern. |
+| Achievement state | Extend `GameStateData` with `achievements: Record<string, boolean>` and `deathGallery: DeathGalleryEntry[]` | Existing save/load serialization handles it automatically. |
+| Death gallery data | Extend `GameStateData` with death scene records | Each death already has `title` and `narratorText`. Just record them on occurrence. |
+| Gallery UI | New Phaser `Scene` (`DeathGalleryScene`) | Same pattern as existing `DeathScene` and `MainMenuScene`. Pure Phaser rendering -- text, images, scroll. |
+| Achievement notification | Phaser tween animation (slide-in banner) | Phaser's tween system handles slide/fade animations. No plugin needed. |
+| Persistence | Existing `SaveManager` + `localStorage` | Achievements persist in the same save data structure. |
+
+**GameState Extension:**
+
+```typescript
+// Additions to GameStateData interface
+interface GameStateData {
+    // ... existing fields ...
+    achievements: Record<string, boolean>;  // achievement_id -> unlocked
+    deathGallery: Array<{
+        deathId: string;
+        roomId: string;
+        title: string;
+        narratorText: string;
+        timestamp: number;
+    }>;
+}
+```
+
+### 5. Multiple Endings (Runtime)
+
+**No new library needed.** inkjs already supports this perfectly.
+
+| Component | Implementation | Why No Library |
+|-----------|---------------|----------------|
+| Ending conditions | GameState flags evaluated at story climax | Existing flag system. Endings determined by accumulated player choices/actions. |
+| Ending content | ink story files with conditional diverts | inkjs already supports `{ flag_name: -> ending_a }` conditional branching. This is what ink was designed for. |
+| Ending scene | New Phaser `Scene` (`EndingScene`) | Displays ending-specific text, art, and credits. Same pattern as `DeathScene`. |
+| Ending tracking | GameState flag: `ending_seen_x: true` | Track which endings the player has seen for replayability. |
+
+**ink Pattern for Multiple Endings:**
+
+```ink
+=== climax ===
+{ saved_the_kingdom and befriended_troll:
+    -> ending_hero
+}
+{ betrayed_ghost_king:
+    -> ending_villain
+}
+-> ending_neutral
+
+=== ending_hero ===
+# ending: hero
+The kingdom rejoices as you emerge from the caverns...
+-> END
+
+=== ending_villain ===
+# ending: villain
+The crown feels heavy on your treacherous head...
+-> END
+```
+
+### 6. Export/Import Save Files (Runtime)
+
+**No new library needed.**
+
+| Component | Implementation | Why No Library |
+|-----------|---------------|----------------|
+| Export | `JSON.stringify(gameState)` + `Blob` + `URL.createObjectURL()` + `<a download>` | Standard Web API. Creates a downloadable JSON file. |
+| Import | `<input type="file">` + `FileReader` + `JSON.parse()` + `gameState.deserialize()` | Standard Web API. Read JSON file and restore state. |
+
+## Recommended Stack Summary
+
+### New npm Dependencies
 
 ```bash
-# Initialize project from Phaser + Vite + TS template
-npm create vite@latest kqgame -- --template vanilla-ts
-cd kqgame
-
-# Core game engine
-npm install phaser@3.90.0
-
-# LLM integration
-npm install ollama
-
-# Narrative engine
-npm install inkjs
-
-# UI components for Phaser
-npm install phaser3-rex-plugins
-
-# Persistent storage
-npm install localforage
-
-# Dev dependencies
-npm install -D typescript vitest @vitest/coverage-v8 vite @types/node
-
-# Optional: audio (only if Phaser audio is insufficient)
-# npm install howler @types/howler
+# Build-time only (dev dependency for art pipeline post-processing)
+npm install -D sharp@^0.34.5
 ```
 
-### External Tools (installed separately)
+That is the ONLY new npm dependency. Everything else uses existing libraries or built-in Phaser/browser APIs.
+
+### External Tools (installed separately, NOT npm)
 
 ```bash
-# Ollama LLM server (macOS)
-brew install ollama
-ollama pull llama3.1:8b
+# ComfyUI Desktop for macOS (or manual Python install)
+# Download from: https://docs.comfy.org/installation/desktop/macos
 
-# Configure CORS for browser access
-launchctl setenv OLLAMA_ORIGINS "http://localhost:5173"
+# Install ComfyUI-GGUF custom node (via ComfyUI Manager UI)
 
-# ComfyUI (for scene art generation pipeline)
-# Follow: https://docs.comfy.org/get_started/first_generation
-# Install Flux.1 Schnell model into comfyui/models/unet/
+# Download models to ComfyUI directories:
+# - Flux.1 Dev GGUF (Q5): city96/FLUX.1-dev-gguf on HuggingFace
+# - T5XXL GGUF encoder: city96/t5-v1_1-xxl-encoder-gguf on HuggingFace
+# - CLIP L: comfyanonymous/flux_text_encoders/clip_l.safetensors
+# - VAE: black-forest-labs/FLUX.1-dev/ae.safetensors
+# - LoRA: gokaygokay/Flux-2D-Game-Assets-LoRA on HuggingFace
 ```
+
+### What Stays the Same
+
+| Feature Area | Existing Tech Used | New Tech Needed |
+|--------------|-------------------|-----------------|
+| Hint system | VerbTable, CommandDispatcher, NarratorDisplay, GameState flags | None |
+| Death gallery | DeathScene pattern, GameState, SaveManager, localStorage | None |
+| Achievements | GameState flags, EventBus, Phaser tweens | None |
+| Multiple endings | inkjs conditional branching, GameState flags | None |
+| Mobile layout | Phaser Scale.FIT, HTML DOM TextInputBar, CSS | CSS media queries only |
+| Save export/import | GameState.serialize(), Web File API | None |
+| Art generation | (new pipeline) | ComfyUI + Flux + LoRA + sharp |
 
 ## Alternatives Considered
 
-| Recommended | Alternative | When to Use Alternative |
-|-------------|-------------|-------------------------|
-| Phaser 3.90 | PixiJS v8 | If you need maximum rendering performance and want to build your own game framework on top of a renderer. PixiJS is 3x smaller and 2x faster at pure rendering, but lacks scene management, physics, input handling, audio, tilemaps, and Aseprite support. Too much custom work for an adventure game. |
-| Phaser 3.90 | Phaser 4 RC6 | If Phaser 4 reaches GA before significant development starts. Migration is documented as non-breaking for most APIs. |
-| Phaser 3.90 | Godot (HTML5 export) | If you need a full game editor with visual scene composition. Heavier runtime, less web-native, and HTML5 export has known audio/input quirks. |
-| ollama (npm) | Direct fetch() to Ollama API | If the ollama npm package causes issues. The Ollama API is simple REST -- `POST http://localhost:11434/api/chat` with JSON body. The npm package is a thin wrapper over fetch. |
-| inkjs | Yarn Spinner (web) | If you need a visual dialogue editor. ink is more writer-friendly and has better web/JS support. Yarn Spinner is Unity-focused. |
-| inkjs | Custom JSON dialogue trees | If dialogue is simple (no variables, no branching conditions). ink handles complex state tracking that custom JSON would require manual implementation for. |
-| localforage | Raw localStorage | If save data is guaranteed under 5MB and you accept synchronous main-thread blocking. localforage is async and handles larger data. |
-| ComfyUI | Automatic1111 (SDXL WebUI) | If you prefer a simpler UI for one-off generation. ComfyUI's API and workflow system is far superior for batch/scripted generation. |
-| Flux.1 Schnell | Stable Diffusion 3.5 | If you have limited VRAM (<8GB). SD 3.5 runs on less hardware. Flux generally produces higher quality with better text rendering. |
-| Vite 7 | Webpack 5 | Never for a new project in 2026. Vite is faster, simpler, and the standard for Phaser development. |
+| Category | Recommended | Alternative | Why Not |
+|----------|-------------|-------------|---------|
+| Art generation backend | ComfyUI (REST API) | Automatic1111 / SD WebUI | ComfyUI's workflow-as-JSON is superior for batch scripting. A1111 is simpler for one-off manual generation but harder to automate. ComfyUI also has better Flux support. |
+| Art generation backend | ComfyUI (REST API) | `@stable-canvas/comfyui-client` npm | Only 3 API endpoints needed for the build script. Plain `fetch()` is simpler, has zero dependencies, and avoids coupling to a rapidly-changing client library (v1.5.7, 22 days old). |
+| Base model | Flux.1 Dev GGUF | Flux.1 Schnell | Schnell is faster (4 steps vs 20-30) but lower quality. Room backgrounds are generated once at build time -- speed does not matter, quality does. Dev produces more detailed, coherent scenes. |
+| Base model | Flux.1 Dev GGUF (Q5) | Flux.1 Dev FP16/BF16 | Full-precision Dev requires 24GB+ VRAM. GGUF Q5 runs on Apple Silicon unified memory (16GB+) with minimal quality loss. |
+| Pixel art LoRA | Flux-2D-Game-Assets-LoRA | Retro-Pixel-Flux-LoRA | Retro-Pixel is "still in training, not final version, may contain artifacts". Game-Assets-LoRA is v1.0 release, Apache 2.0 licensed, specifically designed for game assets with white backgrounds (easy to extract sprites). |
+| Pixel art LoRA | Flux-2D-Game-Assets-LoRA | Training custom LoRA | Custom LoRA could match exact art style but requires: training data curation, GPU time, ML expertise. Start with existing LoRA, train custom only if style consistency is insufficient. |
+| Image post-processing | sharp | ImageMagick CLI | sharp is 3-5x faster, has a clean Node.js API, integrates into the build script naturally. ImageMagick requires shelling out to a CLI tool. |
+| Image post-processing | sharp | canvas (npm) | canvas requires native Cairo bindings, complex installation. sharp uses libvips which is faster and easier to install on macOS. |
+| Mobile touch | Built-in Phaser pointer | phaser3-rex-plugins VirtualJoystick | Adventure games use tap-to-move, not analog sticks. Adding a virtual joystick would be fighting the genre. Phaser's pointer system already converts touch to click coordinates. |
+| Mobile text input | Native HTML `<input>` (existing TextInputBar) | Canvas-rendered input (RexUI InputText) | Canvas inputs do NOT trigger the native OS virtual keyboard on mobile. The existing HTML `<input>` element is the correct approach -- it naturally gets focus and keyboard. |
+| Hint system | Custom logic in existing systems | Third-party hint engine | No "hint engine" library exists for this specific use case. The implementation is <100 lines of TypeScript using existing systems. |
+| Achievement system | Custom GameState + Phaser tweens | steamworks-js or gamejolt-api | This is a browser game, not on Steam or GameJolt. No platform achievement API applies. |
+| Multiple endings | inkjs conditional branching | Custom ending state machine | ink was literally designed for branching narratives with state-dependent outcomes. Writing a custom system would be reimplementing ink badly. |
 
-## What NOT to Use
+## What NOT to Add
 
-| Avoid | Why | Use Instead |
-|-------|-----|-------------|
-| Phaser 4 RC6 (for now) | Pre-release. RexUI plugin not ported. Documentation incomplete. Risk of breaking changes before GA. | Phaser 3.90.0 |
-| Canvas API (raw) | No scene management, no asset loading, no animation system, no input handling. You would rebuild half of Phaser. | Phaser 3 |
-| React/Vue for game rendering | DOM-based rendering is too slow for 60fps game loops with sprite animation. React state model conflicts with game loop patterns. | Phaser for game, DOM overlay for menus if needed |
-| Kaboom.js / Kaplay | Simpler but less capable. No Aseprite support, smaller ecosystem, fewer plugins. Fine for game jams, not for a 5-hour content game. | Phaser 3 |
-| OpenAI / Cloud LLM APIs | Violates the "must work entirely locally" requirement. Adds latency, cost, and internet dependency. | Ollama + local models |
-| Electron wrapper | Unnecessary complexity. The game runs in any browser. Electron adds 100MB+ to distribution for no benefit. | Plain browser, or Tauri if desktop packaging is needed later |
-| Redux for game state | Overkill for a single-player game without React. Adds boilerplate. | Plain TypeScript classes with serialization to localforage. Phaser's scene data + a simple game state manager is sufficient. |
-| Webpack | Slower dev server, more complex config, no native HMR for Phaser. The Phaser community has moved to Vite. | Vite 7 |
-| Twine / Inform | Text-only engines. Cannot render pixel art scenes, handle sprite animation, or manage a canvas-based game. | Phaser + inkjs |
+| Avoid | Why | What to Do Instead |
+|-------|-----|-------------------|
+| phaser3-rex-plugins (for v2.0) | Not used in v1.0 and not needed for v2.0 features. The existing HTML DOM approach for text input is superior on mobile. RexUI adds ~200KB to bundle for features we do not use. | Continue with HTML DOM overlay for UI elements. |
+| Any CSS framework (Tailwind, Bootstrap) | The game has exactly 3 styled elements: canvas, response text, input field. A CSS framework would be 10x more code than the 71-line `style.css`. | Hand-written CSS with media queries. |
+| Capacitor / Cordova | Wrapping in a native shell adds complexity without benefit. The game works in mobile Safari/Chrome. PWA is the lighter path if offline support is needed. | Serve as a web app. Add PWA manifest later if offline play is desired. |
+| Any state management library (Zustand, Jotai, Redux) | GameState singleton with localStorage serialization handles all state. Achievements and death gallery are just new fields on the same data structure. | Extend existing `GameStateData` interface. |
+| WebGL shaders / post-processing | Pixel art should look crisp, not filtered. Phaser's `pixelArt: true` config already disables interpolation. CRT/scanline effects would fight the art style. | Keep `render: { pixelArt: true }` as-is. |
+| AI/ML runtime in browser (ONNX, TensorFlow.js) | Image generation must happen at build time, not runtime. Running Flux in the browser is not feasible (model is 6-12GB). Ollama already handles LLM parsing. | ComfyUI as build-time tool. Ollama as runtime LLM. |
 
-## Stack Patterns by Variant
+## Hardware Requirements for Art Pipeline
 
-**If the LLM parsing latency is unacceptable (<2s target):**
-- Use a smaller model: Mistral 7B or Phi-3 Mini (3.8B)
-- Pre-compute common commands with a regex/keyword fallback parser
-- Only invoke the LLM for ambiguous or complex inputs
-- Because: Hybrid parsing gives instant responses for "look", "take sword", "go north" while LLM handles "rummage through the old man's pockets while he's not looking"
+| Component | Minimum | Recommended |
+|-----------|---------|-------------|
+| GPU/Unified Memory | 12GB (GGUF Q4) | 16GB+ (GGUF Q5/Q8) |
+| System RAM | 16GB | 32GB |
+| Disk (models) | ~15GB | ~20GB |
+| macOS | 12.3+ (Monterey, for MPS) | 14+ (Sonoma) |
+| Generation time per image | ~3-5 min (M1, Q5, 20 steps) | ~1-2 min (M2/M3 Pro/Max) |
 
-**If scene art generation quality is inconsistent:**
-- Use Flux.1 Dev instead of Schnell (higher quality, needs 16GB+ VRAM)
-- Add img2img refinement pass in ComfyUI workflow
-- Manual touch-up in Aseprite for consistency
-- Because: Generated art is a starting point. Final pixel art should be hand-polished for visual coherence across scenes.
+Note: These requirements are for the developer running the art pipeline, NOT for end users playing the game. End users just load pre-generated PNG/WebP files.
 
-**If targeting mobile browsers:**
-- Phaser handles mobile well (touch input, responsive canvas)
-- Use Phaser's scale manager for responsive layout
-- Audio requires user interaction to start (browser autoplay policy)
-- Because: Adventure games work well on mobile if text input UX is adapted (virtual keyboard, suggestion chips)
-
-**If save files need to work across devices:**
-- Add optional export/import of save JSON (download/upload file)
-- No server needed -- just serialize game state to JSON blob
-- Because: localforage is device-local. Cross-device sync would require a server, violating the local-only constraint.
-
-## Version Compatibility
+## Version Compatibility Matrix
 
 | Package A | Compatible With | Notes |
 |-----------|-----------------|-------|
-| phaser@3.90.0 | vite@7.x | Official template confirmed working. Use `@phaserjs/template-vite-ts` as starting point. |
-| phaser@3.90.0 | phaser3-rex-plugins@1.80.x | RexUI tracks Phaser 3 releases. Check RexUI changelog if Phaser version changes. |
-| phaser@3.90.0 | typescript@5.x | Full type definitions included in Phaser package. |
-| ollama@0.6.x | Ollama server 0.5+ | The npm package calls Ollama's REST API. Server must be running separately. CORS must be configured. |
-| vite@7.x | vitest@4.x | Share config via `vitest.config.ts` extending `vite.config.ts`. |
-| inkjs@2.4.x | ink compiler 1.x | inkjs runtime is compatible with ink stories compiled by inky editor or inklecate CLI. |
-| localforage@1.10.x | All modern browsers | Falls back gracefully: IndexedDB -> WebSQL -> localStorage. |
+| sharp@0.34.5 | Node 18.17+ | libvips bundled, no system dependency needed on macOS |
+| ComfyUI Desktop | macOS 12.3+ Apple Silicon | Beta but stable for our use case. MPS acceleration. |
+| Flux.1 Dev GGUF | ComfyUI-GGUF node | Must install custom node via ComfyUI Manager |
+| Flux-2D-Game-Assets-LoRA | Flux.1 Dev base model | Will NOT work with Schnell (different architecture for LoRA) |
+| Existing Phaser 3.90 | `dom: { createContainer: true }` | Required config addition for potential DOM overlays on mobile |
 
-## Architecture Decision: No Framework, Just Phaser + TypeScript
+## Build Script Dependencies (separate from game)
 
-This project does NOT need React, Vue, Svelte, or any UI framework. Reasons:
+```bash
+# For the art generation build script (scripts/generate-art.ts)
+# Runs with tsx or ts-node, NOT bundled into the game
 
-1. **Phaser owns the canvas** -- it handles rendering, input, scenes, and game loop
-2. **UI elements** (inventory panel, text input, dialogue boxes) are rendered in Phaser via RexUI or custom game objects
-3. **State management** is game state (player position, inventory, puzzle flags) -- not UI state. A plain TypeScript class serialized to localforage is simpler than any state library.
-4. **The HTML page** is just a canvas element and maybe a thin DOM overlay for accessibility
-
-Adding React would create a "two rendering systems" problem: React managing DOM and Phaser managing canvas, with complex synchronization between them. This is a common pitfall in browser game development.
+# sharp is already added as devDependency above
+# fetch() is built into Node 18+ (no node-fetch needed)
+# fs/path are Node built-ins
+```
 
 ## Sources
 
-- [Phaser official site](https://phaser.io/) -- framework features, Aseprite support (MEDIUM confidence, 403 on fetch but cross-referenced with GitHub releases)
-- [Phaser GitHub releases](https://github.com/phaserjs/phaser/releases) -- v3.90.0 stable, v4.0.0-RC6 pre-release confirmed (HIGH confidence)
-- [Phaser v4 RC6 announcement](https://phaser.io/news/2025/12/phaser-v4-release-candidate-6-is-out) -- "no further RCs anticipated" (MEDIUM confidence)
-- [Phaser + Vite + TypeScript template](https://phaser.io/news/2024/01/phaser-vite-typescript-template) -- official starter template (HIGH confidence)
-- [ollama-js GitHub](https://github.com/ollama/ollama-js) -- v0.6.3, browser export path, API methods (HIGH confidence)
-- [Ollama CORS FAQ](https://docs.ollama.com/faq) -- OLLAMA_ORIGINS environment variable (HIGH confidence)
-- [Ollama blog: LLM-powered web apps](https://ollama.com/blog/building-llm-powered-web-apps) -- browser integration patterns (MEDIUM confidence)
-- [ComfyUI docs](https://docs.comfy.org/get_started/first_generation) -- API workflow, /prompt endpoint (HIGH confidence)
-- [ComfyUI programmatic API guide](https://comfyui.org/en/programmatic-image-generation-api-workflow) -- REST + WebSocket methods (MEDIUM confidence)
-- [Flux vs SD comparison 2026](https://pxz.ai/blog/flux-vs-stable-diffusion:-technical-&-real-world-comparison-2026) -- Flux.1 Schnell specs, VRAM requirements (MEDIUM confidence)
-- [inkjs GitHub](https://github.com/y-lohse/inkjs) -- v2.4.x, zero dependencies, TypeScript types (HIGH confidence)
-- [ink official site](https://www.inklestudios.com/ink/) -- narrative scripting language design (HIGH confidence)
-- [phaser3-rex-plugins npm](https://www.npmjs.com/package/phaser3-rex-plugins) -- v1.80.18, UI components (HIGH confidence)
-- [localforage GitHub](https://github.com/localForage/localForage) -- async IndexedDB wrapper, fallback chain (HIGH confidence)
-- [Vite releases](https://vite.dev/releases) -- v7.3.1 stable (HIGH confidence)
-- [Vitest 4.0 announcement](https://www.infoq.com/news/2025/12/vitest-4-browser-mode/) -- stable browser mode (MEDIUM confidence)
-- [Phaser vs PixiJS 2025](https://generalistprogrammer.com/comparisons/phaser-vs-pixijs) -- performance comparison, feature matrix (MEDIUM confidence)
-- [Ollama models comparison 2025](https://collabnix.com/best-ollama-models-in-2025-complete-performance-comparison/) -- Llama 3.1 8B performance metrics (MEDIUM confidence)
-- [Aseprite docs: sprite sheet export](https://www.aseprite.org/docs/sprite-sheet/) -- JSON + PNG export format (HIGH confidence)
-- [W3C Games on Web: Data Storage](https://w3c.github.io/web-roadmaps/games/storage.html) -- IndexedDB vs localStorage for games (HIGH confidence)
-- [LLM text adventure implementations](https://machinelearningmastery.com/you-see-an-llm-here-integrating-language-models-text-adventure-games/) -- design patterns for LLM game parsing (MEDIUM confidence)
+- [ComfyUI API Routes Documentation](https://docs.comfy.org/development/comfyui-server/comms_routes) -- REST endpoints: /prompt, /history, /view, /ws (HIGH confidence, official docs)
+- [ComfyUI macOS Desktop Installation](https://docs.comfy.org/installation/desktop/macos) -- Apple Silicon setup, MPS support (HIGH confidence, official docs)
+- [ComfyUI on Apple Silicon 2025 Guide](https://medium.com/@tchpnk/comfyui-on-apple-silicon-from-scratch-2025-9facb41c842f) -- Installation walkthrough for M-series Macs (MEDIUM confidence)
+- [ComfyUI-GGUF GitHub](https://github.com/city96/ComfyUI-GGUF) -- GGUF quantization support custom node (HIGH confidence, GitHub source)
+- [Flux Dev vs Schnell Comparison](https://pxz.ai/blog/flux-dev-vs-schnell) -- Speed, quality, VRAM compared (MEDIUM confidence)
+- [Running Flux on 6-8GB VRAM](https://civitai.com/articles/6846/running-flux-on-68-gb-vram-using-comfyui) -- GGUF quantization levels and VRAM mapping (MEDIUM confidence)
+- [Flux Dev GGUF on HuggingFace](https://huggingface.co/city96/FLUX.1-dev-gguf) -- Model download, quantization variants (HIGH confidence)
+- [Flux-2D-Game-Assets-LoRA on HuggingFace](https://huggingface.co/gokaygokay/Flux-2D-Game-Assets-LoRA) -- Trigger word GRPZA, Apache 2.0, example prompts (HIGH confidence)
+- [Retro-Pixel-Flux-LoRA on HuggingFace](https://huggingface.co/prithivMLmods/Retro-Pixel-Flux-LoRA) -- "Still in training, not final" (MEDIUM confidence)
+- [Pixel Art ComfyUI Workflow Guide](https://inzaniak.github.io/blog/articles/the-pixel-art-comfyui-workflow-guide.html) -- Resolution, LoRA, sampler settings (MEDIUM confidence)
+- [sharp npm](https://www.npmjs.com/package/sharp) -- v0.34.5, image processing (HIGH confidence)
+- [Phaser ScaleManager Docs](https://docs.phaser.io/api-documentation/class/scale-scalemanager) -- FIT mode, orientation events, resize events (HIGH confidence, official docs)
+- [Phaser Scale.Events](https://docs.phaser.io/api-documentation/event/scale-events) -- ORIENTATION_CHANGE, RESIZE events (HIGH confidence, official docs)
+- [Phaser 3 Mobile Text Input Discussion](https://phaser.discourse.group/t/how-to-force-mobile-keyboard-to-appear/11477) -- HTML input vs canvas input for virtual keyboard (MEDIUM confidence, community)
+- [RexUI Virtual Joystick](https://rexrainbow.github.io/phaser3-rex-notes/docs/site/virtualjoystick/) -- Plugin documentation (HIGH confidence)
+- [phaser3-rex-plugins npm](https://www.npmjs.com/package/phaser3-rex-plugins) -- v1.80.x, feature list (HIGH confidence)
+- [@stable-canvas/comfyui-client](https://github.com/StableCanvas/comfyui-client) -- TypeScript ComfyUI client, v1.5.7 (MEDIUM confidence)
+- [inkjs GitHub](https://github.com/y-lohse/inkjs) -- Conditional branching, variable support for multiple endings (HIGH confidence)
+- [ink Writing Documentation](https://github.com/inkle/ink/blob/master/Documentation/WritingWithInk.md) -- Conditional diverts, variables, knots (HIGH confidence)
+- [Adventure Game Hint System Pattern](https://docs.textadventures.co.uk/quest/guides/a_hint_system.html) -- Stage-gate progressive hints (MEDIUM confidence)
 
 ---
-*Stack research for: Browser-based King's Quest-style adventure game with LLM text parsing*
-*Researched: 2026-02-20*
+*Stack research for: KQGame v2.0 Art & Polish features*
+*Researched: 2026-02-21*
+*Key insight: Only ONE new npm dependency needed (sharp). Everything else is built on existing stack or external build tools.*
