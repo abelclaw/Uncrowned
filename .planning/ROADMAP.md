@@ -35,12 +35,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Player character, items, and NPCs display as pixel art sprites that match the room art style
   4. Game initial load completes in under 5 seconds on broadband -- rooms load their art on entry, not upfront
   5. Player can export save data to a JSON file and import it back on a different browser
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 09-01: TBD
-- [ ] 09-02: TBD
-- [ ] 09-03: TBD
+- [ ] 09-01-PLAN.md -- Save infrastructure: schema versioning, MetaGameState, export/import (TDD)
+- [ ] 09-02-PLAN.md -- Art pipeline tooling: build script, style guide, manifest, workflow template
+- [ ] 09-03-PLAN.md -- Art integration: generate all assets, update room JSONs, lazy loading
 
 ### Phase 10: Death Gallery
 **Goal**: Players can collect and browse all 43 unique deaths as a meta-progression system that persists across playthroughs
@@ -112,7 +112,7 @@ Phases execute in numeric order: 9 -> 9.x -> 10 -> 10.x -> 11 -> 12 -> 13
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
-| 9. Art Pipeline & Schema Foundation | v2.0 | 0/3 | Not started | - |
+| 9. Art Pipeline & Schema Foundation | v2.0 | 0/3 | Planned | - |
 | 10. Death Gallery | v2.0 | 0/2 | Not started | - |
 | 11. Progressive Hints | v2.0 | 0/2 | Not started | - |
 | 12. Multiple Endings | v2.0 | 0/2 | Not started | - |
