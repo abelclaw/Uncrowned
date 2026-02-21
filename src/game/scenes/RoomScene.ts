@@ -2,6 +2,9 @@ import Phaser from 'phaser';
 import { Player } from '../entities/Player';
 import { NavigationSystem } from '../systems/NavigationSystem';
 import { SceneTransition } from '../systems/SceneTransition';
+import { CommandDispatcher } from '../systems/CommandDispatcher';
+import { TextParser } from '../parser/TextParser';
+import { TextInputBar } from '../ui/TextInputBar';
 import type { RoomData, ExitData, HotspotData } from '../types/RoomData';
 import EventBus from '../EventBus';
 
@@ -11,6 +14,7 @@ const DEBUG = true;
 /**
  * Data-driven room scene that loads room JSON, sets up parallax backgrounds,
  * player, navmesh, exits, hotspots, camera, and the click-to-move pipeline.
+ * Also wires up the text parser UI for typed commands.
  */
 export class RoomScene extends Phaser.Scene {
     private roomData!: RoomData;
@@ -21,6 +25,13 @@ export class RoomScene extends Phaser.Scene {
     private hotspotZones: Array<{ rect: Phaser.Geom.Rectangle; hotspot: HotspotData }> = [];
     private spawnOverride?: { x: number; y: number };
     private transitionFrom?: string;
+
+    // Text parser integration
+    private textInputBar!: TextInputBar;
+    private textParser!: TextParser;
+    private commandDispatcher!: CommandDispatcher;
+    private commandSubmittedHandler!: (text: string) => void;
+    private goCommandHandler!: (exit: ExitData) => void;
 
     constructor() {
         super('RoomScene');
@@ -155,13 +166,49 @@ export class RoomScene extends Phaser.Scene {
             }
         });
 
-        // 8. Transition-in effect
+        // 8. Text parser integration
+        this.textParser = new TextParser();
+        this.commandDispatcher = new CommandDispatcher();
+
+        // Create TextInputBar (Option A: destroy and recreate each scene create)
+        const container = document.getElementById('game-container')!;
+        this.textInputBar = new TextInputBar(container);
+
+        // Listen for command-submitted events from the input bar
+        this.commandSubmittedHandler = (text: string) => {
+            if (this.isTransitioning) return;
+
+            const parseResult = this.textParser.parse(
+                text,
+                this.roomData.hotspots,
+                this.roomData.exits
+            );
+
+            if (!parseResult.success || !parseResult.action) {
+                // Parse failed -- show error message
+                this.textInputBar.showResponse(
+                    parseResult.error ?? `I don't understand "${text}". Try commands like 'look', 'take', 'go', or 'use'.`
+                );
+                return;
+            }
+
+            // Dispatch the parsed action against room data
+            const result = this.commandDispatcher.dispatch(parseResult.action, this.roomData);
+            this.textInputBar.showResponse(result.response);
+        };
+        EventBus.on('command-submitted', this.commandSubmittedHandler);
+
+        // Listen for go-command events from the dispatcher
+        this.goCommandHandler = (exit: ExitData) => {
+            this.handleExitReached(exit);
+        };
+        EventBus.on('go-command', this.goCommandHandler);
+
+        // 9. Transition-in effect
         if (this.transitionFrom === 'slide-left' || this.transitionFrom === 'slide-right') {
             // Slide-in from the opposite direction
             const camera = this.cameras.main;
             const offset = camera.width;
-            // If we slid right to exit (slide-right), new scene slides in from left
-            // If we slid left to exit (slide-left), new scene slides in from right
             const startOffsetX = this.transitionFrom === 'slide-right' ? -offset : offset;
             const originalScrollX = camera.scrollX;
             camera.scrollX = originalScrollX + startOffsetX;
@@ -170,19 +217,32 @@ export class RoomScene extends Phaser.Scene {
                 scrollX: originalScrollX,
                 ease: 'Cubic.easeOut',
                 duration: 500,
+                onComplete: () => {
+                    this.textInputBar.focus();
+                },
             });
         } else {
             // Default: fade in
             this.cameras.main.fadeIn(500, 0, 0, 0);
+            // Focus input after fade-in completes
+            this.cameras.main.once(
+                Phaser.Cameras.Scene2D.Events.FADE_IN_COMPLETE,
+                () => {
+                    this.textInputBar.focus();
+                }
+            );
         }
 
-        // 9. EventBus scene-ready
+        // 10. EventBus scene-ready
         EventBus.emit('scene-ready', { sceneKey: 'RoomScene', roomId: this.roomData.id });
 
-        // 10. Shutdown cleanup
+        // 11. Shutdown cleanup
         this.events.on(Phaser.Scenes.Events.SHUTDOWN, () => {
             this.player.destroy();
             this.navigation.destroy();
+            this.textInputBar.destroy();
+            EventBus.off('command-submitted', this.commandSubmittedHandler);
+            EventBus.off('go-command', this.goCommandHandler);
             EventBus.removeAllListeners('scene-ready');
         });
     }

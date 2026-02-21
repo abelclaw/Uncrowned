@@ -1,6 +1,7 @@
 {
     "id": "village_path",
     "name": "Village Path",
+    "description": "A well-worn dirt path winds toward a village in the distance. A stone well stands nearby, looking suspiciously like the kind of well people throw wishes -- and occasionally themselves -- into.",
     "background": {
         "layers": [
             { "key": "bg-sky", "scrollFactor": 0 },
@@ -22,7 +23,9 @@
             "zone": { "x": 0, "y": 350, "width": 80, "height": 200 },
             "targetRoom": "cave_entrance",
             "spawnPoint": { "x": 820, "y": 430 },
-            "transition": "slide-left"
+            "transition": "slide-left",
+            "direction": "west",
+            "label": "cave"
         }
     ],
     "hotspots": [
@@ -30,7 +33,17 @@
             "id": "well",
             "name": "Stone Well",
             "zone": { "x": 600, "y": 350, "width": 70, "height": 70 },
-            "interactionPoint": { "x": 635, "y": 420 }
+            "interactionPoint": { "x": 635, "y": 420 },
+            "responses": {
+                "look": "A sturdy stone well with a wooden bucket hanging from a frayed rope. The water below is dark and still. You can see your reflection, and frankly, it could use some work.",
+                "take": "The well weighs approximately four tons. Your back weighs approximately one hernia. Let's not.",
+                "use": "You lower the bucket and haul up some water. It's cold, clear, and does absolutely nothing magical. How disappointing.",
+                "talk": "You lean over the well and whisper. Your voice echoes back, distorted and eerie. You've just frightened yourself. Well done.",
+                "open": "The well is open-topped. It's not a jar. Though if it were, you'd probably try to take it.",
+                "push": "You shove the well. Several centuries of stonework remain unmoved. Your dignity, however, is rattled.",
+                "pull": "You grab the rope and pull. The bucket comes up, empty except for disappointment and a small spider.",
+                "default": "You regard the well thoughtfully. The well regards you back with silent, stony indifference."
+            }
         }
     ],
     "playerSpawn": { "x": 480, "y": 430 }

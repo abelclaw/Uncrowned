@@ -10,19 +10,61 @@ body {
     height: 100vh;
     overflow: hidden;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 #game-container {
-    width: 100vw;
-    height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    max-width: 960px;
+    width: 100%;
 }
 
 #game-container canvas {
     image-rendering: pixelated;
     image-rendering: crisp-edges;
+    display: block;
+}
+
+/* Text Parser UI - sits below the game canvas */
+#text-parser-ui {
+    width: 100%;
+    max-width: 960px;
+    background: #1a1a2e;
+    border-top: 2px solid #16213e;
+    font-family: 'Courier New', Courier, monospace;
+    box-sizing: border-box;
+}
+
+#parser-response {
+    padding: 8px 12px;
+    color: #c8c8d4;
+    font-size: 14px;
+    line-height: 1.4;
+    min-height: 20px;
+    background: #0f0f23;
+    border-bottom: 1px solid #16213e;
+}
+
+#parser-input {
+    width: 100%;
+    padding: 8px 12px;
+    background: #1a1a2e;
+    color: #e0e0ff;
+    border: none;
+    outline: none;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+#parser-input::placeholder {
+    color: #4a4a6a;
+}
+
+#parser-input:focus {
+    background: #1e1e36;
 }

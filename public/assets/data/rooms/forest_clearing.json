@@ -1,6 +1,7 @@
 {
     "id": "forest_clearing",
     "name": "Forest Clearing",
+    "description": "You stand in a sun-dappled forest clearing. A gnarled old stump sits among the ferns, looking far too pleased with itself for something that's technically dead.",
     "background": {
         "layers": [
             { "key": "bg-sky", "scrollFactor": 0 },
@@ -22,7 +23,9 @@
             "zone": { "x": 880, "y": 350, "width": 80, "height": 200 },
             "targetRoom": "cave_entrance",
             "spawnPoint": { "x": 100, "y": 430 },
-            "transition": "fade"
+            "transition": "fade",
+            "direction": "east",
+            "label": "cave"
         }
     ],
     "hotspots": [
@@ -30,7 +33,16 @@
             "id": "old-stump",
             "name": "Old Tree Stump",
             "zone": { "x": 400, "y": 350, "width": 80, "height": 60 },
-            "interactionPoint": { "x": 440, "y": 420 }
+            "interactionPoint": { "x": 440, "y": 420 },
+            "responses": {
+                "look": "A weathered tree stump, its rings telling centuries of stories. Something glints in a crack. Probably a bottle cap. This forest has seen better days.",
+                "take": "You wrap your arms around the stump and heave. Nothing. The stump has been here longer than your entire bloodline and isn't going anywhere.",
+                "use": "You sit on the stump for a moment. It's oddly comfortable. You feel like you've accomplished absolutely nothing.",
+                "push": "You push the stump. It does not push back. Score one for you, I suppose.",
+                "pull": "You yank at the stump. Somewhere, a tree ghost is deeply offended.",
+                "talk": "You whisper sweet nothings to the stump. It maintains a dignified silence, which is more than most conversation partners manage.",
+                "default": "You poke at the old stump. Nothing interesting happens, which is exactly what the stump wanted."
+            }
         }
     ],
     "playerSpawn": { "x": 200, "y": 430 }
