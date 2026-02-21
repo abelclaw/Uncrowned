@@ -96,11 +96,11 @@ Plans: 5/5 complete
   2. The LLM prompt includes current scene context, inventory, and nearby objects so parsing is accurate to the game state
   3. LLM responses return in under 2 seconds; simple regex-parseable commands bypass the LLM entirely for instant response
   4. If Ollama is unavailable or slow, the game seamlessly falls back to the keyword parser with no error shown to the player
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 05-01: TBD
-- [ ] 05-02: TBD
+- [ ] 05-01-PLAN.md -- OllamaClient fetch wrapper, PromptBuilder context assembly, ResponseMapper with NounResolver noun resolution
+- [ ] 05-02-PLAN.md -- HybridParser orchestrator, RoomScene async command wiring, Preloader model warm-up
 
 ### Phase 6: NPCs and Dialogue
 **Goal**: NPCs populate the world with personalities, branching conversations, and puzzle-relevant information driven by inkjs narrative scripting
