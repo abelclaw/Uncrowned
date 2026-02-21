@@ -32,11 +32,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. A loading screen displays while assets are being fetched, then gameplay begins
   3. Parallax background layers scroll at different rates when the camera moves
   4. The game runs at a smooth, consistent frame rate without stuttering or freezing
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
+- [ ] 01-01-PLAN.md -- Project scaffolding, pixel-perfect game config, Boot/Preloader/Game scene chain, EventBus
+- [ ] 01-02-PLAN.md -- Parallax scrolling backgrounds, placeholder art assets, visual verification
 
 ### Phase 2: Scene System and Player Movement
 **Goal**: Player navigates between interconnected rooms with an animated character that walks to clicked locations
