@@ -99,7 +99,7 @@ Plans: 5/5 complete
 **Plans**: 2 plans
 
 Plans:
-- [ ] 05-01-PLAN.md -- OllamaClient fetch wrapper, PromptBuilder context assembly, ResponseMapper with NounResolver noun resolution
+- [x] 05-01-PLAN.md -- OllamaClient fetch wrapper, PromptBuilder context assembly, ResponseMapper with NounResolver noun resolution
 - [ ] 05-02-PLAN.md -- HybridParser orchestrator, RoomScene async command wiring, Preloader model warm-up
 
 ### Phase 6: NPCs and Dialogue
@@ -160,8 +160,8 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 | 1. Foundation and Rendering | 2/2 | Complete    | 2026-02-21 |
 | 2. Scene System and Player Movement | 2/2 | Complete | 2026-02-21 |
 | 3. Text Parser (Deterministic) | 2/2 | Complete | 2026-02-21 |
-| 4. Core Gameplay Systems | 0/5 | Not started | - |
-| 5. LLM Integration | 0/2 | Not started | - |
+| 4. Core Gameplay Systems | 5/5 | Complete | 2026-02-21 |
+| 5. LLM Integration | 1/2 | In progress | - |
 | 6. NPCs and Dialogue | 0/2 | Not started | - |
 | 7. Audio and Polish | 0/2 | Not started | - |
 | 8. Content Production | 0/4 | Not started | - |

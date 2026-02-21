@@ -22,10 +22,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **PARSE-01**: Player can type natural language commands in a text input bar
 - [x] **PARSE-02**: Keyword/regex fallback parser handles standard verbs (look, take, use, go, talk, open, push, pull) without LLM
-- [ ] **PARSE-03**: LLM parser (Ollama) interprets ambiguous/complex natural language into structured game actions
+- [x] **PARSE-03**: LLM parser (Ollama) interprets ambiguous/complex natural language into structured game actions
 - [ ] **PARSE-04**: Hybrid parser uses regex for simple commands and LLM for complex/ambiguous input
-- [ ] **PARSE-05**: LLM prompt includes current scene context, inventory, and nearby objects for accurate parsing
-- [ ] **PARSE-06**: Parser response time is under 2 seconds for LLM path, instant for regex path
+- [x] **PARSE-05**: LLM prompt includes current scene context, inventory, and nearby objects for accurate parsing
+- [x] **PARSE-06**: Parser response time is under 2 seconds for LLM path, instant for regex path
 - [x] **PARSE-07**: Game remains fully playable if Ollama is unavailable (graceful fallback)
 
 ### Inventory & Items
@@ -129,10 +129,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ENG-08 | Phase 1 | Complete |
 | PARSE-01 | Phase 3 | Complete |
 | PARSE-02 | Phase 3 | Complete |
-| PARSE-03 | Phase 5 | Pending |
+| PARSE-03 | Phase 5 | Complete |
 | PARSE-04 | Phase 5 | Pending |
-| PARSE-05 | Phase 5 | Pending |
-| PARSE-06 | Phase 5 | Pending |
+| PARSE-05 | Phase 5 | Complete |
+| PARSE-06 | Phase 5 | Complete |
 | PARSE-07 | Phase 3 | Complete |
 | INV-01 | Phase 4 | Complete |
 | INV-02 | Phase 4 | Complete |

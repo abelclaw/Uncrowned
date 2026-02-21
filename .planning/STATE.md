@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** Phase 4 complete. Ready for Phase 5: LLM Integration
+**Current focus:** Phase 5 in progress: LLM Integration
 
 ## Current Position
 
-Phase: 4 of 8 (Core Gameplay Systems) -- COMPLETE
-Plan: 5 of 5 in current phase (all plans complete)
-Status: Phase Complete
-Last activity: 2026-02-21 -- Completed 04-05-PLAN.md (Full gameplay integration)
+Phase: 5 of 8 (LLM Integration)
+Plan: 1 of 2 in current phase (05-01 complete)
+Status: In Progress
+Last activity: 2026-02-21 -- Completed 05-01-PLAN.md (LLM foundation modules)
 
-Progress: [██████░░░░] 56%
+Progress: [██████░░░░] 61%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 11
-- Average duration: 3.0min
-- Total execution time: 0.55 hours
+- Total plans completed: 12
+- Average duration: 2.9min
+- Total execution time: 0.58 hours
 
 **By Phase:**
 
@@ -45,6 +45,7 @@ Progress: [██████░░░░] 56%
 | Phase 04 P04 | 1min | 2 tasks | 2 files |
 | Phase 04 P03 | 3min | 2 tasks | 7 files |
 | Phase 04 P05 | 3min | 3 tasks | 6 files |
+| Phase 05 P01 | 2min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -92,6 +93,10 @@ Recent decisions affecting current work:
 - [Phase 04]: NarratorDisplay typewriter threshold at 50 chars -- longer responses get typewriter, shorter get instant
 - [Phase 04]: Room items registered as hotspot zones for unified click handling, filtered by GameState taken state
 - [Phase 04]: Event-driven integration pattern: systems communicate via EventBus events, not direct coupling
+- [Phase 05]: Raw fetch over ollama npm package -- single endpoint wrapper doesn't justify 15KB dependency
+- [Phase 05]: AbortSignal.any combines timeout + manual abort for race condition prevention on rapid input
+- [Phase 05]: GAME_ACTION_SCHEMA excludes save/load meta-commands from LLM verb space
+- [Phase 05]: NounResolver reused from parser module -- no duplication of noun resolution logic
 
 ### Pending Todos
 
@@ -106,5 +111,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 04-05-PLAN.md (Full gameplay integration -- Phase 4 complete)
+Stopped at: Completed 05-01-PLAN.md (LLM foundation modules -- OllamaClient, PromptBuilder, ResponseMapper)
 Resume file: None
