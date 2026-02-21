@@ -100,11 +100,11 @@ Plans:
   3. Player taps a location on screen and the character walks there
   4. Player opens the text input on mobile and the game layout adjusts without the canvas being squished or hidden behind the keyboard
   5. All interactive elements (buttons, hotspots, text input) are comfortably usable on a phone screen without pinch-zooming
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 13-01: TBD
-- [ ] 13-02: TBD
+- [ ] 13-01-PLAN.md -- Mobile CSS foundation: viewport meta, dvh layout, touch-action, VerbBar component
+- [ ] 13-02-PLAN.md -- MobileKeyboardManager, pinch-zoom prevention, VerbBar wiring, mobile focus guard
 
 ## Progress
 
