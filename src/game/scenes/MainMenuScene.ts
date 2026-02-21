@@ -1,6 +1,7 @@
 import { Scene } from 'phaser';
 import { GameState } from '../state/GameState';
 import { SaveManager } from '../state/SaveManager';
+import { MetaGameState } from '../state/MetaGameState';
 
 /**
  * Main menu scene -- the game's entry point.
@@ -77,6 +78,15 @@ export class MainMenuScene extends Scene {
             this.showLoadMenu();
         });
         this.menuItems.push(loadText);
+        y += 50;
+
+        // Death Gallery -- only visible when at least 1 death discovered
+        if (MetaGameState.getInstance().getDeathsDiscovered().length > 0) {
+            const galleryText = this.createMenuItem('Death Gallery', 480, y, () => {
+                this.scene.start('DeathGalleryScene', { returnTo: 'MainMenuScene' });
+            });
+            this.menuItems.push(galleryText);
+        }
     }
 
     private showLoadMenu(): void {

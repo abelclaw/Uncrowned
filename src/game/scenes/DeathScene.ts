@@ -110,6 +110,32 @@ export class DeathScene extends Scene {
         tryAgainText.on('pointerdown', () => {
             this.handleRetry();
         });
+
+        // Death Gallery button (secondary, below Try Again)
+        const galleryText = this.add.text(480, 470, '[ Death Gallery ]', {
+            fontFamily: 'monospace',
+            fontSize: '16px',
+            color: '#888888',
+        }).setOrigin(0.5).setDepth(1);
+
+        galleryText.setInteractive({ useHandCursor: true });
+
+        galleryText.on('pointerover', () => {
+            galleryText.setColor('#ffffff');
+            galleryText.setScale(1.05);
+        });
+
+        galleryText.on('pointerout', () => {
+            galleryText.setColor('#888888');
+            galleryText.setScale(1.0);
+        });
+
+        galleryText.on('pointerdown', () => {
+            // Stop both DeathScene and RoomScene, start gallery
+            this.scene.stop('DeathScene');
+            this.scene.stop('RoomScene');
+            this.scene.start('DeathGalleryScene', { returnTo: 'MainMenuScene' });
+        });
     }
 
     private handleRetry(): void {
