@@ -2,6 +2,16 @@ import type { PuzzleDefinition } from './PuzzleData';
 import type { RoomNpcData } from './NpcData';
 
 /**
+ * Audio configuration for a room: background music and ambient layers.
+ */
+export interface RoomAudioData {
+    /** Phaser audio key for background music. Rooms sharing the same key skip re-triggering. */
+    music?: string;
+    /** Ambient loop tracks to layer for atmosphere. */
+    ambient?: Array<{ key: string; volume?: number }>;
+}
+
+/**
  * Background layer definition for parallax rendering.
  */
 export interface BackgroundLayer {
@@ -117,4 +127,6 @@ export interface RoomData {
     dynamicDescriptions?: Record<string, string>;
     /** NPC placement data for this room */
     npcs?: RoomNpcData[];
+    /** Audio configuration: background music and ambient loops */
+    audio?: RoomAudioData;
 }
