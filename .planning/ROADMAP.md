@@ -50,7 +50,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 02-01-PLAN.md -- Player entity with animations, NavigationSystem with navmesh pathfinding, room data types, placeholder assets
+- [x] 02-01-PLAN.md -- Player entity with animations, NavigationSystem with navmesh pathfinding, room data types, placeholder assets
 - [ ] 02-02-PLAN.md -- RoomScene with click-to-move pipeline, SceneTransition with fade effects, multi-room navigation
 
 ### Phase 3: Text Parser (Deterministic)

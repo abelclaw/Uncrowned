@@ -10,8 +10,8 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Game Engine
 
 - [x] **ENG-01**: Game renders pixel art scene backgrounds on HTML5 Canvas at consistent resolution
-- [ ] **ENG-02**: Player character displays with walk cycle animation and interaction poses
-- [ ] **ENG-03**: Player moves to clicked location via pathfinding over walkable areas
+- [x] **ENG-02**: Player character displays with walk cycle animation and interaction poses
+- [x] **ENG-03**: Player moves to clicked location via pathfinding over walkable areas
 - [ ] **ENG-04**: Scenes have defined exits that transition to other scenes
 - [ ] **ENG-05**: Scene transitions use fade/slide animations between rooms
 - [x] **ENG-06**: Assets preload with a loading screen before gameplay starts
@@ -120,8 +120,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | ENG-01 | Phase 1 | Complete |
-| ENG-02 | Phase 2 | Pending |
-| ENG-03 | Phase 2 | Pending |
+| ENG-02 | Phase 2 | Complete |
+| ENG-03 | Phase 2 | Complete |
 | ENG-04 | Phase 2 | Pending |
 | ENG-05 | Phase 2 | Pending |
 | ENG-06 | Phase 1 | Complete |

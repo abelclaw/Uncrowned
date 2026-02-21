@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** Phase 1: Foundation and Rendering
+**Current focus:** Phase 2: Scene System and Player Movement
 
 ## Current Position
 
-Phase: 1 of 8 (Foundation and Rendering) -- COMPLETE
-Plan: 2 of 2 in current phase (all plans complete)
-Status: Phase Complete
-Last activity: 2026-02-20 -- Completed 01-02-PLAN.md (Parallax scrolling backgrounds)
+Phase: 2 of 8 (Scene System and Player Movement)
+Plan: 1 of 2 in current phase (02-01 complete)
+Status: In Progress
+Last activity: 2026-02-20 -- Completed 02-01-PLAN.md (Player entity, navigation, and room data)
 
-Progress: [██░░░░░░░░] 11%
+Progress: [███░░░░░░░] 17%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
+- Total plans completed: 3
 - Average duration: 3min
-- Total execution time: 0.1 hours
+- Total execution time: 0.15 hours
 
 **By Phase:**
 
@@ -36,6 +36,7 @@ Progress: [██░░░░░░░░] 11%
 *Updated after each plan completion*
 | Phase 01 P01 | 4min | 2 tasks | 16 files |
 | Phase 01 P02 | 2min | 2 tasks | 6 files |
+| Phase 02 P01 | 3min | 2 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -52,6 +53,10 @@ Recent decisions affecting current work:
 - [Phase 01]: Scroll factor values 0/0.1/0.4/1.0 for sky/mountains/trees/ground -- clear depth separation
 - [Phase 01]: 1920x540 background images (2x game width) for horizontal scroll room
 - [Phase 01]: Python PIL for placeholder image generation -- fast, no npm dependency added
+- [Phase 02]: Standalone navmesh library (not phaser-navmesh plugin) -- lighter, no core-js, no stale plugin concern
+- [Phase 02]: Convex rectangular walkable areas for placeholder rooms -- upgrade to concave decomposition when real art demands it
+- [Phase 02]: Player sprite depth 50 -- between background (0-10) and future foreground (90+)
+- [Phase 02]: Animation existence check before creation -- prevents duplicate errors on scene restart
 
 ### Pending Todos
 
@@ -66,5 +71,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-20
-Stopped at: Completed 01-02-PLAN.md (Phase 1 complete)
+Stopped at: Completed 02-01-PLAN.md
 Resume file: None
