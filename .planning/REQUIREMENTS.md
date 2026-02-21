@@ -98,44 +98,44 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INFRA-01 | — | Pending |
-| INFRA-02 | — | Pending |
-| INFRA-03 | — | Pending |
-| ART-01 | — | Pending |
-| ART-02 | — | Pending |
-| ART-03 | — | Pending |
-| ART-04 | — | Pending |
-| ART-05 | — | Pending |
-| ART-06 | — | Pending |
-| ART-07 | — | Pending |
-| HINT-01 | — | Pending |
-| HINT-02 | — | Pending |
-| HINT-03 | — | Pending |
-| HINT-04 | — | Pending |
-| HINT-05 | — | Pending |
-| GALR-01 | — | Pending |
-| GALR-02 | — | Pending |
-| GALR-03 | — | Pending |
-| GALR-04 | — | Pending |
-| GALR-05 | — | Pending |
-| GALR-06 | — | Pending |
-| MOBI-01 | — | Pending |
-| MOBI-02 | — | Pending |
-| MOBI-03 | — | Pending |
-| MOBI-04 | — | Pending |
-| MOBI-05 | — | Pending |
-| MOBI-06 | — | Pending |
-| ENDS-01 | — | Pending |
-| ENDS-02 | — | Pending |
-| ENDS-03 | — | Pending |
-| ENDS-04 | — | Pending |
-| ENDS-05 | — | Pending |
+| INFRA-01 | Phase 9 | Pending |
+| INFRA-02 | Phase 9 | Pending |
+| INFRA-03 | Phase 9 | Pending |
+| ART-01 | Phase 9 | Pending |
+| ART-02 | Phase 9 | Pending |
+| ART-03 | Phase 9 | Pending |
+| ART-04 | Phase 9 | Pending |
+| ART-05 | Phase 9 | Pending |
+| ART-06 | Phase 9 | Pending |
+| ART-07 | Phase 9 | Pending |
+| HINT-01 | Phase 11 | Pending |
+| HINT-02 | Phase 11 | Pending |
+| HINT-03 | Phase 11 | Pending |
+| HINT-04 | Phase 11 | Pending |
+| HINT-05 | Phase 11 | Pending |
+| GALR-01 | Phase 10 | Pending |
+| GALR-02 | Phase 10 | Pending |
+| GALR-03 | Phase 10 | Pending |
+| GALR-04 | Phase 10 | Pending |
+| GALR-05 | Phase 10 | Pending |
+| GALR-06 | Phase 10 | Pending |
+| MOBI-01 | Phase 13 | Pending |
+| MOBI-02 | Phase 13 | Pending |
+| MOBI-03 | Phase 13 | Pending |
+| MOBI-04 | Phase 13 | Pending |
+| MOBI-05 | Phase 13 | Pending |
+| MOBI-06 | Phase 13 | Pending |
+| ENDS-01 | Phase 12 | Pending |
+| ENDS-02 | Phase 12 | Pending |
+| ENDS-03 | Phase 12 | Pending |
+| ENDS-04 | Phase 12 | Pending |
+| ENDS-05 | Phase 12 | Pending |
 
 **Coverage:**
 - v2.0 requirements: 32 total
-- Mapped to phases: 0
-- Unmapped: 32 (awaiting roadmap)
+- Mapped to phases: 32
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-21*
-*Last updated: 2026-02-21 after research completion*
+*Last updated: 2026-02-21 after roadmap creation*
