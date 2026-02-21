@@ -21,6 +21,26 @@ export interface ExitData {
     spawnPoint: { x: number; y: number };
     /** Transition animation type */
     transition: 'fade' | 'slide-left' | 'slide-right';
+    /** Compass direction for text parser "go east" commands */
+    direction?: string;
+    /** Human-readable label for text parser "go to cave" commands */
+    label?: string;
+}
+
+/**
+ * Verb-specific text responses for a hotspot.
+ * The CommandDispatcher looks up responses by verb when the player interacts.
+ */
+export interface HotspotResponses {
+    look?: string;
+    take?: string;
+    use?: string;
+    talk?: string;
+    open?: string;
+    push?: string;
+    pull?: string;
+    /** Fallback response for verbs without a specific entry */
+    default?: string;
 }
 
 /**
@@ -34,6 +54,8 @@ export interface HotspotData {
     zone: { x: number; y: number; width: number; height: number };
     /** Where the player walks to before interacting */
     interactionPoint: { x: number; y: number };
+    /** Verb-specific text responses for this hotspot */
+    responses?: HotspotResponses;
 }
 
 /**
@@ -43,6 +65,8 @@ export interface HotspotData {
 export interface RoomData {
     id: string;
     name: string;
+    /** Room description returned by bare "look" command */
+    description?: string;
     background: {
         layers: BackgroundLayer[];
         worldWidth: number;
