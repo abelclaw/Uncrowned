@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Foundation and Rendering** - Game loop, pixel-perfect canvas rendering, asset loading, event bus, and project scaffolding
 - [x] **Phase 2: Scene System and Player Movement** - Navigable scenes with animated player character, pathfinding, transitions, and room navigation
 - [x] **Phase 3: Text Parser (Deterministic)** - Text input bar with keyword/regex parser that handles all standard adventure game verbs
-- [ ] **Phase 4: Core Gameplay Systems** - Inventory, puzzle engine, narrator, death system, save/load, and game state management
+- [x] **Phase 4: Core Gameplay Systems** - Inventory, puzzle engine, narrator, death system, save/load, and game state management
 - [ ] **Phase 5: LLM Integration** - Ollama-powered natural language parsing layered over the deterministic fallback
 - [ ] **Phase 6: NPCs and Dialogue** - NPC characters with conversation trees, inkjs narrative scripting, and conversation puzzles
 - [ ] **Phase 7: Audio and Polish** - Sound effects, music, ambient audio, and UI refinement
@@ -80,12 +80,12 @@ Plans:
   5. Player can manually save to multiple slots, load from any slot, start a new game from the main menu, and the game auto-saves on every room transition
 **Plans**: 5 plans
 
-Plans:
-- [ ] 04-01-PLAN.md -- TDD: GameState singleton, PuzzleEngine condition/action evaluator, SaveManager, type definitions
-- [ ] 04-02-PLAN.md -- NarratorDisplay typewriter effect, InventoryPanel HTML UI, parser verb/noun extensions
-- [ ] 04-03-PLAN.md -- CommandDispatcher overhaul with PuzzleEngine integration, enriched room JSON data with items/puzzles/deaths
-- [ ] 04-04-PLAN.md -- MainMenuScene and DeathScene overlay Phaser scenes
-- [ ] 04-05-PLAN.md -- Full RoomScene integration, auto-save wiring, gameplay loop verification
+Plans: 5/5 complete
+- [x] 04-01-PLAN.md -- TDD: GameState singleton, PuzzleEngine condition/action evaluator, SaveManager, type definitions
+- [x] 04-02-PLAN.md -- NarratorDisplay typewriter effect, InventoryPanel HTML UI, parser verb/noun extensions
+- [x] 04-03-PLAN.md -- CommandDispatcher overhaul with PuzzleEngine integration, enriched room JSON data with items/puzzles/deaths
+- [x] 04-04-PLAN.md -- MainMenuScene and DeathScene overlay Phaser scenes
+- [x] 04-05-PLAN.md -- Full RoomScene integration, auto-save wiring, gameplay loop verification
 
 ### Phase 5: LLM Integration
 **Goal**: Natural language commands like "maybe I should pick up that shiny thing" work seamlessly, making the text parser feel magical

@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** Phase 4 in progress: Core Gameplay Systems
+**Current focus:** Phase 4 complete. Ready for Phase 5: LLM Integration
 
 ## Current Position
 
-Phase: 4 of 8 (Core Gameplay Systems)
-Plan: 5 of 5 in current phase
-Status: In Progress
-Last activity: 2026-02-21 -- Completed 04-03-PLAN.md (CommandDispatcher overhaul and room data enrichment)
+Phase: 4 of 8 (Core Gameplay Systems) -- COMPLETE
+Plan: 5 of 5 in current phase (all plans complete)
+Status: Phase Complete
+Last activity: 2026-02-21 -- Completed 04-05-PLAN.md (Full gameplay integration)
 
-Progress: [██████░░░░] 52%
+Progress: [██████░░░░] 56%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 10
+- Total plans completed: 11
 - Average duration: 3.0min
-- Total execution time: 0.50 hours
+- Total execution time: 0.55 hours
 
 **By Phase:**
 
@@ -44,6 +44,7 @@ Progress: [██████░░░░] 52%
 | Phase 04 P01 | 6min | 2 tasks | 10 files |
 | Phase 04 P04 | 1min | 2 tasks | 2 files |
 | Phase 04 P03 | 3min | 2 tasks | 7 files |
+| Phase 04 P05 | 3min | 3 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -87,6 +88,10 @@ Recent decisions affecting current work:
 - [Phase 04]: Use X on Y resolution: X inventory-first, Y room-first -- matches natural language pattern
 - [Phase 04]: Items only consumed by explicit puzzle actions, never by failed attempts -- prevents unwinnable states
 - [Phase 04]: Combine handler checks both orderings (A+B and B+A) -- prevents frustrating order sensitivity
+- [Phase 04]: Auto-save records destination room (not current) -- death restores to room-entry state
+- [Phase 04]: NarratorDisplay typewriter threshold at 50 chars -- longer responses get typewriter, shorter get instant
+- [Phase 04]: Room items registered as hotspot zones for unified click handling, filtered by GameState taken state
+- [Phase 04]: Event-driven integration pattern: systems communicate via EventBus events, not direct coupling
 
 ### Pending Todos
 
@@ -101,5 +106,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 04-03-PLAN.md (CommandDispatcher overhaul, room data enrichment)
+Stopped at: Completed 04-05-PLAN.md (Full gameplay integration -- Phase 4 complete)
 Resume file: None
