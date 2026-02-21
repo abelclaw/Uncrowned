@@ -86,6 +86,16 @@ export class MainMenuScene extends Scene {
                 this.scene.start('DeathGalleryScene', { returnTo: 'MainMenuScene' });
             });
             this.menuItems.push(galleryText);
+            y += 50;
+        }
+
+        // Endings Gallery -- only visible when at least 1 ending discovered
+        if (MetaGameState.getInstance().getEndingsDiscovered().length > 0) {
+            const endingsText = this.createMenuItem('Endings Gallery', 480, y, () => {
+                this.scene.start('EndingsGalleryScene', { returnTo: 'MainMenuScene' });
+            });
+            this.menuItems.push(endingsText);
+            y += 50;
         }
     }
 
