@@ -40,10 +40,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **PUZ-01**: Inventory combination puzzles -- combine or use items to solve problems
 - [x] **PUZ-02**: Environmental/logic puzzles -- observe patterns, manipulate scene elements
-- [ ] **PUZ-03**: Conversation-based puzzles -- gather info from NPCs, persuade, negotiate
+- [x] **PUZ-03**: Conversation-based puzzles -- gather info from NPCs, persuade, negotiate
 - [x] **PUZ-04**: All puzzles defined in data files (JSON), not hardcoded in engine
 - [x] **PUZ-05**: Puzzle condition/action system evaluates game state flags and triggers results
-- [ ] **PUZ-06**: Puzzles advance the story and connect to player goals (no arbitrary filler)
+- [x] **PUZ-06**: Puzzles advance the story and connect to player goals (no arbitrary filler)
 - [x] **PUZ-07**: Every puzzle has a logical solution that feels inevitable in hindsight
 
 ### Narrative & Story
@@ -53,7 +53,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **NARR-03**: Dark comedy narrator provides sardonic commentary throughout
 - [x] **NARR-04**: Narrator text displays with typewriter effect in dialogue box
 - [x] **NARR-05**: Scene descriptions available via "look" command
-- [ ] **NARR-06**: Narrator references past events and player actions (dynamic personality)
+- [x] **NARR-06**: Narrator references past events and player actions (dynamic personality)
 - [x] **NARR-07**: Narrative scripted with inkjs for complex branching dialogue and story state
 
 ### NPCs & Dialogue
@@ -61,7 +61,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **NPC-01**: NPCs exist in scenes with authored knowledge and personalities
 - [ ] **NPC-02**: Player can talk to NPCs via text commands
 - [x] **NPC-03**: NPC dialogue supports branching conversation trees
-- [ ] **NPC-04**: NPCs provide information, hints, and advance the plot
+- [x] **NPC-04**: NPCs provide information, hints, and advance the plot
 
 ### Death System
 
@@ -141,22 +141,22 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INV-05 | Phase 4 | Complete |
 | PUZ-01 | Phase 4 | Complete |
 | PUZ-02 | Phase 4 | Complete |
-| PUZ-03 | Phase 6 | Pending |
+| PUZ-03 | Phase 6 | Complete |
 | PUZ-04 | Phase 4 | Complete |
 | PUZ-05 | Phase 4 | Complete |
-| PUZ-06 | Phase 6 | Pending |
+| PUZ-06 | Phase 6 | Complete |
 | PUZ-07 | Phase 4 | Complete |
 | NARR-01 | Phase 8 | Pending |
 | NARR-02 | Phase 8 | Pending |
 | NARR-03 | Phase 4 | Complete |
 | NARR-04 | Phase 4 | Complete |
 | NARR-05 | Phase 4 | Complete |
-| NARR-06 | Phase 6 | Pending |
+| NARR-06 | Phase 6 | Complete |
 | NARR-07 | Phase 6 | Complete |
 | NPC-01 | Phase 6 | Complete |
 | NPC-02 | Phase 6 | Pending |
 | NPC-03 | Phase 6 | Complete |
-| NPC-04 | Phase 6 | Pending |
+| NPC-04 | Phase 6 | Complete |
 | DEATH-01 | Phase 4 | Complete |
 | DEATH-02 | Phase 4 | Complete |
 | DEATH-03 | Phase 4 | Complete |

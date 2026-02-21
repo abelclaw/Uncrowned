@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 ## Current Position
 
 Phase: 6 of 8 (NPCs and Dialogue)
-Plan: 1 of 3 in current phase (06-01 complete)
+Plan: 2 of 3 in current phase (06-02 complete)
 Status: In Progress
-Last activity: 2026-02-21 -- Completed 06-01-PLAN.md (Dialogue Engine Foundation)
+Last activity: 2026-02-21 -- Completed 06-02-PLAN.md (NPC Content Data and Ink Dialogue)
 
-Progress: [███████░░░] 70%
+Progress: [████████░░] 80%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 14
+- Total plans completed: 15
 - Average duration: 2.7min
-- Total execution time: 0.64 hours
+- Total execution time: 0.69 hours
 
 **By Phase:**
 
@@ -48,6 +48,7 @@ Progress: [███████░░░] 70%
 | Phase 05 P01 | 2min | 2 tasks | 3 files |
 | Phase 05 P02 | 2min | 2 tasks | 3 files |
 | Phase 06 P01 | 2min | 2 tasks | 6 files |
+| Phase 06 P02 | 3min | 2 tasks | 8 files |
 
 ## Accumulated Context
 
@@ -105,6 +106,9 @@ Recent decisions affecting current work:
 - [Phase 06]: Named import { Story } from 'inkjs' -- verified constructor available as named export
 - [Phase 06]: Map<string,string> for internal npcStoryStates, Record<string,string> for serialization -- Map for runtime, plain object for JSON
 - [Phase 06]: DialogueUI reuses NarratorDisplay with 50-char typewrite threshold -- matches existing RoomScene pattern
+- [Phase 06]: inkjs Compiler class for pre-compilation -- reliable ink authoring pipeline vs hand-written JSON
+- [Phase 06]: Ink else-if uses nested conditionals with - else: blocks, not extra conditions in same block
+- [Phase 06]: dialogue- cache key prefix links NpcDefinition.dialogueKey to Preloader asset registration
 
 ### Pending Todos
 
@@ -119,5 +123,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 06-01-PLAN.md (Dialogue Engine Foundation)
+Stopped at: Completed 06-02-PLAN.md (NPC Content Data and Ink Dialogue)
 Resume file: None
