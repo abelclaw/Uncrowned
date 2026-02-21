@@ -15,13 +15,13 @@ Requirements for the Art & Polish milestone. Each maps to roadmap phases.
 
 ### Art Pipeline
 
-- [ ] **ART-01**: Build script generates room backgrounds via ComfyUI + Flux with consistent pixel art style
+- [x] **ART-01**: Build script generates room backgrounds via ComfyUI + Flux with consistent pixel art style
 - [ ] **ART-02**: All 36 room backgrounds replaced with Flux-generated pixel art at 960x540
 - [ ] **ART-03**: Parallax background layers generated per room with consistent style across acts
 - [ ] **ART-04**: Player character sprite replaced with pixel art sprite (idle, walk, interact animations)
 - [ ] **ART-05**: Item sprites replaced with pixel art sprites on transparent/white backgrounds
 - [ ] **ART-06**: NPC sprites replaced with pixel art sprites positioned correctly in rooms
-- [ ] **ART-07**: Art style guide document defines palette, pixel density, and prompt templates for consistency
+- [x] **ART-07**: Art style guide document defines palette, pixel density, and prompt templates for consistency
 
 ### Progressive Hints
 
@@ -101,13 +101,13 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INFRA-01 | Phase 9 | Complete |
 | INFRA-02 | Phase 9 | Complete |
 | INFRA-03 | Phase 9 | Complete |
-| ART-01 | Phase 9 | Pending |
+| ART-01 | Phase 9 | Complete |
 | ART-02 | Phase 9 | Pending |
 | ART-03 | Phase 9 | Pending |
 | ART-04 | Phase 9 | Pending |
 | ART-05 | Phase 9 | Pending |
 | ART-06 | Phase 9 | Pending |
-| ART-07 | Phase 9 | Pending |
+| ART-07 | Phase 9 | Complete |
 | HINT-01 | Phase 11 | Pending |
 | HINT-02 | Phase 11 | Pending |
 | HINT-03 | Phase 11 | Pending |

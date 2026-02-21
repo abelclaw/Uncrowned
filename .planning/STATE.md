@@ -41,6 +41,10 @@ Recent decisions affecting current work:
 - 09-01: Migration chain uses sequential version-to-version functions in migrations/ directory
 - 09-01: Export envelope format: { format: 'kqgame-save', version: 1, gameState, metaState }
 - 09-01: parseImportData returns gameState as JSON string so deserialize() handles migration
+- 09-02: Workflow node IDs PROMPT=6 (CLIPTextEncode), SEED=10 (RandomNoise) for script injection
+- 09-02: All rooms 960x540 output; shared parallax layers 1920x540; generate at 1024x1024 native
+- 09-02: Act palette hints injected into room prompts for visual consistency
+- 09-02: Parallax strategy resolved: 2 shared layers per act (sky + mid) + 1 unique ground per room
 
 ### Pending Todos
 
@@ -50,10 +54,10 @@ None.
 
 - Flux pixel art LoRA needs empirical testing on 3 rooms before bulk generation
 - iOS Safari visualViewport keyboard behavior needs real-device verification (Phase 13)
-- Parallax layer decomposition strategy unresolved (shared per-act vs per-room)
+- Parallax layer decomposition strategy resolved in 09-02: shared per-act sky+mid, unique per-room ground
 
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 09-01-PLAN.md
+Stopped at: Completed 09-02-PLAN.md
 Resume file: None
