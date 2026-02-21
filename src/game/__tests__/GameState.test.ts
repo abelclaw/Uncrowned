@@ -1,6 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { GameState } from '../state/GameState.ts';
-import type { GameStateData } from '../state/GameStateTypes.ts';
 
 describe('GameState', () => {
     let state: GameState;
