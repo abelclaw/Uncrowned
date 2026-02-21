@@ -1,0 +1,181 @@
+{
+    "id": "castle_hallway",
+    "name": "Castle Hallway",
+    "description": "A long stone corridor stretches through the castle's interior. Portraits of past monarchs line the walls, each one looking more disappointed than the last -- a dynasty of escalating disapproval. Doors branch off in every direction: south to the courtyard, east to the throne room, and north to the servants' quarters. One door to the west is conspicuously locked, its keyhole shaped like a bone. A faded carpet runs the length of the hall, threadbare and stained with centuries of royal foot traffic.",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-courtyard",
+            "zone": { "x": 440, "y": 450, "width": 80, "height": 80 },
+            "targetRoom": "castle_courtyard",
+            "spawnPoint": { "x": 480, "y": 400 },
+            "transition": "fade",
+            "direction": "south",
+            "label": "courtyard"
+        },
+        {
+            "id": "to-throne-room",
+            "zone": { "x": 880, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "throne_room",
+            "spawnPoint": { "x": 100, "y": 430 },
+            "transition": "slide-right",
+            "direction": "east",
+            "label": "throne room"
+        },
+        {
+            "id": "to-servants",
+            "zone": { "x": 440, "y": 350, "width": 80, "height": 80 },
+            "targetRoom": "servants_quarters",
+            "spawnPoint": { "x": 480, "y": 430 },
+            "transition": "fade",
+            "direction": "north",
+            "label": "servants quarters"
+        },
+        {
+            "id": "to-kitchen",
+            "zone": { "x": 0, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "royal_kitchen",
+            "spawnPoint": { "x": 820, "y": 430 },
+            "transition": "slide-left",
+            "direction": "west",
+            "label": "kitchen",
+            "conditions": [
+                { "type": "flag-set", "flag": "skeleton-key-used" }
+            ]
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "royal-portraits",
+            "name": "Royal Portraits",
+            "zone": { "x": 200, "y": 350, "width": 120, "height": 60 },
+            "interactionPoint": { "x": 260, "y": 420 },
+            "responses": {
+                "look": "A gallery of royal portraits stretches down the hallway. King Aldric the Bold, who was mostly bald. Queen Thessaly the Wise, who was mostly sarcastic. King Mortimer the Prepared, who choked on an olive. The artistic quality decreases as the dynasty progresses, as if the painters were losing hope in real time.",
+                "take": "You reach for a portrait. It feels... warm. Not warm like sunshine. Warm like something that doesn't want to be touched. You retract your hand with admirable speed.",
+                "use": "You straighten a crooked portrait. It immediately tilts back. The painting seems to prefer being askew. Artistic temperament, presumably.",
+                "default": "You examine the portraits. They examine you back. Several appear to be tracking your movement, which is either magical or the sign of a very talented painter."
+            }
+        },
+        {
+            "id": "locked-door",
+            "name": "Locked Door",
+            "zone": { "x": 50, "y": 370, "width": 60, "height": 70 },
+            "interactionPoint": { "x": 100, "y": 420 },
+            "responses": {
+                "look": "A sturdy wooden door with a keyhole shaped distinctly like a bone. The door itself is unremarkable except for a small plaque reading 'Kitchen & Stores -- Staff Only.' Whoever locked it clearly didn't want casual visitors wandering in. The keyhole is ornate enough that a regular key won't work.",
+                "use": "The door is locked. The keyhole is shaped like a bone -- you'd need a skeleton key, which is either a pun or a very specific security measure. Possibly both.",
+                "open": "Locked. The bone-shaped keyhole mocks your keyless state. You rattle the handle. The door rattles back. Neither of you gains ground.",
+                "push": "You lean against the door. It holds firm. This door was built to resist exactly this amount of determination.",
+                "default": "You examine the locked door. It's locked. That's its primary characteristic and it's doing an excellent job."
+            }
+        },
+        {
+            "id": "faded-carpet",
+            "name": "Faded Carpet",
+            "zone": { "x": 400, "y": 420, "width": 150, "height": 30 },
+            "interactionPoint": { "x": 475, "y": 420 },
+            "responses": {
+                "look": "A once-grand carpet, now threadbare and stained with what you hope is wine. The pattern depicts the royal crest -- a disgruntled badger wearing a crown -- repeated endlessly, each badger looking slightly more fed up than the last. Someone has attempted to mend several holes with thread that doesn't match. The effort is touching. The result is not.",
+                "take": "The carpet is nailed to the floor. Even the floor coverings in this castle have commitment issues they've resolved.",
+                "pull": "You tug the carpet's edge. Dust rises in a cloud thick enough to qualify as weather. You sneeze. The portrait of King Mortimer seems to sneeze in sympathy.",
+                "default": "You study the carpet. It's seen better centuries. The badgers on it stare up at you, frozen in perpetual heraldic displeasure."
+            }
+        },
+        {
+            "id": "cursed-portrait",
+            "name": "Glowing Portrait",
+            "zone": { "x": 650, "y": 355, "width": 60, "height": 50 },
+            "interactionPoint": { "x": 680, "y": 420 },
+            "responses": {
+                "look": "One portrait stands out from the rest -- it glows faintly around the edges with a sickly green light. The subject is a woman in royal attire, her expression caught between serene and predatory. A small plaque reads 'Queen Thessaly the Wise.' The glow pulses gently, like a heartbeat. Or a warning.",
+                "use": "The portrait's glow intensifies as you approach. Every instinct says 'don't touch the glowing thing.' Those are good instincts. Listen to them.",
+                "talk": "You address the glowing portrait. The painted eyes seem to flicker toward you. 'Hello?' Nothing. But the glow brightens for a moment. Coincidence, surely.",
+                "default": "You regard the glowing portrait from a safe distance. The safe distance is 'anywhere that isn't touching it.'"
+            }
+        }
+    ],
+    "items": [],
+    "puzzles": [
+        {
+            "id": "use-skeleton-key",
+            "trigger": { "verb": "use", "subject": "skeleton-key", "target": "locked-door" },
+            "conditions": [
+                { "type": "has-item", "item": "skeleton-key" },
+                { "type": "flag-not-set", "flag": "skeleton-key-used" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "skeleton-key" },
+                { "type": "set-flag", "flag": "skeleton-key-used" },
+                { "type": "open-exit", "exit": "to-kitchen" },
+                { "type": "add-item", "item": "castle-map" },
+                { "type": "narrator-say", "text": "The skeleton key slides into the bone-shaped keyhole with a satisfying click. The door swings open, revealing the castle kitchen beyond -- and on the wall just inside, a detailed map of the kingdom. You pull it down. It shows routes through the forest, past the bridge, and deep into the earth: the Screaming Caverns. Someone marked the path with a dotted line and the annotation 'HERE BE BUREAUCRACY.' The key crumbles to bone dust in your hand." }
+            ],
+            "once": true
+        },
+        {
+            "id": "use-skeleton-key-on-door-open",
+            "trigger": { "verb": "open", "subject": "locked-door" },
+            "conditions": [
+                { "type": "has-item", "item": "skeleton-key" },
+                { "type": "flag-not-set", "flag": "skeleton-key-used" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "skeleton-key" },
+                { "type": "set-flag", "flag": "skeleton-key-used" },
+                { "type": "open-exit", "exit": "to-kitchen" },
+                { "type": "add-item", "item": "castle-map" },
+                { "type": "narrator-say", "text": "You try the skeleton key in the door. It fits perfectly -- bone to bone. The lock turns, the door opens. Inside, among kitchen supplies, you spot a map pinned to the wall -- a map of the kingdom showing the route to the Screaming Caverns. You take it. The key disintegrates. Job done." }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "take-cursed-portrait",
+            "trigger": { "verb": "take", "subject": "cursed-portrait" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "portrait-curse" }
+            ]
+        },
+        {
+            "id": "pull-cursed-portrait",
+            "trigger": { "verb": "pull", "subject": "cursed-portrait" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "portrait-curse" }
+            ]
+        }
+    ],
+    "deaths": {
+        "portrait-curse": {
+            "title": "Death by Art Appreciation",
+            "narratorText": "You grab the glowing portrait. The green light flares. The painted eyes snap to life, locking onto yours with an intensity that would make a lighthouse feel inadequate. Queen Thessaly the Wise was wise enough to curse her own portrait against theft. The curse hits you like a freight train made of bad decisions and green light. You have time to think 'some portraits are worth dying for' before realizing this was not one of them."
+        }
+    },
+    "dynamicDescriptions": {
+        "skeleton-key-used": "The castle hallway stretches before you, portraits judging from every wall. The door to the kitchen now stands open, the bone-shaped keyhole empty. The smell of dust and spices drifts from beyond. All paths are now accessible -- for better or worse."
+    },
+    "audio": {
+        "music": "music-village",
+        "ambient": [
+            { "key": "amb-wind-light", "volume": 0.3 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}

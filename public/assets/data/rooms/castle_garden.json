@@ -1,0 +1,162 @@
+{
+    "id": "castle_garden",
+    "name": "Castle Garden",
+    "description": "The castle garden is nature's revenge on neglect. Once a manicured paradise of geometric hedges and prize-winning roses, it's now a tangled wilderness that has clearly been winning its war against civilization for decades. Stone paths vanish under ivy, statues poke out of overgrowth like drowning swimmers, and the petrification curse has turned several ornamental trees to solid stone. An old gardener's shed leans drunkenly in one corner, its door hanging open.",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-courtyard",
+            "zone": { "x": 0, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "castle_courtyard",
+            "spawnPoint": { "x": 820, "y": 430 },
+            "transition": "slide-left",
+            "direction": "west",
+            "label": "courtyard"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "overgrown-hedges",
+            "name": "Overgrown Hedges",
+            "zone": { "x": 300, "y": 350, "width": 120, "height": 50 },
+            "interactionPoint": { "x": 360, "y": 420 },
+            "responses": {
+                "look": "The hedges were once trimmed into the shapes of heraldic animals. Now they're trimmed into the shape of 'chaos.' What might have been a lion is now an amorphous green blob. A hedge-badger has merged with a hedge-eagle to form something that defies taxonomy.",
+                "use": "You push through the hedges. Thorns scratch your arms. Somewhere inside the green mass, a bird objects loudly to your intrusion.",
+                "take": "You snap off a branch. The hedge doesn't notice. It's too busy being overgrown.",
+                "default": "You contemplate the hedges. They contemplate growth. Neither of you is winning."
+            }
+        },
+        {
+            "id": "petrified-trees",
+            "name": "Petrified Trees",
+            "zone": { "x": 600, "y": 345, "width": 80, "height": 60 },
+            "interactionPoint": { "x": 640, "y": 420 },
+            "responses": {
+                "look": "Several ornamental trees have been completely petrified, their branches frozen mid-sway in solid stone. The detail is remarkable -- individual leaves, bark texture, even a bird's nest are all perfectly preserved in grey stone. It's beautiful and deeply unsettling, like taxidermy for vegetation.",
+                "use": "You tap a petrified branch. It rings like a bell. The sound echoes through the garden with an eerie purity. You don't tap it again.",
+                "take": "You try to snap off a petrified branch. It's solid stone. You'd need a chisel, not ambition.",
+                "default": "You examine the petrified trees. They were alive last season. The curse works faster than gardeners."
+            }
+        },
+        {
+            "id": "gardeners-shed",
+            "name": "Gardener's Shed",
+            "zone": { "x": 750, "y": 370, "width": 80, "height": 60 },
+            "interactionPoint": { "x": 790, "y": 420 },
+            "responses": {
+                "look": "A small wooden shed, leaning at an angle that suggests it's in a long-term negotiation with gravity. The door hangs open. Inside: rusted tools, empty pots, and the general atmosphere of a hobby abandoned under duress. Something sits on a shelf -- a rat trap, weathered but functional.",
+                "use": "You poke around the shed. Cobwebs, dust, and the lingering smell of potting soil. The shed has character, if 'character' means 'structural instability.'",
+                "open": "The door is already open. It's been open for so long it's forgotten how to close.",
+                "default": "You inspect the shed. It's the kind of building that gets described as 'rustic' in real estate listings and 'condemned' by anyone honest."
+            }
+        },
+        {
+            "id": "nightshade-bush",
+            "name": "Dark Berry Bush",
+            "zone": { "x": 150, "y": 380, "width": 60, "height": 40 },
+            "interactionPoint": { "x": 180, "y": 420 },
+            "responses": {
+                "look": "A bush bearing clusters of shiny, dark berries. They look delicious -- plump, glistening, practically begging to be eaten. A small faded sign at the base reads 'Atropa belladonna.' That's nightshade. Those berries will kill you. Nature is beautiful and utterly duplicitous.",
+                "use": "You reach toward the berries. They look so inviting. So glossy. So completely and utterly poisonous. Some decisions advertise their consequences in advance.",
+                "take": "You pick a berry. It's heavy, dark, and warm. It smells sweet. It is nightshade. You put it back. Quickly.",
+                "default": "You examine the berry bush. It's gorgeous, prolific, and lethal. Like most things in this garden."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "dried-sage",
+            "name": "Dried Sage",
+            "zone": { "x": 400, "y": 430, "width": 30, "height": 20 },
+            "interactionPoint": { "x": 415, "y": 430 },
+            "responses": {
+                "look": "A bundle of dried sage growing wild among the overgrown herbs. It's old, dusty, and aromatic in a way that suggests it has opinions about the supernatural. The kind of herb that shows up in rituals, recipes, and grandmother's remedies for 'the spiritual malaise.'",
+                "use": "Sage is typically burned, brewed, or waved around with intent. By itself, it's just a fragrant bundle of dead plant matter."
+            }
+        },
+        {
+            "id": "rat-trap",
+            "name": "Rat Trap",
+            "zone": { "x": 770, "y": 400, "width": 30, "height": 20 },
+            "interactionPoint": { "x": 785, "y": 420 },
+            "responses": {
+                "look": "A spring-loaded rat trap on a shelf in the gardener's shed. It's rusty but functional -- the spring still has tension, and the mechanism clicks when you test it gingerly. Someone built this to last. The rats should be concerned.",
+                "use": "The trap needs to be placed somewhere with rats. This shed is notably rat-free. The servants' quarters, on the other hand..."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "take-sage",
+            "trigger": { "verb": "take", "subject": "dried-sage" },
+            "conditions": [
+                { "type": "item-not-taken", "item": "dried-sage" }
+            ],
+            "actions": [
+                { "type": "add-item", "item": "dried-sage" },
+                { "type": "narrator-say", "text": "You pluck the bundle of dried sage. It crumbles slightly in your hands, releasing a pungent aroma that makes your sinuses file a formal complaint. Sage: the herb that says 'I'm either cooking or communing with spirits, and I'm not sure which.' The garden doesn't notice its absence." }
+            ],
+            "once": true
+        },
+        {
+            "id": "take-rat-trap",
+            "trigger": { "verb": "take", "subject": "rat-trap" },
+            "conditions": [
+                { "type": "item-not-taken", "item": "rat-trap" }
+            ],
+            "actions": [
+                { "type": "add-item", "item": "rat-trap" },
+                { "type": "narrator-say", "text": "You carefully take the rat trap from the shed shelf. The spring mechanism clicks ominously. This device was designed by someone who took the rat problem personally. You pocket it carefully, making a mental note not to put your fingers near the business end." }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "eat-nightshade",
+            "trigger": { "verb": "use", "subject": "nightshade-bush" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "poison-herb" }
+            ]
+        },
+        {
+            "id": "eat-nightshade-2",
+            "trigger": { "verb": "take", "subject": "nightshade-bush" },
+            "conditions": [],
+            "actions": [
+                { "type": "narrator-say", "text": "You reach for the berries, then notice the faded 'Atropa belladonna' sign. Nightshade. Eating those would be... inadvisable. The berries gleam invitingly. They're very good at their job." }
+            ]
+        }
+    ],
+    "deaths": {
+        "poison-herb": {
+            "title": "Death by Botany",
+            "narratorText": "You eat the nightshade berries. They taste wonderful -- sweet, rich, with a subtle note of 'you have made a catastrophic error.' The botanical name 'Atropa belladonna' translates roughly to 'beautiful lady who will absolutely murder you,' which is information you could have used thirty seconds ago. Your vision blurs. The garden seems to spin. The last thing you see is the faded warning sign, which, in your defense, was really quite small."
+        }
+    },
+    "dynamicDescriptions": {},
+    "audio": {
+        "music": "music-forest",
+        "ambient": [
+            { "key": "amb-forest-birds", "volume": 0.6 },
+            { "key": "amb-wind-light", "volume": 0.4 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}

@@ -1,0 +1,171 @@
+{
+    "id": "royal_kitchen",
+    "name": "Royal Kitchen",
+    "description": "The royal kitchen is a battlefield of flour, frustration, and fading grandeur. Copper pots hang from ceiling hooks, tarnished but serviceable. A massive iron stove dominates one wall, radiating heat and the smell of something that might once have been bread. Martha the Cook stands at a chopping block, wielding a cleaver with the confidence of someone who has solved most of life's problems with sharp objects. She is, by all accounts, the only functional member of the castle staff.",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-hallway",
+            "zone": { "x": 880, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "castle_hallway",
+            "spawnPoint": { "x": 100, "y": 430 },
+            "transition": "slide-right",
+            "direction": "south",
+            "label": "hallway"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "iron-stove",
+            "name": "Iron Stove",
+            "zone": { "x": 300, "y": 355, "width": 100, "height": 70 },
+            "interactionPoint": { "x": 350, "y": 420 },
+            "responses": {
+                "look": "A massive cast-iron stove, the kind that could heat a castle or cook a dragon. It's currently radiating enough heat to make the kitchen feel like a sauna with ambitions. The burners glow red, and the metal creaks with thermal expansion. Someone has scratched 'DO NOT TOUCH' into the surface, which was either a warning or a dare.",
+                "use": "The stove is hot. Very hot. You warm your hands briefly. Any closer and you'd be the main course.",
+                "take": "The stove weighs roughly the same as your collective bad decisions. It stays.",
+                "push": "You push the stove. It doesn't move, but it does radiate displeasure in the form of increased heat.",
+                "default": "You examine the stove. It's doing its job admirably, which is more than can be said for most things in this castle."
+            }
+        },
+        {
+            "id": "copper-pots",
+            "name": "Copper Pots",
+            "zone": { "x": 550, "y": 345, "width": 80, "height": 40 },
+            "interactionPoint": { "x": 590, "y": 420 },
+            "responses": {
+                "look": "A rack of copper pots hangs from the ceiling, tarnished to a deep brown. Each one could tell a story of royal banquets past. The largest one could probably fit you inside it, which is either a cooking capacity observation or a threat.",
+                "take": "You reach for a pot. Martha's cleaver embeds itself in the chopping block with a resonant THUNK. 'Those are mine,' she says, without looking up. You lower your hand.",
+                "use": "The pots are Martha's domain. Using them without permission would require more courage than you currently possess. And more culinary skill.",
+                "default": "You admire the copper pots. They gleam dully in the stove-light, survivors of a thousand meals and one very specific olive-related incident."
+            }
+        },
+        {
+            "id": "pantry-shelves",
+            "name": "Pantry Shelves",
+            "zone": { "x": 700, "y": 360, "width": 80, "height": 60 },
+            "interactionPoint": { "x": 740, "y": 420 },
+            "responses": {
+                "look": "Wooden shelves line the back wall, mostly empty. A few jars of preserved something sit gathering dust. The flour supply is conspicuously absent -- Martha has mentioned the rat problem in the servants' quarters more than once, each time with increasing volume and decreasing patience.",
+                "use": "You rummage through the pantry. Dust, empty jars, and one extremely stale biscuit that predates the current century. Nothing useful.",
+                "take": "You consider pilfering from the pantry. Martha's peripheral vision is legendary. You think better of it.",
+                "default": "You scan the shelves. They're a monument to scarcity and rats."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "empty-chalice",
+            "name": "Empty Chalice",
+            "zone": { "x": 600, "y": 390, "width": 25, "height": 30 },
+            "interactionPoint": { "x": 612, "y": 420 },
+            "responses": {
+                "look": "A dented silver chalice sitting on a shelf, forgotten among the kitchen implements. It was once used for royal toasts. Now it's been demoted to measuring cup. A slight tarnish gives it character. Or neglect. Same thing in this castle.",
+                "use": "It's empty. You'd need to fill it with something. Water would be a start. Something more exotic might be more useful."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "take-chalice",
+            "trigger": { "verb": "take", "subject": "empty-chalice" },
+            "conditions": [
+                { "type": "item-not-taken", "item": "empty-chalice" }
+            ],
+            "actions": [
+                { "type": "add-item", "item": "empty-chalice" },
+                { "type": "narrator-say", "text": "You pocket the chalice. Martha glances over. 'Taking the old measuring cup? Fine. I've been using a ladle anyway. Everything in this castle has been repurposed at least three times.' She returns to her chopping. The chalice is dented but functional -- like the kingdom itself." }
+            ],
+            "once": true
+        },
+        {
+            "id": "give-flour-to-cook",
+            "trigger": { "verb": "use", "subject": "flour-sack", "target": "castle_cook" },
+            "conditions": [
+                { "type": "has-item", "item": "flour-sack" },
+                { "type": "flag-not-set", "flag": "flour_delivered" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "flour-sack" },
+                { "type": "set-flag", "flag": "flour_delivered" },
+                { "type": "set-flag", "flag": "cook_befriended" },
+                { "type": "add-item", "item": "skeleton-key" },
+                { "type": "narrator-say", "text": "Martha's eyes light up at the sight of flour. 'You beautiful, beautiful person. Do you know how long I've been trying to make bread with DUST?' She snatches the sack, weighs it expertly, and nods. 'This'll do. Right then -- a deal's a deal.' She reaches into her apron and produces a key made of what appears to be actual bone. 'Skeleton key. Opens the locked door in the hallway. Found it in the old king's sock drawer. Don't ask why I was in the old king's sock drawer.'" }
+            ],
+            "once": true
+        },
+        {
+            "id": "give-flour-talk",
+            "trigger": { "verb": "talk", "subject": "castle_cook" },
+            "conditions": [
+                { "type": "has-item", "item": "flour-sack" },
+                { "type": "flag-not-set", "flag": "flour_delivered" }
+            ],
+            "actions": [
+                { "type": "narrator-say", "text": "Martha eyes the flour sack poking out of your inventory. 'Is that FLOUR? Real flour? Not stone flour, not dust flour, ACTUAL flour?' She reaches for it eagerly. Perhaps you should give it to her." }
+            ]
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "torch-stove",
+            "trigger": { "verb": "use", "subject": "makeshift-torch", "target": "iron-stove" },
+            "conditions": [
+                { "type": "has-item", "item": "makeshift-torch" }
+            ],
+            "actions": [
+                { "type": "trigger-death", "deathId": "kitchen-fire" }
+            ]
+        },
+        {
+            "id": "torch-stove-2",
+            "trigger": { "verb": "use", "subject": "makeshift-torch" },
+            "conditions": [
+                { "type": "has-item", "item": "makeshift-torch" },
+                { "type": "in-room", "room": "royal_kitchen" }
+            ],
+            "actions": [
+                { "type": "trigger-death", "deathId": "kitchen-fire" }
+            ]
+        }
+    ],
+    "deaths": {
+        "kitchen-fire": {
+            "title": "Death by Culinary Disaster",
+            "narratorText": "You bring your makeshift torch near the stove. The stove, already operating at temperatures that would concern a metallurgist, reacts to the open flame with the enthusiasm of a chemistry experiment going wrong. Grease, heat, and bioluminescent fungus combine in a fireball that rewrites the castle's kitchen safety manual. Martha dives behind the chopping block. You are less fortunate. The explosion is brief but thorough. On the bright side, the bread Martha was attempting is now perfectly toasted."
+        }
+    },
+    "dynamicDescriptions": {
+        "flour_delivered": "The royal kitchen hums with renewed energy. Martha the Cook is actually baking, flour dusting her apron and a genuine smile on her face for the first time in months. The smell of fresh bread replaces the usual aroma of institutional despair. She nods at you as you pass -- you've earned her respect, which in this castle is worth more than gold.",
+        "cook_befriended": "Martha moves through her kitchen with purpose, the flour you brought being transformed into bread with practiced efficiency. She's the most competent person in this castle, and now she considers you an ally. This feels like a significant achievement."
+    },
+    "npcs": [
+        {
+            "id": "castle_cook",
+            "position": { "x": 450, "y": 395 },
+            "interactionPoint": { "x": 420, "y": 420 },
+            "zone": { "x": 420, "y": 370, "width": 60, "height": 70 }
+        }
+    ],
+    "audio": {
+        "music": "music-village",
+        "ambient": [
+            { "key": "amb-wind-light", "volume": 0.2 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}

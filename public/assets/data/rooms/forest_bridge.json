@@ -1,0 +1,213 @@
+{
+    "id": "forest_bridge",
+    "name": "Forest Bridge",
+    "description": "A rickety wooden bridge spans a gorge that's deeper than your capacity for good decisions. Below, a river churns through rocks with the enthusiasm of someone who genuinely enjoys erosion. A large, surprisingly well-groomed troll sits on a stool at the bridge's midpoint, reading a leather-bound book. He has a toll booth, a nameplate reading 'Bertram,' and the patient expression of someone who has heard every excuse.",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-watchtower",
+            "zone": { "x": 0, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "old_watchtower",
+            "spawnPoint": { "x": 820, "y": 430 },
+            "transition": "slide-left",
+            "direction": "west",
+            "label": "watchtower"
+        },
+        {
+            "id": "to-courtyard",
+            "zone": { "x": 880, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "castle_courtyard",
+            "spawnPoint": { "x": 100, "y": 430 },
+            "transition": "slide-right",
+            "direction": "east",
+            "label": "castle",
+            "conditions": [
+                { "type": "flag-set", "flag": "riddle_answered" }
+            ]
+        },
+        {
+            "id": "to-courtyard-toll",
+            "zone": { "x": 880, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "castle_courtyard",
+            "spawnPoint": { "x": 100, "y": 430 },
+            "transition": "slide-right",
+            "direction": "east",
+            "label": "castle",
+            "conditions": [
+                { "type": "flag-set", "flag": "toll_paid" }
+            ]
+        },
+        {
+            "id": "to-cavern",
+            "zone": { "x": 440, "y": 350, "width": 80, "height": 80 },
+            "targetRoom": "cavern_entrance_hall",
+            "spawnPoint": { "x": 480, "y": 430 },
+            "transition": "fade",
+            "direction": "north",
+            "label": "cavern",
+            "conditions": [
+                { "type": "flag-set", "flag": "decree-sealed" },
+                { "type": "flag-set", "flag": "ghost_approved_decree" },
+                { "type": "has-item", "item": "castle-map" },
+                { "type": "flag-set", "flag": "skeleton-key-used" }
+            ]
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "bridge-structure",
+            "name": "Rickety Bridge",
+            "zone": { "x": 300, "y": 400, "width": 300, "height": 40 },
+            "interactionPoint": { "x": 450, "y": 420 },
+            "responses": {
+                "look": "The bridge is made of wooden planks held together by optimism and fraying rope. Several boards are missing entirely, replaced by the kind of gap that makes you question your life insurance policy. The gorge below is deep enough that you'd have time to compose a will on the way down.",
+                "use": "You stomp on a plank. It creaks ominously. The troll looks up from his book with an expression that says 'please don't break my workplace.'",
+                "take": "You consider stealing a bridge plank. The troll clears his throat. Loudly. You reconsider.",
+                "push": "You push on a bridge support. It sways. The entire bridge sways. The troll sways. Everyone sways. You stop pushing.",
+                "default": "You examine the bridge. It examines your weight distribution and finds it concerning."
+            }
+        },
+        {
+            "id": "toll-booth",
+            "name": "Toll Booth",
+            "zone": { "x": 480, "y": 360, "width": 60, "height": 60 },
+            "interactionPoint": { "x": 510, "y": 420 },
+            "responses": {
+                "look": "A small wooden booth with a sign reading 'BRIDGE TOLL: One Correct Answer OR One Coin. No Exceptions. No Refunds. Yes, This Is A Real Job.' Below it, in smaller text: 'Bridge Troll Local 47 -- Proud Member Since 1247.'",
+                "use": "The toll booth's window has a small slot for coins. A bell sits on the counter, polished to a shine. Bertram takes his work seriously.",
+                "take": "The toll booth is bolted to the bridge. Bertram is bolted to the toll booth. The whole arrangement is immovable.",
+                "default": "You inspect the toll booth. It's surprisingly well-maintained for a structure on a barely-maintained bridge."
+            }
+        },
+        {
+            "id": "gorge",
+            "name": "Deep Gorge",
+            "zone": { "x": 350, "y": 450, "width": 200, "height": 30 },
+            "interactionPoint": { "x": 450, "y": 440 },
+            "responses": {
+                "look": "The gorge drops away into mist and the distant sound of rushing water. It's the kind of depth that makes your stomach flip and your brain suggest helpful scenarios about falling. The rocks at the bottom look sharp, wet, and thoroughly unsympathetic.",
+                "use": "You lean over the edge slightly. Your survival instincts, which have been mostly dormant, scream in unison. You lean back.",
+                "default": "You gaze into the gorge. The gorge gazes into you. Nietzsche would have opinions about this."
+            }
+        }
+    ],
+    "items": [],
+    "puzzles": [
+        {
+            "id": "answer-riddle",
+            "trigger": { "verb": "talk", "subject": "bridge_troll" },
+            "conditions": [
+                { "type": "flag-not-set", "flag": "riddle_answered" },
+                { "type": "flag-not-set", "flag": "toll_paid" }
+            ],
+            "actions": [
+                { "type": "narrator-say", "text": "Bertram adjusts his reading glasses and opens his Official Book of Riddles. 'Right then. Bridge Troll regulations require one riddle before crossing. I am tall when I am young, and short when I am old. What am I?' He waits patiently. (Talk to the troll again to answer.)" }
+            ]
+        },
+        {
+            "id": "answer-riddle-correct",
+            "trigger": { "verb": "use", "subject": "candle" },
+            "conditions": [
+                { "type": "flag-not-set", "flag": "riddle_answered" }
+            ],
+            "actions": [
+                { "type": "set-flag", "flag": "riddle_answered" },
+                { "type": "open-exit", "exit": "to-courtyard" },
+                { "type": "narrator-say", "text": "Bertram nods approvingly. 'A candle. Correct.' He stamps a small card and slides it across the counter. 'You may cross. Please watch your step, several planks are load-bearing in theory only.' He returns to his book -- a mystery novel, you notice. Even trolls need hobbies." }
+            ],
+            "once": true
+        },
+        {
+            "id": "pay-toll",
+            "trigger": { "verb": "use", "subject": "bridge-toll-coin", "target": "bridge_troll" },
+            "conditions": [
+                { "type": "has-item", "item": "bridge-toll-coin" },
+                { "type": "flag-not-set", "flag": "riddle_answered" },
+                { "type": "flag-not-set", "flag": "toll_paid" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "bridge-toll-coin" },
+                { "type": "set-flag", "flag": "toll_paid" },
+                { "type": "open-exit", "exit": "to-courtyard-toll" },
+                { "type": "narrator-say", "text": "Bertram examines the coin with professional interest. 'Bit worn, but legal tender's legal tender.' He drops it into a lockbox with a satisfying clink. 'You may cross without the riddle. Personally, I think you're missing out -- it was a good one -- but the union contract is clear on alternatives.'" }
+            ],
+            "once": true
+        },
+        {
+            "id": "pay-toll-on-booth",
+            "trigger": { "verb": "use", "subject": "bridge-toll-coin", "target": "toll-booth" },
+            "conditions": [
+                { "type": "has-item", "item": "bridge-toll-coin" },
+                { "type": "flag-not-set", "flag": "riddle_answered" },
+                { "type": "flag-not-set", "flag": "toll_paid" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "bridge-toll-coin" },
+                { "type": "set-flag", "flag": "toll_paid" },
+                { "type": "open-exit", "exit": "to-courtyard-toll" },
+                { "type": "narrator-say", "text": "You slide the coin through the toll booth slot. Bertram catches it with practiced ease. 'Payment accepted. You may cross. Mind the gap at plank seventeen -- it's more of a suggestion than a plank at this point.'" }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "insult-troll",
+            "trigger": { "verb": "push", "subject": "bridge_troll" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "troll-rage" }
+            ]
+        },
+        {
+            "id": "attack-troll",
+            "trigger": { "verb": "use", "subject": "stick", "target": "bridge_troll" },
+            "conditions": [
+                { "type": "has-item", "item": "stick" }
+            ],
+            "actions": [
+                { "type": "trigger-death", "deathId": "troll-rage" }
+            ]
+        }
+    ],
+    "deaths": {
+        "troll-rage": {
+            "title": "Death by Poor Diplomacy",
+            "narratorText": "You antagonize Bertram. This is a mistake. Bertram has a book club, a mortgage, three bridge-tending certifications, and very little tolerance for rudeness. He picks you up with one enormous hand, considers his options briefly, and drops you into the gorge with the casual efficiency of someone who has done this before. Many times. The fall is educational, if brief."
+        }
+    },
+    "dynamicDescriptions": {
+        "riddle_answered": "The forest bridge stretches across the gorge. Bertram sits at his toll booth, reading contentedly. He nods as you pass -- you've earned crossing rights. The gorge below still churns, but it's someone else's problem now.",
+        "toll_paid": "The forest bridge spans the gorge as before. Bertram gives you a professional nod -- your toll has been recorded. The bridge creaks under your feet but holds. Mostly."
+    },
+    "npcs": [
+        {
+            "id": "bridge_troll",
+            "position": { "x": 500, "y": 390 },
+            "interactionPoint": { "x": 460, "y": 420 },
+            "zone": { "x": 470, "y": 360, "width": 60, "height": 80 }
+        }
+    ],
+    "audio": {
+        "music": "music-forest",
+        "ambient": [
+            { "key": "amb-wind-light", "volume": 0.7 },
+            { "key": "amb-forest-birds", "volume": 0.3 }
+        ]
+    },
+    "playerSpawn": { "x": 200, "y": 430 }
+}

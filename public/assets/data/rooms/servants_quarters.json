@@ -1,0 +1,186 @@
+{
+    "id": "servants_quarters",
+    "name": "Servants' Quarters",
+    "description": "The servants' quarters are a testament to the principle that those who serve empires rarely benefit from them. Narrow bunks line the walls, blankets threadbare and pillows flattened by generations of exhausted heads. A writing desk in the corner holds a dusty diary. Crates are stacked against one wall, and the unmistakable sound of scratching comes from behind them. Something lives in those crates, and it has a lot of legs. Or a lot of friends.",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-hallway",
+            "zone": { "x": 440, "y": 450, "width": 80, "height": 80 },
+            "targetRoom": "castle_hallway",
+            "spawnPoint": { "x": 480, "y": 400 },
+            "transition": "fade",
+            "direction": "south",
+            "label": "hallway"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "servant-bunks",
+            "name": "Servant Bunks",
+            "zone": { "x": 150, "y": 360, "width": 120, "height": 60 },
+            "interactionPoint": { "x": 210, "y": 420 },
+            "responses": {
+                "look": "A row of narrow bunks, each barely wider than a coffin and roughly as comfortable. The blankets are thin, the pillows are flat, and the mattresses have given up any pretense of being soft. Someone has carved 'I QUIT' into the headboard of the nearest bunk, a sentiment apparently shared by the rest of the staff.",
+                "use": "You lie down briefly. The bunk creaks. Your spine files a grievance. You stand up. The rest was refreshing in the same way that standing in rain is a shower.",
+                "take": "You consider stealing a blanket. It's so threadbare it would barely qualify as a dishcloth. You leave it.",
+                "default": "You examine the bunks. They speak of hard work, low wages, and a human resources department that does not exist."
+            }
+        },
+        {
+            "id": "writing-desk",
+            "name": "Writing Desk",
+            "zone": { "x": 600, "y": 365, "width": 80, "height": 50 },
+            "interactionPoint": { "x": 640, "y": 420 },
+            "responses": {
+                "look": "A small writing desk with a dusty diary lying open. The diary belongs to the head servant -- the last entry reads: 'Rats ate the flour again. Cook is furious. King dead. Curse spreading. Priorities unclear.' Tucked under the diary is a sheet of official-looking parchment. Blank. But very, very official-looking.",
+                "use": "You flip through the diary. Most entries concern meal schedules, staff complaints, and an ongoing feud between the laundry department and the kitchen. The final entries grow increasingly panicked as the curse spreads. The blank parchment underneath seems important.",
+                "open": "You open the diary wider. The spine cracks with the sound of neglected literature. The blank decree underneath shifts into view.",
+                "default": "You study the desk. It's the only evidence that someone in this castle once cared about record-keeping."
+            }
+        },
+        {
+            "id": "storage-crates",
+            "name": "Storage Crates",
+            "zone": { "x": 750, "y": 370, "width": 80, "height": 60 },
+            "interactionPoint": { "x": 790, "y": 420 },
+            "responses": {
+                "look": "Wooden crates stacked against the wall, most bearing labels like 'FLOUR,' 'GRAIN,' and 'PROVISIONS.' The scratching from behind them is persistent and organized. Whatever is back there has established a settlement. Opening the wrong crate seems risky.",
+                "use": "You approach the crates. The scratching intensifies. Something behind the stack is very aware of your presence and not thrilled about it.",
+                "open": "You consider opening a crate. The scratching from within reaches a crescendo. Whatever is in there is either very eager to meet you, or very eager to eat you.",
+                "push": "You push a crate. It's lighter than expected -- whatever was inside has been eaten. The scratching behind it gets louder.",
+                "default": "You eye the crates warily. They eye you back, metaphorically, through several hundred sets of small, beady eyes."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "blank-decree",
+            "name": "Blank Royal Decree",
+            "zone": { "x": 620, "y": 390, "width": 30, "height": 20 },
+            "interactionPoint": { "x": 635, "y": 420 },
+            "responses": {
+                "look": "A sheet of parchment so official-looking it could probably govern a small nation. Which is sort of the point. It bears the watermark of the Royal Paper Mill and has the texture of authority. It's completely blank, which makes it either useless or incredibly dangerous.",
+                "use": "A blank decree needs a seal to become an official decree. Without one, it's just very fancy scratch paper."
+            }
+        },
+        {
+            "id": "flour-sack",
+            "name": "Flour Sack",
+            "zone": { "x": 780, "y": 400, "width": 30, "height": 25 },
+            "interactionPoint": { "x": 790, "y": 420 },
+            "responses": {
+                "look": "A sack of flour that the rats somehow missed. It's buried behind the other crates, sealed tight, and apparently invisible to rodent eyes. A small miracle in a kingdom that could use more of them.",
+                "use": "The flour is for Martha the Cook. She's been trying to bake with dust and determination for weeks. This sack would make her day."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "take-blank-decree",
+            "trigger": { "verb": "take", "subject": "blank-decree" },
+            "conditions": [
+                { "type": "item-not-taken", "item": "blank-decree" }
+            ],
+            "actions": [
+                { "type": "add-item", "item": "blank-decree" },
+                { "type": "narrator-say", "text": "You slide the blank decree from under the diary. The parchment practically hums with potential. A blank official document in a kingdom without a king -- this is either a bureaucratic emergency or an opportunity for creative governance. Your mother definitely would not approve." }
+            ],
+            "once": true
+        },
+        {
+            "id": "use-rat-trap",
+            "trigger": { "verb": "use", "subject": "rat-trap", "target": "storage-crates" },
+            "conditions": [
+                { "type": "has-item", "item": "rat-trap" },
+                { "type": "flag-not-set", "flag": "rats_caught" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "rat-trap" },
+                { "type": "set-flag", "flag": "rats_caught" },
+                { "type": "narrator-say", "text": "You set the rat trap behind the crates. The scratching stops. A moment of silence. Then: SNAP. A chorus of panicked squeaking erupts as the rat population realizes their reign has ended. Within minutes, the survivors have fled through tiny holes in the wall, leaving behind a scene of crumbs, droppings, and one unprotected sack of flour. The rat hierarchy has been toppled. Democracy reigns among the remaining vermin." }
+            ],
+            "once": true
+        },
+        {
+            "id": "use-rat-trap-room",
+            "trigger": { "verb": "use", "subject": "rat-trap" },
+            "conditions": [
+                { "type": "has-item", "item": "rat-trap" },
+                { "type": "flag-not-set", "flag": "rats_caught" },
+                { "type": "in-room", "room": "servants_quarters" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "rat-trap" },
+                { "type": "set-flag", "flag": "rats_caught" },
+                { "type": "narrator-say", "text": "You set the rat trap near the crates. SNAP. The rats scatter in a furry, squeaking exodus. The flour sack behind the crates is now accessible, and the servants' quarters smell marginally less of rodent. Progress." }
+            ],
+            "once": true
+        },
+        {
+            "id": "take-flour",
+            "trigger": { "verb": "take", "subject": "flour-sack" },
+            "conditions": [
+                { "type": "flag-set", "flag": "rats_caught" },
+                { "type": "item-not-taken", "item": "flour-sack" }
+            ],
+            "actions": [
+                { "type": "add-item", "item": "flour-sack" },
+                { "type": "narrator-say", "text": "With the rats gone, you grab the flour sack. It's heavy, dry, and the most valuable thing in this room -- which says more about the room than the flour. Martha in the kitchen will be ecstatic. Or at least marginally less murderous." }
+            ],
+            "once": true
+        },
+        {
+            "id": "take-flour-no-trap",
+            "trigger": { "verb": "take", "subject": "flour-sack" },
+            "conditions": [
+                { "type": "flag-not-set", "flag": "rats_caught" }
+            ],
+            "actions": [
+                { "type": "narrator-say", "text": "You reach toward the flour sack. The scratching behind the crates reaches a fever pitch. Dozens of tiny eyes gleam in the shadows. The rats have established a perimeter around the flour supply and they are not accepting visitors. You'd need to deal with the rat problem first." }
+            ]
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "open-wrong-crate",
+            "trigger": { "verb": "open", "subject": "storage-crates" },
+            "conditions": [
+                { "type": "flag-not-set", "flag": "rats_caught" }
+            ],
+            "actions": [
+                { "type": "trigger-death", "deathId": "rat-swarm" }
+            ]
+        }
+    ],
+    "deaths": {
+        "rat-swarm": {
+            "title": "Death by Vermin",
+            "narratorText": "You open a crate. The scratching stops. A moment of terrible silence. Then they pour out -- a torrent of rats, organized, numerous, and deeply territorial. They've been running this storage room for weeks, and they do not recognize your authority. The swarm engulfs you with the efficiency of a well-managed operation. The rats have a hierarchy, a delegation system, and apparently a policy regarding intruders. You have been outvoted by approximately four hundred to one."
+        }
+    },
+    "dynamicDescriptions": {
+        "rats_caught": "The servants' quarters are quieter now, the rat problem resolved with extreme prejudice. Crates sit open and rat-free, the flour sack accessible behind them. The remaining rodent population has relocated to parts of the castle that are Someone Else's Problem."
+    },
+    "audio": {
+        "music": "music-village",
+        "ambient": [
+            { "key": "amb-wind-light", "volume": 0.3 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}

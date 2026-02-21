@@ -1,0 +1,232 @@
+{
+    "id": "castle_courtyard",
+    "name": "Castle Courtyard",
+    "description": "You stand in the courtyard of Castle Erelhain, and 'grandeur in decline' doesn't begin to cover it. Cracked flagstones sprout weeds with the tenacity of things that have given up on aesthetics. Two guards flank the main entrance, their armor polished to a shine that makes the surrounding decay look even worse. An overgrown garden sprawls to the east, and a stone well sits in the corner, still functional despite the general atmosphere of institutional failure.",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-bridge",
+            "zone": { "x": 0, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "forest_bridge",
+            "spawnPoint": { "x": 820, "y": 430 },
+            "transition": "slide-left",
+            "direction": "west",
+            "label": "bridge"
+        },
+        {
+            "id": "to-hallway",
+            "zone": { "x": 440, "y": 350, "width": 80, "height": 80 },
+            "targetRoom": "castle_hallway",
+            "spawnPoint": { "x": 480, "y": 430 },
+            "transition": "fade",
+            "direction": "north",
+            "label": "hallway",
+            "conditions": [
+                { "type": "flag-set", "flag": "crystal_shown_to_guards" }
+            ]
+        },
+        {
+            "id": "to-garden",
+            "zone": { "x": 880, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "castle_garden",
+            "spawnPoint": { "x": 100, "y": 430 },
+            "transition": "slide-right",
+            "direction": "east",
+            "label": "garden"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "castle-guards",
+            "name": "Castle Guards",
+            "zone": { "x": 420, "y": 355, "width": 120, "height": 70 },
+            "interactionPoint": { "x": 480, "y": 420 },
+            "responses": {
+                "look": "Two guards stand at attention, their expressions carved from the same stone as the crumbling castle walls. They wear matching armor, matching scowls, and matching skepticism about your credentials. A sign between them reads 'NO ENTRY WITHOUT PROOF OF PURPOSE. This means you.'",
+                "talk": "The guard on the left speaks without moving his lips. 'State your business.' The guard on the right adds, 'And make it good. We've heard every excuse.' They've clearly been doing this for a while.",
+                "use": "You're not sure what 'using' guards entails, but their expressions suggest you shouldn't find out.",
+                "push": "You consider pushing past the guards. They consider pushing back. Their arms are thicker than your torso. Discretion is advised.",
+                "default": "You examine the guards. They examine you back. You are found wanting."
+            }
+        },
+        {
+            "id": "courtyard-well",
+            "name": "Courtyard Well",
+            "zone": { "x": 700, "y": 370, "width": 60, "height": 60 },
+            "interactionPoint": { "x": 730, "y": 420 },
+            "responses": {
+                "look": "A stone well in the courtyard corner, still drawing clean water despite the castle's general state of disrepair. The bucket is intact, the rope is strong, and the water is clear. It's the one thing in this courtyard that works as intended.",
+                "use": "You lower the bucket and draw up clear, cold water. It's refreshingly normal in a kingdom where normalcy is in short supply.",
+                "take": "The well is built into the courtyard foundation. It's going nowhere, and neither are you if you keep trying to steal masonry.",
+                "default": "You examine the well. It's a well. It wells. That's its whole thing."
+            }
+        },
+        {
+            "id": "cracked-flagstones",
+            "name": "Cracked Flagstones",
+            "zone": { "x": 200, "y": 430, "width": 120, "height": 40 },
+            "interactionPoint": { "x": 260, "y": 430 },
+            "responses": {
+                "look": "The courtyard flagstones are cracked and heaved by decades of neglect and creeping weeds. Several stones show the telltale grey of petrification -- not weathering, but the curse spreading even here, into the heart of the kingdom. The castle is not immune.",
+                "use": "You stomp on a loose flagstone. It rocks back and forth. A beetle underneath looks deeply inconvenienced.",
+                "default": "You study the flagstones. They tell a story of neglect, weeds, and a monarchy that spent its maintenance budget on olive-related catering."
+            }
+        }
+    ],
+    "items": [],
+    "puzzles": [
+        {
+            "id": "show-crystal-to-guards",
+            "trigger": { "verb": "use", "subject": "cave-crystal-shard", "target": "castle-guards" },
+            "conditions": [
+                { "type": "has-item", "item": "cave-crystal-shard" },
+                { "type": "flag-not-set", "flag": "crystal_shown_to_guards" }
+            ],
+            "actions": [
+                { "type": "set-flag", "flag": "crystal_shown_to_guards" },
+                { "type": "open-exit", "exit": "to-hallway" },
+                { "type": "narrator-say", "text": "You hold up the crystal shard. Both guards lean forward, their professional detachment cracking like the flagstones beneath your feet. 'That's... that's a cave crystal,' the left guard whispers. 'From the deep places.' The right guard nods slowly. 'You've been to the Screaming Caverns. That's proof enough.' They step aside, the castle entrance yawning open behind them. 'Welcome to Castle Erelhain. Try not to break anything. There's precious little left to break.'" }
+            ],
+            "once": true
+        },
+        {
+            "id": "show-crystal-talk",
+            "trigger": { "verb": "talk", "subject": "castle-guards" },
+            "conditions": [
+                { "type": "has-item", "item": "cave-crystal-shard" },
+                { "type": "flag-not-set", "flag": "crystal_shown_to_guards" }
+            ],
+            "actions": [
+                { "type": "narrator-say", "text": "The guards eye you suspiciously. 'No entry without proof of purpose,' the left one says. 'Although... what's that glowing in your pocket?' Perhaps you should show them the crystal shard." }
+            ]
+        },
+        {
+            "id": "fill-chalice-at-well",
+            "trigger": { "verb": "use", "subject": "empty-chalice", "target": "courtyard-well" },
+            "conditions": [
+                { "type": "has-item", "item": "empty-chalice" },
+                { "type": "flag-not-set", "flag": "chalice-filled" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "empty-chalice" },
+                { "type": "add-item", "item": "water-chalice" },
+                { "type": "set-flag", "flag": "chalice-filled" },
+                { "type": "narrator-say", "text": "You fill the chalice from the courtyard well. The water is clear and cold, and for a moment the chalice almost looks regal again -- a silver cup filled with honest water. Then you remember you're using it for ghost-summoning, and the moment passes." }
+            ],
+            "once": true
+        },
+        {
+            "id": "fill-chalice-use-well",
+            "trigger": { "verb": "use", "subject": "courtyard-well" },
+            "conditions": [
+                { "type": "has-item", "item": "empty-chalice" },
+                { "type": "flag-not-set", "flag": "chalice-filled" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "empty-chalice" },
+                { "type": "add-item", "item": "water-chalice" },
+                { "type": "set-flag", "flag": "chalice-filled" },
+                { "type": "narrator-say", "text": "You dip the chalice into the well water. It fills with cold, clear water that catches the light in a way that seems almost deliberate. The chalice looks almost noble again. Almost." }
+            ],
+            "once": true
+        },
+        {
+            "id": "combine-chalice-sage",
+            "trigger": { "verb": "combine", "subject": "water-chalice", "target": "dried-sage" },
+            "conditions": [
+                { "type": "has-item", "item": "water-chalice" },
+                { "type": "has-item", "item": "dried-sage" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "water-chalice" },
+                { "type": "remove-item", "item": "dried-sage" },
+                { "type": "add-item", "item": "spirit-brew" },
+                { "type": "set-flag", "flag": "spirit-brew-made" },
+                { "type": "narrator-say", "text": "You crumble the dried sage into the water-filled chalice. The herbs dissolve instantly -- too instantly for normal botany -- and the water begins to glow with a faint, ghostly luminescence. The spirit brew smells like sage, cold stone, and something that transcends the normal olfactory spectrum. It's ready for whatever ghost-summoning purposes you have in mind." }
+            ],
+            "once": true
+        },
+        {
+            "id": "combine-sage-chalice",
+            "trigger": { "verb": "combine", "subject": "dried-sage", "target": "water-chalice" },
+            "conditions": [
+                { "type": "has-item", "item": "water-chalice" },
+                { "type": "has-item", "item": "dried-sage" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "water-chalice" },
+                { "type": "remove-item", "item": "dried-sage" },
+                { "type": "add-item", "item": "spirit-brew" },
+                { "type": "set-flag", "flag": "spirit-brew-made" },
+                { "type": "narrator-say", "text": "You drop the sage into the chalice. The water immediately takes on an ethereal glow, sage dissolving into luminescent wisps. The spirit brew is ready -- a concoction that smells like an herbal shop run by ghosts. Whatever you use it on had better be worth the effort." }
+            ],
+            "once": true
+        },
+        {
+            "id": "use-sage-on-chalice",
+            "trigger": { "verb": "use", "subject": "dried-sage", "target": "water-chalice" },
+            "conditions": [
+                { "type": "has-item", "item": "water-chalice" },
+                { "type": "has-item", "item": "dried-sage" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "water-chalice" },
+                { "type": "remove-item", "item": "dried-sage" },
+                { "type": "add-item", "item": "spirit-brew" },
+                { "type": "set-flag", "flag": "spirit-brew-made" },
+                { "type": "narrator-say", "text": "You crush the sage into the chalice of water. The brew glows. Ghosts are now on the menu. Or at least, on the summoning list." }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "attack-guards",
+            "trigger": { "verb": "push", "subject": "castle-guards" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "guard-arrest" }
+            ]
+        },
+        {
+            "id": "attack-guards-use",
+            "trigger": { "verb": "use", "subject": "stick", "target": "castle-guards" },
+            "conditions": [
+                { "type": "has-item", "item": "stick" }
+            ],
+            "actions": [
+                { "type": "trigger-death", "deathId": "guard-arrest" }
+            ]
+        }
+    ],
+    "deaths": {
+        "guard-arrest": {
+            "title": "Death by Heroic Stupidity",
+            "narratorText": "You attack the castle guards. Two professionally trained soldiers in full plate armor. With your bare hands. Or possibly a stick. Either way, the outcome is immediate, thorough, and entirely predictable. The left guard doesn't even draw his sword -- he simply steps on your foot, grabs your collar, and introduces your face to the flagstones with the practiced efficiency of someone who has done this exact thing at least twice today."
+        }
+    },
+    "dynamicDescriptions": {
+        "crystal_shown_to_guards": "The castle courtyard spreads before you, guards now nodding respectfully as you pass. The entrance to the castle hallway stands open. The weeds in the flagstone cracks seem less aggressive now, though that might just be your improved standing with the local military."
+    },
+    "audio": {
+        "music": "music-village",
+        "ambient": [
+            { "key": "amb-wind-light", "volume": 0.5 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}

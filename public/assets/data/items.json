@@ -53,6 +53,72 @@
             "name": "Bridge Toll Coin",
             "description": "A coin so old the face on it has worn into a vague smudge. Still legal tender, apparently.",
             "combinable": false
+        },
+        {
+            "id": "royal-seal",
+            "name": "Royal Seal",
+            "description": "A heavy wax seal stamp bearing the royal crest: a disgruntled badger wearing a crown. Historically accurate, unfortunately.",
+            "combinable": true
+        },
+        {
+            "id": "blank-decree",
+            "name": "Blank Royal Decree",
+            "description": "A sheet of parchment so official-looking it could probably govern a small nation. Which is sort of the point.",
+            "combinable": true
+        },
+        {
+            "id": "sealed-decree",
+            "name": "Sealed Royal Decree",
+            "description": "A forged royal document bearing the royal crest. Your mother would be so disappointed.",
+            "combinable": false
+        },
+        {
+            "id": "dried-sage",
+            "name": "Dried Sage",
+            "description": "A bundle of sage so old it has more in common with dust than herbs. Still technically aromatic.",
+            "combinable": true
+        },
+        {
+            "id": "empty-chalice",
+            "name": "Empty Chalice",
+            "description": "A dented silver chalice. Once held wine for kings. Now holds your hopes, which are equally intoxicating.",
+            "combinable": true
+        },
+        {
+            "id": "water-chalice",
+            "name": "Water-Filled Chalice",
+            "description": "A chalice filled with clear well water. It looks almost regal again. Almost.",
+            "combinable": true
+        },
+        {
+            "id": "spirit-brew",
+            "name": "Spirit Brew",
+            "description": "A chalice of sage-infused water that glows faintly. It smells like a retirement home for ghosts.",
+            "combinable": false
+        },
+        {
+            "id": "rat-trap",
+            "name": "Rat Trap",
+            "description": "A rusty spring-loaded contraption that has seen better days. So have the rats, to be fair.",
+            "combinable": false
+        },
+        {
+            "id": "flour-sack",
+            "name": "Flour Sack",
+            "description": "A sack of flour that the rats didn't get to. Miracles do happen.",
+            "combinable": false
+        },
+        {
+            "id": "skeleton-key",
+            "name": "Skeleton Key",
+            "description": "A key shaped from actual bone. Whether human or animal is a question best left unasked.",
+            "combinable": false
+        },
+        {
+            "id": "castle-map",
+            "name": "Castle Map",
+            "description": "A map of the kingdom showing routes to the Screaming Caverns. Includes a helpful 'You are here' arrow pointing at nothing.",
+            "combinable": false
         }
     ]
 }

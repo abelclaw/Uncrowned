@@ -26,6 +26,21 @@
             "transition": "slide-left",
             "direction": "west",
             "label": "village"
+        },
+        {
+            "id": "to-forest-bridge",
+            "zone": { "x": 880, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "forest_bridge",
+            "spawnPoint": { "x": 100, "y": 430 },
+            "transition": "fade",
+            "direction": "east",
+            "label": "bridge",
+            "conditions": [
+                { "type": "flag-set", "flag": "door-unlocked" },
+                { "type": "flag-set", "flag": "knows_cavern_secret" },
+                { "type": "has-item", "item": "cave-crystal-shard" },
+                { "type": "flag-set", "flag": "seen_castle" }
+            ]
         }
     ],
     "hotspots": [
