@@ -1,4 +1,5 @@
 import type { PuzzleDefinition } from './PuzzleData';
+import type { RoomNpcData } from './NpcData';
 
 /**
  * Background layer definition for parallax rendering.
@@ -114,4 +115,6 @@ export interface RoomData {
     deaths?: Record<string, DeathDefinition>;
     /** Dynamic description overrides based on flags: { flagName: description } */
     dynamicDescriptions?: Record<string, string>;
+    /** NPC placement data for this room */
+    npcs?: RoomNpcData[];
 }

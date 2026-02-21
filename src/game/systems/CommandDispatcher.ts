@@ -1,6 +1,7 @@
 import type { GameAction } from '../types/GameAction';
 import type { RoomData, ExitData, HotspotData, RoomItemData } from '../types/RoomData';
 import type { ItemDefinition } from '../types/ItemData';
+import type { NpcDefinition } from '../types/NpcData';
 import { PuzzleEngine } from './PuzzleEngine';
 import { GameState } from '../state/GameState';
 import { SaveManager } from '../state/SaveManager';
@@ -31,11 +32,13 @@ export class CommandDispatcher {
     private puzzleEngine: PuzzleEngine;
     private state: GameState;
     private itemDefs: ItemDefinition[];
+    private npcDefs: NpcDefinition[];
 
-    constructor(itemDefs: ItemDefinition[] = []) {
+    constructor(itemDefs: ItemDefinition[] = [], npcDefs: NpcDefinition[] = []) {
         this.puzzleEngine = new PuzzleEngine();
         this.state = GameState.getInstance();
         this.itemDefs = itemDefs;
+        this.npcDefs = npcDefs;
     }
 
     /**
@@ -448,11 +451,18 @@ export class CommandDispatcher {
 
     /**
      * Handle "talk" commands.
-     * Subject is hotspot -> talk response or default "doesn't respond."
+     * NPC check first (triggers dialogue mode), then hotspot fallback.
      */
     private handleTalk(action: GameAction, roomData: RoomData): DispatchResult {
         if (!action.subject) {
             return { response: 'Talk to whom?', handled: false };
+        }
+
+        // Check NPCs first -- triggers dialogue mode via EventBus
+        const npcId = this.findNpc(action.subject, roomData);
+        if (npcId) {
+            EventBus.emit('start-dialogue', npcId);
+            return { response: '', handled: true };
         }
 
         const hotspot = this.findHotspot(action.subject, roomData);
@@ -466,6 +476,48 @@ export class CommandDispatcher {
             response: "There's nobody here by that name. You're talking to the air. Again.",
             handled: false,
         };
+    }
+
+    /**
+     * Find an NPC by subject in the room's npcs array.
+     * Uses triple-resolution: exact ID, name via npcDefs lookup, partial word match.
+     * Respects visibility conditions (flag-set, flag-not-set).
+     */
+    private findNpc(subject: string, roomData: RoomData): string | undefined {
+        if (!roomData.npcs) return undefined;
+        const lower = subject.toLowerCase();
+
+        for (const npc of roomData.npcs) {
+            // Check visibility conditions
+            if (npc.conditions && npc.conditions.length > 0) {
+                const visible = npc.conditions.every(cond => {
+                    if (cond.type === 'flag-set' && cond.flag) {
+                        return this.state.isFlagSet(cond.flag);
+                    }
+                    if (cond.type === 'flag-not-set' && cond.flag) {
+                        return !this.state.isFlagSet(cond.flag);
+                    }
+                    return true;
+                });
+                if (!visible) continue;
+            }
+
+            // Exact ID match
+            if (npc.id === lower || npc.id === subject) return npc.id;
+
+            // Name match via npcDefs lookup
+            const def = this.npcDefs.find(d => d.id === npc.id);
+            if (def && def.name.toLowerCase() === lower) return npc.id;
+
+            // Partial word match against npcDef name
+            if (def) {
+                const words = lower.split(/\s+/);
+                const nameWords = def.name.toLowerCase().split(/\s+/);
+                if (words.some(w => nameWords.includes(w))) return npc.id;
+            }
+        }
+
+        return undefined;
     }
 
     /**

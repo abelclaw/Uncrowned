@@ -7,9 +7,12 @@ import { HybridParser } from '../llm/HybridParser';
 import { TextInputBar } from '../ui/TextInputBar';
 import { NarratorDisplay } from '../ui/NarratorDisplay';
 import { InventoryPanel } from '../ui/InventoryPanel';
+import { DialogueManager } from '../dialogue/DialogueManager';
+import { DialogueUI } from '../dialogue/DialogueUI';
 import { GameState } from '../state/GameState';
 import type { RoomData, ExitData, HotspotData } from '../types/RoomData';
 import type { ItemDefinition } from '../types/ItemData';
+import type { NpcDefinition } from '../types/NpcData';
 import EventBus from '../EventBus';
 
 /** Set to true during development to draw debug rectangles for exits and hotspots. */
@@ -39,6 +42,14 @@ export class RoomScene extends Phaser.Scene {
     private inventoryPanel!: InventoryPanel;
     private itemDefs: ItemDefinition[] = [];
     private isFirstVisit: boolean = false;
+
+    // Phase 6 dialogue integration
+    private dialogueManager!: DialogueManager;
+    private dialogueUI!: DialogueUI;
+    private inDialogue: boolean = false;
+    private activeNpcId: string | null = null;
+    private npcDefs: NpcDefinition[] = [];
+    private startDialogueHandler!: (npcId: string) => void;
 
     // Text parser integration
     private textInputBar!: TextInputBar;
@@ -70,6 +81,10 @@ export class RoomScene extends Phaser.Scene {
         const itemsData = this.cache.json.get('items');
         this.itemDefs = itemsData?.items ?? [];
 
+        // Load NPC definitions from cache
+        const npcsData = this.cache.json.get('npcs');
+        this.npcDefs = npcsData?.npcs ?? [];
+
         // Track first visit BEFORE marking as visited
         this.isFirstVisit = !this.gameState.getData().visitedRooms.includes(data.roomId);
 
@@ -90,6 +105,8 @@ export class RoomScene extends Phaser.Scene {
         this.isTransitioning = false;
         this.exitZones = [];
         this.hotspotZones = [];
+        this.inDialogue = false;
+        this.activeNpcId = null;
     }
 
     create(): void {
@@ -181,6 +198,54 @@ export class RoomScene extends Phaser.Scene {
             }
         }
 
+        // 5c. NPC zones (render NPCs as clickable zones reusing hotspot pipeline)
+        if (this.roomData.npcs) {
+            for (const npc of this.roomData.npcs) {
+                // Check visibility conditions
+                if (npc.conditions && npc.conditions.length > 0) {
+                    const visible = npc.conditions.every(cond => {
+                        if (cond.type === 'flag-set' && cond.flag) {
+                            return this.gameState.isFlagSet(cond.flag);
+                        }
+                        if (cond.type === 'flag-not-set' && cond.flag) {
+                            return !this.gameState.isFlagSet(cond.flag);
+                        }
+                        return true;
+                    });
+                    if (!visible) continue;
+                }
+
+                const npcDef = this.npcDefs.find(d => d.id === npc.id);
+                const npcName = npcDef?.name ?? npc.id;
+
+                const rect = new Phaser.Geom.Rectangle(
+                    npc.zone.x, npc.zone.y, npc.zone.width, npc.zone.height
+                );
+                // Create synthetic hotspot so NPCs are clickable like hotspots
+                this.hotspotZones.push({
+                    rect,
+                    hotspot: {
+                        id: npc.id,
+                        name: npcName,
+                        zone: npc.zone,
+                        interactionPoint: npc.interactionPoint,
+                        responses: {
+                            talk: npcDef?.defaultGreeting ?? `The ${npcName} doesn't seem interested in conversation.`,
+                        },
+                    },
+                });
+
+                if (DEBUG) {
+                    const gfx = this.add.graphics();
+                    gfx.fillStyle(0x44ffff, 0.15);
+                    gfx.fillRect(npc.zone.x, npc.zone.y, npc.zone.width, npc.zone.height);
+                    gfx.lineStyle(1, 0x44ffff, 0.4);
+                    gfx.strokeRect(npc.zone.x, npc.zone.y, npc.zone.width, npc.zone.height);
+                    gfx.setDepth(100);
+                }
+            }
+        }
+
         // 6. Camera setup
         this.cameras.main.setBounds(0, 0, this.roomData.background.worldWidth, 540);
         this.cameras.main.setRoundPixels(true);
@@ -235,7 +300,7 @@ export class RoomScene extends Phaser.Scene {
 
         // 8. Text parser integration
         this.textParser = new HybridParser();
-        this.commandDispatcher = new CommandDispatcher(this.itemDefs);
+        this.commandDispatcher = new CommandDispatcher(this.itemDefs, this.npcDefs);
 
         // Create TextInputBar (Option A: destroy and recreate each scene create)
         const container = document.getElementById('game-container')!;
@@ -248,8 +313,37 @@ export class RoomScene extends Phaser.Scene {
         // Create InventoryPanel
         this.inventoryPanel = new InventoryPanel(container);
 
+        // Initialize DialogueManager and DialogueUI
+        this.dialogueManager = new DialogueManager(this.gameState);
+        this.dialogueUI = new DialogueUI(this.narratorDisplay);
+
+        // Restore dialogue states from GameState (for save/load persistence)
+        const savedDialogueStates = this.gameState.getDialogueStates();
+        if (Object.keys(savedDialogueStates).length > 0) {
+            this.dialogueManager.loadDialogueStates(savedDialogueStates);
+        }
+
         // Listen for command-submitted events from the input bar
         this.commandSubmittedHandler = async (text: string) => {
+            // Dialogue mode: route input to choice selection
+            if (this.inDialogue && this.dialogueManager.isActive()) {
+                const trimmed = text.trim();
+                const choiceNum = parseInt(trimmed, 10);
+
+                if (isNaN(choiceNum) || choiceNum < 1) {
+                    this.narratorDisplay.showInstant('Pick a number to choose a response.');
+                    return;
+                }
+
+                try {
+                    this.dialogueManager.choose(choiceNum - 1); // 0-indexed
+                    this.advanceDialogue();
+                } catch {
+                    this.narratorDisplay.showInstant('That\'s not a valid choice. Pick a number.');
+                }
+                return; // Don't fall through to normal command parsing
+            }
+
             if (this.isTransitioning) return;
 
             // Show thinking indicator while waiting for parse (may involve LLM)
@@ -276,6 +370,11 @@ export class RoomScene extends Phaser.Scene {
                     parseResult.error ?? `I don't understand "${text}". Try commands like 'look', 'take', 'go', or 'use'.`
                 );
                 return;
+            }
+
+            // Sync dialogue states to GameState before dispatch (save commands need current state)
+            if (this.dialogueManager) {
+                this.gameState.setDialogueStates(this.dialogueManager.getDialogueStates());
             }
 
             const result = this.commandDispatcher.dispatch(parseResult.action, this.roomData);
@@ -349,6 +448,32 @@ export class RoomScene extends Phaser.Scene {
         };
         EventBus.on('item-picked-up', this.itemPickedUpHandler);
 
+        // 8c. Start-dialogue event handler (from CommandDispatcher NPC detection)
+        this.startDialogueHandler = (npcId: string) => {
+            if (this.isTransitioning || this.inDialogue) return;
+
+            // Find dialogue JSON from cache
+            const npcDef = this.npcDefs.find(n => n.id === npcId);
+            if (!npcDef) return;
+
+            const dialogueJson = this.cache.json.get(npcDef.dialogueKey);
+            if (!dialogueJson) {
+                // No dialogue file -- show default greeting
+                this.narratorDisplay.typewrite(npcDef.defaultGreeting);
+                return;
+            }
+
+            // Start conversation
+            // Story constructor needs a JSON string. Phaser cache auto-parses JSON, so re-stringify.
+            this.dialogueManager.startConversation(npcId, JSON.stringify(dialogueJson));
+            this.inDialogue = true;
+            this.activeNpcId = npcId;
+
+            // Show first dialogue content
+            this.advanceDialogue();
+        };
+        EventBus.on('start-dialogue', this.startDialogueHandler);
+
         // 9. Transition-in effect
         if (this.transitionFrom === 'slide-left' || this.transitionFrom === 'slide-right') {
             // Slide-in from the opposite direction
@@ -401,6 +526,13 @@ export class RoomScene extends Phaser.Scene {
             EventBus.off('load-game', this.loadGameHandler);
             EventBus.off('room-update', this.roomUpdateHandler);
             EventBus.off('item-picked-up', this.itemPickedUpHandler);
+
+            // Phase 6 dialogue cleanup
+            if (this.dialogueManager?.isActive()) {
+                this.dialogueManager.endConversation();
+                this.gameState.setDialogueStates(this.dialogueManager.getDialogueStates());
+            }
+            EventBus.off('start-dialogue', this.startDialogueHandler);
         });
     }
 
@@ -439,6 +571,7 @@ export class RoomScene extends Phaser.Scene {
     /**
      * Show initial room description with typewriter on first visit,
      * or a short "you return to..." on revisit.
+     * Also runs narrator_history ink for dynamic commentary based on past player actions.
      */
     private showEntryNarration(): void {
         if (this.isFirstVisit) {
@@ -446,6 +579,61 @@ export class RoomScene extends Phaser.Scene {
                 this.roomData.description ?? `You look around ${this.roomData.name}.`
             );
         }
+
+        // Run narrator_history ink for dynamic commentary based on past player actions
+        const narratorHistoryJson = this.cache.json.get('dialogue-narrator_history');
+        if (narratorHistoryJson) {
+            // Use a temporary DialogueManager conversation (non-NPC) to run the narrator script
+            this.dialogueManager.startConversation('narrator_history', JSON.stringify(narratorHistoryJson));
+            const narratorResult = this.dialogueManager.continueAll();
+            this.dialogueManager.endConversation();
+
+            // Filter out empty lines and append commentary after room description
+            const commentaryLines = narratorResult.lines.filter(l => l.trim().length > 0);
+            if (commentaryLines.length > 0) {
+                // Append narrator commentary after a short delay so room description shows first
+                this.time.delayedCall(1500, () => {
+                    if (!this.inDialogue) {
+                        this.narratorDisplay.typewrite(commentaryLines.join(' '));
+                    }
+                });
+            }
+        }
+    }
+
+    /** Get the ID of the NPC currently in dialogue, or null. */
+    getActiveNpcId(): string | null {
+        return this.activeNpcId;
+    }
+
+    /**
+     * Advance the active dialogue, displaying lines and choices or ending the conversation.
+     */
+    private advanceDialogue(): void {
+        if (!this.dialogueManager.isActive()) return;
+
+        const result = this.dialogueManager.continueAll();
+        const tags = this.dialogueUI.parseTags(result.tags);
+        const speakerName = tags.speaker ?? 'Narrator';
+
+        if (result.ended) {
+            // Conversation over
+            this.dialogueManager.endConversation();
+            // Save dialogue states to GameState for persistence
+            this.gameState.setDialogueStates(this.dialogueManager.getDialogueStates());
+            this.inDialogue = false;
+            this.activeNpcId = null;
+
+            if (result.lines.length > 0) {
+                this.dialogueUI.showDialogueWithChoices(speakerName, result.lines, []);
+            } else {
+                this.narratorDisplay.showInstant('The conversation ends.');
+            }
+            return;
+        }
+
+        // Show dialogue lines and choices
+        this.dialogueUI.showDialogueWithChoices(speakerName, result.lines, result.choices);
     }
 
     /**
