@@ -5,17 +5,17 @@
 See: .planning/PROJECT.md (updated 2026-02-21)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** v2.0 Art & Polish -- Phase 11: Progressive Hints (Complete)
+**Current focus:** v2.0 Art & Polish -- Phase 12: Multiple Endings (In Progress)
 
 ## Current Position
 
 Milestone: v2.0 Art & Polish
-Phase: 11 of 13 (Progressive Hints)
-Plan: 2 of 2 in current phase (COMPLETE)
-Status: Phase Complete
-Last activity: 2026-02-21 -- Completed 11-02: Puzzle hint content for all 24 rooms (41 hint chains, 123 texts)
+Phase: 12 of 13 (Multiple Endings)
+Plan: 1 of 3 in current phase
+Status: In Progress
+Last activity: 2026-02-21 -- Completed 12-01: Ending determination engine and content data
 
-Progress: [██████░░░░] ~50% (v2.0)
+Progress: [██████░░░░] ~55% (v2.0)
 
 ## Performance Metrics
 
@@ -34,6 +34,7 @@ Progress: [██████░░░░] ~50% (v2.0)
 | 10 | 02 | 3min | 2 | 4 |
 | 11 | 01 | 5min | 3 | 13 |
 | 11 | 02 | 35min | 2 | 24 |
+| 12 | 01 | 2min | 2 | 4 |
 
 ## Accumulated Context
 
@@ -68,6 +69,9 @@ Recent decisions affecting current work:
 - 11-02: Canonical/first puzzle ID used for dedup of alternate syntaxes
 - 11-02: Guardian riddle hints: tier 1-2 hint at sources, only tier 3 reveals answers
 - 11-02: Hint voice: Tier 1=coy, Tier 2=exasperated/naming objects, Tier 3=bluntly explicit
+- 12-01: determineEnding() checks clerk_remembers first (priority over clerk_outwitted if both set)
+- 12-01: evaluate-ending action is parameterless -- ending derived internally from GameState flags
+- 12-01: Epilogue text copied verbatim from research to preserve narrator's sardonic voice
 
 ### Pending Todos
 
@@ -82,5 +86,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 11-02-PLAN.md (Phase 11 complete)
+Stopped at: Completed 12-01-PLAN.md
 Resume file: None

@@ -51,8 +51,8 @@ Requirements for the Art & Polish milestone. Each maps to roadmap phases.
 
 ### Multiple Endings
 
-- [ ] **ENDS-01**: Game has 3-4 distinct endings determined by accumulated player choices and puzzle completion
-- [ ] **ENDS-02**: Ending conditions evaluated via existing PuzzleEngine flag/condition system at Act 3 climax
+- [x] **ENDS-01**: Game has 3-4 distinct endings determined by accumulated player choices and puzzle completion
+- [x] **ENDS-02**: Ending conditions evaluated via existing PuzzleEngine flag/condition system at Act 3 climax
 - [ ] **ENDS-03**: EndingScene displays ending-specific narrator text, epilogue, and credits
 - [ ] **ENDS-04**: Discovered endings tracked in MetaGameState for replay awareness
 - [ ] **ENDS-05**: Key decision points throughout game have ending-influence flags authored in room/puzzle JSONs
@@ -125,8 +125,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | MOBI-04 | Phase 13 | Pending |
 | MOBI-05 | Phase 13 | Pending |
 | MOBI-06 | Phase 13 | Pending |
-| ENDS-01 | Phase 12 | Pending |
-| ENDS-02 | Phase 12 | Pending |
+| ENDS-01 | Phase 12 | Complete |
+| ENDS-02 | Phase 12 | Complete |
 | ENDS-03 | Phase 12 | Pending |
 | ENDS-04 | Phase 12 | Pending |
 | ENDS-05 | Phase 12 | Pending |

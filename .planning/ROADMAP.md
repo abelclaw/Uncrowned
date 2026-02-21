@@ -116,7 +116,7 @@ Phases execute in numeric order: 9 -> 9.x -> 10 -> 10.x -> 11 -> 12 -> 13
 | 9. Art Pipeline & Schema Foundation | v2.0 | Complete    | 2026-02-21 | - |
 | 10. Death Gallery | 2/2 | Complete    | 2026-02-21 | - |
 | 11. Progressive Hints | 2/2 | Complete    | 2026-02-21 | - |
-| 12. Multiple Endings | v2.0 | 0/3 | Not started | - |
+| 12. Multiple Endings | 1/3 | In Progress|  | - |
 | 13. Mobile Responsive | v2.0 | 0/2 | Not started | - |
 
 ---
