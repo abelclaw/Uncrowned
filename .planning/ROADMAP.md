@@ -67,11 +67,11 @@ Plans:
   3. Hints are delivered in the narrator's sardonic voice without breaking immersion
   4. Every puzzle across all 36 rooms has a complete 3-tier hint chain authored
   5. Player who has failed multiple attempts at a puzzle receives more specific hints automatically
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 11-01: TBD
-- [ ] 11-02: TBD
+- [ ] 11-01-PLAN.md -- HintSystem class, GameState v3 schema + migration, hint verb + CommandDispatcher integration, unit tests
+- [ ] 11-02-PLAN.md -- Author 3-tier hint chains for all ~44 hintable puzzles across 36 room JSONs
 
 ### Phase 12: Multiple Endings
 **Goal**: The game has 3-4 distinct endings that reflect accumulated player choices, giving meaningful replayability
