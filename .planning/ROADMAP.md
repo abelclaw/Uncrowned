@@ -47,11 +47,11 @@ Plans:
   2. Clicking a scene exit transitions the player to the connected room with a fade or slide animation
   3. Multiple placeholder scenes are navigable in sequence (player can walk between rooms and back)
   4. Player character displays interaction poses (not just walking) when near interactable hotspots
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
+- [ ] 02-01-PLAN.md -- Player entity with animations, NavigationSystem with navmesh pathfinding, room data types, placeholder assets
+- [ ] 02-02-PLAN.md -- RoomScene with click-to-move pipeline, SceneTransition with fade effects, multi-room navigation
 
 ### Phase 3: Text Parser (Deterministic)
 **Goal**: Player types text commands and the game reliably understands standard adventure game verbs without any LLM dependency
@@ -156,7 +156,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation and Rendering | 2/2 | Complete    | 2026-02-21 |
-| 2. Scene System and Player Movement | 0/2 | Not started | - |
+| 2. Scene System and Player Movement | 0/2 | Planned | - |
 | 3. Text Parser (Deterministic) | 0/1 | Not started | - |
 | 4. Core Gameplay Systems | 0/4 | Not started | - |
 | 5. LLM Integration | 0/2 | Not started | - |
