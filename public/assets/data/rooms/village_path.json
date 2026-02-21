@@ -84,5 +84,12 @@
             "zone": { "x": 680, "y": 370, "width": 40, "height": 80 }
         }
     ],
+    "audio": {
+        "music": "music-village",
+        "ambient": [
+            { "key": "amb-forest-birds", "volume": 0.5 },
+            { "key": "amb-wind-light", "volume": 0.2 }
+        ]
+    },
     "playerSpawn": { "x": 480, "y": 430 }
 }

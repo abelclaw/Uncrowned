@@ -73,6 +73,27 @@ export class Preloader extends Scene {
         // NPC dialogue compiled ink JSON files
         this.load.json('dialogue-old_man', 'assets/data/dialogue/old_man.ink.json');
         this.load.json('dialogue-narrator_history', 'assets/data/dialogue/narrator_history.ink.json');
+
+        // Audio registry (event-to-SFX mapping)
+        this.load.json('audio-registry', 'assets/data/audio-registry.json');
+
+        // Sound effects
+        this.load.audio('sfx-item-pickup', 'assets/audio/sfx/item-pickup.wav');
+        this.load.audio('sfx-door-transition', 'assets/audio/sfx/door-transition.wav');
+        this.load.audio('sfx-death-sting', 'assets/audio/sfx/death-sting.wav');
+        this.load.audio('sfx-dialogue-start', 'assets/audio/sfx/dialogue-start.wav');
+        this.load.audio('sfx-command-blip', 'assets/audio/sfx/command-blip.wav');
+
+        // Background music
+        this.load.audio('music-forest', 'assets/audio/music/forest.wav');
+        this.load.audio('music-cave', 'assets/audio/music/cave.wav');
+        this.load.audio('music-village', 'assets/audio/music/village.wav');
+        this.load.audio('music-menu', 'assets/audio/music/menu.wav');
+
+        // Ambient loops
+        this.load.audio('amb-forest-birds', 'assets/audio/ambient/forest-birds.wav');
+        this.load.audio('amb-cave-drips', 'assets/audio/ambient/cave-drips.wav');
+        this.load.audio('amb-wind-light', 'assets/audio/ambient/wind-light.wav');
     }
 
     create() {

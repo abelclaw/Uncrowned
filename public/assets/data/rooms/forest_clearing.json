@@ -124,5 +124,12 @@
     "dynamicDescriptions": {
         "rusty-key-taken": "You stand in a sun-dappled forest clearing. The old stump's crack is now empty -- you already pocketed whatever was glinting in there."
     },
+    "audio": {
+        "music": "music-forest",
+        "ambient": [
+            { "key": "amb-forest-birds", "volume": 0.8 },
+            { "key": "amb-wind-light", "volume": 0.3 }
+        ]
+    },
     "playerSpawn": { "x": 200, "y": 430 }
 }

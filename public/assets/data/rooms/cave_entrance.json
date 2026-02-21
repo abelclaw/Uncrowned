@@ -185,5 +185,11 @@
     "dynamicDescriptions": {
         "door-unlocked": "A yawning cave mouth gapes before you. The heavy oak door now hangs open, revealing deeper passages beyond. The cold air carries a faint whisper of adventure -- or possibly just a draft."
     },
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            { "key": "amb-cave-drips", "volume": 0.7 }
+        ]
+    },
     "playerSpawn": { "x": 480, "y": 430 }
 }
