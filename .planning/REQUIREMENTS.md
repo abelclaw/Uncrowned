@@ -1,0 +1,141 @@
+# Requirements: KQGame v2.0 Art & Polish
+
+**Defined:** 2026-02-21
+**Core Value:** The text parser must feel magical -- players type natural language commands and the game understands them.
+
+## v2.0 Requirements
+
+Requirements for the Art & Polish milestone. Each maps to roadmap phases.
+
+### Infrastructure
+
+- [ ] **INFRA-01**: GameState save schema includes version field and migration support for v1->v2 saves
+- [ ] **INFRA-02**: MetaGameState persists cross-playthrough data (death gallery, ending discoveries) in separate localStorage key that survives new-game resets
+- [ ] **INFRA-03**: Save data export to JSON file and import from JSON file works correctly
+
+### Art Pipeline
+
+- [ ] **ART-01**: Build script generates room backgrounds via ComfyUI + Flux with consistent pixel art style
+- [ ] **ART-02**: All 36 room backgrounds replaced with Flux-generated pixel art at 960x540
+- [ ] **ART-03**: Parallax background layers generated per room with consistent style across acts
+- [ ] **ART-04**: Player character sprite replaced with pixel art sprite (idle, walk, interact animations)
+- [ ] **ART-05**: Item sprites replaced with pixel art sprites on transparent/white backgrounds
+- [ ] **ART-06**: NPC sprites replaced with pixel art sprites positioned correctly in rooms
+- [ ] **ART-07**: Art style guide document defines palette, pixel density, and prompt templates for consistency
+
+### Progressive Hints
+
+- [ ] **HINT-01**: Player can type "hint" command to receive context-appropriate puzzle hint
+- [ ] **HINT-02**: Hints are tiered (3 levels: vague -> medium -> explicit) per puzzle
+- [ ] **HINT-03**: Hint system tracks failed attempts and escalates hint specificity automatically
+- [ ] **HINT-04**: Narrator delivers hints in character (sardonic tone, not breaking immersion)
+- [ ] **HINT-05**: All puzzles across 36 rooms have authored hint chains
+
+### Death Gallery
+
+- [ ] **GALR-01**: Each unique death discovered is recorded in MetaGameState permanently
+- [ ] **GALR-02**: Death Gallery scene displays grid of all 43 possible deaths (discovered vs locked)
+- [ ] **GALR-03**: Death Gallery accessible from main menu and death scene
+- [ ] **GALR-04**: Each discovered death entry shows title, narrator text, room name, and category
+- [ ] **GALR-05**: Locked deaths show cryptic hint about how to discover them
+- [ ] **GALR-06**: Death scene shows "X/43 deaths discovered" counter and "New!" badge for first discoveries
+
+### Mobile Responsive
+
+- [ ] **MOBI-01**: Game canvas scales correctly on mobile viewports (portrait and landscape)
+- [ ] **MOBI-02**: Quick verb buttons (Look, Take, Use, Go, Talk, Inventory) appear on mobile for tap-based interaction
+- [ ] **MOBI-03**: Text input triggers native mobile keyboard and game layout adjusts without canvas squishing
+- [ ] **MOBI-04**: Touch-to-move works for player navigation (tap location = walk target)
+- [ ] **MOBI-05**: Input font size is 16px+ on mobile to prevent iOS auto-zoom
+- [ ] **MOBI-06**: Viewport meta tag includes maximum-scale=1.0, user-scalable=no, viewport-fit=cover
+
+### Multiple Endings
+
+- [ ] **ENDS-01**: Game has 3-4 distinct endings determined by accumulated player choices and puzzle completion
+- [ ] **ENDS-02**: Ending conditions evaluated via existing PuzzleEngine flag/condition system at Act 3 climax
+- [ ] **ENDS-03**: EndingScene displays ending-specific narrator text, epilogue, and credits
+- [ ] **ENDS-04**: Discovered endings tracked in MetaGameState for replay awareness
+- [ ] **ENDS-05**: Key decision points throughout game have ending-influence flags authored in room/puzzle JSONs
+
+## Future Requirements
+
+Deferred beyond v2.0. Tracked but not in current roadmap.
+
+### Enhanced Art
+
+- **EART-01**: Custom-trained LoRA on curated pixel art dataset for tighter style consistency
+- **EART-02**: NPC portrait art for dialogue scenes
+- **EART-03**: Death scene unique illustrations per death type
+
+### Accessibility
+
+- **ACCS-01**: Screen reader support for narrator text and commands
+- **ACCS-02**: High contrast mode for UI elements
+- **ACCS-03**: Configurable text size for narrator display
+
+### Social
+
+- **SOCL-01**: Share death gallery completion stats
+- **SOCL-02**: Shareable ending cards for social media
+
+## Out of Scope
+
+Explicitly excluded. Documented to prevent scope creep.
+
+| Feature | Reason |
+|---------|--------|
+| PWA / offline support | Not needed until deployment strategy is defined |
+| Capacitor/Cordova native wrapper | Browser-based is the right approach; no app store distribution |
+| Real-time AI art generation | Requires GPU server at runtime; art is build-time only |
+| CRT/scanline shader effects | Fights the pixel art aesthetic; pixelArt:true is correct |
+| Additional game content (new rooms/acts) | v2 focuses on polish, not content expansion |
+| Cloud save sync | Self-contained local game; export/import covers backup needs |
+| Leaderboard / speedrun timer | Doesn't fit the adventure game genre; exploration > speed |
+
+## Traceability
+
+Which phases cover which requirements. Updated during roadmap creation.
+
+| Requirement | Phase | Status |
+|-------------|-------|--------|
+| INFRA-01 | — | Pending |
+| INFRA-02 | — | Pending |
+| INFRA-03 | — | Pending |
+| ART-01 | — | Pending |
+| ART-02 | — | Pending |
+| ART-03 | — | Pending |
+| ART-04 | — | Pending |
+| ART-05 | — | Pending |
+| ART-06 | — | Pending |
+| ART-07 | — | Pending |
+| HINT-01 | — | Pending |
+| HINT-02 | — | Pending |
+| HINT-03 | — | Pending |
+| HINT-04 | — | Pending |
+| HINT-05 | — | Pending |
+| GALR-01 | — | Pending |
+| GALR-02 | — | Pending |
+| GALR-03 | — | Pending |
+| GALR-04 | — | Pending |
+| GALR-05 | — | Pending |
+| GALR-06 | — | Pending |
+| MOBI-01 | — | Pending |
+| MOBI-02 | — | Pending |
+| MOBI-03 | — | Pending |
+| MOBI-04 | — | Pending |
+| MOBI-05 | — | Pending |
+| MOBI-06 | — | Pending |
+| ENDS-01 | — | Pending |
+| ENDS-02 | — | Pending |
+| ENDS-03 | — | Pending |
+| ENDS-04 | — | Pending |
+| ENDS-05 | — | Pending |
+
+**Coverage:**
+- v2.0 requirements: 32 total
+- Mapped to phases: 0
+- Unmapped: 32 (awaiting roadmap)
+
+---
+*Requirements defined: 2026-02-21*
+*Last updated: 2026-02-21 after research completion*
