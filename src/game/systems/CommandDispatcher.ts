@@ -1,5 +1,9 @@
 import type { GameAction } from '../types/GameAction';
-import type { RoomData, ExitData, HotspotData } from '../types/RoomData';
+import type { RoomData, ExitData, HotspotData, RoomItemData } from '../types/RoomData';
+import type { ItemDefinition } from '../types/ItemData';
+import { PuzzleEngine } from './PuzzleEngine';
+import { GameState } from '../state/GameState';
+import { SaveManager } from '../state/SaveManager';
 import EventBus from '../EventBus';
 
 /**
@@ -13,18 +17,71 @@ export interface DispatchResult {
 }
 
 /**
- * Routes GameActions to game responses using room data.
- * Each verb has a handler that checks hotspots, exits, and room state
- * to produce in-character responses.
+ * Routes GameActions to game responses using room data and game state.
+ *
+ * Evaluation order (CRITICAL for correctness):
+ * 1. Meta-commands (inventory, save, load, combine) -- no room interaction
+ * 2. Puzzles (solutions) -- checked first so solutions always succeed
+ * 3. Death triggers -- only if no puzzle matched, prevents dying with correct solution
+ * 4. Standard verb handlers -- static hotspot/exit responses
  *
  * The narrator voice is sardonic dark comedy (Stanley Parable / Sierra death screens).
  */
 export class CommandDispatcher {
+    private puzzleEngine: PuzzleEngine;
+    private state: GameState;
+    private itemDefs: ItemDefinition[];
+
+    constructor(itemDefs: ItemDefinition[] = []) {
+        this.puzzleEngine = new PuzzleEngine();
+        this.state = GameState.getInstance();
+        this.itemDefs = itemDefs;
+    }
+
     /**
      * Dispatch a parsed GameAction against the current room data.
      * Returns a response string and whether the command was handled.
      */
     dispatch(action: GameAction, roomData: RoomData): DispatchResult {
+        // 1. Meta-commands first (no room interaction needed)
+        switch (action.verb) {
+            case 'inventory':
+                return this.handleInventory();
+            case 'save':
+                return this.handleSave(action);
+            case 'load':
+                return this.handleLoad(action);
+            case 'combine':
+                return this.handleCombine(action, roomData);
+        }
+
+        // 2. Check puzzles (solutions checked first so correct actions always succeed)
+        if (roomData.puzzles && roomData.puzzles.length > 0) {
+            const puzzleResult = this.puzzleEngine.tryPuzzle(
+                action.verb,
+                action.subject,
+                action.target,
+                roomData.puzzles,
+            );
+            if (puzzleResult?.matched) {
+                return { response: puzzleResult.response, handled: true };
+            }
+        }
+
+        // 3. Check death triggers (only if no puzzle matched)
+        if (roomData.deathTriggers && roomData.deathTriggers.length > 0) {
+            const deathResult = this.puzzleEngine.tryPuzzle(
+                action.verb,
+                action.subject,
+                action.target,
+                roomData.deathTriggers,
+            );
+            if (deathResult?.matched) {
+                return { response: deathResult.response, handled: true };
+            }
+        }
+
+        // 4. Standard verb handlers (static responses)
         switch (action.verb) {
             case 'look':
                 return this.handleLook(action, roomData);
@@ -50,14 +107,178 @@ export class CommandDispatcher {
         }
     }
 
+    // --- Meta-command handlers ---
+
+    /**
+     * Handle "inventory" command.
+     * Lists all items in inventory. Emits inventory-toggle event for UI panel.
+     */
+    private handleInventory(): DispatchResult {
+        EventBus.emit('inventory-toggle');
+
+        const inventory = this.state.getData().inventory;
+        if (inventory.length === 0) {
+            return {
+                response: 'Your pockets are empty. How tragic.',
+                handled: true,
+            };
+        }
+
+        const itemNames = inventory.map(id => {
+            const def = this.findItemDef(id);
+            return def ? def.name : id;
+        });
+
+        return {
+            response: `You are carrying: ${itemNames.join(', ')}.`,
+            handled: true,
+        };
+    }
+
+    /**
+     * Handle "save" command.
+     * Saves game state to a numbered slot (1-5).
+     */
+    private handleSave(action: GameAction): DispatchResult {
+        const slot = action.subject ? parseInt(action.subject, 10) : NaN;
+        if (isNaN(slot) || slot < 1 || slot > 5) {
+            return {
+                response: 'Save to which slot? (1-5)',
+                handled: false,
+            };
+        }
+
+        SaveManager.saveToSlot(this.state, slot);
+        return {
+            response: `Game saved to slot ${slot}.`,
+            handled: true,
+        };
+    }
+
+    /**
+     * Handle "load" command.
+     * Loads game state from a numbered slot. Emits load-game event for scene transition.
+     */
+    private handleLoad(action: GameAction): DispatchResult {
+        const slot = action.subject ? parseInt(action.subject, 10) : NaN;
+        if (isNaN(slot) || slot < 1 || slot > 5) {
+            // List available slots
+            const slots = SaveManager.getSlotInfos();
+            const lines = slots.map((info, i) => {
+                if (info) {
+                    const date = new Date(info.timestamp).toLocaleString();
+                    return `  Slot ${i + 1}: ${info.roomId} (${date})`;
+                }
+                return `  Slot ${i + 1}: [empty]`;
+            });
+            return {
+                response: `Load from which slot? (1-5)\n${lines.join('\n')}`,
+                handled: false,
+            };
+        }
+
+        const loaded = SaveManager.loadFromSlot(this.state, slot);
+        if (loaded) {
+            const roomId = this.state.getData().currentRoom;
+            EventBus.emit('load-game', roomId);
+            return {
+                response: 'Game loaded.',
+                handled: true,
+            };
+        }
+
+        return {
+            response: `No save in slot ${slot}.`,
+            handled: false,
+        };
+    }
+
+    /**
+     * Handle "combine" command.
+     * Checks both items are in inventory, then looks for a matching combination puzzle.
+     */
+    private handleCombine(action: GameAction, roomData: RoomData): DispatchResult {
+        if (!action.subject) {
+            return { response: 'Combine what?', handled: false };
+        }
+        if (!action.target) {
+            return { response: 'Combine it with what?', handled: false };
+        }
+
+        // Both items must be in inventory
+        const hasSubject = this.state.hasItem(action.subject);
+        const hasTarget = this.state.hasItem(action.target);
+
+        if (!hasSubject && !hasTarget) {
+            return {
+                response: "You don't have either of those.",
+                handled: false,
+            };
+        }
+        if (!hasSubject) {
+            const name = this.findItemDef(action.subject)?.name ?? action.subject;
+            return {
+                response: `You don't have ${name}.`,
+                handled: false,
+            };
+        }
+        if (!hasTarget) {
+            const name = this.findItemDef(action.target)?.name ?? action.target;
+            return {
+                response: `You don't have ${name}.`,
+                handled: false,
+            };
+        }
+
+        // Check room puzzles for a combine match
+        if (roomData.puzzles && roomData.puzzles.length > 0) {
+            const result = this.puzzleEngine.tryPuzzle(
+                'combine',
+                action.subject,
+                action.target,
+                roomData.puzzles,
+            );
+            if (result?.matched) {
+                return { response: result.response, handled: true };
+            }
+
+            // Try reversed order
+            const reversed = this.puzzleEngine.tryPuzzle(
+                'combine',
+                action.target,
+                action.subject,
+                roomData.puzzles,
+            );
+            if (reversed?.matched) {
+                return { response: reversed.response, handled: true };
+            }
+        }
+
+        return {
+            response: "Those don't go together.",
+            handled: true,
+        };
+    }
+
+    // --- Enhanced verb handlers ---
+
     /**
      * Handle "look" commands.
-     * No subject -> room description. Subject is hotspot -> hotspot look response.
-     * Subject is exit -> path description. Otherwise -> "don't see that."
+     * No subject -> check dynamic descriptions, then room description.
+     * Subject -> check hotspots, room items, inventory items, then exits.
      */
     private handleLook(action: GameAction, roomData: RoomData): DispatchResult {
-        // Bare "look" -> room description
+        // Bare "look" -> check dynamic descriptions based on game flags
         if (!action.subject) {
+            // Check dynamic descriptions
+            if (roomData.dynamicDescriptions) {
+                for (const [flagName, description] of Object.entries(roomData.dynamicDescriptions)) {
+                    if (this.state.isFlagSet(flagName)) {
+                        return { response: description, handled: true };
+                    }
+                }
+            }
+
             return {
                 response: roomData.description ?? `You look around ${roomData.name}. It's a place. You're in it.`,
                 handled: true,
@@ -70,6 +291,20 @@ export class CommandDispatcher {
             const response = hotspot.responses?.look
                 ?? `Nothing special about the ${hotspot.name}.`;
             return { response, handled: true };
+        }
+
+        // Check room items (items placed in the room)
+        const roomItem = this.findRoomItem(action.subject, roomData);
+        if (roomItem && !this.state.isRoomItemRemoved(roomData.id, roomItem.id)) {
+            const response = roomItem.responses?.look
+                ?? `You see ${roomItem.name}.`;
+            return { response, handled: true };
+        }
+
+        // Check inventory items (items the player is carrying)
+        const invItemDef = this.findItemBySubject(action.subject);
+        if (invItemDef && this.state.hasItem(invItemDef.id)) {
+            return { response: invItemDef.description, handled: true };
         }
 
         // Check exits
@@ -118,14 +353,38 @@ export class CommandDispatcher {
 
     /**
      * Handle "take" commands.
-     * Subject is hotspot -> hotspot take response or default "can't take."
-     * No match -> "don't see that."
+     * Check room items first (pickable items), then hotspots for static responses.
      */
     private handleTake(action: GameAction, roomData: RoomData): DispatchResult {
         if (!action.subject) {
             return { response: 'Take what?', handled: false };
         }
 
+        // Check if player already has this item
+        if (this.state.hasItem(action.subject)) {
+            const def = this.findItemDef(action.subject);
+            const name = def ? def.name : action.subject;
+            return {
+                response: `You already have the ${name}.`,
+                handled: true,
+            };
+        }
+
+        // Check room items for matching takeable item
+        const roomItem = this.findRoomItem(action.subject, roomData);
+        if (roomItem && !this.state.isRoomItemRemoved(roomData.id, roomItem.id)) {
+            // Item is in the room and not yet taken -- the puzzle system should
+            // have handled this in step 2 of dispatch(). If we're here, there's
+            // no puzzle defined for this take action, so do a simple add.
+            this.state.addItem(roomItem.id);
+            this.state.markRoomItemRemoved(roomData.id, roomItem.id);
+            return {
+                response: `You pick up the ${roomItem.name}.`,
+                handled: true,
+            };
+        }
+
+        // Check hotspots for static take responses
         const hotspot = this.findHotspot(action.subject, roomData);
         if (hotspot) {
             const response = hotspot.responses?.take
@@ -141,30 +400,44 @@ export class CommandDispatcher {
 
     /**
      * Handle "use" commands.
-     * Subject is hotspot -> use response. Two-noun -> "using X on Y doesn't work."
+     * For "use X on Y": X resolves inventory-first, Y resolves room-first.
+     * For "use X": check hotspots first, then inventory items.
      */
     private handleUse(action: GameAction, roomData: RoomData): DispatchResult {
         if (!action.subject) {
             return { response: 'Use what?', handled: false };
         }
 
-        // Two-noun: "use X on Y"
+        // Two-noun: "use X on Y" -- puzzle system already checked in dispatch()
+        // If we reach here, no puzzle matched. Give descriptive fallback.
         if (action.target) {
             const subjectHotspot = this.findHotspot(action.subject, roomData);
             const targetHotspot = this.findHotspot(action.target, roomData);
-            const subjectName = subjectHotspot?.name ?? action.subject;
-            const targetName = targetHotspot?.name ?? action.target;
+            const subjectDef = this.findItemBySubject(action.subject);
+            const targetDef = this.findItemBySubject(action.target);
+            const subjectName = subjectHotspot?.name ?? subjectDef?.name ?? action.subject;
+            const targetName = targetHotspot?.name ?? targetDef?.name ?? action.target;
             return {
                 response: `Using ${subjectName} on ${targetName} doesn't seem to do anything.`,
                 handled: true,
             };
         }
 
+        // Single-noun "use X" -- check hotspots first (room things)
         const hotspot = this.findHotspot(action.subject, roomData);
         if (hotspot) {
             const response = hotspot.responses?.use
                 ?? "You can't figure out how to use that.";
             return { response, handled: true };
+        }
+
+        // Check inventory items
+        const invItem = this.findItemBySubject(action.subject);
+        if (invItem && this.state.hasItem(invItem.id)) {
+            return {
+                response: `You hold up the ${invItem.name} and wonder what to use it on.`,
+                handled: true,
+            };
         }
 
         return {
@@ -259,6 +532,8 @@ export class CommandDispatcher {
         };
     }
 
+    // --- Lookup helpers ---
+
     /**
      * Find a hotspot by ID or name match.
      * The subject may be a hotspot ID (from noun resolver) or a raw string.
@@ -283,6 +558,65 @@ export class CommandDispatcher {
         if (byPartial) return byPartial;
 
         return undefined;
+    }
+
+    /**
+     * Find a room item by ID or name match.
+     * Uses the same triple-resolution pattern as findHotspot.
+     */
+    private findRoomItem(subject: string, roomData: RoomData): RoomItemData | undefined {
+        if (!roomData.items) return undefined;
+        const lower = subject.toLowerCase();
+
+        // Exact ID match
+        const byId = roomData.items.find(i => i.id === lower || i.id === subject);
+        if (byId) return byId;
+
+        // Name match (case-insensitive)
+        const byName = roomData.items.find(i => i.name.toLowerCase() === lower);
+        if (byName) return byName;
+
+        // Partial name match (any word)
+        const words = lower.split(/\s+/);
+        const byPartial = roomData.items.find(i => {
+            const itemWords = i.name.toLowerCase().split(/\s+/);
+            return words.some(w => itemWords.includes(w));
+        });
+        if (byPartial) return byPartial;
+
+        return undefined;
+    }
+
+    /**
+     * Find an item definition by ID or name match from the master item registry.
+     */
+    private findItemBySubject(subject: string): ItemDefinition | undefined {
+        const lower = subject.toLowerCase();
+
+        // Exact ID match
+        const byId = this.itemDefs.find(i => i.id === lower || i.id === subject);
+        if (byId) return byId;
+
+        // Name match (case-insensitive)
+        const byName = this.itemDefs.find(i => i.name.toLowerCase() === lower);
+        if (byName) return byName;
+
+        // Partial name match (any word)
+        const words = lower.split(/\s+/);
+        const byPartial = this.itemDefs.find(i => {
+            const itemWords = i.name.toLowerCase().split(/\s+/);
+            return words.some(w => itemWords.includes(w));
+        });
+        if (byPartial) return byPartial;
+
+        return undefined;
+    }
+
+    /**
+     * Find an item definition by exact ID.
+     */
+    private findItemDef(itemId: string): ItemDefinition | undefined {
+        return this.itemDefs.find(i => i.id === itemId);
     }
 
     /**
