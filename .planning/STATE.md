@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** Phase 8: Content Production -- Story design complete, authoring demo chapter next
+**Current focus:** Phase 8: Content Production -- Demo chapter authored, testing and remaining acts next
 
 ## Current Position
 
 Phase: 8 of 8 (Content Production)
-Plan: 2 of 4 in current phase (08-01 complete)
+Plan: 3 of 4 in current phase (08-01, 08-02 complete)
 Status: In Progress
-Last activity: 2026-02-21 -- Completed 08-01-PLAN.md (Story Bible & Puzzle Design)
+Last activity: 2026-02-21 -- Completed 08-02-PLAN.md (Demo Chapter Content Authoring)
 
-Progress: [█████████░] 92%
+Progress: [█████████░] 95%
 
 ## Performance Metrics
 
@@ -53,6 +53,7 @@ Progress: [█████████░] 92%
 | Phase 07 P01 | 3min | 2 tasks | 16 files |
 | Phase 07 P02 | 2min | 3 tasks | 5 files |
 | Phase 08 P01 | 9min | 2 tasks | 3 files |
+| Phase 08 P02 | 10min | 2 tasks | 17 files |
 
 ## Accumulated Context
 
@@ -129,6 +130,9 @@ Recent decisions affecting current work:
 - [Phase 08]: 4-act structure: Demo (7), Royal Mess (7), Screaming Caverns (12), Rite (10) = 36 rooms
 - [Phase 08]: Alternative puzzle solutions where reasonable -- bridge toll/riddle, Clerk memory/argument
 - [Phase 08]: Clock tower time puzzle optional but beneficial -- prevents soft-lock if missed
+- [Phase 08]: 7 rooms for Act 1a matching story bible (underground_pool replaces crystal_grotto from initial plan)
+- [Phase 08]: Stone merchant NPC uses slow ellipsis speech pattern to convey petrification mechanically
+- [Phase 08]: Room validation script (scripts/validate-rooms.mjs) for cross-reference checking during content authoring
 
 ### Pending Todos
 
@@ -143,5 +147,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 08-01-PLAN.md (Story Bible & Puzzle Design)
+Stopped at: Completed 08-02-PLAN.md (Demo Chapter Content Authoring)
 Resume file: None
