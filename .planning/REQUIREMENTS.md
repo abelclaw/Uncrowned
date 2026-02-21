@@ -55,7 +55,7 @@ Requirements for the Art & Polish milestone. Each maps to roadmap phases.
 - [x] **ENDS-02**: Ending conditions evaluated via existing PuzzleEngine flag/condition system at Act 3 climax
 - [x] **ENDS-03**: EndingScene displays ending-specific narrator text, epilogue, and credits
 - [x] **ENDS-04**: Discovered endings tracked in MetaGameState for replay awareness
-- [ ] **ENDS-05**: Key decision points throughout game have ending-influence flags authored in room/puzzle JSONs
+- [x] **ENDS-05**: Key decision points throughout game have ending-influence flags authored in room/puzzle JSONs
 
 ## Future Requirements
 
@@ -129,7 +129,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ENDS-02 | Phase 12 | Complete |
 | ENDS-03 | Phase 12 | Complete |
 | ENDS-04 | Phase 12 | Complete |
-| ENDS-05 | Phase 12 | Pending |
+| ENDS-05 | Phase 12 | Complete |
 
 **Coverage:**
 - v2.0 requirements: 32 total

@@ -77,6 +77,9 @@ Recent decisions affecting current work:
 - 12-02: EndingScene uses scene.start() (full replacement) not scene.launch() since game is over
 - 12-02: 1500ms fadeOut duration for dramatic pacing before EndingScene starts
 - 12-02: evaluate-ending placed in throne choice puzzles (not perform-rite) to ensure flags are set
+- 12-03: EndingsGalleryScene uses simple vertical list (no pagination) since only 4 endings exist
+- 12-03: endingInfluence field is metadata-only -- PuzzleEngine does not read it
+- 12-03: Both clock repair variants get endingInfluence marking since both set clock-fixed flag
 
 ### Pending Todos
 
@@ -91,5 +94,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 12-02-PLAN.md
+Stopped at: Completed 12-03-PLAN.md (Phase 12 complete)
 Resume file: None
