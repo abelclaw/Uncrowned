@@ -101,6 +101,7 @@
             ],
             "actions": [
                 { "type": "add-item", "item": "rusty-key" },
+                { "type": "set-flag", "flag": "rusty-key-taken" },
                 { "type": "narrator-say", "text": "You pry the rusty key from the stump's crack. It leaves orange residue on your fingers. Lovely. Somewhere, a locksmith weeps." }
             ],
             "once": true

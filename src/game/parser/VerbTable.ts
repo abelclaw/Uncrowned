@@ -46,6 +46,7 @@ export const VERB_TABLE: VerbDefinition[] = [
             /^pick\s+up\s+(.+)$/i,
             /^pick\s+(.+?)\s+up$/i,
             /^(?:take|get|grab|collect|acquire)\s+(.+)$/i,
+            /^(?:take|get|grab|collect|acquire)$/i,
         ],
     },
     {
@@ -54,6 +55,7 @@ export const VERB_TABLE: VerbDefinition[] = [
         patterns: [
             /^(?:use|apply)\s+(.+?)\s+(?:on|with)\s+(.+)$/i,
             /^(?:use|apply)\s+(.+)$/i,
+            /^(?:use|apply)$/i,
         ],
     },
     {
@@ -62,7 +64,7 @@ export const VERB_TABLE: VerbDefinition[] = [
         patterns: [
             /^(?:go|walk|move|head)\s+(?:to\s+)?(.+)$/i,
             /^(?:enter|exit|leave)\s+(.+)$/i,
-            /^(?:enter|exit|leave)$/i,
+            /^(?:go|walk|move|head|enter|exit|leave)$/i,
         ],
     },
     {

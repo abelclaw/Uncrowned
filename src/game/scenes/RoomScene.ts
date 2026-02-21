@@ -363,9 +363,15 @@ export class RoomScene extends Phaser.Scene {
                 .filter(item => this.gameState.hasItem(item.id))
                 .map(item => ({ id: item.id, name: item.name }));
 
+            // Merge room items (not yet taken) into hotspots for noun resolution
+            const roomItemsAsHotspots = (this.roomData.items ?? [])
+                .filter(item => !this.gameState.isRoomItemRemoved(this.roomData.id, item.id))
+                .map(item => ({ id: item.id, name: item.name, zone: item.zone, interactionPoint: item.interactionPoint, responses: item.responses ?? {} }));
+            const allHotspots = [...this.roomData.hotspots, ...roomItemsAsHotspots];
+
             const parseResult = await this.textParser.parse(
                 text,
-                this.roomData.hotspots,
+                allHotspots,
                 this.roomData.exits,
                 inventoryItems,
                 { name: this.roomData.name, description: this.roomData.description },
