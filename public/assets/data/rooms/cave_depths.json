@@ -1,0 +1,132 @@
+{
+    "id": "cave_depths",
+    "name": "Cave Depths",
+    "description": "The stairs open into a vast underground chamber. Without a light source, you can barely see your hand in front of your face. The air is thick with the smell of damp stone and centuries of accumulated regret from previous visitors who also forgot to bring a torch.",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 390 },
+        { "x": 910, "y": 390 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-cave-entrance",
+            "zone": { "x": 440, "y": 350, "width": 80, "height": 80 },
+            "targetRoom": "cave_entrance",
+            "spawnPoint": { "x": 510, "y": 430 },
+            "transition": "fade",
+            "direction": "south",
+            "label": "entrance"
+        },
+        {
+            "id": "to-pool",
+            "zone": { "x": 880, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "underground_pool",
+            "spawnPoint": { "x": 100, "y": 430 },
+            "transition": "fade",
+            "direction": "north",
+            "label": "pool",
+            "conditions": [
+                { "type": "has-item", "item": "makeshift-torch" }
+            ]
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "cave-walls",
+            "name": "Cave Walls",
+            "zone": { "x": 200, "y": 360, "width": 100, "height": 60 },
+            "interactionPoint": { "x": 250, "y": 420 },
+            "responses": {
+                "look": "The cave walls are slick with moisture and covered in ancient scratches. Some might be writing, some might be the desperate claw marks of someone who really wanted to leave. Hard to tell without better lighting.",
+                "use": "You run your hands along the cave wall. It's wet, cold, and entirely unhelpful. Just like most walls, really.",
+                "take": "You can't take a cave wall. This is not Minecraft.",
+                "default": "You examine the cave walls. They're exactly as cave-wall-like as you'd expect."
+            }
+        },
+        {
+            "id": "darkness",
+            "name": "Impenetrable Darkness",
+            "zone": { "x": 600, "y": 360, "width": 120, "height": 60 },
+            "interactionPoint": { "x": 660, "y": 420 },
+            "responses": {
+                "look": "The darkness ahead is absolute. Not the friendly darkness of a bedroom at night, but the hostile darkness of a place that does not want you here. You'd need a light source to proceed.",
+                "use": "You attempt to use the darkness. The darkness uses you right back. It's a more experienced user.",
+                "talk": "You call into the darkness. Something calls back. Or maybe that was an echo. You choose to believe it was an echo.",
+                "default": "You stare into the darkness. The darkness stares back. Neither of you blinks, because the darkness doesn't have eyes. You lose on a technicality."
+            }
+        },
+        {
+            "id": "old-bones",
+            "name": "Scattered Bones",
+            "zone": { "x": 350, "y": 470, "width": 60, "height": 30 },
+            "interactionPoint": { "x": 380, "y": 460 },
+            "responses": {
+                "look": "A scattering of bones on the cave floor. Too small to be human. Probably a rat. Or a very small adventurer. Best not to dwell on it.",
+                "take": "You consider pocketing some bones, then remember you're not that kind of person. Yet.",
+                "use": "There is no practical use for mysterious cave bones. None. Stop trying to make cave bones happen.",
+                "default": "You regard the bones with the appropriate mix of curiosity and mild horror."
+            }
+        }
+    ],
+    "items": [],
+    "puzzles": [
+        {
+            "id": "use-torch",
+            "trigger": { "verb": "use", "subject": "makeshift-torch" },
+            "conditions": [
+                { "type": "has-item", "item": "makeshift-torch" }
+            ],
+            "actions": [
+                { "type": "narrator-say", "text": "You raise the makeshift torch. Blue bioluminescent light floods the chamber, revealing ancient stone walls covered in faded carvings and a passage leading deeper north. The darkness retreats grudgingly, like a cat being moved off a chair." }
+            ]
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "go-dark",
+            "trigger": { "verb": "go", "subject": "north" },
+            "conditions": [
+                { "type": "not-has-item", "item": "makeshift-torch" }
+            ],
+            "actions": [
+                { "type": "trigger-death", "deathId": "dark-death" }
+            ]
+        },
+        {
+            "id": "go-dark-pool",
+            "trigger": { "verb": "go", "subject": "pool" },
+            "conditions": [
+                { "type": "not-has-item", "item": "makeshift-torch" }
+            ],
+            "actions": [
+                { "type": "trigger-death", "deathId": "dark-death" }
+            ]
+        }
+    ],
+    "deaths": {
+        "dark-death": {
+            "title": "Death by Insufficient Preparation",
+            "narratorText": "You stride boldly into the darkness without a light source. What could go wrong? The answer, as it turns out, is: a pit. A deep, completely avoidable pit that has been here for centuries, patiently waiting for someone exactly this foolish. What you can't see CAN hurt you. In this case, it was a pit. With spikes. Because of course there are spikes."
+        }
+    },
+    "dynamicDescriptions": {
+        "has-torch": "The cave depths are illuminated by your makeshift torch's eerie blue glow. Ancient carvings line the walls -- spirals, symbols, and what appears to be a crude drawing of someone falling into a pit. Prophetic, perhaps. A passage leads north toward the sound of water."
+    },
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            { "key": "amb-cave-drips", "volume": 0.9 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}

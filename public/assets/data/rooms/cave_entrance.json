@@ -1,7 +1,7 @@
 {
     "id": "cave_entrance",
     "name": "Cave Entrance",
-    "description": "A yawning cave mouth gapes before you, exhaling a breath of cold, stale air. The darkness inside is the kind that makes you question your life choices.",
+    "description": "A yawning cave mouth gapes before you, exhaling a breath of cold, stale air. The darkness inside is the kind that makes you question your life choices. A heavy oak door is set into the rock face, because apparently someone once thought this cave needed better security.",
     "background": {
         "layers": [
             { "key": "bg-sky", "scrollFactor": 0 },
@@ -35,6 +35,18 @@
             "transition": "slide-right",
             "direction": "east",
             "label": "village"
+        },
+        {
+            "id": "to-depths",
+            "zone": { "x": 480, "y": 360, "width": 60, "height": 80 },
+            "targetRoom": "cave_depths",
+            "spawnPoint": { "x": 480, "y": 430 },
+            "transition": "fade",
+            "direction": "south",
+            "label": "depths",
+            "conditions": [
+                { "type": "flag-set", "flag": "door-unlocked" }
+            ]
         }
     ],
     "hotspots": [
@@ -44,14 +56,14 @@
             "zone": { "x": 450, "y": 340, "width": 100, "height": 80 },
             "interactionPoint": { "x": 500, "y": 420 },
             "responses": {
-                "look": "The cave entrance looms like an open maw. Stalactites hang from the ceiling like nature's worst dental work. A faint dripping echoes from within.",
+                "look": "The cave entrance looms like an open maw. Stalactites hang from the ceiling like nature's worst dental work. A faint dripping echoes from within, counting down to something. Probably nothing.",
                 "take": "You consider taking the cave. Where would you even put it? Your pockets aren't that big.",
                 "use": "You're not entirely sure how one 'uses' a cave. Standing inside it, perhaps? That's just walking with extra steps.",
-                "talk": "You call into the darkness. 'Hello?' Your echo replies, sounding just as uncertain as you.",
+                "talk": "You call into the darkness. 'Hello?' Your echo replies, sounding just as uncertain as you. Then silence. Then a drip.",
                 "open": "The cave is already open. Has been for millennia. You're not that special.",
                 "push": "You push against the cave wall. The mountain does not yield. Shocking.",
                 "pull": "You try to pull the cave entrance wider. Geology disagrees with your approach.",
-                "default": "You contemplate the cave mouth. It contemplates you right back."
+                "default": "You contemplate the cave mouth. It contemplates you right back, and you suspect it's winning."
             }
         },
         {
@@ -60,14 +72,26 @@
             "zone": { "x": 480, "y": 380, "width": 60, "height": 80 },
             "interactionPoint": { "x": 510, "y": 440 },
             "responses": {
-                "look": "A heavy oak door bound in iron. A rusted keyhole suggests someone once cared about privacy.",
+                "look": "A heavy oak door bound in iron, set deep into the cave wall. A rusted keyhole suggests someone once cared about privacy down here. The door is old enough to have opinions about modern craftsmanship.",
                 "use": "It's locked. You'd need a key. Preferably one that isn't currently disintegrating.",
                 "open": "It's locked. The door rattles in its frame but holds firm. Somewhere, a locksmith is smirking.",
-                "push": "You lean into the door with all your weight. The door laughs silently at your efforts.",
+                "push": "You lean into the door with all your weight. The door laughs silently at your efforts. It has been laughing for centuries.",
                 "pull": "You pull on the door handle. Locked. From the other side. Of course.",
-                "take": "You can't take an entire door. Well, you could, but you'd need a much bigger inventory.",
-                "talk": "You knock politely. Nobody answers. Rude.",
-                "default": "You examine the locked door. It remains steadfastly locked."
+                "take": "You can't take an entire door. Well, you could, but you'd need a much bigger inventory and a much smaller sense of dignity.",
+                "talk": "You knock politely. Nobody answers. Rude, but expected from a door that old.",
+                "default": "You examine the locked door. It remains steadfastly locked, as is its right."
+            }
+        },
+        {
+            "id": "rock-ledge",
+            "name": "Rock Ledge",
+            "zone": { "x": 630, "y": 370, "width": 80, "height": 30 },
+            "interactionPoint": { "x": 670, "y": 430 },
+            "responses": {
+                "look": "A natural rock shelf near the cave entrance. Damp and covered in a thin layer of moss. Various objects have been abandoned here over the years by people who clearly had better things to do.",
+                "take": "The ledge is part of the cave wall. You'd need a pickaxe and significantly more ambition.",
+                "use": "You could use it as a shelf, but your standards for furniture are already low enough.",
+                "default": "You examine the rock ledge. It's a ledge. Made of rock. Riveting."
             }
         }
     ],
@@ -78,8 +102,8 @@
             "zone": { "x": 650, "y": 390, "width": 25, "height": 30 },
             "interactionPoint": { "x": 663, "y": 430 },
             "responses": {
-                "look": "A small glass bottle perched on a rock ledge. The liquid inside shifts between colors you're fairly sure shouldn't exist in nature.",
-                "use": "Drink it? Here? Without even reading the label? Well, the label decomposed centuries ago, so that's a moot point."
+                "look": "A small glass bottle perched on a rock ledge. The liquid inside shifts between colors you're fairly sure shouldn't exist in nature. The label decomposed sometime during the previous dynasty.",
+                "use": "Drink it? Here? Without even reading the label? Well, the label decomposed centuries ago, so that's a moot point. Still, the liquid is doing things no honest liquid should."
             }
         },
         {
@@ -88,7 +112,7 @@
             "zone": { "x": 350, "y": 370, "width": 30, "height": 30 },
             "interactionPoint": { "x": 365, "y": 420 },
             "responses": {
-                "look": "A mushroom growing on the cave wall, pulsing with an eerie blue bioluminescence. It's either magical or radioactive. Possibly both."
+                "look": "A mushroom growing on the cave wall, pulsing with an eerie blue bioluminescence. It's either magical, radioactive, or nature's attempt at a nightlight. Possibly all three."
             }
         }
     ],
@@ -101,7 +125,7 @@
             ],
             "actions": [
                 { "type": "add-item", "item": "glowing-mushroom" },
-                { "type": "narrator-say", "text": "You pluck the glowing mushroom from the wall. It pulses warmly in your hand, like a nightlight for the terminally adventurous." }
+                { "type": "narrator-say", "text": "You pluck the glowing mushroom from the wall. It pulses warmly in your hand, like a nightlight for the terminally adventurous. Your pockets will smell of fungus for weeks." }
             ],
             "once": true
         },
@@ -128,13 +152,28 @@
                 { "type": "set-flag", "flag": "door-unlocked" },
                 { "type": "remove-item", "item": "rusty-key" },
                 { "type": "open-exit", "exit": "to-depths" },
-                { "type": "narrator-say", "text": "The rusty key grinds into the lock with a sound that makes your teeth ache. With a reluctant clunk, the door swings open. The key crumbles to rust dust in your hand. One-time use, apparently." }
+                { "type": "narrator-say", "text": "The rusty key grinds into the lock with a sound that makes your teeth ache. With a reluctant clunk, the door swings open, revealing stairs descending into darkness. The key crumbles to rust dust in your hand. One-time use, apparently. Just like your courage." }
             ],
             "once": true
         },
         {
             "id": "combine-stick-mushroom",
             "trigger": { "verb": "combine", "subject": "stick", "target": "glowing-mushroom" },
+            "conditions": [
+                { "type": "has-item", "item": "stick" },
+                { "type": "has-item", "item": "glowing-mushroom" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "stick" },
+                { "type": "remove-item", "item": "glowing-mushroom" },
+                { "type": "add-item", "item": "makeshift-torch" },
+                { "type": "narrator-say", "text": "You wedge the glowing mushroom onto the stick. It holds, mostly. You've created a makeshift torch that casts an eerie blue glow. MacGyver would be... not exactly proud, but perhaps mildly amused." }
+            ],
+            "once": true
+        },
+        {
+            "id": "combine-mushroom-stick",
+            "trigger": { "verb": "combine", "subject": "glowing-mushroom", "target": "stick" },
             "conditions": [
                 { "type": "has-item", "item": "stick" },
                 { "type": "has-item", "item": "glowing-mushroom" }
@@ -179,11 +218,11 @@
     "deaths": {
         "poison-death": {
             "title": "Death by Curiosity",
-            "narratorText": "You drink the mysterious liquid. It tastes like regret and bad decisions. Which, coincidentally, is exactly what it is. You crumple to the floor in a heap of poor judgment."
+            "narratorText": "You drink the mysterious liquid. It tastes like regret, bad decisions, and something that might once have been a plum. The colors in your vision expand to include shades that don't exist, and then contract to include nothing at all. You crumple to the floor in a heap of poor judgment. The bottle rolls away, unfinished. Even it doesn't want to be associated with you anymore."
         }
     },
     "dynamicDescriptions": {
-        "door-unlocked": "A yawning cave mouth gapes before you. The heavy oak door now hangs open, revealing deeper passages beyond. The cold air carries a faint whisper of adventure -- or possibly just a draft."
+        "door-unlocked": "A yawning cave mouth gapes before you. The heavy oak door now hangs open, revealing deeper passages beyond. The cold air carries a faint whisper of something below -- adventure, perhaps. Or possibly just a draft with delusions of grandeur."
     },
     "audio": {
         "music": "music-cave",

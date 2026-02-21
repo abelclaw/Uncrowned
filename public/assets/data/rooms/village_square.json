@@ -1,0 +1,182 @@
+{
+    "id": "village_square",
+    "name": "Village Square",
+    "description": "The village square is a study in faded grandeur. A fountain stands at its center, though the water has long since stopped flowing -- the stone figures atop it are frozen mid-pose, their surfaces unnervingly smooth and grey. A notice board stands nearby, plastered with official-looking documents. A half-petrified merchant stands behind a market stall, frozen mid-sales-pitch.",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 385 },
+        { "x": 910, "y": 385 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-village-path",
+            "zone": { "x": 0, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "village_path",
+            "spawnPoint": { "x": 820, "y": 430 },
+            "transition": "slide-left",
+            "direction": "west",
+            "label": "path"
+        },
+        {
+            "id": "to-watchtower",
+            "zone": { "x": 880, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "old_watchtower",
+            "spawnPoint": { "x": 100, "y": 430 },
+            "transition": "slide-right",
+            "direction": "east",
+            "label": "watchtower"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "petrified-fountain",
+            "name": "Petrified Fountain",
+            "zone": { "x": 400, "y": 350, "width": 100, "height": 80 },
+            "interactionPoint": { "x": 450, "y": 420 },
+            "responses": {
+                "look": "A once-grand fountain, now completely petrified. The stone figures atop it -- a king, a knight, and what might be a badger -- are frozen in mid-dance. The water basin is dry and cracked. The stone has an unnatural smoothness, as though something turned the entire fountain to perfect grey stone overnight. This isn't weathering. This is a curse.",
+                "use": "The fountain hasn't worked in years. Turning the valve produces nothing but a sad grinding sound, like a bureaucrat's soul.",
+                "take": "It's a fountain. Made of stone. In a public square. Even you have limits. Presumably.",
+                "talk": "You address the petrified figures. The king stares blankly. The knight stares blankly. The badger stares blankly but with an air of judgment.",
+                "default": "You examine the fountain. It's deeply, profoundly, aggressively stone."
+            }
+        },
+        {
+            "id": "notice-board",
+            "name": "Notice Board",
+            "zone": { "x": 650, "y": 360, "width": 60, "height": 70 },
+            "interactionPoint": { "x": 680, "y": 420 },
+            "responses": {
+                "look": "A wooden notice board covered in official proclamations, lost cat posters, and one notice that stands out: a decree with a royal seal, declaring the kingdom 'temporarily inconvenienced' by a petrification curse. The understatement is staggering.",
+                "take": "You pull one of the notices free. It's the official curse proclamation. Might be useful as evidence that things are, in fact, not fine.",
+                "use": "You read the notices more carefully. Most are mundane -- livestock auctions, tax reminders, a suspiciously specific wanted poster for 'anyone who looks like they're up to something.' The curse notice is the only one that matters.",
+                "default": "You peruse the notice board. It's a snapshot of a kingdom in denial."
+            }
+        },
+        {
+            "id": "market-stalls",
+            "name": "Empty Market Stalls",
+            "zone": { "x": 150, "y": 370, "width": 100, "height": 50 },
+            "interactionPoint": { "x": 200, "y": 420 },
+            "responses": {
+                "look": "Empty market stalls line one side of the square. Most merchants have fled or been petrified. Their wares -- fruit, cloth, pottery -- sit abandoned, slowly gathering dust and significance. One stall still has a half-petrified merchant behind it.",
+                "take": "Looting abandoned market stalls? You consider it for a shameful moment, then decide against it. The shame lingers.",
+                "use": "You browse the abandoned stalls. There's nothing useful -- just rotting produce and dusty trinkets. The economy here is in worse shape than you are.",
+                "default": "You wander through the empty stalls. It's like a flea market after the apocalypse."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "notice-board-posting",
+            "name": "Town Notice",
+            "zone": { "x": 660, "y": 375, "width": 30, "height": 25 },
+            "interactionPoint": { "x": 680, "y": 420 },
+            "responses": {
+                "look": "An official notice declaring the kingdom 'temporarily inconvenienced' by a petrification curse. It bears the royal seal -- a disgruntled badger wearing a crown. The bureaucratic understatement is, frankly, impressive.",
+                "use": "You read the notice aloud. It doesn't make the situation better, but it does make it official."
+            }
+        },
+        {
+            "id": "bridge-toll-coin",
+            "name": "Bridge Toll Coin",
+            "zone": { "x": 610, "y": 400, "width": 20, "height": 20 },
+            "interactionPoint": { "x": 635, "y": 420 },
+            "responses": {
+                "look": "An old coin wedged between the stones near the well. The face on it has worn into a vague smudge. Still legal tender, apparently -- the kingdom has low standards for currency, much like everything else.",
+                "use": "A coin is for spending. You'll need to find something -- or someone -- to spend it on."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "read-notice-board",
+            "trigger": { "verb": "look", "subject": "notice-board" },
+            "conditions": [
+                { "type": "flag-not-set", "flag": "knows_about_curse" }
+            ],
+            "actions": [
+                { "type": "set-flag", "flag": "knows_about_curse" },
+                { "type": "narrator-say", "text": "You read the official notice. The kingdom of Erelhain is under a petrification curse. Plants, buildings, and eventually people are turning to stone from the edges inward. The notice assures citizens this is 'temporary and under review.' It was posted three months ago. The review, apparently, is not going well." }
+            ],
+            "once": true
+        },
+        {
+            "id": "take-notice",
+            "trigger": { "verb": "take", "subject": "notice-board-posting" },
+            "conditions": [
+                { "type": "item-not-taken", "item": "notice-board-posting" }
+            ],
+            "actions": [
+                { "type": "add-item", "item": "notice-board-posting" },
+                { "type": "set-flag", "flag": "knows_about_curse" },
+                { "type": "narrator-say", "text": "You peel the official curse notice from the board. It's written in the kind of careful bureaucratic language that means 'we have absolutely no idea what's happening but we've filed the paperwork.' You pocket it. Evidence of impending doom is always handy." }
+            ],
+            "once": true
+        },
+        {
+            "id": "take-toll-coin",
+            "trigger": { "verb": "take", "subject": "bridge-toll-coin" },
+            "conditions": [
+                { "type": "item-not-taken", "item": "bridge-toll-coin" }
+            ],
+            "actions": [
+                { "type": "add-item", "item": "bridge-toll-coin" },
+                { "type": "narrator-say", "text": "You fish the old coin from between the stones. It's heavy, tarnished, and features a face so worn it could be anyone -- a king, a queen, or possibly a confused sheep. Legal tender in Erelhain, where the bar for currency is roughly ankle-height." }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "touch-fountain",
+            "trigger": { "verb": "use", "subject": "petrified-fountain" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "stone-touch" }
+            ]
+        },
+        {
+            "id": "touch-fountain-push",
+            "trigger": { "verb": "push", "subject": "petrified-fountain" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "stone-touch" }
+            ]
+        }
+    ],
+    "deaths": {
+        "stone-touch": {
+            "title": "Death by Tactile Curiosity",
+            "narratorText": "You place your hand on the petrified fountain. The stone is warm -- no, hot. No, it's spreading. The grey creeps up your fingers, your wrist, your arm, with the steady inevitability of a Monday morning. You watch, fascinated and horrified in equal measure, as you become a permanent addition to the village square's already impressive collection of statues. Touching cursed objects: an activity with a 100% regret rate."
+        }
+    },
+    "dynamicDescriptions": {
+        "knows_about_curse": "The village square feels heavier now that you know about the curse. The petrified fountain isn't art -- it's a warning. The grey stone creeping along the building edges isn't weathering -- it's spreading. The half-petrified merchant behind his stall is a reminder that time is not on anyone's side."
+    },
+    "npcs": [
+        {
+            "id": "stone_merchant",
+            "position": { "x": 250, "y": 400 },
+            "interactionPoint": { "x": 280, "y": 430 },
+            "zone": { "x": 230, "y": 370, "width": 50, "height": 80 }
+        }
+    ],
+    "audio": {
+        "music": "music-village",
+        "ambient": [
+            { "key": "amb-wind-light", "volume": 0.5 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}

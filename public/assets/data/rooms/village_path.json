@@ -1,7 +1,7 @@
 {
     "id": "village_path",
     "name": "Village Path",
-    "description": "A well-worn dirt path winds toward a village in the distance. A stone well stands nearby, looking suspiciously like the kind of well people throw wishes -- and occasionally themselves -- into.",
+    "description": "A well-worn dirt path winds toward a village in the distance. A stone well stands nearby, looking suspiciously like the kind of well people throw wishes -- and occasionally themselves -- into. An old man sits on a rock, staring at you with the unsettling intensity of someone who has been expecting you for decades.",
     "background": {
         "layers": [
             { "key": "bg-sky", "scrollFactor": 0 },
@@ -26,6 +26,15 @@
             "transition": "slide-left",
             "direction": "west",
             "label": "cave"
+        },
+        {
+            "id": "to-village-square",
+            "zone": { "x": 880, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "village_square",
+            "spawnPoint": { "x": 100, "y": 430 },
+            "transition": "slide-right",
+            "direction": "east",
+            "label": "village"
         }
     ],
     "hotspots": [
@@ -44,20 +53,33 @@
                 "pull": "You grab the rope and pull. The bucket comes up, empty except for disappointment and a small spider.",
                 "default": "You regard the well thoughtfully. The well regards you back with silent, stony indifference."
             }
-        }
-    ],
-    "puzzles": [
+        },
         {
-            "id": "look-with-torch",
-            "trigger": { "verb": "look" },
-            "conditions": [
-                { "type": "has-item", "item": "makeshift-torch" }
-            ],
-            "actions": [
-                { "type": "narrator-say", "text": "The torch casts an eerie blue glow across the village path, revealing shadows that you're not entirely sure were there before." }
-            ]
+            "id": "signpost",
+            "name": "Weathered Signpost",
+            "zone": { "x": 200, "y": 370, "width": 40, "height": 60 },
+            "interactionPoint": { "x": 220, "y": 420 },
+            "responses": {
+                "look": "A weathered signpost at the path's fork. One arrow points west toward 'Cave' and another east toward 'Village.' A third arrow, pointing straight down, reads 'You Are Here.' Helpful.",
+                "take": "You try to uproot the signpost. It's cemented in. The local council may be incompetent at governance, but their signpost installation is impeccable.",
+                "use": "It's a signpost. You read it. That's... that's how you use a signpost.",
+                "default": "You study the signpost as though it contains the secrets of the universe. It does not. It contains directions."
+            }
+        },
+        {
+            "id": "forest-edge",
+            "name": "Dark Forest Edge",
+            "zone": { "x": 100, "y": 350, "width": 80, "height": 40 },
+            "interactionPoint": { "x": 140, "y": 400 },
+            "responses": {
+                "look": "The forest beyond the path is thick and unwelcoming. The trees crowd together like gossips, and the undergrowth is the kind that swallows ankles and ambitions alike. A faded sign reads: 'CERTAIN DEATH THIS WAY.'",
+                "use": "You gaze into the dark forest and wisely decide against entering. Your survival instincts, dormant for most of your life, have chosen this moment to awaken.",
+                "default": "You peer into the dark forest. Something peers back. You both pretend this didn't happen."
+            }
         }
     ],
+    "items": [],
+    "puzzles": [],
     "deathTriggers": [
         {
             "id": "wander-off-path",
@@ -73,8 +95,11 @@
     "deaths": {
         "lost-death": {
             "title": "Death by Poor Navigation",
-            "narratorText": "You wander off the path into the deep forest. In retrospect, the sign that said 'CERTAIN DEATH THIS WAY' should have been more persuasive."
+            "narratorText": "You wander off the path into the deep forest. The sign that said 'CERTAIN DEATH THIS WAY' was, in retrospect, being entirely literal. The trees close behind you like a curtain. The last sound you hear is a bird, singing what you can only assume is a eulogy. It's not a very good one."
         }
+    },
+    "dynamicDescriptions": {
+        "met_old_man": "A well-worn dirt path winds between the cave and the village. The old man sits on his rock, watching you with an expression that suggests he knows exactly how many times you've died. Which is unsettling, because it's probably accurate."
     },
     "npcs": [
         {

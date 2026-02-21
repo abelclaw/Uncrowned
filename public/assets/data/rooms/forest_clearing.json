@@ -1,7 +1,7 @@
 {
     "id": "forest_clearing",
     "name": "Forest Clearing",
-    "description": "You stand in a sun-dappled forest clearing. A gnarled old stump sits among the ferns, looking far too pleased with itself for something that's technically dead.",
+    "description": "You stand in a sun-dappled forest clearing. A gnarled old stump sits among the ferns, looking far too pleased with itself for something that's technically dead. Wildflowers carpet the ground in defiant cheerfulness, unaware that the kingdom they adorn is slowly turning to stone.",
     "background": {
         "layers": [
             { "key": "bg-sky", "scrollFactor": 0 },
@@ -35,9 +35,9 @@
             "zone": { "x": 400, "y": 350, "width": 80, "height": 60 },
             "interactionPoint": { "x": 440, "y": 420 },
             "responses": {
-                "look": "A weathered tree stump, its rings telling centuries of stories. Something glints in a crack. Probably a bottle cap. This forest has seen better days.",
+                "look": "A weathered tree stump, its rings telling centuries of stories nobody asked for. Something glints in a crack. Probably a bottle cap. This forest has seen better days, but then again, so has the entire kingdom.",
                 "take": "You wrap your arms around the stump and heave. Nothing. The stump has been here longer than your entire bloodline and isn't going anywhere.",
-                "use": "You sit on the stump for a moment. It's oddly comfortable. You feel like you've accomplished absolutely nothing.",
+                "use": "You sit on the stump for a moment. It's oddly comfortable. You feel like you've accomplished absolutely nothing, which is consistent with your life so far.",
                 "push": "You push the stump. It does not push back. Score one for you, I suppose.",
                 "pull": "You yank at the stump. Somewhere, a tree ghost is deeply offended.",
                 "talk": "You whisper sweet nothings to the stump. It maintains a dignified silence, which is more than most conversation partners manage.",
@@ -54,7 +54,20 @@
                 "take": "You reach toward the beehive. Every survival instinct you possess screams in unison. You lower your hand. Good choice.",
                 "talk": "You address the bees politely. They do not acknowledge your existence, which is probably the best outcome here.",
                 "use": "You're not sure what 'using' a beehive entails, but you're fairly certain the bees have strong opinions about it.",
-                "default": "You regard the beehive from what you hope is a safe distance."
+                "default": "You regard the beehive from what you hope is a safe distance. The bees regard you from what they know is striking distance."
+            }
+        },
+        {
+            "id": "wildflowers",
+            "name": "Wildflowers",
+            "zone": { "x": 150, "y": 450, "width": 100, "height": 40 },
+            "interactionPoint": { "x": 200, "y": 440 },
+            "responses": {
+                "look": "A carpet of wildflowers in defiant bloom. Purple, yellow, and a shade of orange that suggests the flowers have opinions about color theory. Several petals at the edges look slightly grey -- almost stony.",
+                "take": "You pick a flower. It wilts immediately, as if personally insulted by your attention. Nature has standards, apparently.",
+                "use": "You consider arranging a bouquet but decide against it. There's no one to impress, and the flowers know it.",
+                "talk": "You compliment the wildflowers on their resilience. They sway in the breeze, unmoved by flattery.",
+                "default": "You interact with the wildflowers in a way that leaves both parties mildly confused."
             }
         }
     ],
@@ -88,7 +101,7 @@
             ],
             "actions": [
                 { "type": "add-item", "item": "rusty-key" },
-                { "type": "narrator-say", "text": "You pry the rusty key from the stump's crack. It leaves orange residue on your fingers. Lovely." }
+                { "type": "narrator-say", "text": "You pry the rusty key from the stump's crack. It leaves orange residue on your fingers. Lovely. Somewhere, a locksmith weeps." }
             ],
             "once": true
         },
@@ -100,7 +113,7 @@
             ],
             "actions": [
                 { "type": "add-item", "item": "stick" },
-                { "type": "narrator-say", "text": "You pick up a sturdy stick. Your parents would be so proud of how far you've come." }
+                { "type": "narrator-say", "text": "You pick up a sturdy stick. Your parents would be so proud of how far you've come. A tinker with a stick. Destiny, clearly." }
             ],
             "once": true
         }
@@ -118,11 +131,11 @@
     "deaths": {
         "bee-death": {
             "title": "Death by Enthusiasm",
-            "narratorText": "You shove the beehive because... why? What possible good outcome did you envision? The bees have a very clear opinion about property rights. It's the last debate you'll ever lose."
+            "narratorText": "You shove the beehive because... why? What possible good outcome did you envision? The bees have a very clear opinion about property rights, and they enforce it with approximately ten thousand tiny lawyers. Each one stings. It's the last debate you'll ever lose."
         }
     },
     "dynamicDescriptions": {
-        "rusty-key-taken": "You stand in a sun-dappled forest clearing. The old stump's crack is now empty -- you already pocketed whatever was glinting in there."
+        "rusty-key-taken": "You stand in a sun-dappled forest clearing. The old stump's crack is now empty -- you already pocketed whatever was glinting in there. The wildflowers sway innocently, as though they didn't just witness petty theft."
     },
     "audio": {
         "music": "music-forest",

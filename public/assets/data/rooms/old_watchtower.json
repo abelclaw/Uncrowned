@@ -1,0 +1,158 @@
+{
+    "id": "old_watchtower",
+    "name": "Old Watchtower",
+    "description": "A crumbling watchtower rises from the village's eastern edge, its stones held together by stubbornness and ivy. A rusted telescope sits on the observation platform, pointed vaguely skyward as though it gave up on watching anything specific long ago. The railing is decorative at best, structural at worst, and trustworthy not at all.",
+    "background": {
+        "layers": [
+            { "key": "bg-sky", "scrollFactor": 0 },
+            { "key": "bg-mountains", "scrollFactor": 0.1 },
+            { "key": "bg-trees", "scrollFactor": 0.4 },
+            { "key": "bg-ground", "scrollFactor": 1 }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        { "x": 50, "y": 390 },
+        { "x": 910, "y": 390 },
+        { "x": 910, "y": 520 },
+        { "x": 50, "y": 520 }
+    ],
+    "exits": [
+        {
+            "id": "to-village-square",
+            "zone": { "x": 0, "y": 350, "width": 80, "height": 200 },
+            "targetRoom": "village_square",
+            "spawnPoint": { "x": 820, "y": 430 },
+            "transition": "slide-left",
+            "direction": "west",
+            "label": "village"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "telescope",
+            "name": "Rusted Telescope",
+            "zone": { "x": 500, "y": 360, "width": 80, "height": 60 },
+            "interactionPoint": { "x": 540, "y": 420 },
+            "responses": {
+                "look": "A brass telescope, corroded green with age. The lens housing is cracked, and the tripod leans at an angle that suggests it has given up on perpendicularity. Without a replacement lens, it's just an expensive tube for looking at a blur.",
+                "use": "You peer through the telescope. Everything is a blur. The lens is cracked beyond usefulness. You'd need a replacement lens to see anything meaningful.",
+                "take": "The telescope is bolted to the platform. Whoever installed it was paranoid about telescope theft, which is either commendable foresight or deeply concerning.",
+                "talk": "You whisper encouraging words to the telescope. It does not improve. Morale is low in the optics department.",
+                "default": "You fiddle with the telescope. It swivels reluctantly, squeaking in protest. Without a working lens, it shows nothing but artistic blur."
+            }
+        },
+        {
+            "id": "railing",
+            "name": "Crumbling Railing",
+            "zone": { "x": 700, "y": 370, "width": 80, "height": 40 },
+            "interactionPoint": { "x": 740, "y": 420 },
+            "responses": {
+                "look": "The watchtower railing is more decorative suggestion than structural barrier. Several sections have rusted through entirely, offering picturesque views of a very long drop. A sign reading 'DO NOT LEAN' has itself fallen over, which rather proves its point.",
+                "use": "You gently test the railing. It wobbles. You step back. The railing sighs with relief.",
+                "push": "You push the railing. A section gives way and tumbles into the void below. The clatter echoes for an uncomfortably long time. Perhaps... don't push more railings.",
+                "take": "A piece of railing comes away in your hand. You put it back. Quickly. Before the rest of the railing gets ideas.",
+                "default": "You eye the railing with the suspicion it deserves."
+            }
+        },
+        {
+            "id": "tower-view",
+            "name": "Panoramic View",
+            "zone": { "x": 300, "y": 350, "width": 120, "height": 40 },
+            "interactionPoint": { "x": 360, "y": 410 },
+            "responses": {
+                "look": "From the watchtower, you can see the forest stretching in every direction, the village below, and -- in the far distance -- the hazy outline of something large. A castle, perhaps? Mountains? An unusually ambitious cloud? Hard to tell without a working telescope.",
+                "use": "You shade your eyes and look into the distance. There's definitely something out there beyond the forest, but without magnification, it's just a grey smudge on the horizon. Could be a castle. Could be weather.",
+                "default": "You admire the view. It's scenic, if you ignore the encroaching petrification of everything below."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "telescope-lens",
+            "name": "Telescope Lens",
+            "zone": { "x": 350, "y": 470, "width": 30, "height": 20 },
+            "interactionPoint": { "x": 365, "y": 460 },
+            "responses": {
+                "look": "A cracked but functional telescope lens, sitting on a dusty shelf. Someone removed it from the telescope -- or it fell out, given the general state of maintenance here. It magnifies your view and your insecurities.",
+                "use": "A lens by itself is just a paperweight for people with delusions of astronomy. You'd need a telescope to use it properly."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "take-lens",
+            "trigger": { "verb": "take", "subject": "telescope-lens" },
+            "conditions": [
+                { "type": "item-not-taken", "item": "telescope-lens" }
+            ],
+            "actions": [
+                { "type": "add-item", "item": "telescope-lens" },
+                { "type": "narrator-say", "text": "You pocket the telescope lens. It's cracked but still functional -- like most things in this kingdom, including the governance. It magnifies what you look through it at, which is either useful or terrifying depending on what you point it at." }
+            ],
+            "once": true
+        },
+        {
+            "id": "use-lens-on-telescope",
+            "trigger": { "verb": "use", "subject": "telescope-lens", "target": "telescope" },
+            "conditions": [
+                { "type": "has-item", "item": "telescope-lens" },
+                { "type": "flag-not-set", "flag": "seen_castle" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "telescope-lens" },
+                { "type": "set-flag", "flag": "seen_castle" },
+                { "type": "narrator-say", "text": "You slot the lens into the telescope housing. It fits, barely. Peering through, the blur resolves into sharp clarity. Beyond the forest, past rolling hills of increasingly grey countryside, stands Castle Erelhain -- a massive stone fortress with towers reaching skyward. Even at this distance, you can see the grey creeping up its walls. The petrification curse is spreading. Whatever is happening to this kingdom, the answer is in that castle. You should probably go there. Against your better judgment, which has been notably absent thus far." }
+            ],
+            "once": true
+        },
+        {
+            "id": "use-telescope-with-lens",
+            "trigger": { "verb": "use", "subject": "telescope" },
+            "conditions": [
+                { "type": "has-item", "item": "telescope-lens" },
+                { "type": "flag-not-set", "flag": "seen_castle" }
+            ],
+            "actions": [
+                { "type": "remove-item", "item": "telescope-lens" },
+                { "type": "set-flag", "flag": "seen_castle" },
+                { "type": "narrator-say", "text": "You fit your lens into the telescope and peer through. The blur resolves into sharp clarity. Beyond the forest stands Castle Erelhain -- a massive stone fortress with the grey curse visibly creeping up its walls. The petrification is spreading faster than you'd like. Whatever is happening to this kingdom, the answer is in that castle." }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "climb-railing",
+            "trigger": { "verb": "use", "subject": "railing" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "fall-death" }
+            ]
+        },
+        {
+            "id": "climb-railing-go",
+            "trigger": { "verb": "go", "subject": "railing" },
+            "conditions": [],
+            "actions": [
+                { "type": "trigger-death", "deathId": "fall-death" }
+            ]
+        }
+    ],
+    "deaths": {
+        "fall-death": {
+            "title": "Death by Ambition",
+            "narratorText": "You climb the railing. The railing, as previously noted, is decorative. It was never meant to support the weight of a person, let alone a person with pockets full of quest items. The railing gives way with the resigned creak of something that warned you repeatedly. The fall is long enough for you to reflect on your choices, but not long enough to reach any useful conclusions. The ground is unimpressed by your arrival."
+        }
+    },
+    "dynamicDescriptions": {
+        "seen_castle": "The watchtower's telescope now shows a clear view of Castle Erelhain in the distance. The image of the grey curse spreading up its walls lingers in your mind. You know where you need to go. You just wish you didn't."
+    },
+    "audio": {
+        "music": "music-village",
+        "ambient": [
+            { "key": "amb-wind-light", "volume": 0.8 }
+        ]
+    },
+    "playerSpawn": { "x": 480, "y": 430 }
+}
