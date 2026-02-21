@@ -54,13 +54,13 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **NARR-04**: Narrator text displays with typewriter effect in dialogue box
 - [x] **NARR-05**: Scene descriptions available via "look" command
 - [ ] **NARR-06**: Narrator references past events and player actions (dynamic personality)
-- [ ] **NARR-07**: Narrative scripted with inkjs for complex branching dialogue and story state
+- [x] **NARR-07**: Narrative scripted with inkjs for complex branching dialogue and story state
 
 ### NPCs & Dialogue
 
-- [ ] **NPC-01**: NPCs exist in scenes with authored knowledge and personalities
+- [x] **NPC-01**: NPCs exist in scenes with authored knowledge and personalities
 - [ ] **NPC-02**: Player can talk to NPCs via text commands
-- [ ] **NPC-03**: NPC dialogue supports branching conversation trees
+- [x] **NPC-03**: NPC dialogue supports branching conversation trees
 - [ ] **NPC-04**: NPCs provide information, hints, and advance the plot
 
 ### Death System
@@ -152,10 +152,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | NARR-04 | Phase 4 | Complete |
 | NARR-05 | Phase 4 | Complete |
 | NARR-06 | Phase 6 | Pending |
-| NARR-07 | Phase 6 | Pending |
-| NPC-01 | Phase 6 | Pending |
+| NARR-07 | Phase 6 | Complete |
+| NPC-01 | Phase 6 | Complete |
 | NPC-02 | Phase 6 | Pending |
-| NPC-03 | Phase 6 | Pending |
+| NPC-03 | Phase 6 | Complete |
 | NPC-04 | Phase 6 | Pending |
 | DEATH-01 | Phase 4 | Complete |
 | DEATH-02 | Phase 4 | Complete |

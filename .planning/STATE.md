@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** Phase 5 complete. Ready for Phase 6: Dialogue System
+**Current focus:** Phase 6 in progress: Dialogue System
 
 ## Current Position
 
-Phase: 5 of 8 (LLM Integration) -- COMPLETE
-Plan: 2 of 2 in current phase (05-02 complete)
-Status: Phase Complete
-Last activity: 2026-02-21 -- Completed 05-02-PLAN.md (HybridParser integration)
+Phase: 6 of 8 (NPCs and Dialogue)
+Plan: 1 of 3 in current phase (06-01 complete)
+Status: In Progress
+Last activity: 2026-02-21 -- Completed 06-01-PLAN.md (Dialogue Engine Foundation)
 
-Progress: [██████░░░░] 65%
+Progress: [███████░░░] 70%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 13
-- Average duration: 2.8min
-- Total execution time: 0.61 hours
+- Total plans completed: 14
+- Average duration: 2.7min
+- Total execution time: 0.64 hours
 
 **By Phase:**
 
@@ -47,6 +47,7 @@ Progress: [██████░░░░] 65%
 | Phase 04 P05 | 3min | 3 tasks | 6 files |
 | Phase 05 P01 | 2min | 2 tasks | 3 files |
 | Phase 05 P02 | 2min | 2 tasks | 3 files |
+| Phase 06 P01 | 2min | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -101,6 +102,9 @@ Recent decisions affecting current work:
 - [Phase 05]: Separate OllamaClient instances in Preloader and HybridParser -- no shared state needed beyond availability boolean
 - [Phase 05]: Thinking indicator ('...') shown via showInstant before async parse -- instant feedback while LLM processes
 - [Phase 05]: Post-await isTransitioning re-check prevents stale action dispatch after scene change during LLM wait
+- [Phase 06]: Named import { Story } from 'inkjs' -- verified constructor available as named export
+- [Phase 06]: Map<string,string> for internal npcStoryStates, Record<string,string> for serialization -- Map for runtime, plain object for JSON
+- [Phase 06]: DialogueUI reuses NarratorDisplay with 50-char typewrite threshold -- matches existing RoomScene pattern
 
 ### Pending Todos
 
@@ -115,5 +119,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 05-02-PLAN.md (HybridParser integration -- Phase 5 complete)
+Stopped at: Completed 06-01-PLAN.md (Dialogue Engine Foundation)
 Resume file: None
