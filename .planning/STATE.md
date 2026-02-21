@@ -19,9 +19,9 @@ Progress: [████░░░░░░] 38%
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
-- Average duration: 2.9min
-- Total execution time: 0.33 hours
+- Total plans completed: 8
+- Average duration: 3.3min
+- Total execution time: 0.43 hours
 
 **By Phase:**
 
@@ -41,6 +41,7 @@ Progress: [████░░░░░░] 38%
 | Phase 03 P01 | 4min | 3 tasks | 7 files |
 | Phase 03 P02 | 3min | 2 tasks | 7 files |
 | Phase 04 P02 | 3min | 2 tasks | 6 files |
+| Phase 04 P01 | 6min | 2 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -75,6 +76,8 @@ Recent decisions affecting current work:
 - [Phase 04]: Combine verb separated from Use verb -- 'combine X with Y' is now a dedicated verb, not a use synonym
 - [Phase 04]: Inventory item resolution ordered after hotspots but before directions in NounResolver
 - [Phase 04]: NarratorDisplay enhances existing element (no DOM creation) -- composable with TextInputBar
+- [Phase 04]: Map-based localStorage mock for Node 25 compatibility (built-in Storage API incomplete)
+- [Phase 04]: vi.mock() for Phaser-dependent EventBus in PuzzleEngine pure-logic tests
 
 ### Pending Todos
 
@@ -89,5 +92,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 04-02-PLAN.md
+Stopped at: Completed 04-01-PLAN.md (GameState, PuzzleEngine, SaveManager)
 Resume file: None

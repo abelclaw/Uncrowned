@@ -41,10 +41,10 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **PUZ-01**: Inventory combination puzzles -- combine or use items to solve problems
 - [ ] **PUZ-02**: Environmental/logic puzzles -- observe patterns, manipulate scene elements
 - [ ] **PUZ-03**: Conversation-based puzzles -- gather info from NPCs, persuade, negotiate
-- [ ] **PUZ-04**: All puzzles defined in data files (JSON), not hardcoded in engine
-- [ ] **PUZ-05**: Puzzle condition/action system evaluates game state flags and triggers results
+- [x] **PUZ-04**: All puzzles defined in data files (JSON), not hardcoded in engine
+- [x] **PUZ-05**: Puzzle condition/action system evaluates game state flags and triggers results
 - [ ] **PUZ-06**: Puzzles advance the story and connect to player goals (no arbitrary filler)
-- [ ] **PUZ-07**: Every puzzle has a logical solution that feels inevitable in hindsight
+- [x] **PUZ-07**: Every puzzle has a logical solution that feels inevitable in hindsight
 
 ### Narrative & Story
 
@@ -67,8 +67,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [ ] **DEATH-01**: Frequent death scenarios triggered by specific player actions
 - [ ] **DEATH-02**: Each death has a unique, funny narrator commentary (dark comedy)
-- [ ] **DEATH-03**: Game auto-saves on every room transition
-- [ ] **DEATH-04**: Death instantly resets to last auto-save -- no progress lost beyond current room
+- [x] **DEATH-03**: Game auto-saves on every room transition
+- [x] **DEATH-04**: Death instantly resets to last auto-save -- no progress lost beyond current room
 - [ ] **DEATH-05**: Player can never reach an unwinnable game state ("dead man walking" prevention)
 
 ### Audio
@@ -80,8 +80,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Save/Load & UI
 
-- [ ] **UI-01**: Multiple save slots for manual saving
-- [ ] **UI-02**: Auto-save on room transitions (separate from manual saves)
+- [x] **UI-01**: Multiple save slots for manual saving
+- [x] **UI-02**: Auto-save on room transitions (separate from manual saves)
 - [x] **UI-03**: Text input command bar always visible during gameplay
 - [x] **UI-04**: Dialogue/narrator text box displays text with clear formatting
 - [ ] **UI-05**: Main menu with new game, load game, and settings
@@ -142,10 +142,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PUZ-01 | Phase 4 | Pending |
 | PUZ-02 | Phase 4 | Pending |
 | PUZ-03 | Phase 6 | Pending |
-| PUZ-04 | Phase 4 | Pending |
-| PUZ-05 | Phase 4 | Pending |
+| PUZ-04 | Phase 4 | Complete |
+| PUZ-05 | Phase 4 | Complete |
 | PUZ-06 | Phase 6 | Pending |
-| PUZ-07 | Phase 4 | Pending |
+| PUZ-07 | Phase 4 | Complete |
 | NARR-01 | Phase 8 | Pending |
 | NARR-02 | Phase 8 | Pending |
 | NARR-03 | Phase 4 | Pending |
@@ -159,15 +159,15 @@ Which phases cover which requirements. Updated during roadmap creation.
 | NPC-04 | Phase 6 | Pending |
 | DEATH-01 | Phase 4 | Pending |
 | DEATH-02 | Phase 4 | Pending |
-| DEATH-03 | Phase 4 | Pending |
-| DEATH-04 | Phase 4 | Pending |
+| DEATH-03 | Phase 4 | Complete |
+| DEATH-04 | Phase 4 | Complete |
 | DEATH-05 | Phase 4 | Pending |
 | AUD-01 | Phase 7 | Pending |
 | AUD-02 | Phase 7 | Pending |
 | AUD-03 | Phase 7 | Pending |
 | AUD-04 | Phase 7 | Pending |
-| UI-01 | Phase 4 | Pending |
-| UI-02 | Phase 4 | Pending |
+| UI-01 | Phase 4 | Complete |
+| UI-02 | Phase 4 | Complete |
 | UI-03 | Phase 4 | Complete |
 | UI-04 | Phase 4 | Complete |
 | UI-05 | Phase 4 | Pending |
