@@ -76,9 +76,26 @@ export class PuzzleEngine {
             case 'open-exit':
                 EventBus.emit('room-update', action);
                 return null;
+            case 'evaluate-ending':
+                EventBus.emit('trigger-ending', this.determineEnding());
+                return null;
             default:
                 return null;
         }
+    }
+
+    /**
+     * Determine ending ID based on accumulated player flags.
+     * 2x2 matrix: clerk_remembers vs clerk_outwitted, throne_accepted vs throne_declined.
+     * clerk_remembers takes priority if both are somehow set (should not happen in normal play).
+     */
+    private determineEnding(): string {
+        const remembers = this.state.isFlagSet('clerk_remembers');
+        const accepted = this.state.isFlagSet('throne_accepted');
+        if (remembers && accepted) return 'ending-wanderer-king';
+        if (remembers && !accepted) return 'ending-redemption';
+        if (!remembers && accepted) return 'ending-reluctant-ruler';
+        return 'ending-bureaucratic'; // clerk_outwitted or fallback
     }
 
     /**

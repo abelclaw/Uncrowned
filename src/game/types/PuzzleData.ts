@@ -24,7 +24,8 @@ export type PuzzleAction =
     | { type: 'trigger-death'; deathId: string }
     | { type: 'remove-hotspot'; hotspot: string }
     | { type: 'add-hotspot'; hotspot: string }
-    | { type: 'open-exit'; exit: string };
+    | { type: 'open-exit'; exit: string }
+    | { type: 'evaluate-ending' };
 
 /**
  * A complete puzzle/interaction definition.
