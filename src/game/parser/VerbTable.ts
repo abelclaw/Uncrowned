@@ -116,6 +116,16 @@ export const VERB_TABLE: VerbDefinition[] = [
         ],
     },
     {
+        canonical: 'hint',
+        synonyms: ['hint', 'help', 'stuck', 'clue'],
+        patterns: [
+            /^(?:hint|help|stuck|clue)$/i,
+            /^(?:give\s+me\s+a\s+)?(?:hint|help|clue)$/i,
+            /^(?:i'?m?\s+)?stuck$/i,
+            /^what\s+(?:do\s+i\s+do|should\s+i\s+do|now)$/i,
+        ],
+    },
+    {
         canonical: 'save',
         synonyms: ['save', 'savegame'],
         patterns: [

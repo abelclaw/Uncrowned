@@ -3,6 +3,7 @@ import type { RoomData, ExitData, HotspotData, RoomItemData } from '../types/Roo
 import type { ItemDefinition } from '../types/ItemData';
 import type { NpcDefinition } from '../types/NpcData';
 import { PuzzleEngine } from './PuzzleEngine';
+import { HintSystem } from './HintSystem';
 import { GameState } from '../state/GameState';
 import { SaveManager } from '../state/SaveManager';
 import EventBus from '../EventBus';
@@ -30,12 +31,14 @@ export interface DispatchResult {
  */
 export class CommandDispatcher {
     private puzzleEngine: PuzzleEngine;
+    private hintSystem: HintSystem;
     private state: GameState;
     private itemDefs: ItemDefinition[];
     private npcDefs: NpcDefinition[];
 
     constructor(itemDefs: ItemDefinition[] = [], npcDefs: NpcDefinition[] = []) {
         this.puzzleEngine = new PuzzleEngine();
+        this.hintSystem = new HintSystem();
         this.state = GameState.getInstance();
         this.itemDefs = itemDefs;
         this.npcDefs = npcDefs;
@@ -56,6 +59,8 @@ export class CommandDispatcher {
                 return this.handleLoad(action);
             case 'combine':
                 return this.handleCombine(action, roomData);
+            case 'hint':
+                return this.handleHint(roomData);
         }
 
         // 2. Check puzzles (solutions checked first so correct actions always succeed)
@@ -68,6 +73,21 @@ export class CommandDispatcher {
             );
             if (puzzleResult?.matched) {
                 return { response: puzzleResult.response, handled: true };
+            }
+        }
+
+        // 2b. Track failed attempts for hint escalation
+        // Runs when a puzzle trigger matched by verb/subject/target but conditions failed
+        if (roomData.puzzles && roomData.puzzles.length > 0) {
+            for (const puzzle of roomData.puzzles) {
+                if (puzzle.trigger.verb === action.verb
+                    && (!puzzle.trigger.subject || puzzle.trigger.subject === action.subject)
+                    && (!puzzle.trigger.target || puzzle.trigger.target === action.target)
+                    && puzzle.once
+                    && !this.state.isFlagSet(`puzzle-solved:${puzzle.id}`)) {
+                    this.hintSystem.recordFailedAttempt(puzzle.id);
+                    break;
+                }
             }
         }
 
@@ -259,6 +279,21 @@ export class CommandDispatcher {
 
         return {
             response: "Those don't go together.",
+            handled: true,
+        };
+    }
+
+    /**
+     * Handle "hint" command.
+     * Returns progressive hint for the most relevant unsolved puzzle.
+     */
+    private handleHint(roomData: RoomData): DispatchResult {
+        const hint = this.hintSystem.getHint(roomData);
+        if (hint) {
+            return { response: hint, handled: true };
+        }
+        return {
+            response: "Everything in this room seems to be in order. Perhaps another location holds what you seek. Or perhaps you're just lost. Both are equally likely.",
             handled: true,
         };
     }
