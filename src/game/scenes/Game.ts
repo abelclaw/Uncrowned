@@ -2,24 +2,46 @@ import { Scene } from 'phaser';
 import EventBus from '../EventBus';
 
 export class Game extends Scene {
+    private cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
+
     constructor() {
         super('Game');
     }
 
     create() {
-        const { width, height } = this.cameras.main;
+        const worldWidth = 1920;
 
-        // Confirm the scene loaded with centered text
-        this.add.text(width / 2, height / 2, 'KQGame - Phase 1', {
+        // Add parallax layers back-to-front with different scroll factors
+        // Sky: fixed background, never moves
+        this.add.image(0, 0, 'bg-sky').setOrigin(0, 0).setScrollFactor(0);
+
+        // Mountains: very slow parallax (distant)
+        this.add.image(0, 0, 'bg-mountains').setOrigin(0, 0).setScrollFactor(0.1);
+
+        // Trees: medium parallax (mid-ground)
+        this.add.image(0, 0, 'bg-trees').setOrigin(0, 0).setScrollFactor(0.4);
+
+        // Ground: moves with camera (foreground)
+        this.add.image(0, 0, 'bg-ground').setOrigin(0, 0).setScrollFactor(1);
+
+        // Set camera bounds to match world width
+        this.cameras.main.setBounds(0, 0, worldWidth, 540);
+
+        // Pixel-perfect camera rendering
+        this.cameras.main.setRoundPixels(true);
+
+        // Keyboard controls for testing parallax scrolling
+        this.cursors = this.input.keyboard!.createCursorKeys();
+
+        // Info text fixed to camera (scroll factor 0)
+        this.add.text(10, 10, 'Arrow keys to scroll | Phase 1 Foundation', {
             fontFamily: 'monospace',
-            fontSize: '24px',
+            fontSize: '14px',
             color: '#ffffff',
-        }).setOrigin(0.5);
+        }).setScrollFactor(0);
 
         // Emit scene-ready event on EventBus for cross-scene communication
         EventBus.emit('scene-ready', { sceneKey: 'Game' });
-
-        console.log('Game scene ready');
 
         // Clean up EventBus listeners on scene shutdown to prevent memory leaks
         this.events.on(Phaser.Scenes.Events.SHUTDOWN, () => {
@@ -28,6 +50,12 @@ export class Game extends Scene {
     }
 
     update(_time: number, _delta: number) {
-        // Empty for now -- will be used by parallax in Plan 01-02
+        // Scroll camera with arrow keys
+        if (this.cursors.right.isDown) {
+            this.cameras.main.scrollX += 3;
+        }
+        if (this.cursors.left.isDown) {
+            this.cameras.main.scrollX -= 3;
+        }
     }
 }

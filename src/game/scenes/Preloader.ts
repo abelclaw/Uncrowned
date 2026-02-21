@@ -46,8 +46,11 @@ export class Preloader extends Scene {
             percentText.destroy();
         });
 
-        // No game assets to load yet -- the progress bar will complete instantly.
-        // Plan 01-02 adds the real parallax background assets.
+        // Parallax background layers
+        this.load.image('bg-sky', 'assets/backgrounds/sky.png');
+        this.load.image('bg-mountains', 'assets/backgrounds/mountains.png');
+        this.load.image('bg-trees', 'assets/backgrounds/trees.png');
+        this.load.image('bg-ground', 'assets/backgrounds/ground.png');
     }
 
     create() {
