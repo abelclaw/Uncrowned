@@ -22,7 +22,7 @@
             "zone": { "x": 0, "y": 350, "width": 80, "height": 200 },
             "targetRoom": "cave_entrance",
             "spawnPoint": { "x": 820, "y": 430 },
-            "transition": "fade"
+            "transition": "slide-left"
         }
     ],
     "hotspots": [
