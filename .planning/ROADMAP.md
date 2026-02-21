@@ -20,7 +20,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 9: Art Pipeline & Schema Foundation** - Build-time art generation, save migration, MetaGameState, and all 36 room backgrounds replaced with pixel art (completed 2026-02-21)
 - [x] **Phase 10: Death Gallery** - Persistent death tracking with collectible gallery UI showing all 43 discoverable deaths (completed 2026-02-21)
 - [x] **Phase 11: Progressive Hints** - Context-aware tiered hint system delivered through the sardonic narrator (completed 2026-02-21)
-- [ ] **Phase 12: Multiple Endings** - 3-4 distinct endings determined by accumulated player choices throughout the game
+- [x] **Phase 12: Multiple Endings** - 3-4 distinct endings determined by accumulated player choices throughout the game (completed 2026-02-21)
 - [ ] **Phase 13: Mobile Responsive** - Touch controls, verb buttons, and responsive layout for phone and tablet play
 
 ## Phase Details
@@ -116,7 +116,7 @@ Phases execute in numeric order: 9 -> 9.x -> 10 -> 10.x -> 11 -> 12 -> 13
 | 9. Art Pipeline & Schema Foundation | v2.0 | Complete    | 2026-02-21 | - |
 | 10. Death Gallery | 2/2 | Complete    | 2026-02-21 | - |
 | 11. Progressive Hints | 2/2 | Complete    | 2026-02-21 | - |
-| 12. Multiple Endings | 1/3 | In Progress|  | - |
+| 12. Multiple Endings | 3/3 | Complete   | 2026-02-21 | - |
 | 13. Mobile Responsive | v2.0 | 0/2 | Not started | - |
 
 ---

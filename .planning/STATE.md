@@ -11,9 +11,9 @@ See: .planning/PROJECT.md (updated 2026-02-21)
 
 Milestone: v2.0 Art & Polish
 Phase: 12 of 13 (Multiple Endings)
-Plan: 1 of 3 in current phase
-Status: In Progress
-Last activity: 2026-02-21 -- Completed 12-01: Ending determination engine and content data
+Plan: 3 of 3 in current phase
+Status: Phase Complete
+Last activity: 2026-02-21 -- Completed 12-03: Endings Gallery UI and ending-influence room markers
 
 Progress: [██████░░░░] ~55% (v2.0)
 
@@ -23,7 +23,7 @@ Progress: [██████░░░░] ~55% (v2.0)
 - Phases: 8, Plans: 22, Commits: 95, Files: 207, LOC: 35,394
 
 **v2.0:**
-- Total plans completed: 6
+- Total plans completed: 8
 - Phases: 5 (Phases 9-13)
 - Requirements: 32
 
@@ -35,6 +35,8 @@ Progress: [██████░░░░] ~55% (v2.0)
 | 11 | 01 | 5min | 3 | 13 |
 | 11 | 02 | 35min | 2 | 24 |
 | 12 | 01 | 2min | 2 | 4 |
+| 12 | 02 | 3min | 2 | 5 |
+| 12 | 03 | 3min | 2 | 6 |
 
 ## Accumulated Context
 
@@ -72,6 +74,9 @@ Recent decisions affecting current work:
 - 12-01: determineEnding() checks clerk_remembers first (priority over clerk_outwitted if both set)
 - 12-01: evaluate-ending action is parameterless -- ending derived internally from GameState flags
 - 12-01: Epilogue text copied verbatim from research to preserve narrator's sardonic voice
+- 12-02: EndingScene uses scene.start() (full replacement) not scene.launch() since game is over
+- 12-02: 1500ms fadeOut duration for dramatic pacing before EndingScene starts
+- 12-02: evaluate-ending placed in throne choice puzzles (not perform-rite) to ensure flags are set
 
 ### Pending Todos
 
@@ -86,5 +91,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 12-01-PLAN.md
+Stopped at: Completed 12-02-PLAN.md
 Resume file: None
