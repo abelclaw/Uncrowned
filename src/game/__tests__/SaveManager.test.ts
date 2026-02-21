@@ -173,7 +173,7 @@ describe('SaveManager', () => {
             expect(exportData.metaState).toBeDefined();
         });
 
-        it('export data gameState contains all current GameState fields including version: 2', () => {
+        it('export data gameState contains all current GameState fields including current version', () => {
             MetaGameState.resetInstance();
             const meta = MetaGameState.getInstance();
             state.addItem('sword');
@@ -181,7 +181,7 @@ describe('SaveManager', () => {
 
             const exportData = SaveManager.createExportData(state, meta);
 
-            expect(exportData.gameState.version).toBe(2);
+            expect(exportData.gameState.version).toBe(3);
             expect(exportData.gameState.inventory).toContain('sword');
             expect((exportData.gameState.flags as Record<string, boolean>)['armed']).toBe(true);
             expect(exportData.gameState.currentRoom).toBe('forest_clearing');
@@ -236,7 +236,7 @@ describe('SaveManager', () => {
             expect(() => SaveManager.parseImportData(data2)).toThrow();
         });
 
-        it('parsed gameState from import runs through migration (v1 data gets version: 2 after load)', () => {
+        it('parsed gameState from import runs through migration (v1 data gets current version after load)', () => {
             // Create a v1-format export (no version field in gameState)
             const v1Export = {
                 format: 'kqgame-save',
@@ -258,14 +258,14 @@ describe('SaveManager', () => {
             const result = SaveManager.parseImportData(JSON.stringify(v1Export));
             // parseImportData returns gameState as JSON string, caller uses state.deserialize() which runs migration
             state.deserialize(result.gameState);
-            expect(state.getData().version).toBe(2);
+            expect(state.getData().version).toBe(3);
             expect(state.getData().currentRoom).toBe('cave_entrance');
             expect(state.hasItem('key')).toBe(true);
         });
     });
 
     describe('Migration-aware loads', () => {
-        it('loadAutoSave on v1-format save succeeds and resulting state has version: 2', () => {
+        it('loadAutoSave on v1-format save succeeds and migrates to current version', () => {
             // Manually write a v1 save (no version field) to localStorage
             const v1Save = JSON.stringify({
                 currentRoom: 'cave_entrance',
@@ -281,11 +281,11 @@ describe('SaveManager', () => {
 
             const loaded = SaveManager.loadAutoSave(state);
             expect(loaded).toBe(true);
-            expect(state.getData().version).toBe(2);
+            expect(state.getData().version).toBe(3);
             expect(state.hasItem('torch')).toBe(true);
         });
 
-        it('loadFromSlot on v1-format save succeeds and resulting state has version: 2', () => {
+        it('loadFromSlot on v1-format save succeeds and migrates to current version', () => {
             // Manually write a v1 save (no version field) to slot 1
             const v1Save = JSON.stringify({
                 currentRoom: 'village_path',
@@ -301,7 +301,7 @@ describe('SaveManager', () => {
 
             const loaded = SaveManager.loadFromSlot(state, 1);
             expect(loaded).toBe(true);
-            expect(state.getData().version).toBe(2);
+            expect(state.getData().version).toBe(3);
             expect(state.hasItem('sword')).toBe(true);
             expect(state.getData().currentRoom).toBe('village_path');
         });

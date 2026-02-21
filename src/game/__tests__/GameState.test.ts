@@ -150,13 +150,13 @@ describe('GameState', () => {
     });
 
     describe('Version-aware serialization', () => {
-        it('serialize() output includes version: 2', () => {
+        it('serialize() output includes version: 3', () => {
             const json = state.serialize();
             const parsed = JSON.parse(json);
-            expect(parsed.version).toBe(2);
+            expect(parsed.version).toBe(3);
         });
 
-        it('deserialize() on v1 JSON (no version field) succeeds and state has version: 2', () => {
+        it('deserialize() on v1 JSON (no version field) succeeds and migrates to current version', () => {
             const v1Json = JSON.stringify({
                 currentRoom: 'cave_entrance',
                 inventory: ['key'],
@@ -170,12 +170,12 @@ describe('GameState', () => {
 
             state.deserialize(v1Json);
 
-            expect(state.getData().version).toBe(2);
+            expect(state.getData().version).toBe(CURRENT_SAVE_VERSION);
             expect(state.getData().currentRoom).toBe('cave_entrance');
             expect(state.hasItem('key')).toBe(true);
         });
 
-        it('deserialize() on v2 JSON works normally', () => {
+        it('deserialize() on v2 JSON migrates to current version', () => {
             const v2Json = JSON.stringify({
                 version: 2,
                 currentRoom: 'cave_entrance',
@@ -190,11 +190,11 @@ describe('GameState', () => {
 
             state.deserialize(v2Json);
 
-            expect(state.getData().version).toBe(2);
+            expect(state.getData().version).toBe(CURRENT_SAVE_VERSION);
             expect(state.hasItem('sword')).toBe(true);
         });
 
-        it('reset() produces state with version: 2', () => {
+        it('reset() produces state with current version', () => {
             state.addItem('key');
             state.reset();
             expect(state.getData().version).toBe(CURRENT_SAVE_VERSION);
