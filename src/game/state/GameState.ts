@@ -1,5 +1,6 @@
 import type { GameStateData } from './GameStateTypes.ts';
 import { getDefaultState } from './GameStateTypes.ts';
+import { migrate } from './migrations/index.ts';
 
 /**
  * Singleton game state manager.
@@ -89,7 +90,7 @@ export class GameState {
     }
 
     deserialize(json: string): void {
-        this.data = JSON.parse(json);
+        this.data = migrate(JSON.parse(json));
     }
 
     reset(): void {
