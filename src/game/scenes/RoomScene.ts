@@ -5,6 +5,7 @@ import { SceneTransition } from '../systems/SceneTransition';
 import { CommandDispatcher } from '../systems/CommandDispatcher';
 import { HybridParser } from '../llm/HybridParser';
 import { TextInputBar } from '../ui/TextInputBar';
+import { VerbBar } from '../ui/VerbBar';
 import { NarratorDisplay } from '../ui/NarratorDisplay';
 import { InventoryPanel } from '../ui/InventoryPanel';
 import { DialogueManager } from '../dialogue/DialogueManager';
@@ -60,6 +61,7 @@ export class RoomScene extends Phaser.Scene {
 
     // Text parser integration
     private textInputBar!: TextInputBar;
+    private verbBar!: VerbBar;
     private textParser!: HybridParser;
     private commandDispatcher!: CommandDispatcher;
     private commandSubmittedHandler!: (text: string) => void;
@@ -373,6 +375,9 @@ export class RoomScene extends Phaser.Scene {
         const container = document.getElementById('game-container')!;
         this.textInputBar = new TextInputBar(container);
 
+        // Create VerbBar (appended after TextInputBar: canvas -> text parser -> verb bar)
+        this.verbBar = new VerbBar(container);
+
         // Create NarratorDisplay wrapping the TextInputBar's response element
         const responseEl = document.getElementById('parser-response')!;
         this.narratorDisplay = new NarratorDisplay(responseEl);
@@ -637,6 +642,7 @@ export class RoomScene extends Phaser.Scene {
             this.player.destroy();
             this.navigation.destroy();
             this.textInputBar.destroy();
+            this.verbBar.destroy();
             EventBus.off('command-submitted', this.commandSubmittedHandler);
             EventBus.off('go-command', this.goCommandHandler);
             EventBus.removeAllListeners('scene-ready');

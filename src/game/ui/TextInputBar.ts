@@ -1,4 +1,5 @@
 import EventBus from '../EventBus';
+import { isMobile } from '../systems/MobileKeyboardManager';
 
 /**
  * HTML-based text input bar for the text parser interface.
@@ -110,9 +111,13 @@ export class TextInputBar {
 
     /**
      * Give focus to the input field.
+     * On mobile, skip auto-focus to prevent the virtual keyboard from opening
+     * automatically on scene transitions. Users tap the input to open keyboard.
      */
     focus(): void {
-        this.inputEl.focus();
+        if (!isMobile()) {
+            this.inputEl.focus();
+        }
     }
 
     /**
