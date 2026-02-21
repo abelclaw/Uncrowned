@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** Phase 7 complete: Audio and Polish
+**Current focus:** Phase 8: Content Production -- Story design complete, authoring demo chapter next
 
 ## Current Position
 
-Phase: 7 of 8 (Audio and Polish)
-Plan: 2 of 2 in current phase (07-02 complete)
-Status: Phase 7 Complete
-Last activity: 2026-02-21 -- Completed 07-02-PLAN.md (Audio Integration)
+Phase: 8 of 8 (Content Production)
+Plan: 2 of 4 in current phase (08-01 complete)
+Status: In Progress
+Last activity: 2026-02-21 -- Completed 08-01-PLAN.md (Story Bible & Puzzle Design)
 
-Progress: [█████████░] 90%
+Progress: [█████████░] 92%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 18
-- Average duration: 2.7min
-- Total execution time: 0.77 hours
+- Total plans completed: 19
+- Average duration: 3.0min
+- Total execution time: 0.92 hours
 
 **By Phase:**
 
@@ -52,6 +52,7 @@ Progress: [█████████░] 90%
 | Phase 06 P03 | 3min | 2 tasks | 3 files |
 | Phase 07 P01 | 3min | 2 tasks | 16 files |
 | Phase 07 P02 | 2min | 3 tasks | 5 files |
+| Phase 08 P01 | 9min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -121,6 +122,13 @@ Recent decisions affecting current work:
 - [Phase 07]: WAV extension for all Preloader audio loads -- matching Plan 01 generated placeholder files
 - [Phase 07]: AudioManager.init() before EventBus command listeners -- SFX works from first player command
 - [Phase 07]: cleanup() on shutdown removes listeners but preserves audio -- music persists for crossfade into next scene
+- [Phase 08]: Kingdom of Erelhain setting with petrification curse -- provides visual timer and escalating stakes
+- [Phase 08]: Protagonist Pip -- reluctant traveling tinker mistaken for prophesied savior, not a hero
+- [Phase 08]: The Clerk as immortal bureaucrat antagonist/redeemable -- secretly the original curse-caster
+- [Phase 08]: Rite of Administrative Closure as climax -- bureaucratic form-filing breaks the curse (satirical payoff)
+- [Phase 08]: 4-act structure: Demo (7), Royal Mess (7), Screaming Caverns (12), Rite (10) = 36 rooms
+- [Phase 08]: Alternative puzzle solutions where reasonable -- bridge toll/riddle, Clerk memory/argument
+- [Phase 08]: Clock tower time puzzle optional but beneficial -- prevents soft-lock if missed
 
 ### Pending Todos
 
@@ -135,5 +143,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 07-02-PLAN.md (Audio Integration) -- Phase 7 complete
+Stopped at: Completed 08-01-PLAN.md (Story Bible & Puzzle Design)
 Resume file: None

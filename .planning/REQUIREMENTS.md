@@ -48,8 +48,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Narrative & Story
 
-- [ ] **NARR-01**: Complete fantasy adventure story with beginning, middle, and satisfying end
-- [ ] **NARR-02**: Story provides ~5 hours of gameplay content across multiple acts
+- [x] **NARR-01**: Complete fantasy adventure story with beginning, middle, and satisfying end
+- [x] **NARR-02**: Story provides ~5 hours of gameplay content across multiple acts
 - [x] **NARR-03**: Dark comedy narrator provides sardonic commentary throughout
 - [x] **NARR-04**: Narrator text displays with typewriter effect in dialogue box
 - [x] **NARR-05**: Scene descriptions available via "look" command
@@ -146,8 +146,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PUZ-05 | Phase 4 | Complete |
 | PUZ-06 | Phase 6 | Complete |
 | PUZ-07 | Phase 4 | Complete |
-| NARR-01 | Phase 8 | Pending |
-| NARR-02 | Phase 8 | Pending |
+| NARR-01 | Phase 8 | Complete |
+| NARR-02 | Phase 8 | Complete |
 | NARR-03 | Phase 4 | Complete |
 | NARR-04 | Phase 4 | Complete |
 | NARR-05 | Phase 4 | Complete |
