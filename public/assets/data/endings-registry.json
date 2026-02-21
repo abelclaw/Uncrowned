@@ -1,0 +1,34 @@
+{
+    "version": 1,
+    "totalEndings": 4,
+    "endings": [
+        {
+            "id": "ending-redemption",
+            "title": "The Tinker's Farewell",
+            "subtitle": "The Clerk Remembers / Pip Walks Away",
+            "epilogueText": "Marlowe the wizard -- for that is who he was, before four centuries of paperwork buried the memory -- filed the last closure form with hands that finally trembled. Not from age. From feeling. The Kingdom of Erelhain de-petrified in a wave of golden light, stone cracking away from trees, from fountains, from people who blinked in confusion at the afternoon sun. Pip watched from the castle gate, pack on back. When the Ghost King offered the throne, Pip had said: 'I came for directions and a warm meal. I got directions. Martha's soup will do for the meal.' The Ghost King had not argued. He had, perhaps, expected this. 'The road,' he said instead, 'goes east.' Pip went east. The Kingdom of Erelhain rebuilt. And somewhere in the Royal Archive, filed under 'P' for 'Pip,' is a document certifying one traveling tinker as the Uncrowned Sovereign who saved a kingdom by accident, declined a throne on purpose, and asked only for lunch. It is, the Clerk-who-was-Marlowe noted, the most heroic paperwork he has ever filed.",
+            "galleryHint": "Remember who the Clerk really is, then choose the road over the crown."
+        },
+        {
+            "id": "ending-bureaucratic",
+            "title": "Filed Under 'Closed'",
+            "subtitle": "The Clerk Was Outwitted / Pip Walks Away",
+            "epilogueText": "The Clerk filed his protest in triplicate. This was procedurally valid. His cooperation with the Rite of Administrative Closure was, he noted for the record, undertaken under duress of his own regulatory framework, and he wished this documented. Pip witnessed his signature. The kingdom de-petrified. The Clerk processed the outcome with the mechanical efficiency of a man who has been ambushed by his own rules and intends to metabolize the experience through paperwork. When the throne was offered, Pip declined. 'I have places to be.' The Clerk stamped their exit permit without being asked. It was the most passive-aggressive act of gratitude in the kingdom's history, and Pip received it in the spirit it was given. The road east. The kingdom behind. The Clerk at his desk, processing the closure of a four-hundred-year-old curse. He wrote 'RESOLVED -- PROCEDURALLY CORRECT' across the top of the file. This was, he noted, the most technically accurate thing he had written in four centuries.",
+            "galleryHint": "Win the argument with paperwork, then walk away from the crown."
+        },
+        {
+            "id": "ending-wanderer-king",
+            "title": "The Accidental Monarch",
+            "subtitle": "The Clerk Remembers / Pip Accepts the Throne",
+            "epilogueText": "Nobody was more surprised than Pip. Marlowe -- who had been the Clerk, and before that a wizard, and before that presumably a person with a name and opinions about parking -- served as chief administrator to a monarch who had arrived looking for directions three days ago. The Ghost King departed at peace, his duty complete. Martha made soup. The Petrified Guard de-petrified and immediately asked for back pay. The kingdom, having been governed by bureaucratic inertia for four centuries, barely noticed the change in management. Pip's first royal decree was handwritten on a napkin. It said, verbatim: 'Everything's probably fine. Ask Marlowe if in doubt.' Marlowe framed it. It was, he said, the most efficient executive summary he had received since before the curse. The kingdom rebuilt. Pip ruled. Not through prophecy. Not through destiny. Through the simple fact of being the only person in the room who wasn't a ghost, a bureaucrat, or petrified. Leadership, like paperwork, begins with showing up.",
+            "galleryHint": "Help the Clerk remember who he was, then stay to rule what you saved."
+        },
+        {
+            "id": "ending-reluctant-ruler",
+            "title": "The Procedurally Correct King",
+            "subtitle": "The Clerk Was Outwitted / Pip Accepts the Throne",
+            "epilogueText": "The Clerk processed the coronation paperwork under the same duress he had processed everything else: thoroughly, correctly, and with visible distaste. Pip, now technically sovereign of a kingdom that had been saved by exploiting a clause in a four-century-old curse document, found this extremely funny. The Clerk did not. The Ghost King departed. Martha made soup. The kingdom rebuilt itself around a monarch who had read a legal document more carefully than anyone in four hundred years, and an administrator who had been outwitted by his own filing system. They did not, technically, like each other. They did, technically, run an effective kingdom. Pip signed documents. The Clerk stamped them. The bureaucracy continued, slightly improved. Somewhere in the Royal Archive, beneath a notation reading 'OUTCOME: PROCEDURALLY CORRECT,' is the record of how the Kingdom of Erelhain was saved by a tinker who found the loophole. The Clerk has read it fourteen times. He cannot find the error. This is perhaps the most terrifying thing that has ever happened to him.",
+            "galleryHint": "Win on a technicality, then stay to enforce more technicalities from the throne."
+        }
+    ]
+}
