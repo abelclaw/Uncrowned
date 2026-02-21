@@ -83,11 +83,12 @@ Plans:
   3. Player replays the game making different choices at key decision points and reaches a different ending
   4. Previously discovered endings are tracked in the gallery across playthroughs (MetaGameState)
   5. Key decision points throughout the game have visible ending-influence moments authored in room/puzzle data
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 12-01: TBD
-- [ ] 12-02: TBD
+- [ ] 12-01-PLAN.md -- Ending types, PuzzleEngine evaluate-ending action, endings-registry.json with 4 endings
+- [ ] 12-02-PLAN.md -- EndingScene, RoomScene trigger-ending handler, throne_room_act3 reauthoring
+- [ ] 12-03-PLAN.md -- EndingsGalleryScene UI, MainMenuScene wiring, ending-influence room JSON metadata
 
 ### Phase 13: Mobile Responsive
 **Goal**: Players can comfortably play the full game on phones and tablets using touch controls and verb buttons as primary input
@@ -115,7 +116,7 @@ Phases execute in numeric order: 9 -> 9.x -> 10 -> 10.x -> 11 -> 12 -> 13
 | 9. Art Pipeline & Schema Foundation | v2.0 | Complete    | 2026-02-21 | - |
 | 10. Death Gallery | 2/2 | Complete    | 2026-02-21 | - |
 | 11. Progressive Hints | 2/2 | Complete    | 2026-02-21 | - |
-| 12. Multiple Endings | v2.0 | 0/2 | Not started | - |
+| 12. Multiple Endings | v2.0 | 0/3 | Not started | - |
 | 13. Mobile Responsive | v2.0 | 0/2 | Not started | - |
 
 ---
