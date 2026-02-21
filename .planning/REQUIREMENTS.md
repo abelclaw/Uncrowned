@@ -1,7 +1,7 @@
 # Requirements: KQGame
 
 **Defined:** 2026-02-20
-**Core Value:** The text parser must feel magical — players type natural language commands and the game understands them, creating that classic adventure game feeling of conversing with a world.
+**Core Value:** The text parser must feel magical -- players type natural language commands and the game understands them, creating that classic adventure game feeling of conversing with a world.
 
 ## v1 Requirements
 
@@ -38,9 +38,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Puzzles
 
-- [ ] **PUZ-01**: Inventory combination puzzles — combine or use items to solve problems
-- [ ] **PUZ-02**: Environmental/logic puzzles — observe patterns, manipulate scene elements
-- [ ] **PUZ-03**: Conversation-based puzzles — gather info from NPCs, persuade, negotiate
+- [ ] **PUZ-01**: Inventory combination puzzles -- combine or use items to solve problems
+- [ ] **PUZ-02**: Environmental/logic puzzles -- observe patterns, manipulate scene elements
+- [ ] **PUZ-03**: Conversation-based puzzles -- gather info from NPCs, persuade, negotiate
 - [ ] **PUZ-04**: All puzzles defined in data files (JSON), not hardcoded in engine
 - [ ] **PUZ-05**: Puzzle condition/action system evaluates game state flags and triggers results
 - [ ] **PUZ-06**: Puzzles advance the story and connect to player goals (no arbitrary filler)
@@ -68,7 +68,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **DEATH-01**: Frequent death scenarios triggered by specific player actions
 - [ ] **DEATH-02**: Each death has a unique, funny narrator commentary (dark comedy)
 - [ ] **DEATH-03**: Game auto-saves on every room transition
-- [ ] **DEATH-04**: Death instantly resets to last auto-save — no progress lost beyond current room
+- [ ] **DEATH-04**: Death instantly resets to last auto-save -- no progress lost beyond current room
 - [ ] **DEATH-05**: Player can never reach an unwinnable game state ("dead man walking" prevention)
 
 ### Audio
@@ -93,8 +93,8 @@ Deferred to future release. Tracked but not in current roadmap.
 
 ### Enhanced Features
 
-- **V2-01**: Progressive hint system — narrator gives escalating hints when player is stuck
-- **V2-02**: Death gallery — collectible achievement for each discovered death
+- **V2-01**: Progressive hint system -- narrator gives escalating hints when player is stuck
+- **V2-02**: Death gallery -- collectible achievement for each discovered death
 - **V2-03**: Export/import save files for sharing between devices
 - **V2-04**: Mobile-responsive layout with virtual keyboard
 - **V2-05**: Narrator voice synthesis (text-to-speech)
@@ -104,14 +104,14 @@ Deferred to future release. Tracked but not in current roadmap.
 
 | Feature | Reason |
 |---------|--------|
-| Multiplayer | Single-player adventure game — multiplayer adds complexity with no value |
-| Cloud LLM APIs (OpenAI, Claude) | Must work entirely locally — no API keys, no internet needed |
-| Combat system | Adventure game — puzzles and exploration, not fighting |
-| Procedural story generation | LLMs produce incoherent narratives over long sessions — authored story only |
+| Multiplayer | Single-player adventure game -- multiplayer adds complexity with no value |
+| Cloud LLM APIs (OpenAI, Claude) | Must work entirely locally -- no API keys, no internet needed |
+| Combat system | Adventure game -- puzzles and exploration, not fighting |
+| Procedural story generation | LLMs produce incoherent narratives over long sessions -- authored story only |
 | Mobile native app | Browser-first; mobile web can work with v2 responsive layout |
-| Real-time elements | Adventure games use "Hollywood time" — no timed puzzles or action sequences |
+| Real-time elements | Adventure games use "Hollywood time" -- no timed puzzles or action sequences |
 | Voice acting | Text and narrator only for v1 |
-| Desktop packaging (Electron) | Unnecessary — browser works everywhere |
+| Desktop packaging (Electron) | Unnecessary -- browser works everywhere |
 
 ## Traceability
 
@@ -119,13 +119,65 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| (populated during roadmap creation) | | |
+| ENG-01 | Phase 1 | Pending |
+| ENG-02 | Phase 2 | Pending |
+| ENG-03 | Phase 2 | Pending |
+| ENG-04 | Phase 2 | Pending |
+| ENG-05 | Phase 2 | Pending |
+| ENG-06 | Phase 1 | Pending |
+| ENG-07 | Phase 1 | Pending |
+| ENG-08 | Phase 1 | Pending |
+| PARSE-01 | Phase 3 | Pending |
+| PARSE-02 | Phase 3 | Pending |
+| PARSE-03 | Phase 5 | Pending |
+| PARSE-04 | Phase 5 | Pending |
+| PARSE-05 | Phase 5 | Pending |
+| PARSE-06 | Phase 5 | Pending |
+| PARSE-07 | Phase 3 | Pending |
+| INV-01 | Phase 4 | Pending |
+| INV-02 | Phase 4 | Pending |
+| INV-03 | Phase 4 | Pending |
+| INV-04 | Phase 4 | Pending |
+| INV-05 | Phase 4 | Pending |
+| PUZ-01 | Phase 4 | Pending |
+| PUZ-02 | Phase 4 | Pending |
+| PUZ-03 | Phase 6 | Pending |
+| PUZ-04 | Phase 4 | Pending |
+| PUZ-05 | Phase 4 | Pending |
+| PUZ-06 | Phase 6 | Pending |
+| PUZ-07 | Phase 4 | Pending |
+| NARR-01 | Phase 8 | Pending |
+| NARR-02 | Phase 8 | Pending |
+| NARR-03 | Phase 4 | Pending |
+| NARR-04 | Phase 4 | Pending |
+| NARR-05 | Phase 4 | Pending |
+| NARR-06 | Phase 6 | Pending |
+| NARR-07 | Phase 6 | Pending |
+| NPC-01 | Phase 6 | Pending |
+| NPC-02 | Phase 6 | Pending |
+| NPC-03 | Phase 6 | Pending |
+| NPC-04 | Phase 6 | Pending |
+| DEATH-01 | Phase 4 | Pending |
+| DEATH-02 | Phase 4 | Pending |
+| DEATH-03 | Phase 4 | Pending |
+| DEATH-04 | Phase 4 | Pending |
+| DEATH-05 | Phase 4 | Pending |
+| AUD-01 | Phase 7 | Pending |
+| AUD-02 | Phase 7 | Pending |
+| AUD-03 | Phase 7 | Pending |
+| AUD-04 | Phase 7 | Pending |
+| UI-01 | Phase 4 | Pending |
+| UI-02 | Phase 4 | Pending |
+| UI-03 | Phase 4 | Pending |
+| UI-04 | Phase 4 | Pending |
+| UI-05 | Phase 4 | Pending |
+| UI-06 | Phase 4 | Pending |
 
 **Coverage:**
 - v1 requirements: 40 total
-- Mapped to phases: 0
-- Unmapped: 40 (awaiting roadmap)
+- Mapped to phases: 40
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-20*
-*Last updated: 2026-02-20 after initial definition*
+*Last updated: 2026-02-20 after roadmap creation*
