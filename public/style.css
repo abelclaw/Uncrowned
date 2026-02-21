@@ -72,8 +72,47 @@ body {
     background: #1e1e36;
 }
 
+/* Verb Bar: quick-tap buttons for mobile players */
+#verb-bar {
+    display: none;
+    width: 100%;
+    max-width: 960px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background: #1a1a2e;
+    border-top: 1px solid #16213e;
+    box-sizing: border-box;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.verb-btn {
+    flex: 1;
+    min-height: 44px;
+    background: #2a2a3e;
+    border: none;
+    border-right: 1px solid #16213e;
+    color: #c8c8d4;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 8px 4px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.verb-btn:last-child {
+    border-right: none;
+}
+
+.verb-btn:active {
+    background: #3a3a5e;
+}
+
 @media (max-width: 768px) {
     #parser-input {
         font-size: 16px;
+    }
+    #verb-bar {
+        display: flex;
     }
 }
