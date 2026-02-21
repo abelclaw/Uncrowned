@@ -126,11 +126,11 @@ Plans:
   1. Player actions produce appropriate sound effects (item pickup, door opening, death sting, etc.)
   2. Background music plays per scene or area and transitions smoothly when moving between rooms
   3. Ambient audio (wind, forest sounds, water) creates atmosphere in each scene
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 07-01: TBD
-- [ ] 07-02: TBD
+- [ ] 07-01-PLAN.md -- AudioManager singleton, RoomData audio types, audio registry, placeholder audio files
+- [ ] 07-02-PLAN.md -- Preloader audio loading, room JSON audio fields, RoomScene AudioManager integration, verification
 
 ### Phase 8: Content Production
 **Goal**: A complete 5-hour fantasy adventure is authored, art-generated, and playtested -- starting with a 30-60 minute demo chapter to validate the experience, then scaling to the full game
