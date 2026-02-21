@@ -62,9 +62,12 @@ export class Preloader extends Scene {
         this.load.json('room-forest_clearing', 'assets/data/rooms/forest_clearing.json');
         this.load.json('room-cave_entrance', 'assets/data/rooms/cave_entrance.json');
         this.load.json('room-village_path', 'assets/data/rooms/village_path.json');
+
+        // Item definitions registry
+        this.load.json('items', 'assets/data/items.json');
     }
 
     create() {
-        this.scene.start('RoomScene', { roomId: 'forest_clearing' });
+        this.scene.start('MainMenuScene');
     }
 }

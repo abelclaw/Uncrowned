@@ -1,8 +1,10 @@
 import Phaser from 'phaser';
 import { Boot } from './scenes/Boot';
 import { Preloader } from './scenes/Preloader';
+import { MainMenuScene } from './scenes/MainMenuScene';
 import { Game } from './scenes/Game';
 import { RoomScene } from './scenes/RoomScene';
+import { DeathScene } from './scenes/DeathScene';
 
 const config: Phaser.Types.Core.GameConfig = {
     type: Phaser.AUTO,
@@ -25,7 +27,7 @@ const config: Phaser.Types.Core.GameConfig = {
         smoothStep: true,
     },
 
-    scene: [Boot, Preloader, Game, RoomScene],
+    scene: [Boot, Preloader, MainMenuScene, Game, RoomScene, DeathScene],
 };
 
 export default new Phaser.Game(config);

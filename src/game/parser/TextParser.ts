@@ -28,7 +28,12 @@ export class TextParser {
      * @param exits - Current room's exits
      * @returns ParseResult with success/failure and optional GameAction or error
      */
-    parse(input: string, hotspots: HotspotData[], exits: ExitData[]): ParseResult {
+    parse(
+        input: string,
+        hotspots: HotspotData[],
+        exits: ExitData[],
+        inventoryItems?: Array<{ id: string; name: string }>,
+    ): ParseResult {
         const rawInput = input;
         const trimmed = input.trim();
 
@@ -61,7 +66,7 @@ export class TextParser {
             for (const pattern of verbDef.patterns) {
                 const match = normalized.match(pattern);
                 if (match) {
-                    return this.buildAction(verbDef.canonical, match, rawInput, hotspots, exits);
+                    return this.buildAction(verbDef.canonical, match, rawInput, hotspots, exits, inventoryItems);
                 }
             }
         }
@@ -82,6 +87,7 @@ export class TextParser {
         rawInput: string,
         hotspots: HotspotData[],
         exits: ExitData[],
+        inventoryItems?: Array<{ id: string; name: string }>,
     ): ParseResult {
         const rawSubject = match[1]?.trim() || null;
         const rawTarget = match[2]?.trim() || null;
@@ -99,12 +105,12 @@ export class TextParser {
 
         // Resolve subject noun
         const subject = rawSubject
-            ? this.resolveNoun(rawSubject, hotspots, exits)
+            ? this.resolveNoun(rawSubject, hotspots, exits, inventoryItems)
             : null;
 
         // Resolve target noun
         const target = rawTarget
-            ? this.resolveNoun(rawTarget, hotspots, exits)
+            ? this.resolveNoun(rawTarget, hotspots, exits, inventoryItems)
             : null;
 
         return {
@@ -121,9 +127,10 @@ export class TextParser {
         rawNoun: string,
         hotspots: HotspotData[],
         exits: ExitData[],
+        inventoryItems?: Array<{ id: string; name: string }>,
     ): string {
         const cleaned = stripStopWords(rawNoun);
-        const resolved = this.nounResolver.resolve(cleaned, hotspots, exits);
+        const resolved = this.nounResolver.resolve(cleaned, hotspots, exits, inventoryItems);
         return resolved.id;
     }
 

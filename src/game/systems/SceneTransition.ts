@@ -1,8 +1,11 @@
 import Phaser from 'phaser';
+import { GameState } from '../state/GameState';
+import { SaveManager } from '../state/SaveManager';
 
 /**
  * Scene transition helper supporting fade and slide effects.
  * Handles input disabling and double-trigger prevention.
+ * Auto-saves before every room transition.
  *
  * Transition types:
  * - fade: camera fadeOut -> scene start -> camera fadeIn
@@ -12,7 +15,8 @@ import Phaser from 'phaser';
 export class SceneTransition {
     /**
      * Transition to a new room using the specified transition type.
-     * Disables input and delegates to the appropriate transition method.
+     * Auto-saves to the DESTINATION room before the transition begins,
+     * so death in the new room restores to room-entry state.
      */
     static transitionToRoom(
         scene: Phaser.Scene,
@@ -21,6 +25,13 @@ export class SceneTransition {
         transition: 'fade' | 'slide-left' | 'slide-right' = 'fade',
         duration: number = 500
     ): void {
+        // Auto-save before leaving the current room
+        // Record DESTINATION room so loading auto-save starts at the room we're heading to
+        const state = GameState.getInstance();
+        (state.getData() as { currentRoom: string }).currentRoom = roomId;
+        state.markRoomVisited(roomId);
+        SaveManager.autoSave(state);
+
         scene.input.enabled = false;
 
         switch (transition) {
