@@ -413,6 +413,24 @@
             }
         ]
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "answer-riddle-correct",
+            "tiers": [
+                "Bertram asked you a riddle. 'Tall when young, short when old.' Perhaps think about things that shrink as they age. Or burn. Or melt. Something along those lines.",
+                "The answer is something you might light on a birthday cake or during a power outage. It starts tall and melts down to nothing. Your ancestors used them before electricity.",
+                "The answer to the riddle is a candle. Use 'candle' on the troll. A candle is tall when new and short when old. I'm embarrassed for both of us."
+            ]
+        },
+        {
+            "puzzleId": "pay-toll",
+            "tiers": [
+                "The sign says the toll accepts 'One Correct Answer OR One Coin.' If riddles aren't your forte, perhaps currency is.",
+                "Bertram accepts a coin as an alternative to the riddle. If you found a toll coin somewhere -- the village square, perhaps -- you could pay your way across.",
+                "Use the bridge toll coin on Bertram the troll or the toll booth. Money talks. Especially to unionized bridge trolls."
+            ]
+        }
+    ],
     "playerSpawn": {
         "x": 200,
         "y": 430

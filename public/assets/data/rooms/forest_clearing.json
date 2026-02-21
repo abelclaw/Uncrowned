@@ -252,6 +252,16 @@
             }
         ]
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "take-rusty-key",
+            "tiers": [
+                "I suppose I should mention that stumps often have cracks. Cracks sometimes contain things. But far be it from me to tell you where to look.",
+                "The old stump has a crack in it. Something is glinting inside. Your ancestors developed grasping fingers for a reason -- perhaps put them to use.",
+                "Take the rusty key from the crack in the old tree stump. I literally described it as 'glinting.' How much more obvious do you need?"
+            ]
+        }
+    ],
     "playerSpawn": {
         "x": 200,
         "y": 430

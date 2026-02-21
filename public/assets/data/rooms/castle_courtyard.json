@@ -467,6 +467,32 @@
             }
         ]
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "show-crystal-to-guards",
+            "tiers": [
+                "The guards want 'proof of purpose.' Perhaps something you acquired in your underground travels would impress them. Something that glows, maybe.",
+                "That cave crystal shard you picked up is exactly the kind of proof these guards are looking for. Show it to them. They respond well to shiny things from dangerous places.",
+                "Use the cave crystal shard on the castle guards. They'll recognize it as proof you've been to the Screaming Caverns and let you inside."
+            ]
+        },
+        {
+            "puzzleId": "fill-chalice-at-well",
+            "tiers": [
+                "An empty chalice and a functional well in the same courtyard. I wonder if there's a connection. The universe is full of mysteries like this.",
+                "The courtyard well still draws clean water. If you have an empty chalice -- perhaps from the kitchen -- you could fill it here. Water plus vessel. Revolutionary.",
+                "Use the empty chalice on the courtyard well to fill it with water. You'll need this for a certain herbal concoction. The chalice is from the royal kitchen."
+            ]
+        },
+        {
+            "puzzleId": "combine-chalice-sage",
+            "tiers": [
+                "Water and herbs have a long and storied history together. If you've gathered both, perhaps combining them would produce something... spirited.",
+                "A water-filled chalice and dried sage from the castle garden -- combined, they make a spirit brew. The kind of brew that summons things you might not want to summon, but probably need to.",
+                "Combine the water chalice with the dried sage to create a spirit brew. The sage is from the castle garden. The brew summons ghosts. You'll need it in the throne room."
+            ]
+        }
+    ],
     "playerSpawn": {
         "x": 480,
         "y": 430

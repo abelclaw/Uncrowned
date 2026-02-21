@@ -328,6 +328,16 @@
             }
         ]
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "use-skeleton-key",
+            "tiers": [
+                "That locked door to the west has a bone-shaped keyhole. An oddly specific security measure. One imagines the matching key would be equally... skeletal.",
+                "The bone-shaped keyhole requires a skeleton key. Martha the Cook in the royal kitchen has one -- she found it in a sock drawer. She might trade it for something she desperately needs.",
+                "Give flour to Martha the Cook in the kitchen to get the skeleton key. Then use the skeleton key on the locked door. The flour is in the servants' quarters, behind the rat-infested crates."
+            ]
+        }
+    ],
     "playerSpawn": {
         "x": 480,
         "y": 430

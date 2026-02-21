@@ -312,6 +312,16 @@
             }
         ]
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "give-flour-to-cook",
+            "tiers": [
+                "Martha seems rather frustrated about something. Missing ingredients, perhaps. A cook without supplies is just an angry person holding a cleaver.",
+                "Martha needs flour. Desperately. The servants' quarters might have some -- if you can get past the resident rodent population first. Rats are territorial about their grain.",
+                "Get the flour sack from the servants' quarters (use the rat trap on the storage crates first), then use the flour on Martha the Cook. She'll give you a skeleton key in return."
+            ]
+        }
+    ],
     "playerSpawn": {
         "x": 480,
         "y": 430

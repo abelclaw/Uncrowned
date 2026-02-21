@@ -444,6 +444,24 @@
             }
         ]
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "use-key-on-door",
+            "tiers": [
+                "There's a locked door here. Locked doors typically respond to one particular type of object. I'm sure you'll work it out eventually.",
+                "The heavy oak door has a rusted keyhole. If only you had a rusty key from, say, a forest clearing to the west. What a coincidence that would be.",
+                "Use the rusty key on the locked door. Key goes in lock. Lock opens. This is not advanced engineering."
+            ]
+        },
+        {
+            "puzzleId": "combine-stick-mushroom",
+            "tiers": [
+                "It's awfully dark in caves, isn't it? If only there were a way to combine something long and sturdy with something that glows. But what do I know.",
+                "You have a stick. You have a glowing mushroom. One provides structure, the other provides light. I trust even you can see where this is going.",
+                "Combine the stick with the glowing mushroom to make a makeshift torch. I genuinely cannot simplify this further without using hand puppets."
+            ]
+        }
+    ],
     "playerSpawn": {
         "x": 480,
         "y": 430

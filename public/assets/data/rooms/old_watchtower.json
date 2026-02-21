@@ -313,6 +313,16 @@
             }
         ]
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "use-lens-on-telescope",
+            "tiers": [
+                "A telescope without a lens is just an expensive tube. I wonder if there's a replacement lens lying around this watchtower somewhere. On a shelf, perhaps.",
+                "There's a cracked telescope lens on a dusty shelf in this very room. Pick it up and fit it into the telescope. Optics isn't that complicated.",
+                "Take the telescope lens from the shelf and use it on the rusted telescope. You'll see the castle in the distance. This is how telescopes work."
+            ]
+        }
+    ],
     "playerSpawn": {
         "x": 480,
         "y": 430

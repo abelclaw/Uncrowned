@@ -338,6 +338,24 @@
             }
         ]
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "use-rat-trap",
+            "tiers": [
+                "Those crates are making an awful lot of noise. Something is living behind them, and it's not paying rent. If only there were a device designed specifically for this problem.",
+                "A rat trap would clear out the rodents infesting these crates. The castle garden's gardener shed has one -- rusty but functional. Rats respond to mechanical persuasion.",
+                "Get the rat trap from the gardener's shed in the castle garden, then use it on the storage crates here. The rats will scatter, giving you access to what's behind them."
+            ]
+        },
+        {
+            "puzzleId": "take-flour",
+            "tiers": [
+                "There's something useful hidden behind those crates, but the current tenants are rather protective of it. Deal with the pest problem first.",
+                "The flour sack is behind the storage crates, but the rats are guarding it. Once you've dealt with the rat problem, you'll be able to reach it. Martha in the kitchen would love some flour.",
+                "After using the rat trap on the crates to clear the rats, take the flour sack. Bring it to Martha the Cook in the royal kitchen -- she'll reward you with a skeleton key."
+            ]
+        }
+    ],
     "playerSpawn": {
         "x": 480,
         "y": 430

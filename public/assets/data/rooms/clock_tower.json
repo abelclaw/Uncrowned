@@ -331,6 +331,16 @@
             }
         ]
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "repair-clock",
+            "tiers": [
+                "The clock mechanism is frozen. It needs two things to run again -- a replacement for the seized spring, and something to loosen the gears. Both exist somewhere in the kingdom.",
+                "A gear spring from the wizard's tower and clock oil from the royal treasury are what you need. Use either on the clock mechanism when you have both in your inventory.",
+                "Use the gear spring on the clock mechanism while you also have the clock oil. The spring is in the wizard's tower, the oil is in the treasury. Both items are consumed when the clock is repaired."
+            ]
+        }
+    ],
     "playerSpawn": {
         "x": 480,
         "y": 430

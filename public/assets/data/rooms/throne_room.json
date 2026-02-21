@@ -463,6 +463,24 @@
             }
         ]
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "use-spirit-brew",
+            "tiers": [
+                "This throne room feels like it's missing someone. Someone regal. Someone dead. Perhaps a particular beverage could invite an otherworldly guest.",
+                "A spirit brew -- made from water and sage -- could summon the ghost of the dead king. You'll need a chalice filled at the courtyard well, combined with dried sage from the castle garden.",
+                "Use the spirit brew in the throne room to summon King Mortimer's ghost. Make the brew by filling the chalice at the courtyard well, then combining it with dried sage from the garden."
+            ]
+        },
+        {
+            "puzzleId": "seal-decree",
+            "tiers": [
+                "Official documents require official stamps. A blank piece of paper is just paper until the right seal makes it law. Both items are in this castle somewhere.",
+                "The royal seal sits on the table beside the throne. A blank decree is in the servants' quarters, tucked under a diary. Combine them to forge an official document.",
+                "Combine the royal seal with the blank decree. The seal is on the table next to the throne, and the blank decree is under the diary on the writing desk in the servants' quarters."
+            ]
+        }
+    ],
     "playerSpawn": {
         "x": 480,
         "y": 430
