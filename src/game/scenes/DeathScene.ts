@@ -4,10 +4,16 @@ import { SaveManager } from '../state/SaveManager';
 
 /**
  * Data passed when launching the DeathScene overlay.
+ * The gallery-related fields (deathId, isNewDeath, discoveredCount, totalDeaths)
+ * are optional for backward compatibility with older callers.
  */
 export interface DeathSceneData {
     title: string;
     narratorText: string;
+    deathId?: string;
+    isNewDeath?: boolean;
+    discoveredCount?: number;
+    totalDeaths?: number;
 }
 
 /**
@@ -38,13 +44,39 @@ export class DeathScene extends Scene {
             color: '#cc3333',
         }).setOrigin(0.5).setDepth(1);
 
-        // Death count
-        const deathCount = GameState.getInstance().getData().deathCount;
-        this.add.text(480, 165, `Deaths: ${deathCount}`, {
-            fontFamily: 'monospace',
-            fontSize: '12px',
-            color: '#666666',
-        }).setOrigin(0.5).setDepth(1);
+        // Discovery counter (replaces old death count)
+        if (data.discoveredCount !== undefined && data.totalDeaths) {
+            this.add.text(480, 165, `${data.discoveredCount}/${data.totalDeaths} deaths discovered`, {
+                fontFamily: 'monospace',
+                fontSize: '12px',
+                color: '#666666',
+            }).setOrigin(0.5).setDepth(1);
+        } else {
+            // Fallback: show old death count for backward compatibility
+            const deathCount = GameState.getInstance().getData().deathCount;
+            this.add.text(480, 165, `Deaths: ${deathCount}`, {
+                fontFamily: 'monospace',
+                fontSize: '12px',
+                color: '#666666',
+            }).setOrigin(0.5).setDepth(1);
+        }
+
+        // "New!" badge for first-time death discovery
+        if (data.isNewDeath) {
+            const badge = this.add.text(480, 95, 'NEW DEATH DISCOVERED!', {
+                fontFamily: 'monospace',
+                fontSize: '14px',
+                color: '#ffcc00',
+            }).setOrigin(0.5).setAlpha(0).setDepth(1);
+
+            this.tweens.add({
+                targets: badge,
+                alpha: 1,
+                y: badge.y - 10,
+                duration: 500,
+                ease: 'Back.easeOut',
+            });
+        }
 
         // Narrator text
         this.add.text(480, 280, narratorText, {

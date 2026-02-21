@@ -11,7 +11,9 @@ import { DialogueManager } from '../dialogue/DialogueManager';
 import { DialogueUI } from '../dialogue/DialogueUI';
 import { AudioManager } from '../systems/AudioManager';
 import { GameState } from '../state/GameState';
+import { MetaGameState } from '../state/MetaGameState';
 import type { RoomData, ExitData, HotspotData } from '../types/RoomData';
+import type { DeathSceneData } from './DeathScene';
 import type { ItemDefinition } from '../types/ItemData';
 import type { NpcDefinition } from '../types/NpcData';
 import EventBus from '../EventBus';
@@ -485,6 +487,11 @@ export class RoomScene extends Phaser.Scene {
                 return;
             }
 
+            // Record death in MetaGameState BEFORE launching death scene
+            const meta = MetaGameState.getInstance();
+            const isNewDeath = meta.recordDeath(deathId);
+            const discoveredCount = meta.getDeathsDiscovered().length;
+
             // Pause this scene and launch DeathScene as overlay
             this.scene.pause();
             this.textInputBar.hide();
@@ -492,7 +499,11 @@ export class RoomScene extends Phaser.Scene {
             this.scene.launch('DeathScene', {
                 title: deathData.title,
                 narratorText: deathData.narratorText,
-            });
+                deathId: deathId,
+                isNewDeath: isNewDeath,
+                discoveredCount: discoveredCount,
+                totalDeaths: 43,
+            } as DeathSceneData);
         };
         EventBus.on('trigger-death', this.triggerDeathHandler);
 
