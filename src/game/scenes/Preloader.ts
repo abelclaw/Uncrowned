@@ -130,6 +130,9 @@ export class Preloader extends Scene {
         this.load.json('dialogue-mirror_spirit', 'assets/data/dialogue/mirror_spirit.ink.json');
         this.load.json('dialogue-wizard_ghost', 'assets/data/dialogue/wizard_ghost.ink.json');
 
+        // Death registry for gallery
+        this.load.json('death-registry', 'assets/data/death-registry.json');
+
         // Audio registry (event-to-SFX mapping)
         this.load.json('audio-registry', 'assets/data/audio-registry.json');
 
