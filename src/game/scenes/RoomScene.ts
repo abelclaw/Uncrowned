@@ -14,6 +14,7 @@ import { GameState } from '../state/GameState';
 import { MetaGameState } from '../state/MetaGameState';
 import type { RoomData, ExitData, HotspotData } from '../types/RoomData';
 import type { DeathSceneData } from './DeathScene';
+import type { EndingSceneData } from './EndingScene';
 import type { ItemDefinition } from '../types/ItemData';
 import type { NpcDefinition } from '../types/NpcData';
 import EventBus from '../EventBus';
@@ -66,6 +67,7 @@ export class RoomScene extends Phaser.Scene {
 
     // Phase 4 event handlers
     private triggerDeathHandler!: (deathId: string) => void;
+    private triggerEndingHandler!: (endingId: string) => void;
     private inventoryToggleHandler!: () => void;
     private loadGameHandler!: (data: { roomId: string }) => void;
     private roomUpdateHandler!: (action: any) => void;
@@ -507,6 +509,36 @@ export class RoomScene extends Phaser.Scene {
         };
         EventBus.on('trigger-death', this.triggerDeathHandler);
 
+        // Ending trigger handler
+        this.triggerEndingHandler = (endingId: string) => {
+            if (this.isTransitioning) return;
+            this.isTransitioning = true;
+
+            // Record ending BEFORE starting EndingScene (same pattern as death recording)
+            const meta = MetaGameState.getInstance();
+            const isNewEnding = meta.recordEnding(endingId);
+            const discoveredCount = meta.getEndingsDiscovered().length;
+
+            // Hide UI elements
+            this.textInputBar.hide();
+            this.inventoryPanel.hide();
+
+            // Fade out then start EndingScene (full replacement, not overlay)
+            this.cameras.main.fadeOut(1500, 0, 0, 0);
+            this.cameras.main.once(
+                Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE,
+                () => {
+                    this.scene.start('EndingScene', {
+                        endingId,
+                        isNewEnding,
+                        discoveredCount,
+                        totalEndings: 4,
+                    } as EndingSceneData);
+                }
+            );
+        };
+        EventBus.on('trigger-ending', this.triggerEndingHandler);
+
         // Inventory toggle handler
         this.inventoryToggleHandler = () => {
             this.updateInventoryPanel();
@@ -613,6 +645,7 @@ export class RoomScene extends Phaser.Scene {
             this.narratorDisplay.destroy();
             this.inventoryPanel.destroy();
             EventBus.off('trigger-death', this.triggerDeathHandler);
+            EventBus.off('trigger-ending', this.triggerEndingHandler);
             EventBus.off('inventory-toggle', this.inventoryToggleHandler);
             EventBus.off('load-game', this.loadGameHandler);
             EventBus.off('room-update', this.roomUpdateHandler);

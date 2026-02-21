@@ -252,10 +252,6 @@
                     "flag": "curse-broken"
                 },
                 {
-                    "type": "set-flag",
-                    "flag": "game-complete"
-                },
-                {
                     "type": "narrator-say",
                     "text": "The Ghost King reads the Rite. It is, as promised, a bureaucratic form. 'By the authority vested in the Kingdom of Erelhain, Section 47-B of the Original Curse Contract, Clause of Expiration, the undersigned hereby declares this curse...' He looks at you. You stamp the contract with the Kingdom Seal. The crystal flares brilliant white. '...CLOSED.' The word echoes through the castle. Through the kingdom. Through the stone itself. The curse contract catches fire -- spectral, golden fire that consumes the parchment and spreads outward in a wave of warm light. The cracks in the ceiling seal. The grey retreats. Color floods back into the stone like blood returning to frozen limbs. Outside, you hear it: stone cracking, crumbling, falling away. Trees shedding their granite shells. Water flowing again. People gasping as they wake from stone sleep. The Ghost King watches the kingdom return to life. His expression is unreadable. Then he smiles -- genuinely, for the first time in centuries. 'Well,' he says. 'That was overdue.' The Clerk, standing in the corner, adjusts his spectacles. 'I will need to file the closure paperwork.' Some things never change. The curse is broken. The kingdom lives. Pip, the traveling tinker who came looking for directions and a warm meal, has saved Erelhain. Not through prophecy. Not through destiny. Through paperwork. How fitting."
                 }
@@ -295,10 +291,6 @@
                 {
                     "type": "set-flag",
                     "flag": "curse-broken"
-                },
-                {
-                    "type": "set-flag",
-                    "flag": "game-complete"
                 },
                 {
                     "type": "narrator-say",
@@ -374,6 +366,9 @@
                 {
                     "type": "narrator-say",
                     "text": "You sit on the ruins of the throne. It's uncomfortable, broken, and entirely symbolic. But the Ghost King bows -- actually bows -- and says, 'The kingdom could do worse. It has done worse. Repeatedly.' The Clerk begins drafting your coronation paperwork. It will take approximately six months. Welcome to governance, Your Unexpected Majesty."
+                },
+                {
+                    "type": "evaluate-ending"
                 }
             ],
             "once": true
@@ -406,6 +401,9 @@
                 {
                     "type": "narrator-say",
                     "text": "You look at the ruined throne and shake your head. 'I came for directions and a warm meal,' you say. The Ghost King nods, unsurprised. 'Then take them. The kitchen is operational again, and Martha makes excellent soup.' You walk away from the throne. Behind you, the kingdom begins the long process of rebuilding. Ahead of you, the road stretches toward the next town, the next odd job, the next adventure. Pip the tinker saved the world and asked for nothing but lunch. This is the best kind of hero."
+                },
+                {
+                    "type": "evaluate-ending"
                 }
             ],
             "once": true
