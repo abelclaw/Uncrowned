@@ -51,11 +51,11 @@ Plans:
   2. Player opens Death Gallery from main menu or death screen and sees a grid of all 43 deaths (discovered entries show title and details; undiscovered show cryptic hints)
   3. Player starts a new game and all previously discovered deaths remain in the gallery
   4. Each discovered death entry displays its title, narrator death text, room name, and category
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 10-01: TBD
-- [ ] 10-02: TBD
+- [ ] 10-01-PLAN.md -- Death registry data, RoomScene death recording, DeathScene counter and badge
+- [ ] 10-02-PLAN.md -- DeathGalleryScene UI with paginated grid, navigation from menu and death screen
 
 ### Phase 11: Progressive Hints
 **Goal**: Stuck players can request context-aware hints that escalate from vague nudges to explicit guidance, delivered in the narrator's sardonic voice
