@@ -7,7 +7,7 @@ export class Boot extends Scene {
 
     preload() {
         // Boot scene loads only assets needed for the loading screen.
-        // Using graphics primitives for progress bar, so nothing needed here.
+        // Using graphics primitives for the progress bar, so nothing needed here.
     }
 
     create() {
