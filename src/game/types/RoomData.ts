@@ -47,6 +47,8 @@ export interface ExitData {
     direction?: string;
     /** Human-readable label for text parser "go to cave" commands */
     label?: string;
+    /** Optional conditions that must be met for this exit to be active (e.g. flag-set) */
+    conditions?: Array<{ type: string; flag?: string; item?: string }>;
 }
 
 /**

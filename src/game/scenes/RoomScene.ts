@@ -36,6 +36,7 @@ export class RoomScene extends Phaser.Scene {
     private player!: Player;
     private navigation!: NavigationSystem;
     private isTransitioning: boolean = false;
+    private exitDetectionEnabled: boolean = false;
     private exitZones: Array<{ rect: Phaser.Geom.Rectangle; exit: ExitData }> = [];
     private hotspotZones: Array<{ rect: Phaser.Geom.Rectangle; hotspot: HotspotData }> = [];
     private spawnOverride?: { x: number; y: number };
@@ -117,6 +118,7 @@ export class RoomScene extends Phaser.Scene {
 
         // Reset state for scene restart
         this.isTransitioning = false;
+        this.exitDetectionEnabled = false;
         this.exitZones = [];
         this.hotspotZones = [];
         this.inDialogue = false;
@@ -195,8 +197,35 @@ export class RoomScene extends Phaser.Scene {
         const spawnY = this.spawnOverride?.y ?? this.roomData.playerSpawn.y;
         this.player = new Player(this, spawnX, spawnY);
 
-        // 4. Exit zones
+        // 4. Exit zones (skip exits whose conditions are not met)
         for (const exit of this.roomData.exits) {
+            if (exit.conditions && exit.conditions.length > 0) {
+                const conditionsMet = exit.conditions.every(cond => {
+                    if (cond.type === 'flag-set' && cond.flag) {
+                        return this.gameState.isFlagSet(cond.flag);
+                    }
+                    if (cond.type === 'flag-not-set' && cond.flag) {
+                        return !this.gameState.isFlagSet(cond.flag);
+                    }
+                    if (cond.type === 'has-item' && cond.item) {
+                        return this.gameState.hasItem(cond.item);
+                    }
+                    return true;
+                });
+                if (!conditionsMet) {
+                    if (DEBUG) {
+                        // Draw inactive exits in grey for debugging visibility
+                        const gfx = this.add.graphics();
+                        gfx.fillStyle(0x888888, 0.1);
+                        gfx.fillRect(exit.zone.x, exit.zone.y, exit.zone.width, exit.zone.height);
+                        gfx.lineStyle(1, 0x888888, 0.3);
+                        gfx.strokeRect(exit.zone.x, exit.zone.y, exit.zone.width, exit.zone.height);
+                        gfx.setDepth(100);
+                    }
+                    continue;
+                }
+            }
+
             const rect = new Phaser.Geom.Rectangle(
                 exit.zone.x,
                 exit.zone.y,
@@ -678,8 +707,22 @@ export class RoomScene extends Phaser.Scene {
     update(): void {
         if (this.isTransitioning) return;
 
-        // Check if player overlaps any exit zone
         const pos = this.player.getPosition();
+
+        // Exit detection is disabled on scene entry to prevent spawn-inside-exit loops.
+        // It activates once the player is confirmed to be outside ALL exit zones,
+        // ensuring they must walk INTO a zone to trigger a transition.
+        if (!this.exitDetectionEnabled) {
+            const insideAny = this.exitZones.some(zone =>
+                Phaser.Geom.Rectangle.Contains(zone.rect, pos.x, pos.y)
+            );
+            if (!insideAny) {
+                this.exitDetectionEnabled = true;
+            }
+            return;
+        }
+
+        // Check if player overlaps any exit zone
         for (const zone of this.exitZones) {
             if (Phaser.Geom.Rectangle.Contains(zone.rect, pos.x, pos.y)) {
                 this.handleExitReached(zone.exit);
