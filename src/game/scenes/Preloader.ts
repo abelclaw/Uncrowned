@@ -133,6 +133,9 @@ export class Preloader extends Scene {
         // Death registry for gallery
         this.load.json('death-registry', 'assets/data/death-registry.json');
 
+        // Endings registry for EndingScene
+        this.load.json('endings-registry', 'assets/data/endings-registry.json');
+
         // Audio registry (event-to-SFX mapping)
         this.load.json('audio-registry', 'assets/data/audio-registry.json');
 
