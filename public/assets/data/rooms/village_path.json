@@ -76,5 +76,13 @@
             "narratorText": "You wander off the path into the deep forest. In retrospect, the sign that said 'CERTAIN DEATH THIS WAY' should have been more persuasive."
         }
     },
+    "npcs": [
+        {
+            "id": "old_man",
+            "position": { "x": 700, "y": 400 },
+            "interactionPoint": { "x": 670, "y": 430 },
+            "zone": { "x": 680, "y": 370, "width": 40, "height": 80 }
+        }
+    ],
     "playerSpawn": { "x": 480, "y": 430 }
 }
