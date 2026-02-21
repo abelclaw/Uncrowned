@@ -3,7 +3,7 @@ import { Player } from '../entities/Player';
 import { NavigationSystem } from '../systems/NavigationSystem';
 import { SceneTransition } from '../systems/SceneTransition';
 import { CommandDispatcher } from '../systems/CommandDispatcher';
-import { TextParser } from '../parser/TextParser';
+import { HybridParser } from '../llm/HybridParser';
 import { TextInputBar } from '../ui/TextInputBar';
 import { NarratorDisplay } from '../ui/NarratorDisplay';
 import { InventoryPanel } from '../ui/InventoryPanel';
@@ -42,7 +42,7 @@ export class RoomScene extends Phaser.Scene {
 
     // Text parser integration
     private textInputBar!: TextInputBar;
-    private textParser!: TextParser;
+    private textParser!: HybridParser;
     private commandDispatcher!: CommandDispatcher;
     private commandSubmittedHandler!: (text: string) => void;
     private goCommandHandler!: (exit: ExitData) => void;
@@ -234,7 +234,7 @@ export class RoomScene extends Phaser.Scene {
         });
 
         // 8. Text parser integration
-        this.textParser = new TextParser();
+        this.textParser = new HybridParser();
         this.commandDispatcher = new CommandDispatcher(this.itemDefs);
 
         // Create TextInputBar (Option A: destroy and recreate each scene create)
@@ -249,20 +249,27 @@ export class RoomScene extends Phaser.Scene {
         this.inventoryPanel = new InventoryPanel(container);
 
         // Listen for command-submitted events from the input bar
-        this.commandSubmittedHandler = (text: string) => {
+        this.commandSubmittedHandler = async (text: string) => {
             if (this.isTransitioning) return;
+
+            // Show thinking indicator while waiting for parse (may involve LLM)
+            this.narratorDisplay.showInstant('...');
 
             // Get current inventory item info for noun resolution
             const inventoryItems = this.itemDefs
                 .filter(item => this.gameState.hasItem(item.id))
                 .map(item => ({ id: item.id, name: item.name }));
 
-            const parseResult = this.textParser.parse(
+            const parseResult = await this.textParser.parse(
                 text,
                 this.roomData.hotspots,
                 this.roomData.exits,
                 inventoryItems,
+                { name: this.roomData.name, description: this.roomData.description },
             );
+
+            // Scene may have changed during async wait
+            if (this.isTransitioning) return;
 
             if (!parseResult.success || !parseResult.action) {
                 this.narratorDisplay.typewrite(

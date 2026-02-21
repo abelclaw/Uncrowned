@@ -1,4 +1,5 @@
 import { Scene } from 'phaser';
+import { OllamaClient } from '../llm/OllamaClient';
 
 export class Preloader extends Scene {
     constructor() {
@@ -68,6 +69,15 @@ export class Preloader extends Scene {
     }
 
     create() {
+        // Warm up Ollama LLM model (fire-and-forget, non-blocking)
+        // This pre-loads the model into GPU memory so first player command is fast
+        const ollamaClient = new OllamaClient();
+        ollamaClient.checkAvailability().then(available => {
+            if (available) {
+                ollamaClient.warmUp(); // Fire-and-forget, catches errors internally
+            }
+        });
+        // Proceed to MainMenu immediately -- warm-up runs in background
         this.scene.start('MainMenuScene');
     }
 }
