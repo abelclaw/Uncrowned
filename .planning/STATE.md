@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** Phase 2 complete. Ready for Phase 3: Text Parser and Command System
+**Current focus:** Phase 3 in progress: Text Parser (Deterministic) -- Plan 01 complete, Plan 02 remaining
 
 ## Current Position
 
-Phase: 2 of 8 (Scene System and Player Movement) -- COMPLETE
-Plan: 2 of 2 in current phase (02-02 complete)
-Status: Phase Complete
-Last activity: 2026-02-21 -- Completed 02-02-PLAN.md (RoomScene, SceneTransition, click-to-move pipeline)
+Phase: 3 of 8 (Text Parser Deterministic)
+Plan: 1 of 2 in current phase (03-01 complete)
+Status: In Progress
+Last activity: 2026-02-21 -- Completed 03-01-PLAN.md (TextParser, VerbTable, NounResolver, 50-test TDD suite)
 
-Progress: [██░░░░░░░░] 22%
+Progress: [███░░░░░░░] 28%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4
-- Average duration: 2.5min
-- Total execution time: 0.17 hours
+- Total plans completed: 5
+- Average duration: 2.8min
+- Total execution time: 0.23 hours
 
 **By Phase:**
 
@@ -38,6 +38,7 @@ Progress: [██░░░░░░░░] 22%
 | Phase 01 P02 | 2min | 2 tasks | 6 files |
 | Phase 02 P01 | 3min | 2 tasks | 10 files |
 | Phase 02 P02 | 1min | 2 tasks | 6 files |
+| Phase 03 P01 | 4min | 3 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -62,6 +63,9 @@ Recent decisions affecting current work:
 - [Phase 02]: SceneTransition supports fade and slide -- room JSONs define transition type per exit
 - [Phase 02]: Hotspots checked before exits in click handler -- more specific interactions take priority
 - [Phase 02]: DEBUG flag at RoomScene top -- togglable exit/hotspot debug rectangles
+- [Phase 03]: Go commands prioritize exit resolution over hotspot partial matching
+- [Phase 03]: Unresolved nouns return raw string (type:'unknown') for future inventory extension
+- [Phase 03]: Vitest as project dev dependency for TDD infrastructure
 
 ### Pending Todos
 
@@ -76,5 +80,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 02-02-PLAN.md (Phase 2 complete)
+Stopped at: Completed 03-01-PLAN.md
 Resume file: None
