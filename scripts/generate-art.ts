@@ -228,15 +228,95 @@ async function processSprite(
         .toFile(fullPath);
 }
 
+// Act palette colors for placeholder backgrounds
+const ACT_COLORS: Record<string, { r: number; g: number; b: number }> = {
+    act1: { r: 76, g: 135, b: 68 },    // Forest green
+    act2: { r: 45, g: 60, b: 120 },     // Deep cavern blue
+    act3: { r: 90, g: 60, b: 110 },     // Twilight purple
+};
+
+const CATEGORY_COLORS: Record<string, { r: number; g: number; b: number }> = {
+    'shared-sky': { r: 135, g: 180, b: 220 },
+    'shared-mid': { r: 90, g: 130, b: 90 },
+    item: { r: 180, g: 140, b: 60 },
+    npc: { r: 100, g: 160, b: 180 },
+    sprite: { r: 140, g: 100, b: 80 },
+};
+
+async function generatePlaceholder(entry: GenerationEntry): Promise<void> {
+    const fullPath = path.resolve(PROJECT_ROOT, entry.output);
+    const dir = path.dirname(fullPath);
+    fs.mkdirSync(dir, { recursive: true });
+
+    let color: { r: number; g: number; b: number };
+
+    if (entry.category === 'room') {
+        color = ACT_COLORS[entry.act ?? 'act1'] ?? ACT_COLORS.act1;
+        // Vary slightly per room using seed
+        color = {
+            r: Math.min(255, color.r + (entry.seed % 30) - 15),
+            g: Math.min(255, color.g + (entry.seed % 20) - 10),
+            b: Math.min(255, color.b + (entry.seed % 25) - 12),
+        };
+    } else if (entry.category === 'shared') {
+        const isSky = entry.id.includes('sky');
+        const actKey = entry.id.replace('-sky', '').replace('-mid', '');
+        const actBase = ACT_COLORS[actKey] ?? ACT_COLORS.act1;
+        color = isSky
+            ? { r: Math.min(255, actBase.r + 80), g: Math.min(255, actBase.g + 60), b: Math.min(255, actBase.b + 100) }
+            : { r: actBase.r, g: Math.min(255, actBase.g + 30), b: actBase.b };
+    } else if (entry.category === 'item') {
+        color = CATEGORY_COLORS.item;
+    } else if (entry.category === 'npc') {
+        color = CATEGORY_COLORS.npc;
+    } else {
+        color = CATEGORY_COLORS.sprite;
+    }
+
+    const { width, height } = entry.dimensions;
+
+    // For sprite-type assets, create with alpha channel
+    if (entry.category === 'item' || entry.category === 'npc' || entry.category === 'sprite') {
+        // Create SVG with label text for identification
+        const label = entry.id.length > 8 ? entry.id.substring(0, 8) : entry.id;
+        const fontSize = Math.max(6, Math.floor(Math.min(width, height) / 5));
+        const svg = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">
+            <rect x="1" y="1" width="${width - 2}" height="${height - 2}" rx="3"
+                  fill="rgb(${color.r},${color.g},${color.b})" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+            <text x="${width / 2}" y="${height / 2 + fontSize / 3}" font-family="monospace" font-size="${fontSize}"
+                  fill="white" text-anchor="middle">${label}</text>
+        </svg>`);
+
+        await sharp(svg)
+            .ensureAlpha()
+            .png()
+            .toFile(fullPath);
+    } else {
+        // Background: solid color rectangle
+        const label = entry.id;
+        const fontSize = Math.max(10, Math.floor(height / 15));
+        const svg = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">
+            <rect width="${width}" height="${height}" fill="rgb(${color.r},${color.g},${color.b})"/>
+            <text x="${width / 2}" y="${height / 2 + fontSize / 3}" font-family="monospace" font-size="${fontSize}"
+                  fill="rgba(255,255,255,0.4)" text-anchor="middle">${label}</text>
+        </svg>`);
+
+        await sharp(svg)
+            .png({ compressionLevel: 9 })
+            .toFile(fullPath);
+    }
+}
+
 // ---------------------------------------------------------------------------
 // CLI Argument Parsing
 // ---------------------------------------------------------------------------
 
 interface CLIArgs {
-    type: 'backgrounds' | 'shared' | 'sprites' | 'all';
+    type: 'backgrounds' | 'shared' | 'sprites' | 'items' | 'npcs' | 'player' | 'all';
     room?: string;
     dryRun: boolean;
     force: boolean;
+    placeholder: boolean;
 }
 
 function parseArgs(): CLIArgs {
@@ -245,14 +325,15 @@ function parseArgs(): CLIArgs {
         type: 'all',
         dryRun: false,
         force: false,
+        placeholder: false,
     };
 
     for (let i = 0; i < args.length; i++) {
         switch (args[i]) {
             case '--type':
                 result.type = args[++i] as CLIArgs['type'];
-                if (!['backgrounds', 'shared', 'sprites', 'all'].includes(result.type)) {
-                    console.error(`Invalid --type: ${result.type}. Must be: backgrounds, shared, sprites, all`);
+                if (!['backgrounds', 'shared', 'sprites', 'items', 'npcs', 'player', 'all'].includes(result.type)) {
+                    console.error(`Invalid --type: ${result.type}. Must be: backgrounds, shared, sprites, items, npcs, player, all`);
                     process.exit(1);
                 }
                 break;
@@ -264,6 +345,9 @@ function parseArgs(): CLIArgs {
                 break;
             case '--force':
                 result.force = true;
+                break;
+            case '--placeholder':
+                result.placeholder = true;
                 break;
             case '--help':
                 printHelp();
@@ -287,16 +371,18 @@ Art Generation Script for KQ Game
 Usage: npx tsx scripts/generate-art.ts [options]
 
 Options:
-  --type <type>    Asset type to generate: backgrounds, shared, sprites, all (default: all)
+  --type <type>    Asset type: backgrounds, shared, sprites, items, npcs, player, all (default: all)
   --room <id>      Generate only a specific room (e.g., forest_clearing)
   --dry-run        Print prompts without generating images
   --force          Regenerate even if output file already exists
+  --placeholder    Create colored placeholder PNGs instead of using ComfyUI
   --help           Show this help message
 
 Examples:
   npx tsx scripts/generate-art.ts --dry-run --type all
   npx tsx scripts/generate-art.ts --type backgrounds --room forest_clearing
   npx tsx scripts/generate-art.ts --type shared
+  npx tsx scripts/generate-art.ts --type items --placeholder
   npx tsx scripts/generate-art.ts --type all --force
 
 Requires ComfyUI running at ${COMFYUI_URL}
@@ -309,12 +395,13 @@ Requires ComfyUI running at ${COMFYUI_URL}
 
 interface GenerationEntry {
     id: string;
-    category: 'room' | 'shared' | 'sprite';
+    category: 'room' | 'shared' | 'sprite' | 'item' | 'npc';
     prompt: string;
     fullPrompt: string;
     seed: number;
     output: string;
     dimensions: { width: number; height: number };
+    act?: string;
 }
 
 function collectEntries(
@@ -356,12 +443,13 @@ function collectEntries(
                 seed: entry.seed,
                 output: entry.output,
                 dimensions: entry.dimensions,
+                act: entry.act,
             });
         }
     }
 
     // Player sprite
-    if (args.type === 'sprites' || args.type === 'all') {
+    if (args.type === 'sprites' || args.type === 'player' || args.type === 'all') {
         const player = manifest.playerSprite;
         entries.push({
             id: 'player',
@@ -372,6 +460,36 @@ function collectEntries(
             output: player.output,
             dimensions: player.dimensions,
         });
+    }
+
+    // Item sprites
+    if (args.type === 'items' || args.type === 'sprites' || args.type === 'all') {
+        for (const [id, entry] of Object.entries(manifest.items)) {
+            entries.push({
+                id,
+                category: 'item',
+                prompt: entry.prompt,
+                fullPrompt: `${styleGuide.itemPromptPrefix} ${entry.prompt}${styleGuide.itemPromptSuffix}`,
+                seed: entry.seed,
+                output: entry.output,
+                dimensions: entry.dimensions,
+            });
+        }
+    }
+
+    // NPC sprites
+    if (args.type === 'npcs' || args.type === 'sprites' || args.type === 'all') {
+        for (const [id, entry] of Object.entries(manifest.npcs)) {
+            entries.push({
+                id,
+                category: 'npc',
+                prompt: entry.prompt,
+                fullPrompt: `${styleGuide.spritePromptPrefix} ${entry.prompt}${styleGuide.spritePromptSuffix}`,
+                seed: entry.seed,
+                output: entry.output,
+                dimensions: entry.dimensions,
+            });
+        }
     }
 
     return entries;
@@ -400,7 +518,7 @@ async function main(): Promise<void> {
     console.log(`${'='.repeat(50)}`);
     console.log(`Type: ${args.type}${args.room ? ` (room: ${args.room})` : ''}`);
     console.log(`Entries: ${entries.length}`);
-    console.log(`Mode: ${args.dryRun ? 'DRY RUN' : 'GENERATE'}`);
+    console.log(`Mode: ${args.dryRun ? 'DRY RUN' : args.placeholder ? 'PLACEHOLDER' : 'GENERATE'}`);
     console.log(`Force: ${args.force ? 'yes' : 'no'}`);
     console.log('');
 
@@ -416,6 +534,36 @@ async function main(): Promise<void> {
             console.log('');
         }
         console.log(`DRY RUN complete. ${entries.length} entries listed.`);
+        return;
+    }
+
+    // Placeholder mode: generate colored rectangles without ComfyUI
+    if (args.placeholder) {
+        console.log('PLACEHOLDER MODE: Creating colored rectangles at correct dimensions\n');
+
+        let generated = 0;
+        let skipped = 0;
+
+        for (let i = 0; i < entries.length; i++) {
+            const entry = entries[i];
+            const outputPath = path.resolve(PROJECT_ROOT, entry.output);
+
+            if (!args.force && fs.existsSync(outputPath)) {
+                console.log(`[${i + 1}/${entries.length}] SKIP ${entry.id} (already exists)`);
+                skipped++;
+                continue;
+            }
+
+            await generatePlaceholder(entry);
+            console.log(`[${i + 1}/${entries.length}] Placeholder ${entry.id} (${entry.dimensions.width}x${entry.dimensions.height})`);
+            generated++;
+        }
+
+        console.log(`\n${'='.repeat(50)}`);
+        console.log(`Placeholder generation complete:`);
+        console.log(`  Created:  ${generated}`);
+        console.log(`  Skipped:  ${skipped} (already exist)`);
+        console.log(`  Total:    ${entries.length}`);
         return;
     }
 
@@ -457,8 +605,8 @@ async function main(): Promise<void> {
             // Generate via ComfyUI
             const rawImage = await generateImage(entry.fullPrompt, entry.seed, workflow);
 
-            // Post-process
-            if (entry.category === 'sprite') {
+            // Post-process based on category
+            if (entry.category === 'sprite' || entry.category === 'item' || entry.category === 'npc') {
                 await processSprite(rawImage, entry.output, entry.dimensions.width, entry.dimensions.height);
             } else {
                 await processBackground(rawImage, entry.output, entry.dimensions.width, entry.dimensions.height);
