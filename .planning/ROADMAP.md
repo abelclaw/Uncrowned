@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation and Rendering** - Game loop, pixel-perfect canvas rendering, asset loading, event bus, and project scaffolding
 - [x] **Phase 2: Scene System and Player Movement** - Navigable scenes with animated player character, pathfinding, transitions, and room navigation
-- [ ] **Phase 3: Text Parser (Deterministic)** - Text input bar with keyword/regex parser that handles all standard adventure game verbs
+- [x] **Phase 3: Text Parser (Deterministic)** - Text input bar with keyword/regex parser that handles all standard adventure game verbs
 - [ ] **Phase 4: Core Gameplay Systems** - Inventory, puzzle engine, narrator, death system, save/load, and game state management
 - [ ] **Phase 5: LLM Integration** - Ollama-powered natural language parsing layered over the deterministic fallback
 - [ ] **Phase 6: NPCs and Dialogue** - NPC characters with conversation trees, inkjs narrative scripting, and conversation puzzles
@@ -66,7 +66,7 @@ Plans:
 
 Plans:
 - [x] 03-01-PLAN.md -- TDD: GameAction types, TextParser with VerbTable and NounResolver, test suite
-- [ ] 03-02-PLAN.md -- TextInputBar UI, CommandDispatcher, room JSON text content, RoomScene wiring
+- [x] 03-02-PLAN.md -- TextInputBar UI, CommandDispatcher, room JSON text content, RoomScene wiring
 
 ### Phase 4: Core Gameplay Systems
 **Goal**: The complete adventure game loop works: player picks up items, solves puzzles, dies humorously, saves progress, and hears the narrator's sardonic voice
@@ -158,7 +158,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 |-------|----------------|--------|-----------|
 | 1. Foundation and Rendering | 2/2 | Complete    | 2026-02-21 |
 | 2. Scene System and Player Movement | 2/2 | Complete | 2026-02-21 |
-| 3. Text Parser (Deterministic) | 1/2 | In Progress | - |
+| 3. Text Parser (Deterministic) | 2/2 | Complete | 2026-02-21 |
 | 4. Core Gameplay Systems | 0/4 | Not started | - |
 | 5. LLM Integration | 0/2 | Not started | - |
 | 6. NPCs and Dialogue | 0/2 | Not started | - |

@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** Phase 3 in progress: Text Parser (Deterministic) -- Plan 01 complete, Plan 02 remaining
+**Current focus:** Phase 3 complete. Ready for Phase 4: Core Gameplay Systems
 
 ## Current Position
 
-Phase: 3 of 8 (Text Parser Deterministic)
-Plan: 1 of 2 in current phase (03-01 complete)
-Status: In Progress
-Last activity: 2026-02-21 -- Completed 03-01-PLAN.md (TextParser, VerbTable, NounResolver, 50-test TDD suite)
+Phase: 4 of 8 (Core Gameplay Systems)
+Plan: 0 of 4 in current phase
+Status: Not Started
+Last activity: 2026-02-21 -- Completed 03-02-PLAN.md (TextInputBar, CommandDispatcher, room text content, RoomScene wiring)
 
-Progress: [███░░░░░░░] 28%
+Progress: [████░░░░░░] 33%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
+- Total plans completed: 6
 - Average duration: 2.8min
-- Total execution time: 0.23 hours
+- Total execution time: 0.28 hours
 
 **By Phase:**
 
@@ -39,6 +39,7 @@ Progress: [███░░░░░░░] 28%
 | Phase 02 P01 | 3min | 2 tasks | 10 files |
 | Phase 02 P02 | 1min | 2 tasks | 6 files |
 | Phase 03 P01 | 4min | 3 tasks | 7 files |
+| Phase 03 P02 | 3min | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -66,6 +67,10 @@ Recent decisions affecting current work:
 - [Phase 03]: Go commands prioritize exit resolution over hotspot partial matching
 - [Phase 03]: Unresolved nouns return raw string (type:'unknown') for future inventory extension
 - [Phase 03]: Vitest as project dev dependency for TDD infrastructure
+- [Phase 03]: TextInputBar is HTML overlay below canvas (not Phaser DOM element) for reliable focus/input handling
+- [Phase 03]: Option A (destroy/recreate) for TextInputBar lifecycle across scene restarts
+- [Phase 03]: CommandDispatcher double-resolution (ID, name, partial) for robust subject matching
+- [Phase 03]: Sardonic dark comedy narrator voice established for all game text
 
 ### Pending Todos
 
@@ -80,5 +85,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 03-01-PLAN.md
+Stopped at: Completed 03-02-PLAN.md
 Resume file: None
