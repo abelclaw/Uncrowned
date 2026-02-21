@@ -256,6 +256,16 @@
             }
         ]
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "solve-echo-puzzle",
+            "tiers": [
+                "The stalactites here aren't just decorative geological formations. They're musical ones. The wall carvings suggest that striking them in a particular way reveals something hidden in the echoes. Something the Guardian wants to hear.",
+                "Use the stalactites to tap out a sequence. The echoes will combine and spell out the Guardian's third answer -- the one missing from the library book. The carvings on the wall confirm: 'Strike and listen.'",
+                "Use the stalactites. The echoes spell out 'SERVICE' -- the Guardian's third answer about the true purpose of the kingdom's bureaucracy. You need this before answering the Guardian's final question."
+            ]
+        }
+    ],
     "playerSpawn": {
         "x": 480,
         "y": 430

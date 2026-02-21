@@ -403,6 +403,24 @@
             }
         ]
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "fill-form",
+            "tiers": [
+                "Form 27-B Stroke 6 is impressively blank. It demands ink. Not just any ink -- the kind that's been sitting in a library for centuries, developing a personality and strong opinions about bureaucratic procedure.",
+                "The ancient ink is on the reading desk in the cavern library. Use it on the form to fill it out. The ink auto-completes the arcane fields, which is more helpful than anything else in this filing system.",
+                "Take the ancient ink from the reading desk in the cavern library. Use the ancient ink on Form 27-B Stroke 6. The completed form can then be submitted to the Clerk in the entrance hall."
+            ]
+        },
+        {
+            "puzzleId": "stamp-ticket",
+            "tiers": [
+                "A queue ticket without special authorization is just a number. And your number is 847. Somewhere in this room, a small act of rebellion against the system has been preserved in rubber and red ink.",
+                "The VIP stamp is in the hidden bottom drawer of the last filing cabinet. Use it on your queue ticket to upgrade from 'number 847' to 'number 847-VIP,' which changes everything bureaucratically.",
+                "Open the hidden bottom drawer of the last cabinet to find the VIP stamp. Take it. Then use the VIP stamp on your queue ticket. Show the stamped ticket to the Clerk in the entrance hall."
+            ]
+        }
+    ],
     "playerSpawn": {
         "x": 480,
         "y": 430

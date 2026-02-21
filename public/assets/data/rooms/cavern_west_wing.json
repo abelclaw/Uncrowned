@@ -204,6 +204,16 @@
             }
         ]
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "solve-mushroom-pattern",
+            "tiers": [
+                "The mushrooms respond to touch but not to random poking. They want a specific sequence, the kind of sequence that might be documented in a book. In a library. Underground. Where scholars write things down instead of memorizing them.",
+                "The mushroom pattern book in the cavern library has the answer. Read it first -- use the bookshelves there. Once you know the pattern, come back here and use the mushroom clusters to activate them in sequence.",
+                "Read the bookshelves in the cavern library to learn the pattern: left, right, center, left, center. Then use the mushroom clusters here. The passage to the Crystal Chamber opens when the sequence is correct."
+            ]
+        }
+    ],
     "playerSpawn": {
         "x": 480,
         "y": 430

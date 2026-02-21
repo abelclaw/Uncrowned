@@ -310,6 +310,16 @@
             }
         ]
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "repair-boat",
+            "tiers": [
+                "The boat has ambitions of floating but lacks the structural integrity to follow through. It needs two things: something to patch the hull, and something to hold the patches in place. Both exist elsewhere in these caverns.",
+                "Wood planks from the collapsed shelves in the cavern library and rope from the cavern balcony are what you need. Use either on the old boat when you have both items in your inventory.",
+                "Take wood planks from the collapsed shelves in the cavern library. Take rope from the cavern balcony. Use the wood planks on the old boat (with rope in inventory). The repaired boat gives access to the forge chamber upstream."
+            ]
+        }
+    ],
     "playerSpawn": {
         "x": 480,
         "y": 430

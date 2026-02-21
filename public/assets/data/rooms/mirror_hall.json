@@ -215,6 +215,16 @@
             }
         ]
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "mirror-truth",
+            "tiers": [
+                "The central mirror glows with more than mere reflection. Something lives in there, watching. Perhaps it would respond to conversation rather than contact. Spirits tend to be chatty when given the opportunity.",
+                "The Mirror Spirit in the glowing mirror has something important to tell you about your identity and the prophecy. Talk to the spirit to hear the truth about the Uncrowned Sovereign.",
+                "Talk to the mirror spirit (the NPC in the glowing mirror). The spirit reveals that the prophecy was a bureaucratic error -- you're not a chosen hero, just someone stubborn enough to do the paperwork. This revelation is required for the narrative."
+            ]
+        }
+    ],
     "playerSpawn": {
         "x": 480,
         "y": 430

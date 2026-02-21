@@ -263,6 +263,24 @@
             }
         ]
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "investigate-pool",
+            "tiers": [
+                "The pool is more than scenic ambiance. Something is down there, catching the light and throwing it back. Perhaps a closer look at the surface would reveal what the depths are hiding.",
+                "Look at the pool surface more carefully. The mineral-laden water obscures what's at the shallow edge. A thorough examination will reveal a crystal shard buried in the silt.",
+                "Look at the pool surface to investigate it. This reveals a cave crystal shard at the pool's edge. You must investigate the pool before you can take the shard."
+            ]
+        },
+        {
+            "puzzleId": "take-crystal-shard",
+            "tiers": [
+                "There's something at the edge of the pool, half-buried and glowing. But you can't just grab blindly at things underwater. Investigate first, then retrieve.",
+                "After examining the pool surface, a cave crystal shard becomes visible at the shallow edge. Now you can take it. The crystal has faint magical resonance -- it may prove useful elsewhere.",
+                "After looking at the pool surface, take the cave crystal shard from the pool's edge. You need to investigate the pool first or the shard won't be accessible."
+            ]
+        }
+    ],
     "playerSpawn": {
         "x": 480,
         "y": 430

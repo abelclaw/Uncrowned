@@ -479,6 +479,24 @@
             }
         ]
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "prepare-rite",
+            "tiers": [
+                "The rite circle on the floor is waiting for its components. Three items and one reluctant ally. The runes spell out what's needed, if you care to read them. This is the endgame. Everything you've collected converges here.",
+                "You need three items: the Crystal of Mundanity, the Kingdom Administrative Seal, and the Original Curse Contract. You also need the Clerk as an ally (confront him in the dungeon first). Use any of these items on the rite circle.",
+                "Bring the crystal-of-mundanity, kingdom-seal, and original-curse-contract here. Ensure the Clerk is allied (use memory crystal or curse contract on him in the dungeon). Use the crystal or seal on the rite circle to prepare the ceremony."
+            ]
+        },
+        {
+            "puzzleId": "perform-rite",
+            "tiers": [
+                "The rite is prepared. The components glow. The Ghost King stands ready. Now you need to complete the ceremony. The administrative seal of a kingdom, pressed to the circle, should do the trick. Stamp the curse out of existence.",
+                "Use the kingdom seal on the rite circle to perform the final ceremony. The Ghost King reads the rite, you stamp the contract, and the curse breaks. Alternatively, use the crystal on the circle.",
+                "After preparing the rite, use the kingdom-seal on the rite-circle (or use crystal-of-mundanity on it). This performs the Rite of Administrative Closure and breaks the curse. The game is won."
+            ]
+        }
+    ],
     "playerSpawn": {
         "x": 480,
         "y": 430

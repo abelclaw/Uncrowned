@@ -375,6 +375,24 @@
             }
         ]
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "light-forge",
+            "tiers": [
+                "The forge is cold. It needs fuel and fire -- the former compressed by geological patience, the latter carried by someone who had the foresight to bring a light source into a dark cave system.",
+                "You need coal from the echo chamber and a makeshift torch (made from a stick and bioluminescent mushroom in the cave entrance). Use the coal on the forge while carrying the torch.",
+                "Take coal from the echo chamber. Craft a makeshift torch by combining a stick with a bioluminescent mushroom at the cave entrance. Use the coal on the ancient forge while holding the torch. The forge ignites."
+            ]
+        },
+        {
+            "puzzleId": "repair-seal",
+            "tiers": [
+                "That broken seal on the floor has seen better centuries. The two halves look like they could be joined again, if only someone had access to a working forge and the metallurgical goodwill of a spectral dwarven craftsman.",
+                "With the forge lit, you can repair the broken seal stamp. Use the broken seal on the forge or the anvil. The dwarven spirit will assist in fusing the halves back together.",
+                "Light the forge first (coal plus torch). Then take the broken seal stamp and use it on the ancient forge or the blackened anvil. The dwarven spirit reforges it into the ancient kingdom seal needed for the Guardian."
+            ]
+        }
+    ],
     "playerSpawn": {
         "x": 480,
         "y": 430

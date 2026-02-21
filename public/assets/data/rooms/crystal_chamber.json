@@ -227,6 +227,16 @@
             }
         ]
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "take-crystal",
+            "tiers": [
+                "The Crystal of Mundanity hovers tantalizingly behind a force barrier. The barrier won't respond to brute force -- fourteen warning signs confirm this. The key to dropping it lies deeper in the caverns, with something large, stone, and fond of asking questions.",
+                "The Guardian in the Guardian Chamber controls the force barrier. Defeat the Guardian's three-question test to deactivate the barrier. Then you can take the crystal. You'll need the ancient seal to wake the Guardian.",
+                "Complete the Guardian's test: activate it with the ancient seal (reforged at the forge), then answer 847, Aldric the Fastidious, and Service. The barrier drops. Take the Crystal of Mundanity."
+            ]
+        }
+    ],
     "playerSpawn": {
         "x": 480,
         "y": 430

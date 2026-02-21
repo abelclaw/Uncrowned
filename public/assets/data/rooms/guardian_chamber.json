@@ -395,6 +395,40 @@
             }
         ]
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "activate-guardian",
+            "tiers": [
+                "The stone guardian sleeps. Its pedestal has a seal-shaped indentation, waiting for something official and very old. The kind of seal that needs a forge to become whole again.",
+                "The ancient kingdom seal -- reforged from the broken seal stamp at the forge -- fits the pedestal indentation. Place it there to awaken the guardian and begin the three-question test.",
+                "Use the ancient seal on the seal pedestal (or on the stone guardian). The seal is made by reforging the broken seal stamp at the lit forge. The guardian awakens and poses three questions."
+            ]
+        },
+        {
+            "puzzleId": "answer-question-1",
+            "tiers": [
+                "The guardian's first question concerns the kingdom's history. Its founding, specifically. A number. The kind of number that gets written down in libraries by people who care about dates.",
+                "The cavern library has the answer. The reading desk's open book mentions the kingdom's founding year. Study it before facing the guardian.",
+                "Talk to the stone guardian after awakening it. The answer to the first question is 847 -- the kingdom's founding year, found in the library's reading desk book."
+            ]
+        },
+        {
+            "puzzleId": "answer-question-2",
+            "tiers": [
+                "The second question asks about a person. The first of their kind. Someone fastidious, if their reputation is anything to go by. The library holds this answer too.",
+                "The reading desk in the cavern library mentions the name of the kingdom's first bureaucrat. Read it before answering the guardian's second question.",
+                "Talk to the guardian again. The answer to the second question is Aldric the Fastidious -- the kingdom's first bureaucrat, named in the library's reading desk book."
+            ]
+        },
+        {
+            "puzzleId": "answer-question-3",
+            "tiers": [
+                "The third answer was torn from the library book. Conveniently ruined. But echoes have a way of preserving what paper cannot. Sound travels in these caverns, especially in dome-shaped chambers with excellent acoustics.",
+                "The echo chamber in the West Wing holds the third answer. Use the stalactites there -- the echoes spell out the word the Guardian needs to hear about the purpose of bureaucracy.",
+                "Visit the echo chamber (south of the West Wing) and use the stalactites to discover the third answer: Service. Then return here and talk to the guardian to complete the test."
+            ]
+        }
+    ],
     "playerSpawn": {
         "x": 480,
         "y": 430

@@ -397,6 +397,32 @@
             }
         ]
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "use-treasury-key",
+            "tiers": [
+                "There's a locked door near the filing cells. The Clerk has been using an ornate key as a paperweight for centuries without wondering what it opens. Bureaucrats. Try it on the obvious locked door.",
+                "Take the treasury key from the Clerk's desk. Use it on the filing cells area -- the locked door beside them leads to the Royal Treasury.",
+                "Take the treasury key from the Clerk's desk. Use the treasury key on the filing cells to unlock the passage to the treasury. The treasury contains the kingdom seal and clock oil."
+            ]
+        },
+        {
+            "puzzleId": "show-memory-crystal",
+            "tiers": [
+                "The Clerk has no memory of who he really is. But somewhere in a wizard's tower, a crystal holds the memories that were extracted centuries ago. Returning them might be... illuminating. And therapeutic. Mostly illuminating.",
+                "The Clerk's memory crystal from the wizard's tower can restore the Clerk's memories. Talk to the Clerk first (to confront him), then use the memory crystal on him. He becomes your ally when he remembers he was Wizard Marlowe.",
+                "Talk to the Clerk first to trigger the confrontation. Then use the clerk-memory-crystal (from the wizard's tower) on the Clerk. He remembers he's Marlowe, the wizard who cast the curse, and agrees to help undo it."
+            ]
+        },
+        {
+            "puzzleId": "outwit-clerk",
+            "tiers": [
+                "The Clerk is a creature of rules. His own rules. If someone were to find the original curse contract and point to its expiration clause, the Clerk would be legally obligated to cooperate. By his own bureaucracy. Delicious.",
+                "The original curse contract in the Royal Archive has Clause 47-B -- an expiration clause. Talk to the Clerk first, then show him the contract. He cannot refuse a procedurally valid closure request.",
+                "Talk to the Clerk to confront him. Then use the original-curse-contract (from the Royal Archive, Section C-7) on the Clerk. Clause 47-B forces him to assist with the Rite. This is an alternative to the memory crystal approach."
+            ]
+        }
+    ],
     "playerSpawn": {
         "x": 480,
         "y": 430

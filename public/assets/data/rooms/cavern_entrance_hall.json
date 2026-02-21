@@ -530,6 +530,24 @@
             }
         ]
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "submit-filled-form",
+            "tiers": [
+                "The Clerk expects paperwork. Proper paperwork. The kind that's been filled out in ink so ancient it has opinions about your penmanship. Somewhere in these caverns, a form and its matching ink await your bureaucratic destiny.",
+                "You need Form 27-B Stroke 6 from the filing room, filled out with ancient ink from the cavern library. Use the ink on the form, then present the completed form to the Clerk.",
+                "Take Form 27-B Stroke 6 from the filing room. Take the ancient ink from the reading desk in the cavern library. Use the ink on the form to fill it out. Then use the completed form on the Clerk to register."
+            ]
+        },
+        {
+            "puzzleId": "show-vip-ticket",
+            "tiers": [
+                "Your queue ticket says number 847. The Waiting Room suggests you might be here a while. Unless, of course, someone were to upgrade that ticket. Bureaucracies have loopholes, if you know where to look.",
+                "A VIP stamp is hidden in the filing room -- check the bottom drawer of the last cabinet. Stamp your queue ticket with it, then show the VIP ticket to the Clerk to skip the queue entirely.",
+                "Find the VIP stamp in the hidden bottom drawer of the filing room. Use the VIP stamp on your queue ticket. Then use the stamped VIP ticket on the Clerk to gain access to both wings."
+            ]
+        }
+    ],
     "playerSpawn": {
         "x": 480,
         "y": 430
