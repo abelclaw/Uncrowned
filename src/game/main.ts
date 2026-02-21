@@ -8,6 +8,7 @@ import { DeathScene } from './scenes/DeathScene';
 import { DeathGalleryScene } from './scenes/DeathGalleryScene';
 import { EndingScene } from './scenes/EndingScene';
 import { EndingsGalleryScene } from './scenes/EndingsGalleryScene';
+import { MobileKeyboardManager } from './systems/MobileKeyboardManager';
 
 const config: Phaser.Types.Core.GameConfig = {
     type: Phaser.AUTO,
@@ -33,4 +34,13 @@ const config: Phaser.Types.Core.GameConfig = {
     scene: [Boot, Preloader, MainMenuScene, Game, RoomScene, DeathScene, DeathGalleryScene, EndingScene, EndingsGalleryScene],
 };
 
-export default new Phaser.Game(config);
+const game = new Phaser.Game(config);
+
+// Fire-and-forget: MobileKeyboardManager lives for the entire app lifetime.
+// It prevents the virtual keyboard from squishing the canvas on mobile devices.
+const appEl = document.getElementById('app');
+if (appEl) {
+    new MobileKeyboardManager(appEl);
+}
+
+export default game;
