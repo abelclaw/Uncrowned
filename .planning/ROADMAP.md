@@ -111,11 +111,12 @@ Plans:
   2. NPC conversations branch based on player choices and game state, tracked through inkjs story variables
   3. Conversation-based puzzles require gathering information from NPCs or persuading them to advance the story
   4. The narrator references past player actions and events, showing dynamic awareness of the player's history
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 06-01: TBD
-- [ ] 06-02: TBD
+- [ ] 06-01-PLAN.md -- Dialogue engine foundation: inkjs, NPC types, DialogueManager, DialogueUI, GameState extension
+- [ ] 06-02-PLAN.md -- NPC content: npcs.json registry, ink dialogue scripts, room JSON NPC entries, Preloader loading
+- [ ] 06-03-PLAN.md -- Command pipeline integration: CommandDispatcher NPC detection, RoomScene dialogue mode, verification
 
 ### Phase 7: Audio and Polish
 **Goal**: The game world feels alive with sound and the experience is polished for players
@@ -162,6 +163,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 | 3. Text Parser (Deterministic) | 2/2 | Complete | 2026-02-21 |
 | 4. Core Gameplay Systems | 5/5 | Complete | 2026-02-21 |
 | 5. LLM Integration | 1/2 | In progress | - |
-| 6. NPCs and Dialogue | 0/2 | Not started | - |
+| 6. NPCs and Dialogue | 0/3 | Not started | - |
 | 7. Audio and Polish | 0/2 | Not started | - |
 | 8. Content Production | 0/4 | Not started | - |
