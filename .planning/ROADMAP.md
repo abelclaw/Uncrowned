@@ -117,7 +117,7 @@ Phases execute in numeric order: 9 -> 9.x -> 10 -> 10.x -> 11 -> 12 -> 13
 | 10. Death Gallery | 2/2 | Complete    | 2026-02-21 | - |
 | 11. Progressive Hints | 2/2 | Complete    | 2026-02-21 | - |
 | 12. Multiple Endings | 3/3 | Complete    | 2026-02-21 | - |
-| 13. Mobile Responsive | v2.0 | 0/2 | Not started | - |
+| 13. Mobile Responsive | 1/2 | In Progress|  | - |
 
 ---
 *Roadmap created: 2026-02-21*
