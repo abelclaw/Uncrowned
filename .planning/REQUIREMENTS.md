@@ -73,10 +73,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Audio
 
-- [ ] **AUD-01**: Sound effects play for player interactions (item pickup, door open, etc.)
-- [ ] **AUD-02**: Background music plays per scene or area
-- [ ] **AUD-03**: Ambient audio creates atmosphere (forest sounds, wind, etc.)
-- [ ] **AUD-04**: Music transitions smoothly between scenes
+- [x] **AUD-01**: Sound effects play for player interactions (item pickup, door open, etc.)
+- [x] **AUD-02**: Background music plays per scene or area
+- [x] **AUD-03**: Ambient audio creates atmosphere (forest sounds, wind, etc.)
+- [x] **AUD-04**: Music transitions smoothly between scenes
 
 ### Save/Load & UI
 
@@ -162,10 +162,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DEATH-03 | Phase 4 | Complete |
 | DEATH-04 | Phase 4 | Complete |
 | DEATH-05 | Phase 4 | Complete |
-| AUD-01 | Phase 7 | Pending |
-| AUD-02 | Phase 7 | Pending |
-| AUD-03 | Phase 7 | Pending |
-| AUD-04 | Phase 7 | Pending |
+| AUD-01 | Phase 7 | Complete |
+| AUD-02 | Phase 7 | Complete |
+| AUD-03 | Phase 7 | Complete |
+| AUD-04 | Phase 7 | Complete |
 | UI-01 | Phase 4 | Complete |
 | UI-02 | Phase 4 | Complete |
 | UI-03 | Phase 4 | Complete |

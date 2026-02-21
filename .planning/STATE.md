@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** Phase 6 complete: NPCs and Dialogue -- ready for Phase 7
+**Current focus:** Phase 7 in progress: Audio and Polish
 
 ## Current Position
 
-Phase: 6 of 8 (NPCs and Dialogue) -- PHASE COMPLETE
-Plan: 3 of 3 in current phase (06-03 complete)
-Status: Phase 6 Complete
-Last activity: 2026-02-21 -- Completed 06-03-PLAN.md (Dialogue System Integration)
+Phase: 7 of 8 (Audio and Polish)
+Plan: 1 of 2 in current phase (07-01 complete)
+Status: Executing Phase 7
+Last activity: 2026-02-21 -- Completed 07-01-PLAN.md (Audio Infrastructure)
 
-Progress: [████████░░] 80%
+Progress: [████████░░] 85%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 16
+- Total plans completed: 17
 - Average duration: 2.7min
-- Total execution time: 0.69 hours
+- Total execution time: 0.74 hours
 
 **By Phase:**
 
@@ -50,6 +50,7 @@ Progress: [████████░░] 80%
 | Phase 06 P01 | 2min | 2 tasks | 6 files |
 | Phase 06 P02 | 3min | 2 tasks | 8 files |
 | Phase 06 P03 | 3min | 2 tasks | 3 files |
+| Phase 07 P01 | 3min | 2 tasks | 16 files |
 
 ## Accumulated Context
 
@@ -113,6 +114,9 @@ Recent decisions affecting current work:
 - [Phase 06]: Dialogue mode input routing before HybridParser.parse() -- numbers go directly to ink choices without parser/LLM overhead
 - [Phase 06]: NPC zones rendered as synthetic hotspots reusing existing click pipeline -- no separate click handler needed
 - [Phase 06]: Narrator_history runs as non-interactive one-shot conversation (start, continueAll, end) without entering dialogue mode
+- [Phase 07]: WAV format for placeholder audio -- Phaser supports natively, avoids ffmpeg dependency for generation
+- [Phase 07]: Python wave module for audio generation -- standard library, zero dependencies, reproducible via committed script
+- [Phase 07]: AudioManager singleton wraps Phaser global Sound Manager -- three layers (SFX, music, ambient) with EventBus-driven SFX
 
 ### Pending Todos
 
@@ -127,5 +131,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 06-03-PLAN.md (Dialogue System Integration) -- Phase 6 fully complete
+Stopped at: Completed 07-01-PLAN.md (Audio Infrastructure)
 Resume file: None
