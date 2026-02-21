@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** Phase 3 complete. Ready for Phase 4: Core Gameplay Systems
+**Current focus:** Phase 4 in progress: Core Gameplay Systems
 
 ## Current Position
 
 Phase: 4 of 8 (Core Gameplay Systems)
-Plan: 0 of 4 in current phase
-Status: Not Started
-Last activity: 2026-02-21 -- Completed 03-02-PLAN.md (TextInputBar, CommandDispatcher, room text content, RoomScene wiring)
+Plan: 2 of 5 in current phase
+Status: In Progress
+Last activity: 2026-02-21 -- Completed 04-02-PLAN.md (NarratorDisplay, InventoryPanel, parser verb/noun extensions)
 
-Progress: [████░░░░░░] 33%
+Progress: [████░░░░░░] 38%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
-- Average duration: 2.8min
-- Total execution time: 0.28 hours
+- Total plans completed: 7
+- Average duration: 2.9min
+- Total execution time: 0.33 hours
 
 **By Phase:**
 
@@ -40,6 +40,7 @@ Progress: [████░░░░░░] 33%
 | Phase 02 P02 | 1min | 2 tasks | 6 files |
 | Phase 03 P01 | 4min | 3 tasks | 7 files |
 | Phase 03 P02 | 3min | 2 tasks | 7 files |
+| Phase 04 P02 | 3min | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -71,6 +72,9 @@ Recent decisions affecting current work:
 - [Phase 03]: Option A (destroy/recreate) for TextInputBar lifecycle across scene restarts
 - [Phase 03]: CommandDispatcher double-resolution (ID, name, partial) for robust subject matching
 - [Phase 03]: Sardonic dark comedy narrator voice established for all game text
+- [Phase 04]: Combine verb separated from Use verb -- 'combine X with Y' is now a dedicated verb, not a use synonym
+- [Phase 04]: Inventory item resolution ordered after hotspots but before directions in NounResolver
+- [Phase 04]: NarratorDisplay enhances existing element (no DOM creation) -- composable with TextInputBar
 
 ### Pending Todos
 
@@ -85,5 +89,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 03-02-PLAN.md
+Stopped at: Completed 04-02-PLAN.md
 Resume file: None

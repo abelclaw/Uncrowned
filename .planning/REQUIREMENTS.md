@@ -34,7 +34,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **INV-02**: Player can examine items in inventory to read descriptions
 - [ ] **INV-03**: Player can use inventory items on scene hotspots
 - [ ] **INV-04**: Player can combine two inventory items to create new items
-- [ ] **INV-05**: Inventory panel displays all held items visually
+- [x] **INV-05**: Inventory panel displays all held items visually
 
 ### Puzzles
 
@@ -51,7 +51,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **NARR-01**: Complete fantasy adventure story with beginning, middle, and satisfying end
 - [ ] **NARR-02**: Story provides ~5 hours of gameplay content across multiple acts
 - [ ] **NARR-03**: Dark comedy narrator provides sardonic commentary throughout
-- [ ] **NARR-04**: Narrator text displays with typewriter effect in dialogue box
+- [x] **NARR-04**: Narrator text displays with typewriter effect in dialogue box
 - [ ] **NARR-05**: Scene descriptions available via "look" command
 - [ ] **NARR-06**: Narrator references past events and player actions (dynamic personality)
 - [ ] **NARR-07**: Narrative scripted with inkjs for complex branching dialogue and story state
@@ -82,8 +82,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [ ] **UI-01**: Multiple save slots for manual saving
 - [ ] **UI-02**: Auto-save on room transitions (separate from manual saves)
-- [ ] **UI-03**: Text input command bar always visible during gameplay
-- [ ] **UI-04**: Dialogue/narrator text box displays text with clear formatting
+- [x] **UI-03**: Text input command bar always visible during gameplay
+- [x] **UI-04**: Dialogue/narrator text box displays text with clear formatting
 - [ ] **UI-05**: Main menu with new game, load game, and settings
 - [ ] **UI-06**: Death screen overlay with narrator text and retry option
 
@@ -138,7 +138,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INV-02 | Phase 4 | Pending |
 | INV-03 | Phase 4 | Pending |
 | INV-04 | Phase 4 | Pending |
-| INV-05 | Phase 4 | Pending |
+| INV-05 | Phase 4 | Complete |
 | PUZ-01 | Phase 4 | Pending |
 | PUZ-02 | Phase 4 | Pending |
 | PUZ-03 | Phase 6 | Pending |
@@ -149,7 +149,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | NARR-01 | Phase 8 | Pending |
 | NARR-02 | Phase 8 | Pending |
 | NARR-03 | Phase 4 | Pending |
-| NARR-04 | Phase 4 | Pending |
+| NARR-04 | Phase 4 | Complete |
 | NARR-05 | Phase 4 | Pending |
 | NARR-06 | Phase 6 | Pending |
 | NARR-07 | Phase 6 | Pending |
@@ -168,8 +168,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUD-04 | Phase 7 | Pending |
 | UI-01 | Phase 4 | Pending |
 | UI-02 | Phase 4 | Pending |
-| UI-03 | Phase 4 | Pending |
-| UI-04 | Phase 4 | Pending |
+| UI-03 | Phase 4 | Complete |
+| UI-04 | Phase 4 | Complete |
 | UI-05 | Phase 4 | Pending |
 | UI-06 | Phase 4 | Pending |
 
