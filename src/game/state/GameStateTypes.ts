@@ -11,6 +11,8 @@ export interface GameStateData {
     removedItems: Record<string, string[]>;
     playTimeMs: number;
     deathCount: number;
+    /** Per-NPC ink story state JSON strings for dialogue persistence */
+    dialogueStates: Record<string, string>;
 }
 
 /**
@@ -26,5 +28,6 @@ export function getDefaultState(): GameStateData {
         removedItems: {},
         playTimeMs: 0,
         deathCount: 0,
+        dialogueStates: {},
     };
 }

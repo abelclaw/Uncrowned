@@ -72,6 +72,16 @@ export class GameState {
         }
     }
 
+    // --- Dialogue state ---
+
+    getDialogueStates(): Record<string, string> {
+        return this.data.dialogueStates;
+    }
+
+    setDialogueStates(states: Record<string, string>): void {
+        this.data.dialogueStates = states;
+    }
+
     // --- Serialization ---
 
     serialize(): string {
