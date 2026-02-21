@@ -69,7 +69,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **DEATH-02**: Each death has a unique, funny narrator commentary (dark comedy)
 - [x] **DEATH-03**: Game auto-saves on every room transition
 - [x] **DEATH-04**: Death instantly resets to last auto-save -- no progress lost beyond current room
-- [ ] **DEATH-05**: Player can never reach an unwinnable game state ("dead man walking" prevention)
+- [x] **DEATH-05**: Player can never reach an unwinnable game state ("dead man walking" prevention)
 
 ### Audio
 
@@ -84,8 +84,8 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **UI-02**: Auto-save on room transitions (separate from manual saves)
 - [x] **UI-03**: Text input command bar always visible during gameplay
 - [x] **UI-04**: Dialogue/narrator text box displays text with clear formatting
-- [ ] **UI-05**: Main menu with new game, load game, and settings
-- [ ] **UI-06**: Death screen overlay with narrator text and retry option
+- [x] **UI-05**: Main menu with new game, load game, and settings
+- [x] **UI-06**: Death screen overlay with narrator text and retry option
 
 ## v2 Requirements
 
@@ -161,7 +161,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DEATH-02 | Phase 4 | Pending |
 | DEATH-03 | Phase 4 | Complete |
 | DEATH-04 | Phase 4 | Complete |
-| DEATH-05 | Phase 4 | Pending |
+| DEATH-05 | Phase 4 | Complete |
 | AUD-01 | Phase 7 | Pending |
 | AUD-02 | Phase 7 | Pending |
 | AUD-03 | Phase 7 | Pending |
@@ -170,8 +170,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | UI-02 | Phase 4 | Complete |
 | UI-03 | Phase 4 | Complete |
 | UI-04 | Phase 4 | Complete |
-| UI-05 | Phase 4 | Pending |
-| UI-06 | Phase 4 | Pending |
+| UI-05 | Phase 4 | Complete |
+| UI-06 | Phase 4 | Complete |
 
 **Coverage:**
 - v1 requirements: 40 total

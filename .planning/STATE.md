@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 ## Current Position
 
 Phase: 4 of 8 (Core Gameplay Systems)
-Plan: 2 of 5 in current phase
+Plan: 4 of 5 in current phase
 Status: In Progress
-Last activity: 2026-02-21 -- Completed 04-02-PLAN.md (NarratorDisplay, InventoryPanel, parser verb/noun extensions)
+Last activity: 2026-02-21 -- Completed 04-04-PLAN.md (MainMenuScene and DeathScene)
 
-Progress: [████░░░░░░] 38%
+Progress: [█████░░░░░] 48%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 8
-- Average duration: 3.3min
-- Total execution time: 0.43 hours
+- Total plans completed: 9
+- Average duration: 3.0min
+- Total execution time: 0.45 hours
 
 **By Phase:**
 
@@ -42,6 +42,7 @@ Progress: [████░░░░░░] 38%
 | Phase 03 P02 | 3min | 2 tasks | 7 files |
 | Phase 04 P02 | 3min | 2 tasks | 6 files |
 | Phase 04 P01 | 6min | 2 tasks | 10 files |
+| Phase 04 P04 | 1min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -78,6 +79,9 @@ Recent decisions affecting current work:
 - [Phase 04]: NarratorDisplay enhances existing element (no DOM creation) -- composable with TextInputBar
 - [Phase 04]: Map-based localStorage mock for Node 25 compatibility (built-in Storage API incomplete)
 - [Phase 04]: vi.mock() for Phaser-dependent EventBus in PuzzleEngine pure-logic tests
+- [Phase 04]: Phaser text objects for menu (not HTML) -- full-screen scenes use native Phaser rendering
+- [Phase 04]: DeathScene as overlay via scene.launch -- RoomScene stays loaded underneath
+- [Phase 04]: Direct deathCount mutation via cast rather than adding GameState method -- minimal change
 
 ### Pending Todos
 
@@ -92,5 +96,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: Completed 04-01-PLAN.md (GameState, PuzzleEngine, SaveManager)
+Stopped at: Completed 04-04-PLAN.md (MainMenuScene, DeathScene)
 Resume file: None
