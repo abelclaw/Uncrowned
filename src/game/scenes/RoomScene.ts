@@ -9,6 +9,7 @@ import { NarratorDisplay } from '../ui/NarratorDisplay';
 import { InventoryPanel } from '../ui/InventoryPanel';
 import { DialogueManager } from '../dialogue/DialogueManager';
 import { DialogueUI } from '../dialogue/DialogueUI';
+import { AudioManager } from '../systems/AudioManager';
 import { GameState } from '../state/GameState';
 import type { RoomData, ExitData, HotspotData } from '../types/RoomData';
 import type { ItemDefinition } from '../types/ItemData';
@@ -42,6 +43,9 @@ export class RoomScene extends Phaser.Scene {
     private inventoryPanel!: InventoryPanel;
     private itemDefs: ItemDefinition[] = [];
     private isFirstVisit: boolean = false;
+
+    // Phase 7 audio integration
+    private audioManager!: AudioManager;
 
     // Phase 6 dialogue integration
     private dialogueManager!: DialogueManager;
@@ -323,6 +327,11 @@ export class RoomScene extends Phaser.Scene {
             this.dialogueManager.loadDialogueStates(savedDialogueStates);
         }
 
+        // 8a. AudioManager initialization (before EventBus listeners so SFX works from first command)
+        this.audioManager = AudioManager.getInstance();
+        this.audioManager.init(this);
+        this.audioManager.onRoomEnter(this.roomData);
+
         // Listen for command-submitted events from the input bar
         this.commandSubmittedHandler = async (text: string) => {
             // Dialogue mode: route input to choice selection
@@ -526,6 +535,9 @@ export class RoomScene extends Phaser.Scene {
             EventBus.off('load-game', this.loadGameHandler);
             EventBus.off('room-update', this.roomUpdateHandler);
             EventBus.off('item-picked-up', this.itemPickedUpHandler);
+
+            // Phase 7 audio cleanup (remove EventBus listeners, keep audio playing for crossfade)
+            this.audioManager.cleanup();
 
             // Phase 6 dialogue cleanup
             if (this.dialogueManager?.isActive()) {
