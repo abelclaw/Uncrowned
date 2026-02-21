@@ -150,7 +150,7 @@ describe('TextParser', () => {
         it('parses "combine rope and hook" with subject and target', () => {
             const result = parser.parse('combine rope and hook', hotspots, exits);
             expect(result.success).toBe(true);
-            expect(result.action!.verb).toBe('use');
+            expect(result.action!.verb).toBe('combine');
             expect(result.action!.subject).toBe('rope');
             expect(result.action!.target).toBe('hook');
         });

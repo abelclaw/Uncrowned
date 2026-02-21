@@ -49,10 +49,9 @@ export const VERB_TABLE: VerbDefinition[] = [
     },
     {
         canonical: 'use',
-        synonyms: ['use', 'apply', 'combine'],
+        synonyms: ['use', 'apply'],
         patterns: [
             /^(?:use|apply)\s+(.+?)\s+(?:on|with)\s+(.+)$/i,
-            /^combine\s+(.+?)\s+(?:and|with)\s+(.+)$/i,
             /^(?:use|apply)\s+(.+)$/i,
         ],
     },
@@ -95,6 +94,38 @@ export const VERB_TABLE: VerbDefinition[] = [
         synonyms: ['pull', 'yank', 'tug', 'drag'],
         patterns: [
             /^(?:pull|yank|tug|drag)\s+(.+)$/i,
+        ],
+    },
+
+    // Phase 4 verbs: inventory management, save/load, item combination
+    {
+        canonical: 'inventory',
+        synonyms: ['inventory', 'i', 'items', 'bag', 'pockets'],
+        patterns: [
+            /^(?:inventory|items|bag|pockets|i)$/i,
+        ],
+    },
+    {
+        canonical: 'combine',
+        synonyms: ['combine', 'merge', 'mix'],
+        patterns: [
+            /^(?:combine|merge|mix)\s+(.+?)\s+(?:and|with)\s+(.+)$/i,
+        ],
+    },
+    {
+        canonical: 'save',
+        synonyms: ['save', 'savegame'],
+        patterns: [
+            /^save\s+(?:game\s+)?(\d+)$/i,
+            /^save(?:\s+game)?$/i,
+        ],
+    },
+    {
+        canonical: 'load',
+        synonyms: ['load', 'restore', 'loadgame'],
+        patterns: [
+            /^(?:load|restore)\s+(?:game\s+)?(\d+)$/i,
+            /^(?:load|restore)(?:\s+game)?$/i,
         ],
     },
 ];

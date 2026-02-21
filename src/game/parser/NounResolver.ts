@@ -5,7 +5,7 @@ import type { HotspotData, ExitData } from '../types/RoomData.ts';
  */
 export interface ResolvedNoun {
     /** What kind of thing was matched */
-    type: 'hotspot' | 'exit' | 'direction' | 'unknown';
+    type: 'hotspot' | 'exit' | 'direction' | 'item' | 'unknown';
     /** The resolved ID (hotspot id, exit id, direction name, or raw string for unknown) */
     id: string;
     /** How confident the match is */
@@ -61,6 +61,7 @@ export class NounResolver {
         rawNoun: string,
         hotspots: HotspotData[],
         exits: ExitData[],
+        inventoryItems?: Array<{ id: string; name: string }>,
     ): ResolvedNoun {
         const cleaned = stripStopWords(rawNoun);
         const normalized = cleaned.toLowerCase().trim();
@@ -91,6 +92,31 @@ export class NounResolver {
             const hasMatch = nounWords.some(nw => hotspotWords.includes(nw));
             if (hasMatch) {
                 return { type: 'hotspot', id: h.id, confidence: 'partial' };
+            }
+        }
+
+        // 3b. Inventory item resolution (after hotspots, before directions)
+        if (inventoryItems) {
+            // Exact ID match
+            for (const item of inventoryItems) {
+                if (item.id === normalized) {
+                    return { type: 'item', id: item.id, confidence: 'exact' };
+                }
+            }
+            // Exact name match (case-insensitive)
+            for (const item of inventoryItems) {
+                if (item.name.toLowerCase() === normalized) {
+                    return { type: 'item', id: item.id, confidence: 'exact' };
+                }
+            }
+            // Partial word match
+            for (const item of inventoryItems) {
+                const itemWords = item.name.toLowerCase().split(/\s+/);
+                const nounWords = normalized.split(/\s+/);
+                const hasMatch = nounWords.some(nw => itemWords.includes(nw));
+                if (hasMatch) {
+                    return { type: 'item', id: item.id, confidence: 'partial' };
+                }
             }
         }
 

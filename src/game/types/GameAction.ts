@@ -3,7 +3,8 @@
  * Both the deterministic parser (Phase 3) and future LLM parser (Phase 5)
  * produce actions using these same verbs.
  */
-export type Verb = 'look' | 'take' | 'use' | 'go' | 'talk' | 'open' | 'push' | 'pull';
+export type Verb = 'look' | 'take' | 'use' | 'go' | 'talk' | 'open' | 'push' | 'pull'
+    | 'inventory' | 'save' | 'load' | 'combine';
 
 /**
  * A structured game action produced by parsing player input.
