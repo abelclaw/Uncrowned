@@ -66,6 +66,13 @@ export class Preloader extends Scene {
 
         // Item definitions registry
         this.load.json('items', 'assets/data/items.json');
+
+        // NPC registry
+        this.load.json('npcs', 'assets/data/npcs/npcs.json');
+
+        // NPC dialogue compiled ink JSON files
+        this.load.json('dialogue-old_man', 'assets/data/dialogue/old_man.ink.json');
+        this.load.json('dialogue-narrator_history', 'assets/data/dialogue/narrator_history.ink.json');
     }
 
     create() {
