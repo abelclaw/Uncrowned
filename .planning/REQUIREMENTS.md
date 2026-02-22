@@ -9,10 +9,10 @@ Requirements for the Art & Effects milestone. Each maps to roadmap phases.
 
 ### Art Pipeline
 
-- [ ] **ARTX-01**: Art generation workflow produces 16:9 images (1024x576) without composition-destroying crop
+- [x] **ARTX-01**: Art generation workflow produces 16:9 images (1024x576) without composition-destroying crop
 - [ ] **ARTX-02**: LoRA strength is calibrated per asset type (backgrounds vs sprites) with test generation on 3 rooms per act
 - [ ] **ARTX-03**: Batch generation pipeline has retry logic, progress tracking, and resume capability for 91 assets
-- [ ] **ARTX-04**: Sprite background removal produces clean alpha transparency for all item, NPC, and player sprites
+- [x] **ARTX-04**: Sprite background removal produces clean alpha transparency for all item, NPC, and player sprites
 - [ ] **ARTX-05**: All 36 room backgrounds are Flux-generated pixel art at 960x540 with consistent style per act
 - [ ] **ARTX-06**: All 6 shared parallax layers (2 per act) are generated with matching act palettes at 1920x540
 - [ ] **ARTX-07**: All 37 item sprites are generated with transparent backgrounds at 32x32
@@ -79,10 +79,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ARTX-01 | Phase 14 | Pending |
+| ARTX-01 | Phase 14 | Complete |
 | ARTX-02 | Phase 14 | Pending |
 | ARTX-03 | Phase 15 | Pending |
-| ARTX-04 | Phase 14 | Pending |
+| ARTX-04 | Phase 14 | Complete |
 | ARTX-05 | Phase 15 | Pending |
 | ARTX-06 | Phase 15 | Pending |
 | ARTX-07 | Phase 15 | Pending |

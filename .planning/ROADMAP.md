@@ -54,7 +54,7 @@
   2. LoRA strength settings are documented per asset type and test generations for 3 rooms per act show consistent pixel art style
   3. Generated sprite images have clean transparent backgrounds with no white halos or color fringe artifacts
   4. Test generations at the tuned settings produce visually acceptable results across forest, cave, and twilight environments
-**Plans:** 2 plans
+**Plans:** 1/2 plans executed
 Plans:
 - [ ] 14-01-PLAN.md -- Per-asset-type config system, 16:9 resolution fix, and sprite background removal
 - [ ] 14-02-PLAN.md -- LoRA strength test matrix CLI and empirical calibration
@@ -113,7 +113,7 @@ Plans:
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
-| 14. Art Pipeline Tuning | v2.1 | 0/2 | Planning complete | - |
+| 14. Art Pipeline Tuning | 1/2 | In Progress|  | - |
 | 15. Batch Art Generation | v2.1 | 0/TBD | Not started | - |
 | 16. VFX Foundation & Weather | v2.1 | 0/TBD | Not started | - |
 | 17. Lighting & Transitions | v2.1 | 0/TBD | Not started | - |

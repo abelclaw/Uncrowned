@@ -11,11 +11,12 @@ See: .planning/PROJECT.md (updated 2026-02-21)
 
 Milestone: v2.1 Art & Effects
 Phase: 14 of 18 (Art Pipeline Tuning)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-02-21 -- Roadmap created for v2.1 milestone (5 phases, 24 requirements)
+**Current Plan:** 2
+**Total Plans in Phase:** 2
+Status: Executing
+Last activity: 2026-02-22 -- Completed 14-01 (per-type config and background removal)
 
-Progress: [░░░░░░░░░░] 0%
+**Progress:** [█░░░░░░░░░] 10%
 
 ## Performance Metrics
 
@@ -28,8 +29,12 @@ Progress: [░░░░░░░░░░] 0%
 - Requirements: 27/32 complete (5 art requirements pending ComfyUI hardware)
 
 **v2.1:**
-- Total plans completed: 0
+- Total plans completed: 1
 - Phases: 5 (Phases 14-18), Requirements: 24
+
+| Phase | Plan | Duration | Tasks | Files |
+|-------|------|----------|-------|-------|
+| 14 | 01 | 3min | 2 | 2 |
 
 ## Accumulated Context
 
@@ -37,6 +42,10 @@ Progress: [░░░░░░░░░░] 0%
 
 All v1.0 decisions archived in .planning/milestones/v1.0-ROADMAP.md
 All v2.0 decisions archived in .planning/milestones/v2.0-ROADMAP.md
+
+- [14-01] Runtime workflow injection: inject per-type config into deep-cloned workflow at runtime, keep comfyui-workflow.json stable
+- [14-01] Sharp threshold for bg removal: raw pixel threshold + defringe over AI matting library
+- [14-01] 512x512 for items: reduces compute, improves subject centering for 32x32 final assets
 
 ### Pending Todos
 
@@ -46,13 +55,13 @@ None.
 
 - Flux art generation requires ComfyUI + GPU hardware (user has local GPU)
 - Art style target: between classic 16-bit and modern pixel art
-- Critical: Must generate at 1024x576 (not 1024x1024) to avoid 44% vertical crop
-- Critical: Sprite background removal needed -- Flux generates white/colored backgrounds, not transparent
-- LoRA strength values (0.65 bg, 0.85 sprites) are starting estimates needing empirical testing
+- RESOLVED: Backgrounds now generate at 1024x576 natively (14-01)
+- RESOLVED: Sprite background removal implemented with threshold + defringe (14-01)
+- LoRA strength values (bg=0.7, sprite=0.85, item=0.9, npc=0.85) are starting estimates needing empirical testing in 14-02
 - Player spritesheet may need hand-assembly -- Flux cannot generate coherent multi-frame sheets
 
 ## Session Continuity
 
-Last session: 2026-02-21
-Stopped at: Roadmap created for v2.1, ready to plan Phase 14
+Last session: 2026-02-22
+Stopped at: Completed 14-01-PLAN.md (per-type config and background removal)
 Resume file: None
