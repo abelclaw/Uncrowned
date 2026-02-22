@@ -9,6 +9,8 @@ export class Player {
     private scene: Phaser.Scene;
     private currentTween: Phaser.Tweens.TweenChain | null = null;
     private _isWalking: boolean = false;
+    private _isDirectMoving: boolean = false;
+    private static readonly SPEED = 120; // pixels per second
 
     /** Whether the player is currently walking along a path. */
     get isWalking(): boolean {
@@ -52,11 +54,76 @@ export class Player {
     }
 
     /**
+     * Update player position from arrow key input. Called every frame from RoomScene.update().
+     * Returns true if the player is actively moving via arrow keys.
+     */
+    updateDirectMovement(
+        delta: number,
+        cursors: Phaser.Types.Input.Keyboard.CursorKeys,
+        isPointWalkable: (x: number, y: number) => boolean
+    ): boolean {
+        let dx = 0;
+        let dy = 0;
+        if (cursors.left.isDown)  dx -= 1;
+        if (cursors.right.isDown) dx += 1;
+        if (cursors.up.isDown)    dy -= 1;
+        if (cursors.down.isDown)  dy += 1;
+
+        if (dx === 0 && dy === 0) {
+            if (this._isDirectMoving) {
+                this._isDirectMoving = false;
+                this._isWalking = false;
+                this.sprite.play('player-idle');
+            }
+            return false;
+        }
+
+        // Cancel any active tween movement when arrow keys take over
+        if (!this._isDirectMoving) {
+            if (this.currentTween) {
+                this.currentTween.stop();
+                this.currentTween = null;
+            }
+            this.scene.tweens.killTweensOf(this.sprite);
+        }
+
+        // Normalize diagonal movement
+        const length = Math.sqrt(dx * dx + dy * dy);
+        dx /= length;
+        dy /= length;
+
+        const speed = Player.SPEED * (delta / 1000);
+        const candidateX = this.sprite.x + dx * speed;
+        const candidateY = this.sprite.y + dy * speed;
+
+        // Try combined movement, then axis-aligned sliding
+        if (isPointWalkable(candidateX, candidateY)) {
+            this.sprite.x = candidateX;
+            this.sprite.y = candidateY;
+        } else {
+            if (isPointWalkable(candidateX, this.sprite.y)) this.sprite.x = candidateX;
+            if (isPointWalkable(this.sprite.x, candidateY)) this.sprite.y = candidateY;
+        }
+
+        if (!this._isDirectMoving || !this._isWalking) {
+            this.sprite.play('player-walk', true);
+            this._isWalking = true;
+            this._isDirectMoving = true;
+        }
+
+        if (dx < 0) this.sprite.flipX = true;
+        else if (dx > 0) this.sprite.flipX = false;
+
+        return true;
+    }
+
+    /**
      * Move the player along a series of waypoints.
      * Stops any current movement before starting the new path.
      */
     walkTo(path: Array<{ x: number; y: number }>, onComplete?: () => void): void {
         if (path.length === 0) return;
+        this._isDirectMoving = false;
 
         // Stop any existing movement
         if (this.currentTween) {
@@ -135,6 +202,7 @@ export class Player {
         }
         this.scene.tweens.killTweensOf(this.sprite);
         this._isWalking = false;
+        this._isDirectMoving = false;
         this.sprite.play('player-idle');
     }
 

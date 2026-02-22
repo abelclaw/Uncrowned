@@ -76,6 +76,9 @@ export class RoomScene extends Phaser.Scene {
     private roomUpdateHandler!: (action: any) => void;
     private itemPickedUpHandler!: (itemId: string) => void;
 
+    // Arrow key direct movement
+    private cursors?: Phaser.Types.Input.Keyboard.CursorKeys;
+
     // Phase 9 lazy-loaded sprites
     private itemSprites: Map<string, Phaser.GameObjects.Image> = new Map();
     private npcSprites: Map<string, Phaser.GameObjects.Image> = new Map();
@@ -349,8 +352,17 @@ export class RoomScene extends Phaser.Scene {
         this.cameras.main.setRoundPixels(true);
         this.cameras.main.startFollow(this.player.getSprite(), true, 0.1, 0.1);
 
+        // 6b. Arrow key movement setup
+        if (this.input.keyboard) {
+            this.cursors = this.input.keyboard.createCursorKeys();
+        }
+
         // 7. Click-to-move handler
         this.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
+            // Blur text input so arrow keys go to the game canvas
+            if (document.activeElement instanceof HTMLElement) {
+                document.activeElement.blur();
+            }
             if (this.isTransitioning) return;
 
             const worldPoint = this.cameras.main.getWorldPoint(pointer.x, pointer.y);
@@ -686,6 +698,9 @@ export class RoomScene extends Phaser.Scene {
             EventBus.off('room-update', this.roomUpdateHandler);
             EventBus.off('item-picked-up', this.itemPickedUpHandler);
 
+            // Arrow key cleanup
+            this.cursors = undefined;
+
             // Phase 9 sprite cleanup
             this.itemSprites.forEach(sprite => sprite.destroy());
             this.itemSprites.clear();
@@ -704,8 +719,17 @@ export class RoomScene extends Phaser.Scene {
         });
     }
 
-    update(): void {
+    update(_time: number, delta: number): void {
         if (this.isTransitioning) return;
+
+        // Arrow key direct movement (skip if text input focused or in dialogue)
+        if (this.cursors && !this.isTextInputFocused() && !this.inDialogue) {
+            this.player.updateDirectMovement(
+                delta,
+                this.cursors,
+                (x, y) => this.navigation.isPointWalkable(x, y)
+            );
+        }
 
         const pos = this.player.getPosition();
 
@@ -729,6 +753,11 @@ export class RoomScene extends Phaser.Scene {
                 return;
             }
         }
+    }
+
+    private isTextInputFocused(): boolean {
+        const active = document.activeElement;
+        return active instanceof HTMLInputElement || active instanceof HTMLTextAreaElement;
     }
 
     /**
