@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import type { RoomEffectsData, WeatherType, AmbientType } from '../types/RoomData';
+import type { RoomEffectsData, WeatherType, AmbientType, LightingData } from '../types/RoomData';
 
 /**
  * Game viewport constants matching canvas size.
@@ -12,8 +12,9 @@ const GAME_HEIGHT = 540;
 const PARTICLE_TEXTURE = 'particle-white';
 
 /** Depth constants for layering */
-const WEATHER_DEPTH = 80;
+const LIGHTING_DEPTH = 70;
 const AMBIENT_DEPTH = 75;
+const WEATHER_DEPTH = 80;
 
 /**
  * Helper to create a typed random emit zone from a Phaser Rectangle.
@@ -42,6 +43,12 @@ export class EffectsManager {
     private weatherEmitter: Phaser.GameObjects.Particles.ParticleEmitter | null = null;
     private ambientEmitters: Phaser.GameObjects.Particles.ParticleEmitter[] = [];
     private initialized: boolean = false;
+
+    // Lighting state
+    private lightingOverlay: Phaser.GameObjects.Rectangle | null = null;
+    private flickerTimer: Phaser.Time.TimerEvent | null = null;
+    private postFXActive: boolean = false;
+    private baseOverlayAlpha: number = 0;
 
     private constructor() {}
 
@@ -95,10 +102,14 @@ export class EffectsManager {
                 this.createAmbientEmitter(amb.type, intensity);
             }
         }
+
+        if (roomData.effects?.lighting) {
+            this.applyLighting(roomData.effects.lighting);
+        }
     }
 
     /**
-     * Destroy all active particle emitters and null references.
+     * Destroy all active particle emitters, lighting, and null references.
      */
     private clearAll(): void {
         if (this.weatherEmitter) {
@@ -110,6 +121,8 @@ export class EffectsManager {
             emitter.destroy();
         }
         this.ambientEmitters = [];
+
+        this.clearLighting();
     }
 
     /**
@@ -323,6 +336,95 @@ export class EffectsManager {
             alpha: { start: 0.9, end: 0 },
             tint: tint,
         };
+    }
+
+    /**
+     * Apply per-room lighting: tint overlay, vignette, torch flicker, and PostFX.
+     * Lighting overlay sits at depth 70 (below ambient 75 and weather 80)
+     * so particles float above the tint, which looks correct.
+     */
+    private applyLighting(config: LightingData): void {
+        // Tint + Brightness overlay
+        const tintColor = config.tint
+            ? parseInt(config.tint.replace('#', ''), 16)
+            : 0x000000;
+        const brightness = Math.max(0, Math.min(1, config.brightness ?? 1.0));
+        this.baseOverlayAlpha = 1 - brightness;
+
+        if (this.baseOverlayAlpha > 0 || config.tint) {
+            this.lightingOverlay = this.scene.add.rectangle(
+                0, 0, GAME_WIDTH, GAME_HEIGHT, tintColor, this.baseOverlayAlpha
+            );
+            this.lightingOverlay.setOrigin(0, 0);
+            this.lightingOverlay.setScrollFactor(0);
+            this.lightingOverlay.setDepth(LIGHTING_DEPTH);
+        }
+
+        // Vignette via PostFX
+        if (config.vignette && config.vignette > 0) {
+            this.scene.cameras.main.postFX.addVignette(0.5, 0.5, config.vignette);
+            this.postFXActive = true;
+        }
+
+        // Torch flicker: oscillate lighting overlay alpha on a timer
+        if (config.torchFlicker && this.lightingOverlay) {
+            this.flickerTimer = this.scene.time.addEvent({
+                delay: 150,
+                callback: () => {
+                    if (this.lightingOverlay) {
+                        const flicker = (Math.random() - 0.5) * 0.12;
+                        this.lightingOverlay.setAlpha(
+                            Math.max(0, Math.min(1, this.baseOverlayAlpha + flicker))
+                        );
+                    }
+                },
+                loop: true,
+            });
+        }
+
+        // PostFX effects
+        if (config.postfx) {
+            for (const fx of config.postfx) {
+                switch (fx) {
+                    case 'bloom':
+                        this.scene.cameras.main.postFX.addBloom(0xffffff, 1, 1, 1, 1.2);
+                        this.postFXActive = true;
+                        break;
+                    case 'glow':
+                        this.scene.cameras.main.postFX.addGlow(0xffff88, 2, 0, false, 0.1, 10);
+                        this.postFXActive = true;
+                        break;
+                    case 'desaturate': {
+                        const colorMatrix = this.scene.cameras.main.postFX.addColorMatrix();
+                        colorMatrix.grayscale();
+                        this.postFXActive = true;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Remove all lighting effects: overlay, flicker timer, and PostFX.
+     */
+    private clearLighting(): void {
+        if (this.lightingOverlay) {
+            this.lightingOverlay.destroy();
+            this.lightingOverlay = null;
+        }
+
+        if (this.flickerTimer) {
+            this.flickerTimer.remove(false);
+            this.flickerTimer = null;
+        }
+
+        // Clear all PostFX from camera (removes vignette, bloom, glow, color matrix)
+        if (this.postFXActive && this.scene?.cameras?.main?.postFX) {
+            this.scene.cameras.main.postFX.clear();
+        }
+        this.postFXActive = false;
+        this.baseOverlayAlpha = 0;
     }
 
     /**

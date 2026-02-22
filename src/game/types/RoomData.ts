@@ -21,7 +21,24 @@ export type WeatherType = 'rain' | 'snow' | 'fog' | 'dust';
 export type AmbientType = 'fireflies' | 'dust-motes' | 'falling-leaves' | 'embers';
 
 /**
- * Effects configuration for weather and ambient particles in a room.
+ * PostFX effect types for mood and atmosphere.
+ */
+export type PostFXType = 'bloom' | 'glow' | 'desaturate';
+
+/**
+ * Per-room lighting configuration for ambient tint, brightness, vignette,
+ * torch flicker, and camera PostFX effects.
+ */
+export interface LightingData {
+    tint?: string;           // hex color string e.g. "#ff8844" applied as camera tint overlay
+    brightness?: number;     // 0.0-1.0, default 1.0 (1.0 = normal, 0.3 = very dark)
+    vignette?: number;       // 0.0-1.0 vignette intensity, 0 = none, 0.8 = heavy darkened edges
+    torchFlicker?: boolean;  // if true, brightness oscillates to simulate torch light
+    postfx?: PostFXType[];   // list of PostFX effects to apply
+}
+
+/**
+ * Effects configuration for weather, ambient particles, and lighting in a room.
  */
 export interface RoomEffectsData {
     weather?: {
@@ -32,6 +49,7 @@ export interface RoomEffectsData {
         type: AmbientType;
         intensity?: number; // 0.0-1.0, defaults to 0.5
     }>;
+    lighting?: LightingData;
 }
 
 /**
