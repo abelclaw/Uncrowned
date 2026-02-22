@@ -110,7 +110,7 @@ Plans:
   3. On mobile devices, particle counts are reduced and effects simplified so gameplay maintains 30+ FPS
   4. The settings menu has a quality toggle (high/low/off) that visibly changes effects intensity
   5. Walking through all 36 rooms in sequence shows no jarring art style breaks between adjacent rooms
-**Plans:** 3 plans
+**Plans:** 2/3 plans executed
 Plans:
 - [ ] 18-01-PLAN.md -- Quality settings system (high/low/off toggle), Canvas fallback, mobile performance degradation
 - [ ] 18-02-PLAN.md -- Effects configs for all 15 Act 1 rooms (weather, ambient, lighting per narrative context)
@@ -127,7 +127,7 @@ Plans:
 | 15. Batch Art Generation | v2.1 | 0/TBD | Not started | - |
 | 16. VFX Foundation & Weather | 2/2 | Complete    | 2026-02-22 | - |
 | 17. Lighting & Transitions | 2/2 | Complete    | 2026-02-22 | - |
-| 18. Effects Rollout & Polish | v2.1 | 0/3 | Planned | - |
+| 18. Effects Rollout & Polish | 2/3 | In Progress|  | - |
 
 ---
 *Roadmap created: 2026-02-21*

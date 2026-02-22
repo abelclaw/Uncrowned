@@ -5,17 +5,17 @@
 See: .planning/PROJECT.md (updated 2026-02-21)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** v2.1 Art & Effects -- Phase 17 complete
+**Current focus:** v2.1 Art & Effects -- Phase 18 in progress
 
 ## Current Position
 
 Milestone: v2.1 Art & Effects
-Phase: 17 of 18 (Lighting & Transitions) -- Complete (2/2 plans done)
-Current Plan: 2 of 2 (complete)
-**Status:** Milestone complete
-Last activity: 2026-02-22 -- Completed 17-02 (Scene Transitions)
+Phase: 18 of 18 (Effects Rollout & Polish) -- In Progress (2/3 plans done)
+Current Plan: 2 of 3 (complete)
+**Status:** Phase in progress
+Last activity: 2026-02-22 -- Completed 18-02 (Act 1 Effects Rollout)
 
-**Progress:** [██████████] 100%
+**Progress:** [██████████] 95%
 
 ## Performance Metrics
 
@@ -28,7 +28,7 @@ Last activity: 2026-02-22 -- Completed 17-02 (Scene Transitions)
 - Requirements: 27/32 complete (5 art requirements pending ComfyUI hardware)
 
 **v2.1:**
-- Total plans completed: 6
+- Total plans completed: 7
 - Phases: 5 (Phases 14-18), Requirements: 24
 
 | Phase | Plan | Duration | Tasks | Files |
@@ -39,6 +39,7 @@ Last activity: 2026-02-22 -- Completed 17-02 (Scene Transitions)
 | 16 | 02 | 3min | 2 | 6 |
 | 17 | 01 | 3min | 2 | 4 |
 | 17 | 02 | 3min | 2 | 5 |
+| 18 | 02 | 2min | 2 | 13 |
 
 ## Accumulated Context
 
@@ -64,6 +65,11 @@ All v2.0 decisions archived in .planning/milestones/v2.0-ROADMAP.md
 - [17-02] Vignette PostFX for iris effect: simpler than Graphics mask, tween strength 0->1 for iris-close
 - [17-02] Act-boundary override always uses iris+1500ms regardless of exit JSON transition
 - [17-02] Entry animation durations: 500ms for wipe/pixelate, 700ms for iris-open
+- [18-02] Effects field placement: after audio, before puzzleHints/playerSpawn in room JSONs
+- [18-02] Cave brightness gradient: cave_entrance 0.4 -> cave_depths 0.25 (natural depth darkening)
+- [18-02] Castle interior gradient: courtyard 0.85 -> hallway 0.75 -> servants_quarters 0.65
+- [18-02] Petrified forest: desaturate PostFX for cursed grey-stone atmosphere (intentional mood break)
+- [18-02] Wizard tower: glow PostFX + purple #8866bb tint for arcane magical atmosphere
 
 ### Gameplay Bugs Fixed (walkthrough session)
 
@@ -94,5 +100,5 @@ All v2.0 decisions archived in .planning/milestones/v2.0-ROADMAP.md
 ## Session Continuity
 
 Last session: 2026-02-22
-Stopped at: Completed 17-02-PLAN.md (Scene Transitions) -- Phase 17 complete
+Stopped at: Completed 18-02-PLAN.md (Act 1 Effects Rollout)
 Resume file: None

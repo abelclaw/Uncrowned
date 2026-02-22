@@ -18,7 +18,7 @@ Requirements for the Art & Effects milestone. Each maps to roadmap phases.
 - [ ] **ARTX-07**: All 37 item sprites are generated with transparent backgrounds at 32x32
 - [ ] **ARTX-08**: All 11 NPC sprites are generated with transparent backgrounds at 48x64
 - [ ] **ARTX-09**: Player character spritesheet (idle, walk, interact frames) is generated or hand-assembled at 768x64
-- [ ] **ARTX-10**: Style consistency validated across all 36 rooms — no jarring style breaks between adjacent rooms
+- [x] **ARTX-10**: Style consistency validated across all 36 rooms — no jarring style breaks between adjacent rooms
 
 ### Scene Transitions
 
@@ -88,7 +88,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ARTX-07 | Phase 15 | Pending |
 | ARTX-08 | Phase 15 | Pending |
 | ARTX-09 | Phase 15 | Pending |
-| ARTX-10 | Phase 18 | Pending |
+| ARTX-10 | Phase 18 | Complete |
 | TRNS-01 | Phase 17 | Complete |
 | TRNS-02 | Phase 17 | Complete |
 | TRNS-03 | Phase 17 | Complete |
