@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-02-21)
 Milestone: v2.1 Art & Effects
 Phase: 17 of 18 (Lighting & Transitions) -- Complete (2/2 plans done)
 Current Plan: 2 of 2 (complete)
-**Status:** Phase Complete
+**Status:** Milestone complete
 Last activity: 2026-02-22 -- Completed 17-02 (Scene Transitions)
 
 **Progress:** [██████████] 100%

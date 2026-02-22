@@ -122,7 +122,7 @@ Plans:
 | 14. Art Pipeline Tuning | 2/2 | Complete (calibration deferred) | - | 2026-02-22 |
 | 15. Batch Art Generation | v2.1 | 0/TBD | Not started | - |
 | 16. VFX Foundation & Weather | 2/2 | Complete    | 2026-02-22 | - |
-| 17. Lighting & Transitions | 2/2 | Complete   | 2026-02-22 | - |
+| 17. Lighting & Transitions | 2/2 | Complete    | 2026-02-22 | - |
 | 18. Effects Rollout & Polish | v2.1 | 0/TBD | Not started | - |
 
 ---
