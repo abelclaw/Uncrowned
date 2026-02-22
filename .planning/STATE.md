@@ -5,17 +5,17 @@
 See: .planning/PROJECT.md (updated 2026-02-21)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** v2.1 Art & Effects -- Phase 17 in progress
+**Current focus:** v2.1 Art & Effects -- Phase 17 complete
 
 ## Current Position
 
 Milestone: v2.1 Art & Effects
-Phase: 17 of 18 (Lighting & Transitions) -- In Progress (1/2 plans done)
-Current Plan: 2 of 2
-**Status:** Executing
-Last activity: 2026-02-22 -- Completed 17-01 (Ambient Lighting & PostFX)
+Phase: 17 of 18 (Lighting & Transitions) -- Complete (2/2 plans done)
+Current Plan: 2 of 2 (complete)
+**Status:** Phase Complete
+Last activity: 2026-02-22 -- Completed 17-02 (Scene Transitions)
 
-**Progress:** [█████████░] 90%
+**Progress:** [██████████] 100%
 
 ## Performance Metrics
 
@@ -28,7 +28,7 @@ Last activity: 2026-02-22 -- Completed 17-01 (Ambient Lighting & PostFX)
 - Requirements: 27/32 complete (5 art requirements pending ComfyUI hardware)
 
 **v2.1:**
-- Total plans completed: 5
+- Total plans completed: 6
 - Phases: 5 (Phases 14-18), Requirements: 24
 
 | Phase | Plan | Duration | Tasks | Files |
@@ -38,6 +38,7 @@ Last activity: 2026-02-22 -- Completed 17-01 (Ambient Lighting & PostFX)
 | 16 | 01 | 7min | 2 | 2 |
 | 16 | 02 | 3min | 2 | 6 |
 | 17 | 01 | 3min | 2 | 4 |
+| 17 | 02 | 3min | 2 | 5 |
 
 ## Accumulated Context
 
@@ -60,6 +61,9 @@ All v2.0 decisions archived in .planning/milestones/v2.0-ROADMAP.md
 - [17-01] grayscale() for desaturate PostFX: Phaser 3.90 ColorMatrix lacks desaturate(), grayscale() achieves same effect
 - [17-01] Boolean postFX tracking instead of Controller[] array (FX.ColorMatrix not assignable to FX.Controller)
 - [17-01] Lighting overlay depth 70: below ambient (75) and weather (80) so particles float above tint
+- [17-02] Vignette PostFX for iris effect: simpler than Graphics mask, tween strength 0->1 for iris-close
+- [17-02] Act-boundary override always uses iris+1500ms regardless of exit JSON transition
+- [17-02] Entry animation durations: 500ms for wipe/pixelate, 700ms for iris-open
 
 ### Gameplay Bugs Fixed (walkthrough session)
 
@@ -90,5 +94,5 @@ All v2.0 decisions archived in .planning/milestones/v2.0-ROADMAP.md
 ## Session Continuity
 
 Last session: 2026-02-22
-Stopped at: Completed 17-01-PLAN.md (Ambient Lighting & PostFX)
+Stopped at: Completed 17-02-PLAN.md (Scene Transitions) -- Phase 17 complete
 Resume file: None

@@ -40,7 +40,7 @@
 - [x] **Phase 14: Art Pipeline Tuning** - Fix generation resolution, calibrate LoRA per asset type, add sprite background removal (LoRA calibration deferred to hardware availability)
 - [ ] **Phase 15: Batch Art Generation** - Generate all 91 assets with tuned pipeline and validate quality
 - [x] **Phase 16: VFX Foundation & Weather** - Build EffectsManager, weather particles, and ambient atmosphere effects (completed 2026-02-22)
-- [ ] **Phase 17: Lighting & Transitions** - Add per-room lighting, PostFX mood effects, and cinematic scene transitions
+- [x] **Phase 17: Lighting & Transitions** - Add per-room lighting, PostFX mood effects, and cinematic scene transitions (completed 2026-02-22)
 - [ ] **Phase 18: Effects Rollout & Polish** - Configure effects for all 36 rooms, performance tuning, quality toggle
 
 ## Phase Details
@@ -95,7 +95,7 @@ Plans:
   3. PostFX effects (bloom, glow, desaturation) visibly alter room mood when configured
   4. Walking through a room exit triggers a themed transition effect (fade, wipe, pixelate, iris) instead of a hard cut
   5. Crossing an act boundary plays a longer, more dramatic transition that signals narrative progression
-**Plans:** 1/2 plans executed
+**Plans:** 2/2 plans complete
 Plans:
 - [ ] 17-01-PLAN.md -- LightingData type, EffectsManager lighting/PostFX/torch-flicker, 2 demo room configs
 - [ ] 17-02-PLAN.md -- Themed scene transitions (wipe, pixelate, iris), act-boundary detection, TransitionType
@@ -122,7 +122,7 @@ Plans:
 | 14. Art Pipeline Tuning | 2/2 | Complete (calibration deferred) | - | 2026-02-22 |
 | 15. Batch Art Generation | v2.1 | 0/TBD | Not started | - |
 | 16. VFX Foundation & Weather | 2/2 | Complete    | 2026-02-22 | - |
-| 17. Lighting & Transitions | 1/2 | In Progress|  | - |
+| 17. Lighting & Transitions | 2/2 | Complete   | 2026-02-22 | - |
 | 18. Effects Rollout & Polish | v2.1 | 0/TBD | Not started | - |
 
 ---

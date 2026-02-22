@@ -22,9 +22,9 @@ Requirements for the Art & Effects milestone. Each maps to roadmap phases.
 
 ### Scene Transitions
 
-- [ ] **TRNS-01**: Room transitions use themed effects (fade, wipe, pixelate, iris) instead of hard cuts
-- [ ] **TRNS-02**: Act changes use cinematic transitions (longer duration, distinct effect) to mark narrative progression
-- [ ] **TRNS-03**: Transition type is configurable per exit in room JSON data
+- [x] **TRNS-01**: Room transitions use themed effects (fade, wipe, pixelate, iris) instead of hard cuts
+- [x] **TRNS-02**: Act changes use cinematic transitions (longer duration, distinct effect) to mark narrative progression
+- [x] **TRNS-03**: Transition type is configurable per exit in room JSON data
 
 ### Lighting & Atmosphere
 
@@ -89,9 +89,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | ARTX-08 | Phase 15 | Pending |
 | ARTX-09 | Phase 15 | Pending |
 | ARTX-10 | Phase 18 | Pending |
-| TRNS-01 | Phase 17 | Pending |
-| TRNS-02 | Phase 17 | Pending |
-| TRNS-03 | Phase 17 | Pending |
+| TRNS-01 | Phase 17 | Complete |
+| TRNS-02 | Phase 17 | Complete |
+| TRNS-03 | Phase 17 | Complete |
 | LITE-01 | Phase 17 | Complete |
 | LITE-02 | Phase 17 | Complete |
 | LITE-03 | Phase 17 | Complete |
