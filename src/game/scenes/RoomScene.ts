@@ -18,6 +18,7 @@ import type { DeathSceneData } from './DeathScene';
 import type { EndingSceneData } from './EndingScene';
 import type { ItemDefinition } from '../types/ItemData';
 import type { NpcDefinition } from '../types/NpcData';
+import type { PuzzleDefinition } from '../types/PuzzleData';
 import EventBus from '../EventBus';
 
 /** Set to true during development to draw debug rectangles for exits and hotspots. */
@@ -410,7 +411,10 @@ export class RoomScene extends Phaser.Scene {
 
         // 8. Text parser integration
         this.textParser = new HybridParser();
-        this.commandDispatcher = new CommandDispatcher(this.itemDefs, this.npcDefs);
+
+        // Extract global combine recipes from all rooms so combine works regardless of current room
+        const globalCombines = this.extractGlobalCombines();
+        this.commandDispatcher = new CommandDispatcher(this.itemDefs, this.npcDefs, globalCombines);
 
         // Create TextInputBar (Option A: destroy and recreate each scene create)
         const container = document.getElementById('game-container')!;
@@ -425,6 +429,16 @@ export class RoomScene extends Phaser.Scene {
 
         // Create InventoryPanel
         this.inventoryPanel = new InventoryPanel(container);
+
+        // Auto-close inventory when text input gets focus (prevents overlay blocking input)
+        const inputEl = document.getElementById('parser-input');
+        if (inputEl) {
+            inputEl.addEventListener('focus', () => {
+                if (this.inventoryPanel.isVisible()) {
+                    this.inventoryPanel.hide();
+                }
+            });
+        }
 
         // Initialize DialogueManager and DialogueUI
         this.dialogueManager = new DialogueManager(this.gameState);
@@ -476,7 +490,10 @@ export class RoomScene extends Phaser.Scene {
             const roomItemsAsHotspots = (this.roomData.items ?? [])
                 .filter(item => !this.gameState.isRoomItemRemoved(this.roomData.id, item.id))
                 .map(item => ({ id: item.id, name: item.name, zone: item.zone, interactionPoint: item.interactionPoint, responses: item.responses ?? {} }));
-            const allHotspots = [...this.roomData.hotspots, ...roomItemsAsHotspots];
+            // Merge NPCs into hotspots so text parser can resolve NPC names
+            const npcAsHotspots = (this.roomData.npcs ?? [])
+                .map(npc => ({ id: npc.id, name: npc.id.replace(/_/g, ' '), zone: npc.zone, interactionPoint: npc.interactionPoint, responses: {} }));
+            const allHotspots = [...this.roomData.hotspots, ...roomItemsAsHotspots, ...npcAsHotspots];
 
             const parseResult = await this.textParser.parse(
                 text,
@@ -819,6 +836,25 @@ export class RoomScene extends Phaser.Scene {
             this.load.once(Phaser.Loader.Events.COMPLETE, () => resolve());
             this.load.start();
         });
+    }
+
+    /**
+     * Extract all combine-type puzzles from every loaded room JSON.
+     * These are inventory-only operations that should work regardless of current room.
+     */
+    private extractGlobalCombines(): PuzzleDefinition[] {
+        const combines: PuzzleDefinition[] = [];
+        const roomKeys = (this.cache.json as Phaser.Cache.BaseCache).getKeys().filter((k: string) => k.startsWith('room-'));
+        for (const key of roomKeys) {
+            const room = this.cache.json.get(key);
+            if (!room?.puzzles) continue;
+            for (const puzzle of room.puzzles) {
+                if (puzzle.trigger?.verb === 'combine') {
+                    combines.push(puzzle as PuzzleDefinition);
+                }
+            }
+        }
+        return combines;
     }
 
     /**

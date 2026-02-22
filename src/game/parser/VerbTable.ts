@@ -73,6 +73,7 @@ export const VERB_TABLE: VerbDefinition[] = [
         patterns: [
             /^(?:ask)\s+(.+?)\s+(?:about)\s+(.+)$/i,
             /^(?:talk|speak|chat)\s+(?:to|with)\s+(.+)$/i,
+            /^(?:talk|speak|chat)\s+(.+)$/i,
             /^(?:ask)\s+(.+)$/i,
             /^(?:say|greet|hello)\s+(.+)$/i,
         ],
@@ -113,6 +114,7 @@ export const VERB_TABLE: VerbDefinition[] = [
         synonyms: ['combine', 'merge', 'mix'],
         patterns: [
             /^(?:combine|merge|mix)\s+(.+?)\s+(?:and|with)\s+(.+)$/i,
+            /^(?:combine|merge|mix)\s+(\S+)\s+(\S+)$/i,
         ],
     },
     {

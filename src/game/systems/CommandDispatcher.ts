@@ -2,6 +2,7 @@ import type { GameAction } from '../types/GameAction';
 import type { RoomData, ExitData, HotspotData, RoomItemData } from '../types/RoomData';
 import type { ItemDefinition } from '../types/ItemData';
 import type { NpcDefinition } from '../types/NpcData';
+import type { PuzzleDefinition } from '../types/PuzzleData';
 import { PuzzleEngine } from './PuzzleEngine';
 import { HintSystem } from './HintSystem';
 import { GameState } from '../state/GameState';
@@ -35,13 +36,15 @@ export class CommandDispatcher {
     private state: GameState;
     private itemDefs: ItemDefinition[];
     private npcDefs: NpcDefinition[];
+    private globalCombines: PuzzleDefinition[];
 
-    constructor(itemDefs: ItemDefinition[] = [], npcDefs: NpcDefinition[] = []) {
+    constructor(itemDefs: ItemDefinition[] = [], npcDefs: NpcDefinition[] = [], globalCombines: PuzzleDefinition[] = []) {
         this.puzzleEngine = new PuzzleEngine();
         this.hintSystem = new HintSystem();
         this.state = GameState.getInstance();
         this.itemDefs = itemDefs;
         this.npcDefs = npcDefs;
+        this.globalCombines = globalCombines;
     }
 
     /**
@@ -274,6 +277,29 @@ export class CommandDispatcher {
             );
             if (reversed?.matched) {
                 return { response: reversed.response, handled: true };
+            }
+        }
+
+        // Fallback: check global combine recipes (from all rooms)
+        if (this.globalCombines.length > 0) {
+            const globalResult = this.puzzleEngine.tryPuzzle(
+                'combine',
+                action.subject,
+                action.target,
+                this.globalCombines,
+            );
+            if (globalResult?.matched) {
+                return { response: globalResult.response, handled: true };
+            }
+
+            const globalReversed = this.puzzleEngine.tryPuzzle(
+                'combine',
+                action.target,
+                action.subject,
+                this.globalCombines,
+            );
+            if (globalReversed?.matched) {
+                return { response: globalReversed.response, handled: true };
             }
         }
 
@@ -714,28 +740,49 @@ export class CommandDispatcher {
     private findExit(subject: string, roomData: RoomData): ExitData | undefined {
         const lower = subject.toLowerCase();
 
-        // Exact ID match
-        const byId = roomData.exits.find(e => e.id === lower || e.id === subject);
+        // Exact ID match (still check conditions — don't let players through locked exits)
+        const byId = roomData.exits.find(
+            e => (e.id === lower || e.id === subject) && this.exitConditionsMet(e)
+        );
         if (byId) return byId;
 
-        // Direction match
+        // Direction match (skip exits whose conditions aren't met)
         const byDir = roomData.exits.find(
-            e => e.direction && e.direction.toLowerCase() === lower
+            e => e.direction && e.direction.toLowerCase() === lower && this.exitConditionsMet(e)
         );
         if (byDir) return byDir;
 
-        // Label match
+        // Label match (skip exits whose conditions aren't met)
         const byLabel = roomData.exits.find(
-            e => e.label && e.label.toLowerCase() === lower
+            e => e.label && e.label.toLowerCase() === lower && this.exitConditionsMet(e)
         );
         if (byLabel) return byLabel;
 
-        // Target room partial match
+        // Target room partial match (skip exits whose conditions aren't met)
         const byRoom = roomData.exits.find(
-            e => e.targetRoom.toLowerCase().includes(lower)
+            e => e.targetRoom.toLowerCase().includes(lower) && this.exitConditionsMet(e)
         );
         if (byRoom) return byRoom;
 
         return undefined;
+    }
+
+    /**
+     * Check whether an exit's conditions are currently satisfied.
+     */
+    private exitConditionsMet(exit: ExitData): boolean {
+        if (!exit.conditions || exit.conditions.length === 0) return true;
+        return exit.conditions.every(cond => {
+            if (cond.type === 'flag-set' && cond.flag) {
+                return this.state.isFlagSet(cond.flag);
+            }
+            if (cond.type === 'flag-not-set' && cond.flag) {
+                return !this.state.isFlagSet(cond.flag);
+            }
+            if (cond.type === 'has-item' && cond.item) {
+                return this.state.hasItem(cond.item);
+            }
+            return true;
+        });
     }
 }

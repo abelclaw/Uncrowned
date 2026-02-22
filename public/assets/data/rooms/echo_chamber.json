@@ -52,7 +52,7 @@
                 "y": 400
             },
             "transition": "fade",
-            "direction": "south",
+            "direction": "north",
             "label": "west wing"
         }
     ],

@@ -70,9 +70,10 @@ export class NounResolver {
             return { type: 'unknown', id: rawNoun.trim(), confidence: 'none' };
         }
 
-        // 1. Exact hotspot ID match
+        // 1. Exact hotspot ID match (normalize hyphens/underscores)
+        const normalizedId = normalized.replace(/-/g, '_');
         for (const h of hotspots) {
-            if (h.id === normalized) {
+            if (h.id === normalized || h.id === normalizedId) {
                 return { type: 'hotspot', id: h.id, confidence: 'exact' };
             }
         }
