@@ -37,7 +37,7 @@ Requirements for the Art & Effects milestone. Each maps to roadmap phases.
 
 - [x] **WTHR-01**: Particle-based weather effects (rain, snow, fog, dust) can be assigned per room
 - [x] **WTHR-02**: Ambient particle effects (fireflies, dust motes, falling leaves, embers) enhance room atmosphere
-- [ ] **WTHR-03**: Interactive particle effects trigger on hotspot interaction (sparkle, glow burst)
+- [x] **WTHR-03**: Interactive particle effects trigger on hotspot interaction (sparkle, glow burst)
 - [x] **WTHR-04**: Weather and particle configs are data-driven via room JSON effects field
 
 ### Performance & Mobile
@@ -98,7 +98,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | LITE-04 | Phase 17 | Pending |
 | WTHR-01 | Phase 16 | Complete |
 | WTHR-02 | Phase 16 | Complete |
-| WTHR-03 | Phase 16 | Pending |
+| WTHR-03 | Phase 16 | Complete |
 | WTHR-04 | Phase 16 | Complete |
 | PERF-01 | Phase 18 | Pending |
 | PERF-02 | Phase 18 | Pending |
