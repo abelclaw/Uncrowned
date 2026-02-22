@@ -1,51 +1,148 @@
 import { Scene } from 'phaser';
 import { OllamaClient } from '../llm/OllamaClient';
 
+interface Star {
+    gfx: Phaser.GameObjects.Arc;
+    baseAlpha: number;
+    speed: number;
+    phase: number;
+}
+
 export class Preloader extends Scene {
+    private stars: Star[] = [];
+    private progressFill!: Phaser.GameObjects.Graphics;
+    private shimmerGfx!: Phaser.GameObjects.Graphics;
+    private progressValue: number = 0;
+    private flavorText!: Phaser.GameObjects.Text;
+    private flavorIndex: number = 0;
+    private flavorTimer: number = 0;
+
+    private static readonly BAR_X = 480 - 180;
+    private static readonly BAR_Y = 290;
+    private static readonly BAR_W = 360;
+    private static readonly BAR_H = 22;
+    private static readonly FLAVOR_INTERVAL = 2200;
+
+    private static readonly FLAVOR_MESSAGES = [
+        'Sharpening quills...',
+        'Consulting the royal archives...',
+        'Polishing the throne...',
+        'Summoning the court jester...',
+        'Mapping the caverns...',
+        'Brewing suspicious potions...',
+        'Dusting the scepter...',
+        'Rehearsing the coronation...',
+        'Negotiating with bridge trolls...',
+        'Filing bureaucratic scrolls...',
+        'Winding the clock tower...',
+        'Interrogating the mirror...',
+    ];
+
     constructor() {
         super('Preloader');
     }
 
     preload() {
         const { width, height } = this.cameras.main;
+        const cx = width / 2;
 
-        // Background box for progress bar
-        const progressBox = this.add.graphics();
-        progressBox.fillStyle(0x333333, 0.8);
-        progressBox.fillRect(width / 2 - 160, height / 2 - 25, 320, 50);
+        // ── Background ──
+        this.add.rectangle(cx, height / 2, width, height, 0x1a1a2e);
 
-        // Progress bar (fills as loading progresses)
-        const progressBar = this.add.graphics();
+        // ── Starfield ──
+        this.createStarfield(width, height);
 
-        // "Loading..." text above the bar
-        const loadingText = this.add.text(width / 2, height / 2 - 50, 'Loading...', {
+        // ── Crown decoration ──
+        this.drawCrown(cx, 130);
+
+        // ── Title ──
+        this.add.text(cx, 178, 'Uncrowned', {
             fontFamily: 'monospace',
-            fontSize: '16px',
-            color: '#ffffff',
+            fontSize: '32px',
+            color: '#c8c8d4',
+            shadow: {
+                offsetX: 2,
+                offsetY: 2,
+                color: '#000000',
+                blur: 4,
+                fill: true,
+            },
         }).setOrigin(0.5);
 
-        // Percentage text centered on the bar
-        const percentText = this.add.text(width / 2, height / 2, '0%', {
+        // ── Subtitle ──
+        this.add.text(cx, 210, 'A Royal Adventure', {
             fontFamily: 'monospace',
-            fontSize: '14px',
-            color: '#ffffff',
+            fontSize: '13px',
+            color: '#666680',
         }).setOrigin(0.5);
 
-        // Update progress bar on each file loaded
+        // ── Progress bar ──
+        const { BAR_X, BAR_Y, BAR_W, BAR_H } = Preloader;
+        const pad = 5;
+
+        // Outer frame
+        const frame = this.add.graphics();
+        frame.lineStyle(2, 0xd4a847, 1);
+        frame.strokeRect(BAR_X - pad, BAR_Y - pad, BAR_W + pad * 2, BAR_H + pad * 2);
+
+        // Corner diamonds
+        frame.fillStyle(0xd4a847, 1);
+        const corners = [
+            [BAR_X - pad, BAR_Y - pad],
+            [BAR_X + BAR_W + pad, BAR_Y - pad],
+            [BAR_X - pad, BAR_Y + BAR_H + pad],
+            [BAR_X + BAR_W + pad, BAR_Y + BAR_H + pad],
+        ];
+        for (const [dx, dy] of corners) {
+            frame.fillTriangle(dx, dy - 4, dx + 4, dy, dx, dy + 4);
+            frame.fillTriangle(dx, dy - 4, dx - 4, dy, dx, dy + 4);
+        }
+
+        // Dark inner background
+        const innerBg = this.add.graphics();
+        innerBg.fillStyle(0x0f0f23, 1);
+        innerBg.fillRect(BAR_X, BAR_Y, BAR_W, BAR_H);
+
+        // Progress fill (updated on 'progress' event)
+        this.progressFill = this.add.graphics();
+
+        // Shimmer overlay (drawn in update)
+        this.shimmerGfx = this.add.graphics();
+
+        // Percentage text
+        const percentText = this.add.text(cx, BAR_Y + BAR_H / 2, '0%', {
+            fontFamily: 'monospace',
+            fontSize: '11px',
+            color: '#1a1a2e',
+        }).setOrigin(0.5);
+
+        // ── Flavor text ──
+        this.flavorIndex = Phaser.Math.Between(0, Preloader.FLAVOR_MESSAGES.length - 1);
+        this.flavorText = this.add.text(cx, BAR_Y + BAR_H + 28, Preloader.FLAVOR_MESSAGES[this.flavorIndex], {
+            fontFamily: 'monospace',
+            fontSize: '12px',
+            color: '#7a7a8e',
+        }).setOrigin(0.5);
+
+        // ── Progress event handlers ──
         this.load.on('progress', (value: number) => {
-            progressBar.clear();
-            progressBar.fillStyle(0xffffff, 1);
-            progressBar.fillRect(width / 2 - 150, height / 2 - 15, 300 * value, 30);
-            percentText.setText(`${Math.round(value * 100)}%`);
+            this.progressValue = value;
+            this.progressFill.clear();
+            this.progressFill.fillStyle(0xd4a847, 1);
+            this.progressFill.fillRect(BAR_X, BAR_Y, BAR_W * value, BAR_H);
+
+            const pct = Math.round(value * 100);
+            percentText.setText(`${pct}%`);
+            // Switch text color for readability once bar is filled past center
+            percentText.setColor(value > 0.45 ? '#1a1a2e' : '#c8c8d4');
         });
 
-        // Clean up when loading complete
         this.load.on('complete', () => {
-            progressBar.destroy();
-            progressBox.destroy();
-            loadingText.destroy();
-            percentText.destroy();
+            percentText.setText('100%');
+            percentText.setColor('#1a1a2e');
         });
+
+        // ── Asset loading (unchanged) ──
 
         // Shared parallax layers for starting act (Act 1)
         this.load.image('bg-shared-act1-sky', 'assets/backgrounds/shared/act1-sky.png');
@@ -167,7 +264,131 @@ export class Preloader extends Scene {
                 ollamaClient.warmUp(); // Fire-and-forget, catches errors internally
             }
         });
-        // Proceed to MainMenu immediately -- warm-up runs in background
-        this.scene.start('MainMenuScene');
+
+        // Brief pause at 100% so the player sees the full bar, then fade out
+        this.time.delayedCall(500, () => {
+            this.cameras.main.fadeOut(800, 0, 0, 0);
+            this.cameras.main.once(
+                Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE,
+                () => {
+                    this.scene.start('MainMenuScene');
+                },
+            );
+        });
+    }
+
+    update(time: number, delta: number): void {
+        // ── Twinkle stars ──
+        for (const star of this.stars) {
+            const alpha = star.baseAlpha + Math.sin(time * star.speed + star.phase) * (star.baseAlpha * 0.5);
+            star.gfx.setAlpha(Phaser.Math.Clamp(alpha, 0.03, 1));
+        }
+
+        // ── Shimmer on progress bar ──
+        if (this.progressValue > 0.01) {
+            const { BAR_X, BAR_Y, BAR_W, BAR_H } = Preloader;
+            const fillW = BAR_W * this.progressValue;
+            const shimmerW = 30;
+            const shimmerPos = ((time * 0.08) % (fillW + shimmerW * 2)) - shimmerW;
+
+            this.shimmerGfx.clear();
+            this.shimmerGfx.fillStyle(0xffffff, 0.18);
+            this.shimmerGfx.beginPath();
+
+            const skew = 8;
+            const x1 = Phaser.Math.Clamp(BAR_X + shimmerPos, BAR_X, BAR_X + fillW);
+            const x2 = Phaser.Math.Clamp(BAR_X + shimmerPos + shimmerW, BAR_X, BAR_X + fillW);
+            const x3 = Phaser.Math.Clamp(BAR_X + shimmerPos + shimmerW - skew, BAR_X, BAR_X + fillW);
+            const x4 = Phaser.Math.Clamp(BAR_X + shimmerPos - skew, BAR_X, BAR_X + fillW);
+
+            this.shimmerGfx.moveTo(x1, BAR_Y);
+            this.shimmerGfx.lineTo(x2, BAR_Y);
+            this.shimmerGfx.lineTo(x3, BAR_Y + BAR_H);
+            this.shimmerGfx.lineTo(x4, BAR_Y + BAR_H);
+            this.shimmerGfx.closePath();
+            this.shimmerGfx.fillPath();
+        }
+
+        // ── Rotate flavor text ──
+        this.flavorTimer += delta;
+        if (this.flavorTimer >= Preloader.FLAVOR_INTERVAL) {
+            this.flavorTimer = 0;
+            this.flavorIndex = (this.flavorIndex + 1) % Preloader.FLAVOR_MESSAGES.length;
+
+            this.tweens.add({
+                targets: this.flavorText,
+                alpha: 0,
+                duration: 200,
+                onComplete: () => {
+                    this.flavorText.setText(Preloader.FLAVOR_MESSAGES[this.flavorIndex]);
+                    this.tweens.add({
+                        targets: this.flavorText,
+                        alpha: 1,
+                        duration: 200,
+                    });
+                },
+            });
+        }
+    }
+
+    // ── Private helpers ──
+
+    private createStarfield(width: number, height: number): void {
+        const count = 100;
+        for (let i = 0; i < count; i++) {
+            const x = Phaser.Math.Between(0, width);
+            const y = Phaser.Math.Between(0, height);
+            const layer = Math.random();
+
+            let radius: number, baseAlpha: number, speed: number;
+            if (layer < 0.6) {
+                radius = 1;
+                baseAlpha = Phaser.Math.FloatBetween(0.1, 0.3);
+                speed = Phaser.Math.FloatBetween(0.0005, 0.001);
+            } else if (layer < 0.9) {
+                radius = 1.5;
+                baseAlpha = Phaser.Math.FloatBetween(0.3, 0.5);
+                speed = Phaser.Math.FloatBetween(0.001, 0.002);
+            } else {
+                radius = 2;
+                baseAlpha = Phaser.Math.FloatBetween(0.5, 0.8);
+                speed = Phaser.Math.FloatBetween(0.002, 0.004);
+            }
+
+            const gfx = this.add.circle(x, y, radius, 0xc8c8d4, baseAlpha);
+            this.stars.push({ gfx, baseAlpha, speed, phase: Math.random() * Math.PI * 2 });
+        }
+    }
+
+    private drawCrown(cx: number, cy: number): void {
+        const g = this.add.graphics();
+        const w = 70;
+        const h = 30;
+        const baseY = cy + h / 2;
+        const topY = cy - h / 2;
+        const midY = cy + 4;
+
+        // Crown outline
+        g.lineStyle(2, 0xd4a847, 1);
+        g.beginPath();
+        g.moveTo(cx - w / 2, baseY);
+        g.lineTo(cx - w / 2 + 5, topY + 4);
+        g.lineTo(cx - w / 4, midY);
+        g.lineTo(cx, topY - 4);
+        g.lineTo(cx + w / 4, midY);
+        g.lineTo(cx + w / 2 - 5, topY + 4);
+        g.lineTo(cx + w / 2, baseY);
+        g.closePath();
+        g.strokePath();
+
+        // Base band
+        g.lineStyle(2, 0xd4a847, 1);
+        g.strokeRect(cx - w / 2, baseY, w, 6);
+
+        // Jewels at each peak
+        g.fillStyle(0xd4a847, 1);
+        g.fillCircle(cx - w / 2 + 5, topY + 4, 2.5);
+        g.fillCircle(cx, topY - 4, 3);
+        g.fillCircle(cx + w / 2 - 5, topY + 4, 2.5);
     }
 }

@@ -17,7 +17,7 @@
     "sprite": 0.85,
     "item": 0.9,
     "npc": 0.85,
-    "_note": "Starting estimates. Calibrated empirically in Phase 14 Plan 02."
+    "_note": "background: 0.7 confirmed via 27-image LoRA test matrix (9 rooms x 3 strengths). Sprite/item/npc values are starting estimates pending calibration."
   },
   "backgroundRemoval": {
     "enabled": true,
