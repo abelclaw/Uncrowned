@@ -216,6 +216,17 @@
             }
         ]
     },
+    "effects": {
+        "ambient": [
+            { "type": "fireflies", "intensity": 0.3 }
+        ],
+        "lighting": {
+            "tint": "#556688",
+            "brightness": 0.6,
+            "vignette": 0.4,
+            "postfx": ["bloom"]
+        }
+    },
     "puzzleHints": [
         {
             "puzzleId": "mirror-truth",

@@ -333,6 +333,18 @@
             }
         ]
     },
+    "effects": {
+        "ambient": [
+            { "type": "dust-motes", "intensity": 0.4 },
+            { "type": "embers", "intensity": 0.2 }
+        ],
+        "lighting": {
+            "tint": "#665544",
+            "brightness": 0.6,
+            "vignette": 0.35,
+            "torchFlicker": true
+        }
+    },
     "puzzleHints": [
         {
             "puzzleId": "repair-clock",

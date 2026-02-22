@@ -403,6 +403,16 @@
             }
         ]
     },
+    "effects": {
+        "ambient": [
+            { "type": "dust-motes", "intensity": 0.6 }
+        ],
+        "lighting": {
+            "tint": "#444433",
+            "brightness": 0.5,
+            "vignette": 0.45
+        }
+    },
     "puzzleHints": [
         {
             "puzzleId": "fill-form",

@@ -309,6 +309,21 @@
             }
         ]
     },
+    "effects": {
+        "weather": {
+            "type": "fog",
+            "intensity": 0.4
+        },
+        "ambient": [
+            { "type": "dust-motes", "intensity": 0.4 }
+        ],
+        "lighting": {
+            "tint": "#556677",
+            "brightness": 0.55,
+            "vignette": 0.4,
+            "postfx": ["desaturate"]
+        }
+    },
     "playerSpawn": {
         "x": 480,
         "y": 430

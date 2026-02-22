@@ -477,6 +477,23 @@
             }
         ]
     },
+    "effects": {
+        "weather": {
+            "type": "dust",
+            "intensity": 0.5
+        },
+        "ambient": [
+            { "type": "embers", "intensity": 0.4 },
+            { "type": "dust-motes", "intensity": 0.3 }
+        ],
+        "lighting": {
+            "tint": "#553344",
+            "brightness": 0.5,
+            "vignette": 0.5,
+            "torchFlicker": true,
+            "postfx": ["bloom"]
+        }
+    },
     "puzzleHints": [
         {
             "puzzleId": "prepare-rite",
