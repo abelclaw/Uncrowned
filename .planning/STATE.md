@@ -11,7 +11,7 @@ See: .planning/PROJECT.md (updated 2026-02-21)
 
 Milestone: v2.1 Art & Effects
 Phase: 16 of 18 (VFX Foundation & Weather) -- Complete (2/2 plans done)
-**Status:** Phase 16 complete. Next: Phase 17 (Lighting & Transitions)
+**Status:** Milestone complete
 Last activity: 2026-02-22 -- Completed 16-02 (RoomScene wiring + demo room effects)
 
 **Progress:** [██████████] 100%
