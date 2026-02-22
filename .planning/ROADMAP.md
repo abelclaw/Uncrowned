@@ -127,7 +127,7 @@ Plans:
 | 15. Batch Art Generation | v2.1 | 0/TBD | Not started | - |
 | 16. VFX Foundation & Weather | 2/2 | Complete    | 2026-02-22 | - |
 | 17. Lighting & Transitions | 2/2 | Complete    | 2026-02-22 | - |
-| 18. Effects Rollout & Polish | 3/3 | Complete   | 2026-02-22 | - |
+| 18. Effects Rollout & Polish | 3/3 | Complete    | 2026-02-22 | - |
 
 ---
 *Roadmap created: 2026-02-21*
