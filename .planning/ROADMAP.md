@@ -80,7 +80,7 @@ Plans:
   2. Ambient particles (fireflies, dust motes, falling leaves, embers) animate continuously in rooms where they are configured
   3. Interacting with a hotspot triggers a visible particle burst (sparkle, glow) as feedback
   4. Weather and particle effects are configured entirely through the room JSON effects field with no code changes per room
-**Plans:** 2 plans
+**Plans:** 1/2 plans executed
 Plans:
 - [ ] 16-01-PLAN.md -- EffectsManager singleton with weather + ambient particle presets and RoomEffectsData type
 - [ ] 16-02-PLAN.md -- Interactive particle bursts, RoomScene lifecycle wiring, and 4 demo room configs
@@ -118,7 +118,7 @@ Plans:
 |-------|-----------|----------------|--------|-----------|
 | 14. Art Pipeline Tuning | 2/2 | Complete (calibration deferred) | - | 2026-02-22 |
 | 15. Batch Art Generation | v2.1 | 0/TBD | Not started | - |
-| 16. VFX Foundation & Weather | v2.1 | 0/2 | Planned | - |
+| 16. VFX Foundation & Weather | 1/2 | In Progress|  | - |
 | 17. Lighting & Transitions | v2.1 | 0/TBD | Not started | - |
 | 18. Effects Rollout & Polish | v2.1 | 0/TBD | Not started | - |
 

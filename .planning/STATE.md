@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-02-21)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** v2.1 Art & Effects -- Phase 14 complete, Phase 15 next (or Phase 16 if hardware unavailable)
+**Current focus:** v2.1 Art & Effects -- Phase 16 in progress, Plan 01 complete
 
 ## Current Position
 
 Milestone: v2.1 Art & Effects
-Phase: 14 of 18 (Art Pipeline Tuning) -- COMPLETE
-**Status:** Phase 14 complete. Next: plan Phase 15 (Batch Art Generation) or Phase 16 (VFX Foundation)
-Last activity: 2026-02-22 -- Completed 14-02 (LoRA test matrix CLI); full game walkthrough found and fixed 9 bugs
+Phase: 16 of 18 (VFX Foundation & Weather) -- Plan 01 complete, Plan 02 next
+**Status:** Phase 16 Plan 01 complete (EffectsManager + particle presets). Next: 16-02 (RoomScene wiring)
+Last activity: 2026-02-22 -- Completed 16-01 (EffectsManager with 8 particle presets)
 
-**Progress:** [██░░░░░░░░] 20%
+**Progress:** [█████████░] 94%
 
 ## Performance Metrics
 
@@ -27,13 +27,14 @@ Last activity: 2026-02-22 -- Completed 14-02 (LoRA test matrix CLI); full game w
 - Requirements: 27/32 complete (5 art requirements pending ComfyUI hardware)
 
 **v2.1:**
-- Total plans completed: 2
+- Total plans completed: 3
 - Phases: 5 (Phases 14-18), Requirements: 24
 
 | Phase | Plan | Duration | Tasks | Files |
 |-------|------|----------|-------|-------|
 | 14 | 01 | 3min | 2 | 2 |
 | 14 | 02 | 2min | 1 (1 deferred) | 1 |
+| 16 | 01 | 7min | 2 | 2 |
 
 ## Accumulated Context
 
@@ -47,6 +48,9 @@ All v2.0 decisions archived in .planning/milestones/v2.0-ROADMAP.md
 - [14-01] 512x512 for items: reduces compute, improves subject centering for 32x32 final assets
 - [14-02] Fixed seed per room for deterministic LoRA comparison across strengths
 - [14-02] 3 rooms per act (9 total) covers all environment types (forest, cave, twilight)
+- [16-01] Procedural 2x2 white pixel texture for all particles (no asset dependency)
+- [16-01] Weather depth 80, ambient depth 75 (above player at 50, below UI at 100)
+- [16-01] EffectsManager lifecycle: init/onRoomEnter/cleanup matching AudioManager pattern
 
 ### Gameplay Bugs Fixed (walkthrough session)
 
@@ -77,5 +81,5 @@ All v2.0 decisions archived in .planning/milestones/v2.0-ROADMAP.md
 ## Session Continuity
 
 Last session: 2026-02-22
-Stopped at: Phase 14 complete, full game walkthrough complete (9 bugs fixed)
+Stopped at: Completed 16-01-PLAN.md (EffectsManager + particle presets)
 Resume file: None
