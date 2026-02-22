@@ -444,6 +444,12 @@
             }
         ]
     },
+    "effects": {
+        "weather": { "type": "fog", "intensity": 0.4 },
+        "ambient": [
+            { "type": "dust-motes", "intensity": 0.2 }
+        ]
+    },
     "puzzleHints": [
         {
             "puzzleId": "use-key-on-door",

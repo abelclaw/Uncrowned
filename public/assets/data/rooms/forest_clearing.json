@@ -252,6 +252,12 @@
             }
         ]
     },
+    "effects": {
+        "ambient": [
+            { "type": "dust-motes", "intensity": 0.3 },
+            { "type": "falling-leaves", "intensity": 0.2 }
+        ]
+    },
     "puzzleHints": [
         {
             "puzzleId": "take-rusty-key",

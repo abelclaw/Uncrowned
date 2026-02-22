@@ -263,6 +263,12 @@
             }
         ]
     },
+    "effects": {
+        "ambient": [
+            { "type": "fireflies", "intensity": 0.5 },
+            { "type": "dust-motes", "intensity": 0.3 }
+        ]
+    },
     "puzzleHints": [
         {
             "puzzleId": "investigate-pool",
