@@ -5,17 +5,17 @@
 See: .planning/PROJECT.md (updated 2026-02-21)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** v2.1 Art & Effects -- Phase 18 in progress
+**Current focus:** v2.1 Art & Effects -- Milestone complete
 
 ## Current Position
 
 Milestone: v2.1 Art & Effects
-Phase: 18 of 18 (Effects Rollout & Polish) -- In Progress (2/3 plans done)
-Current Plan: 2 of 3 (complete)
-**Status:** Phase in progress
-Last activity: 2026-02-22 -- Completed 18-02 (Act 1 Effects Rollout)
+Phase: 18 of 18 (Effects Rollout & Polish) -- Complete (3/3 plans done)
+Current Plan: 3 of 3 (complete)
+**Status:** Milestone complete
+Last activity: 2026-02-22 -- Completed 18-03 (Act 2 & Act 3 Effects Rollout)
 
-**Progress:** [██████████] 95%
+**Progress:** [██████████] 100%
 
 ## Performance Metrics
 
@@ -28,7 +28,7 @@ Last activity: 2026-02-22 -- Completed 18-02 (Act 1 Effects Rollout)
 - Requirements: 27/32 complete (5 art requirements pending ComfyUI hardware)
 
 **v2.1:**
-- Total plans completed: 7
+- Total plans completed: 8
 - Phases: 5 (Phases 14-18), Requirements: 24
 
 | Phase | Plan | Duration | Tasks | Files |
@@ -40,6 +40,7 @@ Last activity: 2026-02-22 -- Completed 18-02 (Act 1 Effects Rollout)
 | 17 | 01 | 3min | 2 | 4 |
 | 17 | 02 | 3min | 2 | 5 |
 | 18 | 02 | 2min | 2 | 13 |
+| 18 | 03 | 2min | 2 | 18 |
 
 ## Accumulated Context
 
@@ -70,6 +71,10 @@ All v2.0 decisions archived in .planning/milestones/v2.0-ROADMAP.md
 - [18-02] Castle interior gradient: courtyard 0.85 -> hallway 0.75 -> servants_quarters 0.65
 - [18-02] Petrified forest: desaturate PostFX for cursed grey-stone atmosphere (intentional mood break)
 - [18-02] Wizard tower: glow PostFX + purple #8866bb tint for arcane magical atmosphere
+- [18-03] Atmospheric arc: Act 1 (bright, warm) -> Act 2 (dark, underground) -> Act 3 (dark, cold, cursed)
+- [18-03] Bioluminescent areas use fireflies + glow/bloom PostFX (cavern_west_wing, crystal_chamber)
+- [18-03] Cursed areas use desaturate PostFX (castle_courtyard_act3)
+- [18-03] Throne room has heaviest effects as climax room (dust weather + embers + bloom)
 
 ### Gameplay Bugs Fixed (walkthrough session)
 
@@ -100,5 +105,5 @@ All v2.0 decisions archived in .planning/milestones/v2.0-ROADMAP.md
 ## Session Continuity
 
 Last session: 2026-02-22
-Stopped at: Completed 18-02-PLAN.md (Act 1 Effects Rollout)
+Stopped at: Completed 18-03-PLAN.md (Act 2 & Act 3 Effects Rollout) -- Phase 18 complete, Milestone v2.1 complete
 Resume file: None
