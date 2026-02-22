@@ -26,6 +26,12 @@ export type AmbientType = 'fireflies' | 'dust-motes' | 'falling-leaves' | 'ember
 export type PostFXType = 'bloom' | 'glow' | 'desaturate';
 
 /**
+ * Transition effect types for room-to-room navigation.
+ * Configurable per exit in room JSON data.
+ */
+export type TransitionType = 'fade' | 'slide-left' | 'slide-right' | 'wipe-left' | 'wipe-right' | 'pixelate' | 'iris';
+
+/**
  * Per-room lighting configuration for ambient tint, brightness, vignette,
  * torch flicker, and camera PostFX effects.
  */
@@ -84,7 +90,7 @@ export interface ExitData {
     /** Where the player spawns in the target room */
     spawnPoint: { x: number; y: number };
     /** Transition animation type */
-    transition: 'fade' | 'slide-left' | 'slide-right';
+    transition: TransitionType;
     /** Compass direction for text parser "go east" commands */
     direction?: string;
     /** Human-readable label for text parser "go to cave" commands */
