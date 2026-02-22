@@ -490,6 +490,7 @@ interface CLIArgs {
     dryRun: boolean;
     force: boolean;
     placeholder: boolean;
+    testLora: boolean;
 }
 
 function parseArgs(): CLIArgs {
@@ -499,6 +500,7 @@ function parseArgs(): CLIArgs {
         dryRun: false,
         force: false,
         placeholder: false,
+        testLora: false,
     };
 
     for (let i = 0; i < args.length; i++) {
@@ -521,6 +523,9 @@ function parseArgs(): CLIArgs {
                 break;
             case '--placeholder':
                 result.placeholder = true;
+                break;
+            case '--test-lora':
+                result.testLora = true;
                 break;
             case '--help':
                 printHelp();
@@ -549,6 +554,7 @@ Options:
   --dry-run        Print prompts without generating images
   --force          Regenerate even if output file already exists
   --placeholder    Create colored placeholder PNGs instead of using ComfyUI
+  --test-lora      Generate LoRA strength comparison grid (9 rooms x 3 strengths = 27 images)
   --help           Show this help message
 
 Examples:
@@ -557,6 +563,8 @@ Examples:
   npx tsx scripts/generate-art.ts --type shared
   npx tsx scripts/generate-art.ts --type items --placeholder
   npx tsx scripts/generate-art.ts --type all --force
+  npx tsx scripts/generate-art.ts --test-lora --dry-run
+  npx tsx scripts/generate-art.ts --test-lora
 
 Requires ComfyUI running at ${COMFYUI_URL}
 `.trim());
@@ -669,12 +677,176 @@ function collectEntries(
 }
 
 // ---------------------------------------------------------------------------
+// LoRA Strength Test Matrix
+// ---------------------------------------------------------------------------
+
+/** 3 representative rooms per act for LoRA strength comparison */
+const TEST_ROOMS: Record<string, string[]> = {
+    act1: ['forest_clearing', 'throne_room', 'castle_garden'],
+    act2: ['crystal_chamber', 'cavern_library', 'forge_chamber'],
+    act3: ['petrified_forest', 'wizard_tower', 'rooftop'],
+};
+
+/** LoRA strength values to compare in the test grid */
+const LORA_STRENGTHS_TO_TEST = [0.6, 0.7, 0.8];
+
+/**
+ * Generates a LoRA strength comparison grid: 9 rooms x 3 strengths = 27 backgrounds.
+ * Output is saved to test-output/lora-comparison/{act}/{roomId}-lora-{strength}.png
+ * for easy visual comparison per room and per act.
+ *
+ * When dryRun is true, lists the planned 27 generations without running them.
+ */
+async function runTestLoraMatrix(
+    dryRun: boolean,
+    styleGuide: StyleGuide,
+    manifest: ArtManifest,
+    workflow: ComfyUIWorkflow
+): Promise<void> {
+    const outputBase = path.join(PROJECT_ROOT, 'test-output', 'lora-comparison');
+
+    // Build the test matrix entries
+    interface TestEntry {
+        act: string;
+        roomId: string;
+        strength: number;
+        prompt: string;
+        seed: number;
+        outputPath: string;
+    }
+
+    const entries: TestEntry[] = [];
+
+    for (const [act, rooms] of Object.entries(TEST_ROOMS)) {
+        for (const roomId of rooms) {
+            const manifestEntry = manifest.roomBackgrounds[roomId];
+            if (!manifestEntry) {
+                console.warn(`WARNING: Room "${roomId}" not found in manifest.roomBackgrounds -- skipping`);
+                continue;
+            }
+
+            // Build prompt same as normal background generation
+            const actInfo = styleGuide.acts[act];
+            const paletteHint = actInfo ? ` ${actInfo.palette.split('.')[0]}.` : '';
+            const fullPrompt = `${styleGuide.promptPrefix} ${manifestEntry.prompt},${paletteHint}${styleGuide.promptSuffix}`;
+
+            for (const strength of LORA_STRENGTHS_TO_TEST) {
+                entries.push({
+                    act,
+                    roomId,
+                    strength,
+                    prompt: fullPrompt,
+                    seed: manifestEntry.seed,
+                    outputPath: path.join(outputBase, act, `${roomId}-lora-${strength}.png`),
+                });
+            }
+        }
+    }
+
+    console.log(`\nLoRA Strength Test Matrix`);
+    console.log(`${'='.repeat(50)}`);
+    console.log(`Rooms: ${entries.length / LORA_STRENGTHS_TO_TEST.length} (3 per act x 3 acts)`);
+    console.log(`Strengths: ${LORA_STRENGTHS_TO_TEST.join(', ')}`);
+    console.log(`Total generations: ${entries.length}`);
+    console.log(`Output: ${outputBase}/`);
+    console.log('');
+
+    // Dry-run: list all planned generations
+    if (dryRun) {
+        for (let i = 0; i < entries.length; i++) {
+            const e = entries[i];
+            console.log(`[${i + 1}/${entries.length}] ${e.roomId} (${e.act}) @ LoRA ${e.strength}`);
+            console.log(`  Prompt: ${e.prompt}`);
+            console.log(`  Seed:   ${e.seed}`);
+            console.log(`  Output: ${e.outputPath}`);
+            console.log('');
+        }
+        console.log(`DRY RUN complete. ${entries.length} test generations listed.`);
+        return;
+    }
+
+    // Check ComfyUI is running
+    const comfyAvailable = await checkComfyUI();
+    if (!comfyAvailable) {
+        console.error('\nERROR: ComfyUI is not running or not reachable.');
+        console.error(`Tried: ${COMFYUI_URL}`);
+        console.error('\nStart ComfyUI before running --test-lora without --dry-run.');
+        process.exit(1);
+    }
+
+    console.log(`ComfyUI: connected at ${COMFYUI_URL}\n`);
+
+    // Create output directories
+    for (const act of Object.keys(TEST_ROOMS)) {
+        fs.mkdirSync(path.join(outputBase, act), { recursive: true });
+    }
+
+    // Generate comparison images
+    let generated = 0;
+    let failed = 0;
+
+    for (let i = 0; i < entries.length; i++) {
+        const e = entries[i];
+        const startTime = Date.now();
+
+        try {
+            // Build per-test AssetTypeConfig with the test LoRA strength
+            const bgConfig = getAssetTypeConfig('room', styleGuide);
+            const testConfig: AssetTypeConfig = {
+                ...bgConfig,
+                loraStrength: e.strength,
+            };
+
+            console.log(`[${i + 1}/${entries.length}] ${e.roomId} (${e.act}) @ LoRA ${e.strength}...`);
+
+            // Generate via ComfyUI
+            const rawImage = await generateImage(e.prompt, e.seed, workflow, testConfig);
+
+            // Post-process to 960x540 (game resolution)
+            await processBackground(
+                rawImage,
+                path.relative(PROJECT_ROOT, e.outputPath),
+                styleGuide.outputResolution.width,
+                styleGuide.outputResolution.height
+            );
+
+            const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+            console.log(`[${i + 1}/${entries.length}] ${e.roomId} @ LoRA ${e.strength} (${elapsed}s)`);
+            generated++;
+        } catch (err) {
+            const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+            console.error(`[${i + 1}/${entries.length}] FAILED ${e.roomId} @ LoRA ${e.strength} (${elapsed}s): ${(err as Error).message}`);
+            failed++;
+        }
+    }
+
+    // Summary
+    console.log(`\n${'='.repeat(50)}`);
+    console.log(`LoRA test matrix complete:`);
+    console.log(`  Generated: ${generated}`);
+    console.log(`  Failed:    ${failed}`);
+    console.log(`  Total:     ${entries.length}`);
+    console.log(`  Output:    ${outputBase}/`);
+    console.log('');
+    console.log('Review images in test-output/lora-comparison/ -- compare LoRA strengths');
+    console.log('per room and per act. Pick the strength that best balances pixel art style');
+    console.log('with scene composition. Then update loraStrength values in scripts/style-guide.json.');
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
 async function main(): Promise<void> {
     const args = parseArgs();
     const { styleGuide, manifest, workflow } = loadConfig();
+
+    // LoRA test matrix mode: generate comparison grid and exit
+    if (args.testLora) {
+        await runTestLoraMatrix(args.dryRun, styleGuide, manifest, workflow);
+        return;
+    }
+
     const entries = collectEntries(args, styleGuide, manifest);
 
     if (entries.length === 0) {
