@@ -469,6 +469,9 @@ export class RoomScene extends Phaser.Scene {
         this.effectsManager = EffectsManager.getInstance();
         this.effectsManager.init(this);
         this.effectsManager.onRoomEnter(this.roomData);
+        if (this.game.renderer.type === Phaser.CANVAS) {
+            console.log('[RoomScene] Canvas renderer detected, effects reduced');
+        }
 
         // Listen for command-submitted events from the input bar
         this.commandSubmittedHandler = async (text: string) => {

@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import type { RoomEffectsData, WeatherType, AmbientType, LightingData } from '../types/RoomData';
+import { QualitySettings } from './QualitySettings';
 
 /**
  * Game viewport constants matching canvas size.
@@ -52,6 +53,25 @@ export class EffectsManager {
 
     private constructor() {}
 
+    /**
+     * Compute the quality multiplier for particle counts.
+     * Returns 0 (skip all effects), 0.5 (half particles), or 1.0 (full).
+     *
+     * Rules:
+     * - Quality 'off' => 0
+     * - Canvas renderer => 0 (no WebGL = no particles / PostFX)
+     * - Quality 'low' OR (quality 'high' + mobile device) => 0.5
+     * - Quality 'high' + desktop + WebGL => 1.0
+     */
+    private getQualityMultiplier(): number {
+        const quality = QualitySettings.getInstance().getLevel();
+        if (quality === 'off') return 0;
+        if (this.scene?.game && QualitySettings.isCanvasRenderer(this.scene.game)) return 0;
+        if (quality === 'low') return 0.5;
+        if (QualitySettings.isMobileDevice()) return 0.5;
+        return 1.0;
+    }
+
     static getInstance(): EffectsManager {
         if (!EffectsManager.instance) {
             EffectsManager.instance = new EffectsManager();
@@ -90,6 +110,17 @@ export class EffectsManager {
         if (!this.initialized) return;
 
         this.clearAll();
+
+        const multiplier = this.getQualityMultiplier();
+
+        // When quality is 'off' or Canvas renderer: skip all effect creation
+        if (multiplier === 0) {
+            // Still apply lighting overlay (Rectangle works on Canvas) but skip PostFX
+            if (roomData.effects?.lighting) {
+                this.applyLighting(roomData.effects.lighting);
+            }
+            return;
+        }
 
         if (roomData.effects?.weather) {
             const intensity = Math.max(0.1, Math.min(1.0, roomData.effects.weather.intensity ?? 0.5));
@@ -130,6 +161,9 @@ export class EffectsManager {
      * Weather effects are camera-relative (scrollFactor 0) at depth 80.
      */
     private createWeatherEmitter(type: WeatherType, intensity: number): void {
+        const multiplier = this.getQualityMultiplier();
+        if (multiplier === 0) return;
+
         let config: Phaser.Types.GameObjects.Particles.ParticleEmitterConfig;
 
         switch (type) {
@@ -147,6 +181,11 @@ export class EffectsManager {
                 break;
             default:
                 return;
+        }
+
+        // Scale particle quantity by quality multiplier
+        if (typeof config.quantity === 'number') {
+            config.quantity = Math.max(1, Math.round(config.quantity * multiplier));
         }
 
         this.weatherEmitter = this.scene.add.particles(0, 0, PARTICLE_TEXTURE, config);
@@ -233,6 +272,9 @@ export class EffectsManager {
      * Ambient effects are camera-relative (scrollFactor 0) at depth 75.
      */
     private createAmbientEmitter(type: AmbientType, intensity: number): void {
+        const multiplier = this.getQualityMultiplier();
+        if (multiplier === 0) return;
+
         let config: Phaser.Types.GameObjects.Particles.ParticleEmitterConfig;
 
         switch (type) {
@@ -250,6 +292,11 @@ export class EffectsManager {
                 break;
             default:
                 return;
+        }
+
+        // Scale particle quantity by quality multiplier
+        if (typeof config.quantity === 'number') {
+            config.quantity = Math.max(1, Math.round(config.quantity * multiplier));
         }
 
         const emitter = this.scene.add.particles(0, 0, PARTICLE_TEXTURE, config);
@@ -344,7 +391,13 @@ export class EffectsManager {
      * so particles float above the tint, which looks correct.
      */
     private applyLighting(config: LightingData): void {
-        // Tint + Brightness overlay
+        const quality = QualitySettings.getInstance().getLevel();
+        const isCanvas = this.scene?.game
+            ? QualitySettings.isCanvasRenderer(this.scene.game)
+            : false;
+        const skipPostFX = quality === 'off' || isCanvas;
+
+        // Tint + Brightness overlay (Rectangle works on Canvas -- always apply)
         const tintColor = config.tint
             ? parseInt(config.tint.replace('#', ''), 16)
             : 0x000000;
@@ -359,6 +412,9 @@ export class EffectsManager {
             this.lightingOverlay.setScrollFactor(0);
             this.lightingOverlay.setDepth(LIGHTING_DEPTH);
         }
+
+        // Skip all PostFX and timer-based effects when quality is off or Canvas
+        if (skipPostFX) return;
 
         // Vignette via PostFX
         if (config.vignette && config.vignette > 0) {
@@ -435,10 +491,14 @@ export class EffectsManager {
     playInteractionBurst(worldX: number, worldY: number): void {
         if (!this.initialized) return;
 
+        const multiplier = this.getQualityMultiplier();
+        if (multiplier === 0) return;
+
+        const burstCount = Math.max(1, Math.round(12 * multiplier));
         const emitter = this.scene.add.particles(0, 0, PARTICLE_TEXTURE, {
             x: worldX,
             y: worldY,
-            quantity: 12,
+            quantity: burstCount,
             speed: { min: 40, max: 120 },
             angle: { min: 0, max: 360 },
             lifespan: 600,
@@ -449,7 +509,7 @@ export class EffectsManager {
         });
         emitter.setDepth(85);
         // World-positioned: do NOT setScrollFactor(0)
-        emitter.explode(12, worldX, worldY);
+        emitter.explode(burstCount, worldX, worldY);
         this.scene.time.delayedCall(1000, () => emitter.destroy());
     }
 
