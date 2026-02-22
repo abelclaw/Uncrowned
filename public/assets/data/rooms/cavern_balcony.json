@@ -188,6 +188,16 @@
             }
         ]
     },
+    "effects": {
+        "ambient": [
+            { "type": "dust-motes", "intensity": 0.3 }
+        ],
+        "lighting": {
+            "tint": "#334455",
+            "brightness": 0.45,
+            "vignette": 0.5
+        }
+    },
     "playerSpawn": {
         "x": 480,
         "y": 430

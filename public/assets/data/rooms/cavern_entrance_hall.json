@@ -530,6 +530,21 @@
             }
         ]
     },
+    "effects": {
+        "weather": {
+            "type": "dust",
+            "intensity": 0.3
+        },
+        "ambient": [
+            { "type": "dust-motes", "intensity": 0.4 }
+        ],
+        "lighting": {
+            "tint": "#334455",
+            "brightness": 0.5,
+            "vignette": 0.4,
+            "torchFlicker": true
+        }
+    },
     "puzzleHints": [
         {
             "puzzleId": "submit-filled-form",

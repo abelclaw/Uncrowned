@@ -395,6 +395,17 @@
             }
         ]
     },
+    "effects": {
+        "ambient": [
+            { "type": "dust-motes", "intensity": 0.4 }
+        ],
+        "lighting": {
+            "tint": "#443333",
+            "brightness": 0.5,
+            "vignette": 0.45,
+            "torchFlicker": true
+        }
+    },
     "puzzleHints": [
         {
             "puzzleId": "activate-guardian",

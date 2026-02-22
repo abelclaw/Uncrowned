@@ -399,6 +399,17 @@
             }
         ]
     },
+    "effects": {
+        "ambient": [
+            { "type": "dust-motes", "intensity": 0.4 }
+        ],
+        "lighting": {
+            "tint": "#333344",
+            "brightness": 0.45,
+            "vignette": 0.5,
+            "torchFlicker": true
+        }
+    },
     "puzzleHints": [
         {
             "puzzleId": "use-treasury-key",

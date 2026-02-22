@@ -310,6 +310,21 @@
             }
         ]
     },
+    "effects": {
+        "weather": {
+            "type": "fog",
+            "intensity": 0.4
+        },
+        "ambient": [
+            { "type": "dust-motes", "intensity": 0.3 }
+        ],
+        "lighting": {
+            "tint": "#223355",
+            "brightness": 0.4,
+            "vignette": 0.5,
+            "torchFlicker": true
+        }
+    },
     "puzzleHints": [
         {
             "puzzleId": "repair-boat",

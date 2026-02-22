@@ -204,6 +204,18 @@
             }
         ]
     },
+    "effects": {
+        "ambient": [
+            { "type": "fireflies", "intensity": 0.6 },
+            { "type": "dust-motes", "intensity": 0.2 }
+        ],
+        "lighting": {
+            "tint": "#224433",
+            "brightness": 0.5,
+            "vignette": 0.35,
+            "postfx": ["glow"]
+        }
+    },
     "puzzleHints": [
         {
             "puzzleId": "solve-mushroom-pattern",

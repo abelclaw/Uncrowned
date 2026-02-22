@@ -227,6 +227,18 @@
             }
         ]
     },
+    "effects": {
+        "ambient": [
+            { "type": "fireflies", "intensity": 0.5 },
+            { "type": "dust-motes", "intensity": 0.2 }
+        ],
+        "lighting": {
+            "tint": "#445566",
+            "brightness": 0.55,
+            "vignette": 0.4,
+            "postfx": ["bloom"]
+        }
+    },
     "puzzleHints": [
         {
             "puzzleId": "take-crystal",

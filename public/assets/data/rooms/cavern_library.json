@@ -301,6 +301,17 @@
             }
         ]
     },
+    "effects": {
+        "ambient": [
+            { "type": "dust-motes", "intensity": 0.5 }
+        ],
+        "lighting": {
+            "tint": "#443322",
+            "brightness": 0.55,
+            "vignette": 0.45,
+            "torchFlicker": true
+        }
+    },
     "puzzleHints": [
         {
             "puzzleId": "read-mushroom-book",
