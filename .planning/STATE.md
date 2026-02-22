@@ -5,16 +5,17 @@
 See: .planning/PROJECT.md (updated 2026-02-21)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** v2.1 Art & Effects -- Phase 16 complete, Phase 17 next
+**Current focus:** v2.1 Art & Effects -- Phase 17 in progress
 
 ## Current Position
 
 Milestone: v2.1 Art & Effects
-Phase: 16 of 18 (VFX Foundation & Weather) -- Complete (2/2 plans done)
-**Status:** Milestone complete
-Last activity: 2026-02-22 -- Completed 16-02 (RoomScene wiring + demo room effects)
+Phase: 17 of 18 (Lighting & Transitions) -- In Progress (1/2 plans done)
+Current Plan: 2 of 2
+**Status:** Executing
+Last activity: 2026-02-22 -- Completed 17-01 (Ambient Lighting & PostFX)
 
-**Progress:** [██████████] 100%
+**Progress:** [█████████░] 90%
 
 ## Performance Metrics
 
@@ -27,7 +28,7 @@ Last activity: 2026-02-22 -- Completed 16-02 (RoomScene wiring + demo room effec
 - Requirements: 27/32 complete (5 art requirements pending ComfyUI hardware)
 
 **v2.1:**
-- Total plans completed: 4
+- Total plans completed: 5
 - Phases: 5 (Phases 14-18), Requirements: 24
 
 | Phase | Plan | Duration | Tasks | Files |
@@ -36,6 +37,7 @@ Last activity: 2026-02-22 -- Completed 16-02 (RoomScene wiring + demo room effec
 | 14 | 02 | 2min | 1 (1 deferred) | 1 |
 | 16 | 01 | 7min | 2 | 2 |
 | 16 | 02 | 3min | 2 | 6 |
+| 17 | 01 | 3min | 2 | 4 |
 
 ## Accumulated Context
 
@@ -55,6 +57,9 @@ All v2.0 decisions archived in .planning/milestones/v2.0-ROADMAP.md
 - [16-02] Sparkle burst depth 85: above weather/ambient, visible over room objects
 - [16-02] No sparkle on look commands (passive observation, no visual feedback)
 - [16-02] Item pickup burst fires at sprite world position before destroy
+- [17-01] grayscale() for desaturate PostFX: Phaser 3.90 ColorMatrix lacks desaturate(), grayscale() achieves same effect
+- [17-01] Boolean postFX tracking instead of Controller[] array (FX.ColorMatrix not assignable to FX.Controller)
+- [17-01] Lighting overlay depth 70: below ambient (75) and weather (80) so particles float above tint
 
 ### Gameplay Bugs Fixed (walkthrough session)
 
@@ -85,5 +90,5 @@ All v2.0 decisions archived in .planning/milestones/v2.0-ROADMAP.md
 ## Session Continuity
 
 Last session: 2026-02-22
-Stopped at: Completed 16-02-PLAN.md (RoomScene wiring + demo room effects)
+Stopped at: Completed 17-01-PLAN.md (Ambient Lighting & PostFX)
 Resume file: None

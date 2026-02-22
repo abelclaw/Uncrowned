@@ -28,10 +28,10 @@ Requirements for the Art & Effects milestone. Each maps to roadmap phases.
 
 ### Lighting & Atmosphere
 
-- [ ] **LITE-01**: Each room has configurable ambient lighting (tint, brightness, vignette intensity)
-- [ ] **LITE-02**: Cave and dungeon rooms have darkness/torch-flicker lighting effects
-- [ ] **LITE-03**: PostFX effects (bloom, glow, desaturation) can be applied per room for mood
-- [ ] **LITE-04**: Lighting configuration is data-driven via room JSON effects field
+- [x] **LITE-01**: Each room has configurable ambient lighting (tint, brightness, vignette intensity)
+- [x] **LITE-02**: Cave and dungeon rooms have darkness/torch-flicker lighting effects
+- [x] **LITE-03**: PostFX effects (bloom, glow, desaturation) can be applied per room for mood
+- [x] **LITE-04**: Lighting configuration is data-driven via room JSON effects field
 
 ### Weather & Particles
 
@@ -92,10 +92,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TRNS-01 | Phase 17 | Pending |
 | TRNS-02 | Phase 17 | Pending |
 | TRNS-03 | Phase 17 | Pending |
-| LITE-01 | Phase 17 | Pending |
-| LITE-02 | Phase 17 | Pending |
-| LITE-03 | Phase 17 | Pending |
-| LITE-04 | Phase 17 | Pending |
+| LITE-01 | Phase 17 | Complete |
+| LITE-02 | Phase 17 | Complete |
+| LITE-03 | Phase 17 | Complete |
+| LITE-04 | Phase 17 | Complete |
 | WTHR-01 | Phase 16 | Complete |
 | WTHR-02 | Phase 16 | Complete |
 | WTHR-03 | Phase 16 | Complete |
