@@ -2,6 +2,14 @@ import { Scene } from 'phaser';
 import { GameState } from '../state/GameState';
 import { SaveManager } from '../state/SaveManager';
 import { MetaGameState } from '../state/MetaGameState';
+import { QualitySettings, type QualityLevel } from '../systems/QualitySettings';
+
+interface Star {
+    gfx: Phaser.GameObjects.Arc;
+    baseAlpha: number;
+    speed: number;
+    phase: number;
+}
 
 /**
  * Main menu scene -- the game's entry point.
@@ -13,6 +21,7 @@ import { MetaGameState } from '../state/MetaGameState';
 export class MainMenuScene extends Scene {
     private menuItems: Phaser.GameObjects.Text[] = [];
     private slotItems: Phaser.GameObjects.Text[] = [];
+    private stars: Star[] = [];
 
     constructor() {
         super('MainMenuScene');
@@ -21,14 +30,24 @@ export class MainMenuScene extends Scene {
     create(): void {
         this.menuItems = [];
         this.slotItems = [];
+        this.stars = [];
 
-        // Background
-        this.add.rectangle(480, 270, 960, 540, 0x1a1a2e);
+        const { width, height } = this.cameras.main;
+        const cx = width / 2;
 
-        // Title
-        this.add.text(480, 140, "Uncrowned", {
+        // ── Background ──
+        this.add.rectangle(cx, height / 2, width, height, 0x1a1a2e);
+
+        // ── Starfield ──
+        this.createStarfield(width, height);
+
+        // ── Crown decoration ──
+        this.drawCrown(cx, 100);
+
+        // ── Title ──
+        this.add.text(cx, 148, 'Uncrowned', {
             fontFamily: 'monospace',
-            fontSize: '36px',
+            fontSize: '32px',
             color: '#c8c8d4',
             shadow: {
                 offsetX: 2,
@@ -39,20 +58,30 @@ export class MainMenuScene extends Scene {
             },
         }).setOrigin(0.5);
 
-        // Subtitle
-        this.add.text(480, 180, 'A Text Adventure', {
+        // ── Subtitle ──
+        this.add.text(cx, 180, 'A Royal Adventure', {
             fontFamily: 'monospace',
-            fontSize: '14px',
-            color: '#888888',
+            fontSize: '13px',
+            color: '#666680',
         }).setOrigin(0.5);
 
         this.showMainMenu();
+
+        // Fade in from black (matches Preloader's fadeOut)
+        this.cameras.main.fadeIn(600, 0, 0, 0);
+    }
+
+    update(time: number): void {
+        for (const star of this.stars) {
+            const alpha = star.baseAlpha + Math.sin(time * star.speed + star.phase) * (star.baseAlpha * 0.5);
+            star.gfx.setAlpha(Phaser.Math.Clamp(alpha, 0.03, 1));
+        }
     }
 
     private showMainMenu(): void {
         this.clearSlotItems();
 
-        let y = 300;
+        let y = 260;
 
         // New Game -- always visible
         const newGameText = this.createMenuItem('New Game', 480, y, () => {
@@ -60,7 +89,7 @@ export class MainMenuScene extends Scene {
             this.scene.start('RoomScene', { roomId: 'forest_clearing' });
         });
         this.menuItems.push(newGameText);
-        y += 50;
+        y += 44;
 
         // Continue -- only when auto-save exists
         if (SaveManager.hasAutoSave()) {
@@ -70,7 +99,7 @@ export class MainMenuScene extends Scene {
                 this.scene.start('RoomScene', { roomId: state.getData().currentRoom });
             });
             this.menuItems.push(continueText);
-            y += 50;
+            y += 44;
         }
 
         // Load Game -- always visible
@@ -78,7 +107,7 @@ export class MainMenuScene extends Scene {
             this.showLoadMenu();
         });
         this.menuItems.push(loadText);
-        y += 50;
+        y += 44;
 
         // Death Gallery -- only visible when at least 1 death discovered
         if (MetaGameState.getInstance().getDeathsDiscovered().length > 0) {
@@ -86,7 +115,7 @@ export class MainMenuScene extends Scene {
                 this.scene.start('DeathGalleryScene', { returnTo: 'MainMenuScene' });
             });
             this.menuItems.push(galleryText);
-            y += 50;
+            y += 44;
         }
 
         // Endings Gallery -- only visible when at least 1 ending discovered
@@ -95,8 +124,24 @@ export class MainMenuScene extends Scene {
                 this.scene.start('EndingsGalleryScene', { returnTo: 'MainMenuScene' });
             });
             this.menuItems.push(endingsText);
-            y += 50;
+            y += 44;
         }
+
+        // Quality toggle -- cycles through High / Low / Off
+        const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+        const qualityLevels: QualityLevel[] = ['high', 'low', 'off'];
+        let currentIndex = qualityLevels.indexOf(QualitySettings.getInstance().getLevel());
+        if (currentIndex === -1) currentIndex = 0;
+        const qualityText = this.createMenuItem(
+            `Quality: ${capitalize(qualityLevels[currentIndex])}`,
+            480, y, () => {
+                currentIndex = (currentIndex + 1) % 3;
+                const newLevel = qualityLevels[currentIndex];
+                QualitySettings.getInstance().setLevel(newLevel);
+                qualityText.setText(`Quality: ${capitalize(newLevel)}`);
+            }
+        );
+        this.menuItems.push(qualityText);
     }
 
     private showLoadMenu(): void {
@@ -216,5 +261,64 @@ export class MainMenuScene extends Scene {
             item.destroy();
         }
         this.slotItems = [];
+    }
+
+    private createStarfield(width: number, height: number): void {
+        const count = 100;
+        for (let i = 0; i < count; i++) {
+            const x = Phaser.Math.Between(0, width);
+            const y = Phaser.Math.Between(0, height);
+            const layer = Math.random();
+
+            let radius: number, baseAlpha: number, speed: number;
+            if (layer < 0.6) {
+                radius = 1;
+                baseAlpha = Phaser.Math.FloatBetween(0.1, 0.3);
+                speed = Phaser.Math.FloatBetween(0.0005, 0.001);
+            } else if (layer < 0.9) {
+                radius = 1.5;
+                baseAlpha = Phaser.Math.FloatBetween(0.3, 0.5);
+                speed = Phaser.Math.FloatBetween(0.001, 0.002);
+            } else {
+                radius = 2;
+                baseAlpha = Phaser.Math.FloatBetween(0.5, 0.8);
+                speed = Phaser.Math.FloatBetween(0.002, 0.004);
+            }
+
+            const gfx = this.add.circle(x, y, radius, 0xc8c8d4, baseAlpha);
+            this.stars.push({ gfx, baseAlpha, speed, phase: Math.random() * Math.PI * 2 });
+        }
+    }
+
+    private drawCrown(cx: number, cy: number): void {
+        const g = this.add.graphics();
+        const w = 70;
+        const h = 30;
+        const baseY = cy + h / 2;
+        const topY = cy - h / 2;
+        const midY = cy + 4;
+
+        // Crown outline
+        g.lineStyle(2, 0xd4a847, 1);
+        g.beginPath();
+        g.moveTo(cx - w / 2, baseY);
+        g.lineTo(cx - w / 2 + 5, topY + 4);
+        g.lineTo(cx - w / 4, midY);
+        g.lineTo(cx, topY - 4);
+        g.lineTo(cx + w / 4, midY);
+        g.lineTo(cx + w / 2 - 5, topY + 4);
+        g.lineTo(cx + w / 2, baseY);
+        g.closePath();
+        g.strokePath();
+
+        // Base band
+        g.lineStyle(2, 0xd4a847, 1);
+        g.strokeRect(cx - w / 2, baseY, w, 6);
+
+        // Jewels at each peak
+        g.fillStyle(0xd4a847, 1);
+        g.fillCircle(cx - w / 2 + 5, topY + 4, 2.5);
+        g.fillCircle(cx, topY - 4, 3);
+        g.fillCircle(cx + w / 2 - 5, topY + 4, 2.5);
     }
 }
