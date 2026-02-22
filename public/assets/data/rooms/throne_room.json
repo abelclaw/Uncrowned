@@ -463,6 +463,17 @@
             }
         ]
     },
+    "effects": {
+        "ambient": [
+            { "type": "dust-motes", "intensity": 0.4 }
+        ],
+        "lighting": {
+            "tint": "#bbaa88",
+            "brightness": 0.7,
+            "vignette": 0.35,
+            "postfx": ["bloom"]
+        }
+    },
     "puzzleHints": [
         {
             "puzzleId": "use-spirit-brew",

@@ -413,6 +413,19 @@
             }
         ]
     },
+    "effects": {
+        "weather": {
+            "type": "dust",
+            "intensity": 0.4
+        },
+        "ambient": [
+            { "type": "falling-leaves", "intensity": 0.3 }
+        ],
+        "lighting": {
+            "brightness": 0.9,
+            "vignette": 0.2
+        }
+    },
     "puzzleHints": [
         {
             "puzzleId": "answer-riddle-correct",

@@ -166,6 +166,16 @@
             }
         ]
     },
+    "effects": {
+        "weather": {
+            "type": "dust",
+            "intensity": 0.3
+        },
+        "lighting": {
+            "brightness": 0.95,
+            "vignette": 0.15
+        }
+    },
     "playerSpawn": {
         "x": 480,
         "y": 430

@@ -328,6 +328,16 @@
             }
         ]
     },
+    "effects": {
+        "ambient": [
+            { "type": "dust-motes", "intensity": 0.3 }
+        ],
+        "lighting": {
+            "tint": "#ccaa77",
+            "brightness": 0.75,
+            "vignette": 0.3
+        }
+    },
     "puzzleHints": [
         {
             "puzzleId": "use-skeleton-key",

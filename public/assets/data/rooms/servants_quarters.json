@@ -338,6 +338,16 @@
             }
         ]
     },
+    "effects": {
+        "ambient": [
+            { "type": "dust-motes", "intensity": 0.3 }
+        ],
+        "lighting": {
+            "tint": "#998877",
+            "brightness": 0.65,
+            "vignette": 0.4
+        }
+    },
     "puzzleHints": [
         {
             "puzzleId": "use-rat-trap",

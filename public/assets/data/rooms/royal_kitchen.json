@@ -312,6 +312,17 @@
             }
         ]
     },
+    "effects": {
+        "ambient": [
+            { "type": "dust-motes", "intensity": 0.5 },
+            { "type": "embers", "intensity": 0.2 }
+        ],
+        "lighting": {
+            "tint": "#ddaa66",
+            "brightness": 0.8,
+            "vignette": 0.2
+        }
+    },
     "puzzleHints": [
         {
             "puzzleId": "give-flour-to-cook",
