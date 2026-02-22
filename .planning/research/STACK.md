@@ -1,8 +1,8 @@
-# Technology Stack: v2.0 Art & Polish
+# Technology Stack: Flux Art Generation & Visual Effects
 
-**Project:** KQGame v2.0
+**Project:** Uncrowned (v3.0 Art & VFX)
 **Researched:** 2026-02-21
-**Scope:** Stack ADDITIONS for v2.0 features only. Existing v1.0 stack (Phaser 3, TypeScript, Vite, inkjs, Ollama, navmesh) is validated and unchanged.
+**Scope:** Stack additions for Flux art generation tuning (LoRA, prompt engineering, batch generation) and Phaser 3 visual effects (transitions, lighting, weather, particles). Does NOT re-research existing validated stack.
 
 ## Existing Stack (Validated, DO NOT Change)
 
@@ -11,333 +11,486 @@
 | Phaser | 3.90.0 | Locked |
 | TypeScript | ~5.7.2 | Locked |
 | Vite | ^6.3.1 | Locked |
-| inkjs | ^2.4.0 | Locked |
-| navmesh | ^2.3.1 | Locked |
-| Vitest | ^4.0.18 | Locked |
+| sharp | ^0.34.5 | Locked (devDep) |
+| ComfyUI | Desktop/latest | Locked |
+| Flux.1 Dev GGUF Q5 | latest | Locked |
+| Flux-2D-Game-Assets-LoRA | v1.0 | Locked (GRPZA trigger) |
+| generate-art.ts | existing | Locked (pipeline script) |
 
-## New Stack Additions for v2.0
+## Recommended Stack
 
-### 1. Flux Art Generation Pipeline (Build-Time Tooling)
+### A. Flux Art Generation Tuning (Build-Time)
 
-The art pipeline is a build-time tool, NOT runtime. Generated images ship as static PNG assets.
+No new npm dependencies. All improvements are to the existing `scripts/generate-art.ts` pipeline, `style-guide.json` prompt templates, and ComfyUI workflow configuration.
 
-| Technology | Version | Purpose | Why |
-|------------|---------|---------|-----|
-| ComfyUI | latest (Desktop or manual) | Local image generation server | Node-based workflow engine that exposes REST API (`POST /prompt`, `GET /history/{id}`, `GET /view`) and WebSocket progress tracking. Workflows export as JSON for repeatable batch generation. Runs on macOS Apple Silicon via Metal Performance Shaders (MPS). |
-| Flux.1 Dev (GGUF Q5) | latest | Base image model | Higher quality than Schnell for final art assets. GGUF quantization (Q5) runs on 10-12GB unified memory on Apple Silicon. 20-30 step generation. Use for all 36 room backgrounds and character sprites. |
-| Flux-2D-Game-Assets-LoRA | v1.0 | Pixel art game asset style | Trigger word: `GRPZA`. Prompt format: `GRPZA, <<description>>, white background, game asset, pixel art`. Built on FLUX.1-dev base. Apache 2.0 license. Source: `gokaygokay/Flux-2D-Game-Assets-LoRA` on HuggingFace. |
-| sharp | ^0.34.5 | Post-processing pipeline | Batch resize, crop, format conversion of generated images. Fastest Node.js image processor (libvips). Use to: (1) resize 1024x1024 Flux output to 960x540 room backgrounds, (2) extract sprites from white backgrounds, (3) generate WebP variants for smaller bundles. |
-| ComfyUI-GGUF custom node | latest | GGUF model loader | Required to load quantized Flux models in ComfyUI. Install via ComfyUI Manager. Source: `city96/ComfyUI-GGUF` on GitHub. |
+#### A1. ComfyUI Custom Nodes (Install via ComfyUI Manager)
 
-**Art Pipeline Architecture:**
+| Custom Node | Purpose | Why |
+|-------------|---------|-----|
+| ComfyUI-GGUF (city96) | GGUF model loading | Already installed. Required for Flux Dev Q5 quantized model. |
+| ComfyUI-KJNodes | Batch image grid, concatenation, metadata | Useful for generating comparison grids when tuning LoRA strength and prompt variations. Batch preview saves time vs individual image inspection. |
+| ComfyUI Impact Pack | Detail enhancement, upscaling hooks | Provides `FaceDetailer`-style refinement nodes that can sharpen pixel art details post-generation. Optional but valuable for sprite cleanup. |
 
-```
-[Node.js script] --> POST /prompt --> [ComfyUI server]
-                                           |
-                                    [Flux.1 Dev GGUF + LoRA]
-                                           |
-                                    [Generated PNG 1024x1024]
-                                           |
-                              [sharp: resize to 960x540, optimize]
-                                           |
-                              [public/assets/backgrounds/room_name.png]
-```
+**Confidence:** MEDIUM -- Recommendations based on training data knowledge of ComfyUI ecosystem. Verify availability in ComfyUI Manager before installing.
 
-**ComfyUI API Integration (build script, NOT npm dependency):**
+#### A2. LoRA Strategy
 
-The ComfyUI REST API is simple enough that a build script using plain `fetch()` is sufficient. No need for `@stable-canvas/comfyui-client` or other npm wrappers because:
-- Only 3 endpoints needed: `POST /prompt`, `GET /history/{id}`, `GET /view`
-- Build script runs infrequently (art generation, not per-build)
-- Fewer dependencies = less maintenance burden
+**Recommendation: Use Flux-2D-Game-Assets-LoRA as primary, do NOT train a custom LoRA unless style consistency fails after testing.**
 
-```typescript
-// scripts/generate-art.ts (standalone build script, NOT part of game bundle)
-async function generateRoomArt(roomName: string, prompt: string): Promise<Buffer> {
-    // 1. Load workflow JSON template
-    // 2. Inject prompt text and LoRA settings
-    // 3. POST to http://127.0.0.1:8188/prompt
-    // 4. Poll /history/{prompt_id} until complete
-    // 5. GET /view?filename=... to download PNG
-    // 6. sharp(png).resize(960, 540).toFile(`public/assets/backgrounds/${roomName}.png`)
-}
-```
+| Parameter | Current Value | Recommended Tuning Range | Why |
+|-----------|---------------|--------------------------|-----|
+| LoRA strength | 0.8 | 0.6-0.9 | Lower strength (0.6-0.7) for backgrounds where you want more photorealistic detail blended with pixel style. Higher (0.8-0.9) for sprites/items where crisp pixel art is essential. |
+| Guidance scale | 3.5 | 3.0-4.5 | Flux Dev performs best at 3.0-4.0. Higher values increase prompt adherence but can introduce artifacts. 3.5 is the sweet spot for most scenes. |
+| Steps | 20 | 20-30 | 20 is sufficient for most images. Increase to 25-30 for complex scenes (throne room, crystal chamber) that need more detail convergence. |
+| Sampler | euler | euler | Do not change. Euler is the recommended sampler for Flux models. |
+| Scheduler | simple | simple | Do not change. Simple scheduler works best with Flux. |
+| Generation resolution | 1024x1024 | 1024x576 for backgrounds | Flux supports non-square aspect ratios. Generating at 1024x576 (close to 16:9) avoids the need to aggressively crop a square image to 960x540, preserving more of the composition. For wide rooms, generate at 1024x576 and stitch two generations. |
 
-**Model File Placement:**
+**LoRA Strength Per Asset Type (Recommended):**
 
-```
-comfyui/models/unet/     -> flux1-dev-Q5_K_S.gguf
-comfyui/models/clip/     -> t5-v1_1-xxl-encoder-Q5_K_M.gguf, clip_l.safetensors
-comfyui/models/vae/      -> flux_ae.safetensors
-comfyui/models/loras/    -> Flux-2D-Game-Assets-LoRA.safetensors
-```
-
-### 2. Mobile-Responsive Layout (Runtime)
-
-| Technology | Version | Purpose | Why |
-|------------|---------|---------|-----|
-| Phaser ScaleManager (built-in) | (in Phaser 3.90) | Canvas scaling + orientation | Already configured as `Scale.FIT` with `CENTER_BOTH`. Handles canvas resize and aspect ratio preservation. Provides `orientationchange` and `resize` events. No library needed. |
-| CSS media queries | (native CSS) | Layout adaptation | Rearrange `#game-container`, `#text-parser-ui`, and potential touch controls based on viewport width. CSS is the right tool -- not a library. |
-| Phaser DOM element (built-in) | (in Phaser 3.90) | Mobile text input | Requires `dom: { createContainer: true }` in game config. Allows HTML input elements over the canvas. The existing `TextInputBar` already uses HTML DOM elements outside the canvas, which is actually BETTER for mobile -- native `<input>` triggers the OS keyboard automatically. |
-
-**What is NOT needed for mobile:**
-
-| Avoid | Why Not |
-|-------|---------|
-| phaser3-rex-plugins VirtualJoystick | This is a point-and-click adventure game, not a platformer. Players tap to move, not joystick. The existing click-to-move handler already works with touch via Phaser's unified pointer system. |
-| phaser3-rex-plugins InputText | The existing `TextInputBar` uses a native HTML `<input>` element below the canvas. This is superior on mobile because it naturally triggers the OS virtual keyboard. A canvas-rendered input would NOT trigger the virtual keyboard. |
-| Hammer.js / touch gesture library | Phaser's built-in pointer system handles tap, drag, and multi-touch. No pinch-to-zoom or swipe gestures needed for this genre. |
-| Any virtual keyboard library | The native OS keyboard appears automatically when the HTML `<input>` receives focus on mobile. This already works. |
-
-**Mobile Layout Strategy (CSS only):**
-
-```css
-/* Portrait phone: stack canvas above text input, reduce canvas height */
-@media (max-width: 600px) and (orientation: portrait) {
-    #game-container { max-width: 100vw; }
-    #text-parser-ui { font-size: 16px; /* prevent iOS zoom on focus */ }
-    #parser-input { font-size: 16px; padding: 12px; }
-}
-
-/* Landscape phone: text input overlaps bottom of canvas */
-@media (max-height: 400px) and (orientation: landscape) {
-    #text-parser-ui { position: fixed; bottom: 0; left: 0; right: 0; }
-}
-```
-
-**Viewport meta tag update needed in index.html:**
-
-```html
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-```
-
-The `viewport-fit=cover` handles iOS notch/safe areas. The `user-scalable=no` prevents double-tap zoom interfering with game input.
-
-### 3. Progressive Hint System (Runtime)
-
-**No new library needed.** This is pure game logic built on existing infrastructure.
-
-| Component | Implementation | Why No Library |
-|-----------|---------------|----------------|
-| Hint data | JSON fields in room/puzzle data files | Follows existing data-driven pattern. Each puzzle gets a `hints: string[]` array, ordered from vague to explicit. |
-| Hint timer | Phaser `time.delayedCall()` or frame-counting in GameState | Phaser already provides timing. Track `timeSinceLastAction` in GameState. |
-| Hint display | Existing `NarratorDisplay.typewrite()` | The narrator is the natural voice for hints. "Perhaps examining the door more carefully would be wise..." |
-| Hint state | GameState `flags` (e.g., `hint_puzzle_x_level: number`) | Existing flag system handles this. Increment per hint request. |
-| "HINT" command | Add to existing `VerbTable` + `CommandDispatcher` | Parser already handles text commands. Add "hint" as a recognized verb. |
-
-**Architecture:**
-
-```typescript
-// In puzzle JSON data (extends existing PuzzleData)
+```json
 {
-    "id": "bridge_riddle",
-    "hints": [
-        "The troll seems to value wit over brawn.",          // Level 0: vague
-        "Think about what bridges connect...",                // Level 1: medium
-        "Try answering the riddle with 'a bridge'.",         // Level 2: explicit
-        "Type: tell troll 'a bridge'"                        // Level 3: spoiler
-    ],
-    "hintDelayMs": 120000  // 2 minutes between auto-hints
+  "backgrounds": 0.65,
+  "sprites": 0.85,
+  "items": 0.90,
+  "npcs": 0.80,
+  "sharedLayers": 0.60
 }
 ```
 
-### 4. Death Gallery / Achievements (Runtime)
+Rationale: Backgrounds benefit from some "naturalistic" detail that lower LoRA strength preserves. Sprites and items need crisp, clean pixel art edges that higher LoRA strength enforces.
 
-**No new library needed.** This is a data structure + UI scene.
+**Confidence:** MEDIUM -- LoRA strength tuning is subjective and depends on the specific images generated. These are starting points for a tuning grid search. Will need phase-specific testing.
 
-| Component | Implementation | Why No Library |
-|-----------|---------------|----------------|
-| Achievement definitions | JSON data file (`assets/data/achievements.json`) | Follows existing data-driven pattern. |
-| Achievement state | Extend `GameStateData` with `achievements: Record<string, boolean>` and `deathGallery: DeathGalleryEntry[]` | Existing save/load serialization handles it automatically. |
-| Death gallery data | Extend `GameStateData` with death scene records | Each death already has `title` and `narratorText`. Just record them on occurrence. |
-| Gallery UI | New Phaser `Scene` (`DeathGalleryScene`) | Same pattern as existing `DeathScene` and `MainMenuScene`. Pure Phaser rendering -- text, images, scroll. |
-| Achievement notification | Phaser tween animation (slide-in banner) | Phaser's tween system handles slide/fade animations. No plugin needed. |
-| Persistence | Existing `SaveManager` + `localStorage` | Achievements persist in the same save data structure. |
+#### A3. Prompt Engineering Improvements
 
-**GameState Extension:**
+The existing `style-guide.json` prompt templates are a solid foundation. Recommended additions:
+
+| Improvement | What | Why |
+|-------------|------|-----|
+| Negative prompt via node | Add a second CLIPTextEncode for negative conditioning | Flux Dev supports negative prompts via a separate conditioning input to the guider. Use to suppress "blurry, photographic, 3D render, realistic" which helps maintain pixel art consistency. |
+| Per-act color tokens | Add explicit color hex codes to act palette prompts | "Warm greens" is ambiguous. "#4c8744 forest green, #c8a030 amber gold" gives Flux more precise color guidance. Test both approaches. |
+| Resolution-aware prompts | Adjust prompt detail based on output dimensions | Wide backgrounds (1920x540) need "panoramic, wide landscape" in prompt. Small items (64x64) need "icon, centered, minimal detail" to avoid overcomplication. |
+| Composition keywords | Add "side-scrolling perspective, ground level camera, flat horizon" | Prevents Flux from generating top-down or 3/4 perspective views that don't match the game's side-scrolling layout. |
+
+**Updated Prompt Template Structure:**
+
+```json
+{
+  "promptPrefix": "GRPZA, pixel art game background, 2D side-scrolling adventure game, ground level perspective, flat horizon,",
+  "promptSuffix": ", detailed pixel art, retro game aesthetic, clean lines, vibrant colors",
+  "negativePrompt": "blurry, photographic, 3D render, realistic, photograph, depth of field, modern, UI elements, text, watermark",
+  "spritePromptPrefix": "GRPZA, pixel art game sprite, 2D character, front-facing,",
+  "spritePromptSuffix": ", white background, game asset, clean pixel art, transparent background ready, centered"
+}
+```
+
+**Workflow Change Required for Negative Prompt:**
+
+Add a second `CLIPTextEncode` node connected to a `FluxGuidance` node with negative conditioning. The existing workflow uses a `BasicGuider` which only takes positive conditioning. To add negative prompts with Flux:
+
+1. Keep the existing `CLIPTextEncode` (node 6) for positive prompt
+2. Add a new `CLIPTextEncode` for negative prompt
+3. Use `CFGGuider` instead of `BasicGuider` to accept both positive and negative conditioning
+
+**Important caveat:** Flux Dev's architecture handles negative prompts differently than SD1.5/SDXL. The effect is subtler. Some community reports suggest negative prompts have minimal effect on Flux. Test before relying on this.
+
+**Confidence:** LOW for negative prompts with Flux -- community consensus is mixed. Test empirically.
+
+#### A4. Batch Generation Improvements
+
+Enhancements to the existing `generate-art.ts` script:
+
+| Feature | Implementation | Why |
+|---------|---------------|-----|
+| Per-asset-type LoRA strength | Read from `style-guide.json`, inject into workflow node 3 `strength_model` per entry | Backgrounds and sprites need different LoRA strengths for best results. |
+| Aspect-ratio-aware generation | Set `EmptySD3LatentImage` width/height based on target aspect ratio | Generate 1024x576 for 16:9 backgrounds instead of cropping from 1024x1024. Less wasted composition. |
+| Comparison grid mode | `--grid` flag: generate 4 variants (different LoRA strengths) side by side | Enables rapid visual comparison during tuning. Use sharp to composite 4 images into a 2x2 grid PNG. |
+| Resume on failure | Track completed entries in a `.art-progress.json` file | If generation fails mid-batch (ComfyUI crash, timeout), resume from last completed entry instead of re-generating everything. |
+| Parallel generation | Queue multiple prompts to ComfyUI (it handles internal queueing) | ComfyUI accepts multiple prompt submissions and queues them. Submit all at once, poll all in parallel. Can reduce wall-clock time for batch runs. |
+| WebP output | `--webp` flag for smaller file sizes in production | sharp converts PNG to WebP at quality 85. Can reduce background file sizes by 40-60%. Room JSONs stay referencing PNG keys; Preloader can check for WebP availability. |
+
+**New script flags:**
+
+```bash
+npx tsx scripts/generate-art.ts --type backgrounds --room forest_clearing  # Existing
+npx tsx scripts/generate-art.ts --type all --force                         # Existing
+npx tsx scripts/generate-art.ts --grid --room forest_clearing              # NEW: 4-variant grid
+npx tsx scripts/generate-art.ts --type all --resume                        # NEW: resume from progress
+npx tsx scripts/generate-art.ts --type all --webp                          # NEW: also output WebP
+npx tsx scripts/generate-art.ts --type backgrounds --aspect 16:9           # NEW: non-square generation
+```
+
+**Confidence:** HIGH -- These are straightforward script improvements using existing sharp and ComfyUI APIs.
+
+### B. Phaser 3 Visual Effects (Runtime)
+
+**Critical constraint:** The game uses `render: { pixelArt: true }` which sets `antialias: false` and `roundPixels: true`. This is compatible with Phaser's FX pipeline (added in 3.60, mature in 3.90) but FX effects will render with nearest-neighbor sampling. This is actually desirable for a pixel art game -- effects like Glow and Bloom will have a chunky, retro appearance that fits the aesthetic.
+
+**No new npm dependencies.** All visual effects use Phaser 3.90's built-in systems.
+
+#### B1. Scene Transitions (Enhanced)
+
+The existing `SceneTransition.ts` has fade and slide transitions. Enhance with Phaser's camera effects and FX pipeline.
+
+| Effect | Phaser API | Usage |
+|--------|-----------|-------|
+| Fade to black | `camera.fadeOut()` / `camera.fadeIn()` | Already implemented. Keep as default. |
+| Slide pan | `tweens.add({ targets: camera, scrollX })` | Already implemented. Keep for horizontal exits. |
+| Wipe transition | `camera.postFX.addWipe()` | Cinematic wipe for act transitions (Act 1->2, 2->3). The Wipe FX does a directional reveal. Apply to the camera's postFX. |
+| Flash | `camera.flash(duration, r, g, b)` | Use for dramatic moments (death, magic events). Built-in camera effect. |
+| Shake | `camera.shake(duration, intensity)` | Use for impact moments (cave-in, explosion, troll stomp). Built-in camera effect. |
+| Zoom | `camera.zoomTo(zoom, duration)` | Use for dramatic reveals (entering throne room, seeing the curse for first time). Built-in camera effect. |
+
+**Implementation pattern for Wipe transition:**
 
 ```typescript
-// Additions to GameStateData interface
-interface GameStateData {
-    // ... existing fields ...
-    achievements: Record<string, boolean>;  // achievement_id -> unlocked
-    deathGallery: Array<{
-        deathId: string;
-        roomId: string;
-        title: string;
-        narratorText: string;
-        timestamp: number;
+// In SceneTransition.ts -- add new method
+static wipeToRoom(
+    scene: Phaser.Scene,
+    roomId: string,
+    spawnPoint: { x: number; y: number },
+    direction: 'left' | 'right' | 'up' | 'down' = 'left',
+    duration: number = 1000
+): void {
+    scene.input.enabled = false;
+    const wipe = scene.cameras.main.postFX.addWipe(0, 0, 0);
+
+    scene.tweens.add({
+        targets: wipe,
+        progress: 1,
+        duration,
+        onComplete: () => {
+            scene.scene.start('RoomScene', { roomId, spawnPoint });
+        },
+    });
+}
+```
+
+**Confidence:** HIGH -- Camera effects (fade, flash, shake, zoom) are core Phaser features verified in source. PostFX.addWipe() verified in Phaser 3.90 FX source code (Wipe.js, since 3.60.0).
+
+#### B2. Lighting System
+
+Phaser 3.90 includes a built-in `Light2D` WebGL pipeline and `LightsPlugin` (verified in source: `src/gameobjects/lights/`).
+
+| Component | Phaser API | Usage |
+|-----------|-----------|-------|
+| LightsPlugin | `this.lights.enable()` | Scene-level lights manager. Enable per-scene. |
+| Point light | `this.lights.addLight(x, y, radius, color, intensity)` | Torches, crystals, magic effects. Each light has position, radius, color, intensity. |
+| Ambient light | `this.lights.setAmbientColor(color)` | Controls overall scene brightness/tint. Use dark ambient (0x333355) for caves, warm (0xffeedd) for forest. |
+| Light2D pipeline | `sprite.setPipeline('Light2D')` | Game objects must opt-in to light interaction. Apply to background layers and player sprite. |
+| Dynamic lights | Tween light properties | Animate light intensity/radius for flickering torches, pulsing crystals. |
+
+**Important limitations:**
+- Light2D pipeline only works with **WebGL renderer** (not Canvas). Phaser.AUTO will use WebGL when available, which covers 98%+ of browsers. Fall back gracefully to no lighting on Canvas.
+- Light2D does NOT work with `Graphics` or `Shape` game objects -- only sprites/images/tilemaps.
+- Each scene has a max of **10 lights** by default (configurable via `maxLights` in LightsManager). This is sufficient for our room-based approach.
+- Light2D requires normal maps for realistic lighting. Without normal maps, lights create a flat brightness gradient. For pixel art, flat gradients are acceptable and even desirable -- they create a mood without implying 3D depth.
+
+**Per-Act Ambient Lighting:**
+
+```typescript
+const ACT_AMBIENT: Record<string, number> = {
+    act1: 0xddccaa,  // Warm forest daylight
+    act2: 0x334466,  // Dark cave with blue tint
+    act3: 0x553366,  // Twilight purple
+};
+```
+
+**Data-driven approach:** Add optional `lighting` field to room JSON:
+
+```typescript
+// Extend RoomData interface
+interface RoomLighting {
+    ambient?: number;          // Hex color for ambient light
+    lights?: Array<{
+        x: number;
+        y: number;
+        radius: number;
+        color: number;
+        intensity: number;
+        flicker?: boolean;     // Enable intensity tween
     }>;
 }
 ```
 
-### 5. Multiple Endings (Runtime)
+**Confidence:** HIGH -- LightsPlugin verified in Phaser 3.90 source code. API usage pattern confirmed from source comments. Normal map requirement is a known Phaser characteristic.
 
-**No new library needed.** inkjs already supports this perfectly.
+#### B3. Particle System (Weather & Atmospheric Effects)
 
-| Component | Implementation | Why No Library |
-|-----------|---------------|----------------|
-| Ending conditions | GameState flags evaluated at story climax | Existing flag system. Endings determined by accumulated player choices/actions. |
-| Ending content | ink story files with conditional diverts | inkjs already supports `{ flag_name: -> ending_a }` conditional branching. This is what ink was designed for. |
-| Ending scene | New Phaser `Scene` (`EndingScene`) | Displays ending-specific text, art, and credits. Same pattern as `DeathScene`. |
-| Ending tracking | GameState flag: `ending_seen_x: true` | Track which endings the player has seen for replayability. |
+Phaser 3.90's `ParticleEmitter` (verified in source) is a full-featured GPU-accelerated particle system. Use for weather, ambient atmosphere, and magic effects.
 
-**ink Pattern for Multiple Endings:**
+| Effect | Configuration | Rooms |
+|--------|---------------|-------|
+| Rain | Vertical particles from top edge, gray-blue tint, fast speed, high quantity | petrified_forest, castle_courtyard_act3 |
+| Snow / Ash | Slow-falling particles with horizontal drift, white/gray | rooftop, wizard_tower |
+| Dust motes | Slow-drifting particles with alpha fade, warm tint | forest rooms, castle rooms |
+| Fireflies | Small yellow particles with sine-wave movement, glow | forest_clearing, forest_bridge |
+| Crystal sparkle | Random spawn within crystal zones, blue-teal tint, short lifespan | crystal_chamber, cavern rooms |
+| Waterfall spray | Emission from edge zone, upward then falling arc | underground_river, underground_pool |
+| Magical aurora | Large slow particles with color interpolation, high alpha | throne_room_act3, mirror_hall |
+| Petrification mist | Ground-hugging particles with gray tint, slow drift | petrified_forest, act3 rooms |
+| Torch embers | Upward-drifting particles near light sources, orange-red | cave rooms, dungeon |
 
-```ink
-=== climax ===
-{ saved_the_kingdom and befriended_troll:
-    -> ending_hero
+**Particle creation pattern:**
+
+```typescript
+// Weather system factory
+class WeatherSystem {
+    static createRain(scene: Phaser.Scene): Phaser.GameObjects.Particles.ParticleEmitter {
+        // Use a small white pixel as particle texture (1x1 or 2x1)
+        return scene.add.particles(0, 0, 'particle-pixel', {
+            x: { min: 0, max: 960 },
+            y: -10,
+            speedY: { min: 300, max: 500 },
+            speedX: { min: -20, max: -40 },  // Slight wind
+            lifespan: 1500,
+            quantity: 3,
+            frequency: 50,
+            alpha: { start: 0.6, end: 0.2 },
+            scaleX: 0.5,
+            scaleY: 2,                        // Elongated for rain streaks
+            tint: 0x8888cc,
+            blendMode: Phaser.BlendModes.ADD,
+        }).setDepth(50);                      // Above backgrounds, below UI
+    }
+
+    static createDustMotes(scene: Phaser.Scene): Phaser.GameObjects.Particles.ParticleEmitter {
+        return scene.add.particles(0, 0, 'particle-pixel', {
+            x: { min: 0, max: 960 },
+            y: { min: 100, max: 400 },
+            speedX: { min: -5, max: 5 },
+            speedY: { min: -3, max: 3 },
+            lifespan: 5000,
+            quantity: 1,
+            frequency: 500,
+            alpha: { start: 0, end: 0.3, ease: 'Sine.easeInOut' },
+            scale: { min: 0.5, max: 1.5 },
+            tint: 0xffffdd,
+            blendMode: Phaser.BlendModes.ADD,
+        }).setDepth(10);
+    }
 }
-{ betrayed_ghost_king:
-    -> ending_villain
+```
+
+**Particle texture:** Create a 2x2 white pixel PNG (`particle-pixel.png`) and load it in the Preloader. All particles use this single texture with tint/scale/alpha variations. This avoids loading separate particle textures and keeps the pixel art aesthetic.
+
+**Data-driven approach:** Add optional `effects` field to room JSON:
+
+```typescript
+interface RoomEffects {
+    particles?: Array<{
+        type: 'rain' | 'snow' | 'dust' | 'fireflies' | 'sparkle' | 'spray' | 'mist' | 'embers';
+        config?: Partial<Phaser.Types.GameObjects.Particles.ParticleEmitterConfig>;
+    }>;
+    weather?: 'clear' | 'rain' | 'storm' | 'snow' | 'mist';
 }
--> ending_neutral
-
-=== ending_hero ===
-# ending: hero
-The kingdom rejoices as you emerge from the caverns...
--> END
-
-=== ending_villain ===
-# ending: villain
-The crown feels heavy on your treacherous head...
--> END
 ```
 
-### 6. Export/Import Save Files (Runtime)
+**Confidence:** HIGH -- ParticleEmitter API verified in Phaser 3.90 source code. Configuration properties confirmed from `configFastMap` and `configOpMap` arrays in source.
 
-**No new library needed.**
+#### B4. PostFX Effects (Per-Game-Object and Per-Camera)
 
-| Component | Implementation | Why No Library |
-|-----------|---------------|----------------|
-| Export | `JSON.stringify(gameState)` + `Blob` + `URL.createObjectURL()` + `<a download>` | Standard Web API. Creates a downloadable JSON file. |
-| Import | `<input type="file">` + `FileReader` + `JSON.parse()` + `gameState.deserialize()` | Standard Web API. Read JSON file and restore state. |
+Phaser 3.90 includes 15 built-in FX effects (verified from `src/fx/`). Available on any game object via `gameObject.preFX` / `gameObject.postFX` and on cameras via `camera.postFX`.
 
-## Recommended Stack Summary
+**Useful effects for this game:**
 
-### New npm Dependencies
+| Effect | API | Usage | When |
+|--------|-----|-------|------|
+| Vignette | `camera.postFX.addVignette(0.5, 0.5, 0.3)` | Darken screen edges for mood | Cave rooms, dungeon, dramatic moments |
+| Glow | `sprite.postFX.addGlow(color, distance, quality)` | Magic items, crystal highlights | Magic objects, puzzle solution feedback |
+| ColorMatrix | `camera.postFX.addColorMatrix().desaturate()` | Desaturation for petrification effect | Act 3 rooms (progressive stone curse) |
+| Bloom | `camera.postFX.addBloom()` | Ethereal glow for magic scenes | Crystal chamber, wizard tower, ending scenes |
+| Shine | `sprite.postFX.addShine()` | Animated shimmer on treasures/items | Treasury room, magic items |
+| Pixelate | `camera.postFX.addPixelate(amount)` | Dramatic zoom-in/transition effect | Animate from high pixelation to low on room entry |
+| Gradient | `camera.postFX.addGradient()` | Color overlay for time-of-day mood | Dawn/dusk tint on outdoor rooms |
+| Wipe | `camera.postFX.addWipe()` | Scene transition reveal | Act transitions |
+| Displacement | `sprite.postFX.addDisplacement()` | Water reflection distortion | Underground river, underground pool |
 
-```bash
-# Build-time only (dev dependency for art pipeline post-processing)
-npm install -D sharp@^0.34.5
+**Critical note on FX pipeline and pixelArt mode:**
+
+The FX pipeline (added in Phaser 3.60) works through WebGL framebuffer operations. With `pixelArt: true`, textures use `NEAREST` filtering. The FX shader operations (blur, bloom, glow) render into framebuffers that also use `NEAREST` filtering. This means:
+
+- Blur/Bloom effects will have a blocky, stepped appearance rather than smooth gradients
+- This is actually **desirable** for pixel art -- it maintains the aesthetic
+- If smooth FX are needed for specific elements, those elements can set `texture.setFilter(Phaser.Textures.LINEAR)` individually
+- Camera-level PostFX applies to the entire rendered frame, so it respects the pixel art rendering
+
+**Confidence:** HIGH -- FX effects verified in Phaser 3.90 source code (all since 3.60.0). preFX/postFX API confirmed from source comments.
+
+#### B5. Tween-Based Visual Effects
+
+Many visual effects are best achieved with Phaser's tween system rather than dedicated FX, keeping things simple and performant.
+
+| Effect | Implementation | Usage |
+|--------|---------------|-------|
+| Torch flicker | Tween light intensity between 0.8-1.2 with yoyo | Cave and dungeon rooms |
+| Crystal pulse | Tween sprite alpha/scale with sine ease | Crystal chamber, magic items |
+| Screen shake | `camera.shake(duration, intensity)` | Death events, cave-in, dramatic moments |
+| Color shift | Tween ambient light color | Curse progression, time passage |
+| Floating objects | Tween sprite y with sine ease, yoyo | Magic objects, ghosts |
+| Breathing NPC | Tween sprite scaleY between 1.0-1.02, yoyo repeat -1 | All NPCs for subtle life |
+
+**Implementation is trivial -- all use existing `scene.tweens.add()`:**
+
+```typescript
+// Torch flicker on a light object
+scene.tweens.add({
+    targets: torchLight,
+    intensity: { from: 0.8, to: 1.2 },
+    duration: 200,
+    yoyo: true,
+    repeat: -1,
+    ease: 'Sine.easeInOut',
+});
 ```
 
-That is the ONLY new npm dependency. Everything else uses existing libraries or built-in Phaser/browser APIs.
+**Confidence:** HIGH -- Tweens are core Phaser and already used extensively in the codebase (Player movement, SceneTransition, DeathScene).
 
-### External Tools (installed separately, NOT npm)
+### C. Room Effects Data Schema Extension
 
-```bash
-# ComfyUI Desktop for macOS (or manual Python install)
-# Download from: https://docs.comfy.org/installation/desktop/macos
+To make visual effects data-driven (consistent with the existing room JSON approach), extend the `RoomData` interface:
 
-# Install ComfyUI-GGUF custom node (via ComfyUI Manager UI)
+```typescript
+// Additions to RoomData interface in src/game/types/RoomData.ts
+interface RoomData {
+    // ... existing fields ...
 
-# Download models to ComfyUI directories:
-# - Flux.1 Dev GGUF (Q5): city96/FLUX.1-dev-gguf on HuggingFace
-# - T5XXL GGUF encoder: city96/t5-v1_1-xxl-encoder-gguf on HuggingFace
-# - CLIP L: comfyanonymous/flux_text_encoders/clip_l.safetensors
-# - VAE: black-forest-labs/FLUX.1-dev/ae.safetensors
-# - LoRA: gokaygokay/Flux-2D-Game-Assets-LoRA on HuggingFace
+    /** Visual effects configuration for this room */
+    effects?: {
+        /** Ambient light color (hex). Defaults to act-specific ambient. */
+        ambient?: number;
+        /** Point lights in the room */
+        lights?: Array<{
+            x: number;
+            y: number;
+            radius: number;
+            color: number;
+            intensity: number;
+            flicker?: boolean;
+        }>;
+        /** Particle effects active in this room */
+        particles?: Array<{
+            type: string;  // Maps to WeatherSystem factory method
+        }>;
+        /** Camera PostFX to apply */
+        postFX?: {
+            vignette?: { radius?: number; strength?: number };
+            colorMatrix?: { effect: 'desaturate' | 'sepia' | 'night' };
+            bloom?: { strength?: number };
+            gradient?: { color1: number; color2: number; alpha?: number };
+        };
+    };
+}
 ```
 
-### What Stays the Same
-
-| Feature Area | Existing Tech Used | New Tech Needed |
-|--------------|-------------------|-----------------|
-| Hint system | VerbTable, CommandDispatcher, NarratorDisplay, GameState flags | None |
-| Death gallery | DeathScene pattern, GameState, SaveManager, localStorage | None |
-| Achievements | GameState flags, EventBus, Phaser tweens | None |
-| Multiple endings | inkjs conditional branching, GameState flags | None |
-| Mobile layout | Phaser Scale.FIT, HTML DOM TextInputBar, CSS | CSS media queries only |
-| Save export/import | GameState.serialize(), Web File API | None |
-| Art generation | (new pipeline) | ComfyUI + Flux + LoRA + sharp |
+**No new dependencies.** This is a pure TypeScript interface extension with corresponding rendering code in RoomScene.
 
 ## Alternatives Considered
 
 | Category | Recommended | Alternative | Why Not |
 |----------|-------------|-------------|---------|
-| Art generation backend | ComfyUI (REST API) | Automatic1111 / SD WebUI | ComfyUI's workflow-as-JSON is superior for batch scripting. A1111 is simpler for one-off manual generation but harder to automate. ComfyUI also has better Flux support. |
-| Art generation backend | ComfyUI (REST API) | `@stable-canvas/comfyui-client` npm | Only 3 API endpoints needed for the build script. Plain `fetch()` is simpler, has zero dependencies, and avoids coupling to a rapidly-changing client library (v1.5.7, 22 days old). |
-| Base model | Flux.1 Dev GGUF | Flux.1 Schnell | Schnell is faster (4 steps vs 20-30) but lower quality. Room backgrounds are generated once at build time -- speed does not matter, quality does. Dev produces more detailed, coherent scenes. |
-| Base model | Flux.1 Dev GGUF (Q5) | Flux.1 Dev FP16/BF16 | Full-precision Dev requires 24GB+ VRAM. GGUF Q5 runs on Apple Silicon unified memory (16GB+) with minimal quality loss. |
-| Pixel art LoRA | Flux-2D-Game-Assets-LoRA | Retro-Pixel-Flux-LoRA | Retro-Pixel is "still in training, not final version, may contain artifacts". Game-Assets-LoRA is v1.0 release, Apache 2.0 licensed, specifically designed for game assets with white backgrounds (easy to extract sprites). |
-| Pixel art LoRA | Flux-2D-Game-Assets-LoRA | Training custom LoRA | Custom LoRA could match exact art style but requires: training data curation, GPU time, ML expertise. Start with existing LoRA, train custom only if style consistency is insufficient. |
-| Image post-processing | sharp | ImageMagick CLI | sharp is 3-5x faster, has a clean Node.js API, integrates into the build script naturally. ImageMagick requires shelling out to a CLI tool. |
-| Image post-processing | sharp | canvas (npm) | canvas requires native Cairo bindings, complex installation. sharp uses libvips which is faster and easier to install on macOS. |
-| Mobile touch | Built-in Phaser pointer | phaser3-rex-plugins VirtualJoystick | Adventure games use tap-to-move, not analog sticks. Adding a virtual joystick would be fighting the genre. Phaser's pointer system already converts touch to click coordinates. |
-| Mobile text input | Native HTML `<input>` (existing TextInputBar) | Canvas-rendered input (RexUI InputText) | Canvas inputs do NOT trigger the native OS virtual keyboard on mobile. The existing HTML `<input>` element is the correct approach -- it naturally gets focus and keyboard. |
-| Hint system | Custom logic in existing systems | Third-party hint engine | No "hint engine" library exists for this specific use case. The implementation is <100 lines of TypeScript using existing systems. |
-| Achievement system | Custom GameState + Phaser tweens | steamworks-js or gamejolt-api | This is a browser game, not on Steam or GameJolt. No platform achievement API applies. |
-| Multiple endings | inkjs conditional branching | Custom ending state machine | ink was literally designed for branching narratives with state-dependent outcomes. Writing a custom system would be reimplementing ink badly. |
+| Pixel art LoRA | Flux-2D-Game-Assets-LoRA (existing) | Training custom LoRA | Custom LoRA requires: 20-50 curated training images, dreambooth/kohya training setup, GPU time, ML expertise. Start with existing LoRA; only train custom if style consistency fails after prompt tuning. Risk of overfitting with small training sets. |
+| Pixel art LoRA | Flux-2D-Game-Assets-LoRA (existing) | Retro-Pixel-Flux-LoRA | Retro-Pixel is marked "still in training, not final version" on HuggingFace. The Game-Assets LoRA is a v1.0 release with Apache 2.0 license. |
+| Scene transitions | Phaser built-in camera effects + PostFX | phaser3-rex-plugins TransitionImagePack | Rex plugin adds 30+ transition types but it is 150KB+ and most transitions are inappropriate for a pixel art adventure game. The 5-6 built-in effects (fade, wipe, flash, shake, zoom, slide) cover all needed cases. |
+| Particle effects | Phaser built-in ParticleEmitter | Third-party particle editor (Particle Storm, etc.) | Phaser 3's built-in particle system is mature (since 3.0, major rewrite in 3.60). Configuration is JSON-serializable. No need for external tools when effects are simple weather/atmosphere particles. |
+| Lighting | Phaser built-in Light2D pipeline | Custom WebGL shaders | Light2D provides point lights with color/intensity/radius. This covers all needed effects (torches, crystals, ambient). Custom shaders would be needed for normal-mapped lighting (which pixel art does not need) or volumetric effects (overkill for 2D). |
+| Lighting | Phaser built-in Light2D | phaser3-rex-plugins GlowFilter | Rex GlowFilter is a per-object effect. Phaser's built-in `postFX.addGlow()` does the same thing since 3.60 without the plugin dependency. |
+| Weather effects | Particle-based (rain drops, snow flakes) | Pre-rendered weather overlay sprites | Particles are more dynamic, respond to camera movement, and use a single 2x2 texture. Pre-rendered overlays would need multiple large PNGs and look static. |
+| Color grading | Phaser PostFX ColorMatrix + Gradient | LUT textures | ColorMatrix provides desaturate, sepia, night, brightness, contrast. Combined with Gradient overlay, this covers all mood/atmosphere needs. LUT textures add complexity (loading, applying) without benefit for the simple color shifts needed. |
+| Image upscaling | sharp resize (existing) | AI upscaling (ESRGAN, Real-ESRGAN) | Flux generates at 1024x1024 which is higher resolution than the target 960x540. We are downscaling, not upscaling. AI upscaling adds complexity and is unnecessary. |
+| Batch workflow | Enhanced generate-art.ts | ComfyUI batch node workflows | Keeping generation logic in the TypeScript script (rather than ComfyUI batch nodes) means the logic is version-controlled, testable, and readable by any developer. ComfyUI batch nodes are visual-only and harder to review. |
 
 ## What NOT to Add
 
 | Avoid | Why | What to Do Instead |
 |-------|-----|-------------------|
-| phaser3-rex-plugins (for v2.0) | Not used in v1.0 and not needed for v2.0 features. The existing HTML DOM approach for text input is superior on mobile. RexUI adds ~200KB to bundle for features we do not use. | Continue with HTML DOM overlay for UI elements. |
-| Any CSS framework (Tailwind, Bootstrap) | The game has exactly 3 styled elements: canvas, response text, input field. A CSS framework would be 10x more code than the 71-line `style.css`. | Hand-written CSS with media queries. |
-| Capacitor / Cordova | Wrapping in a native shell adds complexity without benefit. The game works in mobile Safari/Chrome. PWA is the lighter path if offline support is needed. | Serve as a web app. Add PWA manifest later if offline play is desired. |
-| Any state management library (Zustand, Jotai, Redux) | GameState singleton with localStorage serialization handles all state. Achievements and death gallery are just new fields on the same data structure. | Extend existing `GameStateData` interface. |
-| WebGL shaders / post-processing | Pixel art should look crisp, not filtered. Phaser's `pixelArt: true` config already disables interpolation. CRT/scanline effects would fight the art style. | Keep `render: { pixelArt: true }` as-is. |
-| AI/ML runtime in browser (ONNX, TensorFlow.js) | Image generation must happen at build time, not runtime. Running Flux in the browser is not feasible (model is 6-12GB). Ollama already handles LLM parsing. | ComfyUI as build-time tool. Ollama as runtime LLM. |
+| phaser3-rex-plugins (any) | Zero Rex plugins used in v1.0 or v2.0. Every needed effect is available in Phaser 3.90 built-in. Adding Rex would introduce a 200KB+ dependency for features we already have. | Use Phaser built-in: ParticleEmitter, LightsPlugin, PostFX, Camera effects. |
+| Custom WebGL shaders | The game uses `Phaser.AUTO` which handles WebGL/Canvas fallback. Custom shaders would only work in WebGL, break Canvas fallback, and require WebGL expertise to maintain. | Use Phaser's PostFX pipeline which abstracts shader management. |
+| Spine / DragonBones animation | The game uses static pixel art sprites with tween-based animation. Skeletal animation systems are for complex character animation with many bones. Overkill and wrong aesthetic. | Continue with spritesheet frames + Phaser tweens. |
+| GSAP or anime.js | Phaser's built-in tween system handles all animation needs. Adding an external tween library creates conflicts with Phaser's update loop and adds bundle size. | Use `scene.tweens.add()` and `scene.tweens.chain()`. |
+| PixiJS plugins | Phaser uses its own renderer (with Pixi roots but diverged since 3.0). PixiJS plugins are incompatible. | Use Phaser-native solutions only. |
+| kohya_ss / LoRA training tool | Only needed if Flux-2D-Game-Assets-LoRA proves inadequate. Defer until testing confirms the need. Training a LoRA requires significant setup (Python env, CUDA, training data curation). | Test existing LoRA first. Flag for later if style consistency fails. |
+| Normal map generators | Normal maps enable realistic per-pixel lighting in Light2D. For pixel art, flat lighting gradients are preferable -- they create mood without breaking the 2D aesthetic. Normal maps would make the game look like a 3D-lit 2D game (e.g., Dead Cells), which is a different art style. | Use Light2D without normal maps. Accept flat gradient lighting. |
 
-## Hardware Requirements for Art Pipeline
+## Installation
 
-| Component | Minimum | Recommended |
-|-----------|---------|-------------|
-| GPU/Unified Memory | 12GB (GGUF Q4) | 16GB+ (GGUF Q5/Q8) |
-| System RAM | 16GB | 32GB |
-| Disk (models) | ~15GB | ~20GB |
-| macOS | 12.3+ (Monterey, for MPS) | 14+ (Sonoma) |
-| Generation time per image | ~3-5 min (M1, Q5, 20 steps) | ~1-2 min (M2/M3 Pro/Max) |
+```bash
+# No new npm dependencies needed.
+# All visual effects use Phaser 3.90 built-ins.
+# Art generation tuning modifies existing files only.
 
-Note: These requirements are for the developer running the art pipeline, NOT for end users playing the game. End users just load pre-generated PNG/WebP files.
+# ComfyUI custom nodes (install via ComfyUI Manager UI):
+# - ComfyUI-GGUF (already installed)
+# - ComfyUI-KJNodes (optional, for comparison grids)
+```
+
+## Game Config Changes
+
+The current `Phaser.Game` config needs no changes for basic effects. For Light2D support, no config change is needed -- lights are enabled per-scene via `this.lights.enable()`.
+
+However, if Canvas fallback is a concern, effects code should check the renderer:
+
+```typescript
+// In RoomScene, check if WebGL is available for effects
+const isWebGL = this.sys.game.renderer.type === Phaser.WEBGL;
+
+if (isWebGL) {
+    // Apply PostFX, Light2D, etc.
+    this.lights.enable();
+    this.cameras.main.postFX.addVignette(0.5, 0.5, 0.3);
+} else {
+    // Canvas renderer: skip PostFX and lighting
+    // Game still works, just without visual flourishes
+}
+```
 
 ## Version Compatibility Matrix
 
-| Package A | Compatible With | Notes |
-|-----------|-----------------|-------|
-| sharp@0.34.5 | Node 18.17+ | libvips bundled, no system dependency needed on macOS |
-| ComfyUI Desktop | macOS 12.3+ Apple Silicon | Beta but stable for our use case. MPS acceleration. |
-| Flux.1 Dev GGUF | ComfyUI-GGUF node | Must install custom node via ComfyUI Manager |
-| Flux-2D-Game-Assets-LoRA | Flux.1 Dev base model | Will NOT work with Schnell (different architecture for LoRA) |
-| Existing Phaser 3.90 | `dom: { createContainer: true }` | Required config addition for potential DOM overlays on mobile |
+| Feature | Minimum Phaser Version | Current (3.90) | Notes |
+|---------|----------------------|----------------|-------|
+| ParticleEmitter (new API) | 3.60.0 | Yes | Rewritten in 3.60. Old `ParticleEmitterManager` removed. |
+| PostFX pipeline | 3.60.0 | Yes | All 15 FX available since 3.60. |
+| Light2D pipeline | 3.0.0 | Yes | Available since initial Phaser 3 release. |
+| Camera effects (fade, flash, shake, zoom) | 3.0.0 | Yes | Core feature since Phaser 3 launch. |
+| Wipe FX | 3.60.0 | Yes | Part of PostFX pipeline addition. |
+| preFX / postFX per-object | 3.60.0 | Yes | Added with PostFX pipeline. |
 
-## Build Script Dependencies (separate from game)
+## Hardware Notes (Art Generation Only)
 
-```bash
-# For the art generation build script (scripts/generate-art.ts)
-# Runs with tsx or ts-node, NOT bundled into the game
-
-# sharp is already added as devDependency above
-# fetch() is built into Node 18+ (no node-fetch needed)
-# fs/path are Node built-ins
-```
+| Optimization | Impact | Implementation |
+|-------------|--------|----------------|
+| Generate at 1024x576 instead of 1024x1024 | ~35% faster per image (fewer pixels to denoise) | Update EmptySD3LatentImage node dimensions in workflow |
+| Queue batch prompts | ComfyUI processes queue sequentially but avoids per-prompt REST overhead | Submit all prompts, then poll all at once |
+| Use Q4 for test runs, Q5 for final | Q4 is ~20% faster with slightly lower quality | Swap GGUF model filename in workflow for test vs final runs |
+| Separate test and final seeds | Faster iteration on prompt wording | Use seed offset (e.g., seed + 900000) for test variants |
 
 ## Sources
 
-- [ComfyUI API Routes Documentation](https://docs.comfy.org/development/comfyui-server/comms_routes) -- REST endpoints: /prompt, /history, /view, /ws (HIGH confidence, official docs)
-- [ComfyUI macOS Desktop Installation](https://docs.comfy.org/installation/desktop/macos) -- Apple Silicon setup, MPS support (HIGH confidence, official docs)
-- [ComfyUI on Apple Silicon 2025 Guide](https://medium.com/@tchpnk/comfyui-on-apple-silicon-from-scratch-2025-9facb41c842f) -- Installation walkthrough for M-series Macs (MEDIUM confidence)
-- [ComfyUI-GGUF GitHub](https://github.com/city96/ComfyUI-GGUF) -- GGUF quantization support custom node (HIGH confidence, GitHub source)
-- [Flux Dev vs Schnell Comparison](https://pxz.ai/blog/flux-dev-vs-schnell) -- Speed, quality, VRAM compared (MEDIUM confidence)
-- [Running Flux on 6-8GB VRAM](https://civitai.com/articles/6846/running-flux-on-68-gb-vram-using-comfyui) -- GGUF quantization levels and VRAM mapping (MEDIUM confidence)
-- [Flux Dev GGUF on HuggingFace](https://huggingface.co/city96/FLUX.1-dev-gguf) -- Model download, quantization variants (HIGH confidence)
-- [Flux-2D-Game-Assets-LoRA on HuggingFace](https://huggingface.co/gokaygokay/Flux-2D-Game-Assets-LoRA) -- Trigger word GRPZA, Apache 2.0, example prompts (HIGH confidence)
-- [Retro-Pixel-Flux-LoRA on HuggingFace](https://huggingface.co/prithivMLmods/Retro-Pixel-Flux-LoRA) -- "Still in training, not final" (MEDIUM confidence)
-- [Pixel Art ComfyUI Workflow Guide](https://inzaniak.github.io/blog/articles/the-pixel-art-comfyui-workflow-guide.html) -- Resolution, LoRA, sampler settings (MEDIUM confidence)
-- [sharp npm](https://www.npmjs.com/package/sharp) -- v0.34.5, image processing (HIGH confidence)
-- [Phaser ScaleManager Docs](https://docs.phaser.io/api-documentation/class/scale-scalemanager) -- FIT mode, orientation events, resize events (HIGH confidence, official docs)
-- [Phaser Scale.Events](https://docs.phaser.io/api-documentation/event/scale-events) -- ORIENTATION_CHANGE, RESIZE events (HIGH confidence, official docs)
-- [Phaser 3 Mobile Text Input Discussion](https://phaser.discourse.group/t/how-to-force-mobile-keyboard-to-appear/11477) -- HTML input vs canvas input for virtual keyboard (MEDIUM confidence, community)
-- [RexUI Virtual Joystick](https://rexrainbow.github.io/phaser3-rex-notes/docs/site/virtualjoystick/) -- Plugin documentation (HIGH confidence)
-- [phaser3-rex-plugins npm](https://www.npmjs.com/package/phaser3-rex-plugins) -- v1.80.x, feature list (HIGH confidence)
-- [@stable-canvas/comfyui-client](https://github.com/StableCanvas/comfyui-client) -- TypeScript ComfyUI client, v1.5.7 (MEDIUM confidence)
-- [inkjs GitHub](https://github.com/y-lohse/inkjs) -- Conditional branching, variable support for multiple endings (HIGH confidence)
-- [ink Writing Documentation](https://github.com/inkle/ink/blob/master/Documentation/WritingWithInk.md) -- Conditional diverts, variables, knots (HIGH confidence)
-- [Adventure Game Hint System Pattern](https://docs.textadventures.co.uk/quest/guides/a_hint_system.html) -- Stage-gate progressive hints (MEDIUM confidence)
+### Primary (HIGH confidence -- verified from source code)
+- Phaser 3.90.0 source: `node_modules/phaser/src/fx/` -- 15 FX effects confirmed (Barrel, Bloom, Blur, Bokeh, Circle, ColorMatrix, Displacement, Glow, Gradient, Pixelate, Shadow, Shine, Vignette, Wipe)
+- Phaser 3.90.0 source: `node_modules/phaser/src/gameobjects/particles/ParticleEmitter.js` -- Full particle configuration API confirmed
+- Phaser 3.90.0 source: `node_modules/phaser/src/gameobjects/lights/LightsPlugin.js` -- Light2D pipeline with `addLight()`, `setAmbientColor()`, max 10 lights
+- Phaser 3.90.0 source: `node_modules/phaser/src/cameras/2d/effects/` -- Fade, Flash, Pan, RotateTo, Shake, Zoom camera effects
+- Existing codebase: `src/game/main.ts` -- `render: { pixelArt: true }`, `Phaser.AUTO` renderer
+- Existing codebase: `src/game/systems/SceneTransition.ts` -- Current fade/slide implementation
+- Existing codebase: `scripts/comfyui-workflow.json` -- Current Flux GGUF + LoRA workflow
+- Existing codebase: `scripts/style-guide.json` -- Current prompt templates and LoRA settings
+
+### Secondary (MEDIUM confidence -- training data)
+- Flux Dev guidance scale: 3.0-4.5 optimal range is well-established in community practice
+- LoRA strength tuning: 0.6-0.9 range standard for style LoRAs on Flux
+- Flux negative prompts via CFGGuider: reported working but with subtle effect compared to SD1.5
+- ComfyUI-KJNodes: known custom node pack for batch comparison workflows
+- Phaser Light2D without normal maps: produces flat gradient lighting (confirmed by source reading of LightsPlugin which mentions normal maps as optional)
+
+### Needs Validation (LOW confidence)
+- Optimal LoRA strength per asset type (0.65 backgrounds, 0.85 sprites) -- needs empirical testing
+- Flux Dev 1024x576 non-square generation quality -- Flux supports it but quality at non-square ratios should be verified
+- Negative prompt effectiveness on Flux Dev -- community reports are mixed
+- ComfyUI Impact Pack utility for pixel art detail enhancement -- may be designed for photorealistic content
 
 ---
-*Stack research for: KQGame v2.0 Art & Polish features*
+*Stack research for: Uncrowned v3.0 Flux Art Generation & Visual Effects*
 *Researched: 2026-02-21*
-*Key insight: Only ONE new npm dependency needed (sharp). Everything else is built on existing stack or external build tools.*
+*Key insight: ZERO new npm dependencies. All visual effects use Phaser 3.90 built-ins (ParticleEmitter, LightsPlugin, PostFX, Camera effects). Art generation improvements are tuning of existing pipeline (LoRA strength, prompt templates, workflow nodes).*

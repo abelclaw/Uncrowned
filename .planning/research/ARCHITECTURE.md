@@ -1,799 +1,867 @@
-# Architecture Research: v2.0 Art & Polish Integration
+# Architecture: Flux Art Generation & Phaser 3 Visual Effects
 
-**Domain:** Feature integration into existing Phaser 3 adventure game
+**Domain:** AI art pipeline integration + runtime visual effects for existing adventure game
 **Researched:** 2026-02-21
-**Confidence:** HIGH for existing architecture analysis, MEDIUM for Flux pipeline specifics
+**Confidence:** HIGH for Phaser 3 FX APIs (verified from type definitions), MEDIUM for Flux/LoRA batch pipeline patterns (training data, no live verification)
 
 ## Executive Summary
 
-The v2.0 features -- Flux art pipeline, progressive hints, death gallery, mobile layout, and multiple endings -- integrate into the existing architecture through well-defined extension points. The codebase already follows data-driven patterns (JSON room files, EventBus decoupling, singleton state) that make most features additive rather than invasive. The critical architectural insight is that **none of these features require rewriting existing systems**; they extend them through new components that hook into existing EventBus events, GameState data, and the JSON room data schema.
+This milestone adds two distinct architectural concerns to Uncrowned: (1) upgrading the existing build-time art pipeline with LoRA integration, batch orchestration, and quality validation, and (2) adding runtime visual effects to RoomScene (scene transitions, lighting, weather particles, ambient animations). These concerns are intentionally decoupled -- the art pipeline produces static PNGs consumed by the existing asset loader, while visual effects are a new runtime system that layers on top of the existing parallax rendering.
 
-The Flux art pipeline is the only feature that operates outside runtime -- it is a build-time/offline tool that produces assets consumed by the existing Preloader. All other features are runtime additions that integrate through the established patterns.
-
----
-
-## Current Architecture Map
-
-### System Topology (As-Built)
-
-```
-                    +-----------------------+
-                    |      index.html       |
-                    |   #app > #game-container
-                    +----------+------------+
-                               |
-              +----------------+----------------+
-              |                                 |
-   +----------v-----------+          +----------v-----------+
-   |    Phaser Canvas      |          |    HTML Overlays      |
-   |    (960x540, FIT)     |          |  TextInputBar         |
-   |                       |          |  NarratorDisplay       |
-   |  Scenes:              |          |  InventoryPanel        |
-   |   Boot -> Preloader   |          |  DialogueUI            |
-   |   -> MainMenuScene    |          +----------+-------------+
-   |   -> RoomScene        |                     |
-   |   -> DeathScene       |                     |
-   +----------+------------+                     |
-              |                                  |
-   +----------v----------------------------------v-----------+
-   |                    EventBus (Phaser.Events)              |
-   |  Events: command-submitted, trigger-death, go-command,   |
-   |  item-picked-up, inventory-toggle, load-game,            |
-   |  room-update, start-dialogue, scene-ready                |
-   +----+----------+----------+----------+----------+---------+
-        |          |          |          |          |
-   +----v---+ +----v---+ +----v---+ +----v---+ +----v---+
-   |Command | |Puzzle  | |Game    | |Save    | |Audio   |
-   |Dispatch| |Engine  | |State   | |Manager | |Manager |
-   +--------+ +--------+ +--------+ +--------+ +--------+
-        |
-   +----v-----------+
-   |  HybridParser   |
-   |  (TextParser +  |
-   |   OllamaClient) |
-   +----------------+
-```
-
-### Key Extension Points Identified
-
-| Extension Point | Mechanism | Used By v2 Features |
-|----------------|-----------|---------------------|
-| `GameStateData` interface + `GameState` singleton | Add new fields, serialize/deserialize automatically | Death gallery, multiple endings, hint tracking |
-| `EventBus` events | Add new event types, existing systems listen | Hints (puzzle-attempt-failed), death gallery (death-recorded) |
-| `RoomData` JSON schema | Add optional fields to room JSON | Hints (per-puzzle hints), art assets (new background keys), endings (branch points) |
-| `PuzzleAction` union type | Add new action types to the discriminated union | Multiple endings (trigger-ending), hints (show-hint) |
-| `PuzzleCondition` union type | Add new condition types | Multiple endings (ending-path conditions) |
-| `DeathScene` overlay | Extend with gallery link, death-specific art | Death gallery |
-| `Preloader` asset loading | Add new asset load calls | Flux-generated backgrounds, item sprites, ending scenes |
-| `style.css` + HTML overlay pattern | CSS media queries, new HTML elements | Mobile layout |
-| `Phaser.Scale` config in `main.ts` | Adjust scale mode, add resize handlers | Mobile responsive |
+The existing architecture provides clean integration points: `generate-art.ts` already talks to ComfyUI and handles sharp post-processing; `RoomScene.create()` already has a layered rendering pipeline with depths; Phaser 3.90 ships with a full FX pipeline (`preFX`/`postFX`) and modern `ParticleEmitter` API. The primary architectural work is designing the **data-driven effects configuration** that ties visual effects to room JSON, and upgrading the art pipeline from single-image generation to batch orchestration with quality gates.
 
 ---
 
-## Feature 1: Flux Art Generation Pipeline
+## Current Architecture Baseline
 
-### Architecture Decision: Offline Tool, Not Runtime
-
-The Flux pipeline is a **build-time/offline asset generation tool**, NOT a runtime system. It produces PNG files that replace placeholder assets in `public/assets/`. The game engine does not change -- it already loads images by key from the Preloader.
-
-### Component Architecture
+### Art Pipeline (Build-Time)
 
 ```
-OFFLINE PIPELINE (not part of game runtime)
-============================================
-
-  +------------------+     +------------------+     +------------------+
-  |  Art Manifest    |---->|  Generation      |---->|  Post-Processing |
-  |  (JSON config)   |     |  Script          |     |  (pixelate,      |
-  |                  |     |  (Python/Node)   |     |   palette,       |
-  |  Per-room:       |     |                  |     |   resize)        |
-  |  - prompt        |     |  ComfyUI API     |     +--------+---------+
-  |  - style refs    |     |  or diffusers    |              |
-  |  - dimensions    |     +------------------+              v
-  |  - seed/cfg      |                              +--------+---------+
-  +------------------+                              |  Output to       |
-                                                    |  public/assets/  |
-                                                    |  backgrounds/    |
-                                                    |  sprites/        |
-                                                    +------------------+
+scripts/art-manifest.json    scripts/style-guide.json    scripts/comfyui-workflow.json
+         |                           |                            |
+         +---------------------------+----------------------------+
+                                     |
+                          scripts/generate-art.ts
+                          (TypeScript, runs via tsx)
+                                     |
+                          +----------+----------+
+                          |                     |
+                   ComfyUI REST API      --placeholder mode
+                   (127.0.0.1:8188)      (sharp SVG->PNG)
+                          |
+                   Poll /history/{id}
+                          |
+                   Download /view?filename=
+                          |
+                   sharp post-process
+                   (resize to target dims)
+                          |
+                   public/assets/backgrounds/
+                   public/assets/sprites/
 ```
 
-### New Components
+**Key facts from codebase inspection:**
+- Workflow: Flux GGUF (Q5_0) + DualCLIP + LoRA (Flux-2D-Game-Assets-LoRA) at strength 0.8
+- Generation resolution: 1024x1024, post-processed to 960x540 (rooms) or 1920x540 (shared)
+- Style guide defines per-act palettes, prompt prefixes/suffixes for backgrounds, sprites, items
+- 91 total assets: 6 shared backgrounds, 36 room backgrounds, 1 player sprite, ~30 items, ~18 NPCs
+- Placeholder mode generates labeled colored rectangles at correct dimensions
+- Manifest stores fixed seeds for reproducibility
 
-| Component | Location | Purpose |
-|-----------|----------|---------|
-| `tools/art-pipeline/manifest.json` | Project root (not src/) | Defines all assets to generate: room backgrounds, item sprites, character art. Maps room IDs to prompts, style parameters, dimensions |
-| `tools/art-pipeline/generate.py` | Project root | Python script that reads manifest, calls ComfyUI API or diffusers pipeline, saves outputs |
-| `tools/art-pipeline/postprocess.py` | Project root | Pixel art post-processing: downscale to native resolution, apply palette constraints, ensure consistent style |
-| `tools/art-pipeline/style-guide.json` | Project root | Style parameters shared across all generations: color palette, pixel density, art direction keywords |
-
-### Integration With Existing Architecture
-
-**Zero runtime changes required.** The pipeline produces files that slot directly into the existing asset loading flow:
-
-1. Pipeline generates `public/assets/backgrounds/cave_entrance_bg.png` (replacing placeholder `bg-ground`)
-2. Room JSON already references background layer keys: `{ "key": "bg-cave-entrance", "scrollFactor": 1 }`
-3. Preloader already loads by key: `this.load.image('bg-cave-entrance', 'assets/backgrounds/cave_entrance_bg.png')`
-4. RoomScene already renders layers by key with parallax
-
-**Modification needed in Preloader.ts:** Replace placeholder background load calls with room-specific background loads. Currently all rooms share the same 4 placeholder layers (`bg-sky`, `bg-mountains`, `bg-trees`, `bg-ground`). With Flux art, each room gets unique backgrounds.
-
-**Modification needed in room JSONs:** Update `background.layers[].key` values from shared placeholders to room-specific asset keys.
-
-### Data Flow
+### RoomScene Rendering (Runtime)
 
 ```
-manifest.json --> generate.py --> ComfyUI/diffusers --> raw PNG
-                                                         |
-                                                         v
-                                              postprocess.py --> pixel art PNG
-                                                                      |
-                                                                      v
-                                                          public/assets/backgrounds/
-                                                                      |
-                                                                      v
-                                                     Preloader.ts loads by key
-                                                                      |
-                                                                      v
-                                                 RoomScene.create() renders layers
+RoomScene.create()
+    |
+    +-- loadRoomAssets() [async, lazy]
+    |       |
+    |       +-- Background layers (depth 0,1,2) with scrollFactor parallax
+    |       +-- Item sprites (depth 5)
+    |       +-- NPC sprites (depth 5)
+    |
+    +-- Player (depth via Player class)
+    +-- Exit zones, hotspot zones (depth 100 for debug)
+    +-- Camera: setBounds(0, 0, worldWidth, 540), follow player
+    +-- Transition-in: fade (camera.fadeIn) or slide (tween scrollX)
 ```
 
-### Asset Manifest Schema
+**Current rendering depths:**
+- 0, 1, 2: Parallax background layers (sky, mid, ground)
+- 5: Item and NPC sprites
+- 100: Debug overlays
+- 999: Loading text
+
+**Current transitions (SceneTransition.ts):**
+- `fade`: camera.fadeOut -> scene.start -> camera.fadeIn (500ms)
+- `slide-left`/`slide-right`: tween camera.scrollX -> scene.start with transitionFrom
+
+---
+
+## Recommended Architecture
+
+### Part 1: Art Pipeline Upgrades
+
+#### 1A. Batch Orchestration
+
+The current `generate-art.ts` processes assets sequentially. For 91 assets at ~30s each, that is 45+ minutes. Batch orchestration runs multiple generations in parallel (ComfyUI can queue prompts) and tracks progress across interrupted sessions.
+
+**New component: `scripts/generate-art-batch.ts`**
+
+```
+art-manifest.json
+       |
+       v
++------------------+     +-----------------------+
+| Batch Controller |---->| Progress Tracker      |
+| (reads manifest, |     | (.art-progress.json)  |
+| filters pending) |     | tracks: generated,    |
++--------+---------+     | failed, pending       |
+         |               +-----------------------+
+         v
++------------------+
+| Queue Manager    |  Submit N prompts concurrently
+| (concurrent:2-4) |  to ComfyUI queue
++--------+---------+
+         |
+    +----+----+
+    |         |
+    v         v
+ ComfyUI   ComfyUI
+ prompt 1  prompt 2  ...
+    |         |
+    v         v
+ Poll & Download
+    |         |
+    v         v
+ Post-process (sharp)
+    |         |
+    v         v
+ Quality Validation
+    |         |
+    v         v
+ Output to public/assets/
+```
+
+**Modification to existing `generate-art.ts`:** Refactor core functions (`generateImage`, `processBackground`, `processSprite`) into a shared module `scripts/art-pipeline/core.ts` that both the existing single-mode script and the new batch script consume. Do NOT rewrite the working script; extract and reuse.
+
+| Component | Location | Status | Purpose |
+|-----------|----------|--------|---------|
+| `scripts/art-pipeline/core.ts` | New | Extract from generate-art.ts | Shared generation, post-processing, manifest parsing |
+| `scripts/art-pipeline/batch.ts` | New | New file | Concurrent queue management, progress tracking, resume |
+| `scripts/art-pipeline/validate.ts` | New | New file | Quality checks on generated images |
+| `scripts/art-pipeline/progress.json` | New (gitignored) | Generated at runtime | Tracks batch progress for resume |
+| `scripts/generate-art.ts` | Existing | Refactor to import core | Keeps working as single-image CLI |
+
+#### 1B. LoRA Integration Improvements
+
+The current workflow hardcodes `Flux-2D-Game-Assets-LoRA.safetensors` at strength 0.8 in the ComfyUI workflow JSON. To support LoRA experimentation (different LoRAs for different asset types, strength tuning per room), the workflow injection needs to become parameterized.
+
+**Modification to `comfyui-workflow.json` usage:**
 
 ```typescript
-// tools/art-pipeline/manifest.json
-interface ArtManifest {
-  style: {
-    basePromptSuffix: string;  // "pixel art, 16-bit, fantasy adventure game"
-    negativePrompt: string;
-    colorPalette: string[];    // Hex colors for palette constraint
-    pixelScale: number;        // Target pixel size (e.g., 2 = 480x270 upscaled to 960x540)
-  };
-  rooms: Record<string, {
-    layers: Array<{
-      key: string;             // Matches Phaser asset key
-      prompt: string;          // Generation prompt
-      dimensions: { width: number; height: number };  // Output size
-      scrollFactor: number;    // Parallax factor (for reference)
-      seed?: number;           // Fixed seed for reproducibility
-    }>;
-  }>;
-  sprites: Record<string, {
-    prompt: string;
-    dimensions: { width: number; height: number };
-    frameCount?: number;       // For sprite sheets
-    seed?: number;
-  }>;
+// In core.ts, before submitting to ComfyUI:
+function injectWorkflowParams(
+    workflow: ComfyUIWorkflow,
+    params: {
+        prompt: string;
+        seed: number;
+        loraName?: string;      // Override style-guide default
+        loraStrength?: number;  // Override style-guide default
+        width?: number;         // Override generation resolution
+        height?: number;        // Override generation resolution
+    }
+): ComfyUIWorkflow {
+    const copy = JSON.parse(JSON.stringify(workflow));
+    copy[PROMPT_NODE_ID].inputs.text = params.prompt;
+    copy[SEED_NODE_ID].inputs.noise_seed = params.seed;
+
+    if (params.loraName) {
+        copy['3'].inputs.lora_name = params.loraName;
+    }
+    if (params.loraStrength !== undefined) {
+        copy['3'].inputs.strength_model = params.loraStrength;
+    }
+    // Width/height affect EmptySD3LatentImage and ModelSamplingFlux
+    if (params.width && params.height) {
+        copy['4'].inputs.width = params.width;
+        copy['4'].inputs.height = params.height;
+        copy['11'].inputs.width = params.width;
+        copy['11'].inputs.height = params.height;
+    }
+    return copy;
 }
 ```
 
-### Why ComfyUI Over Raw diffusers
-
-ComfyUI provides a node-based workflow that can be saved and reproduced, supports ControlNet for pose/composition consistency, has native LoRA support for pixel art models like Pixel-Art-XL, and exposes a REST API for programmatic generation. The workflow file becomes a version-controlled artifact that ensures all team members generate assets with identical parameters.
-
-**Confidence: MEDIUM** -- ComfyUI API integration patterns are well-documented but the specific pixel art workflow quality depends on model/LoRA selection that needs iterative testing.
-
----
-
-## Feature 2: Progressive Hint System
-
-### Architecture Decision: EventBus-Driven Hint Manager
-
-The hint system hooks into the existing command dispatch flow. When a player attempts an action that fails (puzzle conditions not met, wrong verb/subject), the HintManager tracks these attempts and offers progressively more specific hints.
-
-### Component Architecture
-
-```
-                    command-submitted
-                          |
-                          v
-                    HybridParser.parse()
-                          |
-                          v
-                    CommandDispatcher.dispatch()
-                          |
-                   +------+------+
-                   |             |
-              (success)    (failure / no match)
-                   |             |
-                   v             v
-              normal flow   EventBus.emit('hint-opportunity', {
-                              roomId, verb, subject, target,
-                              puzzleContext })
-                                  |
-                                  v
-                            +-----+-------+
-                            | HintManager |
-                            +-----+-------+
-                                  |
-                    (check attempt count for this puzzle area)
-                                  |
-                    +-------------+-------------+
-                    |             |             |
-                 (1-2 tries)  (3-5 tries)   (6+ tries)
-                    |             |             |
-                    v             v             v
-              "Hmm, maybe    "That door    "Use the rusty
-               look around    needs a key   key on the
-               more..."       of some       locked door."
-                              kind..."
-                                  |
-                                  v
-                    NarratorDisplay.typewrite(hint)
-```
-
-### New Components
-
-| Component | Location | Purpose |
-|-----------|----------|---------|
-| `src/game/systems/HintManager.ts` | Systems | Tracks failed attempts per puzzle area, selects appropriate hint tier, emits hints through NarratorDisplay |
-| `public/assets/data/hints.json` | Data | Central hint registry mapping puzzle IDs to tiered hint arrays |
-
-### Modifications to Existing Components
-
-| Component | Change | Impact |
-|-----------|--------|--------|
-| `CommandDispatcher.ts` | Emit `hint-opportunity` event when dispatch returns `handled: false` or puzzle conditions fail | LOW -- add 3-5 lines after existing failure paths |
-| `PuzzleEngine.ts` | Return richer failure info (which puzzle almost matched, what condition failed) | LOW -- add optional return data to `tryPuzzle` null result |
-| `RoomScene.ts` | Create HintManager instance, wire EventBus listener, add "hint" command | LOW -- same pattern as existing system wiring |
-| `GameStateData` | Add `hintAttempts: Record<string, number>` for tracking | LOW -- one field addition |
-| `VerbTable.ts` | Add "hint" / "help" verb | LOW -- one entry |
-
-### Hint Data Schema
-
-```typescript
-// public/assets/data/hints.json
-interface HintRegistry {
-  puzzles: Record<string, {  // Key = puzzle ID from room JSON
-    tiers: string[];          // Index 0 = vague, last = explicit
-    triggerContext: {          // What player actions trigger hint tracking
-      verbs: string[];        // Verbs that indicate player is in this puzzle area
-      subjects: string[];     // Subjects that relate to this puzzle
-    };
-  }>;
-  generalHints: Record<string, string[]>;  // Room-level hints when no specific puzzle detected
-}
-```
-
-### Example Hint Tiers
+**Manifest extension for per-asset LoRA overrides:**
 
 ```json
 {
-  "use-key-on-door": {
-    "tiers": [
-      "That door looks sturdy. You'd need something to convince it to open.",
-      "Doors have locks. Locks have keyholes. Keyholes want keys. It's a whole ecosystem.",
-      "Perhaps that rusty key you found would fit the lock on this door?"
-    ],
-    "triggerContext": {
-      "verbs": ["open", "use", "push", "pull"],
-      "subjects": ["door", "locked-door", "cave-mouth"]
+    "roomBackgrounds": {
+        "crystal_chamber": {
+            "prompt": "...",
+            "seed": 200029,
+            "output": "public/assets/backgrounds/rooms/crystal_chamber.png",
+            "dimensions": { "width": 960, "height": 540 },
+            "act": "act2",
+            "loraOverride": {
+                "name": "pixel-art-crystal-style.safetensors",
+                "strength": 0.6
+            }
+        }
     }
-  }
 }
 ```
 
-### Integration Pattern
+#### 1C. Quality Validation
 
-The HintManager follows the exact same pattern as AudioManager -- singleton, initialized per-scene, EventBus-driven, cleanup on shutdown:
+A new validation step runs after each image is generated and post-processed, BEFORE writing to the final output path.
+
+**New component: `scripts/art-pipeline/validate.ts`**
+
+| Check | Method | Action on Failure |
+|-------|--------|-------------------|
+| Dimensions correct | sharp metadata | Reject + log |
+| Not solid color | Pixel variance check (sharp stats) | Flag for review |
+| Not predominantly black/white | Histogram analysis | Flag for review |
+| File size reasonable | fs.stat (>1KB for sprites, >10KB for backgrounds) | Flag for review |
+| Alpha channel present (sprites) | sharp metadata hasAlpha | Reject + log |
+| Matches act palette (optional) | Sample dominant colors vs style-guide palette | Flag for review (soft check) |
 
 ```typescript
-// In RoomScene.create():
-this.hintManager = HintManager.getInstance();
-this.hintManager.init(this.roomData, this.narratorDisplay);
+interface ValidationResult {
+    passed: boolean;
+    checks: Array<{
+        name: string;
+        passed: boolean;
+        message: string;
+    }>;
+}
 
-// In RoomScene shutdown:
-this.hintManager.cleanup();
+async function validateAsset(
+    imagePath: string,
+    entry: GenerationEntry,
+    styleGuide: StyleGuide
+): Promise<ValidationResult> {
+    const metadata = await sharp(imagePath).metadata();
+    const stats = await sharp(imagePath).stats();
+    // ... run checks
+}
 ```
 
-**Confidence: HIGH** -- This follows established EventBus patterns already proven in the codebase. The hint data schema mirrors the existing puzzle data patterns.
+**Integration:** Validation runs automatically in the generation pipeline. Failures are logged to `scripts/art-pipeline/validation-report.json`. The `--strict` flag makes validation failures halt the pipeline; default behavior flags and continues.
 
 ---
 
-## Feature 3: Death Gallery Achievements
+### Part 2: Runtime Visual Effects System
 
-### Architecture Decision: Extend Existing Death System
+#### 2A. Effects Manager (New System)
 
-The death system already tracks `deathCount` in GameState and processes death through a clean `trigger-death` -> `DeathScene` overlay flow. The gallery extends this by recording WHICH deaths occurred, not just how many.
+A new `EffectsManager` system manages all visual effects for the current room. It follows the singleton-per-scene pattern established by `AudioManager` -- initialized in `RoomScene.create()`, cleaned up on shutdown.
 
-### Component Architecture
+**New component: `src/game/systems/EffectsManager.ts`**
 
 ```
-EXISTING DEATH FLOW (unchanged):
-  CommandDispatcher -> PuzzleEngine -> trigger-death event
-       -> RoomScene handler -> DeathScene overlay
-
-NEW ADDITIONS:
-  +- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -+
-  |                                                             |
-  |  trigger-death event                                        |
-  |       |                                                     |
-  |       +---> DeathGallery.recordDeath(deathId, roomId)       |
-  |                   |                                         |
-  |                   v                                         |
-  |            GameState.deathsDiscovered[] updated              |
-  |                                                             |
-  |  DeathScene overlay (MODIFIED):                             |
-  |       +---> Shows "Deaths discovered: X/Y"                  |
-  |       +---> NEW indicator if this death is first discovery  |
-  |       +---> "Gallery" button -> DeathGalleryScene           |
-  |                                                             |
-  |  DeathGalleryScene (NEW):                                   |
-  |       +---> Grid of all possible deaths                     |
-  |       +---> Discovered = title + narrator text + room       |
-  |       +---> Undiscovered = silhouette/question mark         |
-  |       +---> Completion percentage                           |
-  |       +---> Accessible from MainMenuScene too               |
-  +- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -+
+RoomScene.create()
+    |
+    +-- EffectsManager.init(scene, roomData)
+            |
+            +-- Read roomData.effects config
+            |
+            +-- Create weather particles (if configured)
+            |       rain, snow, falling leaves, dust motes, fireflies
+            |
+            +-- Apply lighting overlay (if configured)
+            |       time-of-day tint, torch flicker, crystal glow
+            |
+            +-- Start ambient animations (if configured)
+                    water shimmer, candle flicker, wind sway
 ```
 
-### New Components
+| Component | Location | Status | Purpose |
+|-----------|----------|--------|---------|
+| `src/game/systems/EffectsManager.ts` | New | Core effects orchestrator | Creates/manages all per-room effects |
+| `src/game/effects/WeatherEmitter.ts` | New | Weather particle presets | Rain, snow, leaves, dust, fireflies |
+| `src/game/effects/LightingOverlay.ts` | New | Lighting/tint system | Gradient overlays, vignette, day/night tint |
+| `src/game/effects/AmbientAnimation.ts` | New | Looping ambient FX | Water shimmer, torch flicker, wind |
+| `src/game/effects/TransitionEffect.ts` | New | Enhanced transitions | Wipe, pixelate, iris, dissolve |
 
-| Component | Location | Purpose |
-|-----------|----------|---------|
-| `src/game/systems/DeathGallery.ts` | Systems | Records discovered deaths, checks completion, provides gallery data. Singleton mirroring AudioManager pattern |
-| `src/game/scenes/DeathGalleryScene.ts` | Scenes | Full-screen scene showing all deaths as a collectible grid |
-| `public/assets/data/death-registry.json` | Data | Master list of ALL possible deaths across all rooms, with metadata for gallery display |
+#### 2B. Room JSON Effects Schema Extension
 
-### Modifications to Existing Components
-
-| Component | Change | Impact |
-|-----------|--------|--------|
-| `GameStateData` | Add `deathsDiscovered: string[]` (array of deathId strings) | LOW -- one field |
-| `DeathScene.ts` | Add "X/Y deaths found" text, "New!" badge for first discovery, "Gallery" button | MEDIUM -- adds ~30 lines to create() |
-| `MainMenuScene.ts` | Add "Death Gallery" menu option | LOW -- one menu item |
-| `main.ts` | Register `DeathGalleryScene` in scene list | LOW -- one line |
-| `Preloader.ts` | Load `death-registry.json` | LOW -- one line |
-
-### Death Registry Schema
+Effects are configured per-room in the existing room JSON files, following the same optional-field pattern used by `audio`, `puzzleHints`, and `dynamicDescriptions`.
 
 ```typescript
-// public/assets/data/death-registry.json
-interface DeathRegistry {
-  deaths: Array<{
-    id: string;              // Matches deathId in room JSON
-    roomId: string;          // Which room this death occurs in
-    title: string;           // "Death by Curiosity"
-    category: string;        // "Poison" | "Fall" | "Combat" | "Stupidity" | etc.
-    galleryHint: string;     // Cryptic hint for undiscovered: "Something in the cave entrance is not meant to be consumed..."
-    rarity: 'common' | 'uncommon' | 'rare' | 'legendary';  // For visual flair
-  }>;
-  totalDeaths: number;       // Pre-computed total for percentage display
+// Addition to RoomData interface
+export interface RoomEffectsData {
+    /** Weather particle effects active in this room */
+    weather?: {
+        type: 'rain' | 'snow' | 'leaves' | 'dust' | 'fireflies' | 'embers' | 'none';
+        intensity?: number;  // 0.0-1.0, default 0.5
+        wind?: number;       // Horizontal drift, pixels/sec, default 0
+    };
+
+    /** Ambient lighting configuration */
+    lighting?: {
+        /** Overall scene tint as hex color */
+        tint?: string;       // e.g., "#2a1a4a" for purple cave tint
+        /** Vignette darkness at screen edges */
+        vignette?: number;   // 0.0-1.0 strength, default 0
+        /** Ambient light level affecting brightness */
+        ambientLevel?: number; // 0.0-1.0, default 1.0
+        /** Flickering light sources */
+        flicker?: {
+            color: string;
+            x: number;
+            y: number;
+            radius: number;
+            intensity?: number;
+        }[];
+    };
+
+    /** Ambient looping animations */
+    ambient?: {
+        type: 'water-shimmer' | 'torch-flicker' | 'wind-sway' | 'crystal-pulse';
+        /** Region where the effect applies */
+        zone?: { x: number; y: number; width: number; height: number };
+    }[];
 }
 ```
 
-### Save/Load Integration
+**Example room JSON with effects:**
 
-The `deathsDiscovered` array serializes automatically via the existing `GameState.serialize()` / `deserialize()` flow since it is a simple string array on `GameStateData`. No SaveManager changes needed.
+```json
+{
+    "id": "crystal_chamber",
+    "effects": {
+        "weather": {
+            "type": "dust",
+            "intensity": 0.3,
+            "wind": -5
+        },
+        "lighting": {
+            "tint": "#1a2a4a",
+            "vignette": 0.4,
+            "ambientLevel": 0.6,
+            "flicker": [
+                { "color": "#4488ff", "x": 480, "y": 200, "radius": 150, "intensity": 0.7 }
+            ]
+        },
+        "ambient": [
+            { "type": "crystal-pulse", "zone": { "x": 400, "y": 150, "width": 200, "height": 200 } }
+        ]
+    }
+}
+```
 
-**Important:** `deathsDiscovered` should persist across save slots as a meta-progression field (player keeps death gallery progress even when loading an earlier save). This requires a separate localStorage key outside the save slot system.
+#### 2C. Weather Particle System
+
+Uses Phaser 3.90's `ParticleEmitter` API (verified from type definitions: `scene.add.particles(x, y, texture, config)`).
+
+**Key design decisions:**
+
+1. **Single particle texture atlas:** Create a small atlas (`effects-particles.png`) with frames for raindrop, snowflake, leaf, dust mote, firefly, ember. Loaded in Preloader as spritesheet. This is ONE additional asset load, not per-effect.
+
+2. **Depth placement:** Weather particles render at depth 50 (above backgrounds at 0-2, above items/NPCs at 5, below debug at 100, below UI). Rain/snow should appear in front of the scene but behind UI.
+
+3. **ScrollFactor for parallax consistency:** Weather particles use `setScrollFactor(1)` so they move with the camera, giving a natural parallax feel. For effects like distant rain, use lower scrollFactor (0.5).
+
+4. **Performance budget:** Cap `maxAliveParticles` per weather type:
+   - Rain: 200 particles max (fast lifecycle 500ms)
+   - Snow: 100 particles max (slow lifecycle 3000ms)
+   - Leaves/dust: 30 particles max
+   - Fireflies: 15 particles max
 
 ```typescript
-// DeathGallery stores meta-progression independently
-const DEATH_GALLERY_KEY = 'kqgame-death-gallery';
-localStorage.setItem(DEATH_GALLERY_KEY, JSON.stringify(deathsDiscovered));
-```
+// WeatherEmitter.ts - preset factory
+export class WeatherEmitter {
+    static createRain(scene: Phaser.Scene, intensity: number, wind: number): Phaser.GameObjects.Particles.ParticleEmitter {
+        return scene.add.particles(0, -10, 'effects-particles', {
+            frame: 'raindrop',
+            x: { min: -100, max: 1060 },
+            y: -10,
+            lifespan: { min: 400, max: 600 },
+            speedY: { min: 300, max: 500 },
+            speedX: wind,
+            scale: { start: 0.5, end: 0.2 },
+            alpha: { start: 0.6, end: 0.1 },
+            quantity: Math.ceil(intensity * 5),
+            frequency: 50,
+            maxAliveParticles: Math.ceil(intensity * 200),
+            blendMode: Phaser.BlendModes.ADD,
+        }).setDepth(50).setScrollFactor(1);
+    }
 
-**Confidence: HIGH** -- Direct extension of the existing death system with minimal coupling. The pattern of "record event -> check against registry -> display in gallery" is straightforward.
+    static createSnow(scene: Phaser.Scene, intensity: number, wind: number): Phaser.GameObjects.Particles.ParticleEmitter {
+        return scene.add.particles(0, -10, 'effects-particles', {
+            frame: 'snowflake',
+            x: { min: -100, max: 1060 },
+            y: -10,
+            lifespan: { min: 2000, max: 4000 },
+            speedY: { min: 30, max: 80 },
+            speedX: { min: wind - 20, max: wind + 20 },
+            scale: { start: 0.3, end: 0.1 },
+            alpha: { start: 0.8, end: 0.2 },
+            rotate: { min: 0, max: 360 },
+            quantity: Math.ceil(intensity * 2),
+            frequency: 200,
+            maxAliveParticles: Math.ceil(intensity * 100),
+        }).setDepth(50).setScrollFactor(1);
+    }
 
----
-
-## Feature 4: Mobile-Responsive Layout
-
-### Architecture Decision: CSS-First With Minimal JS Adaptation
-
-The existing layout uses `Phaser.Scale.FIT` with `CENTER_BOTH`, which already handles canvas resizing. The challenge is the HTML overlays (TextInputBar, NarratorDisplay, InventoryPanel) and touch input for the text parser.
-
-### Layout Architecture
-
-```
-DESKTOP (current, 960x540+):
-+------------------------------------------+
-|              Phaser Canvas               |
-|              960 x 540                   |
-|                                          |
-+------------------------------------------+
-| [parser-response text area              ]|
-| [> parser-input field                   ]|
-+------------------------------------------+
-
-MOBILE PORTRAIT (<768px):
-+-------------------------+
-|     Phaser Canvas       |
-|     (scaled to fit)     |
-|                         |
-|   [touch tap zones]     |
-+-------------------------+
-| [narrator text         ]|
-| [input / touch kbd btn ]|
-+--+----+----+----+----+--+
-|  | Go | Look|Take|Use |  |  <-- Quick verb buttons
-+--+----+----+----+----+--+
-
-MOBILE LANDSCAPE (<768px height):
-+------------------------------------------+
-|         Phaser Canvas (wider)            |
-|                                          |
-+------------------------------------------+
-| [narrator] [input field] [verb buttons]  |
-+------------------------------------------+
-```
-
-### New Components
-
-| Component | Location | Purpose |
-|-----------|----------|---------|
-| `src/game/ui/MobileControls.ts` | UI | Touch-friendly verb buttons, tap-to-interact zones, virtual keyboard trigger |
-| `src/game/ui/ResponsiveLayout.ts` | UI | Detects viewport, manages layout mode switching, coordinates HTML overlay positioning |
-
-### Modifications to Existing Components
-
-| Component | Change | Impact |
-|-----------|--------|--------|
-| `style.css` | Add CSS media queries for mobile breakpoints, flex layout adjustments | MEDIUM -- significant CSS additions |
-| `main.ts` (Phaser config) | Keep `Scale.FIT` but add `resize` callback for layout updates | LOW -- 2-3 lines |
-| `TextInputBar.ts` | Add mobile mode: show/hide keyboard button, compact layout | MEDIUM -- conditional rendering |
-| `NarratorDisplay.ts` | Adjust font sizes for mobile viewport | LOW -- CSS handles most of this |
-| `InventoryPanel.ts` | Touch-friendly item sizing, swipe-to-scroll | MEDIUM -- touch event handling |
-| `RoomScene.ts` | Add tap-to-interact alternative to click-to-move (long-press for walk, tap for interact) | MEDIUM -- new input handler branch |
-| `index.html` | Add viewport meta tag for mobile (already exists: `width=device-width, initial-scale=1.0`) | NONE -- already present |
-
-### Mobile Touch Input Strategy
-
-The text parser is the core interaction -- it MUST work on mobile. Two approaches, recommended to implement both:
-
-**Approach A: Quick Verb Buttons**
-- Horizontal bar of common verbs (Look, Take, Use, Go, Talk, Inventory)
-- Tap verb, then tap hotspot/exit in scene
-- Builds the command automatically: "look at [tapped hotspot]"
-- No typing required for 90% of interactions
-
-**Approach B: Virtual Keyboard Input**
-- Tap the input field to trigger mobile keyboard
-- Works with existing TextInputBar since it is a real HTML `<input>` element
-- Mobile keyboard will push the viewport; handle with `visualViewport` API
-- Use `window.visualViewport.addEventListener('resize', ...)` to detect keyboard open/close and adjust layout
-
-### CSS Media Query Strategy
-
-```css
-/* Mobile portrait */
-@media (max-width: 767px) {
-  #game-container {
-    flex-direction: column;
-  }
-  #text-parser-ui {
-    font-size: 16px;  /* Prevent iOS zoom on input focus */
-  }
-  #parser-input {
-    font-size: 16px;  /* Critical: iOS auto-zooms on <16px inputs */
-  }
-  .mobile-verb-bar {
-    display: flex;
-  }
-}
-
-/* Desktop */
-@media (min-width: 768px) {
-  .mobile-verb-bar {
-    display: none;
-  }
+    // ... fireflies, dust, leaves, embers follow same pattern
 }
 ```
 
-### Critical Mobile Pitfall: iOS Input Zoom
+#### 2D. Lighting System
 
-iOS Safari auto-zooms the page when focusing an `<input>` with `font-size` below 16px. The current `#parser-input` uses 14px. This MUST change to 16px on mobile to prevent the jarring zoom effect. The fix is purely CSS.
+Phaser 3.90 provides two approaches for lighting effects, both verified from the type definitions:
 
-**Confidence: HIGH** -- The existing `Scale.FIT` + HTML overlay architecture is already mobile-friendly by design. The main work is CSS responsive design and the verb button UI addition. The Phaser canvas scaling already works on mobile.
-
----
-
-## Feature 5: Multiple Endings
-
-### Architecture Decision: Flag-Accumulated Branching
-
-Rather than a branching tree (exponential content), use the existing flag system to accumulate "ending scores" based on player choices throughout the game. The final act evaluates these accumulated flags to determine which ending plays.
-
-### Ending Architecture
-
-```
-THROUGHOUT THE GAME:
-  Player choices set flags that influence ending:
-    - helped_troll -> ending_compassion++
-    - bribed_troll -> ending_pragmatism++
-    - solved_all_puzzles -> ending_completionist++
-    - death_count < 3 -> ending_skilled
-    - found_secret_items -> ending_explorer
-
-ACT 3 CLIMAX (existing throne_room_act3):
-  PuzzleEngine evaluates ending conditions:
-    +---------------------------------------------------+
-    |  Ending conditions checked in priority order:      |
-    |                                                    |
-    |  1. "Perfect" ending: all_secrets + low_deaths     |
-    |  2. "Compassion" ending: helped_all_npcs           |
-    |  3. "Pragmatic" ending: bribed/fought through      |
-    |  4. "Default" ending: minimum requirements met     |
-    |  5. "Bad" ending: specific bad-choice flags        |
-    +---------------------------------------------------+
-              |
-              v
-    PuzzleAction: { type: 'trigger-ending', endingId: 'compassion' }
-              |
-              v
-    EventBus.emit('trigger-ending', endingId)
-              |
-              v
-    EndingScene (new) plays ending sequence
+**Approach 1: PostFX on camera (recommended for global tint/vignette)**
+```typescript
+// Camera-level vignette + color tint
+const camera = scene.cameras.main;
+camera.postFX.addVignette(0.5, 0.5, 0.5, vignetteStrength);
+camera.postFX.addColorMatrix().tint(tintColor);
 ```
 
-### New Components
+**Approach 2: Graphics overlay for localized light (recommended for flickering lights)**
+```typescript
+// Semi-transparent overlay for ambient darkness
+const overlay = scene.add.graphics();
+overlay.fillStyle(0x000000, 1.0 - ambientLevel);
+overlay.fillRect(0, 0, worldWidth, 540);
+overlay.setDepth(40); // Below weather (50) but above scene content (0-5)
+overlay.setScrollFactor(1);
+overlay.setBlendMode(Phaser.BlendModes.MULTIPLY);
+```
 
-| Component | Location | Purpose |
-|-----------|----------|---------|
-| `src/game/scenes/EndingScene.ts` | Scenes | Plays ending sequence: narrator text, ending-specific art, credits, epilogue |
-| `public/assets/data/endings.json` | Data | Defines all possible endings with text, conditions, and art references |
-
-### Modifications to Existing Components
-
-| Component | Change | Impact |
-|-----------|--------|--------|
-| `PuzzleAction` type | Add `{ type: 'trigger-ending'; endingId: string }` | LOW -- one union member |
-| `PuzzleEngine.ts` | Handle `trigger-ending` action: emit EventBus event | LOW -- one case in switch |
-| `PuzzleCondition` type | Possibly add `{ type: 'death-count-below'; count: number }` for ending conditions | LOW -- one union member |
-| `GameStateData` | Add `endingReached?: string` for save/meta-progression | LOW -- one field |
-| Room JSONs (Act 3 climax rooms) | Add ending-trigger puzzles with flag conditions | MEDIUM -- new puzzle entries in existing JSON |
-| `main.ts` | Register `EndingScene` | LOW -- one line |
-| `MainMenuScene.ts` | Show "Endings Discovered: X/Y" if any endings reached | LOW -- small addition |
-| `RoomScene.ts` | Wire `trigger-ending` EventBus handler | LOW -- same pattern as `trigger-death` |
-
-### Ending Definition Schema
+**Flickering light sources** use tweens on a graphics circle with `ADD` blend mode:
 
 ```typescript
-// public/assets/data/endings.json
-interface EndingDefinition {
-  id: string;
-  title: string;              // "The Compassionate Crown"
-  priority: number;           // Higher = checked first
-  conditions: PuzzleCondition[];  // Reuse existing condition system!
-  sequences: Array<{
-    type: 'narration' | 'scene-change' | 'art-display' | 'credits';
-    text?: string;
-    artKey?: string;
-    duration?: number;
-  }>;
-  epilogueText: string;       // Brief "what happened after" text
+// LightingOverlay.ts
+createFlickerLight(scene: Phaser.Scene, config: FlickerConfig): void {
+    const light = scene.add.graphics();
+    light.setDepth(41);
+
+    // Create radial gradient circle
+    const drawLight = (radius: number, alpha: number) => {
+        light.clear();
+        light.fillStyle(Phaser.Display.Color.HexStringToColor(config.color).color, alpha);
+        light.fillCircle(config.x, config.y, radius);
+    };
+
+    drawLight(config.radius, config.intensity);
+    light.setBlendMode(Phaser.BlendModes.ADD);
+
+    // Flicker tween
+    scene.tweens.add({
+        targets: { val: config.intensity },
+        val: config.intensity * 0.6,
+        duration: { min: 100, max: 300 },
+        yoyo: true,
+        repeat: -1,
+        ease: 'Sine.easeInOut',
+        onUpdate: (tween, target) => {
+            drawLight(config.radius, target.val);
+        },
+    });
 }
 ```
 
-### Why Flag Accumulation Over Tree Branching
+**Why NOT use Phaser's built-in Light2D pipeline:** The Light2D pipeline requires all sprites to use normalmap textures. Our pixel art backgrounds are flat PNGs without normalmaps. Generating normalmaps for every background adds significant pipeline complexity for marginal visual improvement. The graphics overlay + blend mode approach is simpler, cheaper, and sufficient for 2D adventure game lighting.
 
-1. **Content efficiency:** 5 endings require 5 epilogue sequences. A branching tree for 36 rooms would require hundreds of variants.
-2. **Existing infrastructure:** The flag system (`GameState.flags`) already supports this. No new state mechanism needed.
-3. **Player agency:** Choices throughout the ENTIRE game contribute to the ending, not just a final binary choice. This feels more earned.
-4. **Testability:** Each ending is a set of flag conditions evaluated by the existing PuzzleEngine. Easy to test with flag presets.
+#### 2E. Enhanced Scene Transitions
 
-**Confidence: HIGH** -- The flag/condition system is battle-tested across 36 rooms of puzzles. Endings are just another set of condition-checked triggers.
+The current `SceneTransition.ts` supports fade and slide. New transitions extend this without modifying the existing transition types -- they are additive options in the `ExitData.transition` union.
 
----
-
-## Component Dependency Map
-
-### New Component Dependencies
-
-```
-                    +------------------+
-                    |   Preloader.ts   |  (MODIFIED: load new assets, registries)
-                    +--------+---------+
-                             |
-              +--------------+---------------+
-              |              |               |
-    +---------v---+  +-------v-------+  +----v-----------+
-    | Art assets  |  | hints.json    |  | death-registry |
-    | (Flux gen.) |  | endings.json  |  | .json          |
-    +-------------+  +-------+-------+  +----+-----------+
-                             |               |
-                    +--------v-------+  +----v-----------+
-                    | HintManager.ts |  | DeathGallery.ts|
-                    | (new system)   |  | (new system)   |
-                    +--------+-------+  +----+-----------+
-                             |               |
-    +------------------------v---------------v-----------+
-    |                    RoomScene.ts                     |
-    |  (MODIFIED: wire HintManager, DeathGallery,        |
-    |   mobile controls, ending handler)                 |
-    +----+-----+-----+-----+-----+-----+-----+----------+
-         |     |     |     |     |     |     |
-    +----v+  +-v---+ |  +--v-+  +v---+ |  +-v----------+
-    |Death|  |Main | |  |End |  |Dead| |  |Mobile      |
-    |Scene|  |Menu | |  |ing |  |Gall| |  |Controls.ts |
-    |(MOD)| |(MOD) | |  |Scn | |ery | |  |(new UI)    |
-    +-----+ +------+ |  |(new)| |Scn | |  +------------+
-                      |  +----+ |(new)| |
-                      |         +-----+ |
-                      |                 |
-                +-----v------+    +-----v---------+
-                |Responsive  |    |style.css      |
-                |Layout.ts   |    |(MODIFIED)     |
-                |(new UI)    |    +---------------+
-                +------------+
+**Extended transition type:**
+```typescript
+// Modify ExitData.transition type
+transition: 'fade' | 'slide-left' | 'slide-right' | 'wipe-left' | 'wipe-right' | 'pixelate' | 'iris-out';
 ```
 
-### Modification Impact Summary
-
-| File | Changes | Risk |
-|------|---------|------|
-| `GameStateData.ts` | Add 2-3 fields | NONE -- additive |
-| `GameState.ts` | Add convenience methods for new fields | LOW |
-| `PuzzleAction` type | Add 1-2 union members | LOW |
-| `PuzzleCondition` type | Add 1 union member | LOW |
-| `PuzzleEngine.ts` | Handle new action types (2 cases) | LOW |
-| `CommandDispatcher.ts` | Emit hint events on failure, add "hint" verb | LOW |
-| `DeathScene.ts` | Add gallery count, button | MEDIUM |
-| `MainMenuScene.ts` | Add gallery + ending menu items | LOW |
-| `RoomScene.ts` | Wire 3 new systems (same pattern x3) | MEDIUM (bulk, not complexity) |
-| `Preloader.ts` | Load new registries + room-specific art | MEDIUM (many asset lines) |
-| `main.ts` | Register 2 new scenes | NONE |
-| `style.css` | Add mobile responsive rules | MEDIUM |
-| `TextInputBar.ts` | Mobile font size, optional verb buttons | MEDIUM |
-| `VerbTable.ts` | Add "hint" verb | NONE |
-
----
-
-## Data Flow Changes
-
-### New EventBus Events
-
-| Event | Emitter | Listener(s) | Data |
-|-------|---------|-------------|------|
-| `hint-opportunity` | CommandDispatcher | HintManager | `{ roomId, verb, subject, target, puzzleContext }` |
-| `show-hint` | HintManager | NarratorDisplay (via RoomScene) | `{ text, tier }` |
-| `death-recorded` | DeathGallery | DeathScene (for badge) | `{ deathId, isNew, totalFound, totalPossible }` |
-| `trigger-ending` | PuzzleEngine | RoomScene -> EndingScene | `{ endingId }` |
-
-### Modified Data Flows
-
-**Death Flow (extended):**
-```
-trigger-death -> RoomScene handler -> DeathGallery.recordDeath(deathId)
-                                   -> DeathScene.launch({ ...data, galleryInfo })
-```
-
-**Command Failure Flow (new):**
-```
-CommandDispatcher.dispatch() returns handled:false
-  -> emit 'hint-opportunity' with context
-  -> HintManager checks attempt count
-  -> if threshold reached, appends hint to narrator response
-```
-
-### GameStateData Extension
+**Implementation using Phaser FX (verified available):**
 
 ```typescript
-// ADDITIONS to existing GameStateData interface
-export interface GameStateData {
-  // ... existing fields unchanged ...
-  currentRoom: string;
-  inventory: string[];
-  flags: Record<string, boolean | string>;
-  visitedRooms: string[];
-  removedItems: Record<string, string[]>;
-  playTimeMs: number;
-  deathCount: number;
-  dialogueStates: Record<string, string>;
+// In SceneTransition.ts - new methods
 
-  // NEW v2.0 fields
-  hintAttempts: Record<string, number>;     // puzzleId -> attempt count
-  endingReached?: string;                    // Which ending the player got (if any)
+static wipeToRoom(
+    scene: Phaser.Scene,
+    roomId: string,
+    spawnPoint: { x: number; y: number },
+    direction: 'wipe-left' | 'wipe-right',
+    duration: number = 800
+): void {
+    scene.input.enabled = false;
+    const camera = scene.cameras.main;
+
+    // addWipe returns Phaser.FX.Wipe (verified from types)
+    const wipe = camera.postFX.addWipe(0, direction === 'wipe-left' ? 0 : 1, 0);
+
+    scene.tweens.add({
+        targets: wipe,
+        progress: 1,
+        duration,
+        ease: 'Linear',
+        onComplete: () => {
+            scene.scene.start('RoomScene', { roomId, spawnPoint, transitionFrom: direction });
+        },
+    });
 }
 
-// SEPARATE from save data (meta-progression):
-// Stored in localStorage key 'kqgame-death-gallery'
-// deathsDiscovered: string[]
-// endingsDiscovered: string[]
+static pixelateToRoom(
+    scene: Phaser.Scene,
+    roomId: string,
+    spawnPoint: { x: number; y: number },
+    duration: number = 600
+): void {
+    scene.input.enabled = false;
+    const camera = scene.cameras.main;
+
+    // addPixelate returns Phaser.FX.Pixelate (verified from types)
+    const pixelate = camera.postFX.addPixelate(1);
+
+    scene.tweens.add({
+        targets: pixelate,
+        amount: 40,  // Large pixel blocks
+        duration: duration / 2,
+        ease: 'Power2',
+        onComplete: () => {
+            scene.scene.start('RoomScene', { roomId, spawnPoint, transitionFrom: 'fade' });
+        },
+    });
+}
+
+static irisOutToRoom(
+    scene: Phaser.Scene,
+    roomId: string,
+    spawnPoint: { x: number; y: number },
+    duration: number = 800
+): void {
+    scene.input.enabled = false;
+    const camera = scene.cameras.main;
+
+    // addCircle returns Phaser.FX.Circle (verified from types)
+    const circle = camera.postFX.addCircle(1, 0x000000, 2.0);
+
+    scene.tweens.add({
+        targets: circle,
+        thickness: 0.01,
+        duration,
+        ease: 'Power2',
+        onComplete: () => {
+            scene.scene.start('RoomScene', { roomId, spawnPoint, transitionFrom: 'fade' });
+        },
+    });
+}
+```
+
+**Transition-in counterparts:** The incoming scene reads `transitionFrom` and applies the reverse effect (e.g., wipe-in, de-pixelate, iris-open).
+
+---
+
+## Component Boundaries
+
+| Component | Responsibility | Communicates With |
+|-----------|---------------|-------------------|
+| `scripts/art-pipeline/core.ts` | ComfyUI API, sharp processing, manifest parsing | ComfyUI server, filesystem |
+| `scripts/art-pipeline/batch.ts` | Concurrent generation, progress tracking, resume | core.ts, progress.json |
+| `scripts/art-pipeline/validate.ts` | Image quality checks post-generation | sharp, core.ts |
+| `EffectsManager.ts` | Orchestrates all room effects, lifecycle | RoomScene, WeatherEmitter, LightingOverlay |
+| `WeatherEmitter.ts` | Particle preset factory | Phaser ParticleEmitter API |
+| `LightingOverlay.ts` | Scene tint, vignette, flicker lights | Phaser postFX, Graphics, Tweens |
+| `AmbientAnimation.ts` | Looping visual animations | Phaser Tweens, Graphics |
+| `TransitionEffect.ts` | Enhanced scene transition effects | Phaser camera postFX, SceneTransition.ts |
+| `RoomData.effects` (JSON) | Per-room effects configuration | Read by EffectsManager |
+
+### Depth Map (Final)
+
+```
+Depth  |  Contents
+-------|------------------------------------------
+  0    |  Sky parallax layer (scrollFactor 0)
+  1    |  Mid parallax layer (scrollFactor 0.3)
+  2    |  Ground layer (scrollFactor 1)
+  5    |  Item sprites, NPC sprites
+ 10    |  Player sprite
+ 40    |  Lighting overlay (MULTIPLY blend)
+ 41    |  Flicker lights (ADD blend)
+ 50    |  Weather particles
+100    |  Debug overlays
+999    |  Loading text
+```
+
+Note: Player is currently not explicitly depth-set. The `Player` class creates a sprite that defaults to depth 0, which visually works because it is added after backgrounds. Recommend explicitly setting player depth to 10 for predictable layering with the new effects system.
+
+---
+
+## Data Flow
+
+### Art Pipeline Data Flow
+
+```
+style-guide.json + art-manifest.json
+           |
+           v
+    batch.ts reads manifest, filters by --type/--room/--act
+           |
+           v
+    For each pending asset (check progress.json):
+           |
+           +-- core.ts: injectWorkflowParams(workflow, { prompt, seed, lora?, dims? })
+           |
+           +-- core.ts: submitToComfyUI(workflow) -> prompt_id
+           |
+           +-- core.ts: pollForCompletion(prompt_id) -> raw PNG buffer
+           |
+           +-- core.ts: postProcess(buffer, dims, category) -> processed PNG
+           |
+           +-- validate.ts: validateAsset(processedPath, entry, styleGuide)
+           |       |
+           |       +-- PASS: write to final output, update progress.json
+           |       +-- FAIL: write to quarantine/, log to validation-report.json
+           |
+           +-- Update progress.json (generated/failed/pending counts)
+```
+
+### Runtime Effects Data Flow
+
+```
+Room JSON loaded by RoomScene.init()
+    |
+    +-- roomData.effects parsed
+    |
+    v
+RoomScene.create()
+    |
+    +-- EffectsManager.init(scene, roomData)
+           |
+           +-- if (roomData.effects?.weather)
+           |       WeatherEmitter.create(type, intensity, wind)
+           |       -> Phaser ParticleEmitter added to scene at depth 50
+           |
+           +-- if (roomData.effects?.lighting)
+           |       LightingOverlay.apply(tint, vignette, ambientLevel, flickers)
+           |       -> camera.postFX.addVignette() for vignette
+           |       -> Graphics overlay at depth 40 for tint
+           |       -> Graphics circles at depth 41 for flicker lights
+           |
+           +-- if (roomData.effects?.ambient)
+                   AmbientAnimation.create(type, zone)
+                   -> Tweens on scene graphics objects
+
+RoomScene.update()
+    |
+    +-- EffectsManager.update(delta)  [only if effects need per-frame updates]
+           |
+           +-- Update flicker light random offsets
+           +-- Update ambient animation phases
+
+RoomScene SHUTDOWN event
+    |
+    +-- EffectsManager.destroy()
+           |
+           +-- Destroy all particle emitters
+           +-- Remove all postFX from camera
+           +-- Destroy all graphics objects
+           +-- Cancel all effect tweens
 ```
 
 ---
 
-## Recommended Build Order
+## Modifications to Existing Components
 
-Based on dependency analysis, the features should be built in this order:
+### Changes Required
 
-### Phase 1: Flux Art Pipeline (offline tool)
-**Rationale:** Independent of all other features. Can run in parallel with any runtime work. Produces assets that all other features benefit from (death gallery looks better with real art, ending scenes need art).
+| File | Change | Impact | Risk |
+|------|--------|--------|------|
+| `src/game/types/RoomData.ts` | Add `effects?: RoomEffectsData` to `RoomData` interface | LOW | NONE -- optional field, all existing rooms work without it |
+| `src/game/scenes/RoomScene.ts` | Add EffectsManager init/destroy in create/shutdown | LOW | Same pattern as AudioManager wiring (lines 428-430, 696) |
+| `src/game/systems/SceneTransition.ts` | Add wipe/pixelate/iris methods, extend switch in `transitionToRoom` | LOW | New cases in switch, existing cases unchanged |
+| `src/game/scenes/Preloader.ts` | Load `effects-particles` spritesheet | LOW | One `this.load.spritesheet()` call |
+| `scripts/generate-art.ts` | Refactor core functions to importable module | MEDIUM | Must not break existing CLI interface |
+| `scripts/art-manifest.json` | Add optional `loraOverride` fields | LOW | Existing entries unaffected |
+| `scripts/comfyui-workflow.json` | No change (params injected at runtime) | NONE | -- |
+| Room JSON files (36) | Add optional `effects` block | LOW per room | Incremental -- add effects room by room |
+| `src/game/main.ts` | Add `type: Phaser.WEBGL` for postFX support | MEDIUM | Must verify Phaser.AUTO already picks WebGL; if not, this forces it |
 
-**Dependencies:** None (offline tool)
-**Blocks:** Nothing technically, but other features benefit from having real assets
+### Critical: WebGL Requirement for PostFX
 
-### Phase 2: GameState Extensions + Death Gallery
-**Rationale:** The GameState changes (new fields) are needed by hints AND endings. Build them first with death gallery as the simplest consumer. Death gallery is self-contained and validates the meta-progression pattern (localStorage outside save slots).
+Phaser's `preFX` and `postFX` only work with the WebGL renderer. The current config uses `Phaser.AUTO`, which selects WebGL when available and falls back to Canvas. If we use `camera.postFX.addVignette()`, this will fail silently on Canvas renderer.
 
-**Dependencies:** None beyond existing architecture
-**Blocks:** Hints and endings need the extended GameState
+**Mitigation:**
+1. Check `scene.sys.renderer.type === Phaser.WEBGL` before applying PostFX effects
+2. In EffectsManager, gracefully skip FX that require WebGL when running in Canvas mode
+3. Consider forcing `type: Phaser.WEBGL` in game config (all modern browsers support it)
 
-### Phase 3: Progressive Hint System
-**Rationale:** Requires the hint tracking in GameState (from phase 2). Integrates with CommandDispatcher and PuzzleEngine. Hint content can be authored in parallel with implementation.
+```typescript
+// EffectsManager.ts -- safe PostFX application
+private canUsePostFX(): boolean {
+    return this.scene.sys.renderer.type === Phaser.WEBGL;
+}
+```
 
-**Dependencies:** Extended GameState (phase 2)
-**Blocks:** Nothing
+---
 
-### Phase 4: Multiple Endings
-**Rationale:** Requires the ending-related PuzzleAction/Condition extensions. Needs content authored (ending sequences, flag placement in Act 3 rooms). Most complex content-wise.
+## New vs Modified Component Summary
 
-**Dependencies:** Extended PuzzleAction/Condition types (phase 2), Act 3 room content exists
-**Blocks:** Nothing
+### New Components (6 files)
 
-### Phase 5: Mobile Responsive Layout
-**Rationale:** Last because it affects the entire UI layer and benefits from all other features being stable. Testing mobile layout is easier when all features are in place. CSS changes are low-risk but touch everything.
+| File | Lines (est.) | Purpose |
+|------|-------------|---------|
+| `src/game/systems/EffectsManager.ts` | 150 | Room effects orchestrator |
+| `src/game/effects/WeatherEmitter.ts` | 120 | Particle preset factory |
+| `src/game/effects/LightingOverlay.ts` | 100 | Tint, vignette, flicker lights |
+| `src/game/effects/AmbientAnimation.ts` | 80 | Looping ambient effects |
+| `scripts/art-pipeline/batch.ts` | 200 | Batch generation orchestrator |
+| `scripts/art-pipeline/validate.ts` | 100 | Quality validation checks |
 
-**Dependencies:** All other features should be functionally complete
-**Blocks:** Nothing
+### Modified Components (7 files)
 
-### Parallel Track: Art Asset Generation
-The Flux pipeline (Phase 1) can run continuously throughout all phases, generating and refining assets. Art integration (swapping Preloader references) can happen at any point.
+| File | Nature of Change | Lines Changed (est.) |
+|------|-----------------|---------------------|
+| `RoomData.ts` | Add `RoomEffectsData` interface + field | +30 |
+| `RoomScene.ts` | Wire EffectsManager (same pattern as AudioManager) | +15 |
+| `SceneTransition.ts` | Add 3 new transition methods + switch cases | +80 |
+| `Preloader.ts` | Load particle spritesheet | +3 |
+| `generate-art.ts` | Extract core to shared module, import back | ~refactor, net 0 |
+| `art-manifest.json` | Add loraOverride to select entries | +20 |
+| Room JSONs | Add effects blocks incrementally | +10-20 per room |
+
+### New Assets (1 file)
+
+| Asset | Location | Size (est.) | Purpose |
+|-------|----------|-------------|---------|
+| `effects-particles.png` | `public/assets/sprites/effects-particles.png` | ~5KB | Spritesheet: raindrop, snowflake, leaf, dust, firefly, ember (6 frames, ~16x16 each) |
+
+---
+
+## Patterns to Follow
+
+### Pattern 1: Data-Driven Effects (like Audio)
+
+**What:** Effects configured in room JSON, not hardcoded per room.
+**Why:** Consistent with how audio, puzzles, hints, and exits already work.
+**Example:** The `audio` field in room JSON directly maps to this pattern:
+
+```json
+// Existing audio pattern (room JSON):
+"audio": { "music": "music-forest", "ambient": [{ "key": "amb-wind", "volume": 0.3 }] }
+
+// New effects pattern (same room JSON):
+"effects": { "weather": { "type": "leaves", "intensity": 0.4 }, "lighting": { "tint": "#2a3a1a" } }
+```
+
+### Pattern 2: Singleton Manager per Scene (like AudioManager)
+
+**What:** EffectsManager follows `getInstance()` + `init(scene)` + `cleanup()` lifecycle.
+**Why:** Proven pattern in the codebase. AudioManager.ts (line 37-42) establishes this.
+
+```typescript
+// EffectsManager lifecycle mirrors AudioManager exactly:
+create(): void {
+    this.effectsManager = EffectsManager.getInstance();
+    this.effectsManager.init(this, this.roomData);
+}
+
+// Shutdown:
+this.effectsManager.cleanup();
+```
+
+### Pattern 3: Graceful Degradation
+
+**What:** All effects are optional and skip silently when unsupported.
+**Why:** WebGL may not be available. Older devices may be slow. The game must be playable without any effects.
+
+```typescript
+// Every effect method checks before applying:
+if (!this.canUsePostFX()) return;  // No PostFX on Canvas renderer
+if (!this.roomData.effects) return;  // No effects configured
+if (this.isMobile() && this.isLowEnd()) return;  // Performance guard
+```
 
 ---
 
 ## Anti-Patterns to Avoid
 
-### Anti-Pattern 1: Runtime Image Generation
-**What:** Calling ComfyUI/Flux from the browser at runtime to generate backgrounds on-the-fly.
-**Why bad:** 5-30 second generation times per image. Requires local GPU server running. Users without GPU cannot play. Unpredictable art quality per session.
-**Instead:** Generate all art offline. The game loads pre-generated PNGs just like it loads placeholder PNGs today.
+### Anti-Pattern 1: Hardcoded Per-Room Effects
+**What:** Writing `if (roomId === 'crystal_chamber') { addBlueGlow(); }` in RoomScene.
+**Why bad:** 36 rooms means 36 conditionals. Unmaintainable. Not data-driven.
+**Instead:** All effects in room JSON. EffectsManager reads config and applies generically.
 
-### Anti-Pattern 2: Monolithic Hint Logic in CommandDispatcher
-**What:** Adding if/else hint logic directly into the dispatch method.
-**Why bad:** CommandDispatcher is already 700 lines. Adding hint logic couples hint behavior to command routing. Testing hints requires testing the entire dispatch chain.
-**Instead:** Emit events. Let HintManager handle all hint logic independently. Same pattern as AudioManager.
+### Anti-Pattern 2: Modifying Background Images for Effects
+**What:** Baking lighting/weather into the Flux-generated background PNGs.
+**Why bad:** Static -- cannot react to game state. Cannot disable for performance. Increases asset generation time.
+**Instead:** Clean backgrounds from Flux. Layer runtime effects on top. Same background works for any lighting state.
 
-### Anti-Pattern 3: Death Gallery in GameState Save Slots
-**What:** Storing `deathsDiscovered` inside the regular GameStateData that gets saved/loaded per slot.
-**Why bad:** Loading a save from before a death discovery erases the gallery entry. Players who discovered 20 deaths then load an early save lose their gallery progress.
-**Instead:** Meta-progression stored in a separate localStorage key, independent of save slots. Gallery progress is cumulative and permanent.
+### Anti-Pattern 3: Global Particle System
+**What:** One persistent particle emitter that carries across room transitions.
+**Why bad:** Different rooms have different weather. Memory leak if not cleaned up. Particles from old room visible during transition.
+**Instead:** EffectsManager creates fresh emitters per room, destroys them on shutdown.
 
-### Anti-Pattern 4: Mobile Layout via Canvas-Drawn UI
-**What:** Drawing verb buttons and touch controls using Phaser canvas drawing because "it's a game."
-**Why bad:** Canvas has no text accessibility, no native touch scroll, no proper form input handling. The existing HTML overlay approach is correct -- extend it, do not replace it.
-**Instead:** Keep HTML overlays. Add new HTML elements for verb buttons. Use CSS media queries for responsive layout.
+### Anti-Pattern 4: Complex Shader Programs for Lighting
+**What:** Writing custom GLSL shaders for the lighting system.
+**Why bad:** Maintenance burden. Phaser's built-in PostFX (vignette, colorMatrix, glow) cover 95% of needs. Custom shaders are fragile across GPU vendors.
+**Instead:** Use Phaser's built-in FX pipeline. It handles shader compilation, uniform binding, and cleanup.
 
-### Anti-Pattern 5: Branching Ending Trees
-**What:** Creating 5 different versions of Act 3 for 5 endings, with unique room sequences per ending.
-**Why bad:** 5x content multiplication. Maintenance nightmare. Inconsistent quality across branches.
-**Instead:** Single Act 3 with flag-based ending determination at the climax point. One EndingScene with data-driven sequences per ending. Same rooms, different final evaluation.
+### Anti-Pattern 5: Synchronous Batch Generation
+**What:** Awaiting each ComfyUI generation sequentially in the batch pipeline.
+**Why bad:** 91 assets at 30s each = 45+ minutes. ComfyUI can queue multiple prompts.
+**Instead:** Submit 2-4 prompts concurrently, poll all in parallel. Cuts batch time to 15-20 minutes.
+
+---
+
+## Build Order Recommendation
+
+Based on dependency analysis:
+
+### Phase A: Art Pipeline Batch + LoRA (build-time, independent)
+1. Refactor `generate-art.ts` core functions into `scripts/art-pipeline/core.ts`
+2. Build `scripts/art-pipeline/batch.ts` with concurrent queue + progress tracking
+3. Add LoRA override support to manifest + workflow injection
+4. Build `scripts/art-pipeline/validate.ts` quality checks
+5. Run batch generation for all 91 assets
+
+**Rationale:** Zero runtime dependencies. Can run in parallel with all other work. Produces the real art assets that make every other visual feature look better.
+
+### Phase B: Effects Infrastructure (runtime foundation)
+1. Add `RoomEffectsData` to `RoomData.ts` type
+2. Create particle spritesheet asset
+3. Build `EffectsManager.ts` skeleton with init/destroy lifecycle
+4. Wire into `RoomScene.ts` (create + shutdown)
+5. Build `WeatherEmitter.ts` with rain preset as proof-of-concept
+6. Add effects to 2-3 test rooms
+
+**Rationale:** Establishes the runtime effects architecture. Weather particles are the most visually impactful and simplest to implement -- good proof that the system works.
+
+### Phase C: Lighting + Ambient Effects
+1. Build `LightingOverlay.ts` (tint, vignette, flicker)
+2. Build `AmbientAnimation.ts` (water shimmer, torch flicker)
+3. Verify WebGL fallback behavior
+4. Add lighting configs to cave/dungeon rooms, ambient to water rooms
+
+**Rationale:** Depends on EffectsManager from Phase B. Lighting is more nuanced than particles and benefits from having the foundation tested first.
+
+### Phase D: Enhanced Transitions
+1. Add new transition methods to `SceneTransition.ts`
+2. Add transition-in counterparts in `RoomScene.create()`
+3. Update select exit definitions in room JSONs to use new transitions
+4. Extend ExitData transition type union
+
+**Rationale:** Can be done in parallel with Phase C. Modifies an existing system (SceneTransition) rather than creating a new one -- lower risk, clear integration point.
+
+### Phase E: Effects Polish + Room-by-Room Rollout
+1. Add effects configurations to all 36 room JSONs
+2. Tune particle counts and lighting values per room
+3. Performance testing on mobile (particle budget)
+4. Validate act-consistent palettes (Act 1 warm, Act 2 cool, Act 3 twilight)
+
+**Rationale:** Content work that depends on all systems being built. This is the integration/polish phase.
 
 ---
 
 ## Scalability Considerations
 
-| Concern | At v2.0 (36 rooms) | At v3.0 (100+ rooms) |
-|---------|---------------------|----------------------|
-| Asset loading | All Flux backgrounds in Preloader (~36 unique backgrounds, ~20MB) | Area-based lazy loading needed; Preloader loads current area + adjacent |
-| Hint data | Single hints.json (~50KB) | Split by act/area if file exceeds 200KB |
-| Death registry | Single death-registry.json (~30 deaths, <10KB) | Still single file at 100 deaths |
-| Ending conditions | 5 endings evaluated at climax | Flag accumulation scales linearly, no branching cost |
-| Mobile performance | 960x540 canvas is lightweight on modern phones | May need quality tiers for very old devices |
-| Art generation | ~40 images, few hours of generation | Batch automation critical; manifest-driven pipeline pays off |
+| Concern | At 36 rooms | At 100+ rooms | Mitigation |
+|---------|-------------|---------------|------------|
+| Particle memory | ~200 particles max per room, trivial | Same per-room budget | maxAliveParticles cap |
+| PostFX performance | 1-3 effects per camera, ~0.5ms/frame | Same per-room | Disable on low-end |
+| Art generation time | 91 assets, ~45min batch | 300+ assets, ~3hr batch | Concurrent queue + resume |
+| Effects JSON size | ~500 bytes per room | Same per room | Embedded in room JSON, no separate file |
+| Particle texture memory | 1 spritesheet, ~5KB | Same spritesheet | Single atlas for all weather |
+| Transition complexity | 6 transition types | Same types, more exit combos | No per-transition assets needed |
 
 ---
 
 ## Sources
 
-- [Black Forest Labs - FLUX models](https://bfl.ai/) -- Official Flux model family
-- [ComfyUI - Pixel Art Workflow](https://www.kokutech.com/blog/gamedev/tips/art/pixel-art-generation-with-comfyui) -- Pixel art generation with ComfyUI
-- [ComfyUI PixelArt Detector](https://github.com/dimtoneff/ComfyUI-PixelArt-Detector) -- Palette and pixel consistency tooling
-- [Tau Games - Progressive Hint System](https://taugames.ca/blog/hints.html) -- Hint system design with sub-goals
-- [Game Developer - Low Spoiler Hints](https://www.gamedeveloper.com/design/how-and-why-to-write-low-spoiler-hints-for-adventure-games-) -- Tiered hint writing methodology
-- [TextAdventures.co.uk - Hint System](https://docs.textadventures.co.uk/quest/guides/a_hint_system.html) -- Stage-gate hint implementation
-- [Envato Tuts+ - Unlockable Achievements](https://gamedevelopment.tutsplus.com/tutorials/how-to-code-unlockable-achievements-for-your-game-a-simple-approach--gamedev-6012) -- Achievement property/constraint pattern
-- [Game Developer - Robust Achievement Systems](https://www.gamedeveloper.com/design/designing-and-building-a-robust-comprehensive-achievement-system) -- Achievement metric tracking
-- [Phaser Scale Manager](https://rexrainbow.github.io/phaser3-rex-notes/docs/site/scalemanager/) -- FIT/RESIZE scaling modes
-- [Phaser Forum - Mobile Keyboard](https://phaser.discourse.group/t/how-to-force-mobile-keyboard-to-appear/11477) -- HTML input overlay for mobile
-- [MDN - Mobile Touch Controls](https://developer.mozilla.org/en-US/docs/Games/Techniques/Control_mechanisms/Mobile_touch) -- Touch input patterns
-- [Standard Patterns in Choice-Based Games](https://heterogenoustasks.wordpress.com/2015/01/26/standard-patterns-in-choice-based-games/) -- Time Cave, Quest, Branch-and-Bottleneck patterns
-- [Kreonit - Nonlinear Gameplay](https://kreonit.com/programming-and-games-development/nonlinear-gameplay/) -- Branching vs. flag-accumulation tradeoffs
-- [openedai-images-flux](https://github.com/matatonic/openedai-images-flux) -- OpenAI-compatible local Flux API server
+- Phaser 3.90 type definitions (`node_modules/phaser/types/phaser.d.ts`) -- Verified PostFX API (addVignette, addPixelate, addWipe, addCircle, addColorMatrix, addGlow, addBlur, addShine), ParticleEmitter constructor and config, camera effects (fadeIn/fadeOut, flash, shake, pan) [HIGH confidence]
+- Existing codebase: `RoomScene.ts` (892 lines), `SceneTransition.ts` (112 lines), `generate-art.ts` (639 lines), `art-manifest.json` (91 assets), `comfyui-workflow.json` (Flux GGUF + LoRA pipeline), `style-guide.json` (act palettes, generation params) [HIGH confidence]
+- ComfyUI REST API: `/prompt` POST, `/history/{id}` GET, `/view?filename=` GET -- verified from existing generate-art.ts implementation [HIGH confidence]
+- Flux GGUF + LoRA workflow nodes: UnetLoaderGGUF, DualCLIPLoaderGGUF, LoraLoaderModelOnly, ModelSamplingFlux, FluxGuidance, SamplerCustomAdvanced -- verified from comfyui-workflow.json [HIGH confidence]
+- sharp image processing API (resize, metadata, stats, ensureAlpha) -- verified from existing generate-art.ts usage and package.json (^0.34.5) [HIGH confidence]
+- Phaser Light2D pipeline normalmap requirement -- training data knowledge [MEDIUM confidence, noted as "not recommended" in architecture]
+- ComfyUI concurrent prompt queuing capability -- training data knowledge [MEDIUM confidence, should verify with live testing]
 
 ---
-*Architecture research for: KQGame v2.0 Art & Polish integration*
+*Architecture research for: Uncrowned - Flux Art Generation & Visual Effects*
 *Researched: 2026-02-21*
