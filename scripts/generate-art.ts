@@ -45,15 +45,76 @@ interface StyleGuide {
     itemPromptSuffix: string;
     outputResolution: { width: number; height: number };
     wideOutputResolution: { width: number; height: number };
-    generationResolution: { width: number; height: number };
+    generationResolution: Record<string, { width: number; height: number }>;
     loraModel: string;
     loraTrigger: string;
-    loraStrength: number;
+    loraStrength: Record<string, number>;
+    backgroundRemoval: { enabled: boolean; threshold: number; defringe: boolean };
     sampler: string;
     scheduler: string;
     steps: number;
     guidance: number;
     acts: Record<string, { name: string; palette: string; rooms: string[] }>;
+}
+
+interface AssetTypeConfig {
+    width: number;
+    height: number;
+    loraStrength: number;
+    guidance: number;
+    steps: number;
+}
+
+/**
+ * Maps a GenerationEntry category to the appropriate AssetTypeConfig
+ * by reading per-type values from the style guide.
+ */
+function getAssetTypeConfig(
+    category: GenerationEntry['category'],
+    styleGuide: StyleGuide
+): AssetTypeConfig {
+    const typeKey: string = (() => {
+        switch (category) {
+            case 'room': return 'background';
+            case 'shared': return 'wideBackground';
+            case 'sprite': return 'sprite';
+            case 'item': return 'item';
+            case 'npc': return 'npc';
+        }
+    })();
+
+    const resolution = styleGuide.generationResolution[typeKey]
+        ?? styleGuide.generationResolution['background'];
+    const loraStrength = styleGuide.loraStrength[typeKey]
+        ?? styleGuide.loraStrength['background'];
+
+    return {
+        width: resolution.width,
+        height: resolution.height,
+        loraStrength,
+        guidance: styleGuide.guidance,
+        steps: styleGuide.steps,
+    };
+}
+
+/**
+ * Injects per-asset-type configuration into a deep-cloned workflow.
+ * Sets resolution, LoRA strength, guidance, and steps on the appropriate nodes.
+ * IMPORTANT: Does NOT modify the workflow template on disk.
+ */
+function injectConfig(workflow: ComfyUIWorkflow, config: AssetTypeConfig): void {
+    // Node 11: EmptySD3LatentImage - generation resolution
+    workflow['11'].inputs.width = config.width;
+    workflow['11'].inputs.height = config.height;
+    // Node 4: ModelSamplingFlux - must match latent resolution
+    workflow['4'].inputs.width = config.width;
+    workflow['4'].inputs.height = config.height;
+    // Node 3: LoraLoaderModelOnly - per-type LoRA strength
+    workflow['3'].inputs.strength_model = config.loraStrength;
+    // Node 5: FluxGuidance - guidance scale
+    workflow['5'].inputs.guidance = config.guidance;
+    // Node 9: BasicScheduler - step count
+    workflow['9'].inputs.steps = config.steps;
 }
 
 interface ManifestEntry {
@@ -114,7 +175,8 @@ async function checkComfyUI(): Promise<boolean> {
 async function generateImage(
     prompt: string,
     seed: number,
-    workflow: ComfyUIWorkflow
+    workflow: ComfyUIWorkflow,
+    config: AssetTypeConfig
 ): Promise<Buffer> {
     // Deep-clone workflow template
     const workflowCopy = JSON.parse(JSON.stringify(workflow)) as ComfyUIWorkflow;
@@ -127,6 +189,9 @@ async function generateImage(
 
     // Inject seed into RandomNoise node
     workflowCopy[SEED_NODE_ID].inputs.noise_seed = seed;
+
+    // Inject per-asset-type configuration (resolution, LoRA, guidance, steps)
+    injectConfig(workflowCopy, config);
 
     // Submit to ComfyUI
     const submitRes = await fetch(`${COMFYUI_URL}/prompt`, {
@@ -522,15 +587,20 @@ async function main(): Promise<void> {
     console.log(`Force: ${args.force ? 'yes' : 'no'}`);
     console.log('');
 
-    // Dry-run mode: just list prompts
+    // Dry-run mode: just list prompts with per-type config
     if (args.dryRun) {
         for (let i = 0; i < entries.length; i++) {
             const entry = entries[i];
+            const typeConfig = getAssetTypeConfig(entry.category, styleGuide);
             console.log(`[${i + 1}/${entries.length}] ${entry.id} (${entry.category})`);
             console.log(`  Prompt: ${entry.fullPrompt}`);
             console.log(`  Seed:   ${entry.seed}`);
             console.log(`  Output: ${entry.output}`);
-            console.log(`  Size:   ${entry.dimensions.width}x${entry.dimensions.height}`);
+            console.log(`  Output size:      ${entry.dimensions.width}x${entry.dimensions.height}`);
+            console.log(`  Generation res:   ${typeConfig.width}x${typeConfig.height}`);
+            console.log(`  LoRA strength:    ${typeConfig.loraStrength}`);
+            console.log(`  Guidance:         ${typeConfig.guidance}`);
+            console.log(`  Steps:            ${typeConfig.steps}`);
             console.log('');
         }
         console.log(`DRY RUN complete. ${entries.length} entries listed.`);
@@ -600,10 +670,11 @@ async function main(): Promise<void> {
 
         const startTime = Date.now();
         try {
-            console.log(`[${i + 1}/${entries.length}] Generating ${entry.id}...`);
+            const typeConfig = getAssetTypeConfig(entry.category, styleGuide);
+            console.log(`[${i + 1}/${entries.length}] Generating ${entry.id}... (${typeConfig.width}x${typeConfig.height}, LoRA=${typeConfig.loraStrength})`);
 
-            // Generate via ComfyUI
-            const rawImage = await generateImage(entry.fullPrompt, entry.seed, workflow);
+            // Generate via ComfyUI with per-type config
+            const rawImage = await generateImage(entry.fullPrompt, entry.seed, workflow, typeConfig);
 
             // Post-process based on category
             if (entry.category === 'sprite' || entry.category === 'item' || entry.category === 'npc') {

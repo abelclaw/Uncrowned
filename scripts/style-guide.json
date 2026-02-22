@@ -1,11 +1,30 @@
 {
   "pixelDensity": "2x (480x270 native upscaled to 960x540)",
-  "generationResolution": { "width": 1024, "height": 1024 },
+  "generationResolution": {
+    "background": { "width": 1024, "height": 576 },
+    "wideBackground": { "width": 1024, "height": 576 },
+    "sprite": { "width": 1024, "height": 1024 },
+    "item": { "width": 512, "height": 512 },
+    "npc": { "width": 1024, "height": 1024 }
+  },
   "outputResolution": { "width": 960, "height": 540 },
   "wideOutputResolution": { "width": 1920, "height": 540 },
   "loraModel": "Flux-2D-Game-Assets-LoRA.safetensors",
   "loraTrigger": "GRPZA",
-  "loraStrength": 0.8,
+  "loraStrength": {
+    "background": 0.7,
+    "wideBackground": 0.7,
+    "sprite": 0.85,
+    "item": 0.9,
+    "npc": 0.85,
+    "_note": "Starting estimates. Calibrated empirically in Phase 14 Plan 02."
+  },
+  "backgroundRemoval": {
+    "enabled": true,
+    "threshold": 240,
+    "defringe": true,
+    "_note": "Applied to sprite, item, and npc categories only"
+  },
   "sampler": "euler",
   "scheduler": "simple",
   "steps": 20,
