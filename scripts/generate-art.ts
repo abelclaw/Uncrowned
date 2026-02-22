@@ -271,11 +271,101 @@ async function processBackground(
         .toFile(fullPath);
 }
 
+/**
+ * Removes white/near-white background pixels by setting their alpha to 0.
+ * Uses raw RGBA pixel manipulation with a configurable threshold.
+ * Pixels where R >= threshold AND G >= threshold AND B >= threshold become transparent.
+ */
+async function removeWhiteBackground(
+    input: Buffer,
+    threshold: number = 240
+): Promise<Buffer> {
+    const { data, info } = await sharp(input)
+        .ensureAlpha()
+        .raw()
+        .toBuffer({ resolveWithObject: true });
+
+    // Iterate over RGBA pixel data
+    for (let i = 0; i < data.length; i += 4) {
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+        // If pixel is near-white, make fully transparent
+        if (r >= threshold && g >= threshold && b >= threshold) {
+            data[i + 3] = 0; // Set alpha to 0
+        }
+    }
+
+    return sharp(data, {
+        raw: { width: info.width, height: info.height, channels: 4 },
+    }).png().toBuffer();
+}
+
+/**
+ * Replaces semi-transparent edge pixel colors with the nearest opaque neighbor's color.
+ * This removes white halo artifacts left after threshold-based background removal.
+ * Only affects pixels with alpha > 0 and alpha < 200 (semi-transparent edge pixels).
+ */
+async function defringeEdges(
+    input: Buffer,
+    width: number,
+    height: number
+): Promise<Buffer> {
+    const { data } = await sharp(input)
+        .ensureAlpha()
+        .raw()
+        .toBuffer({ resolveWithObject: true });
+
+    const channels = 4;
+
+    for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+            const idx = (y * width + x) * channels;
+            const alpha = data[idx + 3];
+
+            // Only process semi-transparent pixels (edge pixels)
+            if (alpha > 0 && alpha < 200) {
+                // Search 8 neighbors (cardinal + diagonal) for an opaque pixel
+                let found = false;
+                for (const [dx, dy] of [[-1, 0], [1, 0], [0, -1], [0, 1], [-1, -1], [1, -1], [-1, 1], [1, 1]]) {
+                    const nx = x + dx;
+                    const ny = y + dy;
+                    if (nx < 0 || nx >= width || ny < 0 || ny >= height) continue;
+                    const nIdx = (ny * width + nx) * channels;
+                    if (data[nIdx + 3] >= 200) {
+                        // Replace edge pixel's RGB with opaque neighbor's RGB (preserve alpha)
+                        data[idx] = data[nIdx];
+                        data[idx + 1] = data[nIdx + 1];
+                        data[idx + 2] = data[nIdx + 2];
+                        found = true;
+                        break;
+                    }
+                }
+                // If no opaque neighbor found, leave the pixel as-is
+                void found;
+            }
+        }
+    }
+
+    return sharp(data, {
+        raw: { width, height, channels: 4 },
+    }).png().toBuffer();
+}
+
+/**
+ * Post-processes sprite/item/NPC images.
+ * When background removal is enabled:
+ *   1. Removes white background via threshold-based pixel manipulation
+ *   2. Defringes edges to remove white halo artifacts
+ *   3. Resizes to target dimensions with transparent background
+ * When disabled, performs resize-only (original behavior).
+ */
 async function processSprite(
     input: Buffer,
     outputPath: string,
     width: number,
-    height: number
+    height: number,
+    bgRemoval: { enabled: boolean; threshold: number; defringe: boolean }
 ): Promise<void> {
     const fullPath = path.resolve(PROJECT_ROOT, outputPath);
     const dir = path.dirname(fullPath);
@@ -283,7 +373,25 @@ async function processSprite(
     // Create output directory if needed
     fs.mkdirSync(dir, { recursive: true });
 
-    await sharp(input)
+    let processed: Buffer = input;
+
+    if (bgRemoval.enabled) {
+        console.log(`  Background removal: threshold=${bgRemoval.threshold}, defringe=${bgRemoval.defringe}`);
+
+        // Step 1: Remove white background
+        processed = await removeWhiteBackground(processed, bgRemoval.threshold);
+
+        // Step 2: Defringe edges if enabled
+        if (bgRemoval.defringe) {
+            const metadata = await sharp(processed).metadata();
+            if (metadata.width && metadata.height) {
+                processed = await defringeEdges(processed, metadata.width, metadata.height);
+            }
+        }
+    }
+
+    // Step 3: Resize to target dimensions with transparent background
+    await sharp(processed)
         .ensureAlpha()
         .resize(width, height, {
             fit: 'contain',
@@ -678,7 +786,7 @@ async function main(): Promise<void> {
 
             // Post-process based on category
             if (entry.category === 'sprite' || entry.category === 'item' || entry.category === 'npc') {
-                await processSprite(rawImage, entry.output, entry.dimensions.width, entry.dimensions.height);
+                await processSprite(rawImage, entry.output, entry.dimensions.width, entry.dimensions.height, styleGuide.backgroundRemoval);
             } else {
                 await processBackground(rawImage, entry.output, entry.dimensions.width, entry.dimensions.height);
             }
