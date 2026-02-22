@@ -11,6 +11,30 @@ export interface PuzzleHint {
 }
 
 /**
+ * Weather effect types for room atmosphere.
+ */
+export type WeatherType = 'rain' | 'snow' | 'fog' | 'dust';
+
+/**
+ * Ambient particle effect types for room atmosphere.
+ */
+export type AmbientType = 'fireflies' | 'dust-motes' | 'falling-leaves' | 'embers';
+
+/**
+ * Effects configuration for weather and ambient particles in a room.
+ */
+export interface RoomEffectsData {
+    weather?: {
+        type: WeatherType;
+        intensity?: number; // 0.0-1.0, defaults to 0.5
+    };
+    ambient?: Array<{
+        type: AmbientType;
+        intensity?: number; // 0.0-1.0, defaults to 0.5
+    }>;
+}
+
+/**
  * Audio configuration for a room: background music and ambient layers.
  */
 export interface RoomAudioData {
@@ -140,6 +164,8 @@ export interface RoomData {
     npcs?: RoomNpcData[];
     /** Audio configuration: background music and ambient loops */
     audio?: RoomAudioData;
+    /** Visual effects configuration: weather and ambient particles */
+    effects?: RoomEffectsData;
     /** Progressive hint definitions for puzzles in this room */
     puzzleHints?: PuzzleHint[];
 }
