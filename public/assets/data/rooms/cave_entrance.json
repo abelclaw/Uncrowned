@@ -51,7 +51,7 @@
                 "x": 820,
                 "y": 430
             },
-            "transition": "slide-left",
+            "transition": "pixelate",
             "direction": "west",
             "label": "forest"
         },

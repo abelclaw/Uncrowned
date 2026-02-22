@@ -68,7 +68,7 @@
                 "x": 100,
                 "y": 430
             },
-            "transition": "slide-right",
+            "transition": "iris",
             "direction": "east",
             "label": "watchtower"
         }

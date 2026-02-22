@@ -687,36 +687,8 @@ export class RoomScene extends Phaser.Scene {
         };
         EventBus.on('start-dialogue', this.startDialogueHandler);
 
-        // 9. Transition-in effect
-        if (this.transitionFrom === 'slide-left' || this.transitionFrom === 'slide-right') {
-            // Slide-in from the opposite direction
-            const camera = this.cameras.main;
-            const offset = camera.width;
-            const startOffsetX = this.transitionFrom === 'slide-right' ? -offset : offset;
-            const originalScrollX = camera.scrollX;
-            camera.scrollX = originalScrollX + startOffsetX;
-            this.tweens.add({
-                targets: camera,
-                scrollX: originalScrollX,
-                ease: 'Cubic.easeOut',
-                duration: 500,
-                onComplete: () => {
-                    this.textInputBar.focus();
-                    this.showEntryNarration();
-                },
-            });
-        } else {
-            // Default: fade in
-            this.cameras.main.fadeIn(500, 0, 0, 0);
-            // Focus input after fade-in completes
-            this.cameras.main.once(
-                Phaser.Cameras.Scene2D.Events.FADE_IN_COMPLETE,
-                () => {
-                    this.textInputBar.focus();
-                    this.showEntryNarration();
-                }
-            );
-        }
+        // 9. Transition-in effect (matches the exit transition used to arrive here)
+        this.playTransitionIn();
 
         // 10. EventBus scene-ready
         EventBus.emit('scene-ready', { sceneKey: 'RoomScene', roomId: this.roomData.id });
@@ -904,6 +876,111 @@ export class RoomScene extends Phaser.Scene {
             exit.spawnPoint,
             exit.transition
         );
+    }
+
+    /**
+     * Play the transition-in animation matching how we arrived at this room.
+     * Handles all 7 transition types: fade, slide-left/right, wipe-left/right, pixelate, iris.
+     */
+    private playTransitionIn(): void {
+        const onTransitionComplete = () => {
+            this.textInputBar.focus();
+            this.showEntryNarration();
+        };
+
+        switch (this.transitionFrom) {
+            case 'slide-left':
+            case 'slide-right': {
+                // Slide-in from the opposite direction
+                const camera = this.cameras.main;
+                const offset = camera.width;
+                const startOffsetX = this.transitionFrom === 'slide-right' ? -offset : offset;
+                const originalScrollX = camera.scrollX;
+                camera.scrollX = originalScrollX + startOffsetX;
+                this.tweens.add({
+                    targets: camera,
+                    scrollX: originalScrollX,
+                    ease: 'Cubic.easeOut',
+                    duration: 500,
+                    onComplete: onTransitionComplete,
+                });
+                break;
+            }
+
+            case 'wipe-left':
+            case 'wipe-right': {
+                // Reveal by shrinking a full-screen black rect
+                const rect = this.add.rectangle(0, 0, 960, 540, 0x000000)
+                    .setDepth(1000)
+                    .setScrollFactor(0)
+                    .setOrigin(0, 0);
+
+                if (this.transitionFrom === 'wipe-right') {
+                    // Wipe-right entry: rect shrinks from right edge (reveals left to right)
+                    rect.setPosition(0, 0);
+                } else {
+                    // Wipe-left entry: rect shrinks from left edge (reveals right to left)
+                    rect.setPosition(960, 0).setOrigin(1, 0);
+                }
+
+                this.tweens.add({
+                    targets: rect,
+                    width: 0,
+                    ease: 'Linear',
+                    duration: 500,
+                    onComplete: () => {
+                        rect.destroy();
+                        onTransitionComplete();
+                    },
+                });
+                break;
+            }
+
+            case 'pixelate': {
+                // Start pixelated and de-pixelate to reveal
+                const fx = this.cameras.main.postFX.addPixelate(20);
+                this.tweens.add({
+                    targets: fx,
+                    amount: 1,
+                    ease: 'Power2',
+                    duration: 500,
+                    onComplete: () => {
+                        this.cameras.main.postFX.remove(fx);
+                        onTransitionComplete();
+                    },
+                });
+                break;
+            }
+
+            case 'iris': {
+                // Iris-open: vignette starts at full strength (black) and fades to clear
+                const fx = this.cameras.main.postFX.addVignette(0.5, 0.5, 0.0, 1.0);
+                fx.strength = 1.0;
+                // Use longer duration for act-change entries (detected by iris type itself)
+                const irisDuration = 700;
+                this.tweens.add({
+                    targets: fx,
+                    strength: 0,
+                    ease: 'Cubic.easeOut',
+                    duration: irisDuration,
+                    onComplete: () => {
+                        this.cameras.main.postFX.remove(fx);
+                        onTransitionComplete();
+                    },
+                });
+                break;
+            }
+
+            default: {
+                // Default: fade in
+                this.cameras.main.fadeIn(500, 0, 0, 0);
+                this.cameras.main.once(
+                    Phaser.Cameras.Scene2D.Events.FADE_IN_COMPLETE,
+                    onTransitionComplete
+                );
+                break;
+            }
+        }
     }
 
     /**
