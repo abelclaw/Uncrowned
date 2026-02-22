@@ -28,6 +28,18 @@
 - Flux art generation (ComfyUI + GPU) to replace 91 placeholder PNGs with pixel art
 - iOS Safari real-device testing for keyboard behavior and pinch-zoom
 
+## Current Milestone: v2.1 Art & Effects
+
+**Goal:** Generate all pixel art assets via local ComfyUI + Flux, replace 91 placeholders, and add visual effects (transitions, lighting, weather, particles) that bring the world to life.
+
+**Target features:**
+- Flux art generation for all 36 room backgrounds, 6 parallax layers, 37 item sprites, 11 NPC sprites, 1 player spritesheet
+- Art style between classic 16-bit pixel art and modern pixel art (detailed but retro-flavored)
+- LoRA tuning on test rooms before bulk generation
+- Scene transition effects (fades, wipes, dissolves between rooms)
+- Ambient lighting and weather effects per room/act
+- Particle effects for interactive elements and atmosphere
+
 ## Core Value
 
 The text parser must feel magical — players type natural language commands and the game understands them, creating that classic adventure game feeling of conversing with a world. Everything else (graphics, puzzles, story) builds on this foundation.
@@ -78,4 +90,4 @@ The text parser must feel magical — players type natural language commands and
 </details>
 
 ---
-*Last updated: 2026-02-21 after v2.0 milestone completed*
+*Last updated: 2026-02-21 after v2.1 milestone started*

@@ -5,15 +5,15 @@
 See: .planning/PROJECT.md (updated 2026-02-21)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** Planning next milestone
+**Current focus:** v2.1 Art & Effects -- Defining requirements
 
 ## Current Position
 
-Milestone: v2.0 Art & Polish -- SHIPPED
-Status: Milestone complete, archived
-Last activity: 2026-02-21 -- v2.0 milestone archived
-
-Progress: [██████████] 100% (v2.0 complete)
+Milestone: v2.1 Art & Effects
+Phase: Not started (defining requirements)
+Plan: —
+Status: Defining requirements
+Last activity: 2026-02-21 -- Milestone v2.1 started
 
 ## Performance Metrics
 
@@ -23,7 +23,6 @@ Progress: [██████████] 100% (v2.0 complete)
 **v2.0 Totals (archived):**
 - Phases: 5 (Phases 9-13), Plans: 12, Commits: 58
 - Files: 209 changed, 23,793 insertions, 3,946 deletions
-- LOC: 8,084 TypeScript
 - Requirements: 27/32 complete (5 art requirements pending ComfyUI hardware)
 
 ## Accumulated Context
@@ -39,11 +38,11 @@ None.
 
 ### Blockers/Concerns
 
-- Flux pixel art generation requires ComfyUI + GPU hardware (ART-02 through ART-06)
-- iOS Safari keyboard/pinch-zoom needs real-device verification
+- Flux pixel art generation requires ComfyUI + GPU hardware (user has local GPU)
+- Art style target: between classic 16-bit and modern pixel art
 
 ## Session Continuity
 
 Last session: 2026-02-21
-Stopped at: v2.0 milestone archived
+Stopped at: Starting v2.1 milestone
 Resume file: None
