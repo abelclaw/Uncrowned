@@ -79,36 +79,36 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ARTX-01 | — | Pending |
-| ARTX-02 | — | Pending |
-| ARTX-03 | — | Pending |
-| ARTX-04 | — | Pending |
-| ARTX-05 | — | Pending |
-| ARTX-06 | — | Pending |
-| ARTX-07 | — | Pending |
-| ARTX-08 | — | Pending |
-| ARTX-09 | — | Pending |
-| ARTX-10 | — | Pending |
-| TRNS-01 | — | Pending |
-| TRNS-02 | — | Pending |
-| TRNS-03 | — | Pending |
-| LITE-01 | — | Pending |
-| LITE-02 | — | Pending |
-| LITE-03 | — | Pending |
-| LITE-04 | — | Pending |
-| WTHR-01 | — | Pending |
-| WTHR-02 | — | Pending |
-| WTHR-03 | — | Pending |
-| WTHR-04 | — | Pending |
-| PERF-01 | — | Pending |
-| PERF-02 | — | Pending |
-| PERF-03 | — | Pending |
+| ARTX-01 | Phase 14 | Pending |
+| ARTX-02 | Phase 14 | Pending |
+| ARTX-03 | Phase 15 | Pending |
+| ARTX-04 | Phase 14 | Pending |
+| ARTX-05 | Phase 15 | Pending |
+| ARTX-06 | Phase 15 | Pending |
+| ARTX-07 | Phase 15 | Pending |
+| ARTX-08 | Phase 15 | Pending |
+| ARTX-09 | Phase 15 | Pending |
+| ARTX-10 | Phase 18 | Pending |
+| TRNS-01 | Phase 17 | Pending |
+| TRNS-02 | Phase 17 | Pending |
+| TRNS-03 | Phase 17 | Pending |
+| LITE-01 | Phase 17 | Pending |
+| LITE-02 | Phase 17 | Pending |
+| LITE-03 | Phase 17 | Pending |
+| LITE-04 | Phase 17 | Pending |
+| WTHR-01 | Phase 16 | Pending |
+| WTHR-02 | Phase 16 | Pending |
+| WTHR-03 | Phase 16 | Pending |
+| WTHR-04 | Phase 16 | Pending |
+| PERF-01 | Phase 18 | Pending |
+| PERF-02 | Phase 18 | Pending |
+| PERF-03 | Phase 18 | Pending |
 
 **Coverage:**
 - v2.1 requirements: 24 total
-- Mapped to phases: 0
-- Unmapped: 24
+- Mapped to phases: 24
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-21*
-*Last updated: 2026-02-21 after initial definition*
+*Last updated: 2026-02-21 after roadmap creation*
