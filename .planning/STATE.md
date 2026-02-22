@@ -5,18 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-02-21)
 
 **Core value:** The text parser must feel magical -- players type natural language commands and the game understands them.
-**Current focus:** v2.1 Art & Effects -- Phase 14: Art Pipeline Tuning
+**Current focus:** v2.1 Art & Effects -- Phase 14 complete, Phase 15 next (or Phase 16 if hardware unavailable)
 
 ## Current Position
 
 Milestone: v2.1 Art & Effects
-Phase: 14 of 18 (Art Pipeline Tuning)
-**Current Plan:** 2
-**Total Plans in Phase:** 2
-Status: Executing
-Last activity: 2026-02-22 -- Completed 14-01 (per-type config and background removal)
+Phase: 14 of 18 (Art Pipeline Tuning) -- COMPLETE
+**Status:** Phase 14 complete. Next: plan Phase 15 (Batch Art Generation) or Phase 16 (VFX Foundation)
+Last activity: 2026-02-22 -- Completed 14-02 (LoRA test matrix CLI); full game walkthrough found and fixed 9 bugs
 
-**Progress:** [█░░░░░░░░░] 10%
+**Progress:** [██░░░░░░░░] 20%
 
 ## Performance Metrics
 
@@ -29,12 +27,13 @@ Last activity: 2026-02-22 -- Completed 14-01 (per-type config and background rem
 - Requirements: 27/32 complete (5 art requirements pending ComfyUI hardware)
 
 **v2.1:**
-- Total plans completed: 1
+- Total plans completed: 2
 - Phases: 5 (Phases 14-18), Requirements: 24
 
 | Phase | Plan | Duration | Tasks | Files |
 |-------|------|----------|-------|-------|
 | 14 | 01 | 3min | 2 | 2 |
+| 14 | 02 | 2min | 1 (1 deferred) | 1 |
 
 ## Accumulated Context
 
@@ -46,10 +45,25 @@ All v2.0 decisions archived in .planning/milestones/v2.0-ROADMAP.md
 - [14-01] Runtime workflow injection: inject per-type config into deep-cloned workflow at runtime, keep comfyui-workflow.json stable
 - [14-01] Sharp threshold for bg removal: raw pixel threshold + defringe over AI matting library
 - [14-01] 512x512 for items: reduces compute, improves subject centering for 32x32 final assets
+- [14-02] Fixed seed per room for deterministic LoRA comparison across strengths
+- [14-02] 3 rooms per act (9 total) covers all environment types (forest, cave, twilight)
+
+### Gameplay Bugs Fixed (walkthrough session)
+
+9 bugs found and fixed during full game walkthrough (commit fd21a29):
+1. "combine X Y" without connector word not recognized — added VerbTable pattern
+2. Inventory panel overlay blocks text input — added position:relative + auto-close on focus
+3. "talk NPC" without "to" not recognized — added VerbTable pattern
+4. NPCs invisible to text parser (not in noun resolution) — merged NPCs into hotspot list
+5. Hyphen/underscore mismatch in NPC IDs — added normalization in NounResolver
+6. `go west` from cavern_entrance_hall went to wrong room — exit conditions not checked in text commands
+7. Room-bound combine recipes unreachable from other rooms — added global combines extraction
+8. Echo chamber exit direction wrong (south→north) — fixed in room JSON
+9. Arrow key movement added for direct player control
 
 ### Pending Todos
 
-None.
+- LoRA strength calibration (14-02 Task 2) — run `npx tsx scripts/generate-art.ts --test-lora` when ComfyUI available
 
 ### Blockers/Concerns
 
@@ -57,11 +71,11 @@ None.
 - Art style target: between classic 16-bit and modern pixel art
 - RESOLVED: Backgrounds now generate at 1024x576 natively (14-01)
 - RESOLVED: Sprite background removal implemented with threshold + defringe (14-01)
-- LoRA strength values (bg=0.7, sprite=0.85, item=0.9, npc=0.85) are starting estimates needing empirical testing in 14-02
-- Player spritesheet may need hand-assembly -- Flux cannot generate coherent multi-frame sheets
+- LoRA strength values (bg=0.7, sprite=0.85, item=0.9, npc=0.85) are starting estimates needing empirical testing
+- Player spritesheet may need hand-assembly — Flux cannot generate coherent multi-frame sheets
 
 ## Session Continuity
 
 Last session: 2026-02-22
-Stopped at: Completed 14-01-PLAN.md (per-type config and background removal)
+Stopped at: Phase 14 complete, full game walkthrough complete (9 bugs fixed)
 Resume file: None

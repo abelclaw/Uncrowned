@@ -37,7 +37,7 @@
 
 **Milestone Goal:** Generate all pixel art assets via local ComfyUI + Flux, replace 91 placeholders, and add visual effects (transitions, lighting, weather, particles) that bring the world to life.
 
-- [ ] **Phase 14: Art Pipeline Tuning** - Fix generation resolution, calibrate LoRA per asset type, add sprite background removal
+- [x] **Phase 14: Art Pipeline Tuning** - Fix generation resolution, calibrate LoRA per asset type, add sprite background removal (LoRA calibration deferred to hardware availability)
 - [ ] **Phase 15: Batch Art Generation** - Generate all 91 assets with tuned pipeline and validate quality
 - [ ] **Phase 16: VFX Foundation & Weather** - Build EffectsManager, weather particles, and ambient atmosphere effects
 - [ ] **Phase 17: Lighting & Transitions** - Add per-room lighting, PostFX mood effects, and cinematic scene transitions
@@ -54,10 +54,10 @@
   2. LoRA strength settings are documented per asset type and test generations for 3 rooms per act show consistent pixel art style
   3. Generated sprite images have clean transparent backgrounds with no white halos or color fringe artifacts
   4. Test generations at the tuned settings produce visually acceptable results across forest, cave, and twilight environments
-**Plans:** 1/2 plans executed
+**Plans:** 2/2 plans executed (Task 2 checkpoint deferred — needs ComfyUI hardware)
 Plans:
-- [ ] 14-01-PLAN.md -- Per-asset-type config system, 16:9 resolution fix, and sprite background removal
-- [ ] 14-02-PLAN.md -- LoRA strength test matrix CLI and empirical calibration
+- [x] 14-01-PLAN.md -- Per-asset-type config system, 16:9 resolution fix, and sprite background removal
+- [x] 14-02-PLAN.md -- LoRA strength test matrix CLI and empirical calibration
 
 ### Phase 15: Batch Art Generation
 **Goal**: All 91 placeholder assets are replaced with Flux-generated pixel art that looks consistent across the entire game
@@ -113,7 +113,7 @@ Plans:
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
-| 14. Art Pipeline Tuning | 1/2 | In Progress|  | - |
+| 14. Art Pipeline Tuning | 2/2 | Complete (calibration deferred) | - | 2026-02-22 |
 | 15. Batch Art Generation | v2.1 | 0/TBD | Not started | - |
 | 16. VFX Foundation & Weather | v2.1 | 0/TBD | Not started | - |
 | 17. Lighting & Transitions | v2.1 | 0/TBD | Not started | - |
