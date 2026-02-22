@@ -326,6 +326,32 @@ export class EffectsManager {
     }
 
     /**
+     * Play a one-shot sparkle burst at the given world position.
+     * Used for hotspot interaction feedback (click, command, item pickup).
+     * Depth 85: above weather/ambient, visible over room objects.
+     */
+    playInteractionBurst(worldX: number, worldY: number): void {
+        if (!this.initialized) return;
+
+        const emitter = this.scene.add.particles(0, 0, PARTICLE_TEXTURE, {
+            x: worldX,
+            y: worldY,
+            quantity: 12,
+            speed: { min: 40, max: 120 },
+            angle: { min: 0, max: 360 },
+            lifespan: 600,
+            scale: { start: 1.5, end: 0 },
+            alpha: { start: 1, end: 0 },
+            tint: 0xffdd44,
+            emitting: false,
+        });
+        emitter.setDepth(85);
+        // World-positioned: do NOT setScrollFactor(0)
+        emitter.explode(12, worldX, worldY);
+        this.scene.time.delayedCall(1000, () => emitter.destroy());
+    }
+
+    /**
      * Remove all effects. Call from RoomScene shutdown.
      * Does NOT destroy the singleton -- only clears active emitters.
      */

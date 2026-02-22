@@ -11,6 +11,7 @@ import { InventoryPanel } from '../ui/InventoryPanel';
 import { DialogueManager } from '../dialogue/DialogueManager';
 import { DialogueUI } from '../dialogue/DialogueUI';
 import { AudioManager } from '../systems/AudioManager';
+import { EffectsManager } from '../systems/EffectsManager';
 import { GameState } from '../state/GameState';
 import { MetaGameState } from '../state/MetaGameState';
 import type { RoomData, ExitData, HotspotData } from '../types/RoomData';
@@ -52,6 +53,9 @@ export class RoomScene extends Phaser.Scene {
 
     // Phase 7 audio integration
     private audioManager!: AudioManager;
+
+    // Phase 16 effects integration
+    private effectsManager!: EffectsManager;
 
     // Phase 6 dialogue integration
     private dialogueManager!: DialogueManager;
@@ -375,7 +379,13 @@ export class RoomScene extends Phaser.Scene {
                     const to = zone.hotspot.interactionPoint;
                     const path = this.navigation.findPath(from, to);
                     if (path) {
-                        this.player.walkTo(path, () => this.player.playInteraction());
+                        this.player.walkTo(path, () => {
+                            this.player.playInteraction();
+                            this.effectsManager.playInteractionBurst(
+                                zone.hotspot.interactionPoint.x,
+                                zone.hotspot.interactionPoint.y
+                            );
+                        });
                     }
                     return;
                 }
@@ -455,6 +465,11 @@ export class RoomScene extends Phaser.Scene {
         this.audioManager.init(this);
         this.audioManager.onRoomEnter(this.roomData);
 
+        // Phase 16 effects integration
+        this.effectsManager = EffectsManager.getInstance();
+        this.effectsManager.init(this);
+        this.effectsManager.onRoomEnter(this.roomData);
+
         // Listen for command-submitted events from the input bar
         this.commandSubmittedHandler = async (text: string) => {
             // Dialogue mode: route input to choice selection
@@ -519,6 +534,17 @@ export class RoomScene extends Phaser.Scene {
             }
 
             const result = this.commandDispatcher.dispatch(parseResult.action, this.roomData);
+
+            // Phase 16: sparkle burst on successful non-look commands at the hotspot interaction point
+            if (parseResult.action.verb !== 'look' && parseResult.action.subject) {
+                const matchedHotspot = this.hotspotZones.find(z => z.hotspot.id === parseResult.action!.subject);
+                if (matchedHotspot) {
+                    this.effectsManager.playInteractionBurst(
+                        matchedHotspot.hotspot.interactionPoint.x,
+                        matchedHotspot.hotspot.interactionPoint.y
+                    );
+                }
+            }
 
             // Use typewriter for narrator-style responses, instant for short system messages
             if (result.response.length > 50) {
@@ -625,9 +651,10 @@ export class RoomScene extends Phaser.Scene {
         // Item picked up handler (from PuzzleEngine add-item action)
         this.itemPickedUpHandler = (itemId: string) => {
             this.gameState.markRoomItemRemoved(this.roomData.id, itemId);
-            // Destroy the item sprite if it exists
+            // Phase 16: sparkle burst at item position before destroying sprite
             const sprite = this.itemSprites.get(itemId);
             if (sprite) {
+                this.effectsManager.playInteractionBurst(sprite.x, sprite.y);
                 sprite.destroy();
                 this.itemSprites.delete(itemId);
             }
@@ -723,6 +750,9 @@ export class RoomScene extends Phaser.Scene {
             this.itemSprites.clear();
             this.npcSprites.forEach(sprite => sprite.destroy());
             this.npcSprites.clear();
+
+            // Phase 16 effects cleanup
+            this.effectsManager.cleanup();
 
             // Phase 7 audio cleanup (remove EventBus listeners, keep audio playing for crossfade)
             this.audioManager.cleanup();
