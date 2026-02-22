@@ -319,6 +319,16 @@
             }
         ]
     },
+    "effects": {
+        "ambient": [
+            { "type": "dust-motes", "intensity": 0.4 }
+        ],
+        "lighting": {
+            "tint": "#eeddaa",
+            "brightness": 0.9,
+            "vignette": 0.15
+        }
+    },
     "puzzleHints": [
         {
             "puzzleId": "take-toll-coin",

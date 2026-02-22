@@ -313,6 +313,19 @@
             }
         ]
     },
+    "effects": {
+        "weather": {
+            "type": "dust",
+            "intensity": 0.3
+        },
+        "ambient": [
+            { "type": "dust-motes", "intensity": 0.4 }
+        ],
+        "lighting": {
+            "brightness": 0.85,
+            "vignette": 0.25
+        }
+    },
     "puzzleHints": [
         {
             "puzzleId": "use-lens-on-telescope",

@@ -276,6 +276,17 @@
             }
         ]
     },
+    "effects": {
+        "ambient": [
+            { "type": "falling-leaves", "intensity": 0.4 },
+            { "type": "dust-motes", "intensity": 0.2 }
+        ],
+        "lighting": {
+            "tint": "#aabb88",
+            "brightness": 0.85,
+            "vignette": 0.2
+        }
+    },
     "playerSpawn": {
         "x": 480,
         "y": 430
