@@ -42,9 +42,9 @@ Requirements for the Art & Effects milestone. Each maps to roadmap phases.
 
 ### Performance & Mobile
 
-- [ ] **PERF-01**: Visual effects degrade gracefully on Canvas fallback (no WebGL) — game remains playable
-- [ ] **PERF-02**: Mobile devices use reduced particle counts and simplified effects to maintain 30+ FPS
-- [ ] **PERF-03**: Effects system has global quality toggle (high/low/off) accessible from settings
+- [x] **PERF-01**: Visual effects degrade gracefully on Canvas fallback (no WebGL) — game remains playable
+- [x] **PERF-02**: Mobile devices use reduced particle counts and simplified effects to maintain 30+ FPS
+- [x] **PERF-03**: Effects system has global quality toggle (high/low/off) accessible from settings
 
 ## Future Requirements
 
@@ -100,9 +100,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | WTHR-02 | Phase 16 | Complete |
 | WTHR-03 | Phase 16 | Complete |
 | WTHR-04 | Phase 16 | Complete |
-| PERF-01 | Phase 18 | Pending |
-| PERF-02 | Phase 18 | Pending |
-| PERF-03 | Phase 18 | Pending |
+| PERF-01 | Phase 18 | Complete |
+| PERF-02 | Phase 18 | Complete |
+| PERF-03 | Phase 18 | Complete |
 
 **Coverage:**
 - v2.1 requirements: 24 total

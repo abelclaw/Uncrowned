@@ -13,7 +13,7 @@ Milestone: v2.1 Art & Effects
 Phase: 18 of 18 (Effects Rollout & Polish) -- Complete (3/3 plans done)
 Current Plan: 3 of 3 (complete)
 **Status:** Milestone complete
-Last activity: 2026-02-22 -- Completed 18-03 (Act 2 & Act 3 Effects Rollout)
+Last activity: 2026-02-22 -- Completed 18-01 (Quality Settings & Toggle)
 
 **Progress:** [██████████] 100%
 
@@ -28,7 +28,7 @@ Last activity: 2026-02-22 -- Completed 18-03 (Act 2 & Act 3 Effects Rollout)
 - Requirements: 27/32 complete (5 art requirements pending ComfyUI hardware)
 
 **v2.1:**
-- Total plans completed: 8
+- Total plans completed: 9
 - Phases: 5 (Phases 14-18), Requirements: 24
 
 | Phase | Plan | Duration | Tasks | Files |
@@ -40,6 +40,7 @@ Last activity: 2026-02-22 -- Completed 18-03 (Act 2 & Act 3 Effects Rollout)
 | 17 | 01 | 3min | 2 | 4 |
 | 17 | 02 | 3min | 2 | 5 |
 | 18 | 02 | 2min | 2 | 13 |
+| 18 | 01 | 4min | 2 | 4 |
 | 18 | 03 | 2min | 2 | 18 |
 
 ## Accumulated Context
@@ -66,6 +67,9 @@ All v2.0 decisions archived in .planning/milestones/v2.0-ROADMAP.md
 - [17-02] Vignette PostFX for iris effect: simpler than Graphics mask, tween strength 0->1 for iris-close
 - [17-02] Act-boundary override always uses iris+1500ms regardless of exit JSON transition
 - [17-02] Entry animation durations: 500ms for wipe/pixelate, 700ms for iris-open
+- [18-01] Reuse isMobile() from MobileKeyboardManager for quality detection (no circular dependency)
+- [18-01] Canvas renderer skips particles + PostFX but keeps lighting overlay Rectangle
+- [18-01] Mobile auto-downgrade: 'high' quality on mobile = 0.5x particle multiplier
 - [18-02] Effects field placement: after audio, before puzzleHints/playerSpawn in room JSONs
 - [18-02] Cave brightness gradient: cave_entrance 0.4 -> cave_depths 0.25 (natural depth darkening)
 - [18-02] Castle interior gradient: courtyard 0.85 -> hallway 0.75 -> servants_quarters 0.65
@@ -105,5 +109,5 @@ All v2.0 decisions archived in .planning/milestones/v2.0-ROADMAP.md
 ## Session Continuity
 
 Last session: 2026-02-22
-Stopped at: Completed 18-03-PLAN.md (Act 2 & Act 3 Effects Rollout) -- Phase 18 complete, Milestone v2.1 complete
+Stopped at: Completed 18-01-PLAN.md (Quality Settings & Toggle) -- All Phase 18 plans complete, Milestone v2.1 complete
 Resume file: None
