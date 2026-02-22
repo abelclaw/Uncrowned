@@ -448,7 +448,13 @@
         "weather": { "type": "fog", "intensity": 0.4 },
         "ambient": [
             { "type": "dust-motes", "intensity": 0.2 }
-        ]
+        ],
+        "lighting": {
+            "tint": "#332244",
+            "brightness": 0.4,
+            "vignette": 0.6,
+            "torchFlicker": true
+        }
     },
     "puzzleHints": [
         {

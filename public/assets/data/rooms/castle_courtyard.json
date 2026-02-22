@@ -467,6 +467,14 @@
             }
         ]
     },
+    "effects": {
+        "lighting": {
+            "tint": "#ffcc88",
+            "brightness": 0.85,
+            "vignette": 0.2,
+            "postfx": ["bloom"]
+        }
+    },
     "puzzleHints": [
         {
             "puzzleId": "show-crystal-to-guards",
