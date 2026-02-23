@@ -160,7 +160,7 @@ export class RoomScene extends Phaser.Scene {
                             item.zone.x + item.zone.width / 2,
                             item.zone.y + item.zone.height / 2,
                             spriteKey
-                        ).setDepth(5);
+                        ).setDisplaySize(item.zone.width, item.zone.height).setDepth(5);
                         this.itemSprites.set(item.id, itemSprite);
                     }
                 }

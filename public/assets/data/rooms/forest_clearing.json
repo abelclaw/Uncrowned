@@ -105,14 +105,14 @@
             "id": "old-stump",
             "name": "Old Tree Stump",
             "zone": {
-                "x": 400,
-                "y": 350,
-                "width": 80,
-                "height": 60
+                "x": 460,
+                "y": 390,
+                "width": 130,
+                "height": 100
             },
             "interactionPoint": {
-                "x": 440,
-                "y": 420
+                "x": 525,
+                "y": 460
             },
             "responses": {
                 "look": "A weathered tree stump, its rings telling centuries of stories nobody asked for. Something glints in a crack. Probably a bottle cap. This forest has seen better days, but then again, so has the entire kingdom.",
@@ -128,14 +128,14 @@
             "id": "rusty-key",
             "name": "Rusty Key",
             "zone": {
-                "x": 420,
-                "y": 400,
+                "x": 510,
+                "y": 430,
                 "width": 30,
                 "height": 20
             },
             "interactionPoint": {
-                "x": 440,
-                "y": 420
+                "x": 525,
+                "y": 460
             },
             "responses": {
                 "look": "A small, corroded key wedged into a crack in the stump. It's the color of regret and oxidation.",
