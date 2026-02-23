@@ -347,6 +347,13 @@
                 "y": 370,
                 "width": 50,
                 "height": 80
+            },
+            "responses": {
+                "look": "The merchant is frozen mid-gesture, one hand raised as if presenting today's special. His expression suggests the special was quite good. His petrified state suggests the curse disagreed.",
+                "talk": "You speak to the stone merchant. He does not respond. This is the most successful sales interaction you've ever had -- nobody is trying to upsell you.",
+                "use": "Using a petrified merchant seems disrespectful. Also impractical. He's solid stone and makes a terrible conversation partner.",
+                "take": "The merchant weighs several hundred pounds of solid stone. Your ambitions exceed your lifting capacity.",
+                "default": "The stone merchant continues his eternal sales pitch to nobody. Business is, predictably, slow."
             }
         }
     ],

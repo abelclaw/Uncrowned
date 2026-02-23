@@ -226,7 +226,15 @@
                 "y": 370,
                 "width": 40,
                 "height": 80
-            }
+            },
+            "responses": {
+                "look": "An old man sits on a rock by the path, watching you with the kind of intensity normally reserved for chess grandmasters and cats who've spotted a bird. His clothes are patched so many times they're more patch than cloth.",
+                "talk": "The old man peers at you. 'Heading to the village? Watch yourself. The square's fountain turned folk to stone last week. The castle's worse.' He pauses. 'But you look like the sort who ignores good advice. Go east. See for yourself.'",
+                "use": "You're not sure how one 'uses' an old man. He's not a tool. He barely qualifies as furniture.",
+                "take": "The old man gives you a look that could curdle milk. He is not going anywhere, and neither are your chances of dignified social interaction.",
+                "default": "The old man returns to staring at the horizon with the patience of someone who's been doing it professionally for decades."
+            },
+            "defaultResponse": "The old man returns to staring at the horizon."
         }
     ],
     "audio": {

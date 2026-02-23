@@ -360,6 +360,13 @@
                 "y": 370,
                 "width": 60,
                 "height": 70
+            },
+            "responses": {
+                "look": "Martha is a stout woman wielding a cleaver with the casual competence of someone who's been threatening vegetables -- and occasionally people -- for thirty years. She eyes you the way one eyes an uninvited guest who's wandered into the kitchen during a crisis.",
+                "talk": "'Can't talk. No flour. No flour means no bread. No bread means the castle starves. Not that there's anyone left to feed, but a cook has standards.' She waves her cleaver in the general direction of 'go away.'",
+                "use": "Martha is not a kitchen implement. She will, however, use a kitchen implement on you if you don't stop bothering her.",
+                "take": "You reach toward Martha. She raises the cleaver. You reconsider. Fastest decision you've made all day.",
+                "default": "Martha chops something with unnecessary force. You decide not to investigate what."
             }
         }
     ],

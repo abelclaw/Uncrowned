@@ -504,6 +504,19 @@
                 }
             ],
             "once": true
+        },
+        {
+            "id": "talk-clerk-no-form",
+            "trigger": {"verb": "talk", "subject": "the_clerk"},
+            "conditions": [
+                {"type": "flag-not-set", "flag": "registered_with_clerk"}
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "The Clerk looks up from a stack of paperwork that appears to predate the concept of paper. 'Form 27-B Stroke 6. Filed in triplicate. Blue ink only. Next.' He returns to stamping things that don't need stamping."
+                }
+            ]
         }
     ],
     "deathTriggers": [
@@ -554,6 +567,12 @@
                 "y": 365,
                 "width": 60,
                 "height": 60
+            },
+            "responses": {
+                "look": "The Clerk sits behind his desk with the posture of someone who has been sitting behind desks since desks were invented. His spectacles perch on a nose that has looked down at paperwork for so long it has forgotten any other direction exists.",
+                "use": "The Clerk is not an item. He is a bureaucratic institution in spectacles. Submit Form 27-B Stroke 6 if you wish to interact.",
+                "take": "Taking a civil servant is a criminal offense in seven jurisdictions, three of which the Clerk invented specifically to prevent this.",
+                "default": "The Clerk stamps something. The stamp echoes through the hall like a gavel of bureaucratic finality."
             }
         }
     ],

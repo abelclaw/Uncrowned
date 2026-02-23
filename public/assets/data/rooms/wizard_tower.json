@@ -340,6 +340,13 @@
                 "y": 365,
                 "width": 60,
                 "height": 60
+            },
+            "responses": {
+                "look": "The spectral wizard drifts between shelves, muttering about reagent prices and the declining quality of modern cursework. He doesn't seem to notice you, or perhaps he simply doesn't care. His robes shimmer between purple and transparent.",
+                "talk": "The wizard's ghost pauses mid-mutter. 'Hmm? Oh, another one. Read the notes on the desk if you want to know what happened. I'm too dead to explain it twice.' He resumes cataloguing invisible potions.",
+                "use": "The wizard's ghost is incorporeal. You cannot use, bottle, or otherwise interact with spectral academics. University policy.",
+                "take": "Your hand passes through the wizard. He sighs. 'Everyone tries that. Nobody succeeds. It's been centuries. Please stop.'",
+                "default": "The wizard continues muttering about the price of eye of newt. Some obsessions transcend death."
             }
         }
     ],

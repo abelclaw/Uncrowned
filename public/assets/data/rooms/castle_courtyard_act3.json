@@ -237,6 +237,19 @@
                 "use": "They're past the point of pruning.",
                 "default": "You examine the petrified hedges. The topiary was questionable even before it turned to stone."
             }
+        },
+        {
+            "id": "captain-aldric",
+            "name": "Captain Aldric",
+            "zone": {"x": 650, "y": 300, "width": 80, "height": 150},
+            "interactionPoint": {"x": 690, "y": 440},
+            "responses": {
+                "look": "Captain Aldric stands half-petrified -- his right side grey stone, his left side stubbornly flesh. His one working eye tracks you with military precision. Stone or not, the man is still on duty.",
+                "talk": "'Break... the curse...' Aldric manages through half a stone jaw. 'Clock tower... treasury... rite circle... hurry.' Every word costs him visible effort. His flesh hand grips his stone sword. The man is fighting petrification through sheer obstinacy.",
+                "use": "Captain Aldric is not a tool. He is a soldier fighting petrification with willpower alone. Show some respect.",
+                "take": "You cannot take a half-petrified guard captain. He wouldn't fit in your pockets, and he'd object strenuously with his remaining flesh hand.",
+                "default": "Aldric's one good eye follows you. He doesn't need words to communicate 'hurry up.' The stone creeping up his neck says it for him."
+            }
         }
     ],
     "items": [],

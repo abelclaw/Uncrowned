@@ -419,6 +419,13 @@
                 "y": 375,
                 "width": 60,
                 "height": 60
+            },
+            "responses": {
+                "look": "A translucent dwarven figure sits cross-legged near the forge, eyes closed in what might be meditation or might be the afterlife equivalent of a nap. His spectral beard is magnificent -- braided with care that death has not diminished.",
+                "talk": "The dwarven spirit opens one eye. 'Forge needs coal. And fire. Light the forge, and I'll show you what real smithing looks like.' The eye closes again. Conversation over.",
+                "use": "You cannot use a dwarven spirit. They use you. That's how forges work.",
+                "take": "The dwarven spirit is not an item. He is a craftsman. The distinction matters to him, even in death.",
+                "default": "The dwarven spirit continues his eternal vigil over the cold forge. Patience, apparently, is a dwarven virtue."
             }
         }
     ],

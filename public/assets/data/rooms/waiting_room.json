@@ -201,6 +201,13 @@
                 "y": 375,
                 "width": 60,
                 "height": 60
+            },
+            "responses": {
+                "look": "A spectral figure clutches a faded ticket numbered 4. It has been waiting since before the curse. Before the kingdom, possibly. Its expression combines hope, despair, and the quiet madness of someone who has been in a queue for centuries.",
+                "talk": "'Is it my turn yet?' the ghost whispers. You check the display. Now serving: 3. The ghost has been one number away for an eternity. You lack the heart to tell it that number 3 appears to have left.",
+                "use": "You cannot use a ghost. The ghost cannot use itself. Nobody in this waiting room is being used productively. That appears to be the point.",
+                "take": "The ghost looks at you with hollow eyes. 'You can't take my place in the queue. I've waited too long.' It clutches its ticket tighter.",
+                "default": "The queue ghost stares at the number display with the hope of someone who has been disappointed every second for three hundred years but refuses to give up."
             }
         }
     ],
