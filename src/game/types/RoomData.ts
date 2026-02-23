@@ -97,6 +97,8 @@ export interface ExitData {
     label?: string;
     /** Optional conditions that must be met for this exit to be active (e.g. flag-set) */
     conditions?: Array<{ type: string; flag?: string; item?: string }>;
+    /** Message shown when player tries to use this exit but conditions aren't met */
+    blockedMessage?: string;
 }
 
 /**

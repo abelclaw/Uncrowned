@@ -76,7 +76,8 @@
                     "type": "flag-set",
                     "flag": "boat_repaired"
                 }
-            ]
+            ],
+            "blockedMessage": "The forge lies across the underground river, but there's no way to cross. The water is too deep and fast to swim. You'd need some kind of vessel."
         }
     ],
     "hotspots": [

@@ -84,7 +84,8 @@
                     "type": "flag-set",
                     "flag": "clerk-satisfied"
                 }
-            ]
+            ],
+            "blockedMessage": "The passage to the petrified forest is magically sealed. You sense you need to prove yourself further before this way opens."
         },
         {
             "id": "to-library",
@@ -141,7 +142,8 @@
                     "type": "has-item",
                     "item": "queue-ticket"
                 }
-            ]
+            ],
+            "blockedMessage": "A velvet rope blocks the entrance to the waiting room. A small sign reads: 'TICKET HOLDERS ONLY. No exceptions. No excuses. No crying.'"
         },
         {
             "id": "to-west-wing",
@@ -164,7 +166,8 @@
                     "type": "flag-set",
                     "flag": "west_wing_unlocked"
                 }
-            ]
+            ],
+            "blockedMessage": "The west wing corridor is barred by a locked gate. There must be a way to open it from somewhere in the hall."
         },
         {
             "id": "to-east-wing",
@@ -187,7 +190,8 @@
                     "type": "flag-set",
                     "flag": "east_wing_accessed"
                 }
-            ]
+            ],
+            "blockedMessage": "The east wing passage is blocked. You haven't yet earned access to this part of the cavern."
         }
     ],
     "hotspots": [

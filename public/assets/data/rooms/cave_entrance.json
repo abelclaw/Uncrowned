@@ -93,7 +93,8 @@
                     "type": "flag-set",
                     "flag": "door-unlocked"
                 }
-            ]
+            ],
+            "blockedMessage": "You try to venture deeper into the cave, but a heavy oak door blocks the passage. It's locked tight. You'd need a key -- probably something old and rusty, if the lock is any indication."
         }
     ],
     "hotspots": [

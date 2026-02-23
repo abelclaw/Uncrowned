@@ -76,7 +76,8 @@
                     "type": "flag-set",
                     "flag": "treasury_opened"
                 }
-            ]
+            ],
+            "blockedMessage": "A heavy iron gate bars the way to the treasury. It's sealed tight -- you'll need to find another way to open it."
         }
     ],
     "hotspots": [

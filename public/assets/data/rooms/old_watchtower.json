@@ -88,7 +88,8 @@
                     "type": "flag-set",
                     "flag": "seen_castle"
                 }
-            ]
+            ],
+            "blockedMessage": "The path to the forest bridge is overgrown and impassable. You feel you haven't seen enough of the world yet to find your way through."
         }
     ],
     "hotspots": [

@@ -76,7 +76,8 @@
                     "type": "flag-set",
                     "flag": "mushroom_pattern_solved"
                 }
-            ]
+            ],
+            "blockedMessage": "The passage to the crystal chamber is sealed by a strange organic growth. The mushrooms on the walls seem to pulse in a pattern -- perhaps they're the key."
         },
         {
             "id": "to-balcony",

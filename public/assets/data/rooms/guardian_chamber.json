@@ -76,7 +76,8 @@
                     "type": "flag-set",
                     "flag": "guardian-defeated"
                 }
-            ]
+            ],
+            "blockedMessage": "The stone guardian blocks the passage to the crystal chamber. It stands motionless but imposing -- you'd have to deal with it first."
         }
     ],
     "hotspots": [

@@ -76,7 +76,8 @@
                     "type": "flag-set",
                     "flag": "riddle_answered"
                 }
-            ]
+            ],
+            "blockedMessage": "The bridge troll blocks your path, arms folded. He won't let anyone cross without answering his riddle first."
         },
         {
             "id": "to-courtyard-toll",
@@ -99,7 +100,8 @@
                     "type": "flag-set",
                     "flag": "toll_paid"
                 }
-            ]
+            ],
+            "blockedMessage": "The bridge troll blocks your path. He's muttering something about a toll that needs paying."
         },
         {
             "id": "to-cavern",
@@ -134,7 +136,8 @@
                     "type": "flag-set",
                     "flag": "skeleton-key-used"
                 }
-            ]
+            ],
+            "blockedMessage": "A hidden path leads north, but you're not ready for what lies beyond. There's more to accomplish in the kingdom first."
         }
     ],
     "hotspots": [

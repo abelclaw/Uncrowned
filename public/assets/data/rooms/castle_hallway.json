@@ -110,7 +110,8 @@
                     "type": "flag-set",
                     "flag": "skeleton-key-used"
                 }
-            ]
+            ],
+            "blockedMessage": "The kitchen door is locked. A large, ornate keyhole suggests this requires no ordinary key -- something skeletal, perhaps."
         }
     ],
     "hotspots": [

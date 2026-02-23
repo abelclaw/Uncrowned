@@ -76,7 +76,8 @@
                     "type": "has-item",
                     "item": "makeshift-torch"
                 }
-            ]
+            ],
+            "blockedMessage": "The passage ahead descends into absolute darkness. You can't see a thing. You'd need some kind of light source to venture further."
         }
     ],
     "hotspots": [

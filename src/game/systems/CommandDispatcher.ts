@@ -423,6 +423,16 @@ export class CommandDispatcher {
             };
         }
 
+        // Check if an exit matches but its conditions aren't met (blocked path)
+        const blockedExit = this.findBlockedExit(action.subject, roomData);
+        if (blockedExit) {
+            return {
+                response: blockedExit.blockedMessage
+                    ?? "The way is blocked. Perhaps there's something you need to do first.",
+                handled: true,
+            };
+        }
+
         // Subject looks like a direction but no matching exit
         return {
             response: "You can't go that way.",
@@ -780,6 +790,20 @@ export class CommandDispatcher {
         if (byRoom) return byRoom;
 
         return undefined;
+    }
+
+    /**
+     * Find an exit that matches by ID/direction/label/room but fails conditions.
+     */
+    private findBlockedExit(subject: string, roomData: RoomData): ExitData | undefined {
+        const lower = subject.toLowerCase();
+        return roomData.exits.find(e => {
+            const matches = (e.id === lower || e.id === subject)
+                || (e.direction && e.direction.toLowerCase() === lower)
+                || (e.label && e.label.toLowerCase() === lower)
+                || e.targetRoom.toLowerCase().includes(lower);
+            return matches && !this.exitConditionsMet(e);
+        });
     }
 
     /**
