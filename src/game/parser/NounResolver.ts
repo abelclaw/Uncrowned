@@ -255,10 +255,22 @@ export class NounResolver {
 
         for (const h of hotspots) {
             candidates.push({ name: h.name, type: 'hotspot', id: h.id });
+            // Also add individual words from multi-word names so
+            // "beehve" can fuzzy-match "Beehive" in "Suspicious Beehive"
+            for (const word of h.name.split(/\s+/)) {
+                if (word.length > 2) {
+                    candidates.push({ name: word, type: 'hotspot', id: h.id });
+                }
+            }
         }
         if (inventoryItems) {
             for (const item of inventoryItems) {
                 candidates.push({ name: item.name, type: 'item', id: item.id });
+                for (const word of item.name.split(/\s+/)) {
+                    if (word.length > 2) {
+                        candidates.push({ name: word, type: 'item', id: item.id });
+                    }
+                }
             }
         }
 

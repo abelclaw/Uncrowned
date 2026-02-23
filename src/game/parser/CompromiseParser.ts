@@ -139,15 +139,25 @@ export class CompromiseParser {
         }
 
         // If no verb found via POS, try the first word as a verb
+        let verbFromFirstWord = false;
         if (!verb) {
             const firstWord = normalized.split(/\s+/)[0];
             verb = VERB_LOOKUP.get(firstWord) ?? null;
+            if (verb) verbFromFirstWord = true;
         }
 
         if (!verb) return null;
 
         // 4. Extract noun phrases
-        const nouns = this.extractNouns(doc, normalized);
+        // When the verb was found via first-word fallback (not POS tagging),
+        // strip the first word before extracting nouns so it doesn't appear as a noun.
+        // e.g. "destroy the banner" → compromise sees "destroy" as a noun, but we used
+        // it as the verb, so extract nouns from "the banner" only.
+        const nounInput = verbFromFirstWord
+            ? normalized.replace(/^\S+\s*/, '')
+            : normalized;
+        const nounDoc = verbFromFirstWord ? nlp(nounInput) : doc;
+        const nouns = this.extractNouns(nounDoc, nounInput);
 
         // 5. Build result
         return this.buildResult(verb, nouns, hotspots, exits, inventoryItems, trimmed);
