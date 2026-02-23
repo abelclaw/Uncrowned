@@ -87,6 +87,8 @@ export class RoomScene extends Phaser.Scene {
     // Phase 9 lazy-loaded sprites
     private itemSprites: Map<string, Phaser.GameObjects.Image> = new Map();
     private npcSprites: Map<string, Phaser.GameObjects.Image> = new Map();
+    // Dynamic background layer images (for flag-based swaps)
+    private bgLayerImages: Map<string, Phaser.GameObjects.Image> = new Map();
 
     constructor() {
         super('RoomScene');
@@ -144,11 +146,21 @@ export class RoomScene extends Phaser.Scene {
             loadingText.destroy();
 
             // Create background layers with parallax scroll factors
+            // Resolve dynamic background swaps based on current game flags
             this.roomData.background.layers.forEach((layer, index) => {
-                this.add.image(0, 0, layer.key)
+                let resolvedKey = layer.key;
+                if (this.roomData.dynamicBackgrounds) {
+                    for (const [flag, swap] of Object.entries(this.roomData.dynamicBackgrounds)) {
+                        if (swap.from === layer.key && this.gameState.isFlagSet(flag)) {
+                            resolvedKey = swap.to;
+                        }
+                    }
+                }
+                const img = this.add.image(0, 0, resolvedKey)
                     .setOrigin(0, 0)
                     .setScrollFactor(layer.scrollFactor)
                     .setDepth(index);
+                this.bgLayerImages.set(layer.key, img);
             });
 
             // Render item sprites for items present in the room (not yet taken)
@@ -625,10 +637,18 @@ export class RoomScene extends Phaser.Scene {
         };
         EventBus.on('load-game', this.loadGameHandler);
 
-        // Room update handler (from PuzzleEngine actions like open-exit, remove-hotspot)
-        this.roomUpdateHandler = (_action: any) => {
-            // Handle dynamic room changes from puzzle actions
-            // Future: handle remove-hotspot, add-hotspot, open-exit for visual updates
+        // Room update handler (from PuzzleEngine actions like open-exit, set-flag)
+        this.roomUpdateHandler = (action: any) => {
+            // Swap background layers when a flag triggers a dynamic background change
+            if (action.type === 'set-flag' && this.roomData.dynamicBackgrounds) {
+                const swap = this.roomData.dynamicBackgrounds[action.flag];
+                if (swap) {
+                    const img = this.bgLayerImages.get(swap.from);
+                    if (img && this.textures.exists(swap.to)) {
+                        img.setTexture(swap.to);
+                    }
+                }
+            }
         };
         EventBus.on('room-update', this.roomUpdateHandler);
 
@@ -742,21 +762,30 @@ export class RoomScene extends Phaser.Scene {
         let needsLoad = false;
 
         // Load background layers
+        const bgKeysToLoad = new Set<string>();
         for (const layer of this.roomData.background.layers) {
-            if (!this.textures.exists(layer.key)) {
+            bgKeysToLoad.add(layer.key);
+        }
+        // Also preload dynamic background swap targets
+        if (this.roomData.dynamicBackgrounds) {
+            for (const swap of Object.values(this.roomData.dynamicBackgrounds)) {
+                bgKeysToLoad.add(swap.from);
+                bgKeysToLoad.add(swap.to);
+            }
+        }
+        for (const key of bgKeysToLoad) {
+            if (!this.textures.exists(key)) {
                 let assetPath: string;
-                if (layer.key.startsWith('bg-shared-')) {
-                    // e.g. bg-shared-act1-sky -> assets/backgrounds/shared/act1-sky.png
-                    const rest = layer.key.replace('bg-shared-', '');
+                if (key.startsWith('bg-shared-')) {
+                    const rest = key.replace('bg-shared-', '');
                     assetPath = `assets/backgrounds/shared/${rest}.png`;
-                } else if (layer.key.startsWith('bg-rooms-')) {
-                    // e.g. bg-rooms-forest_clearing -> assets/backgrounds/rooms/forest_clearing.png
-                    const rest = layer.key.replace('bg-rooms-', '');
+                } else if (key.startsWith('bg-rooms-')) {
+                    const rest = key.replace('bg-rooms-', '');
                     assetPath = `assets/backgrounds/rooms/${rest}.png`;
                 } else {
                     continue;
                 }
-                this.load.image(layer.key, assetPath);
+                this.load.image(key, assetPath);
                 needsLoad = true;
             }
         }

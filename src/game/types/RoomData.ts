@@ -194,4 +194,6 @@ export interface RoomData {
     effects?: RoomEffectsData;
     /** Progressive hint definitions for puzzles in this room */
     puzzleHints?: PuzzleHint[];
+    /** Flag-based background layer swaps: { flagName: { from: layerKey, to: layerKey } } */
+    dynamicBackgrounds?: Record<string, { from: string; to: string }>;
 }

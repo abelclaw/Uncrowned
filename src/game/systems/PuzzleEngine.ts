@@ -61,6 +61,7 @@ export class PuzzleEngine {
                 return null;
             case 'set-flag':
                 this.state.setFlag(action.flag, action.value ?? true);
+                EventBus.emit('room-update', action);
                 return null;
             case 'remove-flag':
                 this.state.setFlag(action.flag, false);

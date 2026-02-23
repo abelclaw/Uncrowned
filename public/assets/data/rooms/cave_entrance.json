@@ -13,11 +13,17 @@
                 "scrollFactor": 0.3
             },
             {
-                "key": "bg-rooms-cave_entrance",
+                "key": "bg-rooms-cave_entrance_closed",
                 "scrollFactor": 1
             }
         ],
         "worldWidth": 1920
+    },
+    "dynamicBackgrounds": {
+        "door-unlocked": {
+            "from": "bg-rooms-cave_entrance_closed",
+            "to": "bg-rooms-cave_entrance"
+        }
     },
     "walkableArea": [
         {

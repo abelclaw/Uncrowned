@@ -68,7 +68,7 @@
       "act": "act1"
     },
     "cave_entrance": {
-      "prompt": "yawning cave mouth in rocky hillside, cold dark interior, heavy oak door set into rock face, stale air wisps, ominous darkness beyond, mossy stone surroundings",
+      "prompt": "yawning cave mouth in rocky hillside, cold dark interior, heavy closed locked oak door set into rock face blocking passage, iron-bound wooden door shut tight with rusted keyhole, mossy stone surroundings, ominous darkness beyond door",
       "seed": 200002,
       "output": "public/assets/backgrounds/rooms/cave_entrance.png",
       "dimensions": {
