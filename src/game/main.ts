@@ -43,16 +43,33 @@ if (appEl) {
     new MobileKeyboardManager(appEl);
 }
 
-// Create mute toggle button
+// Create mute toggle button with inline styles for reliability
 const muteBtn = document.createElement('button');
 muteBtn.id = 'mute-btn';
-muteBtn.textContent = '\u266B';
+muteBtn.innerHTML = '\u{1F50A}';
 muteBtn.title = 'Toggle sound';
+Object.assign(muteBtn.style, {
+    position: 'absolute',
+    top: '8px',
+    left: '8px',
+    zIndex: '30',
+    width: '36px',
+    height: '36px',
+    background: 'rgba(15, 15, 35, 0.7)',
+    border: '1px solid #4a4a6a',
+    borderRadius: '4px',
+    fontSize: '18px',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '0',
+    lineHeight: '1',
+});
 document.getElementById('game-container')?.appendChild(muteBtn);
 muteBtn.addEventListener('click', () => {
     const muted = AudioManager.getInstance().toggleMute();
-    muteBtn.textContent = muted ? '\u2716' : '\u266B';
-    muteBtn.classList.toggle('muted', muted);
+    muteBtn.innerHTML = muted ? '\u{1F507}' : '\u{1F50A}';
 });
 
 // Responsive scaling: scale the entire game container (canvas + text UI) as a unit

@@ -58,29 +58,6 @@
     ],
     "hotspots": [
         {
-            "id": "old-stump",
-            "name": "Old Tree Stump",
-            "zone": {
-                "x": 400,
-                "y": 350,
-                "width": 80,
-                "height": 60
-            },
-            "interactionPoint": {
-                "x": 440,
-                "y": 420
-            },
-            "responses": {
-                "look": "A weathered tree stump, its rings telling centuries of stories nobody asked for. Something glints in a crack. Probably a bottle cap. This forest has seen better days, but then again, so has the entire kingdom.",
-                "take": "You wrap your arms around the stump and heave. Nothing. The stump has been here longer than your entire bloodline and isn't going anywhere.",
-                "use": "You sit on the stump for a moment. It's oddly comfortable. You feel like you've accomplished absolutely nothing, which is consistent with your life so far.",
-                "push": "You push the stump. It does not push back. Score one for you, I suppose.",
-                "pull": "You yank at the stump. Somewhere, a tree ghost is deeply offended.",
-                "talk": "You whisper sweet nothings to the stump. It maintains a dignified silence, which is more than most conversation partners manage.",
-                "default": "You poke at the old stump. Nothing interesting happens, which is exactly what the stump wanted."
-            }
-        },
-        {
             "id": "beehive",
             "name": "Suspicious Beehive",
             "zone": {
@@ -124,6 +101,29 @@
         }
     ],
     "items": [
+        {
+            "id": "old-stump",
+            "name": "Old Tree Stump",
+            "zone": {
+                "x": 400,
+                "y": 350,
+                "width": 80,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 440,
+                "y": 420
+            },
+            "responses": {
+                "look": "A weathered tree stump, its rings telling centuries of stories nobody asked for. Something glints in a crack. Probably a bottle cap. This forest has seen better days, but then again, so has the entire kingdom.",
+                "take": "You wrap your arms around the stump and heave. Nothing. The stump has been here longer than your entire bloodline and isn't going anywhere.",
+                "use": "You sit on the stump for a moment. It's oddly comfortable. You feel like you've accomplished absolutely nothing, which is consistent with your life so far.",
+                "push": "You push the stump. It does not push back. Score one for you, I suppose.",
+                "pull": "You yank at the stump. Somewhere, a tree ghost is deeply offended.",
+                "talk": "You whisper sweet nothings to the stump. It maintains a dignified silence, which is more than most conversation partners manage.",
+                "default": "You poke at the old stump. Nothing interesting happens, which is exactly what the stump wanted."
+            }
+        },
         {
             "id": "rusty-key",
             "name": "Rusty Key",
