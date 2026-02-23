@@ -166,6 +166,7 @@ export const NOUN_SYNONYMS: Record<string, string> = {
     'table': 'desk',
     'counter': 'desk',
     'workbench': 'desk',
+    'diary': 'desk',
 
     // --- Stove ---
     'oven': 'stove',
@@ -233,6 +234,9 @@ export const NOUN_SYNONYMS: Record<string, string> = {
     'golem': 'guardian',
     'sentinel': 'guardian',
     'statue': 'guardian',
+
+    // --- Guard / Captain Aldric ---
+    'aldric': 'guard',
 
     // --- Railing ---
     'banister': 'railing',
