@@ -88,7 +88,7 @@
                 "y": 420
             },
             "responses": {
-                "look": "A circle of ancient runes carved into the throne room floor, pulsing with faint magical energy. The runes spell out the formal requirements of the Rite of Administrative Closure: 'The Crystal of Mundanity as Witness. The Kingdom Seal as Authority. The Curse Contract as Subject. An Allied Administrator as Officiant.' It's a bureaucratic ceremony carved in stone. Of course it is.",
+                "look": "A circle of ancient runes carved into the throne room floor, pulsing with faint magical energy. The runes spell out the formal requirements of the Rite of Administrative Closure: 'The Crystal of Mundanity as Witness. The Kingdom Seal as Authority. The Curse Contract as Subject. An Allied Administrator as Officiant.' You'll need the Kingdom Seal from the royal treasury's forge chamber and the original Curse Contract from the archive. It's a bureaucratic ceremony carved in stone. Of course it is.",
                 "use": "The rite circle needs three items: the Crystal of Mundanity, the Kingdom Seal, and the Original Curse Contract. You also need the Clerk's cooperation. One does not simply perform a rite without proper administrative support.",
                 "take": "You cannot take runes carved into a floor. The floor objects to being dismantled.",
                 "default": "You study the rite circle. The runes glow brighter when you stand near them, as if sensing the Crystal of Mundanity in your possession."

@@ -325,7 +325,7 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "You place the broken seal halves on the anvil. The dwarven spirit rises, grips a ghostly hammer, and strikes -- not the seal, but the forge itself. The flames intensify. The metal glows. The two halves soften, merge, and fuse. The ancient seal is whole again. The badger on the crest looks slightly less disgruntled. Progress. The spirit sets down his hammer and nods once. 'Good metal,' he says. It's the highest compliment a dwarven smith can give."
+                    "text": "You place the broken seal halves on the anvil. The dwarven spirit rises, grips a ghostly hammer, and strikes -- not the seal, but the forge itself. The flames intensify. The metal glows. The broken pieces fuse into a whole -- the Ancient Guardian Seal, restored to its former glory. The badger on the crest looks slightly less disgruntled. Progress. The spirit sets down his hammer and nods once. 'Good metal,' he says. It's the highest compliment a dwarven smith can give."
                 }
             ],
             "once": true

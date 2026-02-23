@@ -48,7 +48,7 @@
             },
             "targetRoom": "forest_clearing",
             "spawnPoint": {
-                "x": 820,
+                "x": 760,
                 "y": 430
             },
             "transition": "pixelate",
@@ -65,7 +65,7 @@
             },
             "targetRoom": "village_path",
             "spawnPoint": {
-                "x": 100,
+                "x": 200,
                 "y": 430
             },
             "transition": "slide-right",
@@ -111,7 +111,7 @@
                 "y": 420
             },
             "responses": {
-                "look": "The cave entrance looms like an open maw. Stalactites hang from the ceiling like nature's worst dental work. A faint dripping echoes from within, counting down to something. Probably nothing.",
+                "look": "The cave entrance looms like an open maw. Stalactites hang from the ceiling like nature's worst dental work. A faint dripping echoes from within, counting down to something. Probably nothing. Beyond the threshold, the passage descends into absolute darkness. You'd need a light source to venture any deeper.",
                 "take": "You consider taking the cave. Where would you even put it? Your pockets aren't that big.",
                 "use": "You're not entirely sure how one 'uses' a cave. Standing inside it, perhaps? That's just walking with extra steps.",
                 "talk": "You call into the darkness. 'Hello?' Your echo replies, sounding just as uncertain as you. Then silence. Then a drip.",
@@ -159,7 +159,7 @@
                 "y": 430
             },
             "responses": {
-                "look": "A natural rock shelf near the cave entrance. Damp and covered in a thin layer of moss. Various objects have been abandoned here over the years by people who clearly had better things to do.",
+                "look": "A natural rock shelf near the cave entrance. Damp and covered in a thin layer of moss. An odd bottle sits among the dust on the ledge.",
                 "take": "The ledge is part of the cave wall. You'd need a pickaxe and significantly more ambition.",
                 "use": "You could use it as a shelf, but your standards for furniture are already low enough.",
                 "default": "You examine the rock ledge. It's a ledge. Made of rock. Riveting."
@@ -239,7 +239,8 @@
                 "y": 420
             },
             "responses": {
-                "look": "A mushroom growing on the cave wall, pulsing with an eerie blue bioluminescence. It's either magical, radioactive, or nature's attempt at a nightlight. Possibly all three."
+                "look": "A mushroom growing on the cave wall, pulsing with an eerie blue bioluminescence. It's either magical, radioactive, or nature's attempt at a nightlight. Possibly all three.",
+                "use": "The mushroom pulses with eerie light. Combined with something sturdy -- a stick, perhaps -- it could make a decent light source."
             }
         }
     ],
@@ -485,9 +486,15 @@
         ]
     },
     "effects": {
-        "weather": { "type": "fog", "intensity": 0.4 },
+        "weather": {
+            "type": "fog",
+            "intensity": 0.4
+        },
         "ambient": [
-            { "type": "dust-motes", "intensity": 0.2 }
+            {
+                "type": "dust-motes",
+                "intensity": 0.2
+            }
         ],
         "lighting": {
             "tint": "#332244",
