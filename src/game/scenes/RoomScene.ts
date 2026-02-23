@@ -199,11 +199,12 @@ export class RoomScene extends Phaser.Scene {
         // 2. Navigation system from walkable area polygon
         this.navigation = new NavigationSystem(this.roomData.walkableArea);
 
-        // 3. Player (hidden -- static scene mode, text commands only)
+        // 3. Player (static pose -- no animation, just show frame 7 which has content)
         const spawnX = this.spawnOverride?.x ?? this.roomData.playerSpawn.x;
         const spawnY = this.spawnOverride?.y ?? this.roomData.playerSpawn.y;
         this.player = new Player(this, spawnX, spawnY);
-        this.player.getSprite().setVisible(false);
+        this.player.getSprite().stop();
+        this.player.getSprite().setFrame(7);
 
         // 4. Exit zones (skip exits whose conditions are not met)
         for (const exit of this.roomData.exits) {
