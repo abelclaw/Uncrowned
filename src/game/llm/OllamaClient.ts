@@ -38,7 +38,7 @@ export class OllamaClient {
     constructor(
         baseUrl: string = 'http://localhost:11434',
         model: string = 'qwen2.5:3b',
-        timeoutMs: number = 2000,
+        timeoutMs: number = 5000,
     ) {
         this.baseUrl = baseUrl;
         this.model = model;

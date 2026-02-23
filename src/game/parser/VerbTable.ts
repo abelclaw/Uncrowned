@@ -30,6 +30,15 @@ export interface VerbDefinition {
  * - Bare verb patterns (no noun) come last
  */
 export const VERB_TABLE: VerbDefinition[] = [
+    // Inventory must come before look since "check" is a synonym for both
+    {
+        canonical: 'inventory',
+        synonyms: ['inventory', 'i', 'items', 'bag', 'pockets'],
+        patterns: [
+            /^(?:inventory|items|bag|pockets|i)$/i,
+            /^(?:check|show|view)\s+(?:my\s+)?(?:inventory|items|bag|pockets)$/i,
+        ],
+    },
     {
         canonical: 'look',
         synonyms: ['look', 'examine', 'inspect', 'check', 'study', 'read', 'l', 'x'],
@@ -41,30 +50,45 @@ export const VERB_TABLE: VerbDefinition[] = [
     },
     {
         canonical: 'take',
-        synonyms: ['take', 'get', 'grab', 'pick', 'collect', 'acquire'],
+        synonyms: ['take', 'get', 'grab', 'pick', 'collect', 'acquire', 'snag', 'snatch', 'pluck', 'fetch'],
         patterns: [
             /^pick\s+up\s+(.+)$/i,
             /^pick\s+(.+?)\s+up$/i,
-            /^(?:take|get|grab|collect|acquire)\s+(.+)$/i,
+            // "pluck/snatch X from Y" → take X (ignore "from Y")
+            /^(?:pluck|snatch)\s+(.+?)\s+(?:from|off|out\s+of)\s+.+$/i,
+            /^(?:take|get|grab|collect|acquire|snag|snatch|pluck|fetch)\s+(.+)$/i,
             /^(?:take|get|grab|collect|acquire)$/i,
         ],
     },
     {
         canonical: 'use',
-        synonyms: ['use', 'apply'],
+        synonyms: ['use', 'apply', 'give', 'show', 'offer', 'hand', 'pour', 'fill', 'set', 'place', 'put', 'drink', 'eat', 'consume', 'light', 'stamp'],
         patterns: [
+            // "give/show/offer/hand X to Y" → use X on Y
+            /^(?:give|show|offer|hand)\s+(.+?)\s+(?:to)\s+(.+)$/i,
+            // "pour/fill X on/into/with/from Y" → use X on Y
+            /^(?:pour|fill)\s+(.+?)\s+(?:on|onto|into|with|from|in)\s+(.+)$/i,
+            // "set/place/put X on/near/by/in Y" → use X on Y
+            /^(?:set|place|put)\s+(.+?)\s+(?:on|near|by|in|at|next\s+to)\s+(.+)$/i,
+            // "stamp X with Y" → use X on Y
+            /^stamp\s+(.+?)\s+(?:with|on)\s+(.+)$/i,
+            // Standard "use/apply X on/with Y"
             /^(?:use|apply)\s+(.+?)\s+(?:on|with)\s+(.+)$/i,
-            /^(?:use|apply)\s+(.+)$/i,
+            // Bare verb + subject: "drink bottle", "light torch", "pour brew" etc.
+            // Excludes give/show/offer/hand (need a target: "give X to Y")
+            /^(?:use|apply|pour|fill|drink|eat|consume|light|place|put)\s+(.+)$/i,
             /^(?:use|apply)$/i,
         ],
     },
     {
         canonical: 'go',
-        synonyms: ['go', 'walk', 'move', 'enter', 'exit', 'leave', 'head'],
+        synonyms: ['go', 'walk', 'move', 'enter', 'exit', 'leave', 'head', 'travel', 'proceed', 'run', 'climb'],
         patterns: [
-            /^(?:go|walk|move|head)\s+(?:to\s+)?(.+)$/i,
-            /^(?:enter|exit|leave)\s+(.+)$/i,
-            /^(?:go|walk|move|head|enter|exit|leave)$/i,
+            // "head/proceed north to the hallway" → go north (extract direction, ignore "to X")
+            /^(?:go|walk|move|head|travel|proceed|run)\s+(north|south|east|west|up|down|n|s|e|w)\b/i,
+            /^(?:go|walk|move|head|travel|proceed|run)\s+(?:to\s+)?(.+)$/i,
+            /^(?:enter|exit|leave|climb)\s+(?:to\s+)?(.+)$/i,
+            /^(?:go|walk|move|head|enter|exit|leave|travel|proceed|run|climb)$/i,
         ],
     },
     {
@@ -101,20 +125,13 @@ export const VERB_TABLE: VerbDefinition[] = [
         ],
     },
 
-    // Phase 4 verbs: inventory management, save/load, item combination
-    {
-        canonical: 'inventory',
-        synonyms: ['inventory', 'i', 'items', 'bag', 'pockets'],
-        patterns: [
-            /^(?:inventory|items|bag|pockets|i)$/i,
-        ],
-    },
+    // Phase 4 verbs: save/load, item combination
     {
         canonical: 'combine',
-        synonyms: ['combine', 'merge', 'mix'],
+        synonyms: ['combine', 'merge', 'mix', 'attach', 'connect', 'join'],
         patterns: [
-            /^(?:combine|merge|mix)\s+(.+?)\s+(?:and|with)\s+(.+)$/i,
-            /^(?:combine|merge|mix)\s+(\S+)\s+(\S+)$/i,
+            /^(?:combine|merge|mix|attach|connect|join)\s+(.+?)\s+(?:and|with|to|together\s+with)\s+(.+)$/i,
+            /^(?:combine|merge|mix|attach|connect|join)\s+(\S+)\s+(\S+)$/i,
         ],
     },
     {

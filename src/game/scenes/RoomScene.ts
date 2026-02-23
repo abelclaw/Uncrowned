@@ -549,10 +549,11 @@ export class RoomScene extends Phaser.Scene {
                 }
             }
 
-            // Use typewriter for narrator-style responses, instant for short system messages
+            // Use typewriter for narrator-style responses, instant for short system messages.
+            // Skip when response is empty (e.g. NPC dialogue handled via EventBus).
             if (result.response.length > 50) {
                 this.narratorDisplay.typewrite(result.response);
-            } else {
+            } else if (result.response.length > 0) {
                 this.narratorDisplay.showInstant(result.response);
             }
 

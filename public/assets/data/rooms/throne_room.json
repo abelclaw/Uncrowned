@@ -373,6 +373,102 @@
                 }
             ],
             "once": true
+        },
+        {
+            "id": "show-decree-to-ghost",
+            "trigger": {
+                "verb": "use",
+                "subject": "sealed-decree",
+                "target": "ghost_king"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "sealed-decree"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "met_ghost_king"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "ghost_approved_decree"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "ghost_approved_decree"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You hold up the sealed decree. The Ghost King leans forward, spectral eyes narrowing. 'A royal decree... with MY seal on it. Forged, obviously. I didn't sign this.' He pauses. 'But the seal is genuine, and the intent is sound. You're trying to reach the Screaming Caverns, aren't you? To deal with whatever the Bureaucracy has become.' He sighs -- a sound like wind through an empty throne room. 'Fine. Consider the decree... royally tolerated. The bridge troll will accept it. Now go fix my kingdom before I have to haunt something more proactive.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "show-decree-to-ghost-use",
+            "trigger": {
+                "verb": "use",
+                "subject": "sealed-decree"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "sealed-decree"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "met_ghost_king"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "ghost_approved_decree"
+                },
+                {
+                    "type": "in-room",
+                    "room": "throne_room"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "ghost_approved_decree"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You wave the sealed decree in the general direction of the Ghost King. He squints at it. 'Forged paperwork. How wonderfully administrative of you.' He reads the blank space where the content should be and somehow finds it acceptable. 'The Screaming Caverns await. The bridge troll will honour this -- he's a stickler for official documentation, even fraudulent official documentation. Go. Save my kingdom. Try not to die in an embarrassing way.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "talk-ghost-with-decree",
+            "trigger": {
+                "verb": "talk",
+                "subject": "ghost_king"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "sealed-decree"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "met_ghost_king"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "ghost_approved_decree"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "The Ghost King eyes you. 'You've got something official-looking there. Perhaps you should show it to me -- use the decree, if you want my blessing to proceed to the caverns.'"
+                }
+            ]
         }
     ],
     "deathTriggers": [
@@ -489,6 +585,14 @@
                 "Official documents require official stamps. A blank piece of paper is just paper until the right seal makes it law. Both items are in this castle somewhere.",
                 "The royal seal sits on the table beside the throne. A blank decree is in the servants' quarters, tucked under a diary. Combine them to forge an official document.",
                 "Combine the royal seal with the blank decree. The seal is on the table next to the throne, and the blank decree is under the diary on the writing desk in the servants' quarters."
+            ]
+        },
+        {
+            "puzzleId": "show-decree-to-ghost",
+            "tiers": [
+                "You have an official-looking decree, but perhaps someone of royal authority should approve it before you wave it around. Someone who used to run this kingdom, perhaps.",
+                "The Ghost King might have an opinion on your forged decree. Show it to him -- use the sealed decree while in his presence in the throne room.",
+                "Use the sealed decree on the Ghost King in the throne room to get his approval. You need his blessing before the bridge troll will let you pass to the Screaming Caverns."
             ]
         }
     ],

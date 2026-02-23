@@ -185,6 +185,10 @@
                     "item": "cave-crystal-shard"
                 },
                 {
+                    "type": "set-flag",
+                    "flag": "knows_cavern_secret"
+                },
+                {
                     "type": "narrator-say",
                     "text": "You reach into the cold water and pluck the crystal shard from the silt. It's warm in your hand -- warmer than anything in this cave has any right to be. It hums with faint magical resonance, which is either promising or ominous. In your experience, those two things are the same."
                 }
