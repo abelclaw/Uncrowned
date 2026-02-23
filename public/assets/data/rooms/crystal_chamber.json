@@ -139,6 +139,10 @@
                     "item": "crystal-of-mundanity"
                 },
                 {
+                    "type": "set-flag",
+                    "flag": "crystal_taken"
+                },
+                {
                     "type": "narrator-say",
                     "text": "You reach through the space where the barrier used to be and take the Crystal of Mundanity. It's warm, slightly heavy, and profoundly ordinary. This grey lump is going to save a kingdom. The crystal settles into your palm with the comfortable weight of destiny meeting low expectations. You are now carrying the most important unremarkable object in the world."
                 }
@@ -212,7 +216,8 @@
         }
     },
     "dynamicDescriptions": {
-        "crystal_barrier_down": "The Crystal Chamber is quiet now. The force barrier has dissolved, leaving the stone pedestal exposed and empty -- you've already taken the Crystal of Mundanity. The warning signs seem almost wistful without anything to warn about."
+        "crystal_taken": "The Crystal Chamber is quiet now. The force barrier has dissolved, leaving the stone pedestal exposed and empty -- you've already taken the Crystal of Mundanity. The warning signs seem almost wistful without anything to warn about.",
+        "crystal_barrier_down": "The Crystal Chamber is quiet now. The force barrier has dissolved, leaving the stone pedestal exposed. The Crystal of Mundanity sits on its pedestal, grey and unassuming, radiating the profound ordinariness that will save a kingdom. The warning signs seem almost wistful without anything dangerous to warn about."
     },
     "audio": {
         "music": "music-cave",

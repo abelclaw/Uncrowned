@@ -103,8 +103,11 @@ export class NounResolver {
             }
         }
 
-        // 5. Scored partial matching: check BOTH hotspots and items,
-        //    prefer the match with the most overlapping words.
+        // 5. Scored partial matching: check BOTH hotspots and items.
+        //    Score = matchCount * 2 + headNounBonus.
+        //    Head-noun bonus: +1 when the last word of the entity name is matched,
+        //    since English compound nouns have the head noun last
+        //    ("Ancient Forge" = a forge, "Forge Coal" = coal).
         //    On tie, prefer items (players more often reference items with action verbs).
         const nounWords = normalized.split(/\s+/);
         let bestMatch: ResolvedNoun | null = null;
@@ -115,8 +118,10 @@ export class NounResolver {
         for (const h of hotspots) {
             const hotspotWords = h.name.toLowerCase().split(/\s+/);
             const matchCount = nounWords.filter(nw => hotspotWords.includes(nw)).length;
-            if (matchCount > 0 && (matchCount > bestScore || (matchCount === bestScore && !bestIsItem))) {
-                bestScore = matchCount;
+            const headBonus = nounWords.includes(hotspotWords[hotspotWords.length - 1]) ? 1 : 0;
+            const score = matchCount * 2 + headBonus;
+            if (matchCount > 0 && (score > bestScore || (score === bestScore && !bestIsItem))) {
+                bestScore = score;
                 bestMatch = { type: 'hotspot', id: h.id, confidence: 'partial' };
                 bestIsItem = false;
             }
@@ -127,9 +132,11 @@ export class NounResolver {
             for (const item of inventoryItems) {
                 const itemWords = item.name.toLowerCase().split(/\s+/);
                 const matchCount = nounWords.filter(nw => itemWords.includes(nw)).length;
+                const headBonus = nounWords.includes(itemWords[itemWords.length - 1]) ? 1 : 0;
+                const score = matchCount * 2 + headBonus;
                 // Items win on tie (bestIsItem check: item beats hotspot at same score)
-                if (matchCount > 0 && (matchCount > bestScore || (matchCount === bestScore && !bestIsItem))) {
-                    bestScore = matchCount;
+                if (matchCount > 0 && (score > bestScore || (score === bestScore && !bestIsItem))) {
+                    bestScore = score;
                     bestMatch = { type: 'item', id: item.id, confidence: 'partial' };
                     bestIsItem = true;
                 }
