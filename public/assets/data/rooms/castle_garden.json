@@ -133,7 +133,6 @@
             "responses": {
                 "look": "A bush bearing clusters of shiny, dark berries. They look delicious -- plump, glistening, practically begging to be eaten. A small faded sign at the base reads 'Atropa belladonna.' That's nightshade. Those berries will kill you. Nature is beautiful and utterly duplicitous.",
                 "use": "You reach toward the berries. They look so inviting. So glossy. So completely and utterly poisonous. Some decisions advertise their consequences in advance.",
-                "take": "You pick a berry. It's heavy, dark, and warm. It smells sweet. It is nightshade. You put it back. Quickly.",
                 "default": "You examine the berry bush. It's gorgeous, prolific, and lethal. Like most things in this garden."
             }
         },
