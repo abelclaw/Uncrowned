@@ -433,6 +433,15 @@
     }
   },
   "items": {
+    "old-stump": {
+      "prompt": "weathered old tree stump with visible rings and crack, mossy forest stump, small glint in crack, fantasy forest prop",
+      "seed": 400050,
+      "output": "public/assets/sprites/items/old-stump.png",
+      "dimensions": {
+        "width": 80,
+        "height": 60
+      }
+    },
     "rusty-key": {
       "prompt": "old rusty iron key, medieval fantasy, corroded metal",
       "seed": 400001,

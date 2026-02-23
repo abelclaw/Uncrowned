@@ -38,7 +38,6 @@ export class RoomScene extends Phaser.Scene {
     private player!: Player;
     private navigation!: NavigationSystem;
     private isTransitioning: boolean = false;
-    private exitDetectionEnabled: boolean = false;
     private exitZones: Array<{ rect: Phaser.Geom.Rectangle; exit: ExitData }> = [];
     private hotspotZones: Array<{ rect: Phaser.Geom.Rectangle; hotspot: HotspotData }> = [];
     private spawnOverride?: { x: number; y: number };
@@ -81,8 +80,8 @@ export class RoomScene extends Phaser.Scene {
     private roomUpdateHandler!: (action: any) => void;
     private itemPickedUpHandler!: (itemId: string) => void;
 
-    // Arrow key direct movement
-    private cursors?: Phaser.Types.Input.Keyboard.CursorKeys;
+    // Arrow key direct movement (disabled in static scene mode)
+    // private cursors?: Phaser.Types.Input.Keyboard.CursorKeys;
 
     // Phase 9 lazy-loaded sprites
     private itemSprites: Map<string, Phaser.GameObjects.Image> = new Map();
@@ -126,7 +125,6 @@ export class RoomScene extends Phaser.Scene {
 
         // Reset state for scene restart
         this.isTransitioning = false;
-        this.exitDetectionEnabled = false;
         this.exitZones = [];
         this.hotspotZones = [];
         this.inDialogue = false;
@@ -200,10 +198,11 @@ export class RoomScene extends Phaser.Scene {
         // 2. Navigation system from walkable area polygon
         this.navigation = new NavigationSystem(this.roomData.walkableArea);
 
-        // 3. Player at spawn point (override or default)
+        // 3. Player (hidden -- static scene mode, text commands only)
         const spawnX = this.spawnOverride?.x ?? this.roomData.playerSpawn.x;
         const spawnY = this.spawnOverride?.y ?? this.roomData.playerSpawn.y;
         this.player = new Player(this, spawnX, spawnY);
+        this.player.getSprite().setVisible(false);
 
         // 4. Exit zones (skip exits whose conditions are not met)
         for (const exit of this.roomData.exits) {
@@ -352,70 +351,16 @@ export class RoomScene extends Phaser.Scene {
             }
         }
 
-        // 6. Camera setup
+        // 6. Camera setup (static -- centered on scene, no player follow)
         this.cameras.main.setBounds(0, 0, this.roomData.background.worldWidth, 540);
         this.cameras.main.setRoundPixels(true);
-        this.cameras.main.startFollow(this.player.getSprite(), true, 0.1, 0.1);
+        // Center camera on the room (no player follow in static mode)
+        this.cameras.main.scrollX = Math.max(0, (this.roomData.background.worldWidth - 960) / 2);
 
-        // 6b. Arrow key movement setup
-        if (this.input.keyboard) {
-            this.cursors = this.input.keyboard.createCursorKeys();
-        }
-
-        // 7. Click-to-move handler
-        this.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
-            // Blur text input so arrow keys go to the game canvas
+        // 7. Click handler (blur text input on canvas click)
+        this.input.on('pointerdown', () => {
             if (document.activeElement instanceof HTMLElement) {
                 document.activeElement.blur();
-            }
-            if (this.isTransitioning) return;
-
-            const worldPoint = this.cameras.main.getWorldPoint(pointer.x, pointer.y);
-
-            // Check hotspots first (more specific interaction)
-            for (const zone of this.hotspotZones) {
-                if (Phaser.Geom.Rectangle.Contains(zone.rect, worldPoint.x, worldPoint.y)) {
-                    const from = this.player.getPosition();
-                    const to = zone.hotspot.interactionPoint;
-                    const path = this.navigation.findPath(from, to);
-                    if (path) {
-                        this.player.walkTo(path, () => {
-                            this.player.playInteraction();
-                            this.effectsManager.playInteractionBurst(
-                                zone.hotspot.interactionPoint.x,
-                                zone.hotspot.interactionPoint.y
-                            );
-                        });
-                    }
-                    return;
-                }
-            }
-
-            // Check exit zones -- walk toward exit, update() detects overlap
-            for (const zone of this.exitZones) {
-                if (Phaser.Geom.Rectangle.Contains(zone.rect, worldPoint.x, worldPoint.y)) {
-                    // Walk toward the clicked point; clamp to walkable area
-                    const from = this.player.getPosition();
-                    // Try the clicked point directly (exit zones should overlap walkable edge)
-                    let path = this.navigation.findPath(from, { x: worldPoint.x, y: worldPoint.y });
-                    if (!path) {
-                        // Fallback: walk toward center-x of exit zone at player's y
-                        const fallbackX = zone.exit.zone.x + zone.exit.zone.width / 2;
-                        const fallbackY = from.y;
-                        path = this.navigation.findPath(from, { x: fallbackX, y: fallbackY });
-                    }
-                    if (path) {
-                        this.player.walkTo(path);
-                    }
-                    return;
-                }
-            }
-
-            // Default: walk to clicked point if walkable
-            const from = this.player.getPosition();
-            const path = this.navigation.findPath(from, { x: worldPoint.x, y: worldPoint.y });
-            if (path) {
-                this.player.walkTo(path);
             }
         });
 
@@ -714,9 +659,6 @@ export class RoomScene extends Phaser.Scene {
             EventBus.off('room-update', this.roomUpdateHandler);
             EventBus.off('item-picked-up', this.itemPickedUpHandler);
 
-            // Arrow key cleanup
-            this.cursors = undefined;
-
             // Phase 9 sprite cleanup
             this.itemSprites.forEach(sprite => sprite.destroy());
             this.itemSprites.clear();
@@ -738,45 +680,9 @@ export class RoomScene extends Phaser.Scene {
         });
     }
 
-    update(_time: number, delta: number): void {
-        if (this.isTransitioning) return;
-
-        // Arrow key direct movement (skip if text input focused or in dialogue)
-        if (this.cursors && !this.isTextInputFocused() && !this.inDialogue) {
-            this.player.updateDirectMovement(
-                delta,
-                this.cursors,
-                (x, y) => this.navigation.isPointWalkable(x, y)
-            );
-        }
-
-        const pos = this.player.getPosition();
-
-        // Exit detection is disabled on scene entry to prevent spawn-inside-exit loops.
-        // It activates once the player is confirmed to be outside ALL exit zones,
-        // ensuring they must walk INTO a zone to trigger a transition.
-        if (!this.exitDetectionEnabled) {
-            const insideAny = this.exitZones.some(zone =>
-                Phaser.Geom.Rectangle.Contains(zone.rect, pos.x, pos.y)
-            );
-            if (!insideAny) {
-                this.exitDetectionEnabled = true;
-            }
-            return;
-        }
-
-        // Check if player overlaps any exit zone
-        for (const zone of this.exitZones) {
-            if (Phaser.Geom.Rectangle.Contains(zone.rect, pos.x, pos.y)) {
-                this.handleExitReached(zone.exit);
-                return;
-            }
-        }
-    }
-
-    private isTextInputFocused(): boolean {
-        const active = document.activeElement;
-        return active instanceof HTMLInputElement || active instanceof HTMLTextAreaElement;
+    update(_time: number, _delta: number): void {
+        // Static scene mode: no player movement or exit overlap detection.
+        // Room transitions are handled via text commands ("go east", "go cave") through CommandDispatcher.
     }
 
     /**
