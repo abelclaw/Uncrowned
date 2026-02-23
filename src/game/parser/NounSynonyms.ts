@@ -194,6 +194,7 @@ export const NOUN_SYNONYMS: Record<string, string> = {
 
     // --- Stump ---
     'log': 'stump',
+    'crack': 'stump',
 
     // --- Bones ---
     'skeleton': 'bones',
