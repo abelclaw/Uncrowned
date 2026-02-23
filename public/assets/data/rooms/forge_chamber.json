@@ -112,6 +112,66 @@
                 "use": "The anvil is for forging. Without a lit forge and materials, it's just an extremely heavy paperweight.",
                 "default": "You admire the anvil. It has the quiet authority of something that has shaped kingdoms."
             }
+        },
+        {
+            "id": "bellows",
+            "name": "Bellows",
+            "zone": {
+                "x": 200,
+                "y": 250,
+                "width": 100,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 250,
+                "y": 430
+            },
+            "responses": {
+                "look": "Massive leather bellows, cracked with age but still functional-looking. They've been waiting centuries for someone to give them a good squeeze.",
+                "take": "They're bolted to the forge. Someone anticipated theft, or at least enthusiastic borrowing.",
+                "use": "You pump the bellows. The forge flares briefly, then settles back down. Satisfying, in a deeply primal way.",
+                "default": "You examine the bellows. They wheeze expectantly, ready to breathe life into cold metal."
+            }
+        },
+        {
+            "id": "forge-chains",
+            "name": "Forge Chains",
+            "zone": {
+                "x": 400,
+                "y": 0,
+                "width": 200,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 500,
+                "y": 430
+            },
+            "responses": {
+                "look": "Heavy iron chains dangle from the ceiling, purpose unclear. Decorative? Structural? Intimidating? All three, probably. Dwarven interior design priorities differ from yours.",
+                "take": "They're anchored in the stone above. You'd need wings and bolt cutters, and you have neither.",
+                "use": "You tug one experimentally. It holds. The ceiling creaks. You stop tugging. Some experiments are best left incomplete.",
+                "default": "You regard the chains. They hang with the gravity of things that have been hanging for a very long time."
+            }
+        },
+        {
+            "id": "smith-tools",
+            "name": "Smith Tools",
+            "zone": {
+                "x": 650,
+                "y": 150,
+                "width": 150,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 725,
+                "y": 430
+            },
+            "responses": {
+                "look": "Tongs, hammers, and implements whose names you don't know but whose purposes look painful. A complete set, maintained by spectral habit.",
+                "take": "These belong to the forge spirit. Stealing from ghosts seems unwise -- they have eternity to hold a grudge.",
+                "use": "Without proper training, you'd just make modern art. The dwarven spirit's expression suggests he's thinking the same thing.",
+                "default": "You survey the smith's tools. Each one tells a story of metal bent to purpose by hands that knew what they were doing."
+            }
         }
     ],
     "items": [

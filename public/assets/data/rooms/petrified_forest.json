@@ -132,6 +132,26 @@
                 "use": "You cannot 'use' an advancing magical curse. You can run from it, or you can stop it. Those are the options. There is no third option. Well, there's 'become a statue,' but that hardly counts.",
                 "default": "You watch the curse spread. It's hypnotic. It's also terrifying. You should probably stop watching and start doing something about it."
             }
+        },
+        {
+            "id": "stone-trees",
+            "name": "Stone Trees",
+            "zone": {
+                "x": 50,
+                "y": 50,
+                "width": 200,
+                "height": 350
+            },
+            "interactionPoint": {
+                "x": 150,
+                "y": 430
+            },
+            "responses": {
+                "look": "Trees turned to grey stone, still reaching for a sky that can no longer nourish them. The bark texture is preserved perfectly, which somehow makes it sadder.",
+                "take": "They're rooted in stone ground. Everything here is stone. That's rather the point.",
+                "use": "You knock on one. It rings like a bell. Even the echoes sound mournful.",
+                "default": "You regard the stone trees. They stand as monuments to a forest that once was."
+            }
         }
     ],
     "items": [],

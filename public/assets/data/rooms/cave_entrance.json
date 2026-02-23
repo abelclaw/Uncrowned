@@ -164,6 +164,46 @@
                 "use": "You could use it as a shelf, but your standards for furniture are already low enough.",
                 "default": "You examine the rock ledge. It's a ledge. Made of rock. Riveting."
             }
+        },
+        {
+            "id": "stone-archway",
+            "name": "Stone Archway",
+            "zone": {
+                "x": 350,
+                "y": 50,
+                "width": 260,
+                "height": 300
+            },
+            "interactionPoint": {
+                "x": 480,
+                "y": 420
+            },
+            "responses": {
+                "look": "The cave entrance is framed by a carved stone archway, its edges worn smooth by centuries of weather and neglect. Whoever chiseled this was skilled, patient, and profoundly unbothered by the fact that they were decorating a hole in a rock. Faint runes line the keystone, too eroded to read. Probably said something important once.",
+                "take": "You consider disassembling the stone archway. You'd need a team of masons, several oxen, and a reason. You have none of these.",
+                "use": "It's an archway. You walk through it. That's the full extent of archway interaction, and it's been working for millennia.",
+                "default": "You study the archway's ancient craftsmanship. It's impressive, in the way that anything built by people long dead tends to be."
+            }
+        },
+        {
+            "id": "cave-vines",
+            "name": "Cave Vines",
+            "zone": {
+                "x": 100,
+                "y": 200,
+                "width": 150,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 175,
+                "y": 420
+            },
+            "responses": {
+                "look": "Thick vines and ivy cling to the rocks around the cave, slowly and persistently reclaiming the stone for nature. Each tendril grips the rock with the quiet determination of someone who knows they have all the time in the world. Give it another century and this whole entrance will be a shrubbery.",
+                "take": "You tug at a vine. It holds fast, anchored deeper into the rock than your commitment to this quest. You let go, humbled by a plant.",
+                "use": "You part the vines expecting a hidden passage or secret message. Behind them: more rock. Nature's idea of a practical joke.",
+                "default": "You regard the creeping vines. They regard the slow, inevitable victory of botany over architecture."
+            }
         }
     ],
     "items": [

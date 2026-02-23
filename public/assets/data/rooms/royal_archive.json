@@ -114,6 +114,46 @@
                 "use": "You sit at the archivist's desk. For a moment, you feel the weight of centuries of filing. It is not a pleasant feeling. You stand up.",
                 "default": "You examine the archivist's desk. The petrified tea is a monument to interrupted work."
             }
+        },
+        {
+            "id": "dusty-tomes",
+            "name": "Dusty Tomes",
+            "zone": {
+                "x": 550,
+                "y": 360,
+                "width": 120,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 610,
+                "y": 430
+            },
+            "responses": {
+                "look": "Leather-bound tomes stacked in precarious towers, their spines cracked and titles faded. The kingdom's entire legal history, slowly becoming unreadable.",
+                "take": "You open one at random. It's a three-hundred-page treatise on hat regulations. You put it back.",
+                "use": "You flip through a tome. The pages crumble at the edges, taking centuries of case law with them.",
+                "default": "You examine the tomes. They hold answers to questions nobody alive remembers asking."
+            }
+        },
+        {
+            "id": "narrow-windows",
+            "name": "Narrow Windows",
+            "zone": {
+                "x": 100,
+                "y": 340,
+                "width": 60,
+                "height": 80
+            },
+            "interactionPoint": {
+                "x": 130,
+                "y": 430
+            },
+            "responses": {
+                "look": "Narrow windows let in thin shafts of grey light, illuminating dust motes that drift like tiny ghosts through the archive's stale air.",
+                "take": "Windows are a structural feature, not a collectible.",
+                "use": "You peer through the narrow glass. The view is limited to a thin slice of a cursed kingdom, which is honestly enough.",
+                "default": "You glance at the narrow windows. They admit light grudgingly, as if rationing hope."
+            }
         }
     ],
     "items": [

@@ -188,6 +188,66 @@
                 "talk": "You address the glowing portrait. The painted eyes seem to flicker toward you. 'Hello?' Nothing. But the glow brightens for a moment. Coincidence, surely.",
                 "default": "You regard the glowing portrait from a safe distance. The safe distance is 'anywhere that isn't touching it.'"
             }
+        },
+        {
+            "id": "columns",
+            "name": "Columns",
+            "zone": {
+                "x": 100,
+                "y": 50,
+                "width": 100,
+                "height": 400
+            },
+            "interactionPoint": {
+                "x": 150,
+                "y": 430
+            },
+            "responses": {
+                "look": "Carved stone pillars line the hallway, each one holding up centuries of architectural ambition and questionable governance. The carvings depict scenes of royal life -- feasts, hunts, and what appears to be a badger coronation.",
+                "take": "Structural support isn't portable. That's less a rule and more a law of physics.",
+                "use": "Leaning against them feels disrespectful to the masons who spent years of their lives carving badgers into load-bearing stone.",
+                "default": "You examine the columns. They bear the weight of the castle above with the silent patience of things that were never given a choice."
+            }
+        },
+        {
+            "id": "hallway-carpet",
+            "name": "Hallway Carpet",
+            "zone": {
+                "x": 300,
+                "y": 350,
+                "width": 300,
+                "height": 150
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 440
+            },
+            "responses": {
+                "look": "A faded crimson carpet runs the length of the hallway, threadbare in the middle where centuries of feet have worn a path. The edges still show hints of the original deep red, a colour now best described as 'nostalgic pink.'",
+                "take": "Too heavy, too dusty, and nailed down at both ends. You'd sneeze yourself unconscious before you got it rolled up.",
+                "use": "You're already walking on it. That's the full extent of carpet interaction available to you.",
+                "default": "You regard the hallway carpet. It's witnessed every royal procession, every servant's shuffle, and one king's final olive-impeded footsteps."
+            }
+        },
+        {
+            "id": "wall-sconces",
+            "name": "Wall Sconces",
+            "zone": {
+                "x": 750,
+                "y": 150,
+                "width": 60,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 780,
+                "y": 430
+            },
+            "responses": {
+                "look": "Iron torch sconces line the walls, their flames flickering in brackets. Who lights them? Nobody seems to know. The castle has been largely unstaffed for months, yet the torches burn on -- either magical, self-sustaining, or maintained by someone very committed to ambiance.",
+                "take": "Stealing castle fixtures is frowned upon, and the flames are still lit. You'd burn your inventory and your reputation simultaneously.",
+                "use": "You warm your hands near a sconce. The flame dances obligingly. For a moment, the hallway feels almost hospitable.",
+                "default": "You study the wall sconces. Their persistent burning in an abandoned hallway is either comforting or deeply unsettling, depending on your feelings about unexplained fire."
+            }
         }
     ],
     "items": [],

@@ -133,6 +133,26 @@
                 "take": "You consider picking a mushroom. The others pulse menacingly. Mushroom solidarity is real.",
                 "default": "You examine the mushroom clusters. They're arranged in three groups -- left, center, right -- each waiting for activation in the correct order."
             }
+        },
+        {
+            "id": "cave-path",
+            "name": "Cave Path",
+            "zone": {
+                "x": 300,
+                "y": 300,
+                "width": 300,
+                "height": 150
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 430
+            },
+            "responses": {
+                "look": "A narrow path winds between clusters of glowing mushrooms, their light painting the cave in shades of blue and pink. It's like a nightclub designed by nature.",
+                "take": "You can't take a path. You can only walk it.",
+                "use": "You're already on it. One foot in front of the other.",
+                "default": "You follow the cave path with your eyes. It meanders with no particular urgency."
+            }
         }
     ],
     "items": [],

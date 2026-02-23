@@ -117,6 +117,46 @@
                 "push": "You push a crate. It's lighter than expected -- whatever was inside has been eaten. The scratching behind it gets louder.",
                 "default": "You eye the crates warily. They eye you back, metaphorically, through several hundred sets of small, beady eyes."
             }
+        },
+        {
+            "id": "bunk-beds",
+            "name": "Bunk Beds",
+            "zone": {
+                "x": 50,
+                "y": 100,
+                "width": 300,
+                "height": 300
+            },
+            "interactionPoint": {
+                "x": 200,
+                "y": 430
+            },
+            "responses": {
+                "look": "Stacked bunk beds with thin mattresses and springs of questionable integrity. The top bunks sag toward the bottom bunks in a way that suggests gravity is winning a slow, inevitable argument.",
+                "take": "Too large, too depressing, and too structurally unsound to move. The bunks are staying right where generations of underpaid servants left them.",
+                "use": "Tempting to nap, but you have a kingdom to save. The mattress seems to understand, sagging in quiet resignation as you move on.",
+                "default": "You examine the bunk beds. They've hosted the dreams of countless servants, most of whom were probably dreaming about better beds."
+            }
+        },
+        {
+            "id": "sq-window",
+            "name": "Window",
+            "zone": {
+                "x": 380,
+                "y": 80,
+                "width": 120,
+                "height": 120
+            },
+            "interactionPoint": {
+                "x": 440,
+                "y": 430
+            },
+            "responses": {
+                "look": "A small window set in thick stone, its glass grimy enough to turn daylight into a vague suggestion. The view beyond is nothing but a courtyard wall, three feet away. The architect clearly felt servants needed light but not hope.",
+                "take": "It's set in stone. Literally. The window was here before you and will be here long after you've given up trying to remove it.",
+                "use": "You peer through the grimy glass -- just a courtyard wall staring back. Inspiring. The window fulfils its minimum obligation to be a window and not a single thing more.",
+                "default": "You regard the small window. It lets in just enough light to see how depressing the room is, which may not have been the intended design goal."
+            }
         }
     ],
     "items": [

@@ -197,6 +197,46 @@
                 "use": "You lean over the edge slightly. Your survival instincts, which have been mostly dormant, scream in unison. You lean back.",
                 "default": "You gaze into the gorge. The gorge gazes into you. Nietzsche would have opinions about this."
             }
+        },
+        {
+            "id": "river",
+            "name": "River",
+            "zone": {
+                "x": 300,
+                "y": 350,
+                "width": 400,
+                "height": 150
+            },
+            "interactionPoint": {
+                "x": 500,
+                "y": 430
+            },
+            "responses": {
+                "look": "Far below, the river churns white against black rocks with a relentless fury that suggests it has somewhere very important to be. The current is fast enough to carry away anything foolish enough to fall in -- logs, debris, overconfident adventurers. The depth is unknowable, which is nature's way of saying 'don't.'",
+                "take": "You want to take the river. Rivers are famously uncooperative about being relocated. This one especially so.",
+                "use": "From up here, 'using' the river would primarily involve falling into it. The river does not offer a refund policy.",
+                "default": "You listen to the river below. It roars with the cheerful indifference of something that has been grinding stone for millennia and intends to continue."
+            }
+        },
+        {
+            "id": "waterfall",
+            "name": "Waterfall",
+            "zone": {
+                "x": 500,
+                "y": 100,
+                "width": 200,
+                "height": 250
+            },
+            "interactionPoint": {
+                "x": 600,
+                "y": 420
+            },
+            "responses": {
+                "look": "In the distance, a waterfall plunges from a cliff face into the gorge below, sending up a perpetual mist that catches the light in tiny rainbows. It's beautiful in the way that all things capable of killing you instantly tend to be. The roar is audible even from here, a constant low thunder that drowns out your better judgment.",
+                "take": "You want to take a waterfall. This ambition, while admirable in its absurdity, is not something physics supports.",
+                "use": "The waterfall is scenic but distinctly not interactive from this distance. Getting closer would require leaving the bridge, which your survival instincts -- faint as they are -- advise against.",
+                "default": "You admire the waterfall from a safe distance. It's majestic, powerful, and completely indifferent to your existence. Rather like the universe, really."
+            }
         }
     ],
     "items": [],

@@ -323,4 +323,121 @@ export const NOUN_SYNONYMS: Record<string, string> = {
     'battlement': 'parapet',
     'ledge': 'parapet',
     'edge': 'parapet',
+
+    // --- Scenery: Trees / forest ---
+    'tree': 'trees',
+    'trees': 'trees',
+    'oak': 'trees',
+    'forest': 'trees',
+    'woods': 'trees',
+
+    // --- Scenery: Ferns / ground cover ---
+    'fern': 'ferns',
+    'grass': 'ferns',
+    'weeds': 'ferns',
+
+    // --- Scenery: Sky / sunlight ---
+    'sky': 'sunset',
+    'sun': 'sunset',
+    'sunlight': 'sunset',
+    'clouds': 'sunset',
+    'stars': 'sunset',
+
+    // --- Scenery: Path / road ---
+    'path': 'path',
+    'road': 'path',
+    'trail': 'path',
+
+    // --- Scenery: Vines / ivy ---
+    'ivy': 'vines',
+    'vine': 'vines',
+
+    // --- Scenery: Moss ---
+    'moss': 'moss',
+
+    // --- Scenery: Arch / archway ---
+    'arch': 'archway',
+    'arches': 'archway',
+    'archway': 'archway',
+
+    // --- Scenery: Columns / pillars ---
+    'column': 'columns',
+    'pillar': 'columns',
+    'pillars': 'columns',
+
+    // --- Scenery: Curtains / drapes ---
+    'curtain': 'curtains',
+    'drapes': 'curtains',
+
+    // --- Scenery: Chandelier ---
+    'chandelier': 'chandelier',
+
+    // --- Scenery: Sconces / torches (wall) ---
+    'candle': 'sconces',
+    'sconce': 'sconces',
+    'torches': 'sconces',
+
+    // --- Scenery: Beds ---
+    'bed': 'beds',
+    'beds': 'beds',
+    'bunk': 'beds',
+    'bunkbed': 'beds',
+
+    // --- Scenery: Window ---
+    'window': 'window',
+    'pane': 'window',
+
+    // --- Scenery: Pots / cooking ---
+    'pot': 'pots',
+    'pan': 'pots',
+    'pans': 'pots',
+    'utensils': 'pots',
+    'cookware': 'pots',
+
+    // --- Scenery: Gears / clockwork ---
+    'gears': 'gears',
+    'gear': 'gears',
+    'mechanism': 'gears',
+    'clockwork': 'gears',
+    'cogs': 'gears',
+
+    // --- Scenery: River / water (flowing) ---
+    'river': 'water',
+    'stream': 'water',
+    'creek': 'water',
+    'current': 'water',
+
+    // --- Scenery: Waterfall ---
+    'waterfall': 'waterfall',
+    'falls': 'waterfall',
+    'cascade': 'waterfall',
+
+    // --- Scenery: Hills / landscape ---
+    'hills': 'hills',
+    'hill': 'hills',
+    'valley': 'hills',
+    'landscape': 'hills',
+    'vista': 'hills',
+
+    // --- Scenery: Mountains ---
+    'mountain': 'mountains',
+    'mountains': 'mountains',
+    'peaks': 'mountains',
+
+    // --- Scenery: Mist / fog ---
+    'mist': 'mist',
+    'fog': 'mist',
+    'haze': 'mist',
+
+    // --- Scenery: Ceiling / dome ---
+    'ceiling': 'ceiling',
+    'dome': 'ceiling',
+    'roof': 'ceiling',
+
+    // --- Scenery: Floor / ground ---
+    'floor': 'floor',
+    'ground': 'floor',
+    'cobblestones': 'cobblestones',
+    'cobblestone': 'cobblestones',
+    'stones': 'cobblestones',
 };

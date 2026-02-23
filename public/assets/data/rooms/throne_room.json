@@ -115,6 +115,66 @@
                 "use": "You step onto the dais. It groans under your weight. You're not heavy -- the dais is just that compromised. Each step sounds like a small argument between wood and gravity.",
                 "default": "You examine the dais. It's held together by habit and structural stubbornness."
             }
+        },
+        {
+            "id": "curtains",
+            "name": "Curtains",
+            "zone": {
+                "x": 750,
+                "y": 50,
+                "width": 150,
+                "height": 400
+            },
+            "interactionPoint": {
+                "x": 825,
+                "y": 440
+            },
+            "responses": {
+                "look": "Heavy red drapes frame the throne room walls, their velvet moth-eaten and their royal red faded to what might charitably be called a suggestion of red. They hang with the weary dignity of fabric that has witnessed far too many bad decisions.",
+                "take": "You tug experimentally. The curtain rod groans, dust cascades, and you realize that pulling these down would bury you in several hundred pounds of ancient velvet. A theatrical death, but a death nonetheless.",
+                "use": "Hide behind them? Very dramatic. Very dusty. Very much the sort of thing that works in plays and absolutely nowhere else.",
+                "default": "You consider the curtains. Once grand, now threadbare -- a textile metaphor for the entire kingdom."
+            }
+        },
+        {
+            "id": "skylight",
+            "name": "Skylight",
+            "zone": {
+                "x": 400,
+                "y": 0,
+                "width": 200,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 500,
+                "y": 430
+            },
+            "responses": {
+                "look": "A beam of light falls from the skylight above, thick with dust motes dancing in slow spirals. It's theatrically placed to illuminate the throne, as though the architect understood that monarchs require good lighting to look properly regal.",
+                "take": "You can't pocket sunlight, though the impulse is understandable in a castle this gloomy.",
+                "use": "You stand in the beam and feel momentarily important. The dust motes swirl around you like a very small, very underwhelming coronation ceremony.",
+                "default": "You look up at the skylight. The sky beyond is indifferent to the kingdom's problems, which feels about right."
+            }
+        },
+        {
+            "id": "throne-vines",
+            "name": "Throne Vines",
+            "zone": {
+                "x": 100,
+                "y": 100,
+                "width": 100,
+                "height": 350
+            },
+            "interactionPoint": {
+                "x": 150,
+                "y": 430
+            },
+            "responses": {
+                "look": "Vines have crept in through cracks in the stone and wound themselves around the columns, reclaiming the throne room for nature one tendril at a time. There's something rather poetic about it -- royalty fades, but ivy endures.",
+                "take": "Yank them down? The columns might disagree, and you'd rather not find out what happens when you remove the only thing holding certain masonry together.",
+                "use": "Vines aren't particularly useful to a tinker. They don't fix things, brew things, or unlock things. They just grow, slowly and stubbornly, like problems.",
+                "default": "You examine the vines. They've been growing here undisturbed for long enough to consider this their throne room now."
+            }
         }
     ],
     "items": [

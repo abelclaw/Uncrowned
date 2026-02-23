@@ -133,6 +133,46 @@
                 "use": "You touch the scorch mark. Your finger comes away black with soot and faintly warm, even after centuries. Magic leaves a lasting impression. So does incompetence.",
                 "default": "You study the scorch mark. It tells the entire story of a wizard who was very good at magic and very bad at safety protocols."
             }
+        },
+        {
+            "id": "magic-books",
+            "name": "Magic Books",
+            "zone": {
+                "x": 300,
+                "y": 300,
+                "width": 300,
+                "height": 150
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 430
+            },
+            "responses": {
+                "look": "Ancient tomes open to pages covered in diagrams that make your eyes water. One book appears to be reading itself, pages turning without assistance or apology.",
+                "take": "The books seem to have opinions about being moved. One snaps shut as you reach for it, which is both startling and rude.",
+                "use": "You'd need years of study, and your attention span barely covers minutes. The books sense this and are unimpressed.",
+                "default": "You examine the magic books. They radiate the quiet hostility of knowledge that knows you can't understand it."
+            }
+        },
+        {
+            "id": "tower-window",
+            "name": "Tower Window",
+            "zone": {
+                "x": 350,
+                "y": 50,
+                "width": 250,
+                "height": 250
+            },
+            "interactionPoint": {
+                "x": 475,
+                "y": 430
+            },
+            "responses": {
+                "look": "A grand arched window overlooking the land below. The view would be inspiring if the land weren't slowly turning to stone. Even the clouds look nervous.",
+                "take": "It's set in the wall. Architects planned ahead, anticipating the kind of person who would try to steal a window.",
+                "use": "You peer through it. The horizon looks worried. You share the sentiment.",
+                "default": "You gaze through the tower window. The kingdom stretches out below, beautiful and cursed in equal measure."
+            }
         }
     ],
     "items": [

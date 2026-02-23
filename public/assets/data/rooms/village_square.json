@@ -134,6 +134,46 @@
                 "use": "You browse the abandoned stalls. There's nothing useful -- just rotting produce and dusty trinkets. The economy here is in worse shape than you are.",
                 "default": "You wander through the empty stalls. It's like a flea market after the apocalypse."
             }
+        },
+        {
+            "id": "fountain",
+            "name": "Fountain",
+            "zone": {
+                "x": 350,
+                "y": 150,
+                "width": 260,
+                "height": 250
+            },
+            "interactionPoint": {
+                "x": 480,
+                "y": 420
+            },
+            "responses": {
+                "look": "The fountain's basin still holds a thin layer of stagnant water. At the bottom, a scattering of coins glint dully -- wishes made by people who are now presumably stone. The statue atop it depicts someone important, though erosion has filed off any identifying features. Could be a king. Could be a particularly regal turnip farmer.",
+                "take": "You consider fishing the coins from the fountain. Stealing wishes from the possibly petrified. Even for you, that's a new low.",
+                "use": "You splash the murky water. A coin shifts at the bottom. Someone wished for something once. Given the state of the kingdom, it didn't work.",
+                "default": "You regard the fountain. It was grand once. Now it's a monument to optimism that didn't age well."
+            }
+        },
+        {
+            "id": "cobblestones",
+            "name": "Cobblestones",
+            "zone": {
+                "x": 200,
+                "y": 400,
+                "width": 500,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 440
+            },
+            "responses": {
+                "look": "Uneven cobblestones pave the square, each one a slightly different height -- a masterwork of inconsistency that has been turning ankles since the village was founded. Some stones are cracked, others are loose, and at least three are actively trying to trip you.",
+                "take": "You pry at a cobblestone. It comes loose with a grinding pop. You hold a single stone. The square has hundreds. You are making very slow progress toward whatever this is.",
+                "use": "You stomp on the cobblestones experimentally. They clatter and shift underfoot. Several pedestrians who don't exist give you disapproving looks.",
+                "default": "You look down at the cobblestones. They look up at your feet. An uneasy truce is maintained."
+            }
         }
     ],
     "items": [

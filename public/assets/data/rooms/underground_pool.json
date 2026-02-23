@@ -116,6 +116,46 @@
                 "use": "You wave your torch over the reflection. The light refracts through the water, and for a brief moment, a pattern of light on the ceiling spells out something you can't quite read. The crystal at the bottom pulses in response.",
                 "default": "You study the reflection. It studies you back. You're both equally confused."
             }
+        },
+        {
+            "id": "pool-cave-walls",
+            "name": "Cave Walls",
+            "zone": {
+                "x": 50,
+                "y": 50,
+                "width": 150,
+                "height": 300
+            },
+            "interactionPoint": {
+                "x": 125,
+                "y": 430
+            },
+            "responses": {
+                "look": "Smooth rock carved by millennia of water, polished to an almost organic sheen. The walls curve inward like the ribs of some enormous sleeping beast.",
+                "take": "You'd need a quarry's worth of patience and a pickaxe the size of your delusions of grandeur.",
+                "use": "Walls make excellent surfaces for not finding secret passages. You press, push, and prod. Nothing happens, as walls intended.",
+                "default": "You examine the cave walls. They are ancient, wet, and supremely unhelpful."
+            }
+        },
+        {
+            "id": "light-shaft",
+            "name": "Light Shaft",
+            "zone": {
+                "x": 400,
+                "y": 0,
+                "width": 200,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 500,
+                "y": 430
+            },
+            "responses": {
+                "look": "A shaft of light piercing the darkness from some unseen crack above, impossibly dramatic. Nature's own spotlight, reserved for moments of quiet contemplation and feeling theatrical.",
+                "take": "You reach for the light. It remains intangible, like most good things in life.",
+                "use": "You bask in it briefly, feeling theatrical. The light does not judge. The cave does.",
+                "default": "You stand in the light shaft. For a moment, everything feels meaningful. Then the moment passes."
+            }
         }
     ],
     "items": [

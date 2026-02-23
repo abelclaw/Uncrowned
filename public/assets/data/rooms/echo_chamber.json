@@ -114,6 +114,46 @@
                 "use": "You could try to extract the coal, but you'd need to be careful. The stalactites around it look structural.",
                 "default": "You eye the coal deposits. They've been waiting patiently for someone to burn them. The anticipation is presumably palpable, if you're coal."
             }
+        },
+        {
+            "id": "glowing-mist",
+            "name": "Glowing Mist",
+            "zone": {
+                "x": 200,
+                "y": 100,
+                "width": 550,
+                "height": 250
+            },
+            "interactionPoint": {
+                "x": 475,
+                "y": 430
+            },
+            "responses": {
+                "look": "Luminous blue mist hangs in the air, pulsing gently. It's either magical residue or the cave's attempt at mood lighting.",
+                "take": "You wave your hand through it. The mist parts and reforms, unimpressed by your intervention.",
+                "use": "You breathe it in. It tastes like ozone and old secrets.",
+                "default": "You observe the glowing mist. It drifts with the unhurried grace of something that has nowhere to be."
+            }
+        },
+        {
+            "id": "chamber-walls",
+            "name": "Chamber Walls",
+            "zone": {
+                "x": 50,
+                "y": 50,
+                "width": 150,
+                "height": 400
+            },
+            "interactionPoint": {
+                "x": 125,
+                "y": 430
+            },
+            "responses": {
+                "look": "The walls are unnaturally smooth, polished by centuries of sound waves bouncing between them. Your reflection is distorted and unflattering.",
+                "take": "Solid stone. Not even a loose piece to pocket.",
+                "use": "You press your ear against the wall. It hums. The whole chamber hums. You've been humming along without noticing.",
+                "default": "You examine the chamber walls. They're smoother than any stonemason could achieve."
+            }
         }
     ],
     "items": [

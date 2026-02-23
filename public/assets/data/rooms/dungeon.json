@@ -138,6 +138,66 @@
                 "use": "You flip through the filing cells. Every applicant who ever attempted the Bureaucratic Test of Sovereign Worthiness is recorded here. The rejection rate is 100%. Until you.",
                 "default": "You browse the filing cells. The dungeon is the most organized prison you've ever seen. The inmates are paperwork."
             }
+        },
+        {
+            "id": "desk-lamp",
+            "name": "Desk Lamp",
+            "zone": {
+                "x": 200,
+                "y": 150,
+                "width": 80,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 240,
+                "y": 430
+            },
+            "responses": {
+                "look": "A desk lamp casting warm light over paperwork that hasn't been filed since the previous dynasty.",
+                "take": "It's plugged in. To what, you're not sure -- there's no visible outlet.",
+                "use": "You click it on and off. The shadows dance. The paperwork remains unfiled.",
+                "default": "You examine the lamp. It does its job without complaint, which is more than can be said for most things here."
+            }
+        },
+        {
+            "id": "filing-cabinets",
+            "name": "Filing Cabinets",
+            "zone": {
+                "x": 600,
+                "y": 100,
+                "width": 200,
+                "height": 300
+            },
+            "interactionPoint": {
+                "x": 700,
+                "y": 430
+            },
+            "responses": {
+                "look": "Rows of filing cabinets, each drawer labeled with arcane bureaucratic categories. 'Complaints (Justified)', 'Complaints (Unjustified)', 'Complaints (Existential)'.",
+                "take": "They're bolted to the wall. Even furniture can't escape bureaucracy.",
+                "use": "You open a random drawer. It's full of forms about other forms. You close it quickly.",
+                "default": "You regard the filing cabinets. They contain the accumulated paperwork of centuries, organized by someone with too much time and not enough hobbies."
+            }
+        },
+        {
+            "id": "barred-window",
+            "name": "Barred Window",
+            "zone": {
+                "x": 350,
+                "y": 50,
+                "width": 150,
+                "height": 120
+            },
+            "interactionPoint": {
+                "x": 425,
+                "y": 430
+            },
+            "responses": {
+                "look": "A small window with iron bars, offering a view that's technically freedom but functionally a taunt.",
+                "take": "The bars are embedded in stone. Many have tried.",
+                "use": "You peer through the bars. The outside world continues without you. How rude.",
+                "default": "You glance at the barred window. The light it admits is grudging at best."
+            }
         }
     ],
     "items": [

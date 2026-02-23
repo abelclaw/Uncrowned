@@ -217,6 +217,26 @@
                 "push": "You push on a crumbling section. It groans. Dust falls. A stone the size of your head breaks free and thuds to the ground. Perhaps stop pushing the structural components of the building you're inside.",
                 "default": "You observe the crumbling walls. The castle has survived centuries. It may not survive the week."
             }
+        },
+        {
+            "id": "petrified-hedges",
+            "name": "Petrified Hedges",
+            "zone": {
+                "x": 50,
+                "y": 250,
+                "width": 200,
+                "height": 150
+            },
+            "interactionPoint": {
+                "x": 150,
+                "y": 430
+            },
+            "responses": {
+                "look": "The hedges have turned to stone, preserving every leaf in granite detail. The gardener's worst nightmare, realized literally.",
+                "take": "Stone foliage. Heavy, sharp, and utterly decorative.",
+                "use": "They're past the point of pruning.",
+                "default": "You examine the petrified hedges. The topiary was questionable even before it turned to stone."
+            }
         }
     ],
     "items": [],

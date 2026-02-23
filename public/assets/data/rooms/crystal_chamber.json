@@ -94,6 +94,46 @@
                 "look": "A stone pedestal carved with symbols that match the ones in the Guardian Chamber. The Crystal of Mundanity hovers above it, grey and utterly unremarkable. For the most important artifact in the kingdom, it's impressively unimpressive. Like a bureaucrat in crystal form.",
                 "default": "You study the pedestal. It's ancient, carved with precision, and currently inaccessible behind a barrier that would very much like you to stop looking at it."
             }
+        },
+        {
+            "id": "chamber-pillars",
+            "name": "Stone Pillars",
+            "zone": {
+                "x": 50,
+                "y": 50,
+                "width": 100,
+                "height": 400
+            },
+            "interactionPoint": {
+                "x": 100,
+                "y": 430
+            },
+            "responses": {
+                "look": "Massive pillars etched with patterns that seem to shift when you're not looking directly at them. Peripheral vision architecture -- the dwarves were showing off.",
+                "take": "Each one weighs roughly the same as your student debt. Immovable, oppressive, and a constant reminder of poor decisions.",
+                "use": "They're holding up the ceiling. Best leave them to it. Structural engineering is not a collaborative sport.",
+                "default": "You examine the pillars. They stand with the quiet confidence of things that have been standing for millennia and intend to continue."
+            }
+        },
+        {
+            "id": "blue-energy",
+            "name": "Blue Energy",
+            "zone": {
+                "x": 350,
+                "y": 100,
+                "width": 250,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 475,
+                "y": 430
+            },
+            "responses": {
+                "look": "Tendrils of blue energy arc between the crystal and the chamber walls, humming with barely contained power. It's beautiful in the way that lightning is beautiful -- best appreciated from a distance.",
+                "take": "You reach out. The energy crackles warningly. Message received. Some things are not meant to be held.",
+                "use": "Touching raw magical energy ranks high on the list of things tinkers should avoid. Right between 'annoying dragons' and 'trusting wizards.'",
+                "default": "You observe the blue energy. It arcs and pulses with the indifference of power that does not require your approval."
+            }
         }
     ],
     "items": [

@@ -114,6 +114,66 @@
                 "take": "You cannot reach the spire. And even if you could, stealing a kingdom's flag while trying to save that kingdom would be an unusual choice.",
                 "default": "You look up at the castle spire. The flag watches the kingdom's end with the same expression the badger always wears: deeply unimpressed."
             }
+        },
+        {
+            "id": "sunset",
+            "name": "Sunset",
+            "zone": {
+                "x": 400,
+                "y": 0,
+                "width": 400,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 600,
+                "y": 430
+            },
+            "responses": {
+                "look": "A sunset so dramatic it feels personally directed at you, painting the sky in shades of purple and gold.",
+                "take": "You try to capture the moment. It slips through your fingers, as moments do.",
+                "use": "You bask in its glow, briefly forgetting the kingdom is cursed.",
+                "default": "You gaze at the sunset. It's doing its best work tonight, which feels like a farewell performance."
+            }
+        },
+        {
+            "id": "distant-castle",
+            "name": "Distant Castle",
+            "zone": {
+                "x": 700,
+                "y": 150,
+                "width": 200,
+                "height": 150
+            },
+            "interactionPoint": {
+                "x": 800,
+                "y": 430
+            },
+            "responses": {
+                "look": "The castle rises against the sunset like a fairy tale illustration, except in this fairy tale everything is slowly turning to stone.",
+                "take": "It's miles away and made of stone. Even your ambition has limits.",
+                "use": "You squint at it, trying to spot signs of the curse from here. Everything looks ominous at sunset.",
+                "default": "You study the distant castle silhouette. It looks picturesque and doomed."
+            }
+        },
+        {
+            "id": "river-valley",
+            "name": "River Valley",
+            "zone": {
+                "x": 400,
+                "y": 250,
+                "width": 300,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 550,
+                "y": 430
+            },
+            "responses": {
+                "look": "A silver river winds through the valley below, indifferent to the curse, the politics, and your personal problems.",
+                "take": "Rivers are notoriously difficult to pocket.",
+                "use": "From up here, you can only admire it. Getting down there is someone else's quest.",
+                "default": "You watch the river wind through the valley. It carries on regardless."
+            }
         }
     ],
     "items": [],

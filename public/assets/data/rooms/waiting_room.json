@@ -113,6 +113,46 @@
                 "use": "You read the posters more carefully. One, half-hidden behind the others, reads: 'For faster service, seek VIP authorization. Check the filing room.' This feels like a hint. Or a trap. In the Screaming Caverns, the distinction is academic.",
                 "default": "You peruse the motivational posters. They motivate nothing except existential dread."
             }
+        },
+        {
+            "id": "waiting-chairs",
+            "name": "Waiting Chairs",
+            "zone": {
+                "x": 50,
+                "y": 250,
+                "width": 200,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 150,
+                "y": 430
+            },
+            "responses": {
+                "look": "Rows of uncomfortable chairs, designed by someone who understood that waiting should be unpleasant on every possible level.",
+                "take": "They're bolted to the floor. Even the furniture is trapped here.",
+                "use": "You sit briefly. The cushion has the structural integrity of a broken promise.",
+                "default": "You eye the waiting chairs. They offer rest, technically. Comfort, not at all."
+            }
+        },
+        {
+            "id": "number-board",
+            "name": "Number Board",
+            "zone": {
+                "x": 300,
+                "y": 50,
+                "width": 350,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 475,
+                "y": 430
+            },
+            "responses": {
+                "look": "A glowing display shows the current serving number. It hasn't changed in what appears to be centuries. The queue moves at geological speed.",
+                "take": "It's mounted to the wall with magical bindings. Not even theft can speed up this process.",
+                "use": "You stare at it, willing the number to change. It does not change. Bureaucracy wins again.",
+                "default": "You regard the number board. It radiates the quiet authority of a system that will never be rushed."
+            }
         }
     ],
     "items": [],

@@ -115,6 +115,66 @@
                 "use": "You press your finger to a crack. The glass shifts, the reflection realigns for a moment, then shatters back to fragments. Some things can't be made whole. They can only be accepted as they are.",
                 "default": "You examine the cracked mirror. It shows you in pieces, which is perhaps the most accurate reflection of all."
             }
+        },
+        {
+            "id": "potted-plants",
+            "name": "Potted Plants",
+            "zone": {
+                "x": 500,
+                "y": 200,
+                "width": 80,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 540,
+                "y": 430
+            },
+            "responses": {
+                "look": "Immaculate potted plants that somehow thrive in a room with no natural light. Suspicious, but then everything in a hall of magical mirrors is suspicious.",
+                "take": "They're heavier than they look, and the pots are ornamental. Moving them would be a crime against interior design.",
+                "use": "You consider talking to them but suspect the mirrors would judge you. The plants seem content with the arrangement.",
+                "default": "You examine the potted plants. They are green, healthy, and keeping their secrets to themselves."
+            }
+        },
+        {
+            "id": "hall-chandelier",
+            "name": "Hall Chandelier",
+            "zone": {
+                "x": 350,
+                "y": 0,
+                "width": 250,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 475,
+                "y": 430
+            },
+            "responses": {
+                "look": "An ornate chandelier that casts light at angles that make everyone look slightly more dramatic than they deserve. It's the lighting equivalent of a flattering portrait.",
+                "take": "It would require a ladder, a winch, and a complete disregard for interior decorating. You have one of those things. Possibly two.",
+                "use": "It's doing its job. Leave the chandelier alone. It didn't ask to be part of your adventure.",
+                "default": "You look up at the chandelier. It sparkles with the confidence of something that knows it's the brightest object in the room."
+            }
+        },
+        {
+            "id": "purple-carpet",
+            "name": "Purple Carpet",
+            "zone": {
+                "x": 150,
+                "y": 350,
+                "width": 650,
+                "height": 150
+            },
+            "interactionPoint": {
+                "x": 475,
+                "y": 430
+            },
+            "responses": {
+                "look": "A rich purple carpet with a geometric pattern that hurts your eyes if you stare too long. Your muddy boots are not making a great impression on it.",
+                "take": "It's wall-to-wall and bolted down. Someone learned from experience. Possibly your kind of experience.",
+                "use": "You wipe your boots on it. The carpet does not forgive easily. The stain joins a century of other adventurers' boot prints.",
+                "default": "You stand on the purple carpet. It endures your presence with the patience of soft furnishings everywhere."
+            }
         }
     ],
     "items": [],

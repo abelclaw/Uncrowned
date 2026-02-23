@@ -117,6 +117,66 @@
                 "take": "You consider pilfering from the pantry. Martha's peripheral vision is legendary. You think better of it.",
                 "default": "You scan the shelves. They're a monument to scarcity and rats."
             }
+        },
+        {
+            "id": "hearth",
+            "name": "Hearth",
+            "zone": {
+                "x": 300,
+                "y": 50,
+                "width": 350,
+                "height": 300
+            },
+            "interactionPoint": {
+                "x": 475,
+                "y": 440
+            },
+            "responses": {
+                "look": "A massive stone hearth dominates the kitchen wall, its embers still glowing with a warmth that suggests someone -- probably Martha -- has been feeding it since before dawn. The stonework is blackened by generations of cooking fires and at least one incident nobody talks about.",
+                "take": "You'd burn your pockets. And your hands. And your dignity. The hearth stays where it is.",
+                "use": "You could cook something if you had ingredients. And skill. And Martha's permission, which is the scarcest resource in this kitchen.",
+                "default": "You regard the hearth. It radiates heat and the quiet authority of something that has been the centre of this kitchen longer than any cook has lived."
+            }
+        },
+        {
+            "id": "kitchen-shelves",
+            "name": "Kitchen Shelves",
+            "zone": {
+                "x": 50,
+                "y": 50,
+                "width": 200,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 150,
+                "y": 430
+            },
+            "responses": {
+                "look": "Wall shelves cluttered with crockery in various states of disrepair -- chipped bowls, cracked plates, and one mug with a handle that's held on by sheer habit. A thin layer of dust covers everything Martha isn't actively using.",
+                "take": "Martha would notice. Martha notices everything. You'd make it three steps before the cleaver thunked into the doorframe beside your head.",
+                "use": "The shelves are already in use, storing the sad remnants of what was once a royal collection of tableware. They're doing their best.",
+                "default": "You examine the kitchen shelves. They tell the story of a kitchen that once fed a court and now feeds a stubborn cook and her principles."
+            }
+        },
+        {
+            "id": "cooking-pots",
+            "name": "Cooking Pots",
+            "zone": {
+                "x": 400,
+                "y": 200,
+                "width": 200,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 500,
+                "y": 440
+            },
+            "responses": {
+                "look": "Copper pots in various sizes hang from hooks and sit on counters, well-used and dented from years of service. Each one has a patina that professional chefs would call 'character' and everyone else would call 'neglect.'",
+                "take": "Martha guards her cookware with surprising ferocity. The last person who borrowed a pot without asking was found three rooms away, apologising.",
+                "use": "Empty, sadly. Without ingredients, these pots are just hollow metal containers with aspirations.",
+                "default": "You study the cooking pots. They've outlasted kings, curses, and countless burnt meals. Copper endures."
+            }
         }
     ],
     "items": [

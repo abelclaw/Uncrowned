@@ -116,6 +116,46 @@
                 "look": "A small rocky shore where the boat is beached. The rocks are smooth from water erosion and covered in a thin layer of cave slime. Various debris has washed up: sticks, stones, and the remains of what might have been another boat. A cautionary tale in driftwood.",
                 "default": "You examine the shore. It's the safest spot by the river, which is like saying it's the driest spot in the ocean."
             }
+        },
+        {
+            "id": "rushing-water",
+            "name": "Rushing Water",
+            "zone": {
+                "x": 200,
+                "y": 300,
+                "width": 600,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 500,
+                "y": 430
+            },
+            "responses": {
+                "look": "Dark water rushes past with the urgency of someone late for a very important meeting. White foam crests suggest rocks below.",
+                "take": "Water is famously uncooperative about being held.",
+                "use": "Drink it? You don't know where it's been. Actually, you do -- it's been underground. That's worse.",
+                "default": "You watch the water rush past. It has places to be, and none of them involve you."
+            }
+        },
+        {
+            "id": "cave-waterfall",
+            "name": "Cave Waterfall",
+            "zone": {
+                "x": 600,
+                "y": 50,
+                "width": 200,
+                "height": 250
+            },
+            "interactionPoint": {
+                "x": 700,
+                "y": 430
+            },
+            "responses": {
+                "look": "Water cascades from somewhere above, crashing into the river with theatrical enthusiasm. The mist is refreshing. The noise is not.",
+                "take": "Waterfalls are, regrettably, non-portable.",
+                "use": "Stand under it for dramatic effect? You'd prefer to stay dry and alive.",
+                "default": "You admire the waterfall from a safe, dry distance."
+            }
         }
     ],
     "items": [

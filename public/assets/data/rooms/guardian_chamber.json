@@ -119,6 +119,46 @@
                 "use": "The indentation needs a seal. The ancient kingdom seal, specifically. Not the royal seal -- the administrative one. Bureaucracy, even in guardian activation, demands precision.",
                 "default": "You study the pedestal. The seal-shaped indentation waits with geological patience."
             }
+        },
+        {
+            "id": "purple-flames",
+            "name": "Purple Flames",
+            "zone": {
+                "x": 100,
+                "y": 300,
+                "width": 80,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 140,
+                "y": 430
+            },
+            "responses": {
+                "look": "Flames that burn purple without heat or fuel. Magic fire -- all the aesthetics of burning, none of the warmth.",
+                "take": "Magical fire doesn't play by the rules of pockets. Or physics.",
+                "use": "You reach toward the flame. It flickers away from your hand, like a cat that doesn't want to be petted.",
+                "default": "You watch the purple flames dance. They're decorative at best, enigmatic at worst."
+            }
+        },
+        {
+            "id": "domed-ceiling",
+            "name": "Domed Ceiling",
+            "zone": {
+                "x": 250,
+                "y": 0,
+                "width": 450,
+                "height": 150
+            },
+            "interactionPoint": {
+                "x": 475,
+                "y": 430
+            },
+            "responses": {
+                "look": "A magnificent domed ceiling with a rose window at its apex, casting colored light across the chamber. Whoever built this had ambitions that exceeded their kingdom's lifespan.",
+                "take": "It's a ceiling. You can't take a ceiling.",
+                "use": "You admire the craftsmanship. The guardian doesn't seem to care about interior design.",
+                "default": "You crane your neck at the dome. The architecture is impressive. The neck pain is immediate."
+            }
         }
     ],
     "items": [],

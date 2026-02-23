@@ -98,6 +98,66 @@
                 "talk": "You compliment the wildflowers on their resilience. They sway in the breeze, unmoved by flattery.",
                 "default": "You interact with the wildflowers in a way that leaves both parties mildly confused."
             }
+        },
+        {
+            "id": "forest-trees",
+            "name": "Forest Trees",
+            "zone": {
+                "x": 50,
+                "y": 100,
+                "width": 200,
+                "height": 300
+            },
+            "interactionPoint": {
+                "x": 150,
+                "y": 400
+            },
+            "responses": {
+                "look": "Two ancient trees frame the clearing like gnarled sentinels. Their bark is cracked and twisted into patterns that suggest they've been silently judging passersby since before the kingdom had a name. The canopy above filters the sunlight into something almost holy, if holiness smelled like moss and squirrel droppings.",
+                "take": "You attempt to take an entire tree. The tree does not cooperate. It has been standing here for centuries and is not about to relocate for the likes of you.",
+                "use": "You lean against the tree trunk. It's solid, ancient, and entirely uninterested in your problems. Trees predate the concept of empathy.",
+                "default": "You regard the ancient trees. They regard the centuries. Neither of you is impressed with the other."
+            }
+        },
+        {
+            "id": "ferns",
+            "name": "Ferns",
+            "zone": {
+                "x": 50,
+                "y": 440,
+                "width": 200,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 150,
+                "y": 450
+            },
+            "responses": {
+                "look": "A thick carpet of ferns blankets the forest floor, their fronds unfurling in slow spirals like tiny green fists deciding whether to open. They've been here longer than the path, longer than the kingdom, and will certainly outlast your adventure.",
+                "take": "You pluck a fern frond. It immediately goes limp, as though embarrassed to be seen with you. You drop it. The other ferns pretend not to notice.",
+                "use": "You brush the ferns aside, revealing more ferns. Beneath those, more ferns. It's ferns all the way down.",
+                "default": "You contemplate the ferns. The ferns contemplate photosynthesis. One of you is more productive."
+            }
+        },
+        {
+            "id": "distant-lake",
+            "name": "Distant Lake",
+            "zone": {
+                "x": 700,
+                "y": 200,
+                "width": 200,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 800,
+                "y": 400
+            },
+            "responses": {
+                "look": "Through the gap between the trees, a lake shimmers in the distance like a dropped coin on a ballroom floor. The water catches the light in a way that's almost inviting, if you ignore the fact that it's completely unreachable from here.",
+                "take": "You want to take a distant lake. This is ambitious even by your standards, which are admittedly quite low.",
+                "use": "The lake is scenic but thoroughly distant. You'd need to find a path there, assuming one exists. For now, it remains a pretty thing you can't have, much like competence.",
+                "default": "You gaze at the distant lake. It glitters back, serene and unhelpful."
+            }
         }
     ],
     "items": [

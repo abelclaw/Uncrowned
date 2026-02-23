@@ -136,6 +136,46 @@
                 "use": "You gaze into the dark forest and wisely decide against entering. Your survival instincts, dormant for most of your life, have chosen this moment to awaken.",
                 "default": "You peer into the dark forest. Something peers back. You both pretend this didn't happen."
             }
+        },
+        {
+            "id": "rolling-hills",
+            "name": "Rolling Hills",
+            "zone": {
+                "x": 400,
+                "y": 100,
+                "width": 400,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 600,
+                "y": 400
+            },
+            "responses": {
+                "look": "Green hills roll toward the horizon with the gentle, pastoral beauty of a kingdom that hasn't noticed it's falling apart. The grass sways in the breeze, deceptively peaceful, as though nothing could possibly go wrong in a place this pretty. History disagrees.",
+                "take": "You want to take the hills. Perhaps fold them up and put them in your pocket. This is not how geography works.",
+                "use": "You could roll down them, but you're an adult on a quest, not a child at a picnic. Though the distinction blurs more with each passing hour.",
+                "default": "You survey the rolling hills. They're green, they're pleasant, and they're hiding something. Landscapes this pretty always are."
+            }
+        },
+        {
+            "id": "dirt-path",
+            "name": "Dirt Path",
+            "zone": {
+                "x": 350,
+                "y": 300,
+                "width": 200,
+                "height": 150
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 420
+            },
+            "responses": {
+                "look": "A well-worn dirt path winds into the distance, packed hard by countless feet that had somewhere more important to be. Ruts from cart wheels suggest commerce. Boot prints suggest purpose. Your footprints suggest aimless wandering.",
+                "take": "You scoop up a handful of dirt from the path. Congratulations. You now own dirt. Your portfolio is really coming together.",
+                "use": "You follow the path with your eyes as it disappears around a bend. It's been leading people to the village for generations, asking nothing in return. The path has a better work ethic than most people you've met.",
+                "default": "You examine the dirt path. It's dirt. It's a path. Together, they exceed the sum of their parts, but only just."
+            }
         }
     ],
     "items": [],

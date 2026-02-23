@@ -249,6 +249,46 @@
                 "use": "You follow a sign. It leads to another sign. Which leads to another sign. Which leads back to the first sign. The Clerk watches your confusion with professional disinterest.",
                 "default": "You study the signs. They are confidently, aggressively wrong."
             }
+        },
+        {
+            "id": "glowing-runes",
+            "name": "Glowing Runes",
+            "zone": {
+                "x": 50,
+                "y": 100,
+                "width": 100,
+                "height": 250
+            },
+            "interactionPoint": {
+                "x": 100,
+                "y": 430
+            },
+            "responses": {
+                "look": "Ancient symbols pulsing with blue light, their meaning lost to time and budget cuts. They look important in the way that things you can't read always do.",
+                "take": "They're carved into the wall, not stickers. Whoever inscribed them used tools, not adhesive.",
+                "use": "You trace a rune with your finger. Nothing happens. Disappointing, but also not electrocuting, so arguably a win.",
+                "default": "You examine the runes. They glow with quiet authority and zero legibility."
+            }
+        },
+        {
+            "id": "blue-portal",
+            "name": "Blue Portal",
+            "zone": {
+                "x": 400,
+                "y": 50,
+                "width": 160,
+                "height": 300
+            },
+            "interactionPoint": {
+                "x": 480,
+                "y": 430
+            },
+            "responses": {
+                "look": "A shimmering blue archway that screams 'magical entrance' with all the subtlety of a carnival barker. It pulses with energy that makes your fillings tingle.",
+                "take": "You can't pocket a portal. Topology forbids it, and your pockets lack the requisite dimensional capacity.",
+                "use": "It seems to be working already, doing whatever portals do. Standing near it makes your hair stand on end and your sense of self-preservation sit down.",
+                "default": "You regard the blue portal. It regards you with shimmering indifference."
+            }
         }
     ],
     "items": [],

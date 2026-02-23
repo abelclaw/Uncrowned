@@ -139,6 +139,46 @@
                 "use": "There is no practical use for mysterious cave bones. None. Stop trying to make cave bones happen.",
                 "default": "You regard the bones with the appropriate mix of curiosity and mild horror."
             }
+        },
+        {
+            "id": "stone-stairs",
+            "name": "Stone Stairs",
+            "zone": {
+                "x": 350,
+                "y": 200,
+                "width": 250,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 475,
+                "y": 430
+            },
+            "responses": {
+                "look": "Uneven steps carved into the bedrock by someone who'd never heard of building codes. Each one is a slightly different height, as if the mason was making it up as they went.",
+                "take": "They're carved into bedrock. You'd need to take the entire mountain, and your pockets aren't that big.",
+                "use": "You're using them right now, one careful step at a time. They're performing admirably for stairs that predate safety standards.",
+                "default": "You regard the stone stairs. They descend with the confidence of architecture that doesn't know it's dangerous."
+            }
+        },
+        {
+            "id": "cave-moss",
+            "name": "Cave Moss",
+            "zone": {
+                "x": 100,
+                "y": 200,
+                "width": 150,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 175,
+                "y": 430
+            },
+            "responses": {
+                "look": "Soft green moss, thriving in the damp darkness like it's personally offended by sunlight. It carpets the walls in patches, quietly photosynthesizing through sheer spite.",
+                "take": "It crumbles at your touch, damp and useless. The moss was not meant to travel.",
+                "use": "Moss has very limited practical applications. Decorative, perhaps. Nutritional, absolutely not.",
+                "default": "You examine the cave moss. It's soft, green, and entirely uninterested in your problems."
+            }
         }
     ],
     "items": [],

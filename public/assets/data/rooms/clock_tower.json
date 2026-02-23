@@ -113,6 +113,46 @@
                 "use": "You lean toward the window for a better view. The wind pushes back, which is either weather or a warning.",
                 "default": "You gaze out at the cursed landscape. The view is comprehensive and thoroughly depressing."
             }
+        },
+        {
+            "id": "clock-gears",
+            "name": "Clock Gears",
+            "zone": {
+                "x": 250,
+                "y": 50,
+                "width": 450,
+                "height": 300
+            },
+            "interactionPoint": {
+                "x": 475,
+                "y": 430
+            },
+            "responses": {
+                "look": "A magnificent array of gears and springs, frozen in time. The irony of a broken clock in a cursed kingdom is not lost on you.",
+                "take": "They're the size of wagon wheels and interlocked. Engineering does not support your kleptomania.",
+                "use": "Without proper tools and knowledge, you'd just jam them further.",
+                "default": "You study the gears. They await repair with the patience of precision engineering."
+            }
+        },
+        {
+            "id": "green-pool",
+            "name": "Green Pool",
+            "zone": {
+                "x": 300,
+                "y": 400,
+                "width": 350,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 475,
+                "y": 430
+            },
+            "responses": {
+                "look": "A pool of luminous green liquid at the base of the clock tower. It bubbles gently, which is never a good sign in underground pools.",
+                "take": "You'd need a bucket, and honestly, do you really want glowing green liquid?",
+                "use": "Touching mysterious glowing liquids has a poor track record in this kingdom.",
+                "default": "You eye the green pool from a safe distance. It bubbles back, unconcerned."
+            }
         }
     ],
     "items": [],

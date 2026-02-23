@@ -152,6 +152,46 @@
                 "use": "You shade your eyes and look into the distance. There's definitely something out there beyond the forest, but without magnification, it's just a grey smudge on the horizon. Could be a castle. Could be weather.",
                 "default": "You admire the view. It's scenic, if you ignore the encroaching petrification of everything below."
             }
+        },
+        {
+            "id": "mountains",
+            "name": "Mountains",
+            "zone": {
+                "x": 400,
+                "y": 50,
+                "width": 500,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 650,
+                "y": 410
+            },
+            "responses": {
+                "look": "A distant mountain range lines the horizon, its blue-grey peaks jagged against the sky like the teeth of something enormous and sleeping. The kingdom stretches all the way to their feet, which means the curse probably does too. On a clear day, you can almost convince yourself they look peaceful. Today is not that day.",
+                "take": "You want to take the mountains. They're several hundred miles away and weigh approximately everything. Perhaps lower your ambitions slightly.",
+                "use": "The mountains are decorative at this distance. Useful only for making you feel small and insignificant, which they accomplish effortlessly.",
+                "default": "You gaze at the distant mountains. They gaze at nothing, being mountains. You envy their composure."
+            }
+        },
+        {
+            "id": "tower-ivy",
+            "name": "Tower Ivy",
+            "zone": {
+                "x": 200,
+                "y": 150,
+                "width": 200,
+                "height": 250
+            },
+            "interactionPoint": {
+                "x": 300,
+                "y": 410
+            },
+            "responses": {
+                "look": "Thick ivy clings to the watchtower walls with the tenacity of a debt collector. Its roots have worked into every crack and crevice, slowly and patiently dismantling masonry that took teams of builders to erect. Nature is nothing if not persistently petty.",
+                "take": "You pull at the ivy. A small section comes away, revealing crumbling mortar beneath. The tower shudders almost imperceptibly. Perhaps leave the structural vegetation alone.",
+                "use": "You consider climbing the ivy. It looks sturdy enough, but the last person who tested that theory is presumably at the bottom of the tower. In several pieces.",
+                "default": "You regard the ivy covering the tower. It's winning the long war against architecture, one root at a time."
+            }
         }
     ],
     "items": [

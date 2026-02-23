@@ -136,6 +136,46 @@
                 "take": "You pick a berry. It's heavy, dark, and warm. It smells sweet. It is nightshade. You put it back. Quickly.",
                 "default": "You examine the berry bush. It's gorgeous, prolific, and lethal. Like most things in this garden."
             }
+        },
+        {
+            "id": "garden-statue",
+            "name": "Garden Statue",
+            "zone": {
+                "x": 250,
+                "y": 100,
+                "width": 150,
+                "height": 250
+            },
+            "interactionPoint": {
+                "x": 325,
+                "y": 440
+            },
+            "responses": {
+                "look": "A moss-covered figure stands on a stone pedestal, its features eroded beyond recognition. It might have been a king, a hero, or a particularly ambitious gardener. Time has rendered the question academic and the answer irrelevant.",
+                "take": "It's stone, it's heavy, and it's attached to a pedestal that's attached to the earth. You'd need to renegotiate with geology.",
+                "use": "Admire it? You do, briefly. It doesn't admire you back. Statues are notoriously poor conversationalists.",
+                "default": "You regard the statue. Whoever it once depicted has been forgotten, which is either tragic or liberating, depending on how you feel about legacy."
+            }
+        },
+        {
+            "id": "stone-pavilion",
+            "name": "Stone Pavilion",
+            "zone": {
+                "x": 550,
+                "y": 100,
+                "width": 250,
+                "height": 250
+            },
+            "interactionPoint": {
+                "x": 675,
+                "y": 440
+            },
+            "responses": {
+                "look": "An open-air pavilion held up by crumbling stone pillars, its roof partially collapsed and its former grandeur now mostly theoretical. Ivy covers what remains, softening the decay into something almost picturesque.",
+                "take": "You can't take a building. Even a small, partially ruined one. That's not how inventory works.",
+                "use": "It would make decent shelter from rain, if it were raining. Since it's not, it's just a scenic ruin -- lovely for contemplation, useless for progress.",
+                "default": "You study the stone pavilion. It has the quiet dignity of something that has accepted its decline and made peace with the ivy."
+            }
         }
     ],
     "items": [

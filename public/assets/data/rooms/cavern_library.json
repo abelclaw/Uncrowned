@@ -115,6 +115,46 @@
                 "take": "The collapsed shelves are too large to take whole, but individual planks could be salvaged.",
                 "default": "You survey the destruction. The library's loss is potentially someone's structural gain."
             }
+        },
+        {
+            "id": "crystal-chandelier",
+            "name": "Crystal Chandelier",
+            "zone": {
+                "x": 350,
+                "y": 0,
+                "width": 250,
+                "height": 150
+            },
+            "interactionPoint": {
+                "x": 475,
+                "y": 430
+            },
+            "responses": {
+                "look": "A massive crystal suspended from the ceiling, radiating cold light. Somehow still functioning after centuries of zero maintenance -- the dwarven warranty must have been extraordinary.",
+                "take": "It's twenty feet up and weighs more than your ambitions. Which is saying something, given recent events.",
+                "use": "It's already in use -- illuminating your questionable life choices and the dust motes that narrate your passage through the library.",
+                "default": "You gaze up at the chandelier. It gazes down at you. The power dynamic is clear."
+            }
+        },
+        {
+            "id": "scattered-books",
+            "name": "Scattered Books",
+            "zone": {
+                "x": 450,
+                "y": 350,
+                "width": 200,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 550,
+                "y": 430
+            },
+            "responses": {
+                "look": "Books strewn about, spines cracked and pages yellowed. Someone left in a hurry, or had very strong opinions about literature. Either way, the floor is now a reading room.",
+                "take": "You leaf through one. It's in a language that predates grammar. The illustrations are helpful but deeply unsettling.",
+                "use": "You could read them if you spoke Ancient Bureaucratic. Your education, regrettably, did not cover dead administrative languages.",
+                "default": "You survey the scattered books. They lie where they fell, pages open to chapters nobody will finish."
+            }
         }
     ],
     "items": [

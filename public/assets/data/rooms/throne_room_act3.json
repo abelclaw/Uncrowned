@@ -131,6 +131,26 @@
                 "look": "Cracks spread across the throne room ceiling like a map of the kingdom's problems. Stone dust falls in thin streams. The curse is working from the outside in, and the throne room -- the heart of the kingdom -- is last to turn. But not by much. The cracks are widening.",
                 "default": "You watch stone dust drift from the ceiling. The room has hours. Maybe less."
             }
+        },
+        {
+            "id": "ceremony-circle",
+            "name": "Ceremony Circle",
+            "zone": {
+                "x": 300,
+                "y": 350,
+                "width": 350,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 475,
+                "y": 430
+            },
+            "responses": {
+                "look": "A circle of ancient symbols etched into the stone floor, glowing faintly with residual magic. This is where it all ends. Or begins. Depends on your perspective.",
+                "take": "It's carved into the floor. You'd need to take the floor.",
+                "use": "The circle pulses at your presence. It's been waiting.",
+                "default": "You study the ceremony circle. The symbols are older than the kingdom itself."
+            }
         }
     ],
     "items": [],

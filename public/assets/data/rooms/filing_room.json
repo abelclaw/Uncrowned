@@ -96,6 +96,26 @@
                 "use": "The drawer needs to be opened first. It's stuck, but not locked -- just stubborn. Like most things in this filing system.",
                 "default": "You examine the bottom drawer. It's the only unlabeled drawer in the entire room, which makes it either unimportant or the most important drawer here."
             }
+        },
+        {
+            "id": "file-stacks",
+            "name": "File Stacks",
+            "zone": {
+                "x": 50,
+                "y": 50,
+                "width": 200,
+                "height": 400
+            },
+            "interactionPoint": {
+                "x": 150,
+                "y": 430
+            },
+            "responses": {
+                "look": "Filing cabinets stretching to the ceiling, stuffed with the accumulated paperwork of a civilization that confused bureaucracy with governance.",
+                "take": "You pull a random file. It's a complaint about a complaint about a complaint. Recursive misery.",
+                "use": "Finding anything useful would require a cataloging system, which itself would require filing a request.",
+                "default": "You contemplate the file stacks. They contemplate you back, silently and judgmentally."
+            }
         }
     ],
     "items": [

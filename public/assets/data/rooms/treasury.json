@@ -114,6 +114,46 @@
                 "use": "You browse the remaining shelf. Slim pickings. The kingdom's treasury has been cleaned out by centuries of fiscal mismanagement and one very expensive apocalypse.",
                 "default": "You inspect the shelf. The treasury's remaining assets are less 'crown jewels' and more 'things nobody remembered to steal.'"
             }
+        },
+        {
+            "id": "golden-urns",
+            "name": "Golden Urns",
+            "zone": {
+                "x": 100,
+                "y": 100,
+                "width": 150,
+                "height": 300
+            },
+            "interactionPoint": {
+                "x": 175,
+                "y": 430
+            },
+            "responses": {
+                "look": "Golden urns that once held the kingdom's wealth. Now they hold dust and the memory of better fiscal policy.",
+                "take": "They're ornamental and bolted to their pedestals. The treasury planners anticipated your type.",
+                "use": "You tap one. It rings hollow. A metaphor, probably.",
+                "default": "You admire the golden urns. They're the most decorative dust containers you've ever seen."
+            }
+        },
+        {
+            "id": "treasury-torches",
+            "name": "Treasury Torches",
+            "zone": {
+                "x": 50,
+                "y": 150,
+                "width": 60,
+                "height": 150
+            },
+            "interactionPoint": {
+                "x": 80,
+                "y": 430
+            },
+            "responses": {
+                "look": "Torches burning with a steady flame that never seems to consume the wood. Magic, probably. Or very good kindling.",
+                "take": "Fire plus pockets equals regret.",
+                "use": "You warm your hands. The treasury is surprisingly cold, possibly from the absence of actual treasure.",
+                "default": "You observe the torches. They burn on, indifferent to the treasury's emptiness."
+            }
         }
     ],
     "items": [

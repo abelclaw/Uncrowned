@@ -94,6 +94,26 @@
                 "use": "The rock anchor is solid. Whatever rope was attached to it could probably support a person. Or a very ambitious goat.",
                 "default": "You examine the rock formation. It's the most trustworthy thing on this balcony."
             }
+        },
+        {
+            "id": "cavern-view",
+            "name": "Cavern View",
+            "zone": {
+                "x": 400,
+                "y": 50,
+                "width": 500,
+                "height": 350
+            },
+            "interactionPoint": {
+                "x": 650,
+                "y": 430
+            },
+            "responses": {
+                "look": "An enormous cavern stretches below, lit by a column of blue light. The scale makes you feel appropriately insignificant.",
+                "take": "You can't take a view, though several monarchs have tried.",
+                "use": "You lean on the railing and take it all in. For a cursed underground kingdom, it's rather pretty.",
+                "default": "You gaze into the cavern. The blue light below pulses slowly, like a heartbeat."
+            }
         }
     ],
     "items": [

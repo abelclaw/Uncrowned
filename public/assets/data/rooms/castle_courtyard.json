@@ -156,6 +156,46 @@
                 "use": "You stomp on a loose flagstone. It rocks back and forth. A beetle underneath looks deeply inconvenienced.",
                 "default": "You study the flagstones. They tell a story of neglect, weeds, and a monarchy that spent its maintenance budget on olive-related catering."
             }
+        },
+        {
+            "id": "stone-arches",
+            "name": "Stone Arches",
+            "zone": {
+                "x": 300,
+                "y": 50,
+                "width": 350,
+                "height": 250
+            },
+            "interactionPoint": {
+                "x": 475,
+                "y": 430
+            },
+            "responses": {
+                "look": "Ancient stone archways frame the courtyard entrance, their masonry weathered but still impressive. Someone carved these blocks centuries ago with the quiet confidence that the kingdom would last forever. The kingdom did not, but the arches remain -- outlasting every monarch who walked beneath them.",
+                "take": "You can't take architecture. It's one of those fundamental limitations of having pockets instead of a quarry.",
+                "use": "You're already using them as a doorway, which is precisely their intended purpose. Well done on grasping basic architecture.",
+                "default": "You regard the stone arches overhead. They've been holding up the entrance since before anyone alive can remember. Reliable. Unlike most things around here."
+            }
+        },
+        {
+            "id": "courtyard-walls",
+            "name": "Courtyard Walls",
+            "zone": {
+                "x": 50,
+                "y": 100,
+                "width": 100,
+                "height": 300
+            },
+            "interactionPoint": {
+                "x": 100,
+                "y": 430
+            },
+            "responses": {
+                "look": "Thick stone walls surround the courtyard, punctuated by narrow arrow slits that suggest a history of people trying to get in uninvited. The mortar is crumbling in places, but the walls themselves remain stubbornly upright, which is more than you can say for the monarchy they were built to protect.",
+                "take": "You'd need a siege army and several years of dedicated effort. Your pockets are inadequate for this particular heist.",
+                "use": "The walls are already in use -- keeping things out. Or in. Depends on your perspective and current legal standing.",
+                "default": "You study the courtyard walls. They're doing their job with the grim determination of something that has no choice in the matter."
+            }
         }
     ],
     "items": [],
