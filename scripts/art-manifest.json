@@ -419,12 +419,12 @@
     }
   },
   "playerSprite": {
-    "prompt": "young tinker adventurer standing idle, leather vest, messy brown hair, simple boots, facing right, full body, single character, game character sprite",
-    "seed": 300001,
+    "prompt": "young tinker adventurer standing idle facing right, leather vest with pockets, messy brown hair, simple boots, adventurous pose, full body, single character, detailed pixel art game character sprite",
+    "seed": 300002,
     "output": "public/assets/sprites/player-static.png",
     "dimensions": {
-      "width": 64,
-      "height": 96
+      "width": 128,
+      "height": 192
     }
   },
   "items": {
