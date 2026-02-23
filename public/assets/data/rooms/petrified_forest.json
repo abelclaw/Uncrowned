@@ -48,8 +48,8 @@
             },
             "targetRoom": "cavern_entrance_hall",
             "spawnPoint": {
-                "x": 760,
-                "y": 430
+                "x": 650,
+                "y": 450
             },
             "transition": "fade",
             "direction": "west",
@@ -65,8 +65,8 @@
             },
             "targetRoom": "castle_courtyard_act3",
             "spawnPoint": {
-                "x": 200,
-                "y": 430
+                "x": 300,
+                "y": 460
             },
             "transition": "fade",
             "direction": "east",
@@ -249,7 +249,7 @@
         }
     },
     "playerSpawn": {
-        "x": 200,
-        "y": 430
+        "x": 480,
+        "y": 460
     }
 }

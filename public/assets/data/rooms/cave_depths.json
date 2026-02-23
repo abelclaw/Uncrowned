@@ -48,7 +48,7 @@
             },
             "targetRoom": "cave_entrance",
             "spawnPoint": {
-                "x": 510,
+                "x": 480,
                 "y": 460
             },
             "transition": "fade",
@@ -65,8 +65,8 @@
             },
             "targetRoom": "underground_pool",
             "spawnPoint": {
-                "x": 200,
-                "y": 430
+                "x": 400,
+                "y": 440
             },
             "transition": "fade",
             "direction": "north",
@@ -163,8 +163,16 @@
         {
             "id": "cave-carvings",
             "name": "Cave Carvings",
-            "zone": {"x": 100, "y": 200, "width": 300, "height": 200},
-            "interactionPoint": {"x": 250, "y": 400},
+            "zone": {
+                "x": 100,
+                "y": 200,
+                "width": 300,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 250,
+                "y": 400
+            },
             "responses": {
                 "look": "Faded carvings cover the cave walls -- spiraling patterns and angular symbols in a language that predates the kingdom. They seem to tell a story, though whether it's a warning or a history lesson is anyone's guess. The torch light makes the shadows dance between the grooves.",
                 "use": "You trace a finger along the carvings. The stone is smooth with age. Whatever these symbols mean, they've been waiting patiently for someone to care. You are not that someone, but at least you looked.",
@@ -289,6 +297,6 @@
     },
     "playerSpawn": {
         "x": 480,
-        "y": 430
+        "y": 460
     }
 }

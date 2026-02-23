@@ -49,7 +49,7 @@
             "targetRoom": "forge_chamber",
             "spawnPoint": {
                 "x": 480,
-                "y": 400
+                "y": 450
             },
             "transition": "fade",
             "direction": "south",
@@ -66,7 +66,7 @@
             "targetRoom": "crystal_chamber",
             "spawnPoint": {
                 "x": 480,
-                "y": 430
+                "y": 450
             },
             "transition": "fade",
             "direction": "north",
@@ -437,7 +437,10 @@
     },
     "effects": {
         "ambient": [
-            { "type": "dust-motes", "intensity": 0.4 }
+            {
+                "type": "dust-motes",
+                "intensity": 0.4
+            }
         ],
         "lighting": {
             "tint": "#443333",
@@ -482,6 +485,6 @@
     ],
     "playerSpawn": {
         "x": 480,
-        "y": 430
+        "y": 450
     }
 }

@@ -48,8 +48,8 @@
             },
             "targetRoom": "cavern_east_wing",
             "spawnPoint": {
-                "x": 820,
-                "y": 430
+                "x": 450,
+                "y": 450
             },
             "transition": "slide-left",
             "direction": "west",
@@ -66,7 +66,7 @@
             "targetRoom": "forge_chamber",
             "spawnPoint": {
                 "x": 480,
-                "y": 430
+                "y": 450
             },
             "transition": "fade",
             "direction": "north",
@@ -356,7 +356,10 @@
             "intensity": 0.4
         },
         "ambient": [
-            { "type": "dust-motes", "intensity": 0.3 }
+            {
+                "type": "dust-motes",
+                "intensity": 0.3
+            }
         ],
         "lighting": {
             "tint": "#223355",
@@ -376,7 +379,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 480,
-        "y": 430
+        "x": 400,
+        "y": 450
     }
 }

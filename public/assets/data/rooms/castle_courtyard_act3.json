@@ -48,8 +48,8 @@
             },
             "targetRoom": "petrified_forest",
             "spawnPoint": {
-                "x": 820,
-                "y": 430
+                "x": 600,
+                "y": 460
             },
             "transition": "fade",
             "direction": "west",
@@ -66,7 +66,7 @@
             "targetRoom": "throne_room_act3",
             "spawnPoint": {
                 "x": 480,
-                "y": 430
+                "y": 450
             },
             "transition": "fade",
             "direction": "north",
@@ -82,8 +82,8 @@
             },
             "targetRoom": "royal_archive",
             "spawnPoint": {
-                "x": 100,
-                "y": 430
+                "x": 300,
+                "y": 450
             },
             "transition": "slide-right",
             "direction": "east",
@@ -100,7 +100,7 @@
             "targetRoom": "clock_tower",
             "spawnPoint": {
                 "x": 480,
-                "y": 400
+                "y": 450
             },
             "transition": "fade",
             "direction": "south",
@@ -117,7 +117,7 @@
             "targetRoom": "wizard_tower",
             "spawnPoint": {
                 "x": 480,
-                "y": 430
+                "y": 450
             },
             "transition": "fade",
             "direction": "north",
@@ -133,8 +133,8 @@
             },
             "targetRoom": "mirror_hall",
             "spawnPoint": {
-                "x": 100,
-                "y": 430
+                "x": 300,
+                "y": 450
             },
             "transition": "fade",
             "direction": "east",
@@ -151,7 +151,7 @@
             "targetRoom": "dungeon",
             "spawnPoint": {
                 "x": 480,
-                "y": 400
+                "y": 450
             },
             "transition": "fade",
             "direction": "down",
@@ -241,8 +241,16 @@
         {
             "id": "captain-aldric",
             "name": "Captain Aldric",
-            "zone": {"x": 650, "y": 300, "width": 80, "height": 150},
-            "interactionPoint": {"x": 690, "y": 440},
+            "zone": {
+                "x": 650,
+                "y": 300,
+                "width": 80,
+                "height": 150
+            },
+            "interactionPoint": {
+                "x": 690,
+                "y": 440
+            },
             "responses": {
                 "look": "Captain Aldric stands half-petrified -- his right side grey stone, his left side stubbornly flesh. His one working eye tracks you with military precision. Stone or not, the man is still on duty.",
                 "talk": "'Break... the curse...' Aldric manages through half a stone jaw. 'Clock tower... treasury... rite circle... hurry.' Every word costs him visible effort. His flesh hand grips his stone sword. The man is fighting petrification through sheer obstinacy.",
@@ -348,17 +356,22 @@
             "intensity": 0.4
         },
         "ambient": [
-            { "type": "dust-motes", "intensity": 0.4 }
+            {
+                "type": "dust-motes",
+                "intensity": 0.4
+            }
         ],
         "lighting": {
             "tint": "#556677",
             "brightness": 0.55,
             "vignette": 0.4,
-            "postfx": ["desaturate"]
+            "postfx": [
+                "desaturate"
+            ]
         }
     },
     "playerSpawn": {
         "x": 480,
-        "y": 430
+        "y": 460
     }
 }

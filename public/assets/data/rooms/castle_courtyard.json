@@ -48,8 +48,8 @@
             },
             "targetRoom": "forest_bridge",
             "spawnPoint": {
-                "x": 820,
-                "y": 430
+                "x": 650,
+                "y": 460
             },
             "transition": "slide-left",
             "direction": "west",
@@ -66,7 +66,7 @@
             "targetRoom": "castle_hallway",
             "spawnPoint": {
                 "x": 480,
-                "y": 430
+                "y": 450
             },
             "transition": "fade",
             "direction": "north",
@@ -88,8 +88,8 @@
             },
             "targetRoom": "castle_garden",
             "spawnPoint": {
-                "x": 100,
-                "y": 430
+                "x": 330,
+                "y": 460
             },
             "transition": "slide-right",
             "direction": "east",
@@ -512,7 +512,9 @@
             "tint": "#ffcc88",
             "brightness": 0.85,
             "vignette": 0.2,
-            "postfx": ["bloom"]
+            "postfx": [
+                "bloom"
+            ]
         }
     },
     "puzzleHints": [
@@ -543,6 +545,6 @@
     ],
     "playerSpawn": {
         "x": 480,
-        "y": 430
+        "y": 460
     }
 }

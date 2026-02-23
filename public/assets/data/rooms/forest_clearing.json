@@ -48,8 +48,8 @@
             },
             "targetRoom": "cave_entrance",
             "spawnPoint": {
-                "x": 200,
-                "y": 430
+                "x": 380,
+                "y": 460
             },
             "transition": "fade",
             "direction": "east",

@@ -48,8 +48,8 @@
             },
             "targetRoom": "forest_bridge",
             "spawnPoint": {
-                "x": 480,
-                "y": 400
+                "x": 450,
+                "y": 460
             },
             "transition": "fade",
             "direction": "south",
@@ -65,8 +65,8 @@
             },
             "targetRoom": "petrified_forest",
             "spawnPoint": {
-                "x": 820,
-                "y": 430
+                "x": 600,
+                "y": 460
             },
             "transition": "fade",
             "direction": "west",
@@ -97,7 +97,7 @@
             "targetRoom": "cavern_library",
             "spawnPoint": {
                 "x": 480,
-                "y": 430
+                "y": 450
             },
             "transition": "fade",
             "direction": "north",
@@ -113,8 +113,8 @@
             },
             "targetRoom": "filing_room",
             "spawnPoint": {
-                "x": 100,
-                "y": 430
+                "x": 320,
+                "y": 450
             },
             "transition": "slide-right",
             "direction": "east",
@@ -130,8 +130,8 @@
             },
             "targetRoom": "waiting_room",
             "spawnPoint": {
-                "x": 820,
-                "y": 430
+                "x": 640,
+                "y": 450
             },
             "transition": "slide-left",
             "direction": "west",
@@ -153,8 +153,8 @@
             },
             "targetRoom": "cavern_west_wing",
             "spawnPoint": {
-                "x": 820,
-                "y": 430
+                "x": 600,
+                "y": 460
             },
             "transition": "fade",
             "direction": "west",
@@ -176,8 +176,8 @@
             },
             "targetRoom": "cavern_east_wing",
             "spawnPoint": {
-                "x": 100,
-                "y": 430
+                "x": 280,
+                "y": 450
             },
             "transition": "fade",
             "direction": "east",
@@ -507,9 +507,15 @@
         },
         {
             "id": "talk-clerk-no-form",
-            "trigger": {"verb": "talk", "subject": "the_clerk"},
+            "trigger": {
+                "verb": "talk",
+                "subject": "the_clerk"
+            },
             "conditions": [
-                {"type": "flag-not-set", "flag": "registered_with_clerk"}
+                {
+                    "type": "flag-not-set",
+                    "flag": "registered_with_clerk"
+                }
             ],
             "actions": [
                 {
@@ -595,7 +601,10 @@
             "intensity": 0.3
         },
         "ambient": [
-            { "type": "dust-motes", "intensity": 0.4 }
+            {
+                "type": "dust-motes",
+                "intensity": 0.4
+            }
         ],
         "lighting": {
             "tint": "#334455",
@@ -624,6 +633,6 @@
     ],
     "playerSpawn": {
         "x": 480,
-        "y": 430
+        "y": 450
     }
 }

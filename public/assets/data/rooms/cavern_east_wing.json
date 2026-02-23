@@ -48,8 +48,8 @@
             },
             "targetRoom": "cavern_entrance_hall",
             "spawnPoint": {
-                "x": 750,
-                "y": 430
+                "x": 650,
+                "y": 450
             },
             "transition": "fade",
             "direction": "west",
@@ -65,8 +65,8 @@
             },
             "targetRoom": "underground_river",
             "spawnPoint": {
-                "x": 100,
-                "y": 430
+                "x": 300,
+                "y": 450
             },
             "transition": "slide-right",
             "direction": "east",
@@ -171,7 +171,10 @@
             "intensity": 0.3
         },
         "ambient": [
-            { "type": "dust-motes", "intensity": 0.2 }
+            {
+                "type": "dust-motes",
+                "intensity": 0.2
+            }
         ],
         "lighting": {
             "tint": "#223344",
@@ -181,7 +184,7 @@
         }
     },
     "playerSpawn": {
-        "x": 480,
-        "y": 430
+        "x": 380,
+        "y": 450
     }
 }

@@ -48,8 +48,8 @@
             },
             "targetRoom": "cave_entrance",
             "spawnPoint": {
-                "x": 820,
-                "y": 430
+                "x": 590,
+                "y": 460
             },
             "transition": "slide-left",
             "direction": "west",
@@ -65,8 +65,8 @@
             },
             "targetRoom": "village_square",
             "spawnPoint": {
-                "x": 100,
-                "y": 430
+                "x": 280,
+                "y": 460
             },
             "transition": "slide-right",
             "direction": "east",
@@ -252,12 +252,18 @@
     },
     "effects": {
         "ambient": [
-            { "type": "dust-motes", "intensity": 0.3 },
-            { "type": "falling-leaves", "intensity": 0.15 }
+            {
+                "type": "dust-motes",
+                "intensity": 0.3
+            },
+            {
+                "type": "falling-leaves",
+                "intensity": 0.15
+            }
         ]
     },
     "playerSpawn": {
-        "x": 480,
-        "y": 430
+        "x": 460,
+        "y": 460
     }
 }

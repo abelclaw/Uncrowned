@@ -48,8 +48,8 @@
             },
             "targetRoom": "village_path",
             "spawnPoint": {
-                "x": 760,
-                "y": 430
+                "x": 600,
+                "y": 460
             },
             "transition": "slide-left",
             "direction": "west",
@@ -65,8 +65,8 @@
             },
             "targetRoom": "old_watchtower",
             "spawnPoint": {
-                "x": 200,
-                "y": 430
+                "x": 400,
+                "y": 450
             },
             "transition": "iris",
             "direction": "east",
@@ -371,6 +371,6 @@
     ],
     "playerSpawn": {
         "x": 480,
-        "y": 430
+        "y": 460
     }
 }

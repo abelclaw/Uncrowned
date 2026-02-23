@@ -48,8 +48,8 @@
             },
             "targetRoom": "cavern_entrance_hall",
             "spawnPoint": {
-                "x": 760,
-                "y": 430
+                "x": 650,
+                "y": 450
             },
             "transition": "slide-left",
             "direction": "west",
@@ -455,6 +455,6 @@
     ],
     "playerSpawn": {
         "x": 480,
-        "y": 430
+        "y": 450
     }
 }

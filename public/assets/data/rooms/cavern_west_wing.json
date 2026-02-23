@@ -48,8 +48,8 @@
             },
             "targetRoom": "cavern_entrance_hall",
             "spawnPoint": {
-                "x": 250,
-                "y": 430
+                "x": 300,
+                "y": 450
             },
             "transition": "fade",
             "direction": "east",
@@ -65,8 +65,8 @@
             },
             "targetRoom": "crystal_chamber",
             "spawnPoint": {
-                "x": 760,
-                "y": 430
+                "x": 640,
+                "y": 450
             },
             "transition": "slide-left",
             "direction": "west",
@@ -88,8 +88,8 @@
             },
             "targetRoom": "cavern_balcony",
             "spawnPoint": {
-                "x": 480,
-                "y": 430
+                "x": 400,
+                "y": 450
             },
             "transition": "fade",
             "direction": "north",
@@ -106,7 +106,7 @@
             "targetRoom": "echo_chamber",
             "spawnPoint": {
                 "x": 480,
-                "y": 430
+                "y": 450
             },
             "transition": "fade",
             "direction": "south",
@@ -255,6 +255,6 @@
     ],
     "playerSpawn": {
         "x": 480,
-        "y": 430
+        "y": 460
     }
 }

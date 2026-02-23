@@ -48,8 +48,8 @@
             },
             "targetRoom": "cavern_west_wing",
             "spawnPoint": {
-                "x": 100,
-                "y": 430
+                "x": 350,
+                "y": 460
             },
             "transition": "slide-right",
             "direction": "east",
@@ -274,14 +274,22 @@
     },
     "effects": {
         "ambient": [
-            { "type": "fireflies", "intensity": 0.5 },
-            { "type": "dust-motes", "intensity": 0.2 }
+            {
+                "type": "fireflies",
+                "intensity": 0.5
+            },
+            {
+                "type": "dust-motes",
+                "intensity": 0.2
+            }
         ],
         "lighting": {
             "tint": "#445566",
             "brightness": 0.55,
             "vignette": 0.4,
-            "postfx": ["bloom"]
+            "postfx": [
+                "bloom"
+            ]
         }
     },
     "puzzleHints": [
@@ -296,6 +304,6 @@
     ],
     "playerSpawn": {
         "x": 480,
-        "y": 430
+        "y": 450
     }
 }

@@ -48,8 +48,8 @@
             },
             "targetRoom": "dungeon",
             "spawnPoint": {
-                "x": 820,
-                "y": 430
+                "x": 600,
+                "y": 450
             },
             "transition": "slide-left",
             "direction": "west",
@@ -284,7 +284,10 @@
     },
     "effects": {
         "ambient": [
-            { "type": "dust-motes", "intensity": 0.3 }
+            {
+                "type": "dust-motes",
+                "intensity": 0.3
+            }
         ],
         "lighting": {
             "tint": "#554444",
@@ -295,6 +298,6 @@
     },
     "playerSpawn": {
         "x": 480,
-        "y": 430
+        "y": 450
     }
 }

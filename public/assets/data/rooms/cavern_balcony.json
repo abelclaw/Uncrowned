@@ -49,7 +49,7 @@
             "targetRoom": "cavern_west_wing",
             "spawnPoint": {
                 "x": 480,
-                "y": 400
+                "y": 460
             },
             "transition": "fade",
             "direction": "south",
@@ -209,7 +209,10 @@
     },
     "effects": {
         "ambient": [
-            { "type": "dust-motes", "intensity": 0.3 }
+            {
+                "type": "dust-motes",
+                "intensity": 0.3
+            }
         ],
         "lighting": {
             "tint": "#334455",
@@ -218,7 +221,7 @@
         }
     },
     "playerSpawn": {
-        "x": 480,
-        "y": 430
+        "x": 400,
+        "y": 450
     }
 }

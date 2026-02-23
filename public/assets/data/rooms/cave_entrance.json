@@ -48,8 +48,8 @@
             },
             "targetRoom": "forest_clearing",
             "spawnPoint": {
-                "x": 760,
-                "y": 430
+                "x": 650,
+                "y": 470
             },
             "transition": "pixelate",
             "direction": "west",
@@ -65,8 +65,8 @@
             },
             "targetRoom": "village_path",
             "spawnPoint": {
-                "x": 200,
-                "y": 430
+                "x": 330,
+                "y": 460
             },
             "transition": "slide-right",
             "direction": "east",
@@ -523,6 +523,6 @@
     ],
     "playerSpawn": {
         "x": 480,
-        "y": 430
+        "y": 460
     }
 }

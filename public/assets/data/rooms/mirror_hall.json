@@ -48,8 +48,8 @@
             },
             "targetRoom": "castle_courtyard_act3",
             "spawnPoint": {
-                "x": 700,
-                "y": 430
+                "x": 650,
+                "y": 460
             },
             "transition": "fade",
             "direction": "west",
@@ -277,13 +277,18 @@
     },
     "effects": {
         "ambient": [
-            { "type": "fireflies", "intensity": 0.3 }
+            {
+                "type": "fireflies",
+                "intensity": 0.3
+            }
         ],
         "lighting": {
             "tint": "#556688",
             "brightness": 0.6,
             "vignette": 0.4,
-            "postfx": ["bloom"]
+            "postfx": [
+                "bloom"
+            ]
         }
     },
     "puzzleHints": [
@@ -298,6 +303,6 @@
     ],
     "playerSpawn": {
         "x": 480,
-        "y": 430
+        "y": 450
     }
 }

@@ -48,8 +48,8 @@
             },
             "targetRoom": "cavern_entrance_hall",
             "spawnPoint": {
-                "x": 200,
-                "y": 430
+                "x": 300,
+                "y": 450
             },
             "transition": "slide-right",
             "direction": "east",
@@ -225,7 +225,10 @@
     },
     "effects": {
         "ambient": [
-            { "type": "dust-motes", "intensity": 0.5 }
+            {
+                "type": "dust-motes",
+                "intensity": 0.5
+            }
         ],
         "lighting": {
             "tint": "#444444",
@@ -235,6 +238,6 @@
     },
     "playerSpawn": {
         "x": 480,
-        "y": 430
+        "y": 450
     }
 }
