@@ -33,6 +33,10 @@ export class NarratorDisplay {
         this.keyListener = (e: KeyboardEvent) => {
             if (this.timer === null) return; // only skip when typewriter is active
 
+            // Don't consume keys when the user is typing in the text input
+            const tag = (e.target as HTMLElement)?.tagName;
+            if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+
             const isArrow = e.key.startsWith('Arrow');
             const isModifier = ['Shift', 'Control', 'Alt', 'Meta', 'Tab', 'Escape',
                 'CapsLock', 'NumLock', 'ScrollLock', 'Fn', 'FnLock'].includes(e.key);
