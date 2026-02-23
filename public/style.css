@@ -21,9 +21,39 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 960px;
-    width: 100%;
+    width: 960px;
+    transform-origin: center center;
     padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Mute toggle button */
+#mute-btn {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 30;
+    width: 32px;
+    height: 32px;
+    background: rgba(15, 15, 35, 0.7);
+    border: 1px solid #4a4a6a;
+    border-radius: 4px;
+    color: #c8c8d4;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+    transition: background 0.15s;
+}
+
+#mute-btn:hover {
+    background: rgba(30, 30, 60, 0.9);
+}
+
+#mute-btn.muted {
+    color: #6a4a4a;
 }
 
 #game-container canvas {

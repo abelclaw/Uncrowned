@@ -31,6 +31,7 @@ export class AudioManager {
     private eventHandlers: Map<string, Function> = new Map();
 
     private initialized: boolean = false;
+    private muted: boolean = false;
 
     private constructor() {}
 
@@ -208,6 +209,21 @@ export class AudioManager {
             // No ambient defined for this room -- clear existing
             this.setAmbient([]);
         }
+    }
+
+    /**
+     * Toggle global mute. Returns new muted state.
+     */
+    toggleMute(): boolean {
+        this.muted = !this.muted;
+        if (this.scene?.sound) {
+            this.scene.sound.mute = this.muted;
+        }
+        return this.muted;
+    }
+
+    isMuted(): boolean {
+        return this.muted;
     }
 
     /**

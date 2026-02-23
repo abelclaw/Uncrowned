@@ -128,13 +128,13 @@
             "id": "rusty-key",
             "name": "Rusty Key",
             "zone": {
-                "x": 415,
-                "y": 360,
+                "x": 420,
+                "y": 400,
                 "width": 30,
                 "height": 20
             },
             "interactionPoint": {
-                "x": 430,
+                "x": 440,
                 "y": 420
             },
             "responses": {
