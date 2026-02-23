@@ -159,6 +159,26 @@
                 "default": "You gaze at the distant lake. It glitters back, serene and unhelpful."
             }
         }
+        ,{
+            "id": "stump-crack",
+            "name": "Crack in Stump",
+            "zone": {
+                "x": 490,
+                "y": 410,
+                "width": 70,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 525,
+                "y": 460
+            },
+            "responses": {
+                "look": "A deep crack runs down the side of the old stump, wide enough to fit your fingers into. Something small and metallic glints inside -- a key, perhaps? Or possibly the stump's life savings. Only one way to find out.",
+                "take": "You can't take a crack. You can, however, take what's inside it. Assuming your hands are brave enough.",
+                "use": "You poke at the crack experimentally. It remains a crack. The thing inside it, however, looks like it could be useful elsewhere.",
+                "default": "You peer into the crack. Something glints back at you, like a tiny metallic eye daring you to reach in."
+            }
+        }
     ],
     "items": [
         {
@@ -329,7 +349,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 200,
-        "y": 430
+        "x": 350,
+        "y": 460
     }
 }
