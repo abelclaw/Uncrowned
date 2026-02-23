@@ -205,11 +205,32 @@ export class RoomScene extends Phaser.Scene {
         this.player = new Player(this, spawnX, spawnY);
         this.player.getSprite().setVisible(false); // hide spritesheet-based player
 
-        // Show static player image instead
+        // Show static player image with subtle idle animation
         if (this.textures.exists('player-static')) {
-            this.add.image(spawnX, spawnY, 'player-static')
+            const playerImg = this.add.image(spawnX, spawnY, 'player-static')
                 .setOrigin(0.5, 1)
                 .setDepth(50);
+
+            // Gentle breathing: slight vertical squash-stretch
+            this.tweens.add({
+                targets: playerImg,
+                scaleY: 1.015,
+                scaleX: 0.99,
+                duration: 2000,
+                yoyo: true,
+                repeat: -1,
+                ease: 'Sine.easeInOut',
+            });
+
+            // Subtle hair sway: tiny rotation oscillation
+            this.tweens.add({
+                targets: playerImg,
+                angle: { from: -0.8, to: 0.8 },
+                duration: 3000,
+                yoyo: true,
+                repeat: -1,
+                ease: 'Sine.easeInOut',
+            });
         }
 
         // 4. Exit zones (skip exits whose conditions are not met)
