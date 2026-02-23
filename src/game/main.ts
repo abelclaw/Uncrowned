@@ -59,8 +59,11 @@ if (appEl) {
 // Create mute toggle button with inline styles for reliability
 const muteBtn = document.createElement('button');
 muteBtn.id = 'mute-btn';
-muteBtn.innerHTML = '\u{1F50A}';
 muteBtn.title = 'Toggle sound';
+
+const speakerSvg = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#c4a46c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>';
+
+muteBtn.innerHTML = speakerSvg;
 Object.assign(muteBtn.style, {
     position: 'absolute',
     top: '8px',
@@ -78,17 +81,33 @@ Object.assign(muteBtn.style, {
     justifyContent: 'center',
     padding: '0',
     lineHeight: '1',
+    overflow: 'hidden',
 });
 document.getElementById('game-container')?.appendChild(muteBtn);
+
+// Red slash overlay for muted state
+const slashOverlay = document.createElement('div');
+Object.assign(slashOverlay.style, {
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    width: '100%',
+    height: '100%',
+    pointerEvents: 'none',
+    display: 'none',
+});
+slashOverlay.innerHTML = '<svg viewBox="0 0 36 36" width="36" height="36"><line x1="4" y1="4" x2="32" y2="32" stroke="#cc3333" stroke-width="2.5" stroke-linecap="round"/></svg>';
+muteBtn.appendChild(slashOverlay);
+
 muteBtn.addEventListener('click', () => {
     const muted = AudioManager.getInstance().toggleMute();
-    muteBtn.innerHTML = muted ? '\u{1F507}' : '\u{1F50A}';
+    slashOverlay.style.display = muted ? 'block' : 'none';
 });
 
 // Create inventory toggle button (hidden until gameplay starts)
 const invBtn = document.createElement('button');
 invBtn.id = 'inventory-btn';
-invBtn.innerHTML = '\u{1F392}';
+invBtn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#c4a46c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9v7c0 3 2 5 5 5s5-2 5-5V9"/><path d="M7 9c0-1 2.5-2 5-2s5 1 5 2"/><path d="M10 7l-1.5-4M14 7l1.5-4"/></svg>';
 invBtn.title = 'Inventory';
 Object.assign(invBtn.style, {
     position: 'absolute',
