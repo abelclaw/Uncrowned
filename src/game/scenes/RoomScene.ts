@@ -199,11 +199,14 @@ export class RoomScene extends Phaser.Scene {
                     }
                     const spriteKey = `npc-${npc.id}`;
                     if (this.textures.exists(spriteKey)) {
+                        const tex = this.textures.get(spriteKey).getSourceImage();
+                        // Scale to fit zone height, maintain aspect ratio, anchor at bottom-center
+                        const scale = npc.zone.height / tex.height;
                         const npcSprite = this.add.image(
                             npc.zone.x + npc.zone.width / 2,
-                            npc.zone.y + npc.zone.height / 2,
+                            npc.zone.y + npc.zone.height,
                             spriteKey
-                        ).setDepth(5);
+                        ).setOrigin(0.5, 1).setScale(scale).setDepth(5);
                         this.npcSprites.set(npc.id, npcSprite);
                     }
                 }
