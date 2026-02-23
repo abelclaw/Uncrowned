@@ -199,14 +199,18 @@ export class RoomScene extends Phaser.Scene {
         // 2. Navigation system from walkable area polygon
         this.navigation = new NavigationSystem(this.roomData.walkableArea);
 
-        // 3. Player (static pose -- no animation, just show frame 7 which has content)
+        // 3. Player (static image -- single standing pose, no animation)
         const spawnX = this.spawnOverride?.x ?? this.roomData.playerSpawn.x;
         const spawnY = this.spawnOverride?.y ?? this.roomData.playerSpawn.y;
         this.player = new Player(this, spawnX, spawnY);
-        this.player.getSprite().stop();
-        this.player.getSprite().setFrame(7);
-        this.player.getSprite().setScale(2.5);
-        this.player.getSprite().setOrigin(0.5, 1); // anchor at feet
+        this.player.getSprite().setVisible(false); // hide spritesheet-based player
+
+        // Show static player image instead
+        if (this.textures.exists('player-static')) {
+            this.add.image(spawnX, spawnY, 'player-static')
+                .setOrigin(0.5, 1)
+                .setDepth(50);
+        }
 
         // 4. Exit zones (skip exits whose conditions are not met)
         for (const exit of this.roomData.exits) {

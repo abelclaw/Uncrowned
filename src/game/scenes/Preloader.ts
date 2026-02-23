@@ -150,7 +150,10 @@ export class Preloader extends Scene {
         // Starting room ground layer (lazy loader handles all others)
         this.load.image('bg-rooms-forest_clearing', 'assets/backgrounds/rooms/forest_clearing.png');
 
-        // Player spritesheet (16 frames: idle 0-3, walk 4-11, interact 12-15)
+        // Player static sprite (single standing pose, displayed in scenes)
+        this.load.image('player-static', 'assets/sprites/player-static.png');
+
+        // Legacy spritesheet (needed by Player class internals)
         this.load.spritesheet('player', 'assets/sprites/player.png', {
             frameWidth: 48,
             frameHeight: 64,
