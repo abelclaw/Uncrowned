@@ -205,6 +205,8 @@ export class RoomScene extends Phaser.Scene {
         this.player = new Player(this, spawnX, spawnY);
         this.player.getSprite().stop();
         this.player.getSprite().setFrame(7);
+        this.player.getSprite().setScale(2.5);
+        this.player.getSprite().setOrigin(0.5, 1); // anchor at feet
 
         // 4. Exit zones (skip exits whose conditions are not met)
         for (const exit of this.roomData.exits) {
