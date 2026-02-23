@@ -1,4 +1,6 @@
+import Fuse from 'fuse.js';
 import type { HotspotData, ExitData } from '../types/RoomData.ts';
+import { NOUN_SYNONYMS } from './NounSynonyms.ts';
 
 /**
  * Result of resolving a raw noun string against room context.
@@ -9,7 +11,7 @@ export interface ResolvedNoun {
     /** The resolved ID (hotspot id, exit id, direction name, or raw string for unknown) */
     id: string;
     /** How confident the match is */
-    confidence: 'exact' | 'partial' | 'none';
+    confidence: 'exact' | 'partial' | 'fuzzy' | 'none';
 }
 
 /**
@@ -45,6 +47,34 @@ export function stripStopWords(text: string): string {
 }
 
 /**
+ * Expand a noun phrase by replacing synonym words with their canonical forms.
+ * Returns the original plus any expanded variants.
+ *
+ * Example: "flame" → ["flame", "torch"]
+ * Example: "rusty blade" → ["rusty blade", "rusty sword"]
+ */
+function expandSynonyms(normalized: string): string[] {
+    const words = normalized.split(/\s+/);
+    const variants = new Set<string>([normalized]);
+
+    for (let i = 0; i < words.length; i++) {
+        const canonical = NOUN_SYNONYMS[words[i]];
+        if (canonical && canonical !== words[i]) {
+            // Replace this word with its canonical form
+            const expanded = [...words];
+            expanded[i] = canonical;
+            variants.add(expanded.join(' '));
+            // Also add just the canonical word alone (for single-word inputs)
+            if (words.length === 1) {
+                variants.add(canonical);
+            }
+        }
+    }
+
+    return [...variants];
+}
+
+/**
  * Resolves a raw noun string against the current room's hotspots, items, and exits.
  *
  * Resolution order (first match wins):
@@ -52,11 +82,13 @@ export function stripStopWords(text: string): string {
  * 2. Exact hotspot name match (case-insensitive)
  * 3. Exact inventory item ID match
  * 4. Exact inventory item name match (case-insensitive)
- * 5. Best partial word match (hotspots AND items scored together; most matching words wins;
+ * 4.5. Synonym expansion: re-attempt exact matches with expanded nouns
+ * 5. Best partial word match (hotspots AND items scored together; head-noun bonus;
  *    ties broken in favor of items since players reference them more often with verbs)
  * 6. Direction mapping (compass directions)
  * 7. Exit match by direction field
  * 8. Exit match by label or target room
+ * 8.5. Fuzzy match via fuse.js (catches typos like "torcch" → "torch")
  * 9. Unknown (returns raw string as id)
  */
 export class NounResolver {
@@ -103,13 +135,43 @@ export class NounResolver {
             }
         }
 
+        // 4.5. Synonym expansion: try expanded forms against exact matches
+        const synonymVariants = expandSynonyms(normalized);
+        for (const variant of synonymVariants) {
+            if (variant === normalized) continue; // already tried above
+
+            // Try expanded variant against hotspot names
+            for (const h of hotspots) {
+                if (h.name.toLowerCase() === variant) {
+                    return { type: 'hotspot', id: h.id, confidence: 'exact' };
+                }
+            }
+            // Try expanded variant against item names
+            if (inventoryItems) {
+                for (const item of inventoryItems) {
+                    if (item.name.toLowerCase() === variant) {
+                        return { type: 'item', id: item.id, confidence: 'exact' };
+                    }
+                    if (item.id === variant.replace(/\s+/g, '-')) {
+                        return { type: 'item', id: item.id, confidence: 'exact' };
+                    }
+                }
+            }
+        }
+
         // 5. Scored partial matching: check BOTH hotspots and items.
         //    Score = matchCount * 2 + headNounBonus.
-        //    Head-noun bonus: +1 when the last word of the entity name is matched,
-        //    since English compound nouns have the head noun last
-        //    ("Ancient Forge" = a forge, "Forge Coal" = coal).
+        //    Uses both original words AND synonym-expanded words for scoring.
+        //    Head-noun bonus: +1 when the last word of the entity name is matched.
         //    On tie, prefer items (players more often reference items with action verbs).
-        const nounWords = normalized.split(/\s+/);
+        const allNounWords = new Set<string>();
+        for (const variant of synonymVariants) {
+            for (const w of variant.split(/\s+/)) {
+                allNounWords.add(w);
+            }
+        }
+        const nounWordsArr = [...allNounWords];
+
         let bestMatch: ResolvedNoun | null = null;
         let bestScore = 0;
         let bestIsItem = false;
@@ -117,8 +179,8 @@ export class NounResolver {
         // Score hotspot partial matches
         for (const h of hotspots) {
             const hotspotWords = h.name.toLowerCase().split(/\s+/);
-            const matchCount = nounWords.filter(nw => hotspotWords.includes(nw)).length;
-            const headBonus = nounWords.includes(hotspotWords[hotspotWords.length - 1]) ? 1 : 0;
+            const matchCount = nounWordsArr.filter(nw => hotspotWords.includes(nw)).length;
+            const headBonus = nounWordsArr.includes(hotspotWords[hotspotWords.length - 1]) ? 1 : 0;
             const score = matchCount * 2 + headBonus;
             if (matchCount > 0 && (score > bestScore || (score === bestScore && !bestIsItem))) {
                 bestScore = score;
@@ -131,8 +193,8 @@ export class NounResolver {
         if (inventoryItems) {
             for (const item of inventoryItems) {
                 const itemWords = item.name.toLowerCase().split(/\s+/);
-                const matchCount = nounWords.filter(nw => itemWords.includes(nw)).length;
-                const headBonus = nounWords.includes(itemWords[itemWords.length - 1]) ? 1 : 0;
+                const matchCount = nounWordsArr.filter(nw => itemWords.includes(nw)).length;
+                const headBonus = nounWordsArr.includes(itemWords[itemWords.length - 1]) ? 1 : 0;
                 const score = matchCount * 2 + headBonus;
                 // Items win on tie (bestIsItem check: item beats hotspot at same score)
                 if (matchCount > 0 && (score > bestScore || (score === bestScore && !bestIsItem))) {
@@ -169,7 +231,51 @@ export class NounResolver {
             }
         }
 
+        // 8.5. Fuzzy match via fuse.js (catches typos)
+        const fuzzyResult = this.fuzzyMatch(normalized, hotspots, inventoryItems);
+        if (fuzzyResult) {
+            return fuzzyResult;
+        }
+
         // 9. Unknown -- return raw string
         return { type: 'unknown', id: normalized, confidence: 'none' };
+    }
+
+    /**
+     * Fuzzy matching via fuse.js for typo tolerance.
+     * Only fires as a last resort before "unknown".
+     * Uses a strict threshold (0.35) to avoid false positives.
+     */
+    private fuzzyMatch(
+        normalized: string,
+        hotspots: HotspotData[],
+        inventoryItems?: Array<{ id: string; name: string }>,
+    ): ResolvedNoun | null {
+        const candidates: Array<{ name: string; type: 'hotspot' | 'item'; id: string }> = [];
+
+        for (const h of hotspots) {
+            candidates.push({ name: h.name, type: 'hotspot', id: h.id });
+        }
+        if (inventoryItems) {
+            for (const item of inventoryItems) {
+                candidates.push({ name: item.name, type: 'item', id: item.id });
+            }
+        }
+
+        if (candidates.length === 0) return null;
+
+        const fuse = new Fuse(candidates, {
+            keys: ['name'],
+            threshold: 0.35,
+            includeScore: true,
+        });
+
+        const results = fuse.search(normalized);
+        if (results.length > 0 && results[0].score !== undefined && results[0].score <= 0.35) {
+            const best = results[0].item;
+            return { type: best.type, id: best.id, confidence: 'fuzzy' };
+        }
+
+        return null;
     }
 }

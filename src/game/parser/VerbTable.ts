@@ -44,6 +44,10 @@ export const VERB_TABLE: VerbDefinition[] = [
         synonyms: ['look', 'examine', 'inspect', 'check', 'study', 'read', 'l', 'x'],
         patterns: [
             /^(?:look|l)\s+(?:around|here|room)$/i,
+            // Bare idioms: "take a look around", "have a look" (must be before capture-group pattern)
+            /^(?:take|have)\s+a\s+(?:look|peek|gander)(?:\s+(?:around|here|room))?$/i,
+            // Phrase idioms: "take a look at X", "have a peek at X"
+            /^(?:take|have)\s+a\s+(?:look|peek|gander)\s+(?:at\s+)?(.+)$/i,
             /^(?:look|examine|inspect|check|study|read|l|x)\s+(?:at\s+)?(.+)$/i,
             /^(?:look|l)$/i,
         ],

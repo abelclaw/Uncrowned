@@ -16,6 +16,8 @@
         "vitest": "^4.0.18"
     },
     "dependencies": {
+        "compromise": "^14.14.5",
+        "fuse.js": "^7.1.0",
         "inkjs": "^2.4.0",
         "navmesh": "^2.3.1",
         "phaser": "^3.90.0",

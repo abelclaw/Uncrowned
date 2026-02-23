@@ -1,5 +1,4 @@
 import { Scene } from 'phaser';
-import { OllamaClient } from '../llm/OllamaClient';
 
 interface Star {
     gfx: Phaser.GameObjects.Arc;
@@ -256,15 +255,6 @@ export class Preloader extends Scene {
     }
 
     create() {
-        // Warm up Ollama LLM model (fire-and-forget, non-blocking)
-        // This pre-loads the model into GPU memory so first player command is fast
-        const ollamaClient = new OllamaClient();
-        ollamaClient.checkAvailability().then(available => {
-            if (available) {
-                ollamaClient.warmUp(); // Fire-and-forget, catches errors internally
-            }
-        });
-
         // Brief pause at 100% so the player sees the full bar, then fade out
         this.time.delayedCall(500, () => {
             this.cameras.main.fadeOut(800, 0, 0, 0);

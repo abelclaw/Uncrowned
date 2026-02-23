@@ -513,16 +513,12 @@ export class RoomScene extends Phaser.Scene {
                 .map(npc => ({ id: npc.id, name: npc.id.replace(/_/g, ' '), zone: npc.zone, interactionPoint: npc.interactionPoint, responses: {} }));
             const allHotspots = [...this.roomData.hotspots, ...roomItemsAsHotspots, ...npcAsHotspots];
 
-            const parseResult = await this.textParser.parse(
+            const parseResult = this.textParser.parse(
                 text,
                 allHotspots,
                 this.roomData.exits,
                 inventoryItems,
-                { name: this.roomData.name, description: this.roomData.description },
             );
-
-            // Scene may have changed during async wait
-            if (this.isTransitioning) return;
 
             if (!parseResult.success || !parseResult.action) {
                 this.narratorDisplay.typewrite(
