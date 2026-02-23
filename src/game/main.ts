@@ -18,6 +18,19 @@ const config: Phaser.Types.Core.GameConfig = {
     parent: 'game-container',
     backgroundColor: '#1a1a2e',
 
+    input: {
+        keyboard: {
+            // Prevent Phaser from calling preventDefault on space so it works
+            // in the HTML text input. Arrow keys are still captured for game use.
+            capture: [
+                Phaser.Input.Keyboard.KeyCodes.UP,
+                Phaser.Input.Keyboard.KeyCodes.DOWN,
+                Phaser.Input.Keyboard.KeyCodes.LEFT,
+                Phaser.Input.Keyboard.KeyCodes.RIGHT,
+            ],
+        },
+    },
+
     render: {
         pixelArt: true,
     },
