@@ -23,7 +23,7 @@ import type { PuzzleDefinition } from '../types/PuzzleData';
 import EventBus from '../EventBus';
 
 /** Set to true during development to draw debug rectangles for exits and hotspots. */
-const DEBUG = true;
+const DEBUG = false;
 
 /**
  * Data-driven room scene that loads room JSON, sets up parallax backgrounds,
