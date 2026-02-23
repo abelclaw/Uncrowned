@@ -334,17 +334,12 @@ export class CommandDispatcher {
     private handleLook(action: GameAction, roomData: RoomData): DispatchResult {
         // "where can i go" / "exits" -> list available exits
         if (action.subject === '__exits__') {
-            const available = roomData.exits.filter(e => this.exitConditionsMet(e));
-            if (available.length === 0) {
-                return { response: "There don't seem to be any exits here.", handled: true };
-            }
-            const exitList = available
-                .map(e => e.direction ?? e.label ?? e.targetRoom)
-                .join(', ');
-            return {
-                response: `You can go: ${exitList}.`,
-                handled: true,
-            };
+            return this.handleExitsQuery(roomData);
+        }
+
+        // "what can i do" -> overview of exits + things in room
+        if (action.subject === '__overview__') {
+            return this.handleOverviewQuery(roomData);
         }
 
         // Bare "look" -> check dynamic descriptions based on game flags
@@ -668,6 +663,115 @@ export class CommandDispatcher {
             response: "You don't see that here.",
             handled: false,
         };
+    }
+
+    // --- Query helpers ---
+
+    /**
+     * Handle "where can I go" / "exits" query.
+     * Lists available exits with directions and labels.
+     * Also mentions blocked exits without revealing how to unblock them.
+     */
+    private handleExitsQuery(roomData: RoomData): DispatchResult {
+        const available = roomData.exits.filter(e => this.exitConditionsMet(e));
+        const blocked = roomData.exits.filter(e => !this.exitConditionsMet(e));
+
+        if (available.length === 0 && blocked.length === 0) {
+            return { response: "There don't seem to be any exits here. That's... concerning.", handled: true };
+        }
+
+        const parts: string[] = [];
+
+        if (available.length > 0) {
+            const exitDescriptions = available.map(e => {
+                const dir = e.direction ?? 'onward';
+                return e.label ? `${dir} toward the ${e.label}` : dir;
+            });
+            parts.push(`From here, you can go ${this.joinList(exitDescriptions)}.`);
+        }
+
+        if (blocked.length > 0) {
+            const blockedDirs = blocked.map(e => e.direction ?? 'somewhere').join(', ');
+            parts.push(`A path leads ${blockedDirs}, but the way is blocked.`);
+        }
+
+        return { response: parts.join(' '), handled: true };
+    }
+
+    /**
+     * Handle "what can I do" overview query.
+     * Combines available exits, visible things in the room, and
+     * generic action suggestions without spoiling puzzle solutions.
+     */
+    private handleOverviewQuery(roomData: RoomData): DispatchResult {
+        const parts: string[] = [];
+
+        // Available exits
+        const available = roomData.exits.filter(e => this.exitConditionsMet(e));
+        if (available.length > 0) {
+            const exitDescriptions = available.map(e => {
+                const dir = e.direction ?? 'onward';
+                return e.label ? `${dir} toward the ${e.label}` : dir;
+            });
+            parts.push(`You can head ${this.joinList(exitDescriptions)}.`);
+        }
+
+        // Visible NPCs
+        if (roomData.npcs && roomData.npcs.length > 0) {
+            const visibleNpcs: string[] = [];
+            for (const npc of roomData.npcs) {
+                if (npc.conditions && npc.conditions.length > 0) {
+                    const visible = npc.conditions.every(cond => {
+                        if (cond.type === 'flag-set' && cond.flag) return this.state.isFlagSet(cond.flag);
+                        if (cond.type === 'flag-not-set' && cond.flag) return !this.state.isFlagSet(cond.flag);
+                        return true;
+                    });
+                    if (!visible) continue;
+                }
+                const def = this.npcDefs.find(d => d.id === npc.id);
+                visibleNpcs.push(def?.name ?? npc.id);
+            }
+            if (visibleNpcs.length > 0) {
+                parts.push(`${this.joinList(visibleNpcs, 'and')} ${visibleNpcs.length === 1 ? 'is' : 'are'} here. You could try talking to them.`);
+            }
+        }
+
+        // Notable things in the room (hotspots + untaken items)
+        const things: string[] = [];
+        for (const h of roomData.hotspots) {
+            things.push(h.name);
+        }
+        if (roomData.items) {
+            for (const item of roomData.items) {
+                if (!this.state.isRoomItemRemoved(roomData.id, item.id)) {
+                    things.push(item.name);
+                }
+            }
+        }
+        if (things.length > 0) {
+            parts.push(`You notice ${this.joinList(things, 'and')}. Try looking at anything that catches your eye.`);
+        }
+
+        // Inventory reminder
+        const inventory = this.state.getData().inventory;
+        if (inventory.length > 0) {
+            parts.push(`You're carrying ${inventory.length} item${inventory.length > 1 ? 's' : ''} -- maybe one of them is useful here.`);
+        }
+
+        if (parts.length === 0) {
+            return { response: "There's remarkably little to do here. Perhaps try another room.", handled: true };
+        }
+
+        return { response: parts.join('\n'), handled: true };
+    }
+
+    /**
+     * Join a list of strings with commas and a conjunction before the last item.
+     */
+    private joinList(items: string[], conjunction: 'or' | 'and' = 'or'): string {
+        if (items.length === 1) return items[0];
+        if (items.length === 2) return `${items[0]} ${conjunction} ${items[1]}`;
+        return items.slice(0, -1).join(', ') + `, ${conjunction} ` + items[items.length - 1];
     }
 
     // --- Lookup helpers ---

@@ -3,6 +3,7 @@ import { Player } from '../entities/Player';
 import { NavigationSystem } from '../systems/NavigationSystem';
 import { SceneTransition } from '../systems/SceneTransition';
 import { CommandDispatcher } from '../systems/CommandDispatcher';
+import { CommandLogger } from '../systems/CommandLogger';
 import { HybridParser } from '../llm/HybridParser';
 import { TextInputBar } from '../ui/TextInputBar';
 import { VerbBar } from '../ui/VerbBar';
@@ -80,6 +81,7 @@ export class RoomScene extends Phaser.Scene {
     private roomUpdateHandler!: (action: any) => void;
     private itemPickedUpHandler!: (itemId: string) => void;
     private inventoryBtnHandler?: () => void;
+    private flushLogHandler?: () => void;
 
     // Arrow key direct movement (disabled in static scene mode)
     // private cursors?: Phaser.Types.Input.Keyboard.CursorKeys;
@@ -492,6 +494,20 @@ export class RoomScene extends Phaser.Scene {
 
             if (this.isTransitioning) return;
 
+            // "save log" meta-command: download command log as JSON
+            if (text.trim().toLowerCase() === 'save log') {
+                const entries = CommandLogger.getInstance().export();
+                const blob = new Blob([JSON.stringify(entries, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `command-log-${new Date().toISOString().slice(0, 10)}.json`;
+                a.click();
+                URL.revokeObjectURL(url);
+                this.narratorDisplay.showInstant(`Log saved — ${entries.length} commands exported.`);
+                return;
+            }
+
             // Show thinking indicator while waiting for parse (may involve LLM)
             this.narratorDisplay.showInstant('...');
 
@@ -505,9 +521,14 @@ export class RoomScene extends Phaser.Scene {
                 .filter(item => !this.gameState.isRoomItemRemoved(this.roomData.id, item.id))
                 .map(item => ({ id: item.id, name: item.name, zone: item.zone, interactionPoint: item.interactionPoint, responses: item.responses ?? {} }));
             // Merge NPCs into hotspots so text parser can resolve NPC names
+            // NPCs go FIRST so they win tie-breaks (e.g. "talk to man by the well"
+            // should resolve to the old_man NPC, not the well hotspot)
             const npcAsHotspots = (this.roomData.npcs ?? [])
-                .map(npc => ({ id: npc.id, name: npc.id.replace(/_/g, ' '), zone: npc.zone, interactionPoint: npc.interactionPoint, responses: {} }));
-            const allHotspots = [...this.roomData.hotspots, ...roomItemsAsHotspots, ...npcAsHotspots];
+                .map(npc => {
+                    const def = this.npcDefs.find(d => d.id === npc.id);
+                    return { id: npc.id, name: def?.name ?? npc.id.replace(/_/g, ' '), zone: npc.zone, interactionPoint: npc.interactionPoint, responses: {} };
+                });
+            const allHotspots = [...npcAsHotspots, ...roomItemsAsHotspots, ...this.roomData.hotspots];
 
             const parseResult = this.textParser.parse(
                 text,
@@ -517,6 +538,10 @@ export class RoomScene extends Phaser.Scene {
             );
 
             if (!parseResult.success || !parseResult.action) {
+                CommandLogger.getInstance().log({
+                    timestamp: Date.now(), room: this.roomData.id, rawInput: text,
+                    parsed: false, verb: null, subject: null, target: null,
+                });
                 this.narratorDisplay.typewrite(
                     parseResult.error ?? `I don't understand "${text}". Try commands like 'look', 'take', 'go', or 'use'.`
                 );
@@ -527,6 +552,12 @@ export class RoomScene extends Phaser.Scene {
             if (this.dialogueManager) {
                 this.gameState.setDialogueStates(this.dialogueManager.getDialogueStates());
             }
+
+            CommandLogger.getInstance().log({
+                timestamp: Date.now(), room: this.roomData.id, rawInput: text,
+                parsed: true, verb: parseResult.action.verb, subject: parseResult.action.subject,
+                target: parseResult.action.target,
+            });
 
             const result = this.commandDispatcher.dispatch(parseResult.action, this.roomData);
 
@@ -697,7 +728,11 @@ export class RoomScene extends Phaser.Scene {
         // 10. EventBus scene-ready
         EventBus.emit('scene-ready', { sceneKey: 'RoomScene', roomId: this.roomData.id });
 
-        // 11. Shutdown cleanup
+        // 11. Flush command log on page unload
+        this.flushLogHandler = () => CommandLogger.getInstance().flush();
+        window.addEventListener('beforeunload', this.flushLogHandler);
+
+        // 12. Shutdown cleanup
         this.events.on(Phaser.Scenes.Events.SHUTDOWN, () => {
             // Existing cleanup
             this.player.destroy();
@@ -732,6 +767,12 @@ export class RoomScene extends Phaser.Scene {
             this.itemSprites.clear();
             this.npcSprites.forEach(sprite => sprite.destroy());
             this.npcSprites.clear();
+
+            // Command log flush cleanup
+            if (this.flushLogHandler) {
+                window.removeEventListener('beforeunload', this.flushLogHandler);
+            }
+            CommandLogger.getInstance().flush();
 
             // Phase 16 effects cleanup
             this.effectsManager.cleanup();

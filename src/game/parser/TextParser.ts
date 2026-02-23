@@ -55,6 +55,14 @@ export class TextParser {
             };
         }
 
+        // Check for overview queries ("what can i do", "what's here", etc.)
+        if (/^(?:what\s+can\s+i\s+do|what(?:'s|\s+is)\s+(?:here|around|available)|what\s+(?:are\s+my\s+)?options)$/.test(normalized)) {
+            return {
+                success: true,
+                action: { verb: 'look', subject: '__overview__', target: null, rawInput },
+            };
+        }
+
         // Check for bare direction shortcuts first (n, s, e, w, north, south, etc.)
         if (normalized in DIRECTION_SHORTCUTS) {
             const direction = DIRECTION_SHORTCUTS[normalized];

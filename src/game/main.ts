@@ -10,6 +10,7 @@ import { EndingScene } from './scenes/EndingScene';
 import { EndingsGalleryScene } from './scenes/EndingsGalleryScene';
 import { MobileKeyboardManager } from './systems/MobileKeyboardManager';
 import { AudioManager } from './systems/AudioManager';
+import { CommandLogger } from './systems/CommandLogger';
 
 const config: Phaser.Types.Core.GameConfig = {
     type: Phaser.AUTO,
@@ -154,5 +155,9 @@ window.addEventListener('resize', fitGameContainer);
 game.events.once('ready', () => requestAnimationFrame(fitGameContainer));
 // Also run on DOM ready as a fallback
 requestAnimationFrame(fitGameContainer);
+
+// Expose command log helpers on window for playtesting analytics
+(window as any).__exportCommandLog = () => CommandLogger.getInstance().export();
+(window as any).__clearCommandLog = () => { CommandLogger.getInstance().clear(); console.log('Command log cleared.'); };
 
 export default game;
