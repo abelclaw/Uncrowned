@@ -31,7 +31,8 @@ const COMFYUI_URL = 'http://127.0.0.1:8188';
 const PROMPT_NODE_ID = '6';
 const SEED_NODE_ID = '10';
 const POLL_INTERVAL_MS = 3000;
-const GENERATION_TIMEOUT_MS = 10 * 60 * 1000; // 10 minutes
+const GENERATION_TIMEOUT_MS = 10 * 60 * 1000; // 10 minutes (default)
+const HIRES_TIMEOUT_MS = 20 * 60 * 1000;      // 20 minutes (1024x1024 sprites & NPCs)
 
 const SCRIPTS_DIR = path.dirname(new URL(import.meta.url).pathname);
 const PROJECT_ROOT = path.resolve(SCRIPTS_DIR, '..');
@@ -176,7 +177,8 @@ async function generateImage(
     prompt: string,
     seed: number,
     workflow: ComfyUIWorkflow,
-    config: AssetTypeConfig
+    config: AssetTypeConfig,
+    timeoutMs: number = GENERATION_TIMEOUT_MS
 ): Promise<Buffer> {
     // Deep-clone workflow template
     const workflowCopy = JSON.parse(JSON.stringify(workflow)) as ComfyUIWorkflow;
@@ -212,8 +214,8 @@ async function generateImage(
     let outputData: Record<string, { images: Array<{ filename: string; type: string }> }> | undefined;
 
     while (!outputData) {
-        if (Date.now() - startTime > GENERATION_TIMEOUT_MS) {
-            throw new Error(`Generation timed out after ${GENERATION_TIMEOUT_MS / 1000}s for prompt_id: ${prompt_id}`);
+        if (Date.now() - startTime > timeoutMs) {
+            throw new Error(`Generation timed out after ${timeoutMs / 1000}s for prompt_id: ${prompt_id}`);
         }
 
         await new Promise(resolve => setTimeout(resolve, POLL_INTERVAL_MS));
@@ -629,20 +631,6 @@ function collectEntries(
         }
     }
 
-    // Player sprite
-    if (args.type === 'sprites' || args.type === 'player' || args.type === 'all') {
-        const player = manifest.playerSprite;
-        entries.push({
-            id: 'player',
-            category: 'sprite',
-            prompt: player.prompt,
-            fullPrompt: `${styleGuide.spritePromptPrefix} ${player.prompt}${styleGuide.spritePromptSuffix}`,
-            seed: player.seed,
-            output: player.output,
-            dimensions: player.dimensions,
-        });
-    }
-
     // Item sprites
     if (args.type === 'items' || args.type === 'sprites' || args.type === 'all') {
         for (const [id, entry] of Object.entries(manifest.items)) {
@@ -671,6 +659,20 @@ function collectEntries(
                 dimensions: entry.dimensions,
             });
         }
+    }
+
+    // Player sprite (last — high-res, needs longer timeout)
+    if (args.type === 'sprites' || args.type === 'player' || args.type === 'all') {
+        const player = manifest.playerSprite;
+        entries.push({
+            id: 'player',
+            category: 'sprite',
+            prompt: player.prompt,
+            fullPrompt: `${styleGuide.spritePromptPrefix} ${player.prompt}${styleGuide.spritePromptSuffix}`,
+            seed: player.seed,
+            output: player.output,
+            dimensions: player.dimensions,
+        });
     }
 
     return entries;
@@ -954,7 +956,8 @@ async function main(): Promise<void> {
             console.log(`[${i + 1}/${entries.length}] Generating ${entry.id}... (${typeConfig.width}x${typeConfig.height}, LoRA=${typeConfig.loraStrength})`);
 
             // Generate via ComfyUI with per-type config
-            const rawImage = await generateImage(entry.fullPrompt, entry.seed, workflow, typeConfig);
+            const timeout = (entry.category === 'sprite' || entry.category === 'npc') ? HIRES_TIMEOUT_MS : GENERATION_TIMEOUT_MS;
+            const rawImage = await generateImage(entry.fullPrompt, entry.seed, workflow, typeConfig, timeout);
 
             // Post-process based on category
             if (entry.category === 'sprite' || entry.category === 'item' || entry.category === 'npc') {
