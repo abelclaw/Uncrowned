@@ -351,11 +351,10 @@ export class RoomScene extends Phaser.Scene {
             }
         }
 
-        // 6. Camera setup (static -- centered on spawn point, no player follow)
+        // 6. Camera setup (static scene mode -- no scrolling, room bg fills viewport)
         this.cameras.main.setBounds(0, 0, this.roomData.background.worldWidth, 540);
         this.cameras.main.setRoundPixels(true);
-        // Center camera on the player spawn point (clamped by bounds)
-        this.cameras.main.centerOn(spawnX, 270);
+        this.cameras.main.setScroll(0, 0);
 
         // 7. Click handler (blur text input on canvas click)
         this.input.on('pointerdown', () => {
