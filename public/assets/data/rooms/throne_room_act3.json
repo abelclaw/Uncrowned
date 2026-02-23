@@ -396,8 +396,8 @@
         {
             "id": "decline-throne",
             "trigger": {
-                "verb": "look",
-                "subject": "cracked-throne"
+                "verb": "talk",
+                "subject": "ghost_king"
             },
             "conditions": [
                 {
@@ -427,6 +427,33 @@
                 }
             ],
             "once": true
+        },
+        {
+            "id": "view-throne-choice",
+            "trigger": {
+                "verb": "look",
+                "subject": "cracked-throne"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "curse-broken"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "throne_accepted"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "throne_declined"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "The cracked throne sits before you, empty and waiting. You could sit on it -- claim the crown, accept the burden of a kingdom that nearly turned to stone. Or you could walk away and tell the Ghost King this isn't your fight. The choice, for once, is entirely yours."
+                }
+            ]
         }
     ],
     "deathTriggers": [

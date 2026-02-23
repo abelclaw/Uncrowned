@@ -242,35 +242,16 @@
     "items": [],
     "puzzles": [
         {
-            "id": "answer-riddle",
+            "id": "answer-riddle-correct",
             "trigger": {
                 "verb": "talk",
                 "subject": "bridge_troll"
             },
             "conditions": [
                 {
-                    "type": "flag-not-set",
-                    "flag": "riddle_answered"
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
                 },
-                {
-                    "type": "flag-not-set",
-                    "flag": "toll_paid"
-                }
-            ],
-            "actions": [
-                {
-                    "type": "narrator-say",
-                    "text": "Bertram adjusts his reading glasses and opens his Official Book of Riddles. 'Right then. Bridge Troll regulations require one riddle before crossing. I am tall when I am young, and short when I am old. What am I?' He waits patiently. (Talk to the troll again to answer.)"
-                }
-            ]
-        },
-        {
-            "id": "answer-riddle-correct",
-            "trigger": {
-                "verb": "use",
-                "subject": "candle"
-            },
-            "conditions": [
                 {
                     "type": "flag-not-set",
                     "flag": "riddle_answered"
@@ -291,6 +272,33 @@
                 }
             ],
             "once": true
+        },
+        {
+            "id": "answer-riddle",
+            "trigger": {
+                "verb": "talk",
+                "subject": "bridge_troll"
+            },
+            "conditions": [
+                {
+                    "type": "flag-not-set",
+                    "flag": "riddle_answered"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "toll_paid"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram adjusts his reading glasses and opens his Official Book of Riddles. 'Right then. Bridge Troll regulations require one riddle before crossing. I am tall when I am young, and short when I am old. What am I?' He waits patiently. Speak the answer to me when you know it."
+                }
+            ]
         },
         {
             "id": "pay-toll",
@@ -472,7 +480,7 @@
             "tiers": [
                 "Bertram asked you a riddle. 'Tall when young, short when old.' Perhaps think about things that shrink as they age. Or burn. Or melt. Something along those lines.",
                 "The answer is something you might light on a birthday cake or during a power outage. It starts tall and melts down to nothing. Your ancestors used them before electricity.",
-                "The answer to the riddle is a candle. Use 'candle' on the troll. A candle is tall when new and short when old. I'm embarrassed for both of us."
+                "The answer to the riddle is a candle. Talk to the troll again to give your answer. A candle is tall when new and short when old. I'm embarrassed for both of us."
             ]
         },
         {

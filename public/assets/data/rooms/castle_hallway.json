@@ -104,7 +104,13 @@
             },
             "transition": "slide-left",
             "direction": "west",
-            "label": "kitchen"
+            "label": "kitchen",
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "skeleton-key-used"
+                }
+            ]
         }
     ],
     "hotspots": [

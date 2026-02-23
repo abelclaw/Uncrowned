@@ -175,6 +175,26 @@
                 "use": "Vines aren't particularly useful to a tinker. They don't fix things, brew things, or unlock things. They just grow, slowly and stubbornly, like problems.",
                 "default": "You examine the vines. They've been growing here undisturbed for long enough to consider this their throne room now."
             }
+        },
+        {
+            "id": "ghost-king",
+            "name": "Ghost King",
+            "zone": {
+                "x": 440,
+                "y": 250,
+                "width": 80,
+                "height": 150
+            },
+            "interactionPoint": {
+                "x": 480,
+                "y": 430
+            },
+            "responses": {
+                "look": "The Ghost King hovers beside the throne -- a translucent figure in full regal attire, looking exactly as disappointed as you'd expect from a monarch whose dynasty ended over an olive at a feast. His crown flickers in and out of visibility.",
+                "use": "You cannot 'use' a ghost. They tend to have opinions about that sort of thing.",
+                "take": "You reach toward the Ghost King. Your hand passes through him. He looks at you with the resigned patience of someone who has had this conversation before.",
+                "default": "The Ghost King watches you with an expression that somehow manages to be both regal and profoundly tired."
+            }
         }
     ],
     "items": [
@@ -527,6 +547,29 @@
                 {
                     "type": "narrator-say",
                     "text": "The Ghost King eyes you. 'You've got something official-looking there. Perhaps you should show it to me -- use the decree, if you want my blessing to proceed to the caverns.'"
+                }
+            ]
+        },
+        {
+            "id": "talk-ghost-no-decree",
+            "trigger": {
+                "verb": "talk",
+                "subject": "ghost_king"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "met_ghost_king"
+                },
+                {
+                    "type": "item-not-taken",
+                    "item": "sealed-decree"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "The Ghost King regards you wearily. 'You wish to break the curse? Then bring me proof of authority -- a sealed decree bearing the royal seal. Without it, you're just another trespasser talking to furniture.'"
                 }
             ]
         }
