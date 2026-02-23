@@ -136,26 +136,6 @@
             }
         },
         {
-            "id": "fountain",
-            "name": "Fountain",
-            "zone": {
-                "x": 350,
-                "y": 150,
-                "width": 260,
-                "height": 250
-            },
-            "interactionPoint": {
-                "x": 480,
-                "y": 420
-            },
-            "responses": {
-                "look": "The fountain's basin still holds a thin layer of stagnant water. At the bottom, a scattering of coins glint dully -- wishes made by people who are now presumably stone. The statue atop it depicts someone important, though erosion has filed off any identifying features. Could be a king. Could be a particularly regal turnip farmer.",
-                "take": "You consider fishing the coins from the fountain. Stealing wishes from the possibly petrified. Even for you, that's a new low.",
-                "use": "You splash the murky water. A coin shifts at the bottom. Someone wished for something once. Given the state of the kingdom, it didn't work.",
-                "default": "You regard the fountain. It was grand once. Now it's a monument to optimism that didn't age well."
-            }
-        },
-        {
             "id": "cobblestones",
             "name": "Cobblestones",
             "zone": {

@@ -58,26 +58,6 @@
     ],
     "hotspots": [
         {
-            "id": "servant-bunks",
-            "name": "Servant Bunks",
-            "zone": {
-                "x": 150,
-                "y": 360,
-                "width": 120,
-                "height": 60
-            },
-            "interactionPoint": {
-                "x": 210,
-                "y": 420
-            },
-            "responses": {
-                "look": "A row of narrow bunks, each barely wider than a coffin and roughly as comfortable. The blankets are thin, the pillows are flat, and the mattresses have given up any pretense of being soft. Someone has carved 'I QUIT' into the headboard of the nearest bunk, a sentiment apparently shared by the rest of the staff.",
-                "use": "You lie down briefly. The bunk creaks. Your spine files a grievance. You stand up. The rest was refreshing in the same way that standing in rain is a shower.",
-                "take": "You consider stealing a blanket. It's so threadbare it would barely qualify as a dishcloth. You leave it.",
-                "default": "You examine the bunks. They speak of hard work, low wages, and a human resources department that does not exist."
-            }
-        },
-        {
             "id": "writing-desk",
             "name": "Writing Desk",
             "zone": {
@@ -131,7 +111,7 @@
                 "y": 430
             },
             "responses": {
-                "look": "Stacked bunk beds with thin mattresses and springs of questionable integrity. The top bunks sag toward the bottom bunks in a way that suggests gravity is winning a slow, inevitable argument.",
+                "look": "A row of narrow bunks, each barely wider than a coffin and roughly as comfortable. The blankets are thin, the pillows are flat, and the mattresses have given up any pretense of being soft. Someone has carved 'I QUIT' into the headboard of the nearest bunk, a sentiment apparently shared by the rest of the staff.",
                 "take": "Too large, too depressing, and too structurally unsound to move. The bunks are staying right where generations of underpaid servants left them.",
                 "use": "Tempting to nap, but you have a kingdom to save. The mattress seems to understand, sagging in quiet resignation as you move on.",
                 "default": "You examine the bunk beds. They've hosted the dreams of countless servants, most of whom were probably dreaming about better beds."

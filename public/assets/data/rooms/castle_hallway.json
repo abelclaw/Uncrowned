@@ -65,7 +65,7 @@
             },
             "targetRoom": "throne_room",
             "spawnPoint": {
-                "x": 100,
+                "x": 200,
                 "y": 430
             },
             "transition": "slide-right",
@@ -99,7 +99,7 @@
             },
             "targetRoom": "royal_kitchen",
             "spawnPoint": {
-                "x": 820,
+                "x": 760,
                 "y": 430
             },
             "transition": "slide-left",
@@ -153,26 +153,6 @@
                 "open": "Locked. The bone-shaped keyhole mocks your keyless state. You rattle the handle. The door rattles back. Neither of you gains ground.",
                 "push": "You lean against the door. It holds firm. This door was built to resist exactly this amount of determination.",
                 "default": "You examine the locked door. It's locked. That's its primary characteristic and it's doing an excellent job."
-            }
-        },
-        {
-            "id": "faded-carpet",
-            "name": "Faded Carpet",
-            "zone": {
-                "x": 400,
-                "y": 420,
-                "width": 150,
-                "height": 30
-            },
-            "interactionPoint": {
-                "x": 475,
-                "y": 420
-            },
-            "responses": {
-                "look": "A once-grand carpet, now threadbare and stained with what you hope is wine. The pattern depicts the royal crest -- a disgruntled badger wearing a crown -- repeated endlessly, each badger looking slightly more fed up than the last. Someone has attempted to mend several holes with thread that doesn't match. The effort is touching. The result is not.",
-                "take": "The carpet is nailed to the floor. Even the floor coverings in this castle have commitment issues they've resolved.",
-                "pull": "You tug the carpet's edge. Dust rises in a cloud thick enough to qualify as weather. You sneeze. The portrait of King Mortimer seems to sneeze in sympathy.",
-                "default": "You study the carpet. It's seen better centuries. The badgers on it stare up at you, frozen in perpetual heraldic displeasure."
             }
         },
         {
@@ -390,7 +370,10 @@
     },
     "effects": {
         "ambient": [
-            { "type": "dust-motes", "intensity": 0.3 }
+            {
+                "type": "dust-motes",
+                "intensity": 0.3
+            }
         ],
         "lighting": {
             "tint": "#ccaa77",

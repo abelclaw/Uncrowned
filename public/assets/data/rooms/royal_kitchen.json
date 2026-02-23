@@ -48,7 +48,7 @@
             },
             "targetRoom": "castle_hallway",
             "spawnPoint": {
-                "x": 100,
+                "x": 200,
                 "y": 430
             },
             "transition": "slide-right",
@@ -76,26 +76,6 @@
                 "take": "The stove weighs roughly the same as your collective bad decisions. It stays.",
                 "push": "You push the stove. It doesn't move, but it does radiate displeasure in the form of increased heat.",
                 "default": "You examine the stove. It's doing its job admirably, which is more than can be said for most things in this castle."
-            }
-        },
-        {
-            "id": "copper-pots",
-            "name": "Copper Pots",
-            "zone": {
-                "x": 550,
-                "y": 345,
-                "width": 80,
-                "height": 40
-            },
-            "interactionPoint": {
-                "x": 590,
-                "y": 420
-            },
-            "responses": {
-                "look": "A rack of copper pots hangs from the ceiling, tarnished to a deep brown. Each one could tell a story of royal banquets past. The largest one could probably fit you inside it, which is either a cooking capacity observation or a threat.",
-                "take": "You reach for a pot. Martha's cleaver embeds itself in the chopping block with a resonant THUNK. 'Those are mine,' she says, without looking up. You lower your hand.",
-                "use": "The pots are Martha's domain. Using them without permission would require more courage than you currently possess. And more culinary skill.",
-                "default": "You admire the copper pots. They gleam dully in the stove-light, survivors of a thousand meals and one very specific olive-related incident."
             }
         },
         {
@@ -173,7 +153,7 @@
             },
             "responses": {
                 "look": "Copper pots in various sizes hang from hooks and sit on counters, well-used and dented from years of service. Each one has a patina that professional chefs would call 'character' and everyone else would call 'neglect.'",
-                "take": "Martha guards her cookware with surprising ferocity. The last person who borrowed a pot without asking was found three rooms away, apologising.",
+                "take": "You reach for a pot. Martha's cleaver embeds itself in the chopping block with a resonant THUNK. 'Those are mine,' she says, without looking up. You lower your hand.",
                 "use": "Empty, sadly. Without ingredients, these pots are just hollow metal containers with aspirations.",
                 "default": "You study the cooking pots. They've outlasted kings, curses, and countless burnt meals. Copper endures."
             }
@@ -381,8 +361,14 @@
     },
     "effects": {
         "ambient": [
-            { "type": "dust-motes", "intensity": 0.5 },
-            { "type": "embers", "intensity": 0.2 }
+            {
+                "type": "dust-motes",
+                "intensity": 0.5
+            },
+            {
+                "type": "embers",
+                "intensity": 0.2
+            }
         ],
         "lighting": {
             "tint": "#ddaa66",
