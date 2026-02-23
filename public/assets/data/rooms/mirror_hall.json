@@ -112,7 +112,6 @@
             },
             "responses": {
                 "look": "A cracked mirror in a tarnished frame. Through the cracks, the reflection is fragmented -- pieces of you scattered across broken glass. It's the most honest mirror in the hall. You are not one thing. You are not a hero. You are not a prophecy. You are a collection of choices, cracked and imperfect, held together by stubbornness.",
-                "use": "You press your finger to a crack. The glass shifts, the reflection realigns for a moment, then shatters back to fragments. Some things can't be made whole. They can only be accepted as they are.",
                 "default": "You examine the cracked mirror. It shows you in pieces, which is perhaps the most accurate reflection of all."
             }
         },

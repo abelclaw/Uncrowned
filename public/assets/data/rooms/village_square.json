@@ -48,7 +48,7 @@
             },
             "targetRoom": "village_path",
             "spawnPoint": {
-                "x": 820,
+                "x": 760,
                 "y": 430
             },
             "transition": "slide-left",
@@ -65,7 +65,7 @@
             },
             "targetRoom": "old_watchtower",
             "spawnPoint": {
-                "x": 100,
+                "x": 200,
                 "y": 430
             },
             "transition": "iris",
@@ -170,7 +170,7 @@
             },
             "responses": {
                 "look": "Uneven cobblestones pave the square, each one a slightly different height -- a masterwork of inconsistency that has been turning ankles since the village was founded. Some stones are cracked, others are loose, and at least three are actively trying to trip you.",
-                "take": "You pry at a cobblestone. It comes loose with a grinding pop. You hold a single stone. The square has hundreds. You are making very slow progress toward whatever this is.",
+                "take": "You pry at a cobblestone. It refuses to budge, cemented by centuries of foot traffic and civic neglect.",
                 "use": "You stomp on the cobblestones experimentally. They clatter and shift underfoot. Several pedestrians who don't exist give you disapproving looks.",
                 "default": "You look down at the cobblestones. They look up at your feet. An uneasy truce is maintained."
             }
@@ -368,7 +368,10 @@
     },
     "effects": {
         "ambient": [
-            { "type": "dust-motes", "intensity": 0.4 }
+            {
+                "type": "dust-motes",
+                "intensity": 0.4
+            }
         ],
         "lighting": {
             "tint": "#eeddaa",

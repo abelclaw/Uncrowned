@@ -65,7 +65,7 @@
             },
             "targetRoom": "crystal_chamber",
             "spawnPoint": {
-                "x": 820,
+                "x": 760,
                 "y": 430
             },
             "transition": "slide-left",
@@ -130,7 +130,6 @@
             "responses": {
                 "look": "Clusters of bioluminescent mushrooms line the walls in three groups: left, center, and right. Each cluster can be touched to activate it -- they glow brightly when activated and dim after a moment. There must be a specific sequence. The mushrooms pulse patiently, waiting for someone who knows the pattern.",
                 "use": "You touch the mushrooms randomly. They light up in a cascade of color, then dim. Nothing happens. The pattern needs to be specific. Perhaps a book in the library mentioned the correct sequence.",
-                "take": "You consider picking a mushroom. The others pulse menacingly. Mushroom solidarity is real.",
                 "default": "You examine the mushroom clusters. They're arranged in three groups -- left, center, right -- each waiting for activation in the correct order."
             }
         },
@@ -226,14 +225,22 @@
     },
     "effects": {
         "ambient": [
-            { "type": "fireflies", "intensity": 0.6 },
-            { "type": "dust-motes", "intensity": 0.2 }
+            {
+                "type": "fireflies",
+                "intensity": 0.6
+            },
+            {
+                "type": "dust-motes",
+                "intensity": 0.2
+            }
         ],
         "lighting": {
             "tint": "#224433",
             "brightness": 0.5,
             "vignette": 0.35,
-            "postfx": ["glow"]
+            "postfx": [
+                "glow"
+            ]
         }
     },
     "puzzleHints": [

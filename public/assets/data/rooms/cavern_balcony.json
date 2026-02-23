@@ -72,7 +72,6 @@
             },
             "responses": {
                 "look": "The edge of the balcony drops away into the Crystal Chamber below. There's no railing, no barrier, no safety net. Just air, gravity, and the distant glint of the crystal. The Screaming Caverns' architects were not concerned with occupational health and safety.",
-                "use": "You lean forward slightly. Your stomach disagrees. The drop is sufficient to make vertigo a medical certainty.",
                 "default": "You regard the edge from a respectful distance. The distance is respectful because closer would be fatal."
             }
         },

@@ -113,7 +113,6 @@
             "responses": {
                 "look": "Wooden crates stacked against the wall, most bearing labels like 'FLOUR,' 'GRAIN,' and 'PROVISIONS.' The scratching from behind them is persistent and organized. Whatever is back there has established a settlement. Opening the wrong crate seems risky.",
                 "use": "You approach the crates. The scratching intensifies. Something behind the stack is very aware of your presence and not thrilled about it.",
-                "open": "You consider opening a crate. The scratching from within reaches a crescendo. Whatever is in there is either very eager to meet you, or very eager to eat you.",
                 "push": "You push a crate. It's lighter than expected -- whatever was inside has been eaten. The scratching behind it gets louder.",
                 "default": "You eye the crates warily. They eye you back, metaphorically, through several hundred sets of small, beady eyes."
             }

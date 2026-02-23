@@ -48,7 +48,7 @@
             },
             "targetRoom": "castle_hallway",
             "spawnPoint": {
-                "x": 820,
+                "x": 760,
                 "y": 430
             },
             "transition": "slide-left",
@@ -93,7 +93,7 @@
             },
             "responses": {
                 "look": "Banners hang from the ceiling, each bearing the royal crest -- the disgruntled badger in a crown. Time has faded them from proud crimson to a color best described as 'exhausted pink.' One banner has fallen entirely and lies in a heap on the floor like a textile casualty.",
-                "take": "You tug on a banner. Ancient fabric tears. You're now holding a strip of faded cloth that was once a symbol of royal authority. It's about as authoritative as a damp napkin.",
+                "take": "You tug at a banner. It disintegrates into dust the moment it separates from the wall. Centuries of decay compressed into one disappointing moment.",
                 "default": "You gaze at the banners. They droop with the weight of history and moths."
             }
         },
@@ -664,13 +664,18 @@
     },
     "effects": {
         "ambient": [
-            { "type": "dust-motes", "intensity": 0.4 }
+            {
+                "type": "dust-motes",
+                "intensity": 0.4
+            }
         ],
         "lighting": {
             "tint": "#bbaa88",
             "brightness": 0.7,
             "vignette": 0.35,
-            "postfx": ["bloom"]
+            "postfx": [
+                "bloom"
+            ]
         }
     },
     "puzzleHints": [

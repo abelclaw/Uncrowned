@@ -71,8 +71,7 @@
                 "y": 420
             },
             "responses": {
-                "look": "The pool's surface is mirror-still, reflecting the cave ceiling with unsettling clarity. Your reflection stares back at you, looking distinctly more worried than you feel. Or perhaps exactly as worried as you feel. In the depths, something crystalline catches the light.",
-                "use": "You dip your fingers in. The water is ice-cold and tastes faintly of minerals and ancient secrets. Your reflection disapproves of this.",
+                "look": "The pool's surface is mirror-still, reflecting the cave ceiling with unsettling clarity. Your reflection stares back at you, looking distinctly more worried than you feel. Or perhaps exactly as worried as you feel. In the depths, something crystalline catches the light. Deeper still, pale shapes rest at the bottom -- bones, if you're not mistaken. Others have tried swimming here. They did not swim back.",
                 "take": "You scoop up a handful of water. It leaks through your fingers immediately, as water is known to do. You've learned nothing.",
                 "talk": "You speak to the pool. Your words ripple across the surface. The pool does not respond, but your reflection mouths something you can't quite read. Unsettling.",
                 "default": "You contemplate the pool. It contemplates you. This is getting existential."

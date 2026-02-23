@@ -48,7 +48,7 @@
             },
             "targetRoom": "castle_courtyard",
             "spawnPoint": {
-                "x": 820,
+                "x": 760,
                 "y": 430
             },
             "transition": "slide-left",
@@ -73,7 +73,7 @@
             "responses": {
                 "look": "The hedges were once trimmed into the shapes of heraldic animals. Now they're trimmed into the shape of 'chaos.' What might have been a lion is now an amorphous green blob. A hedge-badger has merged with a hedge-eagle to form something that defies taxonomy.",
                 "use": "You push through the hedges. Thorns scratch your arms. Somewhere inside the green mass, a bird objects loudly to your intrusion.",
-                "take": "You snap off a branch. The hedge doesn't notice. It's too busy being overgrown.",
+                "take": "You reach for a branch but it's too thick and your hands too soft. The hedge wins this round.",
                 "default": "You contemplate the hedges. They contemplate growth. Neither of you is winning."
             }
         },
@@ -318,8 +318,14 @@
     },
     "effects": {
         "ambient": [
-            { "type": "falling-leaves", "intensity": 0.4 },
-            { "type": "dust-motes", "intensity": 0.2 }
+            {
+                "type": "falling-leaves",
+                "intensity": 0.4
+            },
+            {
+                "type": "dust-motes",
+                "intensity": 0.2
+            }
         ],
         "lighting": {
             "tint": "#aabb88",

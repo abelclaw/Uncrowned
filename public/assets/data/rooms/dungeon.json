@@ -65,7 +65,7 @@
             },
             "targetRoom": "treasury",
             "spawnPoint": {
-                "x": 100,
+                "x": 200,
                 "y": 430
             },
             "transition": "slide-right",
@@ -115,7 +115,6 @@
             },
             "responses": {
                 "look": "A trap door in the floor, helpfully labeled 'TRAP DOOR -- DO NOT STEP.' Below it: absolute darkness and the sound of something dripping. The dungeon was built with security measures that were simultaneously obvious and lethal. The sign is either a warning or an invitation, depending on your interpretation of bureaucratic signage.",
-                "use": "The sign says 'DO NOT STEP.' For once in your adventure, you consider following instructions. The darkness below does not encourage investigation.",
                 "take": "You cannot take a trap door. It's embedded in the floor. And it's a trap. Two good reasons.",
                 "default": "You study the trap door from a safe distance. The sign is clear. The consequences are clearer."
             }
@@ -461,7 +460,10 @@
     },
     "effects": {
         "ambient": [
-            { "type": "dust-motes", "intensity": 0.4 }
+            {
+                "type": "dust-motes",
+                "intensity": 0.4
+            }
         ],
         "lighting": {
             "tint": "#333344",

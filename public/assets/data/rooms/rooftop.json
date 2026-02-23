@@ -91,7 +91,6 @@
             },
             "responses": {
                 "look": "The parapet is crumbling, half-petrified itself. Gaps in the stonework reveal the dizzying drop to the courtyard below. The wind tugs at your clothes, suggesting activities that your survival instinct firmly vetoes.",
-                "use": "You lean against the parapet. It shifts slightly. You un-lean against the parapet. Quickly.",
                 "push": "You test the parapet's structural integrity. It fails the test. A chunk breaks off and tumbles into the courtyard below. The sound of impact is educational.",
                 "default": "You eye the crumbling parapet with appropriate caution."
             }

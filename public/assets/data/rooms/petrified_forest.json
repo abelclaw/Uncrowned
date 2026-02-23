@@ -48,7 +48,7 @@
             },
             "targetRoom": "cavern_entrance_hall",
             "spawnPoint": {
-                "x": 820,
+                "x": 760,
                 "y": 430
             },
             "transition": "fade",
@@ -65,7 +65,7 @@
             },
             "targetRoom": "castle_courtyard_act3",
             "spawnPoint": {
-                "x": 100,
+                "x": 200,
                 "y": 430
             },
             "transition": "fade",
@@ -89,7 +89,6 @@
             },
             "responses": {
                 "look": "Trees turned to stone, every ring preserved in grey granite. The bark's texture is flawless -- you can count the knots, trace the grain. Nature's portrait, rendered in the medium of catastrophe. Some branches still have stone leaves. Others snapped under their own weight and lie in rocky fragments on the ground.",
-                "use": "You're not sure how one 'uses' a petrified tree. As a monument to failure? As a cautionary tale? As a very expensive garden ornament?",
                 "take": "You try to snap off a stone branch. It breaks, and a chunk of petrified wood falls to the ground. It's heavy, cold, and deeply sad. You leave it where it fell.",
                 "talk": "You address the stone trees. They do not respond. They have been silenced more permanently than any conversation partner you've encountered, and you once argued with a wall.",
                 "default": "You examine the petrified trees. They are a sobering reminder that time is not on your side. Or anyone's side. Time is on its own side."
@@ -110,7 +109,7 @@
             },
             "responses": {
                 "look": "The wildflowers that once bloomed in defiant cheerfulness are now frozen in stone. Every petal, every stem, perfectly preserved and utterly lifeless. They were the first things you saw when you arrived in Erelhain. Now they're the first evidence of what you're trying to stop.",
-                "take": "You pick a stone flower. It snaps at the stem with a dry crack. The petals are cold and heavy in your palm. This is not a souvenir. This is a deadline.",
+                "take": "You try to pick a stone flower. It is, unsurprisingly, made of stone. Your fingers report that stone is heavy and uncooperative.",
                 "default": "You regard the stone flowers. They are beautiful, in the way that endings are sometimes beautiful."
             }
         },
@@ -235,13 +234,18 @@
             "intensity": 0.5
         },
         "ambient": [
-            { "type": "dust-motes", "intensity": 0.3 }
+            {
+                "type": "dust-motes",
+                "intensity": 0.3
+            }
         ],
         "lighting": {
             "tint": "#667788",
             "brightness": 0.6,
             "vignette": 0.5,
-            "postfx": ["desaturate"]
+            "postfx": [
+                "desaturate"
+            ]
         }
     },
     "playerSpawn": {

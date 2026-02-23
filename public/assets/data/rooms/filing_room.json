@@ -48,7 +48,7 @@
             },
             "targetRoom": "cavern_entrance_hall",
             "spawnPoint": {
-                "x": 820,
+                "x": 760,
                 "y": 430
             },
             "transition": "slide-left",
@@ -73,7 +73,6 @@
             "responses": {
                 "look": "Hundreds of filing cabinets, each with tiny labels: '27-A through 27-A Stroke 14,' '27-B through 27-B Stroke 12,' '27-C (CLASSIFIED),' '28-A through 42-Z (DO NOT OPEN).' The system would make a librarian weep. Finding the right form requires patience, literacy, and a willingness to accept that some filing systems are adversarial by design.",
                 "use": "You start searching the cabinets. Drawer after drawer of forms: tax declarations, death certificates, fishing licenses, a form for filing complaints about forms. The organization is hostile but thorough.",
-                "open": "You open a cabinet drawer. It slides out with a metallic screech and reveals thousands of identical-looking forms. Finding the right one will require careful searching.",
                 "default": "You face the filing cabinets. They face you back with the quiet confidence of systems designed to outlast civilizations."
             }
         },
@@ -425,7 +424,10 @@
     },
     "effects": {
         "ambient": [
-            { "type": "dust-motes", "intensity": 0.6 }
+            {
+                "type": "dust-motes",
+                "intensity": 0.6
+            }
         ],
         "lighting": {
             "tint": "#444433",

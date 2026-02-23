@@ -72,7 +72,6 @@
             },
             "responses": {
                 "look": "Shelves of potions in every color, most bubbling quietly despite having been brewed centuries ago. Labels include 'Memory Suppressant (Extra Strength),' 'Parking Curse Mk. VII,' and 'Definitely Not Poison (It Is Poison).' The wizard's organizational system was 'wherever there's space,' which means everywhere.",
-                "use": "You contemplate sampling the potions. The one labeled 'Definitely Not Poison' practically dares you. Your survival instincts, for once, prevail.",
                 "take": "You pocket a small vial. Then put it back. Then pick it up again. Then remember the last time you drank a mysterious liquid and put it back permanently.",
                 "default": "You examine the potions. They examine you back, bubbling judgmentally."
             }
@@ -111,7 +110,6 @@
             },
             "responses": {
                 "look": "A heavy iron chest with arcane symbols carved into its surface. A sign reads: 'PERSONAL BELONGINGS -- DO NOT OPEN. ESPECIALLY YOU, MARLOWE. (Wait, I am Marlowe. Note to self: change sign.)' The chest is clearly trapped. The symbols glow faintly when you approach.",
-                "use": "The chest is trapped. The symbols on it promise unpleasant things to unauthorized openers. You'd need to be very careful -- or very foolish -- to open it.",
                 "default": "You eye the trapped chest. It eyes you back, magically."
             }
         },

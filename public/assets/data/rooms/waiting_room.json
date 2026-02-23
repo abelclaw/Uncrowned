@@ -90,8 +90,7 @@
                 "y": 420
             },
             "responses": {
-                "look": "Stone benches worn smooth by centuries of waiting. Each one has a small brass plaque reading 'PLEASE REMAIN SEATED.' Some have tally marks scratched into them -- the longest set reaches 73,847. Someone was keeping count. They presumably stopped when they ran out of stone.",
-                "use": "You sit on a bench. It's cold, hard, and immediately makes you want to stand up. The ghost nearby nods in solidarity.",
+                "look": "Stone benches worn smooth by centuries of waiting. Each one has a small brass plaque reading 'PLEASE REMAIN SEATED.' Some have tally marks scratched into them -- the longest set reaches 73,847. Someone was keeping count. They presumably stopped when they ran out of stone. They look comfortable. Suspiciously comfortable.",
                 "default": "You examine the benches. They've hosted more patience than any piece of furniture should have to bear."
             }
         },

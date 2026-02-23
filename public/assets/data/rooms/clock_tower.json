@@ -109,8 +109,7 @@
                 "y": 420
             },
             "responses": {
-                "look": "Through the tower's window, you can see the kingdom spread below. The petrification is visible -- a grey wave rolling inward from the edges. Fields, villages, forests, all turning to stone. From up here, it looks almost beautiful, in the way that endings sometimes are. You can see how much time is left. Not much.",
-                "use": "You lean toward the window for a better view. The wind pushes back, which is either weather or a warning.",
+                "look": "Through the tower's window, you can see the kingdom spread below. The petrification is visible -- a grey wave rolling inward from the edges. Fields, villages, forests, all turning to stone. The ledge outside is narrow, icy, and the wind howls through the opening with enough force to make climbing out a death sentence. From up here, it looks almost beautiful, in the way that endings sometimes are.",
                 "default": "You gaze out at the cursed landscape. The view is comprehensive and thoroughly depressing."
             }
         },
