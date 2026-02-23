@@ -47,6 +47,14 @@ export class TextParser {
 
         const normalized = trimmed.toLowerCase();
 
+        // Check for exit-listing queries ("where can i go", "exits", etc.)
+        if (/^(?:where\s+(?:can|do|should)\s+i\s+go|(?:show|list|check)\s+exits|exits|directions|paths|ways?\s+out)$/.test(normalized)) {
+            return {
+                success: true,
+                action: { verb: 'look', subject: '__exits__', target: null, rawInput },
+            };
+        }
+
         // Check for bare direction shortcuts first (n, s, e, w, north, south, etc.)
         if (normalized in DIRECTION_SHORTCUTS) {
             const direction = DIRECTION_SHORTCUTS[normalized];

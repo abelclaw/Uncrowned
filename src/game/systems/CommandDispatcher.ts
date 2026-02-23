@@ -332,6 +332,21 @@ export class CommandDispatcher {
      * Subject -> check hotspots, room items, inventory items, then exits.
      */
     private handleLook(action: GameAction, roomData: RoomData): DispatchResult {
+        // "where can i go" / "exits" -> list available exits
+        if (action.subject === '__exits__') {
+            const available = roomData.exits.filter(e => this.exitConditionsMet(e));
+            if (available.length === 0) {
+                return { response: "There don't seem to be any exits here.", handled: true };
+            }
+            const exitList = available
+                .map(e => e.direction ?? e.label ?? e.targetRoom)
+                .join(', ');
+            return {
+                response: `You can go: ${exitList}.`,
+                handled: true,
+            };
+        }
+
         // Bare "look" -> check dynamic descriptions based on game flags
         if (!action.subject) {
             // Check dynamic descriptions
