@@ -79,6 +79,7 @@ export class RoomScene extends Phaser.Scene {
     private loadGameHandler!: (data: { roomId: string }) => void;
     private roomUpdateHandler!: (action: any) => void;
     private itemPickedUpHandler!: (itemId: string) => void;
+    private inventoryBtnHandler?: () => void;
 
     // Arrow key direct movement (disabled in static scene mode)
     // private cursors?: Phaser.Types.Input.Keyboard.CursorKeys;
@@ -384,6 +385,17 @@ export class RoomScene extends Phaser.Scene {
         // Create InventoryPanel
         this.inventoryPanel = new InventoryPanel(container);
 
+        // Show inventory button and wire click handler
+        const invBtn = document.getElementById('inventory-btn');
+        if (invBtn) {
+            invBtn.style.display = 'flex';
+            this.inventoryBtnHandler = () => {
+                this.updateInventoryPanel();
+                this.inventoryPanel.toggle();
+            };
+            invBtn.addEventListener('click', this.inventoryBtnHandler);
+        }
+
         // Auto-close inventory when text input gets focus (prevents overlay blocking input)
         const inputEl = document.getElementById('parser-input');
         if (inputEl) {
@@ -647,6 +659,15 @@ export class RoomScene extends Phaser.Scene {
             EventBus.off('command-submitted', this.commandSubmittedHandler);
             EventBus.off('go-command', this.goCommandHandler);
             EventBus.removeAllListeners('scene-ready');
+
+            // Hide inventory button and remove listener
+            const invBtn = document.getElementById('inventory-btn');
+            if (invBtn) {
+                invBtn.style.display = 'none';
+                if (this.inventoryBtnHandler) {
+                    invBtn.removeEventListener('click', this.inventoryBtnHandler);
+                }
+            }
 
             // Phase 4 cleanup
             this.narratorDisplay.destroy();

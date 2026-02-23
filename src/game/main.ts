@@ -85,6 +85,31 @@ muteBtn.addEventListener('click', () => {
     muteBtn.innerHTML = muted ? '\u{1F507}' : '\u{1F50A}';
 });
 
+// Create inventory toggle button (hidden until gameplay starts)
+const invBtn = document.createElement('button');
+invBtn.id = 'inventory-btn';
+invBtn.innerHTML = '\u{1F392}';
+invBtn.title = 'Inventory';
+Object.assign(invBtn.style, {
+    position: 'absolute',
+    top: '8px',
+    left: '48px',
+    zIndex: '30',
+    width: '36px',
+    height: '36px',
+    background: 'rgba(15, 15, 35, 0.7)',
+    border: '1px solid #4a4a6a',
+    borderRadius: '4px',
+    fontSize: '18px',
+    cursor: 'pointer',
+    display: 'none',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '0',
+    lineHeight: '1',
+});
+document.getElementById('game-container')?.appendChild(invBtn);
+
 // Responsive scaling: scale the entire game container (canvas + text UI) as a unit
 function fitGameContainer() {
     const container = document.getElementById('game-container');
