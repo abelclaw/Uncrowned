@@ -20,9 +20,9 @@ export class AudioManager {
     private ambientSounds: Map<string, Phaser.Sound.WebAudioSound> = new Map();
 
     /** Volume levels */
-    private sfxVolume: number = 1.0;
+    private sfxVolume: number = 0.4;
     private musicVolume: number = 0.5;
-    private ambientVolume: number = 0.4;
+    private ambientVolume: number = 0.25;
 
     /** Event-to-SFX key mappings loaded from audio-registry.json */
     private sfxEventMap: Record<string, string> = {};
