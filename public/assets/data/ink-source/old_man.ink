@@ -35,8 +35,8 @@ What brings you to my hovel?
 + [Leave] -> farewell
 
 === toad_info ===
-The old man glances at the toad and chuckles. #speaker:Old Man #emotion:amused
-Ah, Old Grumble. Been sitting on that path for... three years? Four? Lost count.
+The old man chuckles knowingly. #speaker:Old Man #emotion:amused
+Ah, Old Grumble. Been sitting in the village square for... three years? Four? Lost count.
 Half turned to stone by the curse, but the other half is very much alive. And very much hungry.
 He won't budge for pushing, shouting, or polite requests. I've tried all three.
 + [What does it eat?] -> toad_food
@@ -56,7 +56,7 @@ A fish from the well should convince him to shift his considerable backside.
 === toad_around ===
 The old man shakes his head. #speaker:Old Man #emotion:serious
 Not unless you fancy the forest. And the forest fancies you right back -- in the 'eating you' sense.
-No, Old Grumble is the gatekeeper here. Find something he wants, and he'll move. He's not malicious. Just hungry. And large. And immovable.
+No, Old Grumble is the gatekeeper of the village. Blocks the eastern road out. Find something he wants, and he'll move. He's not malicious. Just hungry. And large. And immovable.
 Feed him and he's docile as a stone. Well. More stone than usual.
 -> greeting
 

@@ -78,7 +78,8 @@ export const VERB_TABLE: VerbDefinition[] = [
         synonyms: ['use', 'apply', 'give', 'show', 'offer', 'hand', 'pour', 'fill', 'set', 'place', 'put', 'drink', 'eat', 'consume', 'light', 'stamp',
             'turn', 'twist', 'rotate', 'flip', 'activate', 'operate', 'touch', 'rub',
             'throw', 'toss', 'cut', 'sit', 'wind', 'crank', 'swim', 'ride', 'wield',
-            'dip', 'ring', 'wave', 'play', 'blow', 'stoke', 'insert', 'drop', 'wear'],
+            'dip', 'ring', 'wave', 'play', 'blow', 'stoke', 'insert', 'drop', 'wear',
+            'lower', 'feed', 'raise', 'hoist'],
         patterns: [
             // "give/show/offer/hand X to Y" → use X on Y
             /^(?:give|show|offer|hand)\s+(.+?)\s+(?:to)\s+(.+)$/i,
@@ -106,9 +107,13 @@ export const VERB_TABLE: VerbDefinition[] = [
             /^(?:use|apply)\s+(.+?)\s+(?:on|with)\s+(.+)$/i,
             // "dip X in/into Y" → use X on Y
             /^dip\s+(.+?)\s+(?:in|into)\s+(.+)$/i,
+            // "lower/raise/hoist X into/in Y" → use X on Y
+            /^(?:lower|raise|hoist)\s+(.+?)\s+(?:into|in|down|up)\s+(.+)$/i,
+            // "feed X to Y" → use X on Y
+            /^feed\s+(.+?)\s+(?:to)\s+(.+)$/i,
             // Bare verb + subject: "drink bottle", "light torch", "turn crank", "ring bell" etc.
             // Excludes give/show/offer/hand (need a target: "give X to Y")
-            /^(?:use|apply|pour|fill|drink|eat|consume|light|place|put|turn|twist|rotate|flip|activate|operate|throw|toss|cut|wind|crank|wield|dip|ring|wave|play|blow|stoke|insert|drop|wear)\s+(.+)$/i,
+            /^(?:use|apply|pour|fill|drink|eat|consume|light|place|put|turn|twist|rotate|flip|activate|operate|throw|toss|cut|wind|crank|wield|dip|ring|wave|play|blow|stoke|insert|drop|wear|lower|feed|raise|hoist)\s+(.+)$/i,
             /^(?:use|apply)$/i,
         ],
     },
