@@ -88,7 +88,7 @@
                 "y": 420
             },
             "responses": {
-                "look": "A once-grand fountain, now completely petrified. The stone figures atop it -- a king, a knight, and what might be a badger -- are frozen in mid-dance. The water basin is dry and cracked. The stone has an unnatural smoothness, as though something turned the entire fountain to perfect grey stone overnight. This isn't weathering. This is a curse.",
+                "look": "A once-grand fountain, now completely petrified. The stone figures atop it -- a king, a knight, and what might be a badger -- are frozen in mid-dance. The water basin is dry and cracked, with dead leaves and dust where water once flowed. Something glints faintly among the debris. The stone has an unnatural smoothness, as though something turned the entire fountain to perfect grey stone overnight. This isn't weathering. This is a curse.",
                 "use": "The fountain hasn't worked in years. Turning the valve produces nothing but a sad grinding sound, like a bureaucrat's soul.",
                 "take": "It's a fountain. Made of stone. In a public square. Even you have limits. Presumably.",
                 "talk": "You address the petrified figures. The king stares blankly. The knight stares blankly. The badger stares blankly but with an air of judgment.",
@@ -245,23 +245,24 @@
             "id": "bridge-toll-coin",
             "name": "Bridge Toll Coin",
             "zone": {
-                "x": 610,
-                "y": 400,
+                "x": 430,
+                "y": 390,
                 "width": 20,
                 "height": 20
             },
             "interactionPoint": {
-                "x": 635,
+                "x": 450,
                 "y": 420
             },
+            "aliases": ["coin", "toll coin", "old coin", "toll"],
             "responses": {
-                "look": "An old coin wedged between the stones near the fountain. The face on it has worn into a vague smudge. Still legal tender, apparently -- the kingdom has low standards for currency, much like everything else.",
+                "look": "An old coin sitting in the dry fountain basin, half-hidden among dust and dead leaves. The face on it has worn into a vague smudge. Still legal tender, apparently -- the kingdom has low standards for currency, much like everything else. Someone must have tossed it in when the fountain still worked. Their wish didn't come true.",
                 "use": "A coin is for spending. You'll need to find something -- or someone -- to spend it on.",
-                "take": "The toll coin is wedged in the collection box slot, just visible but thoroughly stuck. Previous travelers jammed it there, either by accident or spite.",
-                "talk": "You address the coin. It glints dully. Coins are famously poor conversationalists, though this one has been eavesdropping on village gossip from its crack in the ground for years.",
+                "take": "You reach into the dry fountain basin and pluck the coin from the dust. Easy enough -- nobody's been making wishes here for a while.",
+                "talk": "You address the coin. It glints dully. Coins are famously poor conversationalists, though this one has been sitting in the fountain long enough to have opinions about local governance.",
                 "open": "It's a coin, not a locket. It has two sides -- heads and tails -- and neither of them opens. That's not how currency works.",
-                "push": "You press the coin further into the crack between stones. It wedges deeper. This is the opposite of getting a coin. You are actively making yourself poorer.",
-                "pull": "You dig at the coin with your fingernails. It shifts slightly but remains wedged. The cobblestones grip it like the village's last claim to an economy."
+                "push": "You push the coin across the dry basin. It scrapes against stone with a sad little clink. Not exactly the splash it was expecting when someone tossed it in.",
+                "pull": "You pull the coin toward you across the dusty basin. It slides easily. The fountain has stopped hoarding wishes."
             }
         }
     ],
@@ -337,7 +338,7 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "You fish the old coin from between the stones. It's heavy, tarnished, and features a face so worn it could be anyone -- a king, a queen, or possibly a confused sheep. Legal tender in Erelhain, where the bar for currency is roughly ankle-height."
+                    "text": "You pluck the old coin from the dry fountain basin. It's heavy, tarnished, and features a face so worn it could be anyone -- a king, a queen, or possibly a confused sheep. Someone's wish, abandoned when the water stopped flowing. Legal tender in Erelhain, where the bar for currency is roughly ankle-height."
                 }
             ],
             "once": true
@@ -399,6 +400,7 @@
                 "width": 64,
                 "height": 106
             },
+            "aliases": ["man", "merchant", "seller", "vendor", "shopkeeper", "guy", "trader", "stone man", "petrified man", "statue"],
             "responses": {
                 "look": "The merchant is frozen mid-gesture, one hand raised as if presenting today's special. His expression suggests the special was quite good. His petrified state suggests the curse disagreed.",
                 "talk": "You speak to the stone merchant. He does not respond. This is the most successful sales interaction you've ever had -- nobody is trying to upsell you.",
