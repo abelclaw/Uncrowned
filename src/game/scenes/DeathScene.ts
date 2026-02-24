@@ -1,6 +1,7 @@
 import { Scene } from 'phaser';
 import { GameState } from '../state/GameState';
 import { SaveManager } from '../state/SaveManager';
+import { AudioManager } from '../systems/AudioManager';
 
 /**
  * Data passed when launching the DeathScene overlay.
@@ -14,6 +15,7 @@ export interface DeathSceneData {
     isNewDeath?: boolean;
     discoveredCount?: number;
     totalDeaths?: number;
+    imageId?: string;
 }
 
 /**
@@ -31,14 +33,59 @@ export class DeathScene extends Scene {
     create(data: DeathSceneData): void {
         const title = data.title || 'You Died';
         const narratorText = data.narratorText || 'Perhaps that was not the wisest course of action.';
+        const imageId = data.imageId;
+        const textureKey = imageId ? `death-img-${imageId}` : undefined;
 
         // Dark overlay -- captures clicks to prevent pass-through to RoomScene
         this.add.rectangle(480, 270, 960, 540, 0x000000, 0.85)
             .setDepth(0)
             .setInteractive();
 
+        // Death theme — play once (non-looping), crossfade from room music
+        const audio = AudioManager.getInstance();
+        audio.init(this);
+        audio.setAmbient([]);  // Silence ambient sounds
+        audio.playMusic('music-death', 1000, false);
+
+        // Check if we have a death image to display
+        const hasImage = textureKey !== undefined && this.textures.exists(textureKey);
+
+        // Layout shifts when image is present
+        const imageSize = 160;
+        const imageY = 100;
+        const titleY = hasImage ? imageY + imageSize / 2 + 20 : 130;
+        const counterY = titleY + 35;
+        const badgeY = titleY - 35;
+        const textY = hasImage ? 330 : 280;
+        const tryAgainY = hasImage ? 460 : 430;
+        const galleryY = tryAgainY + 40;
+
+        // Death image (if available)
+        if (hasImage) {
+            const img = this.add.image(480, imageY, textureKey)
+                .setDepth(1);
+
+            // Scale to display size
+            const scale = imageSize / Math.max(img.width, img.height);
+            img.setScale(scale);
+
+            // Subtle red border
+            this.add.rectangle(480, imageY, imageSize + 4, imageSize + 4, 0x000000, 0)
+                .setStrokeStyle(2, 0x661111)
+                .setDepth(0.5);
+
+            // Fade in the image
+            img.setAlpha(0);
+            this.tweens.add({
+                targets: img,
+                alpha: 1,
+                duration: 600,
+                ease: 'Power2',
+            });
+        }
+
         // Death title
-        this.add.text(480, 130, title, {
+        this.add.text(480, titleY, title, {
             fontFamily: 'monospace',
             fontSize: '28px',
             color: '#cc3333',
@@ -46,7 +93,7 @@ export class DeathScene extends Scene {
 
         // Discovery counter (replaces old death count)
         if (data.discoveredCount !== undefined && data.totalDeaths) {
-            this.add.text(480, 165, `${data.discoveredCount}/${data.totalDeaths} deaths discovered`, {
+            this.add.text(480, counterY, `${data.discoveredCount}/${data.totalDeaths} deaths discovered`, {
                 fontFamily: 'monospace',
                 fontSize: '12px',
                 color: '#666666',
@@ -54,7 +101,7 @@ export class DeathScene extends Scene {
         } else {
             // Fallback: show old death count for backward compatibility
             const deathCount = GameState.getInstance().getData().deathCount;
-            this.add.text(480, 165, `Deaths: ${deathCount}`, {
+            this.add.text(480, counterY, `Deaths: ${deathCount}`, {
                 fontFamily: 'monospace',
                 fontSize: '12px',
                 color: '#666666',
@@ -63,7 +110,7 @@ export class DeathScene extends Scene {
 
         // "New!" badge for first-time death discovery
         if (data.isNewDeath) {
-            const badge = this.add.text(480, 95, 'NEW DEATH DISCOVERED!', {
+            const badge = this.add.text(480, badgeY, 'NEW DEATH DISCOVERED!', {
                 fontFamily: 'monospace',
                 fontSize: '14px',
                 color: '#ffcc00',
@@ -79,7 +126,7 @@ export class DeathScene extends Scene {
         }
 
         // Narrator text
-        this.add.text(480, 280, narratorText, {
+        this.add.text(480, textY, narratorText, {
             fontFamily: 'monospace',
             fontSize: '16px',
             color: '#c8c8d4',
@@ -89,7 +136,7 @@ export class DeathScene extends Scene {
         }).setOrigin(0.5).setDepth(1);
 
         // Try Again button
-        const tryAgainText = this.add.text(480, 430, '[ Try Again ]', {
+        const tryAgainText = this.add.text(480, tryAgainY, '[ Try Again ]', {
             fontFamily: 'monospace',
             fontSize: '22px',
             color: '#ffcc00',
@@ -112,7 +159,7 @@ export class DeathScene extends Scene {
         });
 
         // Death Gallery button (secondary, below Try Again)
-        const galleryText = this.add.text(480, 470, '[ Death Gallery ]', {
+        const galleryText = this.add.text(480, galleryY, '[ Death Gallery ]', {
             fontFamily: 'monospace',
             fontSize: '16px',
             color: '#888888',
@@ -136,6 +183,12 @@ export class DeathScene extends Scene {
             this.scene.stop('RoomScene');
             this.scene.start('DeathGalleryScene', { returnTo: 'MainMenuScene' });
         });
+
+        // Pre-load death image for next time if not yet cached
+        if (textureKey && !this.textures.exists(textureKey) && imageId) {
+            this.load.image(textureKey, `assets/death-images/${imageId}.png`);
+            this.load.start();
+        }
     }
 
     private handleRetry(): void {

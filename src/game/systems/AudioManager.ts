@@ -112,11 +112,11 @@ export class AudioManager {
      * Crossfade to a new music track. No-op if the same track is already playing.
      * Creates a new looping sound at volume 0, fades it in, and fades out the old track.
      */
-    playMusic(key: string, fadeDuration: number = 1000): void {
+    playMusic(key: string, fadeDuration: number = 1000, loop: boolean = true): void {
         if (this.currentMusicKey === key) return;
 
         const newMusic = this.scene.sound.add(key, {
-            loop: true,
+            loop,
             volume: 0,
         }) as Phaser.Sound.WebAudioSound;
         newMusic.play();

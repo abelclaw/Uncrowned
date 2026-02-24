@@ -52,8 +52,9 @@
                 "y": 460
             },
             "transition": "fade",
-            "direction": "south",
-            "label": "depths"
+            "direction": "north",
+            "label": "depths",
+            "aliases": ["out", "back", "exit", "leave"]
         }
     ],
     "hotspots": [

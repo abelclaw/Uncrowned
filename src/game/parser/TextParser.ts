@@ -47,8 +47,8 @@ export class TextParser {
 
         const normalized = trimmed.toLowerCase();
 
-        // Check for exit-listing queries ("where can i go", "exits", etc.)
-        if (/^(?:where\s+(?:can|do|should)\s+i\s+go|(?:show|list|check)\s+exits|exits|directions|paths|ways?\s+out)$/.test(normalized)) {
+        // Check for exit-listing queries ("where can i go", "which way can i go", "exits", etc.)
+        if (/^(?:(?:where|which\s+way)\s+(?:can|do|should)\s+i\s+go|(?:show|list|check)\s+exits|exits|directions|paths|ways?\s+out|what\s+(?:direction|way))$/.test(normalized)) {
             return {
                 success: true,
                 action: { verb: 'look', subject: '__exits__', target: null, rawInput },
@@ -211,6 +211,13 @@ export class TextParser {
         // 3. Check exit label (exact match)
         for (const ex of exits) {
             if (ex.label && ex.label.toLowerCase() === cleaned) {
+                return ex.id;
+            }
+        }
+
+        // 3b. Check exit aliases (e.g. "in", "out", "enter", "back")
+        for (const ex of exits) {
+            if (ex.aliases?.some(a => a.toLowerCase() === cleaned)) {
                 return ex.id;
             }
         }

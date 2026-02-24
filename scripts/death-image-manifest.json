@@ -1,0 +1,192 @@
+{
+  "_comment": "Death image manifest for ComfyUI generation. Maps 27 unique images to 43 death paths.",
+  "promptPrefix": "GRPZA, pixel art game scene, dark dramatic death scene,",
+  "promptSuffix": ", detailed pixel art, retro game aesthetic, dark moody atmosphere, dramatic lighting, vignette",
+  "generationResolution": { "width": 512, "height": 512 },
+  "outputResolution": { "width": 320, "height": 320 },
+  "loraStrength": 0.8,
+  "guidance": 3.5,
+  "steps": 20,
+  "images": {
+    "falling": {
+      "prompt": "silhouette of a person falling through dark sky past crumbling stone castle walls, wind rushing, dramatic perspective looking down, dark blue sky with distant ground below",
+      "seed": 700001,
+      "output": "public/assets/death-images/falling.png"
+    },
+    "drowning": {
+      "prompt": "figure sinking into dark underground pool water, bubbles rising toward dim light above, murky depths below, submerged in cave pool, eerie blue-green underwater glow",
+      "seed": 700002,
+      "output": "public/assets/death-images/drowning.png"
+    },
+    "petrification": {
+      "prompt": "hand and arm turning to grey stone, petrification curse spreading from fingertips up the forearm, cracks in stone skin, grey stone texture overtaking flesh, magical grey particles",
+      "seed": 700003,
+      "output": "public/assets/death-images/petrification.png"
+    },
+    "poison": {
+      "prompt": "skull with swirling purple and green poison vapors rising from a dark bottle, toxic fumes, deadly nightshade berries scattered, ominous glow, poisonous mist",
+      "seed": 700004,
+      "output": "public/assets/death-images/poison.png"
+    },
+    "collapse": {
+      "prompt": "avalanche of falling wooden beams stone rubble and debris crashing down, collapsing ceiling and shelves, dust clouds, destruction from above, cave-in",
+      "seed": 700005,
+      "output": "public/assets/death-images/collapse.png"
+    },
+    "guardian": {
+      "prompt": "massive stone golem fist descending from above, enormous enchanted granite guardian hand crushing downward, glowing amber eyes in background, ancient stone texture",
+      "seed": 700006,
+      "output": "public/assets/death-images/guardian.png"
+    },
+    "filing-death": {
+      "prompt": "razor-sharp papers and filing cards flying through air like blades, bureaucratic forms as weapons, red ink splatter on documents, filing cabinet springing open violently",
+      "seed": 700007,
+      "output": "public/assets/death-images/filing-death.png"
+    },
+    "wizard-death": {
+      "prompt": "arcane magical explosion with glowing runes and symbols, wizard tower interior with shattered potions, purple and blue magical energy burst, scattered spell components",
+      "seed": 700008,
+      "output": "public/assets/death-images/wizard-death.png"
+    },
+    "fire": {
+      "prompt": "engulfing flames consuming a medieval kitchen or forge, orange and red fire roaring, sparks flying, intense heat glow, burning wooden beams, fire spreading",
+      "seed": 700009,
+      "output": "public/assets/death-images/fire.png"
+    },
+    "swarm": {
+      "prompt": "dark swarm of small creatures pouring forward in a wave, bees and rats flooding out of darkness, overwhelming tide of tiny bodies, swarm engulfing everything",
+      "seed": 700010,
+      "output": "public/assets/death-images/swarm.png"
+    },
+    "lost": {
+      "prompt": "dark twisted forest path with gnarled trees closing in, dense threatening woods, fog between trees, no way out, claustrophobic forest, overgrown trail disappearing",
+      "seed": 700011,
+      "output": "public/assets/death-images/lost.png"
+    },
+    "pit": {
+      "prompt": "dark deep pit viewed from above with sharp metal spikes at the bottom gleaming, stone walls of a cave shaft, darkness below, deadly trap pit",
+      "seed": 700012,
+      "output": "public/assets/death-images/pit.png"
+    },
+    "troll": {
+      "prompt": "enormous green troll hand reaching down to grab, massive fingers and thick arm, bridge troll looming from above, rocky gorge below, menacing creature",
+      "seed": 700013,
+      "output": "public/assets/death-images/troll.png"
+    },
+    "guards": {
+      "prompt": "two armored castle guards with crossed halberds blocking the way, plate armor glinting, stern professional soldiers, castle courtyard flagstones, imposing military presence",
+      "seed": 700014,
+      "output": "public/assets/death-images/guards.png"
+    },
+    "ghost-wrath": {
+      "prompt": "spectral ghost king unleashing wave of freezing cold blue energy, transparent crowned figure with blazing eyes, ghostly force blast, ice crystals forming, ethereal rage",
+      "seed": 700015,
+      "output": "public/assets/death-images/ghost-wrath.png"
+    },
+    "portrait-curse": {
+      "prompt": "ornate painting portrait with glowing green eyes coming alive, magical green light emanating from cursed portrait frame, queen portrait with supernatural glow, haunted painting",
+      "seed": 700016,
+      "output": "public/assets/death-images/portrait-curse.png"
+    },
+    "clerk-stamp": {
+      "prompt": "giant red rubber stamp marked DENIED descending from above, bureaucratic doom, oversized official stamp with red ink, paperwork and forms scattered, institutional horror",
+      "seed": 700017,
+      "output": "public/assets/death-images/clerk-stamp.png"
+    },
+    "boredom": {
+      "prompt": "skeleton sitting slumped in a wooden waiting room chair, cobwebs on bones, number ticket still in hand, empty waiting room with faded walls, eternal patience",
+      "seed": 700018,
+      "output": "public/assets/death-images/boredom.png"
+    },
+    "echo-scream": {
+      "prompt": "visible sound waves rippling outward in a cave dome, shattering stalactites, concentric rings of destructive force, acoustic devastation, cracking stone from noise",
+      "seed": 700019,
+      "output": "public/assets/death-images/echo-scream.png"
+    },
+    "stalactite": {
+      "prompt": "massive limestone stalactites breaking free and crashing down from cave ceiling, cascade of falling pointed rocks, cave ceiling collapsing, geological disaster",
+      "seed": 700020,
+      "output": "public/assets/death-images/stalactite.png"
+    },
+    "barrier-zap": {
+      "prompt": "crackling electric magical force barrier with bright sparks and lightning arcs, glowing energy wall, hand reaching toward dangerous barrier, warning signs, magical electricity",
+      "seed": 700021,
+      "output": "public/assets/death-images/barrier-zap.png"
+    },
+    "dungeon-pit": {
+      "prompt": "wooden trap door swinging open beneath feet into darkness below, dungeon floor giving way, hinged door falling open, dark void beneath, medieval trap mechanism",
+      "seed": 700022,
+      "output": "public/assets/death-images/dungeon-pit.png"
+    },
+    "mirror-shatter": {
+      "prompt": "ornate mirror exploding outward into hundreds of flying glass shards, broken reflections in each piece, hall of mirrors cascade destruction, crystalline shrapnel",
+      "seed": 700023,
+      "output": "public/assets/death-images/mirror-shatter.png"
+    },
+    "treasury-trap": {
+      "prompt": "crossbow bolts firing from hidden slots in stone treasury walls, multiple arrows launching simultaneously, ancient security mechanism activated, empty treasure pedestals",
+      "seed": 700024,
+      "output": "public/assets/death-images/treasury-trap.png"
+    },
+    "waterfall": {
+      "prompt": "rushing underground waterfall in dark cave, water pouring over cliff edge into misty abyss below, underground river plunging downward, roaring cascade in cavern",
+      "seed": 700025,
+      "output": "public/assets/death-images/waterfall.png"
+    },
+    "clock-crush": {
+      "prompt": "massive interlocking brass clock gears grinding together, caught in clockwork mechanism, giant cogs and wheels turning, medieval clock tower interior machinery, mechanical doom",
+      "seed": 700026,
+      "output": "public/assets/death-images/clock-crush.png"
+    },
+    "rite-fail": {
+      "prompt": "magical ritual circle on floor glowing angry red, failed spell with curse energy spreading outward, grey petrification wave emanating from broken seal, dark throne room",
+      "seed": 700027,
+      "output": "public/assets/death-images/rite-fail.png"
+    }
+  },
+  "deathToImage": {
+    "bee-death": "swarm",
+    "poison-death": "poison",
+    "lost-death": "lost",
+    "drown-death": "drowning",
+    "fall-death": "falling",
+    "dark-death": "pit",
+    "stone-touch": "petrification",
+    "troll-rage": "troll",
+    "guard-arrest": "guards",
+    "portrait-curse": "portrait-curse",
+    "throne-collapse": "collapse",
+    "kitchen-fire": "fire",
+    "poison-herb": "poison",
+    "rat-swarm": "swarm",
+    "ghost-wrath": "ghost-wrath",
+    "clerk-stamped": "clerk-stamp",
+    "mushroom-poison": "poison",
+    "shelf-collapse": "collapse",
+    "filed-away": "filing-death",
+    "boredom-death": "boredom",
+    "drown-river": "drowning",
+    "waterfall-death": "waterfall",
+    "forge-burn": "fire",
+    "guardian-smash": "guardian",
+    "guardian-wrong": "guardian",
+    "echo-scream": "echo-scream",
+    "stalactite-fall": "stalactite",
+    "barrier-zap": "barrier-zap",
+    "balcony-fall": "falling",
+    "dark-water": "drowning",
+    "paper-cut": "filing-death",
+    "petrify-touch": "petrification",
+    "petrify-slow": "petrification",
+    "archive-collapse": "collapse",
+    "wizard-trap": "wizard-death",
+    "wizard-explosion": "wizard-death",
+    "clock-crush": "clock-crush",
+    "clock-fall": "falling",
+    "dungeon-pit": "dungeon-pit",
+    "mirror-shatter": "mirror-shatter",
+    "rooftop-fall": "falling",
+    "treasury-trap": "treasury-trap",
+    "rite-fail": "rite-fail"
+  }
+}

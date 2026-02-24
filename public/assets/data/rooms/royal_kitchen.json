@@ -52,7 +52,7 @@
                 "y": 450
             },
             "transition": "slide-right",
-            "direction": "south",
+            "direction": "east",
             "label": "hallway"
         }
     ],

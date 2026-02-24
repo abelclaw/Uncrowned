@@ -10,10 +10,12 @@ const GRID_START_X = 60;
 const GRID_START_Y = 80;
 const COL_GAP = 290;
 const ROW_GAP = 130;
+const THUMB_SIZE = 80;
 
 /**
  * Death Gallery scene -- displays a paginated grid of all 43 deaths.
- * Discovered deaths show title, room name, and category; clicking opens a detail overlay.
+ * Discovered deaths show a thumbnail image (if available), title, room name, and category;
+ * clicking opens a detail overlay with a larger image.
  * Locked deaths show "?" and a cryptic gallery hint.
  */
 export class DeathGalleryScene extends Scene {
@@ -79,8 +81,48 @@ export class DeathGalleryScene extends Scene {
             this.scene.start(this.returnTo);
         });
 
-        this.renderPage();
-        this.renderPagination();
+        // Load images for current page then render
+        this.loadPageImages(() => {
+            this.renderPage();
+            this.renderPagination();
+        });
+    }
+
+    private getTextureKey(imageId: string): string {
+        return `death-img-${imageId}`;
+    }
+
+    private loadPageImages(callback: () => void): void {
+        const startIndex = this.currentPage * PER_PAGE;
+        const deaths = this.deathRegistry.deaths;
+        let needsLoad = false;
+
+        for (let i = 0; i < PER_PAGE; i++) {
+            const deathIndex = startIndex + i;
+            if (deathIndex >= deaths.length) break;
+
+            const entry = deaths[deathIndex];
+            const isDiscovered = this.discoveredIds.includes(entry.id);
+            if (!isDiscovered || !entry.imageId) continue;
+
+            const textureKey = this.getTextureKey(entry.imageId);
+            if (!this.textures.exists(textureKey)) {
+                this.load.image(textureKey, `assets/death-images/${entry.imageId}.png`);
+                needsLoad = true;
+            }
+        }
+
+        if (!needsLoad) {
+            callback();
+            return;
+        }
+
+        this.load.once(Phaser.Loader.Events.COMPLETE, callback);
+        // If images fail to load (not generated yet), still render the page
+        this.load.once(Phaser.Loader.Events.FILE_LOAD_ERROR, () => {
+            // Continue rendering even if some images fail
+        });
+        this.load.start();
     }
 
     private renderPage(): void {
@@ -120,25 +162,48 @@ export class DeathGalleryScene extends Scene {
         this.gridObjects.push(bg);
 
         if (isDiscovered) {
+            const textureKey = entry.imageId ? this.getTextureKey(entry.imageId) : undefined;
+            const hasImage = textureKey !== undefined && this.textures.exists(textureKey);
+
+            // Text offset shifts right when thumbnail is present
+            const textOffsetX = hasImage ? THUMB_SIZE + 10 : 0;
+
+            // Thumbnail image
+            if (hasImage) {
+                const thumbX = x + 8 + THUMB_SIZE / 2;
+                const thumbY = centerY;
+                const img = this.add.image(thumbX, thumbY, textureKey);
+
+                // Scale to fit thumbnail size
+                const scale = (THUMB_SIZE - 4) / Math.max(img.width, img.height);
+                img.setScale(scale);
+                this.gridObjects.push(img);
+
+                // Subtle border
+                const border = this.add.rectangle(thumbX, thumbY, THUMB_SIZE, THUMB_SIZE, 0x000000, 0)
+                    .setStrokeStyle(1, 0x444444);
+                this.gridObjects.push(border);
+            }
+
             // Discovered card content
-            const titleText = this.add.text(x + 15, y + 12, entry.title, {
+            const titleText = this.add.text(x + 15 + textOffsetX, y + 12, entry.title, {
                 fontFamily: 'monospace',
                 fontSize: '13px',
                 color: '#cc3333',
-                wordWrap: { width: CELL_W - 30 },
+                wordWrap: { width: CELL_W - 30 - textOffsetX },
             });
             this.gridObjects.push(titleText);
 
             // Truncate title to 2 lines if needed
             if (titleText.height > 34) {
                 const metrics = titleText.getTextMetrics();
-                const maxChars = Math.floor((CELL_W - 30) / (metrics.fontSize * 0.6)) * 2;
+                const maxChars = Math.floor((CELL_W - 30 - textOffsetX) / (metrics.fontSize * 0.6)) * 2;
                 const truncated = entry.title.substring(0, maxChars - 3) + '...';
                 titleText.setText(truncated);
             }
 
             // Room name + category at bottom
-            const infoText = this.add.text(x + 15, y + CELL_H - 22, `${entry.roomName} | ${entry.category}`, {
+            const infoText = this.add.text(x + 15 + textOffsetX, y + CELL_H - 22, `${entry.roomName} | ${entry.category}`, {
                 fontFamily: 'monospace',
                 fontSize: '10px',
                 color: '#666666',
@@ -205,8 +270,10 @@ export class DeathGalleryScene extends Scene {
             prevArrow.on('pointerout', () => prevArrow.setColor('#c8c8d4'));
             prevArrow.on('pointerdown', () => {
                 this.currentPage--;
-                this.renderPage();
-                this.renderPagination();
+                this.loadPageImages(() => {
+                    this.renderPage();
+                    this.renderPagination();
+                });
             });
             this.paginationObjects.push(prevArrow);
         }
@@ -223,8 +290,10 @@ export class DeathGalleryScene extends Scene {
             nextArrow.on('pointerout', () => nextArrow.setColor('#c8c8d4'));
             nextArrow.on('pointerdown', () => {
                 this.currentPage++;
-                this.renderPage();
-                this.renderPagination();
+                this.loadPageImages(() => {
+                    this.renderPage();
+                    this.renderPagination();
+                });
             });
             this.paginationObjects.push(nextArrow);
         }
@@ -240,8 +309,34 @@ export class DeathGalleryScene extends Scene {
             .setInteractive();
         this.overlayObjects.push(overlayBg);
 
+        const textureKey = entry.imageId ? this.getTextureKey(entry.imageId) : undefined;
+        const hasImage = textureKey !== undefined && this.textures.exists(textureKey);
+
+        // Layout shifts when image is present
+        const detailImageSize = 180;
+        const imageY = 100;
+        const titleY = hasImage ? imageY + detailImageSize / 2 + 15 : 120;
+        const infoY = titleY + 30;
+        const textY = hasImage ? 330 : 300;
+
+        // Death image in detail view
+        if (hasImage) {
+            const img = this.add.image(480, imageY, textureKey)
+                .setDepth(11);
+
+            const scale = detailImageSize / Math.max(img.width, img.height);
+            img.setScale(scale);
+            this.overlayObjects.push(img);
+
+            // Border
+            const border = this.add.rectangle(480, imageY, detailImageSize + 4, detailImageSize + 4, 0x000000, 0)
+                .setStrokeStyle(2, 0x661111)
+                .setDepth(10.5);
+            this.overlayObjects.push(border);
+        }
+
         // Death title
-        const titleText = this.add.text(480, 120, entry.title, {
+        const titleText = this.add.text(480, titleY, entry.title, {
             fontFamily: 'monospace',
             fontSize: '22px',
             color: '#cc3333',
@@ -249,7 +344,7 @@ export class DeathGalleryScene extends Scene {
         this.overlayObjects.push(titleText);
 
         // Room name and category
-        const infoText = this.add.text(480, 155, `${entry.roomName} | ${entry.category}`, {
+        const infoText = this.add.text(480, infoY, `${entry.roomName} | ${entry.category}`, {
             fontFamily: 'monospace',
             fontSize: '14px',
             color: '#888888',
@@ -257,7 +352,7 @@ export class DeathGalleryScene extends Scene {
         this.overlayObjects.push(infoText);
 
         // Narrator text
-        const narratorText = this.add.text(480, 300, entry.narratorText, {
+        const narratorText = this.add.text(480, textY, entry.narratorText, {
             fontFamily: 'monospace',
             fontSize: '14px',
             color: '#c8c8d4',
@@ -268,7 +363,7 @@ export class DeathGalleryScene extends Scene {
         this.overlayObjects.push(narratorText);
 
         // Close button
-        const closeText = this.add.text(480, 460, '[ Close ]', {
+        const closeText = this.add.text(480, 480, '[ Close ]', {
             fontFamily: 'monospace',
             fontSize: '18px',
             color: '#ffcc00',

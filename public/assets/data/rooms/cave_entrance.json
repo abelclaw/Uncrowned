@@ -92,8 +92,9 @@
                 "y": 460
             },
             "transition": "fade",
-            "direction": "south",
+            "direction": "north",
             "label": "depths",
+            "aliases": ["in", "inside", "enter", "cave", "door", "deeper", "forward"],
             "conditions": [
                 {
                     "type": "flag-set",

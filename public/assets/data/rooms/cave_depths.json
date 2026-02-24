@@ -52,8 +52,9 @@
                 "y": 460
             },
             "transition": "fade",
-            "direction": "south",
-            "label": "entrance"
+            "direction": "north",
+            "label": "entrance",
+            "aliases": ["out", "outside", "exit", "leave", "back", "up", "surface"]
         },
         {
             "id": "to-pool",
@@ -69,7 +70,7 @@
                 "y": 440
             },
             "transition": "fade",
-            "direction": "north",
+            "direction": "east",
             "label": "pool",
             "conditions": [
                 {
@@ -342,7 +343,7 @@
             "actions": [
                 {
                     "type": "narrator-say",
-                    "text": "You raise the makeshift torch. Blue bioluminescent light floods the chamber, revealing ancient stone walls covered in faded carvings and a passage leading deeper north. The darkness retreats grudgingly, like a cat being moved off a chair."
+                    "text": "You raise the makeshift torch. Blue bioluminescent light floods the chamber, revealing ancient stone walls covered in faded carvings and a passage leading deeper to the east. The darkness retreats grudgingly, like a cat being moved off a chair."
                 }
             ]
         }
@@ -352,7 +353,7 @@
             "id": "go-dark",
             "trigger": {
                 "verb": "go",
-                "subject": "north"
+                "subject": "east"
             },
             "conditions": [
                 {
@@ -394,7 +395,7 @@
         }
     },
     "dynamicDescriptions": {
-        "has-torch": "The cave depths are illuminated by your makeshift torch's eerie blue glow. Ancient carvings line the walls -- spirals, symbols, and what appears to be a crude drawing of someone falling into a pit. Prophetic, perhaps. A passage leads north toward the sound of water."
+        "has-torch": "The cave depths are illuminated by your makeshift torch's eerie blue glow. Ancient carvings line the walls -- spirals, symbols, and what appears to be a crude drawing of someone falling into a pit. Prophetic, perhaps. A passage leads east toward the sound of water."
     },
     "audio": {
         "music": "music-cave",

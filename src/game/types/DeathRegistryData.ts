@@ -17,6 +17,8 @@ export interface DeathRegistryEntry {
     category: string;
     /** Cryptic teaser hint for undiscovered deaths in the gallery */
     galleryHint: string;
+    /** Image ID for the death illustration (maps to death-images/{imageId}.png) */
+    imageId?: string;
 }
 
 /**

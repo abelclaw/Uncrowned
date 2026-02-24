@@ -633,19 +633,40 @@ export class RoomScene extends Phaser.Scene {
             const isNewDeath = meta.recordDeath(deathId);
             const discoveredCount = meta.getDeathsDiscovered().length;
 
-            // Pause this scene and launch DeathScene as overlay
-            this.scene.pause();
-            this.textInputBar.hide();
-            this.inventoryPanel.hide();
-            this.scoreDisplay.hide();
-            this.scene.launch('DeathScene', {
-                title: deathData.title,
-                narratorText: deathData.narratorText,
-                deathId: deathId,
-                isNewDeath: isNewDeath,
-                discoveredCount: discoveredCount,
-                totalDeaths: 43,
-            } as DeathSceneData);
+            // Look up imageId from death registry
+            const deathRegistry = this.cache.json.get('death-registry') as
+                { deaths: Array<{ id: string; imageId?: string }> } | undefined;
+            const registryEntry = deathRegistry?.deaths.find(d => d.id === deathId);
+            const imageId = registryEntry?.imageId;
+
+            // Pre-load death image if needed, then launch death scene
+            const launchDeath = () => {
+                this.scene.pause();
+                this.textInputBar.hide();
+                this.inventoryPanel.hide();
+                this.scoreDisplay.hide();
+                this.scene.launch('DeathScene', {
+                    title: deathData.title,
+                    narratorText: deathData.narratorText,
+                    deathId: deathId,
+                    isNewDeath: isNewDeath,
+                    discoveredCount: discoveredCount,
+                    totalDeaths: 43,
+                    imageId: imageId,
+                } as DeathSceneData);
+            };
+
+            if (imageId) {
+                const textureKey = `death-img-${imageId}`;
+                if (!this.textures.exists(textureKey)) {
+                    this.load.image(textureKey, `assets/death-images/${imageId}.png`);
+                    this.load.once(Phaser.Loader.Events.COMPLETE, launchDeath);
+                    this.load.once(Phaser.Loader.Events.FILE_LOAD_ERROR, launchDeath);
+                    this.load.start();
+                    return;
+                }
+            }
+            launchDeath();
         };
         EventBus.on('trigger-death', this.triggerDeathHandler);
 

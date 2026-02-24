@@ -251,6 +251,13 @@ export class NounResolver {
             }
         }
 
+        // 8b. Exit match by alias (e.g. "in", "out", "enter", "back")
+        for (const ex of exits) {
+            if (ex.aliases?.some(a => a.toLowerCase() === normalized)) {
+                return { type: 'exit', id: ex.id, confidence: 'exact' };
+            }
+        }
+
         // 8.5. Fuzzy match via fuse.js (catches typos)
         const fuzzyResult = this.fuzzyMatch(normalized, hotspots, inventoryItems);
         if (fuzzyResult) {

@@ -477,7 +477,34 @@ export class CommandDispatcher {
             };
         }
 
-        // Subject looks like a direction but no matching exit
+        // Subject isn't an exit — check if it matches a hotspot or room item.
+        // Physical movement verbs (climb, jump, etc.) use the hotspot's "use" response
+        // since the player is trying to physically interact with the thing.
+        const raw = action.rawInput.trim().toLowerCase();
+        const isPhysicalVerb = /^(?:climb|jump|leap|hop|cross|crawl|swim|squeeze)/.test(raw);
+
+        const roomItem = this.findRoomItem(action.subject, roomData);
+        if (roomItem && !this.state.isRoomItemRemoved(roomData.id, roomItem.id)) {
+            if (isPhysicalVerb && roomItem.responses?.use) {
+                return { response: roomItem.responses.use, handled: true };
+            }
+            return {
+                response: `The ${roomItem.name} isn't somewhere you can go.`,
+                handled: true,
+            };
+        }
+
+        const goHotspot = this.findHotspot(action.subject, roomData);
+        if (goHotspot) {
+            if (isPhysicalVerb && goHotspot.responses?.use) {
+                return { response: goHotspot.responses.use, handled: true };
+            }
+            return {
+                response: `The ${goHotspot.name} isn't somewhere you can go.`,
+                handled: true,
+            };
+        }
+
         return {
             response: "You can't go that way.",
             handled: false,
@@ -954,6 +981,12 @@ export class CommandDispatcher {
         );
         if (byLabel) return byLabel;
 
+        // Alias match (e.g. "in", "out", "enter", "back")
+        const byAlias = roomData.exits.find(
+            e => e.aliases?.some(a => a.toLowerCase() === lower) && this.exitConditionsMet(e)
+        );
+        if (byAlias) return byAlias;
+
         // Target room partial match (skip exits whose conditions aren't met)
         const byRoom = roomData.exits.find(
             e => e.targetRoom.toLowerCase().includes(lower) && this.exitConditionsMet(e)
@@ -964,7 +997,7 @@ export class CommandDispatcher {
     }
 
     /**
-     * Find an exit that matches by ID/direction/label/room but fails conditions.
+     * Find an exit that matches by ID/direction/label/room/alias but fails conditions.
      */
     private findBlockedExit(subject: string, roomData: RoomData): ExitData | undefined {
         const lower = subject.toLowerCase();
@@ -972,6 +1005,7 @@ export class CommandDispatcher {
             const matches = (e.id === lower || e.id === subject)
                 || (e.direction && e.direction.toLowerCase() === lower)
                 || (e.label && e.label.toLowerCase() === lower)
+                || (e.aliases?.some(a => a.toLowerCase() === lower))
                 || e.targetRoom.toLowerCase().includes(lower);
             return matches && !this.exitConditionsMet(e);
         });
