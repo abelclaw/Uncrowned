@@ -85,14 +85,14 @@
             "id": "stone-toad",
             "name": "Stone Toad",
             "zone": {
-                "x": 750,
-                "y": 350,
-                "width": 100,
-                "height": 80
+                "x": 706,
+                "y": 329,
+                "width": 124,
+                "height": 99
             },
             "interactionPoint": {
-                "x": 700,
-                "y": 420
+                "x": 644,
+                "y": 416
             },
             "aliases": ["toad", "stone toad", "frog", "monster", "creature", "beast", "giant toad"],
             "spriteId": "stone-toad",
@@ -261,14 +261,14 @@
             "id": "notice-board-posting",
             "name": "Town Notice",
             "zone": {
-                "x": 105,
-                "y": 290,
+                "x": 155,
+                "y": 238,
                 "width": 40,
                 "height": 30
             },
             "interactionPoint": {
-                "x": 130,
-                "y": 420
+                "x": 180,
+                "y": 368
             },
             "responses": {
                 "look": "An official notice declaring the kingdom 'temporarily inconvenienced' by a petrification curse. It bears the royal seal -- a disgruntled badger wearing a crown. The bureaucratic understatement is, frankly, impressive.",
@@ -284,14 +284,14 @@
             "id": "bridge-toll-coin",
             "name": "Bridge Toll Coin",
             "zone": {
-                "x": 430,
-                "y": 390,
+                "x": 538,
+                "y": 382,
                 "width": 20,
                 "height": 20
             },
             "interactionPoint": {
-                "x": 450,
-                "y": 420
+                "x": 558,
+                "y": 412
             },
             "aliases": ["coin", "toll coin", "old coin", "toll"],
             "responses": {
@@ -525,16 +525,16 @@
         {
             "id": "stone_merchant",
             "position": {
-                "x": 250,
-                "y": 400
+                "x": 640,
+                "y": 349
             },
             "interactionPoint": {
-                "x": 280,
-                "y": 430
+                "x": 670,
+                "y": 329
             },
             "zone": {
-                "x": 218,
-                "y": 344,
+                "x": 608,
+                "y": 243,
                 "width": 64,
                 "height": 106
             },
@@ -592,7 +592,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 480,
-        "y": 460
+        "x": 258,
+        "y": 389
     }
 }

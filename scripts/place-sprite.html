@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Sprite Placer</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #1a1a2e; color: #eee; font-family: 'Courier New', monospace; display: flex; flex-direction: column; align-items: center; padding: 10px; }
+  h2 { margin: 8px 0 4px; color: #e0e0ff; }
+  #info { margin: 4px 0 8px; font-size: 13px; color: #888; }
+  #toolbar { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; flex-wrap: wrap; justify-content: center; }
+  #toolbar label { font-size: 13px; color: #aaa; }
+  #toolbar select, #toolbar input { background: #2a2a3e; color: #eee; border: 1px solid #555; padding: 4px 8px; border-radius: 3px; font-family: inherit; font-size: 13px; }
+  #toolbar select { cursor: pointer; }
+  #coords { font-size: 16px; color: #0f0; margin: 4px 0 8px; min-height: 20px; }
+  #canvas-wrap { position: relative; cursor: crosshair; border: 2px solid #444; border-radius: 4px; overflow: auto; max-width: 100vw; }
+  canvas { display: block; }
+  .btn { margin: 4px; padding: 8px 18px; font-size: 14px; cursor: pointer; border: 1px solid #666; border-radius: 4px; font-family: inherit; }
+  .btn-primary { background: #2a6e2a; color: #fff; }
+  .btn-primary:hover { background: #3a8e3a; }
+  .btn-secondary { background: #444; color: #fff; }
+  .btn-secondary:hover { background: #555; }
+  #buttons { margin: 8px 0; }
+  #output { margin: 8px; padding: 10px; background: #1a1a28; border: 1px solid #444; border-radius: 4px; font-size: 12px; white-space: pre; max-width: 700px; overflow-x: auto; display: none; color: #cfc; }
+  .sprite-list { display: flex; gap: 4px; flex-wrap: wrap; justify-content: center; margin: 4px 0; }
+  .sprite-chip { padding: 4px 10px; font-size: 12px; cursor: pointer; border-radius: 12px; border: 1px solid #555; background: #2a2a3e; color: #ccc; transition: all 0.15s; }
+  .sprite-chip:hover { background: #3a3a5e; }
+  .sprite-chip.active { background: #2a5a8a; color: #fff; border-color: #4a9adf; }
+  .sprite-chip.npc { border-left: 3px solid #e8a840; }
+  .sprite-chip.hotspot { border-left: 3px solid #40e870; }
+  .sprite-chip.item { border-left: 3px solid #e840e8; }
+  .sprite-chip.player { border-left: 3px solid #40c0ff; }
+  #scale-display { color: #ff0; min-width: 40px; display: inline-block; }
+</style>
+</head>
+<body>
+<h2>Sprite Placer</h2>
+<div id="info">Select a sprite, then drag to reposition. Scroll wheel or slider to resize. Save when done.</div>
+
+<div id="toolbar">
+  <label>Room:</label>
+  <select id="room-select"></select>
+</div>
+
+<div class="sprite-list" id="sprite-list"></div>
+
+<div id="toolbar">
+  <label>Zone Height:</label>
+  <input type="range" id="scale-slider" min="20" max="300" value="80" style="width:180px">
+  <span id="scale-display">80</span>
+</div>
+
+<div id="coords">Select a sprite to begin</div>
+
+<div id="canvas-wrap">
+  <canvas id="c"></canvas>
+</div>
+
+<div id="buttons">
+  <button class="btn btn-primary" id="btn-save">Save All Positions</button>
+  <button class="btn btn-secondary" id="btn-reset">Reset Selected</button>
+</div>
+<pre id="output"></pre>
+
+<script>
+// --- Room data loading ---
+const ROOMS_BASE = '../public/assets/data/rooms/';
+const BG_BASE = '../public/assets/backgrounds/rooms/';
+const NPC_SPRITE_BASE = '../public/assets/sprites/npcs/';
+const HOTSPOT_SPRITE_BASE = '../public/assets/sprites/hotspots/';
+const ITEM_SPRITE_BASE = '../public/assets/sprites/items/';
+const PLAYER_SPRITE = '../public/assets/sprites/player-static.png';
+
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+
+let roomData = null;
+let bgImg = null;
+let sprites = []; // { id, type, label, img, zone: {x,y,w,h}, origZone, interactionPoint }
+let selectedIdx = -1;
+let dragging = false;
+let dragOffX = 0, dragOffY = 0;
+let resizing = false;
+let resizeEdge = null; // 'br' for bottom-right corner
+
+// Available rooms
+const ROOM_FILES = [];
+
+async function loadRoomList() {
+  // Try to fetch directory listing, fall back to known rooms
+  const select = document.getElementById('room-select');
+  const defaultRoom = new URLSearchParams(location.search).get('room') || 'village_square';
+
+  // We'll load just the requested room, but allow switching
+  const knownRooms = [
+    'village_path', 'village_square', 'old_watchtower', 'cave_entrance',
+    'cavern_entrance_hall', 'underground_pool', 'forest_bridge',
+    'castle_courtyard', 'castle_courtyard_act3', 'throne_room',
+    'throne_room_act3', 'royal_kitchen', 'forge_chamber', 'mirror_hall',
+    'wizard_tower', 'waiting_room', 'clerk_office', 'royal_archives',
+    'dungeon_corridor', 'treasury', 'clock_tower', 'waterfall_cave',
+    'castle_balcony', 'castle_rooftop'
+  ];
+
+  knownRooms.forEach(r => {
+    const opt = document.createElement('option');
+    opt.value = r;
+    opt.textContent = r.replace(/_/g, ' ');
+    if (r === defaultRoom) opt.selected = true;
+    select.appendChild(opt);
+  });
+
+  select.addEventListener('change', () => loadRoom(select.value));
+  await loadRoom(defaultRoom);
+}
+
+async function loadRoom(roomId) {
+  try {
+    const resp = await fetch(ROOMS_BASE + roomId + '.json');
+    roomData = await resp.json();
+  } catch (e) {
+    alert('Could not load room: ' + roomId);
+    return;
+  }
+
+  // Load background
+  bgImg = await loadImage(BG_BASE + roomId + '.png');
+  canvas.width = bgImg.naturalWidth;
+  canvas.height = bgImg.naturalHeight;
+
+  // Build sprite list
+  sprites = [];
+
+  // NPCs
+  if (roomData.npcs) {
+    for (const npc of roomData.npcs) {
+      const img = await loadImage(NPC_SPRITE_BASE + npc.id + '.png').catch(() => null);
+      if (img) {
+        sprites.push({
+          id: npc.id,
+          type: 'npc',
+          label: npc.id.replace(/_/g, ' '),
+          img,
+          zone: { x: npc.zone.x, y: npc.zone.y, w: npc.zone.width, h: npc.zone.height },
+          origZone: { x: npc.zone.x, y: npc.zone.y, w: npc.zone.width, h: npc.zone.height },
+          interactionPoint: npc.interactionPoint ? { ...npc.interactionPoint } : null,
+          origInteractionPoint: npc.interactionPoint ? { ...npc.interactionPoint } : null
+        });
+      }
+    }
+  }
+
+  // Hotspots with sprites
+  if (roomData.hotspots) {
+    for (const hs of roomData.hotspots) {
+      if (!hs.spriteId) continue;
+      const img = await loadImage(HOTSPOT_SPRITE_BASE + hs.spriteId + '.png').catch(() => null);
+      if (img) {
+        sprites.push({
+          id: hs.id,
+          spriteId: hs.spriteId,
+          type: 'hotspot',
+          label: hs.name || hs.id.replace(/-/g, ' '),
+          img,
+          zone: { x: hs.zone.x, y: hs.zone.y, w: hs.zone.width, h: hs.zone.height },
+          origZone: { x: hs.zone.x, y: hs.zone.y, w: hs.zone.width, h: hs.zone.height },
+          interactionPoint: hs.interactionPoint ? { ...hs.interactionPoint } : null,
+          origInteractionPoint: hs.interactionPoint ? { ...hs.interactionPoint } : null
+        });
+      }
+    }
+  }
+
+  // Items (center-anchored, stretch to fit zone)
+  if (roomData.items) {
+    for (const item of roomData.items) {
+      const img = await loadImage(ITEM_SPRITE_BASE + item.id + '.png').catch(() => null);
+      if (img) {
+        sprites.push({
+          id: item.id,
+          type: 'item',
+          label: item.name || item.id.replace(/-/g, ' '),
+          img,
+          zone: { x: item.zone.x, y: item.zone.y, w: item.zone.width, h: item.zone.height },
+          origZone: { x: item.zone.x, y: item.zone.y, w: item.zone.width, h: item.zone.height },
+          interactionPoint: item.interactionPoint ? { ...item.interactionPoint } : null,
+          origInteractionPoint: item.interactionPoint ? { ...item.interactionPoint } : null
+        });
+      }
+    }
+  }
+
+  // Player/hero (bottom-center anchor, at playerSpawn)
+  if (roomData.playerSpawn) {
+    const img = await loadImage(PLAYER_SPRITE).catch(() => null);
+    if (img) {
+      // Default zone: use image natural size, bottom-center at spawn point
+      const h = 64;
+      const scale = h / img.naturalHeight;
+      const w = Math.round(img.naturalWidth * scale);
+      const spawn = roomData.playerSpawn;
+      sprites.push({
+        id: 'player',
+        type: 'player',
+        label: 'Hero',
+        img,
+        zone: { x: Math.round(spawn.x - w / 2), y: Math.round(spawn.y - h), w, h },
+        origZone: { x: Math.round(spawn.x - w / 2), y: Math.round(spawn.y - h), w, h },
+        interactionPoint: null,
+        origInteractionPoint: null,
+        spawnPoint: { x: spawn.x, y: spawn.y }
+      });
+    }
+  }
+
+  selectedIdx = sprites.length > 0 ? 0 : -1;
+  buildSpriteChips();
+  syncSlider();
+  render();
+}
+
+function loadImage(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
+  });
+}
+
+function buildSpriteChips() {
+  const container = document.getElementById('sprite-list');
+  container.innerHTML = '';
+  sprites.forEach((s, i) => {
+    const chip = document.createElement('div');
+    chip.className = `sprite-chip ${s.type}` + (i === selectedIdx ? ' active' : '');
+    chip.textContent = s.label;
+    chip.addEventListener('click', () => {
+      selectedIdx = i;
+      buildSpriteChips();
+      syncSlider();
+      render();
+    });
+    container.appendChild(chip);
+  });
+}
+
+function syncSlider() {
+  const slider = document.getElementById('scale-slider');
+  const display = document.getElementById('scale-display');
+  if (selectedIdx >= 0) {
+    slider.value = sprites[selectedIdx].zone.h;
+    display.textContent = sprites[selectedIdx].zone.h;
+  }
+}
+
+// --- Rendering ---
+function render() {
+  if (!bgImg) return;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(bgImg, 0, 0);
+
+  // Draw all sprites
+  sprites.forEach((s, i) => {
+    let drawX, drawY, drawW, drawH;
+    if (s.type === 'item') {
+      // Items: center anchor, stretch to fit zone (matches RoomScene setDisplaySize)
+      drawW = s.zone.w;
+      drawH = s.zone.h;
+      drawX = s.zone.x;
+      drawY = s.zone.y;
+    } else {
+      // NPCs & hotspots: bottom-center anchor, scale to zone height
+      const scale = s.zone.h / s.img.naturalHeight;
+      drawW = s.img.naturalWidth * scale;
+      drawH = s.zone.h;
+      drawX = s.zone.x + s.zone.w / 2 - drawW / 2;
+      drawY = s.zone.y + s.zone.h - drawH;
+    }
+
+    ctx.globalAlpha = (i === selectedIdx) ? 1.0 : 0.6;
+    ctx.drawImage(s.img, drawX, drawY, drawW, drawH);
+    ctx.globalAlpha = 1.0;
+
+    // Zone rectangle
+    const isSelected = (i === selectedIdx);
+    ctx.strokeStyle = isSelected ? 'rgba(0, 255, 100, 0.9)' : 'rgba(255, 255, 0, 0.4)';
+    ctx.lineWidth = isSelected ? 2 : 1;
+    ctx.setLineDash(isSelected ? [6, 3] : [3, 3]);
+    ctx.strokeRect(s.zone.x, s.zone.y, s.zone.w, s.zone.h);
+    ctx.setLineDash([]);
+
+    // Label
+    ctx.fillStyle = isSelected ? '#0f0' : '#aa0';
+    ctx.font = '11px monospace';
+    ctx.fillText(s.label, s.zone.x, s.zone.y - 4);
+
+    // Resize handle for selected
+    if (isSelected) {
+      const hx = s.zone.x + s.zone.w - 6;
+      const hy = s.zone.y + s.zone.h - 6;
+      ctx.fillStyle = 'rgba(0, 200, 255, 0.8)';
+      ctx.fillRect(hx, hy, 12, 12);
+      ctx.strokeStyle = '#fff';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(hx, hy, 12, 12);
+
+      // Interaction point
+      if (s.interactionPoint) {
+        ctx.fillStyle = 'rgba(255, 100, 0, 0.7)';
+        ctx.beginPath();
+        ctx.arc(s.interactionPoint.x, s.interactionPoint.y, 5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+
+      // Spawn point marker for player
+      if (s.spawnPoint) {
+        ctx.fillStyle = 'rgba(64, 192, 255, 0.8)';
+        ctx.beginPath();
+        ctx.arc(s.spawnPoint.x, s.spawnPoint.y, 5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.fillStyle = '#40c0ff';
+        ctx.font = '10px monospace';
+        ctx.fillText('spawn', s.spawnPoint.x + 8, s.spawnPoint.y + 3);
+      }
+    }
+  });
+
+  updateCoords();
+}
+
+function updateCoords(mx, my) {
+  const el = document.getElementById('coords');
+  if (selectedIdx < 0) {
+    el.textContent = 'No sprites in this room';
+    return;
+  }
+  const s = sprites[selectedIdx];
+  let text = `[${s.label}]  zone: {x:${Math.round(s.zone.x)}, y:${Math.round(s.zone.y)}, w:${Math.round(s.zone.w)}, h:${Math.round(s.zone.h)}}`;
+  if (s.interactionPoint) {
+    text += `  interact: {x:${Math.round(s.interactionPoint.x)}, y:${Math.round(s.interactionPoint.y)}}`;
+  }
+  if (s.spawnPoint) {
+    text += `  spawn: {x:${Math.round(s.spawnPoint.x)}, y:${Math.round(s.spawnPoint.y)}}`;
+  }
+  if (mx !== undefined) text += `  |  mouse: ${Math.round(mx)}, ${Math.round(my)}`;
+  el.textContent = text;
+}
+
+// --- Interaction ---
+function getMousePos(e) {
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  const scaleY = canvas.height / rect.height;
+  return {
+    x: (e.clientX - rect.left) * scaleX,
+    y: (e.clientY - rect.top) * scaleY
+  };
+}
+
+function hitTest(pos) {
+  // Check selected first (priority), then others
+  const order = [];
+  if (selectedIdx >= 0) order.push(selectedIdx);
+  for (let i = sprites.length - 1; i >= 0; i--) {
+    if (i !== selectedIdx) order.push(i);
+  }
+  for (const i of order) {
+    const s = sprites[i];
+    if (pos.x >= s.zone.x && pos.x <= s.zone.x + s.zone.w &&
+        pos.y >= s.zone.y && pos.y <= s.zone.y + s.zone.h) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+function isOnResizeHandle(pos) {
+  if (selectedIdx < 0) return false;
+  const s = sprites[selectedIdx];
+  const hx = s.zone.x + s.zone.w - 6;
+  const hy = s.zone.y + s.zone.h - 6;
+  return pos.x >= hx && pos.x <= hx + 16 && pos.y >= hy && pos.y <= hy + 16;
+}
+
+canvas.addEventListener('mousedown', (e) => {
+  const pos = getMousePos(e);
+
+  // Check resize handle first
+  if (isOnResizeHandle(pos)) {
+    resizing = true;
+    return;
+  }
+
+  // Check hit
+  const hit = hitTest(pos);
+  if (hit >= 0) {
+    if (hit !== selectedIdx) {
+      selectedIdx = hit;
+      buildSpriteChips();
+      syncSlider();
+    }
+    dragging = true;
+    dragOffX = pos.x - sprites[hit].zone.x;
+    dragOffY = pos.y - sprites[hit].zone.y;
+    render();
+  }
+});
+
+canvas.addEventListener('mousemove', (e) => {
+  const pos = getMousePos(e);
+
+  if (resizing && selectedIdx >= 0) {
+    const s = sprites[selectedIdx];
+    const newH = Math.max(20, Math.round(pos.y - s.zone.y));
+    const aspect = (s.type === 'item') ? (s.origZone.w / s.origZone.h) : (s.img.naturalWidth / s.img.naturalHeight);
+    s.zone.h = newH;
+    s.zone.w = Math.round(newH * aspect);
+    // Update interaction point proportionally
+    if (s.interactionPoint && s.origInteractionPoint && s.origZone) {
+      const dx = s.origInteractionPoint.x - (s.origZone.x + s.origZone.w / 2);
+      const dy = s.origInteractionPoint.y - (s.origZone.y + s.origZone.h);
+      const ratio = s.zone.h / s.origZone.h;
+      s.interactionPoint.x = Math.round(s.zone.x + s.zone.w / 2 + dx * ratio);
+      s.interactionPoint.y = Math.round(s.zone.y + s.zone.h + dy * ratio);
+    }
+    document.getElementById('scale-slider').value = newH;
+    document.getElementById('scale-display').textContent = newH;
+    render();
+    return;
+  }
+
+  if (dragging && selectedIdx >= 0) {
+    const s = sprites[selectedIdx];
+    const oldX = s.zone.x, oldY = s.zone.y;
+    s.zone.x = Math.round(pos.x - dragOffX);
+    s.zone.y = Math.round(pos.y - dragOffY);
+    const dx = s.zone.x - oldX, dy = s.zone.y - oldY;
+    // Move interaction point with zone
+    if (s.interactionPoint) {
+      s.interactionPoint.x += dx;
+      s.interactionPoint.y += dy;
+    }
+    // Move spawn point with zone
+    if (s.spawnPoint) {
+      s.spawnPoint.x += dx;
+      s.spawnPoint.y += dy;
+    }
+    render();
+  }
+
+  // Update cursor
+  if (isOnResizeHandle(pos)) {
+    canvas.style.cursor = 'nwse-resize';
+  } else if (hitTest(pos) >= 0) {
+    canvas.style.cursor = 'grab';
+  } else {
+    canvas.style.cursor = 'crosshair';
+  }
+
+  updateCoords(pos.x, pos.y);
+});
+
+canvas.addEventListener('mouseup', () => { dragging = false; resizing = false; });
+canvas.addEventListener('mouseleave', () => { dragging = false; resizing = false; });
+
+// Mouse wheel to resize selected
+canvas.addEventListener('wheel', (e) => {
+  if (selectedIdx < 0) return;
+  e.preventDefault();
+  const s = sprites[selectedIdx];
+  const delta = e.deltaY > 0 ? -4 : 4;
+  const newH = Math.max(20, s.zone.h + delta);
+  const aspect = (s.type === 'item') ? (s.origZone.w / s.origZone.h) : (s.img.naturalWidth / s.img.naturalHeight);
+  const oldCx = s.zone.x + s.zone.w / 2;
+  const oldCy = s.zone.y + s.zone.h / 2;
+  const oldBottom = s.zone.y + s.zone.h;
+  s.zone.h = newH;
+  s.zone.w = Math.round(newH * aspect);
+  if (s.type === 'item') {
+    // Items: keep center anchored
+    s.zone.x = Math.round(oldCx - s.zone.w / 2);
+    s.zone.y = Math.round(oldCy - s.zone.h / 2);
+  } else {
+    // NPCs/hotspots: keep bottom-center anchored
+    s.zone.x = Math.round(oldCx - s.zone.w / 2);
+    s.zone.y = Math.round(oldBottom - s.zone.h);
+  }
+  // Update interaction point
+  if (s.interactionPoint && s.origInteractionPoint && s.origZone) {
+    const dx = s.origInteractionPoint.x - (s.origZone.x + s.origZone.w / 2);
+    const dy = s.origInteractionPoint.y - (s.origZone.y + s.origZone.h);
+    const ratio = s.zone.h / s.origZone.h;
+    s.interactionPoint.x = Math.round(s.zone.x + s.zone.w / 2 + dx * ratio);
+    s.interactionPoint.y = Math.round(s.zone.y + s.zone.h + dy * ratio);
+  }
+  document.getElementById('scale-slider').value = newH;
+  document.getElementById('scale-display').textContent = newH;
+  render();
+}, { passive: false });
+
+// Slider
+document.getElementById('scale-slider').addEventListener('input', (e) => {
+  if (selectedIdx < 0) return;
+  const s = sprites[selectedIdx];
+  const newH = parseInt(e.target.value);
+  const aspect = (s.type === 'item') ? (s.origZone.w / s.origZone.h) : (s.img.naturalWidth / s.img.naturalHeight);
+  const oldCx = s.zone.x + s.zone.w / 2;
+  const oldCy = s.zone.y + s.zone.h / 2;
+  const oldBottom = s.zone.y + s.zone.h;
+  s.zone.h = newH;
+  s.zone.w = Math.round(newH * aspect);
+  if (s.type === 'item') {
+    s.zone.x = Math.round(oldCx - s.zone.w / 2);
+    s.zone.y = Math.round(oldCy - s.zone.h / 2);
+  } else {
+    s.zone.x = Math.round(oldCx - s.zone.w / 2);
+    s.zone.y = Math.round(oldBottom - s.zone.h);
+  }
+  if (s.interactionPoint && s.origInteractionPoint && s.origZone) {
+    const dx = s.origInteractionPoint.x - (s.origZone.x + s.origZone.w / 2);
+    const dy = s.origInteractionPoint.y - (s.origZone.y + s.origZone.h);
+    const ratio = s.zone.h / s.origZone.h;
+    s.interactionPoint.x = Math.round(s.zone.x + s.zone.w / 2 + dx * ratio);
+    s.interactionPoint.y = Math.round(s.zone.y + s.zone.h + dy * ratio);
+  }
+  document.getElementById('scale-display').textContent = newH;
+  render();
+});
+
+// Reset selected
+document.getElementById('btn-reset').addEventListener('click', () => {
+  if (selectedIdx < 0) return;
+  const s = sprites[selectedIdx];
+  s.zone = { ...s.origZone };
+  if (s.origInteractionPoint) s.interactionPoint = { ...s.origInteractionPoint };
+  syncSlider();
+  render();
+});
+
+// Save all
+document.getElementById('btn-save').addEventListener('click', () => {
+  const data = {
+    room: roomData.id,
+    sprites: sprites.map(s => ({
+      id: s.id,
+      type: s.type,
+      spriteId: s.spriteId || undefined,
+      zone: {
+        x: Math.round(s.zone.x),
+        y: Math.round(s.zone.y),
+        width: Math.round(s.zone.w),
+        height: Math.round(s.zone.h)
+      },
+      interactionPoint: s.interactionPoint ? {
+        x: Math.round(s.interactionPoint.x),
+        y: Math.round(s.interactionPoint.y)
+      } : undefined,
+      spawnPoint: s.spawnPoint ? {
+        x: Math.round(s.spawnPoint.x),
+        y: Math.round(s.spawnPoint.y)
+      } : undefined
+    }))
+  };
+
+  const json = JSON.stringify(data, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `sprite-positions-${roomData.id}.json`;
+  a.click();
+
+  const out = document.getElementById('output');
+  out.style.display = 'block';
+  out.textContent = json;
+});
+
+// --- Init ---
+loadRoomList();
+</script>
+</body>
+</html>
