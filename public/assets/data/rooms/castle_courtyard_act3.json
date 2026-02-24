@@ -162,7 +162,18 @@
         {
             "id": "frozen-guards",
             "name": "Petrified Guards",
-            "aliases": ["guards", "guard", "stone guards", "frozen guards", "statues", "statue", "sentries", "soldiers", "petrified soldiers", "stone men"],
+            "aliases": [
+                "guards",
+                "guard",
+                "stone guards",
+                "frozen guards",
+                "statues",
+                "statue",
+                "sentries",
+                "soldiers",
+                "petrified soldiers",
+                "stone men"
+            ],
             "zone": {
                 "x": 100,
                 "y": 370,
@@ -187,7 +198,17 @@
         {
             "id": "stone-well",
             "name": "Petrified Well",
-            "aliases": ["well", "stone well", "frozen well", "water", "bucket", "fountain", "cistern", "petrified well", "castle well"],
+            "aliases": [
+                "well",
+                "stone well",
+                "frozen well",
+                "water",
+                "bucket",
+                "fountain",
+                "cistern",
+                "petrified well",
+                "castle well"
+            ],
             "zone": {
                 "x": 350,
                 "y": 410,
@@ -212,7 +233,17 @@
         {
             "id": "crumbling-walls",
             "name": "Crumbling Castle Walls",
-            "aliases": ["walls", "wall", "castle walls", "crumbling walls", "cracks", "cracked walls", "stone walls", "ramparts", "fortifications"],
+            "aliases": [
+                "walls",
+                "wall",
+                "castle walls",
+                "crumbling walls",
+                "cracks",
+                "cracked walls",
+                "stone walls",
+                "ramparts",
+                "fortifications"
+            ],
             "zone": {
                 "x": 550,
                 "y": 350,
@@ -237,7 +268,18 @@
         {
             "id": "petrified-hedges",
             "name": "Petrified Hedges",
-            "aliases": ["hedges", "hedge", "bushes", "bush", "stone hedges", "stone bushes", "petrified bushes", "shrubs", "topiary", "foliage"],
+            "aliases": [
+                "hedges",
+                "hedge",
+                "bushes",
+                "bush",
+                "stone hedges",
+                "stone bushes",
+                "petrified bushes",
+                "shrubs",
+                "topiary",
+                "foliage"
+            ],
             "zone": {
                 "x": 50,
                 "y": 250,
@@ -262,7 +304,19 @@
         {
             "id": "captain-aldric",
             "name": "Captain Aldric",
-            "aliases": ["aldric", "captain", "guard", "soldier", "man", "knight", "guard captain", "half-petrified man", "half stone man", "officer", "commander"],
+            "aliases": [
+                "aldric",
+                "captain",
+                "guard",
+                "soldier",
+                "man",
+                "knight",
+                "guard captain",
+                "half-petrified man",
+                "half stone man",
+                "officer",
+                "commander"
+            ],
             "zone": {
                 "x": 650,
                 "y": 300,
@@ -287,7 +341,17 @@
         {
             "id": "guard-swords",
             "name": "Petrified Swords",
-            "aliases": ["swords", "sword", "weapons", "blades", "blade", "stone swords", "petrified swords", "stone blades", "guard swords"],
+            "aliases": [
+                "swords",
+                "sword",
+                "weapons",
+                "blades",
+                "blade",
+                "stone swords",
+                "petrified swords",
+                "stone blades",
+                "guard swords"
+            ],
             "zone": {
                 "x": 200,
                 "y": 370,
@@ -311,7 +375,17 @@
         {
             "id": "courtyard-gate",
             "name": "Castle Gate",
-            "aliases": ["gate", "gates", "portcullis", "entrance", "iron gate", "castle entrance", "door", "doors", "entry"],
+            "aliases": [
+                "gate",
+                "gates",
+                "portcullis",
+                "entrance",
+                "iron gate",
+                "castle entrance",
+                "door",
+                "doors",
+                "entry"
+            ],
             "zone": {
                 "x": 800,
                 "y": 300,
@@ -395,7 +469,7 @@
         {
             "id": "petrified_guard",
             "position": {
-                "x": 626.5,
+                "x": 627,
                 "y": 491
             },
             "interactionPoint": {
@@ -408,7 +482,14 @@
                 "width": 119,
                 "height": 159
             },
-            "aliases": ["guard", "captain", "aldric", "soldier", "man", "knight"]
+            "aliases": [
+                "guard",
+                "captain",
+                "aldric",
+                "soldier",
+                "man",
+                "knight"
+            ]
         }
     ],
     "audio": {

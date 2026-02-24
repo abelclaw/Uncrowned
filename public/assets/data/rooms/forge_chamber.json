@@ -77,7 +77,18 @@
         {
             "id": "ancient-forge",
             "name": "Ancient Forge",
-            "aliases": ["forge", "furnace", "kiln", "smelter", "smithy", "hearth", "dwarven forge", "stone forge", "old forge", "fireplace"],
+            "aliases": [
+                "forge",
+                "furnace",
+                "kiln",
+                "smelter",
+                "smithy",
+                "hearth",
+                "dwarven forge",
+                "stone forge",
+                "old forge",
+                "fireplace"
+            ],
             "zone": {
                 "x": 350,
                 "y": 345,
@@ -102,7 +113,15 @@
         {
             "id": "forge-anvil",
             "name": "Blackened Anvil",
-            "aliases": ["anvil", "iron anvil", "forge anvil", "smithing anvil", "black anvil", "workbench", "metalwork"],
+            "aliases": [
+                "anvil",
+                "iron anvil",
+                "forge anvil",
+                "smithing anvil",
+                "black anvil",
+                "workbench",
+                "metalwork"
+            ],
             "zone": {
                 "x": 550,
                 "y": 380,
@@ -127,7 +146,15 @@
         {
             "id": "bellows",
             "name": "Bellows",
-            "aliases": ["bellows", "pump", "air pump", "blower", "leather bellows", "forge bellows", "air bellows"],
+            "aliases": [
+                "bellows",
+                "pump",
+                "air pump",
+                "blower",
+                "leather bellows",
+                "forge bellows",
+                "air bellows"
+            ],
             "zone": {
                 "x": 200,
                 "y": 250,
@@ -152,7 +179,15 @@
         {
             "id": "forge-chains",
             "name": "Forge Chains",
-            "aliases": ["chains", "chain", "iron chains", "hanging chains", "ceiling chains", "dangling chains", "links"],
+            "aliases": [
+                "chains",
+                "chain",
+                "iron chains",
+                "hanging chains",
+                "ceiling chains",
+                "dangling chains",
+                "links"
+            ],
             "zone": {
                 "x": 400,
                 "y": 0,
@@ -177,7 +212,18 @@
         {
             "id": "smith-tools",
             "name": "Smith Tools",
-            "aliases": ["tools", "hammer", "hammers", "tongs", "implements", "smithing tools", "blacksmith tools", "forge tools", "equipment", "instruments"],
+            "aliases": [
+                "tools",
+                "hammer",
+                "hammers",
+                "tongs",
+                "implements",
+                "smithing tools",
+                "blacksmith tools",
+                "forge tools",
+                "equipment",
+                "instruments"
+            ],
             "zone": {
                 "x": 650,
                 "y": 150,
@@ -202,7 +248,17 @@
         {
             "id": "fire-pit",
             "name": "Fire Pit",
-            "aliases": ["pit", "fire", "firepit", "coals", "embers", "hearth pit", "burn pit", "flame pit", "coal pit"],
+            "aliases": [
+                "pit",
+                "fire",
+                "firepit",
+                "coals",
+                "embers",
+                "hearth pit",
+                "burn pit",
+                "flame pit",
+                "coal pit"
+            ],
             "zone": {
                 "x": 370,
                 "y": 380,
@@ -226,7 +282,16 @@
         {
             "id": "forge-chimney",
             "name": "Chimney",
-            "aliases": ["chimney", "flue", "vent", "shaft", "smokestack", "smoke hole", "chimney shaft", "ventilation"],
+            "aliases": [
+                "chimney",
+                "flue",
+                "vent",
+                "shaft",
+                "smokestack",
+                "smoke hole",
+                "chimney shaft",
+                "ventilation"
+            ],
             "zone": {
                 "x": 390,
                 "y": 50,
@@ -252,16 +317,30 @@
         {
             "id": "broken-seal-stamp",
             "name": "Broken Seal Stamp",
-            "aliases": ["seal", "stamp", "broken seal", "seal stamp", "kingdom seal", "badger seal", "crest", "badge", "sigil", "emblem", "broken stamp", "cracked seal", "seal halves"],
+            "aliases": [
+                "seal",
+                "stamp",
+                "broken seal",
+                "seal stamp",
+                "kingdom seal",
+                "badger seal",
+                "crest",
+                "badge",
+                "sigil",
+                "emblem",
+                "broken stamp",
+                "cracked seal",
+                "seal halves"
+            ],
             "zone": {
-                "x": 700,
-                "y": 395,
+                "x": 606,
+                "y": 272,
                 "width": 30,
                 "height": 25
             },
             "interactionPoint": {
-                "x": 715,
-                "y": 420
+                "x": 621,
+                "y": 297
             },
             "responses": {
                 "look": "An ancient version of the kingdom's administrative seal, cracked in two. The badger crest is recognizable but angrier than the modern version. This is the original Kingdom Seal -- administrative, not royal. It could be repaired if the forge were operational.",
@@ -487,19 +566,27 @@
         {
             "id": "dwarven_spirit",
             "position": {
-                "x": 550,
-                "y": 395
+                "x": 343,
+                "y": 454
             },
             "interactionPoint": {
-                "x": 520,
-                "y": 420
+                "x": 288,
+                "y": 427
             },
             "zone": {
-                "x": 518,
-                "y": 329,
-                "width": 64,
-                "height": 106
+                "x": 270,
+                "y": 261,
+                "width": 145,
+                "height": 193
             },
+            "aliases": [
+                "dwarf",
+                "spirit",
+                "ghost",
+                "smith",
+                "blacksmith",
+                "forgemaster"
+            ],
             "responses": {
                 "look": "A translucent dwarven figure sits cross-legged near the forge, eyes closed in what might be meditation or might be the afterlife equivalent of a nap. His spectral beard is magnificent -- braided with care that death has not diminished.",
                 "talk": "The dwarven spirit opens one eye. 'Forge needs coal. And fire. Light the forge, and I'll show you what real smithing looks like.' The eye closes again. Conversation over.",
@@ -552,7 +639,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 480,
-        "y": 450
+        "x": 656,
+        "y": 392
     }
 }

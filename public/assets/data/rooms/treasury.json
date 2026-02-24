@@ -60,7 +60,20 @@
         {
             "id": "empty-pedestals",
             "name": "Empty Pedestals",
-            "aliases": ["pedestals", "pedestal", "empty pedestal", "stands", "stand", "displays", "display", "plinths", "plinth", "platforms", "plaques", "plaque"],
+            "aliases": [
+                "pedestals",
+                "pedestal",
+                "empty pedestal",
+                "stands",
+                "stand",
+                "displays",
+                "display",
+                "plinths",
+                "plinth",
+                "platforms",
+                "plaques",
+                "plaque"
+            ],
             "zone": {
                 "x": 600,
                 "y": 355,
@@ -85,7 +98,18 @@
         {
             "id": "velvet-cushion",
             "name": "Velvet Display Cushion",
-            "aliases": ["cushion", "velvet", "pillow", "velvet cushion", "velvet pillow", "display cushion", "purple cushion", "display", "purple pillow", "pad"],
+            "aliases": [
+                "cushion",
+                "velvet",
+                "pillow",
+                "velvet cushion",
+                "velvet pillow",
+                "display cushion",
+                "purple cushion",
+                "display",
+                "purple pillow",
+                "pad"
+            ],
             "zone": {
                 "x": 380,
                 "y": 380,
@@ -110,7 +134,16 @@
         {
             "id": "treasury-shelf",
             "name": "Remaining Shelf",
-            "aliases": ["shelf", "shelves", "remaining shelf", "treasury shelf", "bookshelf", "rack", "ledge", "inventory"],
+            "aliases": [
+                "shelf",
+                "shelves",
+                "remaining shelf",
+                "treasury shelf",
+                "bookshelf",
+                "rack",
+                "ledge",
+                "inventory"
+            ],
             "zone": {
                 "x": 150,
                 "y": 370,
@@ -135,7 +168,20 @@
         {
             "id": "golden-urns",
             "name": "Golden Urns",
-            "aliases": ["urns", "urn", "golden urn", "gold urns", "gold urn", "vases", "vase", "pots", "pot", "jars", "jar", "containers"],
+            "aliases": [
+                "urns",
+                "urn",
+                "golden urn",
+                "gold urns",
+                "gold urn",
+                "vases",
+                "vase",
+                "pots",
+                "pot",
+                "jars",
+                "jar",
+                "containers"
+            ],
             "zone": {
                 "x": 100,
                 "y": 100,
@@ -160,7 +206,21 @@
         {
             "id": "treasury-torches",
             "name": "Treasury Torches",
-            "aliases": ["torches", "torch", "fire", "flames", "flame", "light", "lights", "sconces", "sconce", "bracket", "brackets", "wall torch", "wall torches"],
+            "aliases": [
+                "torches",
+                "torch",
+                "fire",
+                "flames",
+                "flame",
+                "light",
+                "lights",
+                "sconces",
+                "sconce",
+                "bracket",
+                "brackets",
+                "wall torch",
+                "wall torches"
+            ],
             "zone": {
                 "x": 50,
                 "y": 150,
@@ -185,7 +245,19 @@
         {
             "id": "treasury-cobwebs",
             "name": "Cobwebs",
-            "aliases": ["cobweb", "webs", "web", "spider webs", "spider web", "spiderwebs", "spiderweb", "spiders", "spider", "silk", "webbing"],
+            "aliases": [
+                "cobweb",
+                "webs",
+                "web",
+                "spider webs",
+                "spider web",
+                "spiderwebs",
+                "spiderweb",
+                "spiders",
+                "spider",
+                "silk",
+                "webbing"
+            ],
             "zone": {
                 "x": 100,
                 "y": 200,
@@ -211,16 +283,29 @@
         {
             "id": "kingdom-seal",
             "name": "Kingdom Administrative Seal",
-            "aliases": ["seal", "kingdom seal", "administrative seal", "royal seal", "stamp", "official seal", "crest", "coat of arms", "sigil", "emblem", "badge", "insignia"],
+            "aliases": [
+                "seal",
+                "kingdom seal",
+                "administrative seal",
+                "royal seal",
+                "stamp",
+                "official seal",
+                "crest",
+                "coat of arms",
+                "sigil",
+                "emblem",
+                "badge",
+                "insignia"
+            ],
             "zone": {
-                "x": 400,
-                "y": 390,
+                "x": 403,
+                "y": 332,
                 "width": 40,
                 "height": 20
             },
             "interactionPoint": {
-                "x": 420,
-                "y": 420
+                "x": 423,
+                "y": 362
             },
             "responses": {
                 "look": "The Kingdom Administrative Seal sits on its velvet cushion, heavy and ornate. Unlike the Royal Seal (which bears the disgruntled badger), this seal shows the kingdom's full coat of arms: a badger arguing with a filing cabinet, flanked by two quill pens. It is used for official governmental closures -- ending treaties, finalizing laws, and apparently, breaking curses. Bureaucracy demands precision.",
@@ -235,16 +320,27 @@
         {
             "id": "clock-oil",
             "name": "Clock Oil",
-            "aliases": ["oil", "vial", "lubricant", "maintenance oil", "clock tower oil", "bottle", "grease", "lube", "mechanical oil", "vial of oil"],
+            "aliases": [
+                "oil",
+                "vial",
+                "lubricant",
+                "maintenance oil",
+                "clock tower oil",
+                "bottle",
+                "grease",
+                "lube",
+                "mechanical oil",
+                "vial of oil"
+            ],
             "zone": {
-                "x": 170,
-                "y": 385,
-                "width": 25,
-                "height": 20
+                "x": 400,
+                "y": 267,
+                "width": 61,
+                "height": 49
             },
             "interactionPoint": {
-                "x": 183,
-                "y": 420
+                "x": 432,
+                "y": 353
             },
             "responses": {
                 "look": "A vial of mechanical lubricant, still liquid after all these years. The label reads 'Clock Tower Maintenance Oil -- For Official Use Only.' The annual maintenance budget was two copper coins. The clock hasn't been oiled in decades. This explains several things.",
@@ -360,7 +456,7 @@
         }
     },
     "playerSpawn": {
-        "x": 480,
-        "y": 450
+        "x": 676,
+        "y": 409
     }
 }

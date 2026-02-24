@@ -375,14 +375,14 @@
             "id": "original-curse-contract",
             "name": "Original Curse Contract",
             "zone": {
-                "x": 430,
-                "y": 380,
+                "x": 539,
+                "y": 243,
                 "width": 40,
                 "height": 20
             },
             "interactionPoint": {
-                "x": 450,
-                "y": 420
+                "x": 559,
+                "y": 283
             },
             "responses": {
                 "look": "A thick parchment document with a wax seal, filed in Section C-7. The title reads: 'CONTRACT OF PETRIFICATION -- BINDING CURSE (Active).' Below, in small print: 'Clause 47-B: This curse may be terminated through the Rite of Administrative Closure, requiring the Crystal of Mundanity, the Kingdom Administrative Seal, and proper filing.' Someone actually built an exit clause into a curse. Bureaucracy truly is universal.",
@@ -492,7 +492,7 @@
         }
     },
     "playerSpawn": {
-        "x": 480,
-        "y": 450
+        "x": 316,
+        "y": 380
     }
 }

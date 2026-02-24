@@ -84,7 +84,21 @@
         {
             "id": "stone-guardian",
             "name": "Stone Guardian",
-            "aliases": ["guardian", "golem", "statue", "sentinel", "colossus", "stone figure", "stone man", "giant", "construct", "automaton", "figure", "stone statue", "stone golem"],
+            "aliases": [
+                "guardian",
+                "golem",
+                "statue",
+                "sentinel",
+                "colossus",
+                "stone figure",
+                "stone man",
+                "giant",
+                "construct",
+                "automaton",
+                "figure",
+                "stone statue",
+                "stone golem"
+            ],
             "zone": {
                 "x": 400,
                 "y": 340,
@@ -109,7 +123,19 @@
         {
             "id": "seal-pedestal",
             "name": "Seal Pedestal",
-            "aliases": ["pedestal", "plinth", "stand", "altar", "seal stand", "indentation", "seal slot", "stone pedestal", "platform", "podium", "base"],
+            "aliases": [
+                "pedestal",
+                "plinth",
+                "stand",
+                "altar",
+                "seal stand",
+                "indentation",
+                "seal slot",
+                "stone pedestal",
+                "platform",
+                "podium",
+                "base"
+            ],
             "zone": {
                 "x": 420,
                 "y": 420,
@@ -134,7 +160,19 @@
         {
             "id": "purple-flames",
             "name": "Purple Flames",
-            "aliases": ["flames", "flame", "fire", "fires", "purple fire", "magic fire", "magical flames", "torches", "brazier", "braziers", "purple light"],
+            "aliases": [
+                "flames",
+                "flame",
+                "fire",
+                "fires",
+                "purple fire",
+                "magic fire",
+                "magical flames",
+                "torches",
+                "brazier",
+                "braziers",
+                "purple light"
+            ],
             "zone": {
                 "x": 100,
                 "y": 300,
@@ -159,7 +197,17 @@
         {
             "id": "domed-ceiling",
             "name": "Domed Ceiling",
-            "aliases": ["ceiling", "dome", "roof", "vault", "vaulted ceiling", "overhead", "above", "cupola", "canopy"],
+            "aliases": [
+                "ceiling",
+                "dome",
+                "roof",
+                "vault",
+                "vaulted ceiling",
+                "overhead",
+                "above",
+                "cupola",
+                "canopy"
+            ],
             "zone": {
                 "x": 250,
                 "y": 0,
@@ -184,7 +232,21 @@
         {
             "id": "ancient-carvings",
             "name": "Ancient Carvings",
-            "aliases": ["carvings", "carving", "reliefs", "relief", "engravings", "etchings", "murals", "mural", "wall art", "wall carvings", "stone carvings", "scenes", "artwork"],
+            "aliases": [
+                "carvings",
+                "carving",
+                "reliefs",
+                "relief",
+                "engravings",
+                "etchings",
+                "murals",
+                "mural",
+                "wall art",
+                "wall carvings",
+                "stone carvings",
+                "scenes",
+                "artwork"
+            ],
             "zone": {
                 "x": 600,
                 "y": 100,
@@ -209,7 +271,17 @@
         {
             "id": "rose-window",
             "name": "Rose Window",
-            "aliases": ["window", "stained glass", "glass", "circular window", "round window", "skylight", "glass window", "colored glass", "stained window"],
+            "aliases": [
+                "window",
+                "stained glass",
+                "glass",
+                "circular window",
+                "round window",
+                "skylight",
+                "glass window",
+                "colored glass",
+                "stained window"
+            ],
             "zone": {
                 "x": 380,
                 "y": 30,
@@ -234,7 +306,18 @@
         {
             "id": "chamber-walls",
             "name": "Chamber Walls",
-            "aliases": ["walls", "wall", "stone wall", "stone walls", "cave wall", "cave walls", "rock wall", "rock walls", "grey walls", "gray walls"],
+            "aliases": [
+                "walls",
+                "wall",
+                "stone wall",
+                "stone walls",
+                "cave wall",
+                "cave walls",
+                "rock wall",
+                "rock walls",
+                "grey walls",
+                "gray walls"
+            ],
             "zone": {
                 "x": 0,
                 "y": 200,
@@ -259,7 +342,17 @@
         {
             "id": "chamber-floor",
             "name": "Chamber Floor",
-            "aliases": ["floor", "ground", "stone floor", "tiles", "tile", "flooring", "circles", "concentric circles", "polished floor"],
+            "aliases": [
+                "floor",
+                "ground",
+                "stone floor",
+                "tiles",
+                "tile",
+                "flooring",
+                "circles",
+                "concentric circles",
+                "polished floor"
+            ],
             "zone": {
                 "x": 200,
                 "y": 450,
@@ -284,7 +377,18 @@
         {
             "id": "colored-light",
             "name": "Colored Light",
-            "aliases": ["light", "light beams", "beams", "sunbeams", "rays", "colored beams", "light rays", "purple light", "gold light", "crimson light"],
+            "aliases": [
+                "light",
+                "light beams",
+                "beams",
+                "sunbeams",
+                "rays",
+                "colored beams",
+                "light rays",
+                "purple light",
+                "gold light",
+                "crimson light"
+            ],
             "zone": {
                 "x": 300,
                 "y": 200,
@@ -309,7 +413,16 @@
         {
             "id": "guardian-eyes",
             "name": "Guardian Eyes",
-            "aliases": ["eyes", "eye", "face", "gaze", "eyelids", "stone eyes", "amber eyes", "guardian face"],
+            "aliases": [
+                "eyes",
+                "eye",
+                "face",
+                "gaze",
+                "eyelids",
+                "stone eyes",
+                "amber eyes",
+                "guardian face"
+            ],
             "zone": {
                 "x": 440,
                 "y": 340,
@@ -334,7 +447,16 @@
         {
             "id": "guardian-arms",
             "name": "Guardian Arms",
-            "aliases": ["arms", "arm", "crossed arms", "hands", "hand", "fingers", "fists", "guardian hands"],
+            "aliases": [
+                "arms",
+                "arm",
+                "crossed arms",
+                "hands",
+                "hand",
+                "fingers",
+                "fists",
+                "guardian hands"
+            ],
             "zone": {
                 "x": 380,
                 "y": 370,
@@ -359,7 +481,18 @@
         {
             "id": "pedestal-inscription",
             "name": "Pedestal Inscription",
-            "aliases": ["inscription", "text", "writing", "engraving", "words", "carved words", "message", "motto", "riddle", "carved text"],
+            "aliases": [
+                "inscription",
+                "text",
+                "writing",
+                "engraving",
+                "words",
+                "carved words",
+                "message",
+                "motto",
+                "riddle",
+                "carved text"
+            ],
             "zone": {
                 "x": 420,
                 "y": 435,
@@ -384,7 +517,18 @@
         {
             "id": "crystal-passage",
             "name": "Crystal Passage",
-            "aliases": ["passage", "passageway", "tunnel", "corridor", "hallway", "doorway", "opening", "exit", "way through", "blocked passage"],
+            "aliases": [
+                "passage",
+                "passageway",
+                "tunnel",
+                "corridor",
+                "hallway",
+                "doorway",
+                "opening",
+                "exit",
+                "way through",
+                "blocked passage"
+            ],
             "zone": {
                 "x": 440,
                 "y": 300,
@@ -409,7 +553,15 @@
         {
             "id": "dust-motes",
             "name": "Dust Motes",
-            "aliases": ["dust", "motes", "particles", "floating dust", "specks", "sparkles", "drifting dust"],
+            "aliases": [
+                "dust",
+                "motes",
+                "particles",
+                "floating dust",
+                "specks",
+                "sparkles",
+                "drifting dust"
+            ],
             "zone": {
                 "x": 300,
                 "y": 150,
@@ -755,7 +907,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 480,
-        "y": 450
+        "x": 678,
+        "y": 464
     }
 }

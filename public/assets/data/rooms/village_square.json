@@ -94,7 +94,15 @@
                 "x": 641,
                 "y": 412
             },
-            "aliases": ["toad", "stone toad", "frog", "monster", "creature", "beast", "giant toad"],
+            "aliases": [
+                "toad",
+                "stone toad",
+                "frog",
+                "monster",
+                "creature",
+                "beast",
+                "giant toad"
+            ],
             "spriteId": "stone-toad",
             "conditions": [
                 {
@@ -293,7 +301,12 @@
                 "x": 584,
                 "y": 403
             },
-            "aliases": ["coin", "toll coin", "old coin", "toll"],
+            "aliases": [
+                "coin",
+                "toll coin",
+                "old coin",
+                "toll"
+            ],
             "responses": {
                 "look": "An old coin sitting in the dry fountain basin, half-hidden among dust and dead leaves. The face on it has worn into a vague smudge. Still legal tender, apparently -- the kingdom has low standards for currency, much like everything else. Someone must have tossed it in when the fountain still worked. Their wish didn't come true.",
                 "use": "A coin is for spending. You'll need to find something -- or someone -- to spend it on.",
@@ -525,7 +538,7 @@
         {
             "id": "stone_merchant",
             "position": {
-                "x": 654.5,
+                "x": 655,
                 "y": 365
             },
             "interactionPoint": {
@@ -538,7 +551,18 @@
                 "width": 89,
                 "height": 119
             },
-            "aliases": ["man", "merchant", "seller", "vendor", "shopkeeper", "guy", "trader", "stone man", "petrified man", "statue"],
+            "aliases": [
+                "man",
+                "merchant",
+                "seller",
+                "vendor",
+                "shopkeeper",
+                "guy",
+                "trader",
+                "stone man",
+                "petrified man",
+                "statue"
+            ],
             "responses": {
                 "look": "The merchant is frozen mid-gesture, one hand raised as if presenting today's special. His expression suggests the special was quite good. His petrified state suggests the curse disagreed.",
                 "talk": "You speak to the stone merchant. He does not respond. This is the most successful sales interaction you've ever had -- nobody is trying to upsell you.",

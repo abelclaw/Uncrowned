@@ -84,7 +84,16 @@
         {
             "id": "clerk-desk",
             "name": "Clerk's Desk",
-            "aliases": ["desk", "clerks desk", "table", "work desk", "office desk", "bureau", "writing desk", "clerk desk"],
+            "aliases": [
+                "desk",
+                "clerks desk",
+                "table",
+                "work desk",
+                "office desk",
+                "bureau",
+                "writing desk",
+                "clerk desk"
+            ],
             "zone": {
                 "x": 350,
                 "y": 380,
@@ -109,7 +118,17 @@
         {
             "id": "trap-door",
             "name": "Trap Door",
-            "aliases": ["trap", "trapdoor", "hatch", "floor door", "floor hatch", "pit", "hole", "door in floor", "trap floor"],
+            "aliases": [
+                "trap",
+                "trapdoor",
+                "hatch",
+                "floor door",
+                "floor hatch",
+                "pit",
+                "hole",
+                "door in floor",
+                "trap floor"
+            ],
             "zone": {
                 "x": 200,
                 "y": 430,
@@ -134,7 +153,18 @@
         {
             "id": "filing-cells",
             "name": "Filing Cells",
-            "aliases": ["cells", "cell", "prison cells", "prison cell", "dungeon cells", "jail cells", "jail", "cages", "cage", "filing cell"],
+            "aliases": [
+                "cells",
+                "cell",
+                "prison cells",
+                "prison cell",
+                "dungeon cells",
+                "jail cells",
+                "jail",
+                "cages",
+                "cage",
+                "filing cell"
+            ],
             "zone": {
                 "x": 650,
                 "y": 355,
@@ -159,7 +189,14 @@
         {
             "id": "desk-lamp",
             "name": "Desk Lamp",
-            "aliases": ["lamp", "light", "lantern", "candle", "flame", "desk light"],
+            "aliases": [
+                "lamp",
+                "light",
+                "lantern",
+                "candle",
+                "flame",
+                "desk light"
+            ],
             "zone": {
                 "x": 200,
                 "y": 150,
@@ -184,7 +221,17 @@
         {
             "id": "filing-cabinets",
             "name": "Filing Cabinets",
-            "aliases": ["cabinets", "cabinet", "filing cabinet", "files", "drawers", "drawer", "file cabinets", "file cabinet", "metal cabinets"],
+            "aliases": [
+                "cabinets",
+                "cabinet",
+                "filing cabinet",
+                "files",
+                "drawers",
+                "drawer",
+                "file cabinets",
+                "file cabinet",
+                "metal cabinets"
+            ],
             "zone": {
                 "x": 600,
                 "y": 100,
@@ -209,7 +256,16 @@
         {
             "id": "barred-window",
             "name": "Barred Window",
-            "aliases": ["window", "bars", "barred", "iron bars", "prison window", "dungeon window", "grate", "opening"],
+            "aliases": [
+                "window",
+                "bars",
+                "barred",
+                "iron bars",
+                "prison window",
+                "dungeon window",
+                "grate",
+                "opening"
+            ],
             "zone": {
                 "x": 350,
                 "y": 50,
@@ -234,7 +290,20 @@
         {
             "id": "dungeon-chains",
             "name": "Wall Chains",
-            "aliases": ["chains", "chain", "shackles", "shackle", "manacles", "manacle", "restraints", "irons", "iron chains", "cuffs", "handcuffs", "fetters"],
+            "aliases": [
+                "chains",
+                "chain",
+                "shackles",
+                "shackle",
+                "manacles",
+                "manacle",
+                "restraints",
+                "irons",
+                "iron chains",
+                "cuffs",
+                "handcuffs",
+                "fetters"
+            ],
             "zone": {
                 "x": 100,
                 "y": 300,
@@ -258,7 +327,20 @@
         {
             "id": "paperwork-stacks",
             "name": "Paperwork",
-            "aliases": ["paperwork", "papers", "paper", "forms", "documents", "stacks", "stack", "paper stacks", "files", "records", "stamps", "stamped documents"],
+            "aliases": [
+                "paperwork",
+                "papers",
+                "paper",
+                "forms",
+                "documents",
+                "stacks",
+                "stack",
+                "paper stacks",
+                "files",
+                "records",
+                "stamps",
+                "stamped documents"
+            ],
             "zone": {
                 "x": 350,
                 "y": 350,
@@ -283,7 +365,18 @@
         {
             "id": "dungeon-ceiling",
             "name": "Dungeon Ceiling",
-            "aliases": ["ceiling", "roof", "arches", "arch", "stone arches", "cobwebs", "cobweb", "overhead", "above", "top"],
+            "aliases": [
+                "ceiling",
+                "roof",
+                "arches",
+                "arch",
+                "stone arches",
+                "cobwebs",
+                "cobweb",
+                "overhead",
+                "above",
+                "top"
+            ],
             "zone": {
                 "x": 200,
                 "y": 30,
@@ -310,16 +403,26 @@
         {
             "id": "treasury-key",
             "name": "Treasury Key",
-            "aliases": ["key", "ornate key", "gold key", "golden key", "paperweight", "heavy key", "big key", "brass key", "iron key"],
+            "aliases": [
+                "key",
+                "ornate key",
+                "gold key",
+                "golden key",
+                "paperweight",
+                "heavy key",
+                "big key",
+                "brass key",
+                "iron key"
+            ],
             "zone": {
-                "x": 400,
-                "y": 390,
+                "x": 283,
+                "y": 306,
                 "width": 30,
                 "height": 15
             },
             "interactionPoint": {
-                "x": 415,
-                "y": 420
+                "x": 298,
+                "y": 336
             },
             "responses": {
                 "look": "An ornate key sitting on the Clerk's desk, serving as a paperweight. It's heavy, gold-plated, and engraved with the kingdom's seal. The Clerk has been using it to keep his forms from blowing away. He has no idea what it opens. Neither does he care -- it's a perfectly functional paperweight.",
@@ -542,20 +645,32 @@
     "npcs": [
         {
             "id": "the_clerk",
-            "aliases": ["clerk", "bureaucrat", "marlowe", "wizard", "administrator", "official", "man", "spectacles", "guy", "person", "figure"],
+            "aliases": [
+                "clerk",
+                "bureaucrat",
+                "marlowe",
+                "wizard",
+                "administrator",
+                "official",
+                "man",
+                "spectacles",
+                "guy",
+                "person",
+                "figure"
+            ],
             "position": {
-                "x": 400,
-                "y": 395
+                "x": 693,
+                "y": 470
             },
             "interactionPoint": {
-                "x": 360,
-                "y": 420
+                "x": 631,
+                "y": 455
             },
             "zone": {
-                "x": 368,
-                "y": 324,
-                "width": 64,
-                "height": 106
+                "x": 632,
+                "y": 307,
+                "width": 122,
+                "height": 163
             },
             "responses": {
                 "open": "The Clerk is not a door, a drawer, or a filing cabinet, though he shares many qualities with all three -- rigid, full of old information, and difficult to get anything useful out of.",
@@ -618,7 +733,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 480,
-        "y": 450
+        "x": 552,
+        "y": 410
     }
 }

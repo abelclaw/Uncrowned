@@ -342,19 +342,27 @@
         {
             "id": "mirror_spirit",
             "position": {
-                "x": 450,
-                "y": 370
+                "x": 873,
+                "y": 315
             },
             "interactionPoint": {
-                "x": 410,
-                "y": 420
+                "x": 833,
+                "y": 325
             },
             "zone": {
-                "x": 418,
-                "y": 304,
-                "width": 64,
+                "x": 833,
+                "y": 209,
+                "width": 80,
                 "height": 106
-            }
+            },
+            "aliases": [
+                "mirror",
+                "spirit",
+                "face",
+                "reflection",
+                "entity",
+                "ghost"
+            ]
         }
     ],
     "audio": {
@@ -397,7 +405,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 480,
-        "y": 450
+        "x": 360,
+        "y": 387
     }
 }

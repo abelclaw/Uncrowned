@@ -118,7 +118,20 @@
         {
             "id": "royal-portraits",
             "name": "Royal Portraits",
-            "aliases": ["portraits", "portrait", "paintings", "painting", "pictures", "picture", "gallery", "monarchs", "kings", "queens", "royal portraits", "art"],
+            "aliases": [
+                "portraits",
+                "portrait",
+                "paintings",
+                "painting",
+                "pictures",
+                "picture",
+                "gallery",
+                "monarchs",
+                "kings",
+                "queens",
+                "royal portraits",
+                "art"
+            ],
             "zone": {
                 "x": 200,
                 "y": 350,
@@ -143,7 +156,17 @@
         {
             "id": "locked-door",
             "name": "Locked Door",
-            "aliases": ["door", "kitchen door", "locked door", "bone keyhole", "keyhole", "wooden door", "west door", "lock", "bone lock"],
+            "aliases": [
+                "door",
+                "kitchen door",
+                "locked door",
+                "bone keyhole",
+                "keyhole",
+                "wooden door",
+                "west door",
+                "lock",
+                "bone lock"
+            ],
             "zone": {
                 "x": 50,
                 "y": 370,
@@ -168,7 +191,19 @@
         {
             "id": "cursed-portrait",
             "name": "Glowing Portrait",
-            "aliases": ["glowing portrait", "cursed portrait", "green portrait", "green glow", "thessaly", "queen thessaly", "queen", "glowing painting", "green painting", "magic portrait", "enchanted portrait"],
+            "aliases": [
+                "glowing portrait",
+                "cursed portrait",
+                "green portrait",
+                "green glow",
+                "thessaly",
+                "queen thessaly",
+                "queen",
+                "glowing painting",
+                "green painting",
+                "magic portrait",
+                "enchanted portrait"
+            ],
             "zone": {
                 "x": 650,
                 "y": 355,
@@ -193,7 +228,16 @@
         {
             "id": "columns",
             "name": "Columns",
-            "aliases": ["column", "pillars", "pillar", "stone pillars", "stone columns", "carved pillars", "carvings", "supports"],
+            "aliases": [
+                "column",
+                "pillars",
+                "pillar",
+                "stone pillars",
+                "stone columns",
+                "carved pillars",
+                "carvings",
+                "supports"
+            ],
             "zone": {
                 "x": 100,
                 "y": 50,
@@ -218,7 +262,17 @@
         {
             "id": "hallway-carpet",
             "name": "Hallway Carpet",
-            "aliases": ["carpet", "rug", "runner", "red carpet", "crimson carpet", "floor carpet", "tapestry", "mat", "threadbare carpet"],
+            "aliases": [
+                "carpet",
+                "rug",
+                "runner",
+                "red carpet",
+                "crimson carpet",
+                "floor carpet",
+                "tapestry",
+                "mat",
+                "threadbare carpet"
+            ],
             "zone": {
                 "x": 300,
                 "y": 350,
@@ -243,7 +297,21 @@
         {
             "id": "wall-sconces",
             "name": "Wall Sconces",
-            "aliases": ["sconces", "sconce", "torches", "torch", "lights", "light", "flames", "flame", "fire", "lanterns", "lantern", "brackets", "torch holders"],
+            "aliases": [
+                "sconces",
+                "sconce",
+                "torches",
+                "torch",
+                "lights",
+                "light",
+                "flames",
+                "flame",
+                "fire",
+                "lanterns",
+                "lantern",
+                "brackets",
+                "torch holders"
+            ],
             "zone": {
                 "x": 750,
                 "y": 150,
@@ -422,7 +490,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 480,
-        "y": 450
+        "x": 401,
+        "y": 406
     }
 }

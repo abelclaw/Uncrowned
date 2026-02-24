@@ -60,7 +60,19 @@
         {
             "id": "overgrown-hedges",
             "name": "Overgrown Hedges",
-            "aliases": ["hedges", "hedge", "bushes", "bush", "overgrown bushes", "shrubs", "shrub", "topiary", "lion hedge", "heraldic hedges", "green hedge"],
+            "aliases": [
+                "hedges",
+                "hedge",
+                "bushes",
+                "bush",
+                "overgrown bushes",
+                "shrubs",
+                "shrub",
+                "topiary",
+                "lion hedge",
+                "heraldic hedges",
+                "green hedge"
+            ],
             "zone": {
                 "x": 300,
                 "y": 350,
@@ -85,7 +97,17 @@
         {
             "id": "petrified-trees",
             "name": "Petrified Trees",
-            "aliases": ["trees", "tree", "stone trees", "petrified tree", "grey trees", "gray trees", "ornamental trees", "stone branches", "dead trees"],
+            "aliases": [
+                "trees",
+                "tree",
+                "stone trees",
+                "petrified tree",
+                "grey trees",
+                "gray trees",
+                "ornamental trees",
+                "stone branches",
+                "dead trees"
+            ],
             "zone": {
                 "x": 600,
                 "y": 345,
@@ -110,7 +132,18 @@
         {
             "id": "gardeners-shed",
             "name": "Gardener's Shed",
-            "aliases": ["shed", "shack", "hut", "tool shed", "garden shed", "wooden shed", "building", "gardener shed", "small building", "storage shed"],
+            "aliases": [
+                "shed",
+                "shack",
+                "hut",
+                "tool shed",
+                "garden shed",
+                "wooden shed",
+                "building",
+                "gardener shed",
+                "small building",
+                "storage shed"
+            ],
             "zone": {
                 "x": 750,
                 "y": 370,
@@ -135,7 +168,21 @@
         {
             "id": "nightshade-bush",
             "name": "Dark Berry Bush",
-            "aliases": ["berries", "berry", "bush", "nightshade", "belladonna", "poison berries", "dark berries", "berry bush", "poisonous bush", "shiny berries", "black berries", "deadly nightshade", "plant"],
+            "aliases": [
+                "berries",
+                "berry",
+                "bush",
+                "nightshade",
+                "belladonna",
+                "poison berries",
+                "dark berries",
+                "berry bush",
+                "poisonous bush",
+                "shiny berries",
+                "black berries",
+                "deadly nightshade",
+                "plant"
+            ],
             "zone": {
                 "x": 150,
                 "y": 380,
@@ -160,7 +207,17 @@
         {
             "id": "garden-statue",
             "name": "Garden Statue",
-            "aliases": ["statue", "figure", "sculpture", "stone figure", "pedestal", "monument", "stone statue", "moss statue", "mossy statue"],
+            "aliases": [
+                "statue",
+                "figure",
+                "sculpture",
+                "stone figure",
+                "pedestal",
+                "monument",
+                "stone statue",
+                "moss statue",
+                "mossy statue"
+            ],
             "zone": {
                 "x": 250,
                 "y": 100,
@@ -185,7 +242,19 @@
         {
             "id": "stone-pavilion",
             "name": "Stone Pavilion",
-            "aliases": ["pavilion", "gazebo", "shelter", "structure", "ruins", "ruin", "pillars", "columns", "canopy", "pergola", "stone structure"],
+            "aliases": [
+                "pavilion",
+                "gazebo",
+                "shelter",
+                "structure",
+                "ruins",
+                "ruin",
+                "pillars",
+                "columns",
+                "canopy",
+                "pergola",
+                "stone structure"
+            ],
             "zone": {
                 "x": 550,
                 "y": 100,
@@ -210,7 +279,16 @@
         {
             "id": "stone-hedges",
             "name": "Petrified Hedges",
-            "aliases": ["stone hedges", "grey hedges", "gray hedges", "petrified bushes", "stone bushes", "frozen hedges", "stone shrubs", "geometric hedges"],
+            "aliases": [
+                "stone hedges",
+                "grey hedges",
+                "gray hedges",
+                "petrified bushes",
+                "stone bushes",
+                "frozen hedges",
+                "stone shrubs",
+                "geometric hedges"
+            ],
             "zone": {
                 "x": 100,
                 "y": 380,
@@ -234,7 +312,19 @@
         {
             "id": "stone-paths",
             "name": "Stone Paths",
-            "aliases": ["paths", "path", "walkway", "walkways", "trail", "trails", "flagstones", "cobblestones", "garden path", "garden paths", "pavement"],
+            "aliases": [
+                "paths",
+                "path",
+                "walkway",
+                "walkways",
+                "trail",
+                "trails",
+                "flagstones",
+                "cobblestones",
+                "garden path",
+                "garden paths",
+                "pavement"
+            ],
             "zone": {
                 "x": 200,
                 "y": 440,
@@ -259,7 +349,17 @@
         {
             "id": "garden-ivy",
             "name": "Creeping Ivy",
-            "aliases": ["ivy", "vines", "vine", "creeper", "creepers", "climbing plant", "green ivy", "wall ivy", "plant"],
+            "aliases": [
+                "ivy",
+                "vines",
+                "vine",
+                "creeper",
+                "creepers",
+                "climbing plant",
+                "green ivy",
+                "wall ivy",
+                "plant"
+            ],
             "zone": {
                 "x": 450,
                 "y": 360,
@@ -284,7 +384,17 @@
         {
             "id": "dead-roses",
             "name": "Dead Roses",
-            "aliases": ["roses", "rose", "rose bush", "rose bushes", "flowers", "thorns", "dead flowers", "dried roses", "petals"],
+            "aliases": [
+                "roses",
+                "rose",
+                "rose bush",
+                "rose bushes",
+                "flowers",
+                "thorns",
+                "dead flowers",
+                "dried roses",
+                "petals"
+            ],
             "zone": {
                 "x": 80,
                 "y": 370,
@@ -309,7 +419,15 @@
         {
             "id": "birds-nest",
             "name": "Petrified Bird's Nest",
-            "aliases": ["nest", "bird nest", "birds nest", "stone nest", "eggs", "stone eggs", "petrified nest"],
+            "aliases": [
+                "nest",
+                "bird nest",
+                "birds nest",
+                "stone nest",
+                "eggs",
+                "stone eggs",
+                "petrified nest"
+            ],
             "zone": {
                 "x": 620,
                 "y": 350,
@@ -336,16 +454,26 @@
         {
             "id": "dried-sage",
             "name": "Dried Sage",
-            "aliases": ["sage", "herbs", "herb", "dried herbs", "bundle", "herb bundle", "sage bundle", "spice", "plant"],
+            "aliases": [
+                "sage",
+                "herbs",
+                "herb",
+                "dried herbs",
+                "bundle",
+                "herb bundle",
+                "sage bundle",
+                "spice",
+                "plant"
+            ],
             "zone": {
-                "x": 400,
-                "y": 430,
-                "width": 30,
-                "height": 20
+                "x": 314,
+                "y": 398,
+                "width": 56,
+                "height": 37
             },
             "interactionPoint": {
-                "x": 415,
-                "y": 430
+                "x": 342,
+                "y": 398
             },
             "responses": {
                 "look": "A bundle of dried sage growing wild among the overgrown herbs. It's old, dusty, and aromatic in a way that suggests it has opinions about the supernatural. The kind of herb that shows up in rituals, recipes, and grandmother's remedies for 'the spiritual malaise.'",
@@ -360,16 +488,24 @@
         {
             "id": "rat-trap",
             "name": "Rat Trap",
-            "aliases": ["trap", "mousetrap", "mouse trap", "spring trap", "rodent trap", "snap trap", "pest trap"],
+            "aliases": [
+                "trap",
+                "mousetrap",
+                "mouse trap",
+                "spring trap",
+                "rodent trap",
+                "snap trap",
+                "pest trap"
+            ],
             "zone": {
-                "x": 770,
-                "y": 400,
-                "width": 30,
-                "height": 20
+                "x": 723,
+                "y": 481,
+                "width": 54,
+                "height": 36
             },
             "interactionPoint": {
-                "x": 785,
-                "y": 420
+                "x": 750,
+                "y": 517
             },
             "responses": {
                 "look": "A spring-loaded rat trap on a shelf in the gardener's shed. It's rusty but functional -- the spring still has tension, and the mechanism clicks when you test it gingerly. Someone built this to last. The rats should be concerned.",
@@ -500,7 +636,7 @@
         }
     },
     "playerSpawn": {
-        "x": 480,
-        "y": 460
+        "x": 538,
+        "y": 422
     }
 }

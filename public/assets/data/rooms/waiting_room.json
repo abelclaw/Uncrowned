@@ -60,7 +60,17 @@
         {
             "id": "number-display",
             "name": "Number Display",
-            "aliases": ["display", "number", "counter", "serving display", "queue display", "now serving", "screen", "readout", "sign"],
+            "aliases": [
+                "display",
+                "number",
+                "counter",
+                "serving display",
+                "queue display",
+                "now serving",
+                "screen",
+                "readout",
+                "sign"
+            ],
             "zone": {
                 "x": 400,
                 "y": 345,
@@ -85,7 +95,17 @@
         {
             "id": "stone-benches",
             "name": "Stone Benches",
-            "aliases": ["benches", "bench", "stone bench", "seats", "seat", "seating", "stone seats", "stone seat", "sit"],
+            "aliases": [
+                "benches",
+                "bench",
+                "stone bench",
+                "seats",
+                "seat",
+                "seating",
+                "stone seats",
+                "stone seat",
+                "sit"
+            ],
             "zone": {
                 "x": 200,
                 "y": 400,
@@ -110,7 +130,18 @@
         {
             "id": "motivational-posters",
             "name": "Motivational Posters",
-            "aliases": ["posters", "poster", "signs", "sign", "wall posters", "motivational poster", "cat poster", "hang in there", "notices", "notice"],
+            "aliases": [
+                "posters",
+                "poster",
+                "signs",
+                "sign",
+                "wall posters",
+                "motivational poster",
+                "cat poster",
+                "hang in there",
+                "notices",
+                "notice"
+            ],
             "zone": {
                 "x": 650,
                 "y": 355,
@@ -135,7 +166,17 @@
         {
             "id": "waiting-chairs",
             "name": "Waiting Chairs",
-            "aliases": ["chairs", "chair", "waiting chair", "seats", "seat", "furniture", "seating", "stools", "stool"],
+            "aliases": [
+                "chairs",
+                "chair",
+                "waiting chair",
+                "seats",
+                "seat",
+                "furniture",
+                "seating",
+                "stools",
+                "stool"
+            ],
             "zone": {
                 "x": 50,
                 "y": 250,
@@ -160,7 +201,15 @@
         {
             "id": "number-board",
             "name": "Number Board",
-            "aliases": ["board", "queue board", "display board", "scoreboard", "counter board", "serving board", "ticker"],
+            "aliases": [
+                "board",
+                "queue board",
+                "display board",
+                "scoreboard",
+                "counter board",
+                "serving board",
+                "ticker"
+            ],
             "zone": {
                 "x": 300,
                 "y": 50,
@@ -185,7 +234,18 @@
         {
             "id": "ticket",
             "name": "Queue Ticket",
-            "aliases": ["ticket", "queue ticket", "number ticket", "my ticket", "paper ticket", "847", "number 847", "slip", "paper slip", "receipt"],
+            "aliases": [
+                "ticket",
+                "queue ticket",
+                "number ticket",
+                "my ticket",
+                "paper ticket",
+                "847",
+                "number 847",
+                "slip",
+                "paper slip",
+                "receipt"
+            ],
             "zone": {
                 "x": 480,
                 "y": 420,
@@ -209,7 +269,19 @@
         {
             "id": "tally-marks",
             "name": "Tally Marks",
-            "aliases": ["tally", "tallies", "marks", "scratches", "scratch marks", "wall marks", "wall scratches", "carvings", "etchings", "graffiti", "gerald"],
+            "aliases": [
+                "tally",
+                "tallies",
+                "marks",
+                "scratches",
+                "scratch marks",
+                "wall marks",
+                "wall scratches",
+                "carvings",
+                "etchings",
+                "graffiti",
+                "gerald"
+            ],
             "zone": {
                 "x": 100,
                 "y": 350,
@@ -264,18 +336,25 @@
     "npcs": [
         {
             "id": "queue_ghost",
-            "aliases": ["ghost", "spirit", "phantom", "spectral figure", "spectre", "specter", "apparition", "wraith", "translucent figure", "waiting ghost", "queue ghost", "dead guy", "figure"],
+            "aliases": [
+                "ghost",
+                "spirit",
+                "spectre",
+                "patient ghost",
+                "waiting ghost",
+                "phantom"
+            ],
             "position": {
-                "x": 300,
-                "y": 395
+                "x": 824,
+                "y": 431
             },
             "interactionPoint": {
-                "x": 270,
-                "y": 420
+                "x": 794,
+                "y": 416
             },
             "zone": {
-                "x": 268,
-                "y": 329,
+                "x": 792,
+                "y": 325,
                 "width": 64,
                 "height": 106
             },
@@ -315,7 +394,7 @@
         }
     },
     "playerSpawn": {
-        "x": 480,
-        "y": 450
+        "x": 363,
+        "y": 397
     }
 }
