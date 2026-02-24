@@ -49,11 +49,14 @@ def cello(freq, t):
 
 
 def string_voice(freq, t, detune_hz=0):
-    """Single string player: sine + vibrato + slight detune."""
+    """Bowed string: fundamental + harmonics for rich body, with vibrato."""
     if freq == 0:
         return 0
     f = (freq + detune_hz) * (1.0 + 0.003 * math.sin(2 * math.pi * (5.0 + detune_hz) * t))
-    return sine(f, t)
+    return (0.55 * sine(f, t)
+            + 0.25 * sine(f * 2, t)    # 2nd harmonic — warmth/fullness
+            + 0.12 * sine(f * 3, t)    # 3rd harmonic — richness
+            + 0.08 * sine(f * 4, t))   # 4th harmonic — presence
 
 
 def harp_tone(freq, t):
@@ -404,7 +407,7 @@ def main():
     bass = render_voice(bass_notes, cello, vol=0.30, a=0.06, d=0.1, s=0.5, r=0.2)
 
     print('  Rendering string ensemble...')
-    strings = render_string_ensemble(pad_chords, vol=0.05, a=0.3, d=0.1, s=0.35, r=0.5)
+    strings = render_string_ensemble(pad_chords, vol=0.07, a=0.3, d=0.1, s=0.4, r=0.5)
 
     print('  Rendering harp...')
     harp = render_harp(harp_chords, vol=0.10, note_beats=0.5)
