@@ -1,5 +1,5 @@
 {
-  "_comment": "Death image manifest for ComfyUI generation. Maps 27 unique images to 43 death paths.",
+  "_comment": "Death image manifest for ComfyUI generation. Maps 28 unique images to 44 death paths.",
   "promptPrefix": "GRPZA, pixel art game scene, dark dramatic death scene,",
   "promptSuffix": ", detailed pixel art, retro game aesthetic, dark moody atmosphere, dramatic lighting, vignette",
   "generationResolution": { "width": 512, "height": 512 },
@@ -142,6 +142,11 @@
       "prompt": "magical ritual circle on floor glowing angry red, failed spell with curse energy spreading outward, grey petrification wave emanating from broken seal, dark throne room",
       "seed": 700027,
       "output": "public/assets/death-images/rite-fail.png"
+    },
+    "well-fall": {
+      "prompt": "looking up from deep inside dark stone well shaft, tiny circle of light far above, rough stone walls closing in, black water below, rope dangling broken, claustrophobic vertical tunnel",
+      "seed": 700028,
+      "output": "public/assets/death-images/well-fall.png"
     }
   },
   "deathToImage": {
@@ -187,6 +192,7 @@
     "mirror-shatter": "mirror-shatter",
     "rooftop-fall": "falling",
     "treasury-trap": "treasury-trap",
-    "rite-fail": "rite-fail"
+    "rite-fail": "rite-fail",
+    "well-death": "well-fall"
   }
 }

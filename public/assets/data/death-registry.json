@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "totalDeaths": 43,
+  "totalDeaths": 44,
   "deaths": [
     {
       "id": "bee-death",
@@ -31,6 +31,16 @@
       "category": "Recklessness",
       "galleryHint": "Some signs along the village path are more literal than they appear...",
       "imageId": "lost"
+    },
+    {
+      "id": "well-death",
+      "roomId": "village_path",
+      "roomName": "Village Path",
+      "title": "Death by Excessive Curiosity",
+      "narratorText": "You swing a leg over the well's rim and grab the rope, which immediately announces its resignation with a decisive snap. For a brief, beautiful moment you are suspended in the air, held aloft by nothing but optimism. Then gravity remembers you exist.\n\nThe fall is long enough to reflect on your choices. The well is much deeper than it looked -- impossibly deep, really, as though the earth itself opened up to swallow you. The circle of sky above shrinks to a coin, then a pin-prick, then nothing.\n\nThe splash, when it comes, is surprisingly dignified. The water is freezing. The walls are smooth. There is no way back up.\n\nSomewhere above, the old man shakes his head. 'They always go for the well,' he mutters. The bucket, now ropeless, sits on the rim -- the only survivor of your expedition.",
+      "category": "Recklessness",
+      "galleryHint": "The old man's well is deeper than it looks. Much, much deeper...",
+      "imageId": "well-fall"
     },
     {
       "id": "drown-death",
