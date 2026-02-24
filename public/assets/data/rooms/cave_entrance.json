@@ -367,6 +367,27 @@
                 "pull": "You pull at the rocky hillside. Geology remains unmoved. The hillside has been here since before the kingdom existed and intends to remain after it's gone.",
                 "default": "The rocky hillside looms above the cave entrance. It was here first, and it knows it."
             }
+        },
+        {
+            "id": "cave-floor",
+            "name": "Cave Floor",
+            "aliases": ["floor", "ground", "rocks"],
+            "zone": {
+                "x": 100,
+                "y": 400,
+                "width": 760,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 480,
+                "y": 430
+            },
+            "responses": {
+                "look": "The cave floor is rough and uneven, littered with loose stones and patches of damp moss. Near the wall, a glowing mushroom pulses with faint blue light. On a rock ledge to the right, a small bottle catches what little light reaches this far in. The ground is slick in places -- watch your step.",
+                "take": "You scoop up a handful of gravel. Cold, damp, and entirely useless. You let it fall through your fingers like the sands of time, except less poetic and more pointy.",
+                "use": "You're standing on it. That's the primary use of a floor. You're already exceeding its expectations.",
+                "default": "You examine the cave floor. Rough stone, loose gravel, and the occasional puddle. Standard cave furnishings."
+            }
         }
     ],
     "items": [

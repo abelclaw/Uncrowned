@@ -124,6 +124,8 @@ export interface HotspotData {
     id: string;
     /** Display name shown to the player */
     name: string;
+    /** Alternative names the player can use to refer to this hotspot */
+    aliases?: string[];
     /** Rectangle zone that defines the hotspot area */
     zone: { x: number; y: number; width: number; height: number };
     /** Where the player walks to before interacting */
@@ -140,6 +142,8 @@ export interface RoomItemData {
     id: string;
     /** Display name */
     name: string;
+    /** Alternative names the player can use to refer to this item */
+    aliases?: string[];
     /** Rectangle zone that defines the item area */
     zone: { x: number; y: number; width: number; height: number };
     /** Where the player walks to before interacting */

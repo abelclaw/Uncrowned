@@ -144,7 +144,7 @@ export class Preloader extends Scene {
         // ── Asset loading ──
 
         // Main menu background
-        this.load.image('bg-menu', 'assets/backgrounds/uncrowned.png');
+        this.load.image('bg-menu', 'assets/backgrounds/uncrowned-newloadcontinue.png');
 
         // Shared parallax layers for starting act (Act 1)
         this.load.image('bg-shared-act1-sky', 'assets/backgrounds/shared/act1-sky.png');

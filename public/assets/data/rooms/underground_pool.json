@@ -178,6 +178,27 @@
             }
         },
         {
+            "id": "cave-floor",
+            "name": "Cave Floor",
+            "aliases": ["floor", "ground", "rocks", "pink thing", "glowing thing", "pink crystal", "pink gem", "pink rock", "pink light"],
+            "zone": {
+                "x": 50,
+                "y": 460,
+                "width": 860,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 460
+            },
+            "responses": {
+                "look": "The cave floor is uneven stone, slick with moisture from the pool. Near the water's edge, a small crystal shard catches your torch-light with a pinkish glow -- warm and faintly luminous against the cold stone. It's half-buried in silt, pulsing gently as if breathing.",
+                "take": "You scoop up... rock. The cave floor is made of rock. If you want a specific piece of what's down here, try being more specific about which bit interests you.",
+                "use": "The cave floor is beneath your feet, performing its primary function admirably. You're standing on it. What more do you want from it?",
+                "default": "You examine the cave floor. It's wet, uneven, and doing an excellent job of being a floor."
+            }
+        },
+        {
             "id": "submerged-bones",
             "name": "Submerged Bones",
             "zone": {
@@ -205,6 +226,7 @@
         {
             "id": "cave-crystal-shard",
             "name": "Cave Crystal Shard",
+            "aliases": ["crystal", "shard", "crystal shard", "gem", "pink thing", "glowing thing", "pink crystal", "pink gem", "pink rock"],
             "zone": {
                 "x": 430,
                 "y": 440,

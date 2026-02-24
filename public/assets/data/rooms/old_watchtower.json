@@ -214,8 +214,34 @@
             }
         },
         {
+            "id": "tower-door",
+            "name": "Tower Door",
+            "aliases": ["door", "entrance", "doorway"],
+            "zone": {
+                "x": 600,
+                "y": 340,
+                "width": 80,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 640,
+                "y": 430
+            },
+            "responses": {
+                "look": "A heavy wooden door set into the tower wall, reinforced with iron bands that have rusted into abstract art. It leads down into the tower's interior -- or it would, if the staircase hadn't collapsed decades ago. Through the gap you can see rubble and darkness. Not exactly inviting.",
+                "open": "You pull on the door. It swings open with a theatrical groan, revealing a staircase that ends abruptly three steps down in a pile of collapsed masonry. The tower's interior is thoroughly impassable. Whatever was down there is now entombed in rubble and regret.",
+                "use": "You try the door. It opens, but the staircase beyond has collapsed into rubble. There's nowhere to go but back. The tower's interior is as useful as its exterior is precarious.",
+                "push": "You push the door. It swings inward, banging against the wall with a dramatic thud that echoes down the ruined stairwell. Dust billows up from below. Nothing else happens. The staircase is still collapsed.",
+                "pull": "You pull the door toward you. The rusty hinges shriek in protest, showering orange flakes onto the flagstones. Beyond: darkness and rubble. The tower keeps its secrets behind structural failure.",
+                "take": "It's a door. Bolted to a wall. In a tower. You'd need to disassemble the entire doorframe, and frankly the tower might not survive the procedure.",
+                "talk": "You knock on the door and call out. Your voice echoes down into the collapsed stairwell and comes back sounding vaguely disappointed in you. Nobody home. Nobody has been home for a very long time.",
+                "default": "You examine the tower door. Iron-banded oak, weathered but solid. More than can be said for the staircase behind it."
+            }
+        },
+        {
             "id": "observation-platform",
             "name": "Observation Platform",
+            "aliases": ["ground", "floor", "platform", "flagstones"],
             "zone": {
                 "x": 100,
                 "y": 380,
@@ -407,6 +433,7 @@
         {
             "id": "telescope-lens",
             "name": "Telescope Lens",
+            "aliases": ["lens", "orb", "glass", "crystal"],
             "zone": {
                 "x": 350,
                 "y": 470,
@@ -418,13 +445,13 @@
                 "y": 460
             },
             "responses": {
-                "look": "A cracked but functional telescope lens, sitting on a dusty shelf. Someone removed it from the telescope -- or it fell out, given the general state of maintenance here. It magnifies your view and your insecurities.",
+                "look": "A cracked but functional telescope lens, resting among the stones on the ground. Someone removed it from the telescope -- or it fell out, given the general state of maintenance here. It catches the light with a faint glimmer. It magnifies your view and your insecurities.",
                 "use": "A lens by itself is just a paperweight for people with delusions of astronomy. You'd need a telescope to use it properly.",
                 "take": "You reach for the telescope lens. It's heavy glass, ground with precision by someone who cared about seeing things clearly.",
                 "talk": "You hold the lens up and address it. Through the magnification, your own face stares back, distorted and unflattering. The lens has nothing to say that your reflection hasn't already communicated.",
                 "open": "It's a lens. A single piece of curved glass. There is nothing to open. It's already as open as glass gets, which is transparent.",
-                "push": "You nudge the lens across the shelf. It rolls slightly, catches the light, and projects a tiny rainbow onto the stone wall. Beautiful. Useless. Like most things here.",
-                "pull": "You slide the lens toward you across the dusty shelf, leaving a clean trail in the grime. A tiny archaeological record of the moment you decided to touch things."
+                "push": "You nudge the lens across the stones. It rolls slightly, catches the light, and projects a tiny rainbow onto the wall. Beautiful. Useless. Like most things here.",
+                "pull": "You slide the lens toward you across the ground, leaving a trail in the grime. A tiny archaeological record of the moment you decided to touch things."
             }
         }
     ],
@@ -587,9 +614,9 @@
         {
             "puzzleId": "use-lens-on-telescope",
             "tiers": [
-                "A telescope without a lens is just an expensive tube. I wonder if there's a replacement lens lying around this watchtower somewhere. On a shelf, perhaps.",
-                "There's a cracked telescope lens on a dusty shelf in this very room. Pick it up and fit it into the telescope. Optics isn't that complicated.",
-                "Take the telescope lens from the shelf and use it on the rusted telescope. You'll see the castle in the distance. This is how telescopes work."
+                "A telescope without a lens is just an expensive tube. I wonder if there's a replacement lens lying around this watchtower somewhere. On the ground, perhaps.",
+                "There's a cracked telescope lens on the ground near the platform edge. Pick it up and fit it into the telescope. Optics isn't that complicated.",
+                "Take the telescope lens from the ground and use it on the rusted telescope. You'll see the castle in the distance. This is how telescopes work."
             ]
         }
     ],

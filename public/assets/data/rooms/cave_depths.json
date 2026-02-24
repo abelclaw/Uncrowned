@@ -293,6 +293,27 @@
                 "push": "You kick a puddle. Water splashes. The puddle reforms. Puddles are patient. Puddles always win.",
                 "pull": "You can't pull a puddle. It's water in a depression. It's going to stay in the depression. Rather like your mood."
             }
+        },
+        {
+            "id": "cave-floor",
+            "name": "Cave Floor",
+            "aliases": ["floor", "ground", "rocks", "pink thing", "glowing thing", "crystal", "crystals", "mushroom", "mushrooms"],
+            "zone": {
+                "x": 100,
+                "y": 480,
+                "width": 760,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 480,
+                "y": 460
+            },
+            "responses": {
+                "look": "The cave floor is rough and treacherous, a mess of loose stone, damp patches, and shallow puddles. Scattered bones lie in one corner. Here and there, faintly glowing fungi and mineral deposits catch the light -- pinks and blues pulsing softly in the darkness. Pretty, but not particularly useful. The glow isn't bright enough to navigate by, just bright enough to remind you how dark everything else is.",
+                "take": "You scrape at the glowing deposits on the cave floor. They crumble to dull powder in your hands. Whatever makes them glow doesn't survive being removed from its home. A metaphor, perhaps.",
+                "use": "You're standing on the cave floor. Using it to its full potential already.",
+                "default": "You examine the cave floor. Cold, wet, uneven, and occasionally luminescent. Standard subterranean real estate."
+            }
         }
     ],
     "items": [],

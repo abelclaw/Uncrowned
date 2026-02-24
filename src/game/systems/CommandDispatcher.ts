@@ -310,6 +310,40 @@ export class CommandDispatcher {
     }
 
     /**
+     * Try combine recipes as a fallback for "use X on Y" style commands.
+     * Resolves item names to IDs, then checks room + global combine puzzles.
+     */
+    private tryCombineFallback(subject: string, target: string, roomData: RoomData): DispatchResult | null {
+        // Resolve to item IDs (player must have both)
+        const subjectDef = this.findItemBySubject(subject);
+        const targetDef = this.findItemBySubject(target);
+        const subjectId = subjectDef?.id ?? subject;
+        const targetId = targetDef?.id ?? target;
+
+        if (!this.state.hasItem(subjectId) || !this.state.hasItem(targetId)) {
+            return null;
+        }
+
+        // Try room puzzles
+        if (roomData.puzzles) {
+            const result = this.puzzleEngine.tryPuzzle('combine', subjectId, targetId, roomData.puzzles);
+            if (result?.matched) return { response: result.response, handled: true };
+            const reversed = this.puzzleEngine.tryPuzzle('combine', targetId, subjectId, roomData.puzzles);
+            if (reversed?.matched) return { response: reversed.response, handled: true };
+        }
+
+        // Try global combines
+        if (this.globalCombines.length > 0) {
+            const result = this.puzzleEngine.tryPuzzle('combine', subjectId, targetId, this.globalCombines);
+            if (result?.matched) return { response: result.response, handled: true };
+            const reversed = this.puzzleEngine.tryPuzzle('combine', targetId, subjectId, this.globalCombines);
+            if (reversed?.matched) return { response: reversed.response, handled: true };
+        }
+
+        return null;
+    }
+
+    /**
      * Handle "hint" command.
      * Returns progressive hint for the most relevant unsolved puzzle.
      */
@@ -508,8 +542,12 @@ export class CommandDispatcher {
         }
 
         // Two-noun: "use X on Y" -- puzzle system already checked in dispatch()
-        // If we reach here, no puzzle matched. Give descriptive fallback.
+        // If we reach here, no puzzle matched. Try combine recipes as fallback
+        // so "put mushroom on stick", "use X with Y", etc. also trigger combines.
         if (action.target) {
+            const combineResult = this.tryCombineFallback(action.subject, action.target, roomData);
+            if (combineResult) return combineResult;
+
             const subjectHotspot = this.findHotspot(action.subject, roomData);
             const targetHotspot = this.findHotspot(action.target, roomData);
             const subjectDef = this.findItemBySubject(action.subject);
@@ -806,11 +844,18 @@ export class CommandDispatcher {
         const byName = roomData.hotspots.find(h => h.name.toLowerCase() === lower);
         if (byName) return byName;
 
-        // Partial name match (any word)
+        // Alias match (case-insensitive)
+        const byAlias = roomData.hotspots.find(h =>
+            h.aliases?.some(a => a.toLowerCase() === lower)
+        );
+        if (byAlias) return byAlias;
+
+        // Partial name match (any word in name or aliases)
         const words = lower.split(/\s+/);
         const byPartial = roomData.hotspots.find(h => {
             const hotspotWords = h.name.toLowerCase().split(/\s+/);
-            return words.some(w => hotspotWords.includes(w));
+            const aliasWords = (h.aliases ?? []).map(a => a.toLowerCase());
+            return words.some(w => hotspotWords.includes(w) || aliasWords.includes(w));
         });
         if (byPartial) return byPartial;
 
@@ -833,11 +878,18 @@ export class CommandDispatcher {
         const byName = roomData.items.find(i => i.name.toLowerCase() === lower);
         if (byName) return byName;
 
-        // Partial name match (any word)
+        // Alias match (case-insensitive)
+        const byAlias = roomData.items.find(i =>
+            i.aliases?.some(a => a.toLowerCase() === lower)
+        );
+        if (byAlias) return byAlias;
+
+        // Partial name match (any word in name or aliases)
         const words = lower.split(/\s+/);
         const byPartial = roomData.items.find(i => {
             const itemWords = i.name.toLowerCase().split(/\s+/);
-            return words.some(w => itemWords.includes(w));
+            const aliasWords = (i.aliases ?? []).map(a => a.toLowerCase());
+            return words.some(w => itemWords.includes(w) || aliasWords.includes(w));
         });
         if (byPartial) return byPartial;
 

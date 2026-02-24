@@ -2,12 +2,11 @@ import { Scene } from 'phaser';
 import { GameState } from '../state/GameState';
 import { SaveManager } from '../state/SaveManager';
 import { MetaGameState } from '../state/MetaGameState';
-import { QualitySettings, type QualityLevel } from '../systems/QualitySettings';
 import { AudioManager } from '../systems/AudioManager';
 
 /**
  * Main menu scene -- the game's entry point.
- * The background image has baked-in "NEW GAME", "LOAD GAME", and "SETTINGS"
+ * The background image has baked-in "NEW GAME", "LOAD GAME", and "CONTINUE"
  * buttons. We place invisible hit zones over them instead of overlaying text.
  */
 export class MainMenuScene extends Scene {
@@ -69,58 +68,32 @@ export class MainMenuScene extends Scene {
         this.clearSlotItems();
 
         // ── Hit zones over baked-in image buttons ──
-        // Positions measured from pixel analysis of the background image (960x540)
+        // Positions measured from pixel analysis of the background image (1344x768 → 960x540)
         const btnW = 180;
         const btnH = 34;
 
-        // NEW GAME button (text center at y≈401)
-        this.createImageButton(480, 400, btnW, btnH, () => {
+        // NEW GAME button (text center at game y≈416)
+        this.createImageButton(480, 416, btnW, btnH, () => {
             GameState.getInstance().reset();
             this.scene.start('RoomScene', { roomId: 'forest_clearing' });
         });
 
-        // LOAD GAME button (text center at y≈437)
-        this.createImageButton(480, 440, btnW, btnH, () => {
+        // LOAD GAME button (text center at game y≈458)
+        this.createImageButton(480, 458, btnW, btnH, () => {
             this.showLoadMenu();
         });
 
-        // SETTINGS button (text center at y≈482) — cycles quality
-        const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
-        const qualityLevels: QualityLevel[] = ['high', 'low', 'off'];
-        let currentIndex = qualityLevels.indexOf(QualitySettings.getInstance().getLevel());
-        if (currentIndex === -1) currentIndex = 0;
-        // Show a small tooltip for current quality level
-        const qualityLabel = this.add.text(480, 505, `Quality: ${capitalize(qualityLevels[currentIndex])}`, {
-            fontFamily: 'monospace',
-            fontSize: '11px',
-            color: '#7a7a8e',
-        }).setOrigin(0.5).setAlpha(0);
-        this.hitZones.push(qualityLabel as any); // track for cleanup
-
-        this.createImageButton(480, 483, 170, btnH, () => {
-            currentIndex = (currentIndex + 1) % 3;
-            const newLevel = qualityLevels[currentIndex];
-            QualitySettings.getInstance().setLevel(newLevel);
-            qualityLabel.setText(`Quality: ${capitalize(newLevel)}`);
-            qualityLabel.setAlpha(1);
-            // Fade out after a moment
-            this.time.delayedCall(1500, () => {
-                this.tweens.add({ targets: qualityLabel, alpha: 0, duration: 400 });
-            });
-        });
-
-        // ── Conditional extras below the image buttons ──
-        let extraY = 525;
-
-        // Continue — only when auto-save exists
-        if (SaveManager.hasAutoSave()) {
-            this.createExtraItem('Continue', 480, extraY, () => {
+        // CONTINUE button (text center at game y≈502)
+        this.createImageButton(480, 502, btnW, btnH, () => {
+            if (SaveManager.hasAutoSave()) {
                 const state = GameState.getInstance();
                 SaveManager.loadAutoSave(state);
                 this.scene.start('RoomScene', { roomId: state.getData().currentRoom });
-            });
-            extraY += 26;
-        }
+            }
+        });
+
+        // ── Conditional extras below the image buttons ──
+        let extraY = 530;
 
         // Death Gallery
         if (MetaGameState.getInstance().getDeathsDiscovered().length > 0) {
