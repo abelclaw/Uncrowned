@@ -1,7 +1,7 @@
 {
     "id": "village_square",
     "name": "Village Square",
-    "description": "The village square is a study in faded grandeur. A fountain stands at its center, though the water has long since stopped flowing -- the stone figures atop it are frozen mid-pose, their surfaces unnervingly smooth and grey. A massive stone toad squats near the eastern road, blocking the way out of the village with the quiet authority of something that weighs as much as a small boulder. Its belly rumbles. A notice board stands nearby, plastered with official-looking documents. A half-petrified merchant stands behind a market stall, frozen mid-sales-pitch.",
+    "description": "The village square is a study in faded grandeur. A fountain stands at its center, though the water has long since stopped flowing -- the stone figures atop it are frozen mid-pose, their surfaces unnervingly smooth and grey. A massive stone toad squats near the northern road, blocking the way out of the village with the quiet authority of something that weighs as much as a small boulder. Its belly rumbles. A notice board stands nearby, plastered with official-looking documents. A half-petrified merchant stands behind a market stall, frozen mid-sales-pitch.",
     "background": {
         "layers": [
             {
@@ -58,18 +58,18 @@
         {
             "id": "to-watchtower",
             "zone": {
-                "x": 880,
-                "y": 350,
-                "width": 80,
-                "height": 200
+                "x": 350,
+                "y": 0,
+                "width": 260,
+                "height": 80
             },
             "targetRoom": "old_watchtower",
             "spawnPoint": {
                 "x": 400,
                 "y": 450
             },
-            "transition": "iris",
-            "direction": "east",
+            "transition": "fade",
+            "direction": "north",
             "label": "watchtower",
             "conditions": [
                 {
@@ -77,7 +77,7 @@
                     "flag": "stone_toad_moved"
                 }
             ],
-            "blockedMessage": "A massive stone toad squats across the eastern road, blocking the way out of the village. Its belly rumbles with a sound like grinding boulders. It stares at you with ancient, hungry eyes. It doesn't seem inclined to move."
+            "blockedMessage": "A massive stone toad squats across the northern road, blocking the way out of the village. Its belly rumbles with a sound like grinding boulders. It stares at you with ancient, hungry eyes. It doesn't seem inclined to move."
         }
     ],
     "hotspots": [
@@ -85,14 +85,14 @@
             "id": "stone-toad",
             "name": "Stone Toad",
             "zone": {
-                "x": 750,
-                "y": 350,
+                "x": 420,
+                "y": 280,
                 "width": 100,
                 "height": 80
             },
             "interactionPoint": {
-                "x": 700,
-                "y": 420
+                "x": 470,
+                "y": 400
             },
             "aliases": ["toad", "stone toad", "frog", "monster", "creature", "beast", "giant toad"],
             "spriteId": "stone-toad",
@@ -103,14 +103,14 @@
                 }
             ],
             "responses": {
-                "look": "A massive toad, easily the size of a cartwheel, squats across the eastern road out of the village. Its skin is mottled grey-green, half turned to stone by the creeping curse -- but the parts that aren't stone are very much alive. Its throat bulges rhythmically, and its enormous golden eyes track your every movement. Its belly emits a low, grinding rumble. The toad is hungry. Spectacularly, earth-shakingly hungry. It has been sitting here long enough that moss has started growing on its back, which suggests it won't be moving until something changes its mind.",
+                "look": "A massive toad, easily the size of a cartwheel, squats across the northern road out of the village. Its skin is mottled grey-green, half turned to stone by the creeping curse -- but the parts that aren't stone are very much alive. Its throat bulges rhythmically, and its enormous golden eyes track your every movement. Its belly emits a low, grinding rumble. The toad is hungry. Spectacularly, earth-shakingly hungry. It has been sitting here long enough that moss has started growing on its back, which suggests it won't be moving until something changes its mind.",
                 "talk": "You address the toad. It blinks one enormous eye. Then the other. Its throat inflates like a balloon, and it releases a croak so deep it vibrates your ribcage. You're fairly certain that translates to 'I'm hungry and you're not food, but I'm open to revising that assessment.'",
                 "use": "You're not sure how one 'uses' a giant stone toad. It's not a tool, a vehicle, or a piece of furniture. It's a boulder-sized amphibian with an attitude problem and an empty stomach. Using it would require it to cooperate, and it doesn't seem the cooperative type.",
                 "take": "The toad weighs at least as much as you do, is mostly made of stone, and is looking at you with the expression of something deciding whether you're a threat or a snack. Taking it is not an option. Being taken BY it is more likely.",
                 "push": "You brace yourself against the toad and push. It doesn't budge. You might as well be pushing the fountain. The toad's skin is rough as sandstone and disturbingly warm. It croaks once, dismissively, and you step back. Your arms hurt. Your dignity hurts more.",
                 "pull": "You grab the toad's leg and pull. Nothing happens. The toad looks at you with what can only be described as pity. It has been sitting here since before you arrived and will be sitting here long after you've given up. Unless you find what it wants.",
                 "open": "You can't open a toad. They're not hinged. They don't have compartments. This isn't that kind of adventure. ...Actually, it might be, but not with this particular toad.",
-                "default": "The stone toad sits immovably across the eastern road, radiating hunger and geological patience. Its belly grumbles like distant thunder."
+                "default": "The stone toad sits immovably across the northern road, radiating hunger and geological patience. Its belly grumbles like distant thunder."
             }
         },
         {
@@ -410,7 +410,7 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "You hold the cave fish out toward the stone toad. Its enormous eyes lock onto the wriggling pale shape with laser focus. A tongue -- thick, grey, and fast as a whip crack -- shoots out and snatches the fish from your hand before you can blink.\n\nThe toad chews once. Twice. Swallows with a sound like a boulder settling. Its throat bulges with satisfaction.\n\nThen, with a grinding of stone against stone, the massive creature shifts. One leg moves. Then another. Slowly, ponderously, like a glacier deciding to take a holiday, the stone toad shuffles off the road and settles into the cobblestones beside it. It blinks at you once -- was that gratitude? -- then closes its eyes.\n\nThe eastern road out of the village is clear."
+                    "text": "You hold the cave fish out toward the stone toad. Its enormous eyes lock onto the wriggling pale shape with laser focus. A tongue -- thick, grey, and fast as a whip crack -- shoots out and snatches the fish from your hand before you can blink.\n\nThe toad chews once. Twice. Swallows with a sound like a boulder settling. Its throat bulges with satisfaction.\n\nThen, with a grinding of stone against stone, the massive creature shifts. One leg moves. Then another. Slowly, ponderously, like a glacier deciding to take a holiday, the stone toad shuffles off the road and settles into the cobblestones beside it. It blinks at you once -- was that gratitude? -- then closes its eyes.\n\nThe northern road out of the village is clear."
                 }
             ],
             "once": true
@@ -443,7 +443,7 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "You offer the cave fish to the stone toad. It doesn't hesitate. A tongue like a grey battering ram fires out, claiming the fish with surgical precision. The toad chews with the satisfaction of something that has been waiting a very long time for exactly this.\n\nWith a grinding rumble, the massive creature hauls itself off the road and into the corner of the square. It settles with a contented croak that vibrates the cobblestones, tucks its legs beneath its bulk, and closes its eyes.\n\nThe way east is open."
+                    "text": "You offer the cave fish to the stone toad. It doesn't hesitate. A tongue like a grey battering ram fires out, claiming the fish with surgical precision. The toad chews with the satisfaction of something that has been waiting a very long time for exactly this.\n\nWith a grinding rumble, the massive creature hauls itself off the road and into the corner of the square. It settles with a contented croak that vibrates the cobblestones, tucks its legs beneath its bulk, and closes its eyes.\n\nThe way north is open."
                 }
             ],
             "once": true
@@ -475,7 +475,7 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "You hold up the cave fish. The stone toad's eyes snap to it with predatory focus. Before you can reconsider, a tongue like a grey whip snatches it from your grip.\n\nOne swallow. One satisfied croak. Then the toad grinds itself off the road with the slow inevitability of tectonic drift, settling into the corner of the square with a thud that shakes the cobblestones.\n\nThe eastern road is clear. The toad is asleep before you take your first step."
+                    "text": "You hold up the cave fish. The stone toad's eyes snap to it with predatory focus. Before you can reconsider, a tongue like a grey whip snatches it from your grip.\n\nOne swallow. One satisfied croak. Then the toad grinds itself off the road with the slow inevitability of tectonic drift, settling into the corner of the square with a thud that shakes the cobblestones.\n\nThe northern road is clear. The toad is asleep before you take your first step."
                 }
             ],
             "once": true
@@ -518,8 +518,8 @@
         }
     },
     "dynamicDescriptions": {
-        "stone_toad_moved": "The village square stretches before you, its faded grandeur tinged with unease. The stone toad has settled into the corner of the square, sleeping off its meal. The eastern road is clear. The petrified fountain stands silent at the center, its stone figures frozen mid-dance. The half-petrified merchant continues his eternal sales pitch to nobody.",
-        "knows_about_curse": "The village square feels heavier now that you know about the curse. A massive stone toad squats across the eastern road, rumbling with hunger. The petrified fountain isn't art -- it's a warning. The grey stone creeping along the building edges isn't weathering -- it's spreading. The half-petrified merchant behind his stall is a reminder that time is not on anyone's side."
+        "stone_toad_moved": "The village square stretches before you, its faded grandeur tinged with unease. The stone toad has settled into the corner of the square, sleeping off its meal. The northern road is clear. The petrified fountain stands silent at the center, its stone figures frozen mid-dance. The half-petrified merchant continues his eternal sales pitch to nobody.",
+        "knows_about_curse": "The village square feels heavier now that you know about the curse. A massive stone toad squats across the northern road, rumbling with hunger. The petrified fountain isn't art -- it's a warning. The grey stone creeping along the building edges isn't weathering -- it's spreading. The half-petrified merchant behind his stall is a reminder that time is not on anyone's side."
     },
     "npcs": [
         {
@@ -587,7 +587,7 @@
             "tiers": [
                 "That stone toad is hungry. Very hungry. Perhaps it would move if it had something to eat. Something fishy, from somewhere deep and dark.",
                 "There's a well on the village path to the south. Lower the bucket -- cave fish live in the deep water. The toad would find one irresistible.",
-                "Go south to the village path. Use the well or bucket to catch a pale cave fish. Bring it back here and give it to the stone toad blocking the east road."
+                "Go south to the village path. Use the well or bucket to catch a pale cave fish. Bring it back here and give it to the stone toad blocking the north road."
             ]
         }
     ],
