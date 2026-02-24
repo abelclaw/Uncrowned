@@ -523,7 +523,7 @@ export class RoomScene extends Phaser.Scene {
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = `command-log-${new Date().toISOString().slice(0, 10)}.json`;
+                a.download = `command-log-${new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19)}.json`;
                 a.click();
                 URL.revokeObjectURL(url);
                 this.narratorDisplay.showInstant(`Log saved — ${entries.length} commands exported.`);

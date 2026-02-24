@@ -131,10 +131,10 @@ export class SaveManager {
         const json = JSON.stringify(data, null, 2);
         const blob = new Blob([json], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
-        const date = new Date().toISOString().slice(0, 10);
+        const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `kqgame-save-${date}.json`;
+        a.download = `kqgame-save-${timestamp}.json`;
         a.click();
         URL.revokeObjectURL(url);
     }

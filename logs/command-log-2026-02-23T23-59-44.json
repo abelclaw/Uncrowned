@@ -1,0 +1,119 @@
+[
+  {
+    "timestamp": 1771891184057,
+    "room": "forest_clearing",
+    "rawInput": "get key",
+    "parsed": true,
+    "verb": "take",
+    "subject": "rusty-key",
+    "target": null
+  },
+  {
+    "timestamp": 1771891187107,
+    "room": "forest_clearing",
+    "rawInput": "go east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771891199455,
+    "room": "cave_entrance",
+    "rawInput": "unlock door",
+    "parsed": true,
+    "verb": "open",
+    "subject": "locked-door",
+    "target": null
+  },
+  {
+    "timestamp": 1771891254404,
+    "room": "cave_entrance",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771891260352,
+    "room": "village_path",
+    "rawInput": "look at man",
+    "parsed": true,
+    "verb": "look",
+    "subject": "old_man",
+    "target": null
+  },
+  {
+    "timestamp": 1771891267770,
+    "room": "village_path",
+    "rawInput": "look in wel",
+    "parsed": true,
+    "verb": "look",
+    "subject": "in wel",
+    "target": null
+  },
+  {
+    "timestamp": 1771891272368,
+    "room": "village_path",
+    "rawInput": "look in well",
+    "parsed": true,
+    "verb": "look",
+    "subject": "well",
+    "target": null
+  },
+  {
+    "timestamp": 1771891281988,
+    "room": "village_path",
+    "rawInput": "climb rope",
+    "parsed": true,
+    "verb": "go",
+    "subject": "rope",
+    "target": null
+  },
+  {
+    "timestamp": 1771891286004,
+    "room": "village_path",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771891290320,
+    "room": "village_path",
+    "rawInput": "which way can i go",
+    "parsed": true,
+    "verb": "go",
+    "subject": "way",
+    "target": null
+  },
+  {
+    "timestamp": 1771891293203,
+    "room": "village_path",
+    "rawInput": "where can i go",
+    "parsed": true,
+    "verb": "look",
+    "subject": "__exits__",
+    "target": null
+  },
+  {
+    "timestamp": 1771891296952,
+    "room": "village_path",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771891311771,
+    "room": "village_square",
+    "rawInput": "read board",
+    "parsed": true,
+    "verb": "look",
+    "subject": "notice-board",
+    "target": null
+  }
+]
