@@ -47,18 +47,18 @@
         {
             "id": "to-forest",
             "zone": {
-                "x": 880,
-                "y": 350,
-                "width": 80,
-                "height": 200
+                "x": 350,
+                "y": 480,
+                "width": 260,
+                "height": 60
             },
             "targetRoom": "forest_clearing",
             "spawnPoint": {
-                "x": 650,
-                "y": 470
+                "x": 480,
+                "y": 400
             },
-            "transition": "pixelate",
-            "direction": "east",
+            "transition": "fade",
+            "direction": "south",
             "label": "forest"
         },
         {
@@ -789,7 +789,7 @@
             "puzzleId": "use-key-on-door",
             "tiers": [
                 "There's a locked door here. Locked doors typically respond to one particular type of object. I'm sure you'll work it out eventually.",
-                "The heavy oak door has a rusted keyhole. If only you had a rusty key from, say, a forest clearing to the east. What a coincidence that would be.",
+                "The heavy oak door has a rusted keyhole. If only you had a rusty key from, say, a forest clearing to the south. What a coincidence that would be.",
                 "Use the rusty key on the locked door. Key goes in lock. Lock opens. This is not advanced engineering."
             ]
         },
