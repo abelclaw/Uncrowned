@@ -327,10 +327,6 @@
                     "flag": "stone_toad_moved"
                 },
                 {
-                    "type": "flag-set",
-                    "flag": "met_old_man"
-                },
-                {
                     "type": "item-not-taken",
                     "item": "cave-fish"
                 }
@@ -359,10 +355,6 @@
                     "flag": "stone_toad_moved"
                 },
                 {
-                    "type": "flag-set",
-                    "flag": "met_old_man"
-                },
-                {
                     "type": "item-not-taken",
                     "item": "cave-fish"
                 }
@@ -389,10 +381,6 @@
                 {
                     "type": "flag-not-set",
                     "flag": "stone_toad_moved"
-                },
-                {
-                    "type": "flag-set",
-                    "flag": "met_old_man"
                 },
                 {
                     "type": "item-not-taken",

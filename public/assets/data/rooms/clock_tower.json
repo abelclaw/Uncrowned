@@ -71,7 +71,7 @@
                 "y": 420
             },
             "responses": {
-                "look": "The clock mechanism is a masterwork of interlocking gears, springs, and counterweights. It's been frozen by the curse -- the main spring is seized, and several gears have petrified. But the mechanism itself is sound. With a new spring and some oil, it could run again. The curse contract mentioned a date -- 3:47 on the day of the feast. If the clock were set to the correct time, it might slow the curse's advance.",
+                "look": "The clock mechanism is a masterwork of interlocking gears, springs, and counterweights. It's been frozen by the curse -- the main spring is seized, and several gears have petrified. But the mechanism itself is sound. With a new spring and some oil, it could run again. Etched into the base plate is a faded inscription: 'Synchronise to the astronomical marker on the outer wall.' The marker must be on the tower's exterior -- too high to read from ground level.",
                 "use": "The clock needs two things: a gear spring to replace the seized main spring, and clock oil to lubricate the frozen gears. Without both, the mechanism is an impressive sculpture.",
                 "default": "You examine the clock mechanism. It's frozen in time, which is either poetic or literal. In this kingdom, it's both.",
                 "take": "You consider disassembling the kingdom's only hope of slowing the curse and putting it in your pocket. The mechanism weighs roughly as much as your life's regret, which is considerable.",
@@ -239,7 +239,7 @@
             "responses": {
                 "look": "The hour and minute hands are frozen at 3:47 -- the exact moment the wizard's parking dispute became everyone's problem. They're made of iron, blackened with age. The minute hand points accusingly at the 9, as if blaming it for the whole mess.",
                 "take": "The hands are riveted to the clock face mechanism. Removing them would require tools you don't have and a disregard for the kingdom's future.",
-                "use": "You can't move the hands manually. They're driven by the mechanism behind them. Fix the mechanism, and the hands will move on their own.",
+                "use": "The hands are frozen solid. The mechanism needs to be repaired before they'll move -- and then they'll need to be set to the correct time.",
                 "talk": "'Move,' you command the frozen clock hands. They do not. Time has been ignoring commands from people with delusions of authority since long before this curse.",
                 "open": "Clock hands don't open. They point. Currently they point at 3:47, which points at the kingdom's failure, which points at a parking dispute. It's pointers all the way down.",
                 "push": "You push a clock hand. The mechanism groans and the hand moves a fraction of an inch, then springs back. The clock has its own opinion about what time it is.",
@@ -339,7 +339,7 @@
                 },
                 {
                     "type": "flag-not-set",
-                    "flag": "clock_time_set"
+                    "flag": "clock_repaired"
                 }
             ],
             "actions": [
@@ -353,19 +353,14 @@
                 },
                 {
                     "type": "set-flag",
-                    "flag": "clock_time_set"
-                },
-                {
-                    "type": "set-flag",
-                    "flag": "clock-fixed"
+                    "flag": "clock_repaired"
                 },
                 {
                     "type": "narrator-say",
-                    "text": "You replace the seized spring with the gear spring from the wizard's tower and oil the frozen gears. The mechanism resists, groans, and then -- with a sound like a kingdom exhaling -- begins to move. Gears turn. The pendulum swings. The clock hands sweep forward from 3:47. The curse's temporal anchor shudders. Outside, you hear it -- the grey advance slows. The petrification hasn't stopped, but it's buying you time. The clock chimes once, a deep resonant tone that echoes across the kingdom. Time moves again in Erelhain. Not much time. But enough. The clock ticks. For the first time in centuries, something in this kingdom is precisely on time. That feels like it matters."
+                    "text": "You replace the seized spring with the gear spring and oil the frozen gears. The mechanism resists, groans, and then -- with a sound like a kingdom exhaling -- begins to move. Gears turn. The pendulum swings. But the clock hands spin freely, clicking past numbers without stopping. The mechanism works, but the hands need to be set to the correct time. Without the right time, the clock is just noise -- impressive noise, but noise all the same."
                 }
             ],
-            "once": true,
-            "endingInfluence": true
+            "once": true
         },
         {
             "id": "repair-clock-oil-first",
@@ -385,7 +380,7 @@
                 },
                 {
                     "type": "flag-not-set",
-                    "flag": "clock_time_set"
+                    "flag": "clock_repaired"
                 }
             ],
             "actions": [
@@ -399,6 +394,38 @@
                 },
                 {
                     "type": "set-flag",
+                    "flag": "clock_repaired"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You oil the frozen gears first, then slot in the new spring. The mechanism coughs, sputters, and catches. Gears begin to turn. The pendulum swings. But the clock hands whirl aimlessly, spinning past every hour without settling. The mechanism runs, but it needs to be set to the correct time. An astronomical time, you suspect -- something more precise than the cursed 3:47 the face was frozen at."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "set-clock-time",
+            "trigger": {
+                "verb": "use",
+                "subject": "clock-hands"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "clock_repaired"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "seen_clock_time"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "clock_time_set"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
                     "flag": "clock_time_set"
                 },
                 {
@@ -407,11 +434,57 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "You oil the frozen gears first, then slot in the new spring. The mechanism coughs, sputters, and catches. Gears begin to turn. The pendulum swings. The clock lives again. Outside, the curse's advance visibly slows -- the grey wave loses momentum. The clock chimes, and for the first time in a long time, Erelhain has borrowed time. Use it wisely. The clock ticks. For the first time in centuries, something in this kingdom is precisely on time. That feels like it matters."
+                    "text": "You recall the astronomical marker on the tower's outer wall -- VII:XIII. The seventh hour, the thirteenth minute. You grip the clock hands and force them into position. Seven... thirteen. The hands lock into place with a resonant click that vibrates through the entire tower. The clock chimes once -- a deep, bone-shaking tone that echoes across the kingdom. Outside, the grey advance shudders and slows. The curse's temporal anchor has been disrupted. The petrification hasn't stopped, but time moves again in Erelhain. Not much time. But enough."
                 }
             ],
             "once": true,
             "endingInfluence": true
+        },
+        {
+            "id": "set-clock-no-knowledge",
+            "trigger": {
+                "verb": "use",
+                "subject": "clock-hands"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "clock_repaired"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "seen_clock_time"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "clock_time_set"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "You grab the spinning clock hands and try to set them. But to what time? 3:47 was when the curse began -- setting it back there would accomplish nothing. The mechanism needs a specific astronomical time to disrupt the curse's anchor. There must be a way to find the correct time. Perhaps something visible only from a distance, or through magnification."
+                }
+            ]
+        },
+        {
+            "id": "clock-hands-not-repaired",
+            "trigger": {
+                "verb": "use",
+                "subject": "clock-hands"
+            },
+            "conditions": [
+                {
+                    "type": "flag-not-set",
+                    "flag": "clock_repaired"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "You try to move the clock hands. They're frozen solid -- seized by the curse along with everything else. The mechanism needs to be repaired before the hands will budge."
+                }
+            ]
         },
         {
             "id": "need-both-parts",
@@ -427,7 +500,7 @@
                 },
                 {
                     "type": "flag-not-set",
-                    "flag": "clock_time_set"
+                    "flag": "clock_repaired"
                 }
             ],
             "actions": [
@@ -451,7 +524,7 @@
                 },
                 {
                     "type": "flag-not-set",
-                    "flag": "clock_time_set"
+                    "flag": "clock_repaired"
                 }
             ],
             "actions": [
@@ -472,7 +545,7 @@
             "conditions": [
                 {
                     "type": "flag-set",
-                    "flag": "clock_time_set"
+                    "flag": "clock_repaired"
                 }
             ],
             "actions": [
@@ -522,7 +595,8 @@
         }
     },
     "dynamicDescriptions": {
-        "clock-fixed": "The clock tower is alive with motion. Gears turn, the pendulum swings, and the clock face shows the correct time. Through the windows, the curse's advance has visibly slowed. The chiming echoes across the kingdom -- a heartbeat restored to a body that nearly died."
+        "clock_repaired": "The clock tower hums with motion. Gears turn, the pendulum swings, but the clock hands spin freely without settling on a time. The mechanism works, but it needs to be set to the correct astronomical time before it can disrupt the curse's anchor. The inscription on the base plate mentions a marker on the tower's outer wall.",
+        "clock-fixed": "The clock tower is alive with purpose. Gears turn, the pendulum swings, and the clock face reads 7:13 -- the astronomical time that disrupts the curse's anchor. Through the windows, the curse's advance has visibly slowed. The chiming echoes across the kingdom -- a heartbeat restored to a body that nearly died."
     },
     "audio": {
         "music": "music-cave",
@@ -561,7 +635,15 @@
             "tiers": [
                 "The clock mechanism is frozen. It needs two things to run again -- a replacement for the seized spring, and something to loosen the gears. Both exist somewhere in the kingdom.",
                 "A gear spring from the wizard's tower and clock oil from the royal treasury are what you need. Use either on the clock mechanism when you have both in your inventory.",
-                "Use the gear spring on the clock mechanism while you also have the clock oil. The spring is in the wizard's tower, the oil is in the treasury. Both items are consumed when the clock is repaired."
+                "Use the gear spring on the clock mechanism while you also have the clock oil. The spring is in the wizard's tower, the oil is in the treasury. But repairing the mechanism is only half the job -- you'll also need to set the hands to the correct time."
+            ]
+        },
+        {
+            "puzzleId": "set-clock-time",
+            "tiers": [
+                "The mechanism runs, but the hands need to be set to a specific astronomical time. The inscription on the mechanism mentions a marker on the tower's outer wall -- but it's too high to read from ground level.",
+                "You need to see the astronomical marker on the clock tower's exterior. Something that magnifies distant objects would help. Is there a telescope anywhere in the kingdom?",
+                "Use the telescope in the old watchtower (with the lens) to see the clock tower's astronomical marker. It reads VII:XIII -- 7:13. Then return here and use the clock hands to set the time."
             ]
         }
     ],

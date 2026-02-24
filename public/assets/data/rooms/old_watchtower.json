@@ -71,25 +71,7 @@
             "transition": "fade",
             "direction": "east",
             "label": "bridge",
-            "conditions": [
-                {
-                    "type": "flag-set",
-                    "flag": "door-unlocked"
-                },
-                {
-                    "type": "flag-set",
-                    "flag": "knows_cavern_secret"
-                },
-                {
-                    "type": "has-item",
-                    "item": "cave-crystal-shard"
-                },
-                {
-                    "type": "flag-set",
-                    "flag": "seen_castle"
-                }
-            ],
-            "blockedMessage": "The path to the forest bridge is overgrown and impassable. You feel you haven't seen enough of the world yet to find your way through."
+            "aliases": ["forest", "path", "east"]
         }
     ],
     "hotspots": [
@@ -507,8 +489,12 @@
                     "flag": "seen_castle"
                 },
                 {
+                    "type": "set-flag",
+                    "flag": "seen_clock_time"
+                },
+                {
                     "type": "narrator-say",
-                    "text": "You slot the lens into the telescope housing. It fits, barely. Peering through, the blur resolves into sharp clarity. Beyond the forest, past rolling hills of increasingly grey countryside, stands Castle Erelhain -- a massive stone fortress with towers reaching skyward. Even at this distance, you can see the grey creeping up its walls. The petrification curse is spreading. Whatever is happening to this kingdom, the answer is in that castle. You notice an overgrown path leading east from the watchtower, down toward the forest. It looks like it leads to a bridge."
+                    "text": "You slot the lens into the telescope housing. It fits, barely. Peering through, the blur resolves into sharp clarity. Beyond the forest stands Castle Erelhain -- a massive stone fortress with the grey curse visibly creeping up its walls. The petrification is spreading. Whatever is happening to this kingdom, the answer is in that castle. You swing the telescope and the kingdom's clock tower snaps into focus. Its face is frozen, but not at the time you'd expect -- through the magnification, you can make out a second dial on the tower's outer wall, an astronomical marker. It reads VII:XIII. The seventh hour, the thirteenth minute. You commit the number to memory. It feels important."
                 }
             ],
             "once": true
@@ -539,8 +525,12 @@
                     "flag": "seen_castle"
                 },
                 {
+                    "type": "set-flag",
+                    "flag": "seen_clock_time"
+                },
+                {
                     "type": "narrator-say",
-                    "text": "You fit your lens into the telescope and peer through. The blur resolves into sharp clarity. Beyond the forest stands Castle Erelhain -- a massive stone fortress with the grey curse visibly creeping up its walls. The petrification is spreading faster than you'd like. Whatever is happening to this kingdom, the answer is in that castle."
+                    "text": "You fit your lens into the telescope and peer through. The blur resolves into sharp clarity. Beyond the forest stands Castle Erelhain -- the grey curse visibly creeping up its walls. You pan across the landscape and the kingdom's clock tower comes into view. Its main face reads 3:47, frozen like everything else. But there's a second dial on the outer wall -- an astronomical marker, too small to read without magnification. VII:XIII. The seventh hour, the thirteenth minute. You make a mental note. Something about that number feels like it matters."
                 }
             ],
             "once": true
@@ -583,8 +573,8 @@
         }
     },
     "dynamicDescriptions": {
-        "knows_cavern_secret": "The watchtower's telescope shows Castle Erelhain in the distance, the grey curse visibly spreading up its walls. To the east, an overgrown path leads down through the forest toward a bridge. Now that you know what lies ahead, the path seems passable. The bridge -- and whatever's beyond it -- awaits.",
-        "seen_castle": "The watchtower's telescope now shows a clear view of Castle Erelhain in the distance. The image of the grey curse spreading up its walls lingers in your mind. You know where you need to go. You just wish you didn't."
+        "knows_cavern_secret": "The watchtower's telescope showed you Castle Erelhain and the clock tower's astronomical marker -- VII:XIII. To the east, an overgrown path leads down through the forest toward a bridge. The bridge -- and whatever's beyond it -- awaits.",
+        "seen_castle": "The watchtower's telescope showed Castle Erelhain in the distance, the grey curse spreading up its walls, and the clock tower's astronomical dial reading VII:XIII -- the seventh hour, the thirteenth minute. You know where you need to go. You just wish you didn't."
     },
     "audio": {
         "music": "music-village",
@@ -616,8 +606,8 @@
             "puzzleId": "use-lens-on-telescope",
             "tiers": [
                 "A telescope without a lens is just an expensive tube. I wonder if there's a replacement lens lying around this watchtower somewhere. On the ground, perhaps.",
-                "There's a cracked telescope lens on the ground near the platform edge. Pick it up and fit it into the telescope. Optics isn't that complicated.",
-                "Take the telescope lens from the ground and use it on the rusted telescope. You'll see the castle in the distance. This is how telescopes work."
+                "There's a cracked telescope lens on the ground near the platform edge. Pick it up and fit it into the telescope. You might see something important in the distance.",
+                "Take the telescope lens from the ground and use it on the rusted telescope. You'll see the castle and the clock tower's astronomical marker. Remember the number it shows -- you'll need it later."
             ]
         }
     ],
