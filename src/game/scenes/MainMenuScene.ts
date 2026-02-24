@@ -19,10 +19,10 @@ export class MainMenuScene extends Scene {
     private slotItems: Phaser.GameObjects.GameObject[] = [];
     private loadPanel?: Phaser.GameObjects.Graphics;
 
-    /** Music toggle: cycles through 3 themes */
+    /** Music toggle: cycles through 4 themes */
     private musicIndex = 0;
-    private static readonly MUSIC_KEYS = ['music-menu', 'music-menu-fugue', 'music-menu-ensemble'];
-    private static readonly MUSIC_COLORS = ['#8a8a9e', '#c4a46c', '#6ca4c4'];
+    private static readonly MUSIC_KEYS = ['music-menu', 'music-menu-fugue', 'music-menu-ensemble', 'music-menu-melodic-fugue'];
+    private static readonly MUSIC_COLORS = ['#8a8a9e', '#c4a46c', '#6ca4c4', '#b48ac4'];
 
     constructor() {
         super('MainMenuScene');
