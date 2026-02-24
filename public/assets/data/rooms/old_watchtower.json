@@ -435,14 +435,14 @@
             "name": "Telescope Lens",
             "aliases": ["lens", "orb", "glass", "crystal"],
             "zone": {
-                "x": 350,
-                "y": 470,
+                "x": 197,
+                "y": 429,
                 "width": 30,
                 "height": 20
             },
             "interactionPoint": {
-                "x": 365,
-                "y": 460
+                "x": 212,
+                "y": 419
             },
             "responses": {
                 "look": "A cracked but functional telescope lens, resting among the stones on the ground. Someone removed it from the telescope -- or it fell out, given the general state of maintenance here. It catches the light with a faint glimmer. It magnifies your view and your insecurities.",
@@ -622,7 +622,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 480,
-        "y": 450
+        "x": 486,
+        "y": 411
     }
 }

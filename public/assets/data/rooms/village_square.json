@@ -85,14 +85,14 @@
             "id": "stone-toad",
             "name": "Stone Toad",
             "zone": {
-                "x": 706,
-                "y": 329,
+                "x": 703,
+                "y": 325,
                 "width": 124,
                 "height": 99
             },
             "interactionPoint": {
-                "x": 644,
-                "y": 416
+                "x": 641,
+                "y": 412
             },
             "aliases": ["toad", "stone toad", "frog", "monster", "creature", "beast", "giant toad"],
             "spriteId": "stone-toad",
@@ -261,14 +261,14 @@
             "id": "notice-board-posting",
             "name": "Town Notice",
             "zone": {
-                "x": 155,
-                "y": 238,
+                "x": 156,
+                "y": 237,
                 "width": 40,
                 "height": 30
             },
             "interactionPoint": {
-                "x": 180,
-                "y": 368
+                "x": 181,
+                "y": 367
             },
             "responses": {
                 "look": "An official notice declaring the kingdom 'temporarily inconvenienced' by a petrification curse. It bears the royal seal -- a disgruntled badger wearing a crown. The bureaucratic understatement is, frankly, impressive.",
@@ -526,17 +526,17 @@
             "id": "stone_merchant",
             "position": {
                 "x": 640,
-                "y": 349
+                "y": 347
             },
             "interactionPoint": {
-                "x": 670,
-                "y": 329
+                "x": 673,
+                "y": 325
             },
             "zone": {
-                "x": 608,
-                "y": 243,
-                "width": 64,
-                "height": 106
+                "x": 595,
+                "y": 228,
+                "width": 89,
+                "height": 119
             },
             "aliases": ["man", "merchant", "seller", "vendor", "shopkeeper", "guy", "trader", "stone man", "petrified man", "statue"],
             "responses": {
@@ -592,7 +592,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 258,
-        "y": 389
+        "x": 239,
+        "y": 374
     }
 }
