@@ -41,13 +41,11 @@ def warm_lead(freq, t):
 
 
 def cello(freq, t):
-    """Cello-like: warm fundamental + 2nd partial + slow vibrato."""
+    """Cello-like: pure sine with slow vibrato."""
     if freq == 0:
         return 0
     vib = 1.0 + 0.004 * math.sin(2 * math.pi * 4.8 * t)
-    f = freq * vib
-    # Fundamental + quiet 2nd harmonic for warmth (not brightness)
-    return 0.8 * sine(f, t) + 0.2 * sine(f * 2, t) * max(0, 1.0 - t * 2)
+    return sine(freq * vib, t)
 
 
 def string_voice(freq, t, detune_hz=0):
@@ -59,14 +57,10 @@ def string_voice(freq, t, detune_hz=0):
 
 
 def harp_tone(freq, t):
-    """Harp: exponential decay, no sustain. Warm fundamental only."""
+    """Harp: pure sine with exponential decay."""
     if freq == 0:
         return 0
-    # Exponential decay — dies away naturally like a plucked string
-    amp = math.exp(-t * 4.0)
-    # Tiny bit of 2nd harmonic that dies faster (string brightness at attack)
-    brightness = math.exp(-t * 10.0)
-    return amp * (sine(freq, t) + 0.12 * brightness * sine(freq * 2, t))
+    return math.exp(-t * 4.0) * sine(freq, t)
 
 
 # ── Envelope ──
@@ -415,22 +409,15 @@ def main():
     print('  Rendering harp...')
     harp = render_harp(harp_chords, vol=0.10, note_beats=0.5)
 
-    # ── Effects ──
-    print('  Adding reverb...')
-    lead = reverb(lead, dry=0.80, wet=0.20)
-    harp = reverb(harp, dry=0.70, wet=0.30)
-    # Strings already sound lush from ensemble detuning; light reverb
-    strings = reverb(strings, dry=0.85, wet=0.15)
-
-    # ── Mix ──
+    # ── Mix (no reverb — comb filters cause metallic/tinny artifacts) ──
     print('  Mixing...')
     mixed, scale = mix_and_normalize(lead, bass, strings, harp, target=0.75)
     final = [s * scale for s in mixed]
     final = apply_fadeout(final, fade_seconds=3.0)
 
-    output_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                               'public', 'assets', 'audio', 'music', 'menu.wav')
-    write_wav(output_path, final)
+    base = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                        'public', 'assets', 'audio', 'music')
+    write_wav(os.path.join(base, 'menu-ensemble.wav'), final)
 
     total_beats = sum(b for _, b in lead_notes)
     print(f'\n  Total: {total_beats} beats = {total_beats * BEAT:.1f}s at {BPM} BPM')
