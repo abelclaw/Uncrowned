@@ -40,15 +40,15 @@ def soft_square(freq, t):
     return (sine(freq, t) + sine(freq*3, t)/3 + sine(freq*5, t)/5) * 0.7
 
 def warm_lead(freq, t):
-    """Blend of sine + triangle + soft overtone for a warm melodic lead."""
+    """Warm melodic lead — mostly sine with a touch of body."""
     if freq == 0: return 0
-    return 0.5 * sine(freq, t) + 0.3 * triangle(freq, t) + 0.15 * sine(freq*2, t) + 0.05 * sine(freq*3, t)
+    return 0.75 * sine(freq, t) + 0.15 * triangle(freq, t) + 0.08 * sine(freq*2, t)
 
 def pluck(freq, t):
-    """Plucked string approximation: warm attack that fades to fundamental."""
+    """Soft harp-like pluck — pure sine with a gentle volume decay."""
     if freq == 0: return 0
-    brightness = max(0, 1.0 - t * 6)  # overtones decay faster
-    return sine(freq, t) + brightness * (0.25 * sine(freq*2, t) + 0.08 * sine(freq*3, t))
+    brightness = max(0, 1.0 - t * 8)  # fast decay to pure fundamental
+    return sine(freq, t) + brightness * 0.1 * sine(freq*2, t)
 
 def adsr(t, dur, a=0.02, d=0.05, s=0.7, r=0.1):
     """ADSR envelope."""
@@ -141,6 +141,16 @@ def render_arpeggio(chords, wave_fn, vol=0.2, note_beats=0.5, a=0.01, d=0.08, s=
         t_offset += total_dur
 
     return buf
+
+
+def lowpass(buf, cutoff=0.15):
+    """Simple single-pole low-pass filter. cutoff 0..1 (lower = darker)."""
+    out = buf[:]
+    prev = 0.0
+    for i in range(len(out)):
+        out[i] = prev + cutoff * (out[i] - prev)
+        prev = out[i]
+    return out
 
 
 def add_delay(buf, delay_ms=300, feedback=0.3, mix=0.25):
@@ -361,14 +371,18 @@ def main():
     pad = render_chords(pad_chords, sine, vol=0.08, a=0.15, d=0.1, s=0.4, r=0.3)
 
     print('  Rendering arpeggio...')
-    arp = render_arpeggio(arp_chords, pluck, vol=0.14, note_beats=0.5, a=0.015, d=0.12, s=0.3, r=0.2)
+    arp = render_arpeggio(arp_chords, pluck, vol=0.12, note_beats=0.5, a=0.02, d=0.12, s=0.25, r=0.2)
 
     print('  Mixing and adding effects...')
+    # Warm up lead and arpeggio with low-pass filter to remove tinny highs
+    lead = lowpass(lead, cutoff=0.25)
+    arp = lowpass(arp, cutoff=0.18)
+
     # Add delay to lead for spaciousness
-    lead = add_delay(lead, delay_ms=280, feedback=0.15, mix=0.15)
+    lead = add_delay(lead, delay_ms=280, feedback=0.12, mix=0.12)
 
     # Add subtle delay to arpeggio
-    arp = add_delay(arp, delay_ms=200, feedback=0.12, mix=0.1)
+    arp = add_delay(arp, delay_ms=200, feedback=0.10, mix=0.08)
 
     # Mix all tracks
     mixed, scale = mix_and_normalize(lead, bass, pad, arp, target=0.75)
