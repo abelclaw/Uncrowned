@@ -255,7 +255,6 @@ export class Preloader extends Scene {
         this.load.audio('music-menu', 'assets/audio/music/menu.wav');
         this.load.audio('music-menu-fugue', 'assets/audio/music/menu-fugue.wav');
         this.load.audio('music-menu-ensemble', 'assets/audio/music/menu-ensemble.wav');
-        this.load.audio('music-menu-melodic-fugue', 'assets/audio/music/menu-melodic-fugue.wav');
 
         // Ambient loops
         this.load.audio('amb-forest-birds', 'assets/audio/ambient/forest-birds.wav');
