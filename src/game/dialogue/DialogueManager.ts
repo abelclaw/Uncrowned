@@ -53,6 +53,19 @@ export class DialogueManager {
         if (savedState) {
             this.activeStory.state.LoadJson(savedState);
         }
+
+        // Navigate to the entry knot if root has no content
+        // (ink files define knots but lack a root-level diversion)
+        if (!this.activeStory.canContinue && (this.activeStory.currentChoices ?? []).length === 0) {
+            for (const knot of ['greeting', 'start', 'room_commentary']) {
+                try {
+                    this.activeStory.ChoosePathString(knot);
+                    break;
+                } catch {
+                    // Knot doesn't exist, try next
+                }
+            }
+        }
     }
 
     /**
