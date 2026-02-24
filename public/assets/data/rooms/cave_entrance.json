@@ -64,18 +64,18 @@
         {
             "id": "to-village",
             "zone": {
-                "x": 350,
-                "y": 0,
-                "width": 260,
-                "height": 80
+                "x": 0,
+                "y": 350,
+                "width": 80,
+                "height": 200
             },
             "targetRoom": "village_path",
             "spawnPoint": {
                 "x": 460,
                 "y": 490
             },
-            "transition": "fade",
-            "direction": "north",
+            "transition": "slide-left",
+            "direction": "west",
             "label": "village"
         },
         {
@@ -789,7 +789,7 @@
             "puzzleId": "use-key-on-door",
             "tiers": [
                 "There's a locked door here. Locked doors typically respond to one particular type of object. I'm sure you'll work it out eventually.",
-                "The heavy oak door has a rusted keyhole. If only you had a rusty key from, say, a forest clearing to the west. What a coincidence that would be.",
+                "The heavy oak door has a rusted keyhole. If only you had a rusty key from, say, a forest clearing to the east. What a coincidence that would be.",
                 "Use the rusty key on the locked door. Key goes in lock. Lock opens. This is not advanced engineering."
             ]
         },
