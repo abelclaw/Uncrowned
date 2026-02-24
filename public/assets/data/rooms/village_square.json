@@ -85,13 +85,13 @@
             "id": "stone-toad",
             "name": "Stone Toad",
             "zone": {
-                "x": 800,
+                "x": 750,
                 "y": 350,
                 "width": 100,
                 "height": 80
             },
             "interactionPoint": {
-                "x": 750,
+                "x": 700,
                 "y": 420
             },
             "aliases": ["toad", "stone toad", "frog", "monster", "creature", "beast", "giant toad"],
