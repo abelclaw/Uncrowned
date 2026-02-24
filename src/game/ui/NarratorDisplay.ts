@@ -12,6 +12,7 @@ export class NarratorDisplay {
     private charIndex: number = 0;
     private timer: ReturnType<typeof setInterval> | null = null;
     private onComplete: (() => void) | undefined;
+    private skipCooldown: boolean = false;
     private clickListener: () => void;
     private keyListener: (e: KeyboardEvent) => void;
 
@@ -28,9 +29,17 @@ export class NarratorDisplay {
         this.clickListener = () => this.skipToEnd();
         this.element.addEventListener('click', this.clickListener);
 
-        // Keyboard skip: printable keys, Enter, or Space skip the typewriter.
-        // Arrow keys are excluded (they navigate command history).
+        // Capture-phase listener so we can intercept arrow keys before the input field.
         this.keyListener = (e: KeyboardEvent) => {
+            // Arrow key scrolling when narrator text overflows
+            if ((e.key === 'ArrowUp' || e.key === 'ArrowDown') &&
+                this.element.scrollHeight > this.element.clientHeight) {
+                const lineHeight = 20;
+                this.element.scrollTop += e.key === 'ArrowDown' ? lineHeight : -lineHeight;
+                e.preventDefault();
+                return;
+            }
+
             if (this.timer === null) return; // only skip when typewriter is active
 
             // Allow Enter to skip typewriter even from the input field (when empty)
@@ -50,7 +59,7 @@ export class NarratorDisplay {
                 this.skipToEnd();
             }
         };
-        document.addEventListener('keydown', this.keyListener);
+        document.addEventListener('keydown', this.keyListener, true);
     }
 
     /**
@@ -67,6 +76,11 @@ export class NarratorDisplay {
         this.charIndex = 0;
         this.onComplete = onComplete;
         this.element.textContent = '';
+
+        // Brief cooldown prevents the same keydown event that triggered
+        // the command from also immediately skipping the typewriter
+        this.skipCooldown = true;
+        setTimeout(() => { this.skipCooldown = false; }, 50);
 
         this.timer = setInterval(() => {
             this.charIndex++;
@@ -85,7 +99,7 @@ export class NarratorDisplay {
      * Calls onComplete if a typewriter was in progress.
      */
     skipToEnd(): void {
-        if (this.timer === null) return;
+        if (this.timer === null || this.skipCooldown) return;
         this.stop();
         this.element.textContent = this.fullText;
         this.element.scrollTop = this.element.scrollHeight;
@@ -119,6 +133,6 @@ export class NarratorDisplay {
     destroy(): void {
         this.stop();
         this.element.removeEventListener('click', this.clickListener);
-        document.removeEventListener('keydown', this.keyListener);
+        document.removeEventListener('keydown', this.keyListener, true);
     }
 }

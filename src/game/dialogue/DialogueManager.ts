@@ -54,9 +54,11 @@ export class DialogueManager {
             this.activeStory.state.LoadJson(savedState);
         }
 
-        // Navigate to the entry knot if root has no content
-        // (ink files define knots but lack a root-level diversion)
-        if (!this.activeStory.canContinue && (this.activeStory.currentChoices ?? []).length === 0) {
+        // Navigate to an entry knot. Ink files define knots (greeting/start/room_commentary)
+        // but lack root-level diversions, so the root flow is just a "done" instruction.
+        // Saved states at END also need re-navigation. We skip only if the restored state
+        // already has choices available (player left mid-conversation).
+        if ((this.activeStory.currentChoices ?? []).length === 0) {
             for (const knot of ['greeting', 'start', 'room_commentary']) {
                 try {
                     this.activeStory.ChoosePathString(knot);
