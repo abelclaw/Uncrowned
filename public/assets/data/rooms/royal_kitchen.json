@@ -336,10 +336,10 @@
                 "y": 420
             },
             "zone": {
-                "x": 420,
-                "y": 370,
-                "width": 60,
-                "height": 70
+                "x": 418,
+                "y": 334,
+                "width": 64,
+                "height": 106
             },
             "responses": {
                 "look": "Martha is a stout woman wielding a cleaver with the casual competence of someone who's been threatening vegetables -- and occasionally people -- for thirty years. She eyes you the way one eyes an uninvited guest who's wandered into the kitchen during a crisis.",

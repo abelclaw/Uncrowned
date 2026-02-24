@@ -86,13 +86,13 @@ export const VERB_TABLE: VerbDefinition[] = [
     },
     {
         canonical: 'go',
-        synonyms: ['go', 'walk', 'move', 'enter', 'exit', 'leave', 'head', 'travel', 'proceed', 'run', 'climb'],
+        synonyms: ['go', 'walk', 'move', 'enter', 'exit', 'leave', 'head', 'travel', 'proceed', 'run', 'climb', 'follow'],
         patterns: [
             // "head/proceed north to the hallway" → go north (extract direction, ignore "to X")
-            /^(?:go|walk|move|head|travel|proceed|run)\s+(north|south|east|west|up|down|n|s|e|w)\b/i,
-            /^(?:go|walk|move|head|travel|proceed|run)\s+(?:to\s+)?(.+)$/i,
+            /^(?:go|walk|move|head|travel|proceed|run|follow)\s+(north|south|east|west|up|down|n|s|e|w)\b/i,
+            /^(?:go|walk|move|head|travel|proceed|run|follow)\s+(?:to\s+)?(.+)$/i,
             /^(?:enter|exit|leave|climb)\s+(?:to\s+)?(.+)$/i,
-            /^(?:go|walk|move|head|enter|exit|leave|travel|proceed|run|climb)$/i,
+            /^(?:go|walk|move|head|enter|exit|leave|travel|proceed|run|climb|follow)$/i,
         ],
     },
     {

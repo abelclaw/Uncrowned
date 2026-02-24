@@ -403,7 +403,22 @@ export class CommandDispatcher {
      * Direction with no exit -> "can't go that way." No subject -> "go where?"
      */
     private handleGo(action: GameAction, roomData: RoomData): DispatchResult {
+        // Bare "exit" or "leave" with no subject — find an exit labeled "exit"
+        // or fall back to the first available exit as a "leave this place" action
         if (!action.subject) {
+            const raw = action.rawInput.trim().toLowerCase();
+            if (raw === 'exit' || raw === 'leave') {
+                const exitByLabel = roomData.exits.find(
+                    e => e.label?.toLowerCase() === 'exit' && this.exitConditionsMet(e)
+                );
+                const fallback = exitByLabel ?? roomData.exits.find(e => this.exitConditionsMet(e));
+                if (fallback) {
+                    const dir = fallback.direction ?? fallback.label ?? 'onward';
+                    EventBus.emit('go-command', fallback);
+                    return { response: `You head ${dir}.`, handled: true };
+                }
+                return { response: "There's no obvious way out.", handled: false };
+            }
             return { response: 'Go where?', handled: false };
         }
 

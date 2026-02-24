@@ -334,10 +334,10 @@
                 "y": 420
             },
             "zone": {
-                "x": 470,
-                "y": 365,
-                "width": 60,
-                "height": 60
+                "x": 468,
+                "y": 319,
+                "width": 64,
+                "height": 106
             },
             "responses": {
                 "look": "The spectral wizard drifts between shelves, muttering about reagent prices and the declining quality of modern cursework. He doesn't seem to notice you, or perhaps he simply doesn't care. His robes shimmer between purple and transparent.",

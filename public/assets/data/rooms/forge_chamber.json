@@ -415,10 +415,10 @@
                 "y": 420
             },
             "zone": {
-                "x": 520,
-                "y": 375,
-                "width": 60,
-                "height": 60
+                "x": 518,
+                "y": 329,
+                "width": 64,
+                "height": 106
             },
             "responses": {
                 "look": "A translucent dwarven figure sits cross-legged near the forge, eyes closed in what might be meditation or might be the afterlife equivalent of a nap. His spectral beard is magnificent -- braided with care that death has not diminished.",

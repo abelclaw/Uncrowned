@@ -1,7 +1,7 @@
 {
     "id": "cave_entrance",
     "name": "Cave Entrance",
-    "description": "A yawning cave mouth gapes before you, exhaling a breath of cold, stale air. The darkness inside is the kind that makes you question your life choices. A heavy oak door is set into the rock face, because apparently someone once thought this cave needed better security.",
+    "description": "A rocky hillside looms before you, its face scarred by weather and time. Set into the stone is a heavy oak door bound in iron, sealed tight against whatever lies beyond. Cold air seeps through the gaps, carrying the faint smell of damp stone and old regrets. Someone built a door into a hillside, which raises more questions than it answers.",
     "background": {
         "layers": [
             {
@@ -100,7 +100,7 @@
                     "flag": "door-unlocked"
                 }
             ],
-            "blockedMessage": "You're already inside the cave. The passage descends deeper into darkness, but a heavy oak door bars the way further in. Its rusted keyhole suggests you'll need a key to continue."
+            "blockedMessage": "The heavy oak door is firmly locked. Through the gaps you can feel cold air and hear a faint dripping from somewhere below. A rusted keyhole suggests you'll need a key to get through."
         }
     ],
     "hotspots": [
@@ -118,14 +118,14 @@
                 "y": 420
             },
             "responses": {
-                "look": "The cave entrance looms like an open maw. Stalactites hang from the ceiling like nature's worst dental work. A faint dripping echoes from within, counting down to something. Probably nothing. Beyond the threshold, the passage descends into absolute darkness. You'd need a light source to venture any deeper.",
+                "look": "A dark opening in the hillside, framed by rough-hewn stone. You can't see much past the heavy door set into it, but cold air and the faint sound of dripping water suggest it goes deep. Whatever's down there has been waiting patiently.",
                 "take": "You consider taking the cave. Where would you even put it? Your pockets aren't that big.",
-                "use": "You're not entirely sure how one 'uses' a cave. Standing inside it, perhaps? That's just walking with extra steps.",
-                "talk": "You call into the darkness. 'Hello?' Your echo replies, sounding just as uncertain as you. Then silence. Then a drip.",
-                "open": "The cave is already open. Has been for millennia. You're not that special.",
-                "push": "You push against the cave wall. The mountain does not yield. Shocking.",
-                "pull": "You try to pull the cave entrance wider. Geology disagrees with your approach.",
-                "default": "You contemplate the cave mouth. It contemplates you right back, and you suspect it's winning."
+                "use": "You're not entirely sure how one 'uses' a cave entrance. Staring at it ominously, perhaps? You're already doing that.",
+                "talk": "You call into the gap around the door. 'Hello?' Something drips in reply. Then silence. Rude.",
+                "open": "The cave mouth is open -- it's the door set into it that's the problem.",
+                "push": "You push against the rock face. The mountain does not yield. Shocking.",
+                "pull": "You try to pull the hillside open wider. Geology disagrees with your approach.",
+                "default": "You study the dark cave mouth. It offers no answers, just cold air and the faint promise of regret."
             }
         },
         {
@@ -186,7 +186,7 @@
                 "y": 420
             },
             "responses": {
-                "look": "The cave entrance is framed by a carved stone archway, its edges worn smooth by centuries of weather and neglect. Whoever chiseled this was skilled, patient, and profoundly unbothered by the fact that they were decorating a hole in a rock. Faint runes line the keystone, too eroded to read. Probably said something important once.",
+                "look": "The doorway is framed by a carved stone archway, its edges worn smooth by centuries of weather and neglect. Whoever chiseled this was skilled, patient, and profoundly unbothered by the fact that they were decorating a door in a hillside. Faint runes line the keystone, too eroded to read. Probably said something important once.",
                 "take": "You consider disassembling the stone archway. You'd need a team of masons, several oxen, and a reason. You have none of these.",
                 "use": "It's an archway. You walk through it. That's the full extent of archway interaction, and it's been working for millennia.",
                 "default": "You study the archway's ancient craftsmanship. It's impressive, in the way that anything built by people long dead tends to be."
@@ -306,6 +306,79 @@
                 "verb": "use",
                 "subject": "rusty-key",
                 "target": "locked-door"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "rusty-key"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "door-unlocked"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "door-unlocked"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "rusty-key"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-depths"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "The rusty key grinds into the lock with a sound that makes your teeth ache. With a reluctant clunk, the door swings open, revealing stairs descending into darkness. The key crumbles to rust dust in your hand. One-time use, apparently. Just like your courage."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "open-door-no-target",
+            "trigger": {
+                "verb": "open",
+                "subject": "locked-door"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "rusty-key"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "door-unlocked"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "door-unlocked"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "rusty-key"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-depths"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "The rusty key grinds into the lock with a sound that makes your teeth ache. With a reluctant clunk, the door swings open, revealing stairs descending into darkness. The key crumbles to rust dust in your hand. One-time use, apparently. Just like your courage."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "open-door-with-key",
+            "trigger": {
+                "verb": "open",
+                "subject": "locked-door",
+                "target": "rusty-key"
             },
             "conditions": [
                 {
@@ -481,7 +554,7 @@
         }
     },
     "dynamicDescriptions": {
-        "door-unlocked": "A yawning cave mouth gapes before you. The heavy oak door now hangs open, revealing deeper passages beyond. The cold air carries a faint whisper of something below -- adventure, perhaps. Or possibly just a draft with delusions of grandeur."
+        "door-unlocked": "The heavy oak door in the hillside now hangs open, revealing a dark passage descending into the earth. Cold air pours out freely, carrying the smell of ancient stone and the faint sound of dripping water. Whatever's down there, the door is no longer keeping it a secret."
     },
     "audio": {
         "music": "music-cave",

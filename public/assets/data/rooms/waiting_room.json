@@ -196,10 +196,10 @@
                 "y": 420
             },
             "zone": {
-                "x": 270,
-                "y": 375,
-                "width": 60,
-                "height": 60
+                "x": 268,
+                "y": 329,
+                "width": 64,
+                "height": 106
             },
             "responses": {
                 "look": "A spectral figure clutches a faded ticket numbered 4. It has been waiting since before the curse. Before the kingdom, possibly. Its expression combines hope, despair, and the quiet madness of someone who has been in a queue for centuries.",

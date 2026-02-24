@@ -58,18 +58,18 @@
         {
             "id": "to-village-square",
             "zone": {
-                "x": 880,
-                "y": 350,
-                "width": 80,
-                "height": 200
+                "x": 350,
+                "y": 0,
+                "width": 260,
+                "height": 80
             },
             "targetRoom": "village_square",
             "spawnPoint": {
-                "x": 280,
+                "x": 480,
                 "y": 460
             },
-            "transition": "slide-right",
-            "direction": "east",
+            "transition": "fade",
+            "direction": "north",
             "label": "village"
         }
     ],
@@ -112,7 +112,7 @@
                 "y": 420
             },
             "responses": {
-                "look": "A weathered signpost at the path's fork. One arrow points west toward 'Cave' and another east toward 'Village.' A third arrow, pointing straight down, reads 'You Are Here.' Helpful.",
+                "look": "A weathered signpost at the path's fork. One arrow points west toward 'Cave' and another north toward 'Village.' A third arrow, pointing straight down, reads 'You Are Here.' Helpful.",
                 "take": "You try to uproot the signpost. It's cemented in. The local council may be incompetent at governance, but their signpost installation is impeccable.",
                 "use": "It's a signpost. You read it. That's... that's how you use a signpost.",
                 "default": "You study the signpost as though it contains the secrets of the universe. It does not. It contains directions."
@@ -222,14 +222,14 @@
                 "y": 430
             },
             "zone": {
-                "x": 680,
-                "y": 370,
-                "width": 40,
-                "height": 80
+                "x": 668,
+                "y": 344,
+                "width": 64,
+                "height": 106
             },
             "responses": {
                 "look": "An old man sits on a rock by the path, watching you with the kind of intensity normally reserved for chess grandmasters and cats who've spotted a bird. His clothes are patched so many times they're more patch than cloth.",
-                "talk": "The old man peers at you. 'Heading to the village? Watch yourself. The square's fountain turned folk to stone last week. The castle's worse.' He pauses. 'But you look like the sort who ignores good advice. Go east. See for yourself.'",
+                "talk": "The old man peers at you. 'Heading to the village? Watch yourself. The square's fountain turned folk to stone last week. The castle's worse.' He pauses. 'But you look like the sort who ignores good advice. Go north. See for yourself.'",
                 "use": "You're not sure how one 'uses' an old man. He's not a tool. He barely qualifies as furniture.",
                 "take": "The old man gives you a look that could curdle milk. He is not going anywhere, and neither are your chances of dignified social interaction.",
                 "default": "The old man returns to staring at the horizon with the patience of someone who's been doing it professionally for decades."

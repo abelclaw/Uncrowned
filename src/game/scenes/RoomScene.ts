@@ -112,12 +112,12 @@ export class RoomScene extends Phaser.Scene {
         const npcsData = this.cache.json.get('npcs');
         this.npcDefs = npcsData?.npcs ?? [];
 
-        // Track first visit BEFORE marking as visited
+        // Track first visit BEFORE marking as visited (markRoomVisited deferred to showEntryNarration
+        // so narrator_history ink doesn't see the current room as already visited)
         this.isFirstVisit = !this.gameState.getData().visitedRooms.includes(data.roomId);
 
-        // Update GameState current room and mark visited
+        // Update GameState current room (visited marking deferred to showEntryNarration)
         (this.gameState.getData() as { currentRoom: string }).currentRoom = data.roomId;
-        this.gameState.markRoomVisited(data.roomId);
 
         // Load room data from Phaser cache
         this.roomData = this.cache.json.get('room-' + data.roomId);
@@ -1022,7 +1022,10 @@ export class RoomScene extends Phaser.Scene {
             );
         }
 
-        // Run narrator_history ink for dynamic commentary based on past player actions
+        // Run narrator_history ink for dynamic commentary based on past player actions.
+        // This runs BEFORE markRoomVisited so the current room isn't counted as
+        // "already visited" (which would trigger misleading commentary like
+        // "Fresh from the cave" when you just arrived there).
         const narratorHistoryJson = this.cache.json.get('dialogue-narrator_history');
         if (narratorHistoryJson) {
             // Use a temporary DialogueManager conversation (non-NPC) to run the narrator script
@@ -1041,6 +1044,10 @@ export class RoomScene extends Phaser.Scene {
                 });
             }
         }
+
+        // NOW mark room as visited — after narrator_history has run so it doesn't
+        // see the current room as already visited on first entry
+        this.gameState.markRoomVisited(this.roomData.id);
     }
 
     /** Get the ID of the NPC currently in dialogue, or null. */

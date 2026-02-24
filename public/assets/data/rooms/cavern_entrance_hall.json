@@ -573,10 +573,10 @@
                 "y": 420
             },
             "zone": {
-                "x": 430,
-                "y": 365,
-                "width": 60,
-                "height": 60
+                "x": 428,
+                "y": 319,
+                "width": 64,
+                "height": 106
             },
             "responses": {
                 "look": "The Clerk sits behind his desk with the posture of someone who has been sitting behind desks since desks were invented. His spectacles perch on a nose that has looked down at paperwork for so long it has forgotten any other direction exists.",

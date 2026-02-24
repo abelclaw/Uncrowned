@@ -68,7 +68,8 @@ export class SceneTransition {
         // Auto-save before leaving the current room
         // Record DESTINATION room so loading auto-save starts at the room we're heading to
         (state.getData() as { currentRoom: string }).currentRoom = roomId;
-        state.markRoomVisited(roomId);
+        // NOTE: Do NOT markRoomVisited here — RoomScene.create handles it after
+        // entry narration, so isFirstVisit and narrator_history work correctly.
         SaveManager.autoSave(state);
 
         scene.input.enabled = false;
