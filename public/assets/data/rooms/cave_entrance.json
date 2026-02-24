@@ -47,7 +47,7 @@
         {
             "id": "to-forest",
             "zone": {
-                "x": 0,
+                "x": 880,
                 "y": 350,
                 "width": 80,
                 "height": 200
@@ -58,24 +58,24 @@
                 "y": 470
             },
             "transition": "pixelate",
-            "direction": "west",
+            "direction": "east",
             "label": "forest"
         },
         {
             "id": "to-village",
             "zone": {
-                "x": 880,
+                "x": 0,
                 "y": 350,
                 "width": 80,
                 "height": 200
             },
             "targetRoom": "village_path",
             "spawnPoint": {
-                "x": 330,
+                "x": 590,
                 "y": 460
             },
-            "transition": "slide-right",
-            "direction": "east",
+            "transition": "slide-left",
+            "direction": "west",
             "label": "village"
         },
         {

@@ -41,18 +41,18 @@
         {
             "id": "to-cave",
             "zone": {
-                "x": 0,
+                "x": 880,
                 "y": 350,
                 "width": 80,
                 "height": 200
             },
             "targetRoom": "cave_entrance",
             "spawnPoint": {
-                "x": 590,
+                "x": 380,
                 "y": 460
             },
-            "transition": "slide-left",
-            "direction": "west",
+            "transition": "slide-right",
+            "direction": "east",
             "label": "cave"
         },
         {
@@ -95,6 +95,7 @@
                 "y": 400
             },
             "aliases": ["toad", "stone toad", "frog", "monster", "creature", "beast", "giant toad"],
+            "spriteId": "stone-toad",
             "conditions": [
                 {
                     "type": "flag-not-set",
