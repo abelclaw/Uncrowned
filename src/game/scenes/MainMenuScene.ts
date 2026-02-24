@@ -36,7 +36,8 @@ export class MainMenuScene extends Scene {
         const cx = width / 2;
 
         // ── Background art (contains baked-in buttons) ──
-        this.add.image(cx, height / 2, 'bg-menu').setOrigin(0.5);
+        // Image is 1344x768; scale to fill the 960x540 canvas exactly
+        this.add.image(cx, height / 2, 'bg-menu').setOrigin(0.5).setDisplaySize(width, height);
 
         this.showMainMenu();
 
