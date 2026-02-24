@@ -261,15 +261,50 @@ export class Preloader extends Scene {
     }
 
     create() {
-        // Brief pause at 100% so the player sees the full bar, then fade out
-        this.time.delayedCall(500, () => {
-            this.cameras.main.fadeOut(800, 0, 0, 0);
-            this.cameras.main.once(
-                Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE,
-                () => {
-                    this.scene.start('MainMenuScene');
+        const { width } = this.cameras.main;
+        const cx = width / 2;
+
+        // Hide the loading flavor text
+        this.tweens.add({ targets: this.flavorText, alpha: 0, duration: 300 });
+
+        // Show clickable "Ready" text after a brief pause at 100%
+        this.time.delayedCall(400, () => {
+            const ready = this.add.text(cx, Preloader.BAR_Y + Preloader.BAR_H + 30, '▶  Ready', {
+                fontFamily: 'monospace',
+                fontSize: '18px',
+                color: '#d4a847',
+            }).setOrigin(0.5).setAlpha(0);
+
+            // Fade in with a gentle pulse
+            this.tweens.add({
+                targets: ready,
+                alpha: 1,
+                duration: 500,
+                onComplete: () => {
+                    this.tweens.add({
+                        targets: ready,
+                        alpha: 0.5,
+                        duration: 800,
+                        yoyo: true,
+                        repeat: -1,
+                        ease: 'Sine.easeInOut',
+                    });
                 },
-            );
+            });
+
+            ready.setInteractive({ useHandCursor: true });
+            ready.on('pointerover', () => ready.setColor('#ffffff'));
+            ready.on('pointerout', () => ready.setColor('#d4a847'));
+            ready.on('pointerdown', () => {
+                ready.disableInteractive();
+                this.cameras.main.fadeOut(800, 0, 0, 0);
+                this.cameras.main.once(
+                    Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE,
+                    () => {
+                        this.scene.start('MainMenuScene');
+                    },
+                );
+            });
         });
     }
 

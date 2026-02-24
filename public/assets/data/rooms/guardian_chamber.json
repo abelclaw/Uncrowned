@@ -99,7 +99,10 @@
                 "use": "The guardian is dormant. It needs to be awakened by placing the ancient seal on its pedestal. Then the test begins.",
                 "talk": "You address the guardian. Silence. It's stone. For now. That 'for now' is the unsettling part.",
                 "push": "You push the guardian. It does not move. You did not expect it to move, but you are still slightly disappointed.",
-                "default": "You examine the guardian. It examines nothing. Yet."
+                "default": "You examine the guardian. It examines nothing. Yet.",
+                "take": "You try to take the Stone Guardian, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "open": "The Stone Guardian doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "pull": "You grab the Stone Guardian and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         },
         {
@@ -118,7 +121,12 @@
             "responses": {
                 "look": "A stone pedestal before the guardian, with a seal-shaped indentation. The indentation matches the ancient kingdom seal -- place the seal here, and the guardian awakens. The pedestal is carved with the words: 'PROVE YOUR WORTH. ANSWER THREE. OR ANSWER NONE.'",
                 "use": "The indentation needs a seal. The ancient kingdom seal, specifically. Not the royal seal -- the administrative one. Bureaucracy, even in guardian activation, demands precision.",
-                "default": "You study the pedestal. The seal-shaped indentation waits with geological patience."
+                "default": "You study the pedestal. The seal-shaped indentation waits with geological patience.",
+                "take": "You can't take the Seal Pedestal. It's firmly attached to its current situation, much like your growing sense of confusion.",
+                "talk": "You attempt a conversation with the Seal Pedestal. The Seal Pedestal is not a great conversationalist. Then again, neither are you.",
+                "open": "You search the Seal Pedestal for a way to open it. There isn't one. It's not that kind of thing.",
+                "push": "You press against the Seal Pedestal. It offers the same resistance as a mountain, which is to say, total and indifferent.",
+                "pull": "You pull on the Seal Pedestal. Nothing happens. Gravity and architecture conspire against you, as usual."
             }
         },
         {
@@ -138,7 +146,11 @@
                 "look": "Flames that burn purple without heat or fuel. Magic fire -- all the aesthetics of burning, none of the warmth.",
                 "take": "Magical fire doesn't play by the rules of pockets. Or physics.",
                 "use": "You reach toward the flame. It flickers away from your hand, like a cat that doesn't want to be petted.",
-                "default": "You watch the purple flames dance. They're decorative at best, enigmatic at worst."
+                "default": "You watch the purple flames dance. They're decorative at best, enigmatic at worst.",
+                "talk": "You address the Purple Flames. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Purple Flames doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Purple Flames. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Purple Flames and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         },
         {
@@ -158,7 +170,11 @@
                 "look": "A magnificent domed ceiling with a rose window at its apex, casting colored light across the chamber. Whoever built this had ambitions that exceeded their kingdom's lifespan.",
                 "take": "It's a ceiling. You can't take a ceiling.",
                 "use": "You admire the craftsmanship. The guardian doesn't seem to care about interior design.",
-                "default": "You crane your neck at the dome. The architecture is impressive. The neck pain is immediate."
+                "default": "You crane your neck at the dome. The architecture is impressive. The neck pain is immediate.",
+                "talk": "You address the Domed Ceiling. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Domed Ceiling doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Domed Ceiling. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Domed Ceiling and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         }
     ],

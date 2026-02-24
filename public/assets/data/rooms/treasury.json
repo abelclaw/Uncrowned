@@ -74,7 +74,11 @@
                 "look": "Rows of empty pedestals where treasures once rested. Small plaques describe what used to be there: 'Crown of Aldric the Fastidious -- Donated to Kingdom Defense Fund,' 'Golden Scepter -- Pawned (see receipt #4471),' 'Diamond Tiara -- Lost in a card game by King Mortimer III.' The kingdom's financial management was... creative.",
                 "use": "The pedestals hold nothing. The kingdom's wealth has been comprehensively distributed elsewhere. Mostly to creditors.",
                 "take": "You pocket a plaque. 'Golden Scepter -- Pawned.' A souvenir from a bankrupt kingdom. How very fitting.",
-                "default": "You examine the empty pedestals. Each absence tells a story of a kingdom slowly spending itself into the ground."
+                "default": "You examine the empty pedestals. Each absence tells a story of a kingdom slowly spending itself into the ground.",
+                "talk": "You address the Empty Pedestals. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Empty Pedestals doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Empty Pedestals. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Empty Pedestals and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         },
         {
@@ -93,7 +97,12 @@
             "responses": {
                 "look": "A deep purple velvet cushion on a stone pedestal, surrounded by dust. The Kingdom Administrative Seal sits atop it, catching what little light enters the treasury. The cushion is the most luxurious thing left in here, which says everything about the state of the kingdom's finances.",
                 "use": "The cushion's sole purpose is displaying the Kingdom Seal. It has fulfilled this purpose for centuries with admirable dedication.",
-                "default": "You examine the velvet cushion. It has been faithfully displaying the Kingdom Seal for longer than most dynasties last."
+                "default": "You examine the velvet cushion. It has been faithfully displaying the Kingdom Seal for longer than most dynasties last.",
+                "take": "The Velvet Display Cushion isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
+                "talk": "You speak to the Velvet Display Cushion in a calm, measured tone. The Velvet Display Cushion maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Velvet Display Cushion. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Velvet Display Cushion with all your might. All your might turns out to be insufficient. The Velvet Display Cushion remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Velvet Display Cushion. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         },
         {
@@ -112,7 +121,12 @@
             "responses": {
                 "look": "A shelf near the door holds the treasury's remaining inventory: a dusty vial of clock oil (labeled 'For Clock Tower Maintenance -- Annual Budget: 2 Copper'), an empty coin purse, and a note reading 'IOU: One Kingdom. Signed, The Curse.'",
                 "use": "You browse the remaining shelf. Slim pickings. The kingdom's treasury has been cleaned out by centuries of fiscal mismanagement and one very expensive apocalypse.",
-                "default": "You inspect the shelf. The treasury's remaining assets are less 'crown jewels' and more 'things nobody remembered to steal.'"
+                "default": "You inspect the shelf. The treasury's remaining assets are less 'crown jewels' and more 'things nobody remembered to steal.'",
+                "take": "You can't take the Remaining Shelf. It's firmly attached to its current situation, much like your growing sense of confusion.",
+                "talk": "You address the Remaining Shelf. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Remaining Shelf doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Remaining Shelf. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Remaining Shelf and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         },
         {
@@ -132,7 +146,11 @@
                 "look": "Golden urns that once held the kingdom's wealth. Now they hold dust and the memory of better fiscal policy.",
                 "take": "They're ornamental and bolted to their pedestals. The treasury planners anticipated your type.",
                 "use": "You tap one. It rings hollow. A metaphor, probably.",
-                "default": "You admire the golden urns. They're the most decorative dust containers you've ever seen."
+                "default": "You admire the golden urns. They're the most decorative dust containers you've ever seen.",
+                "talk": "You speak to the Golden Urns in a calm, measured tone. The Golden Urns maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Golden Urns. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Golden Urns with all your might. All your might turns out to be insufficient. The Golden Urns remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Golden Urns. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         },
         {
@@ -152,7 +170,34 @@
                 "look": "Torches burning with a steady flame that never seems to consume the wood. Magic, probably. Or very good kindling.",
                 "take": "Fire plus pockets equals regret.",
                 "use": "You warm your hands. The treasury is surprisingly cold, possibly from the absence of actual treasure.",
-                "default": "You observe the torches. They burn on, indifferent to the treasury's emptiness."
+                "default": "You observe the torches. They burn on, indifferent to the treasury's emptiness.",
+                "talk": "You attempt a conversation with the Treasury Torches. The Treasury Torches is not a great conversationalist. Then again, neither are you.",
+                "open": "You search the Treasury Torches for a way to open it. There isn't one. It's not that kind of thing.",
+                "push": "You press against the Treasury Torches. It offers the same resistance as a mountain, which is to say, total and indifferent.",
+                "pull": "You pull on the Treasury Torches. Nothing happens. Gravity and architecture conspire against you, as usual."
+            }
+        },
+        {
+            "id": "treasury-cobwebs",
+            "name": "Cobwebs",
+            "zone": {
+                "x": 100,
+                "y": 200,
+                "width": 100,
+                "height": 80
+            },
+            "interactionPoint": {
+                "x": 150,
+                "y": 420
+            },
+            "responses": {
+                "look": "Cobwebs connect the remaining items like a network of neglect. The spiders responsible have long since moved on to more profitable locations. These webs are archaeological artifacts now -- monuments to creatures with better financial sense than the treasury's former administrators.",
+                "take": "You gather a handful of cobweb. It sticks to your fingers, your sleeve, your dignity. You now have cobweb. It has no value. Like most things in this treasury.",
+                "use": "You brush through the cobwebs. They cling to you with the desperation of things that haven't been touched in years. Rather like the treasury's accounting books.",
+                "talk": "You address the cobwebs. No spiders answer. The occupants have left. The webs remain, a forwarding address to nowhere.",
+                "open": "Cobwebs don't open. They cling. It's their defining characteristic and their only skill.",
+                "push": "You sweep cobwebs aside. They reform behind you almost immediately. The cobwebs have a stronger work ethic than the treasury's former staff.",
+                "pull": "You pull at a cobweb strand. It stretches, snaps, and sticks to your other hand. You are now more tangled than before. The cobwebs win every encounter."
             }
         }
     ],
@@ -172,7 +217,12 @@
             },
             "responses": {
                 "look": "The Kingdom Administrative Seal sits on its velvet cushion, heavy and ornate. Unlike the Royal Seal (which bears the disgruntled badger), this seal shows the kingdom's full coat of arms: a badger arguing with a filing cabinet, flanked by two quill pens. It is used for official governmental closures -- ending treaties, finalizing laws, and apparently, breaking curses. Bureaucracy demands precision.",
-                "use": "The Kingdom Seal is needed for the Rite of Administrative Closure. It's the official stamp that will close the curse's filing."
+                "use": "The Kingdom Seal is needed for the Rite of Administrative Closure. It's the official stamp that will close the curse's filing.",
+                "take": "You try to take the Kingdom Administrative Seal, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "talk": "You talk to the Kingdom Administrative Seal. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Kingdom Administrative Seal doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Kingdom Administrative Seal and push. Nothing happens, except a mild strain in your lower back. The Kingdom Administrative Seal wins this round.",
+                "pull": "You heave at the Kingdom Administrative Seal. Your muscles protest, the Kingdom Administrative Seal doesn't. It has the structural advantage of not caring."
             }
         },
         {
@@ -190,7 +240,12 @@
             },
             "responses": {
                 "look": "A vial of mechanical lubricant, still liquid after all these years. The label reads 'Clock Tower Maintenance Oil -- For Official Use Only.' The annual maintenance budget was two copper coins. The clock hasn't been oiled in decades. This explains several things.",
-                "use": "Clock oil without a clock is just oil. You need the clock tower mechanism to use this properly."
+                "use": "Clock oil without a clock is just oil. You need the clock tower mechanism to use this properly.",
+                "take": "You can't take the Clock Oil. It's firmly attached to its current situation, much like your growing sense of confusion.",
+                "talk": "You address the Clock Oil. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Clock Oil doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Clock Oil. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Clock Oil and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         }
     ],

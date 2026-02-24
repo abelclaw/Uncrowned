@@ -212,7 +212,11 @@
                 "look": "A massive stone desk piled with forms, stamps, and the accumulated paperwork of centuries. A sign reads: 'FORM 27-B STROKE 6 REQUIRED FOR ALL TEST APPLICANTS. NO EXCEPTIONS. NO EXCUSES. NO CRYING.' The desk has more filing systems than some governments.",
                 "use": "The desk is the Clerk's domain. Using it without permission would be like sitting in a pilot's seat and pressing buttons -- technically possible, bureaucratically catastrophic.",
                 "take": "You cannot take a stone desk. The Clerk watches you consider it. His expression suggests he's seen people try.",
-                "default": "You examine the registration desk. It radiates the quiet authority of organized tedium."
+                "default": "You examine the registration desk. It radiates the quiet authority of organized tedium.",
+                "talk": "You talk to the Registration Desk. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Registration Desk doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Registration Desk and push. Nothing happens, except a mild strain in your lower back. The Registration Desk wins this round.",
+                "pull": "You heave at the Registration Desk. Your muscles protest, the Registration Desk doesn't. It has the structural advantage of not caring."
             }
         },
         {
@@ -232,7 +236,11 @@
                 "look": "Doors line the cavern walls, each numbered and labeled in a font so small it requires squinting. 'Door 1: West Wing (Authorized Personnel Only),' 'Door 2: East Wing (Also Authorized Only),' 'Door 3: Broom Closet (Authorized Brooms Only).' The authorization requirements are exhaustive.",
                 "open": "The doors are locked. All of them. Bureaucratically locked. You'd need the Clerk's approval, which requires forms, which require ink, which requires finding ink, which requires forms. It's bureaucracy all the way down.",
                 "use": "Every door requires authorization. The Clerk has a monopoly on authorization. Welcome to the Screaming Caverns.",
-                "default": "You count the doors. There are more doors than seems architecturally necessary. Bureaucracy expands to fill available wall space."
+                "default": "You count the doors. There are more doors than seems architecturally necessary. Bureaucracy expands to fill available wall space.",
+                "take": "The Numbered Doors isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
+                "talk": "You speak to the Numbered Doors in a calm, measured tone. The Numbered Doors maintains its silence, which is more than can be said for most things in this kingdom.",
+                "push": "You shove the Numbered Doors with all your might. All your might turns out to be insufficient. The Numbered Doors remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Numbered Doors. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         },
         {
@@ -251,7 +259,12 @@
             "responses": {
                 "look": "Signs point in every direction. 'WEST WING: This Way' points east. 'EXIT: Follow Arrow' points at the ceiling. 'YOU ARE HERE' points at a different sign that says 'NO YOU AREN'T.' Whoever designed the signage was either incompetent or actively hostile.",
                 "use": "You follow a sign. It leads to another sign. Which leads to another sign. Which leads back to the first sign. The Clerk watches your confusion with professional disinterest.",
-                "default": "You study the signs. They are confidently, aggressively wrong."
+                "default": "You study the signs. They are confidently, aggressively wrong.",
+                "take": "You try to take the Directional Signs, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "talk": "You talk to the Directional Signs. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Directional Signs doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Directional Signs and push. Nothing happens, except a mild strain in your lower back. The Directional Signs wins this round.",
+                "pull": "You heave at the Directional Signs. Your muscles protest, the Directional Signs doesn't. It has the structural advantage of not caring."
             }
         },
         {
@@ -271,7 +284,11 @@
                 "look": "Ancient symbols pulsing with blue light, their meaning lost to time and budget cuts. They look important in the way that things you can't read always do.",
                 "take": "They're carved into the wall, not stickers. Whoever inscribed them used tools, not adhesive.",
                 "use": "You trace a rune with your finger. Nothing happens. Disappointing, but also not electrocuting, so arguably a win.",
-                "default": "You examine the runes. They glow with quiet authority and zero legibility."
+                "default": "You examine the runes. They glow with quiet authority and zero legibility.",
+                "talk": "You address the Glowing Runes. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Glowing Runes doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Glowing Runes. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Glowing Runes and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         },
         {
@@ -291,7 +308,57 @@
                 "look": "A shimmering blue archway that screams 'magical entrance' with all the subtlety of a carnival barker. It pulses with energy that makes your fillings tingle.",
                 "take": "You can't pocket a portal. Topology forbids it, and your pockets lack the requisite dimensional capacity.",
                 "use": "It seems to be working already, doing whatever portals do. Standing near it makes your hair stand on end and your sense of self-preservation sit down.",
-                "default": "You regard the blue portal. It regards you with shimmering indifference."
+                "default": "You regard the blue portal. It regards you with shimmering indifference.",
+                "talk": "You talk to the Blue Portal. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Blue Portal doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Blue Portal and push. Nothing happens, except a mild strain in your lower back. The Blue Portal wins this round.",
+                "pull": "You heave at the Blue Portal. Your muscles protest, the Blue Portal doesn't. It has the structural advantage of not caring."
+            }
+        },
+        {
+            "id": "filing-cabinets",
+            "name": "Filing Cabinets",
+            "zone": {
+                "x": 770,
+                "y": 360,
+                "width": 80,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 810,
+                "y": 420
+            },
+            "responses": {
+                "look": "Rows of stone filing cabinets line the walls, their drawers labeled with categories ranging from 'Applications A-D' to 'Complaints About the Nature of Time.' One drawer appears to be breathing. You decide not to investigate.",
+                "take": "Each cabinet is carved from solid rock and weighs roughly the same as a small horse. They are not leaving this room. Neither, it seems, are you.",
+                "use": "You try to open a drawer. It's locked. The next one is also locked. The third one opens but is empty except for a note reading 'SEE DRAWER 1.' You close it.",
+                "talk": "You address the filing cabinets. They say nothing, though one drawer rattles. Whether this is a response or a structural issue is anyone's guess.",
+                "open": "Every drawer you try is either locked, empty, or contains a form requesting permission to open other drawers. The bureaucracy is recursive.",
+                "push": "You shove a cabinet. It doesn't move. It was carved from the cavern floor itself. Filing here is permanent in every sense.",
+                "pull": "You pull a drawer handle. It comes off in your hand. The drawer remains closed. You now have a handle and no drawer to use it on. Peak bureaucracy."
+            }
+        },
+        {
+            "id": "velvet-rope",
+            "name": "Velvet Rope",
+            "zone": {
+                "x": 30,
+                "y": 400,
+                "width": 60,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 60,
+                "y": 430
+            },
+            "responses": {
+                "look": "A burgundy velvet rope strung between polished brass stanchions, the universal symbol of 'you aren't important enough.' It glows faintly. Even the crowd control is enchanted. This kingdom takes its queues very seriously.",
+                "take": "You reach for the rope. It shimmers and your hand passes through. Enchanted crowd control. Because a regular rope would have been too easy to circumvent, and the kingdom can't have that.",
+                "use": "You try to unhook the rope from its stanchion. It reattaches itself. You unhook it again. It reattaches. The rope has more determination than you do.",
+                "talk": "You address the velvet rope. It sways slightly, which is either acknowledgment or a draft. In bureaucratic spaces, it's hard to tell the difference.",
+                "open": "The rope doesn't open. It sections. It divides. It creates an invisible hierarchy between those who may pass and those who may not. You are in the latter category.",
+                "push": "You push through the rope. It pushes back. Gently, but with the institutional authority of something that has denied passage to thousands.",
+                "pull": "You yank the rope. It stretches, glows brighter, and snaps back to position. The enchantment holds. Whoever spelled this rope was deeply committed to access control."
             }
         }
     ],

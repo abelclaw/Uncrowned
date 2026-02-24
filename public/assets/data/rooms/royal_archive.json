@@ -74,7 +74,11 @@
                 "look": "Section C-7: Curses, Hexes, and Related Grievances. The shelves are organized by date, severity, and petulance level of the caster. Most are marked 'Resolved.' One near the back is marked 'ACTIVE -- DO NOT TAMPER.' Its edges are singed, which is either a filing notation or a warning.",
                 "use": "You rifle through the curse filings. Most are mundane -- cursed cow, hexed well, a very specific grudge against someone's turnip crop. The active one is filed at the very back, behind a stack of resolved hexes.",
                 "take": "You can't take the entire filing section. Even if you could carry it, the archive's organizational system would never recover.",
-                "default": "You examine the curse filing section. It's surprisingly well-organized for a topic that involves screaming wizards and malevolent incantations."
+                "default": "You examine the curse filing section. It's surprisingly well-organized for a topic that involves screaming wizards and malevolent incantations.",
+                "talk": "You address the Curse Filing Section. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Curse Filing Section doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Curse Filing Section. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Curse Filing Section and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         },
         {
@@ -93,7 +97,12 @@
             "responses": {
                 "look": "Half the archive has turned to stone. Scrolls and their shelves alike, frozen in grey. You can read the stone text if you look closely -- laws about taxes, grazing rights, and a surprisingly detailed regulation about the acceptable width of hats. The kingdom's bureaucracy is preserved forever. Whether that's a loss or a mercy is debatable.",
                 "take": "You try to pull a stone scroll from the shelf. It snaps. Centuries of legal precedent, shattered. The kingdom's lawyers would weep, if they weren't also stone.",
-                "default": "You study the stone shelves. The petrification is indiscriminate in its destruction but oddly respectful of filing order."
+                "default": "You study the stone shelves. The petrification is indiscriminate in its destruction but oddly respectful of filing order.",
+                "use": "Using the Stone Shelves doesn't accomplish anything obvious. Perhaps it needs to be used with something else. Or perhaps it's just decorative.",
+                "talk": "You attempt a conversation with the Stone Shelves. The Stone Shelves is not a great conversationalist. Then again, neither are you.",
+                "open": "You search the Stone Shelves for a way to open it. There isn't one. It's not that kind of thing.",
+                "push": "You press against the Stone Shelves. It offers the same resistance as a mountain, which is to say, total and indifferent.",
+                "pull": "You pull on the Stone Shelves. Nothing happens. Gravity and architecture conspire against you, as usual."
             }
         },
         {
@@ -112,7 +121,12 @@
             "responses": {
                 "look": "The archivist's desk is half-stone, the chair pushed back as though the archivist left in a hurry. A mug of tea sits petrified mid-steam. Notes on the desk read: 'Curse contract -- Section C-7, shelf 3, row 12. DO NOT file under Miscellaneous. The auditor was very clear about this.'",
                 "use": "You sit at the archivist's desk. For a moment, you feel the weight of centuries of filing. It is not a pleasant feeling. You stand up.",
-                "default": "You examine the archivist's desk. The petrified tea is a monument to interrupted work."
+                "default": "You examine the archivist's desk. The petrified tea is a monument to interrupted work.",
+                "take": "You can't take the Archivist's Desk. It's firmly attached to its current situation, much like your growing sense of confusion.",
+                "talk": "You talk to the Archivist's Desk. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Archivist's Desk doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Archivist's Desk and push. Nothing happens, except a mild strain in your lower back. The Archivist's Desk wins this round.",
+                "pull": "You heave at the Archivist's Desk. Your muscles protest, the Archivist's Desk doesn't. It has the structural advantage of not caring."
             }
         },
         {
@@ -132,7 +146,11 @@
                 "look": "Leather-bound tomes stacked in precarious towers, their spines cracked and titles faded. The kingdom's entire legal history, slowly becoming unreadable.",
                 "take": "You open one at random. It's a three-hundred-page treatise on hat regulations. You put it back.",
                 "use": "You flip through a tome. The pages crumble at the edges, taking centuries of case law with them.",
-                "default": "You examine the tomes. They hold answers to questions nobody alive remembers asking."
+                "default": "You examine the tomes. They hold answers to questions nobody alive remembers asking.",
+                "talk": "You speak to the Dusty Tomes in a calm, measured tone. The Dusty Tomes maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Dusty Tomes. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Dusty Tomes with all your might. All your might turns out to be insufficient. The Dusty Tomes remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Dusty Tomes. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         },
         {
@@ -152,7 +170,11 @@
                 "look": "Narrow windows let in thin shafts of grey light, illuminating dust motes that drift like tiny ghosts through the archive's stale air.",
                 "take": "Windows are a structural feature, not a collectible.",
                 "use": "You peer through the narrow glass. The view is limited to a thin slice of a cursed kingdom, which is honestly enough.",
-                "default": "You glance at the narrow windows. They admit light grudgingly, as if rationing hope."
+                "default": "You glance at the narrow windows. They admit light grudgingly, as if rationing hope.",
+                "talk": "You address the Narrow Windows. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Narrow Windows doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Narrow Windows. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Narrow Windows and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         }
     ],
@@ -172,7 +194,12 @@
             },
             "responses": {
                 "look": "A thick parchment document with a wax seal, filed in Section C-7. The title reads: 'CONTRACT OF PETRIFICATION -- BINDING CURSE (Active).' Below, in small print: 'Clause 47-B: This curse may be terminated through the Rite of Administrative Closure, requiring the Crystal of Mundanity, the Kingdom Administrative Seal, and proper filing.' Someone actually built an exit clause into a curse. Bureaucracy truly is universal.",
-                "use": "The contract is a legal document. You need it for the Rite of Administrative Closure. It's the curse's own terms and conditions, and you intend to enforce them."
+                "use": "The contract is a legal document. You need it for the Rite of Administrative Closure. It's the curse's own terms and conditions, and you intend to enforce them.",
+                "take": "You can't take the Original Curse Contract. It's firmly attached to its current situation, much like your growing sense of confusion.",
+                "talk": "You speak to the Original Curse Contract in a calm, measured tone. The Original Curse Contract maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Original Curse Contract. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Original Curse Contract with all your might. All your might turns out to be insufficient. The Original Curse Contract remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Original Curse Contract. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         }
     ],

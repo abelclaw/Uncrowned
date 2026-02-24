@@ -132,7 +132,11 @@
                 "look": "A gallery of royal portraits stretches down the hallway. King Aldric the Bold, who was mostly bald. Queen Thessaly the Wise, who was mostly sarcastic. King Mortimer the Prepared, who choked on an olive. The artistic quality decreases as the dynasty progresses, as if the painters were losing hope in real time.",
                 "take": "You reach for a portrait. It feels... warm. Not warm like sunshine. Warm like something that doesn't want to be touched. You retract your hand with admirable speed.",
                 "use": "You straighten a crooked portrait. It immediately tilts back. The painting seems to prefer being askew. Artistic temperament, presumably.",
-                "default": "You examine the portraits. They examine you back. Several appear to be tracking your movement, which is either magical or the sign of a very talented painter."
+                "default": "You examine the portraits. They examine you back. Several appear to be tracking your movement, which is either magical or the sign of a very talented painter.",
+                "talk": "You attempt a conversation with the Royal Portraits. The Royal Portraits is not a great conversationalist. Then again, neither are you.",
+                "open": "You search the Royal Portraits for a way to open it. There isn't one. It's not that kind of thing.",
+                "push": "You press against the Royal Portraits. It offers the same resistance as a mountain, which is to say, total and indifferent.",
+                "pull": "You pull on the Royal Portraits. Nothing happens. Gravity and architecture conspire against you, as usual."
             }
         },
         {
@@ -153,7 +157,10 @@
                 "use": "The door is locked. The keyhole is shaped like a bone -- you'd need a skeleton key, which is either a pun or a very specific security measure. Possibly both.",
                 "open": "Locked. The bone-shaped keyhole mocks your keyless state. You rattle the handle. The door rattles back. Neither of you gains ground.",
                 "push": "You lean against the door. It holds firm. This door was built to resist exactly this amount of determination.",
-                "default": "You examine the locked door. It's locked. That's its primary characteristic and it's doing an excellent job."
+                "default": "You examine the locked door. It's locked. That's its primary characteristic and it's doing an excellent job.",
+                "take": "The Locked Door isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
+                "talk": "You talk to the Locked Door. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "pull": "You heave at the Locked Door. Your muscles protest, the Locked Door doesn't. It has the structural advantage of not caring."
             }
         },
         {
@@ -173,7 +180,11 @@
                 "look": "One portrait stands out from the rest -- it glows faintly around the edges with a sickly green light. The subject is a woman in royal attire, her expression caught between serene and predatory. A small plaque reads 'Queen Thessaly the Wise.' The glow pulses gently, like a heartbeat. Or a warning.",
                 "use": "The portrait's glow intensifies as you approach. Every instinct says 'don't touch the glowing thing.' Those are good instincts. Listen to them.",
                 "talk": "You address the glowing portrait. The painted eyes seem to flicker toward you. 'Hello?' Nothing. But the glow brightens for a moment. Coincidence, surely.",
-                "default": "You regard the glowing portrait from a safe distance. The safe distance is 'anywhere that isn't touching it.'"
+                "default": "You regard the glowing portrait from a safe distance. The safe distance is 'anywhere that isn't touching it.'",
+                "take": "The Glowing Portrait isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
+                "open": "The Glowing Portrait doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Glowing Portrait. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Glowing Portrait and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         },
         {
@@ -193,7 +204,11 @@
                 "look": "Carved stone pillars line the hallway, each one holding up centuries of architectural ambition and questionable governance. The carvings depict scenes of royal life -- feasts, hunts, and what appears to be a badger coronation.",
                 "take": "Structural support isn't portable. That's less a rule and more a law of physics.",
                 "use": "Leaning against them feels disrespectful to the masons who spent years of their lives carving badgers into load-bearing stone.",
-                "default": "You examine the columns. They bear the weight of the castle above with the silent patience of things that were never given a choice."
+                "default": "You examine the columns. They bear the weight of the castle above with the silent patience of things that were never given a choice.",
+                "talk": "You speak to the Columns in a calm, measured tone. The Columns maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Columns. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Columns with all your might. All your might turns out to be insufficient. The Columns remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Columns. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         },
         {
@@ -213,7 +228,11 @@
                 "look": "A faded crimson carpet runs the length of the hallway, threadbare in the middle where centuries of feet have worn a path. The edges still show hints of the original deep red, a colour now best described as 'nostalgic pink.'",
                 "take": "Too heavy, too dusty, and nailed down at both ends. You'd sneeze yourself unconscious before you got it rolled up.",
                 "use": "You're already walking on it. That's the full extent of carpet interaction available to you.",
-                "default": "You regard the hallway carpet. It's witnessed every royal procession, every servant's shuffle, and one king's final olive-impeded footsteps."
+                "default": "You regard the hallway carpet. It's witnessed every royal procession, every servant's shuffle, and one king's final olive-impeded footsteps.",
+                "talk": "You speak to the Hallway Carpet in a calm, measured tone. The Hallway Carpet maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Hallway Carpet. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Hallway Carpet with all your might. All your might turns out to be insufficient. The Hallway Carpet remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Hallway Carpet. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         },
         {
@@ -233,7 +252,11 @@
                 "look": "Iron torch sconces line the walls, their flames flickering in brackets. Who lights them? Nobody seems to know. The castle has been largely unstaffed for months, yet the torches burn on -- either magical, self-sustaining, or maintained by someone very committed to ambiance.",
                 "take": "Stealing castle fixtures is frowned upon, and the flames are still lit. You'd burn your inventory and your reputation simultaneously.",
                 "use": "You warm your hands near a sconce. The flame dances obligingly. For a moment, the hallway feels almost hospitable.",
-                "default": "You study the wall sconces. Their persistent burning in an abandoned hallway is either comforting or deeply unsettling, depending on your feelings about unexplained fire."
+                "default": "You study the wall sconces. Their persistent burning in an abandoned hallway is either comforting or deeply unsettling, depending on your feelings about unexplained fire.",
+                "talk": "You talk to the Wall Sconces. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Wall Sconces doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Wall Sconces and push. Nothing happens, except a mild strain in your lower back. The Wall Sconces wins this round.",
+                "pull": "You heave at the Wall Sconces. Your muscles protest, the Wall Sconces doesn't. It has the structural advantage of not caring."
             }
         }
     ],

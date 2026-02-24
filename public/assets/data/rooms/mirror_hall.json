@@ -74,7 +74,11 @@
                 "look": "The central mirror glows with blue light. A face watches you from within -- neither young nor old, neither male nor female. It shifts, reflecting something that isn't your appearance but might be your essence. The Mirror Spirit has been trapped here since the castle was built, watching everyone who passes through. It knows you. It has always known you.",
                 "use": "The mirror responds to conversation, not contact. Talk to the Mirror Spirit to learn what it knows.",
                 "take": "You cannot take a mirror that is larger than you and home to an immortal spirit. The logistics alone are prohibitive.",
-                "default": "You face the glowing mirror. It faces you back. The spirit within waits, patient as glass."
+                "default": "You face the glowing mirror. It faces you back. The spirit within waits, patient as glass.",
+                "talk": "You address the mirror directly. The glass vibrates faintly but offers no reply. The spirit within prefers to be spoken to as a person, not as furniture. Try talking to the Mirror Spirit -- it has feelings. Probably.",
+                "open": "You search for hinges, a latch, a hidden seam. Nothing. It's a mirror, not a medicine cabinet. The spirit inside didn't get in through a door.",
+                "push": "You lean into the Glowing Mirror and push. Nothing happens, except a mild strain in your lower back. The Glowing Mirror wins this round.",
+                "pull": "You grip the ornate frame and heave. The mirror doesn't budge. It was installed by someone who anticipated exactly this level of adventurer ingenuity."
             }
         },
         {
@@ -94,7 +98,11 @@
                 "look": "The other mirrors show scenes from your journey. One shows the forest clearing as it was -- green, alive, before the curse claimed it. Another shows the throne room with someone sitting on the throne. A third shows... you. But different. Older. Holding a crown. Or dropping one. The mirrors show possibility, not prophecy. They show what could be, what was, what wasn't.",
                 "use": "You wave at the reflections. Some wave back. Some don't. One waves in the wrong direction, which is unsettling.",
                 "take": "You try to reach into a mirror. Your hand meets cold glass. The reflections remain firmly on the other side of reality.",
-                "default": "You study the strange reflections. Each mirror tells a different story about you. Not all of them end well."
+                "default": "You study the strange reflections. Each mirror tells a different story about you. Not all of them end well.",
+                "talk": "You whisper to the reflections. The other-yous mouth words back, but no sound comes through. Just as well. You probably don't want life advice from a version of yourself that wears a crown voluntarily.",
+                "open": "These mirrors don't open. They're windows into possibility, not doors. The distinction matters when you're pressing your face against one like a child at a sweetshop.",
+                "push": "You press your palm flat against the glass. The reflection presses back. Neither of you is getting through. Stalemate, as all relationships with mirrors eventually become.",
+                "pull": "You hook your fingers around a mirror's edge and tug. It's bolted to the wall with the quiet determination of someone who's seen too many adventurers try this exact thing."
             }
         },
         {
@@ -112,7 +120,13 @@
             },
             "responses": {
                 "look": "A cracked mirror in a tarnished frame. Through the cracks, the reflection is fragmented -- pieces of you scattered across broken glass. It's the most honest mirror in the hall. You are not one thing. You are not a hero. You are not a prophecy. You are a collection of choices, cracked and imperfect, held together by stubbornness.",
-                "default": "You examine the cracked mirror. It shows you in pieces, which is perhaps the most accurate reflection of all."
+                "default": "You examine the cracked mirror. It shows you in pieces, which is perhaps the most accurate reflection of all.",
+                "take": "You consider prying it off the wall and immediately think better of it. Carrying a cracked mirror is a one-way ticket to seven years of bad luck and a lifetime of glass splinters.",
+                "use": "Using the Cracked Mirror doesn't accomplish anything obvious. Perhaps it needs to be used with something else. Or perhaps it's just decorative.",
+                "talk": "You speak to the cracked mirror. Your fragmented reflections all mouth along, a chorus of broken yous. None of them answer. They're too busy being metaphors.",
+                "open": "It's a mirror, not a secret passage. Though in a place like this, you can't blame yourself for checking.",
+                "push": "You give the cracked mirror a shove. It creaks ominously, and a tiny shard tinkles to the floor. Maybe don't do that to the thing that's already barely holding itself together.",
+                "pull": "You tug at the tarnished frame. More cracks spiderweb across the surface. You're not fixing this by pulling on it. A life lesson delivered by broken glass."
             }
         },
         {
@@ -132,7 +146,11 @@
                 "look": "Immaculate potted plants that somehow thrive in a room with no natural light. Suspicious, but then everything in a hall of magical mirrors is suspicious.",
                 "take": "They're heavier than they look, and the pots are ornamental. Moving them would be a crime against interior design.",
                 "use": "You consider talking to them but suspect the mirrors would judge you. The plants seem content with the arrangement.",
-                "default": "You examine the potted plants. They are green, healthy, and keeping their secrets to themselves."
+                "default": "You examine the potted plants. They are green, healthy, and keeping their secrets to themselves.",
+                "talk": "You lean in and whisper encouragement to a fern. It does not respond, which is the best possible outcome when talking to plants in a room full of magical mirrors.",
+                "open": "It's a plant in a pot. There's nothing to open unless you count the soil, and digging through someone else's potted plants is a social boundary even adventurers shouldn't cross.",
+                "push": "You shove a pot an inch to the left. Nothing happens. You shove it back. The plant endures your rearranging with the silent dignity of all potted things.",
+                "pull": "You drag a pot toward you, scraping it across the floor. The sound echoes off every mirror in the hall. Congratulations, you've invented the world's worst instrument."
             }
         },
         {
@@ -152,7 +170,11 @@
                 "look": "An ornate chandelier that casts light at angles that make everyone look slightly more dramatic than they deserve. It's the lighting equivalent of a flattering portrait.",
                 "take": "It would require a ladder, a winch, and a complete disregard for interior decorating. You have one of those things. Possibly two.",
                 "use": "It's doing its job. Leave the chandelier alone. It didn't ask to be part of your adventure.",
-                "default": "You look up at the chandelier. It sparkles with the confidence of something that knows it's the brightest object in the room."
+                "default": "You look up at the chandelier. It sparkles with the confidence of something that knows it's the brightest object in the room.",
+                "talk": "You address the chandelier. It says nothing, but continues to make you look dramatic. Some relationships are better left unspoken.",
+                "open": "The chandelier is not a container, a door, or a puzzle box. It is a light fixture. It has achieved its purpose in life. Let it be.",
+                "push": "It's on the ceiling. Your arms are not that long. Your ambitions, however, clearly are.",
+                "pull": "You'd need to be eight feet tall and supremely foolish. You're only one of those things, and even that's debatable."
             }
         },
         {
@@ -172,7 +194,80 @@
                 "look": "A rich purple carpet with a geometric pattern that hurts your eyes if you stare too long. Your muddy boots are not making a great impression on it.",
                 "take": "It's wall-to-wall and bolted down. Someone learned from experience. Possibly your kind of experience.",
                 "use": "You wipe your boots on it. The carpet does not forgive easily. The stain joins a century of other adventurers' boot prints.",
-                "default": "You stand on the purple carpet. It endures your presence with the patience of soft furnishings everywhere."
+                "default": "You stand on the purple carpet. It endures your presence with the patience of soft furnishings everywhere.",
+                "talk": "You compliment the carpet on its colour. It says nothing, but you sense a quiet pride radiating from its fibres. Or that might be dust.",
+                "open": "You lift a corner looking for a trapdoor. There's nothing underneath but cold stone and the faint smell of disappointment. Not every carpet hides a secret passage.",
+                "push": "You try to bunch up the carpet with your foot. It refuses to wrinkle. This carpet has more structural integrity than most of the castle's political alliances.",
+                "pull": "You grab a corner and yank. The carpet doesn't move. The bolts holding it down were installed by someone who'd met adventurers before and had zero faith in their restraint."
+            }
+        },
+        {
+            "id": "stone-walls",
+            "name": "Stone Walls",
+            "zone": {
+                "x": 800,
+                "y": 300,
+                "width": 100,
+                "height": 80
+            },
+            "interactionPoint": {
+                "x": 850,
+                "y": 420
+            },
+            "responses": {
+                "look": "Cold stone walls, barely visible between all the mirrors. What little wall you can see is ancient masonry, worn smooth by centuries. The stone doesn't reflect anything. In this room, that makes it the most trustworthy surface available.",
+                "take": "You can't take a wall. This is fundamental architecture, not a souvenir shop.",
+                "use": "You lean against the wall. It's solid, cold, and refreshingly honest. In a room full of lying mirrors, the wall is the only thing that is exactly what it appears to be.",
+                "talk": "You mutter at the stonework. Unlike everything else in this room, it doesn't talk back, show you alternate timelines, or judge your life choices.",
+                "push": "You push against the wall. It pushes back with the quiet confidence of something that has stood for centuries.",
+                "pull": "You claw at the mortar between stones. Nothing comes loose. The wall was built by professionals.",
+                "open": "You tap the stones, listening for a hollow compartment. Solid all the way through. Not every wall hides a secret room."
+            }
+        },
+        {
+            "id": "gold-frames",
+            "name": "Gold Frames",
+            "zone": {
+                "x": 100,
+                "y": 330,
+                "width": 80,
+                "height": 70
+            },
+            "interactionPoint": {
+                "x": 140,
+                "y": 420
+            },
+            "responses": {
+                "look": "Ornate gold frames surround the larger mirrors, carved with ivy patterns and small faces that might be cherubs or might be gargoyles. Hard to tell -- the artist clearly had strong opinions about the boundary between cute and horrifying.",
+                "take": "The gold frames are bolted, screwed, and possibly cursed into place. Prying one off would require tools you don't have and a moral flexibility you'd rather not examine.",
+                "use": "You run your fingers along the gilded carvings. The metalwork is cold and intricate. Beautiful craftsmanship, wasted on holding mirrors that show you futures where you made better decisions.",
+                "talk": "You address the tiny carved faces on the frames. They stare back with the fixed expressions of creatures who were never alive and are mildly offended you thought otherwise.",
+                "open": "You feel around the edges of a frame for a hidden hinge or latch. Nothing. They're frames, not safes.",
+                "push": "You press against a frame. It shifts half an inch and the mirror behind it wobbles. You stop immediately.",
+                "pull": "You tug at an ornate frame. It groans but holds firm. The small carved faces seem to frown at you."
+            }
+        },
+        {
+            "id": "blue-light",
+            "name": "Blue Light",
+            "zone": {
+                "x": 420,
+                "y": 320,
+                "width": 60,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 420
+            },
+            "responses": {
+                "look": "The blue light emanating from the central mirror is soft but persistent, like a nightlight for people with existential dread. It pulses faintly, almost like breathing.",
+                "take": "You cup your hands around the light. It passes through your fingers like, well, light. You can't hold illumination. Metaphorically or literally, it seems.",
+                "use": "The blue light isn't a tool. It's a symptom. The mirror glows because something ancient lives inside it. You don't use a glow -- you talk to whatever's causing it.",
+                "talk": "You address the glow. It brightens briefly, as if acknowledging you, then settles back. The light is not the conversationalist here. The spirit is.",
+                "open": "You can't open light. It has no edges, no seams, no mechanism. It simply is, glowing with the patience of the very old.",
+                "push": "You wave your hand through the blue light. It bends around your fingers like liquid, then reforms. The light doesn't push. It flows.",
+                "pull": "You try to draw the light toward you. It follows your hand briefly, then snaps back to the mirror. It knows where it belongs."
             }
         }
     ],

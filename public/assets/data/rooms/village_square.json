@@ -92,7 +92,10 @@
                 "use": "The fountain hasn't worked in years. Turning the valve produces nothing but a sad grinding sound, like a bureaucrat's soul.",
                 "take": "It's a fountain. Made of stone. In a public square. Even you have limits. Presumably.",
                 "talk": "You address the petrified figures. The king stares blankly. The knight stares blankly. The badger stares blankly but with an air of judgment.",
-                "default": "You examine the fountain. It's deeply, profoundly, aggressively stone."
+                "default": "You examine the fountain. It's deeply, profoundly, aggressively stone.",
+                "open": "Open what, exactly? The fountain basin is an open-air bowl with no lid, no hatch, no secret compartment. Its entire design philosophy is 'being open.' You've mastered the art of solving problems that don't exist.",
+                "push": "You push the Petrified Fountain. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You brace yourself and heave at the fountain. It doesn't budge. It weighs more than your collective life choices. The stone feels disturbingly warm where you touched it. You let go. Quickly."
             }
         },
         {
@@ -112,7 +115,11 @@
                 "look": "A wooden notice board covered in official proclamations, lost cat posters, and one notice that stands out: a decree with a royal seal, declaring the kingdom 'temporarily inconvenienced' by a petrification curse. The understatement is staggering.",
                 "take": "You pull one of the notices free. It's the official curse proclamation. Might be useful as evidence that things are, in fact, not fine.",
                 "use": "You read the notices more carefully. Most are mundane -- livestock auctions, tax reminders, a suspiciously specific wanted poster for 'anyone who looks like they're up to something.' The curse notice is the only one that matters.",
-                "default": "You peruse the notice board. It's a snapshot of a kingdom in denial."
+                "default": "You peruse the notice board. It's a snapshot of a kingdom in denial.",
+                "talk": "You speak to the notice board. It does not respond, making it the most consistent government communication channel in the kingdom.",
+                "open": "It's a notice board, not a cabinet. The notices are pinned to the front, in plain view, because the kingdom's approach to classified information is 'pin it up in the town square and hope nobody reads it.'",
+                "push": "You shove the notice board. It rocks back on its posts, several notices fluttering to the ground. Civic vandalism: the hobby of the truly desperate.",
+                "pull": "You grab the notice board and pull. A few rusty nails groan in protest. The board holds firm, because apparently this is the one thing the village built to last."
             }
         },
         {
@@ -132,7 +139,11 @@
                 "look": "Empty market stalls line one side of the square. Most merchants have fled or been petrified. Their wares -- fruit, cloth, pottery -- sit abandoned, slowly gathering dust and significance. One stall still has a half-petrified merchant behind it.",
                 "take": "Looting abandoned market stalls? You consider it for a shameful moment, then decide against it. The shame lingers.",
                 "use": "You browse the abandoned stalls. There's nothing useful -- just rotting produce and dusty trinkets. The economy here is in worse shape than you are.",
-                "default": "You wander through the empty stalls. It's like a flea market after the apocalypse."
+                "default": "You wander through the empty stalls. It's like a flea market after the apocalypse.",
+                "talk": "You address the empty stalls. The silence that replies is indistinguishable from the customer service they provided when staffed.",
+                "open": "You try the drawer of the nearest stall. It slides open to reveal a dead spider and a single copper coin so tarnished it might be a button. You close it. Some mysteries are better left unsolved.",
+                "push": "You lean against a market stall. It creaks ominously, threatening to collapse into rotting wood and shattered dreams. You step back.",
+                "pull": "You tug at one of the stall's canvas awnings. It tears free with a sad ripping sound, showering you in dust and moth corpses. A fitting metaphor for the local economy."
             }
         },
         {
@@ -152,7 +163,57 @@
                 "look": "Uneven cobblestones pave the square, each one a slightly different height -- a masterwork of inconsistency that has been turning ankles since the village was founded. Some stones are cracked, others are loose, and at least three are actively trying to trip you.",
                 "take": "You pry at a cobblestone. It refuses to budge, cemented by centuries of foot traffic and civic neglect.",
                 "use": "You stomp on the cobblestones experimentally. They clatter and shift underfoot. Several pedestrians who don't exist give you disapproving looks.",
-                "default": "You look down at the cobblestones. They look up at your feet. An uneasy truce is maintained."
+                "default": "You look down at the cobblestones. They look up at your feet. An uneasy truce is maintained.",
+                "talk": "You whisper to the cobblestones. They do not whisper back. This is either because they're stones or because they're keeping secrets. Given this village, either is equally likely.",
+                "open": "You pry at the gaps between cobblestones, looking for a hidden compartment. You find dirt, a fossilized crumb, and nothing of value. The square keeps its secrets in plain sight.",
+                "push": "You press down on a loose cobblestone with your foot. It sinks slightly, then pops back up. For one thrilling moment you thought it might be a hidden switch. It's not. It's just bad masonry.",
+                "pull": "You wedge your fingers under a cobblestone and heave. Your fingernails file a formal complaint. The stone remains unmoved, firmly committed to being exactly where it is."
+            }
+        },
+        {
+            "id": "stone-figures",
+            "name": "Stone Figures",
+            "zone": {
+                "x": 410,
+                "y": 355,
+                "width": 80,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 420
+            },
+            "responses": {
+                "look": "Three stone figures atop the fountain: a king, a knight, and what appears to be a badger wearing a tiny crown. They're frozen mid-dance, which raises more questions than it answers. The king's expression suggests he was having a wonderful time. The badger's suggests it was not.",
+                "take": "They're part of the fountain. Chiseled from the same stone. Even if you could pry one loose, explaining why you're carrying a petrified dancing badger would be socially complex.",
+                "use": "You're not sure what you'd use stone figures for. Bookends? Conversation starters? They're ornamental, and their ornamental days are behind them.",
+                "talk": "You address the stone king. He stares back with the fixed grin of someone caught mid-waltz for all eternity. The badger's expression has not improved.",
+                "open": "Stone figures don't open. They are solid stone. The king, the knight, and the badger are all equally unopenable.",
+                "push": "You push one of the figures. It doesn't move. It has been dancing with the same partner for decades and is not about to change now.",
+                "pull": "You try to pull the badger free. It clings to its position with the determination of something that never wanted to be here but refuses to leave."
+            }
+        },
+        {
+            "id": "fountain-valve",
+            "name": "Fountain Valve",
+            "zone": {
+                "x": 430,
+                "y": 400,
+                "width": 40,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 420
+            },
+            "responses": {
+                "look": "A corroded brass valve protrudes from the fountain's base, green with verdigris. It was once used to control water flow. Now it controls nothing, because there's no water, no pressure, and no plumber willing to work in a cursed village.",
+                "take": "The valve is welded to the fountain's plumbing by centuries of corrosion. It's not going anywhere. Neither, to be fair, is the water.",
+                "use": "You grip the valve and turn. It produces a grinding sound like a bureaucrat's soul departing, then nothing. No water. No magic. Just the hollow promise of municipal infrastructure.",
+                "talk": "You address the valve. It drips once -- a single bead of rust-brown water, falling like a tear. Then nothing. Even the plumbing is grieving.",
+                "open": "You twist the valve to the open position. A dry wheeze escapes the pipe. Then silence. The fountain's water supply died long before the curse. This is just regular municipal failure.",
+                "push": "You push the valve handle. It doesn't turn. It's seized solid with corrosion. The valve retired years ago and is not taking new assignments.",
+                "pull": "You pull the valve. It grinds, shrieks, and produces a puff of copper-green dust. No water. The pipe behind it is as dry as the kingdom's treasury."
             }
         }
     ],
@@ -172,7 +233,12 @@
             },
             "responses": {
                 "look": "An official notice declaring the kingdom 'temporarily inconvenienced' by a petrification curse. It bears the royal seal -- a disgruntled badger wearing a crown. The bureaucratic understatement is, frankly, impressive.",
-                "use": "You read the notice aloud. It doesn't make the situation better, but it does make it official."
+                "use": "You read the notice aloud. It doesn't make the situation better, but it does make it official.",
+                "take": "The Town Notice isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
+                "talk": "You talk to the Town Notice. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Town Notice doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Town Notice and push. Nothing happens, except a mild strain in your lower back. The Town Notice wins this round.",
+                "pull": "You heave at the Town Notice. Your muscles protest, the Town Notice doesn't. It has the structural advantage of not caring."
             }
         },
         {
@@ -190,7 +256,12 @@
             },
             "responses": {
                 "look": "An old coin wedged between the stones near the fountain. The face on it has worn into a vague smudge. Still legal tender, apparently -- the kingdom has low standards for currency, much like everything else.",
-                "use": "A coin is for spending. You'll need to find something -- or someone -- to spend it on."
+                "use": "A coin is for spending. You'll need to find something -- or someone -- to spend it on.",
+                "take": "You try to take the Bridge Toll Coin, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "talk": "You speak to the Bridge Toll Coin in a calm, measured tone. The Bridge Toll Coin maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Bridge Toll Coin. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Bridge Toll Coin with all your might. All your might turns out to be insufficient. The Bridge Toll Coin remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Bridge Toll Coin. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         }
     ],
@@ -333,7 +404,10 @@
                 "talk": "You speak to the stone merchant. He does not respond. This is the most successful sales interaction you've ever had -- nobody is trying to upsell you.",
                 "use": "Using a petrified merchant seems disrespectful. Also impractical. He's solid stone and makes a terrible conversation partner.",
                 "take": "The merchant weighs several hundred pounds of solid stone. Your ambitions exceed your lifting capacity.",
-                "default": "The stone merchant continues his eternal sales pitch to nobody. Business is, predictably, slow."
+                "default": "The stone merchant continues his eternal sales pitch to nobody. Business is, predictably, slow.",
+                "push": "You plant both hands on the merchant's chest and shove. He doesn't move. He does, however, continue to judge you with his frozen expression. You've now assaulted a statue. In public. Well done.",
+                "pull": "You grab the merchant's outstretched arm and pull. His stone fingers remain locked in their eternal sales gesture. If anything, he looks more insistent now.",
+                "open": "Open the merchant? He's a person. A stone person, but still a person. You can't just open people. That's not how anatomy works, even in a cursed kingdom."
             }
         }
     ],

@@ -74,7 +74,11 @@
                 "look": "Rows of bookshelves crammed with texts in languages that range from 'archaic' to 'possibly invented.' Titles include 'A Bureaucrat's Guide to Immortality,' 'Mushroom Patterns and Their Meanings,' and 'How to Answer Guardian Questions Without Dying (Third Edition).' Several are bookmarked at suspiciously relevant pages.",
                 "use": "You browse the shelves. Most texts are incomprehensible, but one book -- 'Mushroom Patterns' -- contains a diagram showing a specific sequence: left, right, center, left, center. It's circled in ancient ink. Someone wanted this pattern remembered.",
                 "take": "You try to remove a book. The shelf groans. Removing structural literature is inadvisable.",
-                "default": "You survey the library. It's the kind of place where knowledge goes to retire."
+                "default": "You survey the library. It's the kind of place where knowledge goes to retire.",
+                "talk": "You attempt a conversation with the Ancient Bookshelves. The Ancient Bookshelves is not a great conversationalist. Then again, neither are you.",
+                "open": "You search the Ancient Bookshelves for a way to open it. There isn't one. It's not that kind of thing.",
+                "push": "You press against the Ancient Bookshelves. It offers the same resistance as a mountain, which is to say, total and indifferent.",
+                "pull": "You pull on the Ancient Bookshelves. Nothing happens. Gravity and architecture conspire against you, as usual."
             }
         },
         {
@@ -93,7 +97,12 @@
             "responses": {
                 "look": "A stone reading desk lit by ceiling crystals. An open book lies on it, turned to a page about the Guardian Chamber: 'The Guardian asks three questions. The first concerns the kingdom's founding year. The second concerns the name of the first bureaucrat. The third... the page is torn. Of course it is.",
                 "use": "You sit at the desk and read. The open book reveals clues about the guardian's test. Founding year: 847. First bureaucrat: Aldric the Fastidious. Third question: missing. You'll need to find that answer elsewhere.",
-                "default": "You examine the desk. Someone has been studying here recently. The dust is disturbed in a pattern that suggests frantic research."
+                "default": "You examine the desk. Someone has been studying here recently. The dust is disturbed in a pattern that suggests frantic research.",
+                "take": "You try to take the Reading Desk, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "talk": "You speak to the Reading Desk in a calm, measured tone. The Reading Desk maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Reading Desk. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Reading Desk with all your might. All your might turns out to be insufficient. The Reading Desk remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Reading Desk. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         },
         {
@@ -113,7 +122,11 @@
                 "look": "A section of shelving that has collapsed, spilling books and broken wood across the floor. Among the debris, several intact wooden planks could be salvaged. The books themselves are ruined -- water damage from an underground seep has turned most to pulp.",
                 "use": "You rummage through the debris. The books are unsalvageable, but the wooden shelving planks are solid -- thick oak that hasn't rotted despite centuries underground. These could be useful.",
                 "take": "The collapsed shelves are too large to take whole, but individual planks could be salvaged.",
-                "default": "You survey the destruction. The library's loss is potentially someone's structural gain."
+                "default": "You survey the destruction. The library's loss is potentially someone's structural gain.",
+                "talk": "You speak to the Collapsed Shelves in a calm, measured tone. The Collapsed Shelves maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Collapsed Shelves. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Collapsed Shelves with all your might. All your might turns out to be insufficient. The Collapsed Shelves remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Collapsed Shelves. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         },
         {
@@ -133,7 +146,11 @@
                 "look": "A massive crystal suspended from the ceiling, radiating cold light. Somehow still functioning after centuries of zero maintenance -- the dwarven warranty must have been extraordinary.",
                 "take": "It's twenty feet up and weighs more than your ambitions. Which is saying something, given recent events.",
                 "use": "It's already in use -- illuminating your questionable life choices and the dust motes that narrate your passage through the library.",
-                "default": "You gaze up at the chandelier. It gazes down at you. The power dynamic is clear."
+                "default": "You gaze up at the chandelier. It gazes down at you. The power dynamic is clear.",
+                "talk": "You speak to the Crystal Chandelier in a calm, measured tone. The Crystal Chandelier maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Crystal Chandelier. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Crystal Chandelier with all your might. All your might turns out to be insufficient. The Crystal Chandelier remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Crystal Chandelier. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         },
         {
@@ -153,7 +170,11 @@
                 "look": "Books strewn about, spines cracked and pages yellowed. Someone left in a hurry, or had very strong opinions about literature. Either way, the floor is now a reading room.",
                 "take": "You leaf through one. It's in a language that predates grammar. The illustrations are helpful but deeply unsettling.",
                 "use": "You could read them if you spoke Ancient Bureaucratic. Your education, regrettably, did not cover dead administrative languages.",
-                "default": "You survey the scattered books. They lie where they fell, pages open to chapters nobody will finish."
+                "default": "You survey the scattered books. They lie where they fell, pages open to chapters nobody will finish.",
+                "talk": "You speak to the Scattered Books in a calm, measured tone. The Scattered Books maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Scattered Books. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Scattered Books with all your might. All your might turns out to be insufficient. The Scattered Books remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Scattered Books. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         }
     ],
@@ -173,7 +194,12 @@
             },
             "responses": {
                 "look": "A stoppered bottle of ink on the reading desk. The ink is black as night and slightly iridescent. The label reads 'Official Bureaucratic Ink -- Expires: Never.' It has opinions, apparently.",
-                "use": "The ink needs something to write on. A form, perhaps. An important, bureaucratic form."
+                "use": "The ink needs something to write on. A form, perhaps. An important, bureaucratic form.",
+                "take": "You try to take the Ancient Ink, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "talk": "You address the Ancient Ink. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Ancient Ink doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Ancient Ink. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Ancient Ink and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         },
         {
@@ -191,7 +217,12 @@
             },
             "responses": {
                 "look": "Solid oak planks from the collapsed shelving. Thick, sturdy, and still in good condition despite their age. They'd be useful for building or repairing something that needs to float. Or not collapse.",
-                "use": "Planks are building material, not a finished product. You'd need something specific to build."
+                "use": "Planks are building material, not a finished product. You'd need something specific to build.",
+                "take": "You try to take the Wood Planks, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "talk": "You talk to the Wood Planks. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Wood Planks doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Wood Planks and push. Nothing happens, except a mild strain in your lower back. The Wood Planks wins this round.",
+                "pull": "You heave at the Wood Planks. Your muscles protest, the Wood Planks doesn't. It has the structural advantage of not caring."
             }
         }
     ],

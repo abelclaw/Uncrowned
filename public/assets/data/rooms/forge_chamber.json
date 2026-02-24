@@ -91,7 +91,11 @@
                 "look": "A dwarven forge of extraordinary craftsmanship. The fire pit is cold but structurally sound. Bellows hang ready. The chimney cuts through solid rock. This forge was built to last forever, and so far it's on schedule. It needs coal and a fire source to operate.",
                 "use": "The forge is cold. You'd need coal for fuel and something to light it -- a torch, perhaps. The ancient infrastructure is ready. It just needs someone to restart it.",
                 "take": "You cannot take a forge. Forges are, by design, immovable. This is both their strength and their limitation.",
-                "default": "You examine the forge. It's waited centuries for someone to light it again. It can wait a few more minutes."
+                "default": "You examine the forge. It's waited centuries for someone to light it again. It can wait a few more minutes.",
+                "talk": "You address the forge directly. It does not respond. It is a forge. In its defence, it never claimed to be a conversationalist.",
+                "open": "The forge doesn't open. It's not a box. It's a millennia-old monument to dwarven engineering. You stand before it, not beside a lid.",
+                "push": "You push against the forge. It doesn't move. You have successfully confirmed that several tons of dwarven stonework outweighs your ambition.",
+                "pull": "You pull at the forge. Nothing happens, except a faint sense that the dwarven spirit is judging you. Which he is. He absolutely is."
             }
         },
         {
@@ -110,7 +114,12 @@
             "responses": {
                 "look": "A massive iron anvil, blackened by use and age. Hammer marks cover its surface like a record of every weapon, tool, and artifact ever made here. The dwarven spirit sits nearby, watching you examine his workplace with the critical eye of a craftsman evaluating a tourist.",
                 "use": "The anvil is for forging. Without a lit forge and materials, it's just an extremely heavy paperweight.",
-                "default": "You admire the anvil. It has the quiet authority of something that has shaped kingdoms."
+                "default": "You admire the anvil. It has the quiet authority of something that has shaped kingdoms.",
+                "take": "You attempt to lift the anvil. It weighs more than your entire future. Dwarves didn't build things to be portable. They built things to be there when the mountain eroded around them.",
+                "talk": "You speak to the anvil. It absorbs your words the way it has absorbed ten thousand hammer blows -- silently, and with an air of having heard better.",
+                "open": "Anvils don't open. They are solid iron. This is, in fact, the entire point of being an anvil.",
+                "push": "You push the anvil. It doesn't move. It hasn't moved in centuries. It has outlasted dynasties by being exactly where it is.",
+                "pull": "You try to drag the anvil. The anvil wins. It was always going to win. This was never a contest."
             }
         },
         {
@@ -130,7 +139,11 @@
                 "look": "Massive leather bellows, cracked with age but still functional-looking. They've been waiting centuries for someone to give them a good squeeze.",
                 "take": "They're bolted to the forge. Someone anticipated theft, or at least enthusiastic borrowing.",
                 "use": "You pump the bellows. The forge flares briefly, then settles back down. Satisfying, in a deeply primal way.",
-                "default": "You examine the bellows. They wheeze expectantly, ready to breathe life into cold metal."
+                "default": "You examine the bellows. They wheeze expectantly, ready to breathe life into cold metal.",
+                "talk": "You whisper encouragement to the bellows. They wheeze in response. This is either a connection or a respiratory condition.",
+                "open": "Bellows don't open in the traditional sense. They expand and contract, like lungs, or like your confidence when you try things you're not qualified for.",
+                "push": "You shove the bellows closed. They compress with a defeated sigh and a puff of ancient dust.",
+                "pull": "You pull the bellows open. They inhale with a geriatric wheeze, filling with air they've no fire to feed. Potential energy, wasted."
             }
         },
         {
@@ -150,7 +163,11 @@
                 "look": "Heavy iron chains dangle from the ceiling, purpose unclear. Decorative? Structural? Intimidating? All three, probably. Dwarven interior design priorities differ from yours.",
                 "take": "They're anchored in the stone above. You'd need wings and bolt cutters, and you have neither.",
                 "use": "You tug one experimentally. It holds. The ceiling creaks. You stop tugging. Some experiments are best left incomplete.",
-                "default": "You regard the chains. They hang with the gravity of things that have been hanging for a very long time."
+                "default": "You regard the chains. They hang with the gravity of things that have been hanging for a very long time.",
+                "talk": "You talk to the chains. They clink softly in response. You choose to interpret this as meaningful dialogue rather than a draft.",
+                "open": "These are chains, not a gate. There's nothing to open. They just hang there, being ominous. It's what chains do.",
+                "push": "You push a chain. It swings away and then back toward you. Physics is undefeated. The chain doesn't care about your intentions.",
+                "pull": "You yank a chain. The ceiling groans. Dust falls. You release the chain with the sudden clarity of someone who nearly made a load-bearing mistake."
             }
         },
         {
@@ -170,7 +187,57 @@
                 "look": "Tongs, hammers, and implements whose names you don't know but whose purposes look painful. A complete set, maintained by spectral habit.",
                 "take": "These belong to the forge spirit. Stealing from ghosts seems unwise -- they have eternity to hold a grudge.",
                 "use": "Without proper training, you'd just make modern art. The dwarven spirit's expression suggests he's thinking the same thing.",
-                "default": "You survey the smith's tools. Each one tells a story of metal bent to purpose by hands that knew what they were doing."
+                "default": "You survey the smith's tools. Each one tells a story of metal bent to purpose by hands that knew what they were doing.",
+                "talk": "You address the tools. They do not respond. The dwarven spirit gives you a look that says, 'I've been dead for centuries and even I don't talk to hammers.'",
+                "open": "Tools don't open. They're not a gift set. Though they are arranged with obsessive precision that suggests someone would notice if you rearranged them.",
+                "push": "You push the tools along the wall. They clatter and rearrange themselves. The dwarven spirit's eye twitches. You have committed a sin against organisational metallurgy.",
+                "pull": "You pull a hammer off the wall. It's heavier than expected. You put it back, pretending you were just testing gravity. The spirit pretends not to have noticed."
+            }
+        },
+        {
+            "id": "fire-pit",
+            "name": "Fire Pit",
+            "zone": {
+                "x": 370,
+                "y": 380,
+                "width": 80,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 410,
+                "y": 420
+            },
+            "responses": {
+                "look": "A deep fire pit at the heart of the forge, lined with heat-cracked stone. It hasn't held a proper fire in centuries, though the stone still radiates a ghost of warmth. Or perhaps that's the spectral dwarven smith's lingering influence.",
+                "take": "You can't take a pit. That's not how pits work. They're defined by their absence, not their presence.",
+                "use": "The fire pit is cold and empty. Without fuel and a working bellows, it's just a fancy hole in the ground.",
+                "talk": "You peer into the fire pit and call down. Your voice echoes off heat-scarred stone. No one answers. The last fire here died centuries ago.",
+                "open": "It's a pit. It's already open. That's the defining characteristic of pits.",
+                "push": "You push at the stones lining the pit. They're fused together by centuries of heat. Even cooled, they remember being molten.",
+                "pull": "You pull at a fire pit stone. It doesn't budge. These stones survived dwarven forge-heat. Your fingers are not a compelling argument."
+            }
+        },
+        {
+            "id": "forge-chimney",
+            "name": "Chimney",
+            "zone": {
+                "x": 390,
+                "y": 50,
+                "width": 70,
+                "height": 120
+            },
+            "interactionPoint": {
+                "x": 425,
+                "y": 420
+            },
+            "responses": {
+                "look": "A chimney cut into the rock above the forge, disappearing into darkness. It was designed to vent smoke from the forge fire up through the mountain itself. Soot still cakes its walls. A faint breeze trickles down -- it still connects to the outside air, somewhere far above.",
+                "take": "You can't take a chimney. It's a vertical shaft through solid rock. Your pockets are not that deep.",
+                "use": "Without a fire below, the chimney is just a very tall, very narrow, very dark hole. It vents a thin breeze. That's all it does now.",
+                "talk": "You shout up the chimney. Your voice echoes for an impressively long time, bouncing off soot-covered walls. No response comes back.",
+                "open": "The chimney is already open. It's a shaft through rock. The dwarves built it open because smoke, unlike some adventurers, knows which way to go.",
+                "push": "You push the walls of the chimney. Soot rains down on your head. The chimney is unimpressed. You are now filthy.",
+                "pull": "You reach up into the chimney and pull. Soot. More soot. A dead bat. And your dignity, falling like flakes of carbon."
             }
         }
     ],
@@ -190,7 +257,12 @@
             },
             "responses": {
                 "look": "An ancient version of the kingdom's administrative seal, cracked in two. The badger crest is recognizable but angrier than the modern version. This is the original Kingdom Seal -- administrative, not royal. It could be repaired if the forge were operational.",
-                "use": "The seal is broken. It needs to be reforged -- literally. A working forge could repair it."
+                "use": "The seal is broken. It needs to be reforged -- literally. A working forge could repair it.",
+                "take": "The Broken Seal Stamp isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
+                "talk": "You attempt a conversation with the Broken Seal Stamp. The Broken Seal Stamp is not a great conversationalist. Then again, neither are you.",
+                "open": "You search the Broken Seal Stamp for a way to open it. There isn't one. It's not that kind of thing.",
+                "push": "You press against the Broken Seal Stamp. It offers the same resistance as a mountain, which is to say, total and indifferent.",
+                "pull": "You pull on the Broken Seal Stamp. Nothing happens. Gravity and architecture conspire against you, as usual."
             }
         }
     ],

@@ -91,7 +91,11 @@
                 "look": "Dark water fills the lower passages, still and lightless. Your torch reflects off the surface, revealing nothing beneath. The water is deep -- how deep is impossible to tell. Something moves in the darkness below. Probably fish. Hopefully fish. The kind of fish that doesn't have teeth.",
                 "use": "You dip a hand in. The water is freezing. Something brushes your fingers. You pull your hand out faster than you've ever pulled anything in your life.",
                 "take": "You scoop up some water. It's cold, dark, and smells like cave. You let it drain through your fingers. Some things are better left in their natural habitat.",
-                "default": "You observe the dark water. It observes you back, from multiple angles, with eyes you can't see."
+                "default": "You observe the dark water. It observes you back, from multiple angles, with eyes you can't see.",
+                "talk": "You speak to the Dark Water in a calm, measured tone. The Dark Water maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Dark Water. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Dark Water with all your might. All your might turns out to be insufficient. The Dark Water remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Dark Water. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         },
         {
@@ -109,7 +113,13 @@
             },
             "responses": {
                 "look": "A narrow stone walkway runs above the waterline, connecting the entrance to the deeper passages. It's slick with moisture and barely wide enough for one person. The ancient engineers who built this apparently assumed everyone was thin. And had excellent balance.",
-                "default": "You follow the walkway carefully. It's slippery but solid. The water below makes helpful gurgling sounds that are either calming or ominous."
+                "default": "You follow the walkway carefully. It's slippery but solid. The water below makes helpful gurgling sounds that are either calming or ominous.",
+                "take": "You try to take the Stone Walkway, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "use": "Using the Stone Walkway doesn't accomplish anything obvious. Perhaps it needs to be used with something else. Or perhaps it's just decorative.",
+                "talk": "You speak to the Stone Walkway in a calm, measured tone. The Stone Walkway maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Stone Walkway. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Stone Walkway with all your might. All your might turns out to be insufficient. The Stone Walkway remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Stone Walkway. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         }
     ],

@@ -445,4 +445,165 @@ export const NOUN_SYNONYMS: Record<string, string> = {
     'cobblestones': 'cobblestones',
     'cobblestone': 'cobblestones',
     'stones': 'cobblestones',
+
+    // --- Walls / masonry ---
+    'walls': 'walls',
+    'masonry': 'walls',
+    'stonework': 'walls',
+    'brickwork': 'walls',
+
+    // --- Frames ---
+    'frame': 'frames',
+    'frames': 'frames',
+    'gilding': 'frames',
+
+    // --- Chimney / flue ---
+    'flue': 'chimney',
+    'vent': 'chimney',
+    'smokestack': 'chimney',
+
+    // --- Stairs / staircase ---
+    'stairs': 'stairs',
+    'staircase': 'stairs',
+    'stairway': 'stairs',
+    'steps': 'stairs',
+    'step': 'stairs',
+
+    // --- Barrier / force field ---
+    'barrier': 'barrier',
+    'shield': 'barrier',
+    'field': 'barrier',
+    'forcefield': 'barrier',
+
+    // --- Benches ---
+    'bench': 'benches',
+    'benches': 'benches',
+
+    // --- Posters ---
+    'poster': 'posters',
+    'posters': 'posters',
+
+    // --- Plaques ---
+    'plaque': 'plaques',
+    'plaques': 'plaques',
+    'nameplate': 'plaques',
+
+    // --- Urns ---
+    'urn': 'urns',
+    'urns': 'urns',
+
+    // --- Cushion ---
+    'cushion': 'cushion',
+    'pillow': 'cushion',
+
+    // --- Pendulum ---
+    'pendulum': 'pendulum',
+    'bob': 'pendulum',
+
+    // --- Counterweights ---
+    'counterweight': 'counterweights',
+    'weights': 'counterweights',
+
+    // --- Spring ---
+    'coil': 'spring',
+
+    // --- Clock hands / face ---
+    'dial': 'face',
+
+    // --- Cobwebs ---
+    'cobweb': 'cobwebs',
+    'cobwebs': 'cobwebs',
+    'web': 'cobwebs',
+    'webs': 'cobwebs',
+
+    // --- Flowers / wildflowers ---
+    'flowers': 'wildflowers',
+    'flower': 'wildflowers',
+    'petals': 'wildflowers',
+    'blossoms': 'wildflowers',
+    'blooms': 'wildflowers',
+    'wildflower': 'wildflowers',
+
+    // --- Insects ---
+    'bugs': 'insects',
+    'beetles': 'insects',
+    'beetle': 'insects',
+    'moth': 'insects',
+
+    // --- Debris / rubble ---
+    'rubble': 'debris',
+    'debris': 'debris',
+    'driftwood': 'debris',
+
+    // --- Brass / telescope ---
+    'brass': 'telescope',
+
+    // --- Flagstones / platform ---
+    'flagstones': 'platform',
+    'flagstone': 'platform',
+
+    // --- Erelhain (proper name) ---
+    'erelhain': 'castle',
+
+    // --- Smith tools ---
+    'tongs': 'tools',
+    'files': 'tools',
+
+    // --- Tally marks ---
+    'marks': 'tally',
+    'scratches': 'tally',
+
+    // --- Markings / symbols ---
+    'markings': 'carvings',
+    'glyphs': 'carvings',
+
+    // --- Gravel / crystal ---
+    'mundanity': 'crystal',
+    'orb': 'crystal',
+
+    // --- Spectacles / glasses ---
+    'spectacles': 'glasses',
+    'specs': 'glasses',
+    'eyeglasses': 'glasses',
+
+    // --- Soldiers / guards ---
+    'soldiers': 'guards',
+    'sentries': 'guards',
+    'sentry': 'guards',
+
+    // --- Bucket / pail ---
+    'pail': 'bucket',
+
+    // --- Biscuit ---
+    'cracker': 'biscuit',
+    'cookie': 'biscuit',
+
+    // --- Shack / shed ---
+    'shack': 'shed',
+    'hut': 'shed',
+
+    // --- Gazebo / pavilion ---
+    'gazebo': 'pavilion',
+    'pergola': 'pavilion',
+
+    // --- Knife / cleaver ---
+    'knife': 'cleaver',
+    'blade': 'cleaver',
+    'hatchet': 'cleaver',
+
+    // --- Novel / book ---
+    'novel': 'book',
+    'tome': 'book',
+    'volume': 'book',
+
+    // --- Lock / keyhole ---
+    'lock': 'keyhole',
+
+    // --- Wasp / beehive ---
+    'wasp': 'beehive',
+    'wasps': 'beehive',
+
+    // --- Bough / branch ---
+    'bough': 'branch',
+    'limb': 'branch',
 };

@@ -62,7 +62,15 @@ export class AudioManager {
         // Handle audio unlock for browsers that block autoplay
         if (scene.sound.locked) {
             scene.sound.once(Phaser.Sound.Events.UNLOCKED, () => {
-                // Audio context is now ready -- any queued actions can proceed
+                // Replay pending music now that the audio context is unlocked
+                if (this.currentMusicKey && this.currentMusic && !this.currentMusic.isPlaying) {
+                    this.currentMusic.play();
+                    this.scene.tweens.add({
+                        targets: this.currentMusic,
+                        volume: this.musicVolume,
+                        duration: 1000,
+                    });
+                }
             });
         }
     }

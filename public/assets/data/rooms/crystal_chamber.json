@@ -74,7 +74,11 @@
                 "look": "A shimmering barrier of magical energy surrounds the crystal's pedestal. It hums at a frequency that makes your bones resonate. The barrier is visible, audible, and posted with warning signs. It is, by every metric, something you should not touch.",
                 "use": "You consider touching the barrier. The barrier crackles. Fourteen warning signs in fourteen languages all say the same thing. Some lessons don't need to be learned firsthand.",
                 "take": "You can't take a force barrier. Force barriers take you.",
-                "default": "You observe the barrier. It observes nothing -- it's a barrier. But it's very good at its job."
+                "default": "You observe the barrier. It observes nothing -- it's a barrier. But it's very good at its job.",
+                "talk": "You address the force barrier. It hums at the same frequency it was already humming at. This is either profound indifference or the magical equivalent of being put on hold.",
+                "open": "You look for a handle, a latch, a polite request form. Force barriers don't come with doors. They come with consequences.",
+                "push": "You lean into the Force Barrier and push. Nothing happens, except a mild strain in your lower back. The Force Barrier wins this round.",
+                "pull": "You heave at the Force Barrier. Your muscles protest, the Force Barrier doesn't. It has the structural advantage of not caring."
             }
         },
         {
@@ -92,7 +96,13 @@
             },
             "responses": {
                 "look": "A stone pedestal carved with symbols that match the ones in the Guardian Chamber. The Crystal of Mundanity hovers above it, grey and utterly unremarkable. For the most important artifact in the kingdom, it's impressively unimpressive. Like a bureaucrat in crystal form.",
-                "default": "You study the pedestal. It's ancient, carved with precision, and currently inaccessible behind a barrier that would very much like you to stop looking at it."
+                "default": "You study the pedestal. It's ancient, carved with precision, and currently inaccessible behind a barrier that would very much like you to stop looking at it.",
+                "take": "It's a stone pedestal. It weighs more than your ambitions and is roughly as movable.",
+                "use": "You run your hands along the pedestal's surface. The carved symbols are cool and completely unresponsive. It's a pedestal. Its job is to hold things up.",
+                "talk": "You speak to the pedestal. It supports you emotionally about as well as it supports the crystal -- silently, and with geological patience.",
+                "open": "You search the pedestal for secret compartments, drawers, or hidden panels. Nothing. Sometimes a pedestal is just a pedestal.",
+                "push": "You shove the pedestal. It doesn't move. It has been here for centuries and has no plans to relocate.",
+                "pull": "You brace yourself and pull. The pedestal remains exactly where it is. It was carved in place and intends to die in place."
             }
         },
         {
@@ -112,7 +122,11 @@
                 "look": "Massive pillars etched with patterns that seem to shift when you're not looking directly at them. Peripheral vision architecture -- the dwarves were showing off.",
                 "take": "Each one weighs roughly the same as your student debt. Immovable, oppressive, and a constant reminder of poor decisions.",
                 "use": "They're holding up the ceiling. Best leave them to it. Structural engineering is not a collaborative sport.",
-                "default": "You examine the pillars. They stand with the quiet confidence of things that have been standing for millennia and intend to continue."
+                "default": "You examine the pillars. They stand with the quiet confidence of things that have been standing for millennia and intend to continue.",
+                "talk": "You whisper to a pillar. It says nothing. But the patterns on its surface shift slightly, which is either a response or a coincidence.",
+                "open": "These are solid stone pillars, not doors. Though given dwarven craftsmanship, you wouldn't be surprised if there were secrets inside.",
+                "push": "You push against a pillar. It holds firm. The ceiling remains where it is. Everyone benefits from your failure here.",
+                "pull": "You wrap your arms around the pillar and pull. Nothing happens, except you now look like someone hugging a very large, very uninterested stone column."
             }
         },
         {
@@ -132,7 +146,57 @@
                 "look": "Tendrils of blue energy arc between the crystal and the chamber walls, humming with barely contained power. It's beautiful in the way that lightning is beautiful -- best appreciated from a distance.",
                 "take": "You reach out. The energy crackles warningly. Message received. Some things are not meant to be held.",
                 "use": "Touching raw magical energy ranks high on the list of things tinkers should avoid. Right between 'annoying dragons' and 'trusting wizards.'",
-                "default": "You observe the blue energy. It arcs and pulses with the indifference of power that does not require your approval."
+                "default": "You observe the blue energy. It arcs and pulses with the indifference of power that does not require your approval.",
+                "talk": "You talk to the Blue Energy. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Blue Energy doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Blue Energy and push. Nothing happens, except a mild strain in your lower back. The Blue Energy wins this round.",
+                "pull": "You heave at the Blue Energy. Your muscles protest, the Blue Energy doesn't. It has the structural advantage of not caring."
+            }
+        },
+        {
+            "id": "warning-signs",
+            "name": "Warning Signs",
+            "zone": {
+                "x": 280,
+                "y": 390,
+                "width": 70,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 315,
+                "y": 430
+            },
+            "responses": {
+                "look": "Fourteen warning signs in fourteen languages. You can read three of them. They all say 'DO NOT TOUCH THE BARRIER.' The Dwarven one adds 'SERIOUSLY.' The Elvish one is more poetic but arrives at the same conclusion. The fourteenth is in a language composed entirely of alarmed punctuation marks.",
+                "take": "You try to pry a sign loose. It's bolted to the stone with the conviction of someone who really, really wanted you to read it first.",
+                "use": "The signs are already in use. They are warning you. That is their purpose. They are fulfilling it admirably, even if you refuse to listen.",
+                "talk": "You read the signs aloud. The echo adds gravitas. 'DO NOT TOUCH THE BARRIER' sounds even more authoritative bouncing off ancient stone.",
+                "open": "The signs are not books. They have one message, and it is not hidden. It is, in fact, the opposite of hidden.",
+                "push": "You push a sign. It doesn't budge. Whoever installed these was not interested in them being removable.",
+                "pull": "You pull at a sign. The bolts hold. These signs were installed by someone who understood that the kind of person who ignores warnings is also the kind who removes them."
+            }
+        },
+        {
+            "id": "pedestal-symbols",
+            "name": "Pedestal Symbols",
+            "zone": {
+                "x": 435,
+                "y": 400,
+                "width": 50,
+                "height": 20
+            },
+            "interactionPoint": {
+                "x": 460,
+                "y": 420
+            },
+            "responses": {
+                "look": "The symbols carved into the pedestal match the ones you saw in the Guardian Chamber -- angular dwarven script interlocked with something older. They pulse faintly with blue energy. You can't read them, but they radiate the quiet confidence of text that knows it's important.",
+                "take": "They're carved into stone. You'd need a chisel, several hours, and a complete disregard for archaeological preservation.",
+                "use": "You trace the symbols with your finger. They're cool and smooth, worn by centuries of other fingers doing exactly what you're doing now. Nothing happens, but there's a certain solidarity in the gesture.",
+                "talk": "You try reading the symbols aloud. The sounds you produce are not words in any language you know. The echo sounds vaguely offended.",
+                "open": "They're carvings, not buttons. The distinction is important to anyone who values their fingertips.",
+                "push": "You press the symbols. Nothing happens. They're decorative, not interactive. Not everything responds to poking.",
+                "pull": "You can't pull carvings out of stone. Well, you can, but then they're just rubble, and rubble tells no tales."
             }
         }
     ],
@@ -152,7 +216,12 @@
             },
             "responses": {
                 "look": "The Crystal of Mundanity. Grey. Plain. Hovering. It is the most important artifact in the kingdom, and it looks like a piece of enchanted gravel. The universe has a sense of humor, and that humor is anticlimactic.",
-                "use": "The crystal is behind the force barrier. You can see it, you can want it, but you cannot have it. Not yet."
+                "use": "The crystal is behind the force barrier. You can see it, you can want it, but you cannot have it. Not yet.",
+                "take": "You can't take the Crystal of Mundanity. It's firmly attached to its current situation, much like your growing sense of confusion.",
+                "talk": "You address the Crystal of Mundanity. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Crystal of Mundanity doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Crystal of Mundanity. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Crystal of Mundanity and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         }
     ],

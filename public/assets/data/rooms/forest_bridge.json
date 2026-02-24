@@ -159,7 +159,10 @@
                 "use": "You stomp on a plank. It creaks ominously. The troll looks up from his book with an expression that says 'please don't break my workplace.'",
                 "take": "You consider stealing a bridge plank. The troll clears his throat. Loudly. You reconsider.",
                 "push": "You push on a bridge support. It sways. The entire bridge sways. The troll sways. Everyone sways. You stop pushing.",
-                "default": "You examine the bridge. It examines your weight distribution and finds it concerning."
+                "default": "You examine the bridge. It examines your weight distribution and finds it concerning.",
+                "talk": "You address the Rickety Bridge. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Rickety Bridge doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "pull": "You grab the Rickety Bridge and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         },
         {
@@ -179,7 +182,11 @@
                 "look": "A small wooden booth with a sign reading 'BRIDGE TOLL: One Correct Answer OR One Coin. No Exceptions. No Refunds. Yes, This Is A Real Job.' Below it, in smaller text: 'Bridge Troll Local 47 -- Proud Member Since 1247.'",
                 "use": "The toll booth's window has a small slot for coins. A bell sits on the counter, polished to a shine. Bertram takes his work seriously.",
                 "take": "The toll booth is bolted to the bridge. Bertram is bolted to the toll booth. The whole arrangement is immovable.",
-                "default": "You inspect the toll booth. It's surprisingly well-maintained for a structure on a barely-maintained bridge."
+                "default": "You inspect the toll booth. It's surprisingly well-maintained for a structure on a barely-maintained bridge.",
+                "talk": "You attempt a conversation with the Toll Booth. The Toll Booth is not a great conversationalist. Then again, neither are you.",
+                "open": "You search the Toll Booth for a way to open it. There isn't one. It's not that kind of thing.",
+                "push": "You press against the Toll Booth. It offers the same resistance as a mountain, which is to say, total and indifferent.",
+                "pull": "You pull on the Toll Booth. Nothing happens. Gravity and architecture conspire against you, as usual."
             }
         },
         {
@@ -198,7 +205,12 @@
             "responses": {
                 "look": "The gorge drops away into mist and the distant sound of rushing water. It's the kind of depth that makes your stomach flip and your brain suggest helpful scenarios about falling. The rocks at the bottom look sharp, wet, and thoroughly unsympathetic.",
                 "use": "You lean over the edge slightly. Your survival instincts, which have been mostly dormant, scream in unison. You lean back.",
-                "default": "You gaze into the gorge. The gorge gazes into you. Nietzsche would have opinions about this."
+                "default": "You gaze into the gorge. The gorge gazes into you. Nietzsche would have opinions about this.",
+                "take": "You try to take the Deep Gorge, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "talk": "You talk to the Deep Gorge. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Deep Gorge doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Deep Gorge and push. Nothing happens, except a mild strain in your lower back. The Deep Gorge wins this round.",
+                "pull": "You heave at the Deep Gorge. Your muscles protest, the Deep Gorge doesn't. It has the structural advantage of not caring."
             }
         },
         {
@@ -218,7 +230,11 @@
                 "look": "Far below, the river churns white against black rocks with a relentless fury that suggests it has somewhere very important to be. The current is fast enough to carry away anything foolish enough to fall in -- logs, debris, overconfident adventurers. The depth is unknowable, which is nature's way of saying 'don't.'",
                 "take": "You want to take the river. Rivers are famously uncooperative about being relocated. This one especially so.",
                 "use": "From up here, 'using' the river would primarily involve falling into it. The river does not offer a refund policy.",
-                "default": "You listen to the river below. It roars with the cheerful indifference of something that has been grinding stone for millennia and intends to continue."
+                "default": "You listen to the river below. It roars with the cheerful indifference of something that has been grinding stone for millennia and intends to continue.",
+                "talk": "You address the River. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The River doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the River. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the River and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         },
         {
@@ -238,7 +254,57 @@
                 "look": "In the distance, a waterfall plunges from a cliff face into the gorge below, sending up a perpetual mist that catches the light in tiny rainbows. It's beautiful in the way that all things capable of killing you instantly tend to be. The roar is audible even from here, a constant low thunder that drowns out your better judgment.",
                 "take": "You want to take a waterfall. This ambition, while admirable in its absurdity, is not something physics supports.",
                 "use": "The waterfall is scenic but distinctly not interactive from this distance. Getting closer would require leaving the bridge, which your survival instincts -- faint as they are -- advise against.",
-                "default": "You admire the waterfall from a safe distance. It's majestic, powerful, and completely indifferent to your existence. Rather like the universe, really."
+                "default": "You admire the waterfall from a safe distance. It's majestic, powerful, and completely indifferent to your existence. Rather like the universe, really.",
+                "talk": "You talk to the Waterfall. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Waterfall doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Waterfall and push. Nothing happens, except a mild strain in your lower back. The Waterfall wins this round.",
+                "pull": "You heave at the Waterfall. Your muscles protest, the Waterfall doesn't. It has the structural advantage of not caring."
+            }
+        },
+        {
+            "id": "bridge-planks",
+            "name": "Bridge Planks",
+            "zone": {
+                "x": 300,
+                "y": 440,
+                "width": 300,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 450
+            },
+            "responses": {
+                "look": "The bridge planks are old, weathered, and making sounds that planks shouldn't make when you step on them. Several are cracked. One has a suspicious bounce. The nails holding them are rusty and appear to be losing their argument with gravity.",
+                "take": "You pry at a plank. It's the only thing between you and the gorge below. Removing structural supports while standing on them is the kind of plan that ends stories rather than advancing them.",
+                "use": "You're standing on them. They're a bridge. You're using them right now. The planks would appreciate less scrutiny and more forward momentum.",
+                "talk": "You address the planks reassuringly. They creak back. This is either structural feedback or a plea for retirement.",
+                "open": "Bridge planks don't open. If they did, you'd fall through, which defeats the purpose of a bridge.",
+                "push": "You stomp on a plank. It bows alarmingly and then springs back. The gorge below suggests you stop testing the bridge's patience.",
+                "pull": "You pull at a loose plank. It comes up slightly, revealing the dizzying drop beneath. You push it back immediately. Some knowledge is best unlearned."
+            }
+        },
+        {
+            "id": "gorge-river",
+            "name": "River Below",
+            "zone": {
+                "x": 350,
+                "y": 490,
+                "width": 200,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 460
+            },
+            "responses": {
+                "look": "Far below the bridge, a river churns through the gorge with the kind of enthusiasm that suggests it would very much enjoy pulling you under. The water is dark and fast-moving, flecked with white foam where it smashes against rocks. It's scenic, in the way that things that could kill you often are.",
+                "take": "The river is thirty feet below you and moving at a speed that suggests it has places to be. You cannot take it. It would take you.",
+                "use": "Using the river from up here would require jumping, which would require a death wish. You have one of those, but not that specifically.",
+                "talk": "You shout down to the river. It roars back, louder and with considerably more conviction. You lose this argument.",
+                "open": "You can't open a river. Rivers are permanently open. That's rather the problem.",
+                "push": "You can't push a river from a bridge. The river, however, could push you. It seems eager to demonstrate.",
+                "pull": "You lean over to reach the water. The bridge sways. Common sense, which you possess in trace amounts, pulls you back."
             }
         }
     ],

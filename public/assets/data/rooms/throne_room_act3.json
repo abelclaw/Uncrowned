@@ -91,6 +91,10 @@
                 "look": "A circle of ancient runes carved into the throne room floor, pulsing with faint magical energy. The runes spell out the formal requirements of the Rite of Administrative Closure: 'The Crystal of Mundanity as Witness. The Kingdom Seal as Authority. The Curse Contract as Subject. An Allied Administrator as Officiant.' You'll need the Kingdom Seal from the royal treasury's forge chamber and the original Curse Contract from the archive. It's a bureaucratic ceremony carved in stone. Of course it is.",
                 "use": "The rite circle needs three items: the Crystal of Mundanity, the Kingdom Seal, and the Original Curse Contract. You also need the Clerk's cooperation. One does not simply perform a rite without proper administrative support.",
                 "take": "You cannot take runes carved into a floor. The floor objects to being dismantled.",
+                "talk": "You speak to the runes. They pulse faintly in response, which is more conversational engagement than most people give you. The runes don't talk back, but their glow shifts -- warmer when you mention the rite, cooler when you trail off. Magic circles are excellent listeners. Terrible conversationalists.",
+                "open": "The rite circle is not a door, a lid, or a metaphor you can pry apart. It opens only when its conditions are met. Bureaucratic magic doesn't respond to brute enthusiasm.",
+                "push": "You press your hands against the runes. They glow brighter at the contact, then settle back to their faint pulse. Pushing a magical circle is like shoving a river -- it acknowledges your effort and continues doing exactly what it was doing.",
+                "pull": "You attempt to pry a rune from the floor. The stone holds firm, the magic holds firmer, and your dignity holds not at all. Ancient curse-breaking apparatus: 1, tinker's fingernails: 0.",
                 "default": "You study the rite circle. The runes glow brighter when you stand near them, as if sensing the Crystal of Mundanity in your possession."
             }
         },
@@ -111,6 +115,10 @@
                 "look": "The throne that collapsed under your weight (if you sat on it before) -- or simply under the weight of centuries -- lies in ruins. Stone fragments scattered across the dais. No one will sit here again. The kingdom needs a new symbol of authority, and a pile of rocks isn't it.",
                 "use": "The throne is rubble. Sitting on it would be an exercise in optimism that even you can't manage.",
                 "take": "You pocket a small fragment of the throne. A souvenir from the end of a dynasty. How very sentimental of you. And useless.",
+                "talk": "You address the ruins of the throne. 'You served well,' you say to a pile of rocks. The rocks do not respond. They never do, and yet people keep talking to monuments. There's probably a lesson in that about governance.",
+                "open": "The throne is already as open as it gets. Structurally, it's achieved a state of maximum openness. Some might call it 'destroyed.' Tomato, tomato.",
+                "push": "You shove a chunk of throne rubble. It scrapes across the dais with a sound like a dynasty ending in slow motion. The rubble settles into a new position that is equally meaningless. Congratulations: you've rearranged the ruins.",
+                "pull": "You drag a piece of the throne toward you. It's heavy, jagged, and serves no purpose whatsoever. You now have a rock closer to you than before. The monarchy would be proud.",
                 "default": "You contemplate the ruined throne. A kingdom without a seat of power. The metaphor writes itself."
             }
         },
@@ -129,6 +137,12 @@
             },
             "responses": {
                 "look": "Cracks spread across the throne room ceiling like a map of the kingdom's problems. Stone dust falls in thin streams. The curse is working from the outside in, and the throne room -- the heart of the kingdom -- is last to turn. But not by much. The cracks are widening.",
+                "take": "You reach up to take a piece of the ceiling. Setting aside the fact that you can't reach it, taking chunks out of a structurally compromised ceiling ranks somewhere between 'unwise' and 'architecturally suicidal' on the decision-making spectrum.",
+                "use": "Use the ceiling? For what? It's already doing the one thing ceilings are supposed to do -- staying up -- and it's barely managing that. Let's not give it additional responsibilities.",
+                "talk": "You address the ceiling. 'Please don't collapse.' The cracks widen slightly, as if in direct response. Asking nicely has never been an effective structural engineering technique.",
+                "open": "The cracks are doing a fine job of opening themselves, thank you. Your assistance is neither required nor appreciated by the laws of physics currently dismantling this room.",
+                "push": "You can't reach the ceiling, and even if you could, pushing on something that's actively cracking is the architectural equivalent of poking a sleeping bear. A very heavy, very stone sleeping bear directly above your head.",
+                "pull": "Pull the ceiling down? Bold strategy. Terminal, but bold. The ceiling will come down on its own schedule, and you'd rather not accelerate the timeline.",
                 "default": "You watch stone dust drift from the ceiling. The room has hours. Maybe less."
             }
         },
@@ -149,7 +163,179 @@
                 "look": "A circle of ancient symbols etched into the stone floor, glowing faintly with residual magic. This is where it all ends. Or begins. Depends on your perspective.",
                 "take": "It's carved into the floor. You'd need to take the floor.",
                 "use": "The circle pulses at your presence. It's been waiting.",
+                "talk": "You whisper to the ceremony circle. The symbols flicker, as if straining to hear. Ancient magic is always listening, even when it pretends not to. Especially then.",
+                "open": "Ceremony circles don't open. They activate. There's a difference, and the difference involves having the correct items and a cooperative bureaucrat, not a crowbar.",
+                "push": "You lean against the symbols etched in the floor. The stone is cold, ancient, and thoroughly unimpressed by physical force. The ceremony circle has been waiting centuries. It can wait out your shoving.",
+                "pull": "You claw at the etched symbols. The floor remains a floor. The circle remains a circle. Your fingertips remain a regrettable choice of tool for this particular endeavor.",
                 "default": "You study the ceremony circle. The symbols are older than the kingdom itself."
+            }
+        },
+        {
+            "id": "ghost-king-act3",
+            "name": "Ghost King",
+            "zone": {
+                "x": 388,
+                "y": 309,
+                "width": 64,
+                "height": 106
+            },
+            "interactionPoint": {
+                "x": 380,
+                "y": 420
+            },
+            "responses": {
+                "look": "The Ghost King hovers near the empty throne, his translucent form flickering with an urgency he never showed in life. King Mortimer the Prepared -- though 'the Tragically Unprepared for Olives' would be more accurate -- wears his spectral crown at a slight angle. His expression shifts between regal determination and the weary resignation of a man who died at dinner and has been dealing with the fallout ever since.",
+                "talk": "The Ghost King turns to you. 'The rite circle awaits. The kingdom crumbles. And you want to chat.' He pauses. 'Fine. What do you need? I've had centuries of silence and I'm not entirely opposed to conversation, even at the end of the world.'",
+                "use": "You cannot 'use' a ghost. They tend to have strong opinions about being treated as tools, and this particular ghost was a king. The indignity would be twofold.",
+                "take": "You reach toward the Ghost King. Your hand passes through him, leaving a trail of cold that settles in your bones. 'Please stop doing that,' he says, with the patience of someone who has endured this exact interaction before. Probably from multiple adventurers.",
+                "push": "You attempt to shove a ghost. Your hands pass through spectral robes and the faint memory of a ribcage. The Ghost King stares at you. 'I'm incorporeal,' he says flatly. 'Also, I was a king. Pushing kings is treason. Even dead ones.'",
+                "pull": "You try to grab the Ghost King's arm. Your fingers close on nothing but cold air and centuries of accumulated disappointment. 'Are you quite finished?' he asks. He has literally all of eternity to wait you out.",
+                "open": "You cannot open a ghost. Ghosts are not containers, envelopes, or jars. The Ghost King is a spectral remnant of a dead monarch, not a pickle jar with opinions.",
+                "default": "The Ghost King watches you with the intensity of someone who knows the kingdom's fate rests on a tinker, a crystal, and paperwork. His confidence is touching. His anxiety is palpable."
+            }
+        },
+        {
+            "id": "floor-cracks",
+            "name": "Floor Cracks",
+            "zone": {
+                "x": 100,
+                "y": 440,
+                "width": 180,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 190,
+                "y": 450
+            },
+            "responses": {
+                "look": "Cracks spiderweb across the throne room floor, grey stone spreading through them like an infection. The curse isn't subtle anymore -- it's rewriting the very foundations, turning carved marble into something cold, dead, and geological. The cracks are warm at the edges. Not comforting warm. Fever warm.",
+                "take": "You try to pick up a crack. This is not how geology works. Or any other branch of science. Or common sense.",
+                "use": "The floor cracks are not useful. They are, in fact, the opposite of useful. They are evidence of imminent structural and metaphysical failure. Their only function is making you anxious, and they're excellent at it.",
+                "talk": "You address the cracks in the floor. 'Could you not?' The cracks, predictably, continue cracking. The curse does not negotiate.",
+                "open": "The cracks are already open. That's the problem. You want them to close, not open further. This is not the time for curiosity about what's underneath the throne room floor.",
+                "push": "You press down on the cracked floor. The stone groans. A thin plume of dust rises from the widening gap. You've accomplished nothing except reminding the floor that gravity exists and it should probably give up.",
+                "pull": "You pry at the edge of a floor crack. The stone shifts, dust billows, and for one terrible second you hear something rumble below. You stop. The floor settles. Let's never do that again.",
+                "default": "You stare at the cracks. They're spreading visibly now. Time is a luxury this kingdom no longer has."
+            }
+        },
+        {
+            "id": "grey-stone",
+            "name": "Grey Stone",
+            "zone": {
+                "x": 600,
+                "y": 360,
+                "width": 120,
+                "height": 80
+            },
+            "interactionPoint": {
+                "x": 660,
+                "y": 430
+            },
+            "responses": {
+                "look": "Grey stone creeps across the walls like frost on a winter window, except frost eventually melts and this will eventually be everything. The curse made visible -- every surface slowly petrifying, losing its color, its warmth, its identity. The marble that once gleamed with royal ambition is becoming something dead and uniform. A kingdom turning into its own tombstone.",
+                "take": "You chip at the grey stone. A flake comes away in your hand -- cold, lifeless, and faintly humming with curse energy. You drop it. Some souvenirs aren't worth keeping.",
+                "use": "The grey stone doesn't respond to use, because the grey stone doesn't respond to anything. It just spreads. Slowly, inevitably, and with the quiet determination of a bureaucratic process that no one started and no one can stop. Except, possibly, you.",
+                "talk": "You talk to the cursed stone. It absorbs your words the way it absorbs everything -- silently, completely, and without acknowledgment. Having a conversation with a curse is like arguing with weather. You won't win, but you'll feel strongly about it.",
+                "open": "You can't open stone. Even cursed stone. It's stone. The curse has not made it more cooperative, just greyer.",
+                "push": "You push against the grey stone wall. It's cold to the touch and utterly immovable. The curse has been pushing this stone for centuries. Your arms are not going to out-push an ancient magical catastrophe.",
+                "pull": "You scrape at the grey stone, trying to pull it away from the wall. It doesn't come. It's not a coating -- it IS the wall now. The curse doesn't paint over things. It replaces them.",
+                "default": "You study the grey stone. The curse made manifest. Every surface it touches loses its history and becomes the same dead grey. Efficient, in a deeply horrible way."
+            }
+        },
+        {
+            "id": "stone-dais",
+            "name": "Stone Dais",
+            "zone": {
+                "x": 380,
+                "y": 410,
+                "width": 140,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 430
+            },
+            "responses": {
+                "look": "The raised platform where the throne once stood with authority. Now it supports rubble with equal solemnity. The stone is cracked and grey-veined, curse energy threading through it like mold through bread. The dais has outlasted the dynasty, the throne, and all common sense. It's the most reliable thing in the kingdom.",
+                "take": "You cannot take a stone platform. It weighs roughly the same as your ambitions and is equally immovable.",
+                "use": "You step onto the dais. It holds your weight, which at this point qualifies as an architectural triumph. Standing here, above the room, you can see the rite circle more clearly. You can also see how comprehensively the kingdom is falling apart. Every silver lining, a cloud.",
+                "talk": "You address the dais. It does not respond. It is a platform. Platforms are famously non-verbal, which makes them the ideal audience for your increasingly unhinged monologues.",
+                "open": "It's a solid stone platform. There is nothing to open. No secret compartments, no hidden levers, no trapdoors. Just stone, cracks, and the memory of where important people once sat while making bad decisions.",
+                "push": "You push the dais. It doesn't move. It's a stone platform built into the floor. You might as well push the castle. Actually, given the state of things, pushing the castle might be easier.",
+                "pull": "You brace yourself and pull at the dais edge. Nothing. The dais was built to support the weight of monarchy, which is considerably heavier than one confused tinker.",
+                "default": "You examine the dais. Once a stage for kings. Now a pedestal for rubble. Still structurally sound, which is more than you can say for most things in this castle."
+            }
+        },
+        {
+            "id": "stone-dust",
+            "name": "Stone Dust",
+            "zone": {
+                "x": 220,
+                "y": 390,
+                "width": 80,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 260,
+                "y": 420
+            },
+            "responses": {
+                "look": "Fine stone dust drifts down from the cracking ceiling in thin, steady streams. It settles on every surface -- the floor, the rubble, you -- coating everything in a pale grey film. The dust tastes of old rock and finality. The castle is shedding itself, one particle at a time.",
+                "take": "You scoop up a handful of stone dust. It runs through your fingers and joins the rest of the dust on the floor. Collecting dust: mankind's most futile hobby, and here you are, giving it your best effort.",
+                "use": "Stone dust has no practical application that doesn't involve masonry, and you're a tinker, not a mason. The dust settles on your hands and makes you look ancient. An aesthetic choice, but not a useful one.",
+                "talk": "You speak to the falling dust. The particles swirl faintly in the air displaced by your breath. That's not communication. That's physics. But in this throne room, at this hour, the difference feels academic.",
+                "open": "You can't open dust. It's already as open as a substance can be. It's achieved maximum entropy. Good for the dust. Bad for the ceiling it came from.",
+                "push": "You wave your hand through the falling dust. It swirls, catches the faint light from the rite circle, and resettles exactly where it was going anyway. You've delayed individual particles by perhaps two seconds. A meaningful contribution.",
+                "pull": "You cannot pull dust. It is already everywhere. It is, in a sense, the most successful substance in this room -- omnipresent, unstoppable, and accumulating without effort. Something to aspire to, really.",
+                "default": "You watch the dust fall. The castle is dissolving in slow motion. Poetic, in a deeply inconvenient way."
+            }
+        },
+        {
+            "id": "throne-room-windows",
+            "name": "Windows",
+            "zone": {
+                "x": 700,
+                "y": 340,
+                "width": 100,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 750,
+                "y": 420
+            },
+            "responses": {
+                "look": "Tall, narrow windows line the throne room walls, their glass clouded with centuries of grime and the grey film of the curse. Through the murk, you can make out the kingdom beyond -- or what's left of it. Grey stone stretches as far as you can see. Trees frozen mid-sway. Roads empty. A landscape holding its breath. The view is not encouraging.",
+                "take": "You can't take a window. Even if you could, you'd just have a dirty pane of glass and a hole in the wall. The kingdom's problems require more than aggressive redecorating.",
+                "use": "You peer through the grimy glass. The world outside is grey and still. Using the window as intended -- looking through it -- provides information, none of it cheerful. The curse has the kingdom by the throat.",
+                "talk": "You press your face to the window and shout at the petrified landscape. Your voice echoes off stone trees and frozen fields. No one answers. The silence that comes back is heavier than the silence that was there before.",
+                "open": "The windows are sealed shut -- rusted hinges, swollen frames, and probably a few centuries of paint. Opening them would require tools you don't have and time the kingdom doesn't have. Fresh air is a luxury for kingdoms that aren't turning to stone.",
+                "push": "You push against the window. The glass rattles in its frame but holds. Given that the ceiling is cracking and the floor is splitting, the windows are ironically the most structurally sound part of the room. Good for them.",
+                "pull": "You pull at the window frame. Rust flakes, dust falls, and the window remains exactly where it is. Built to last, apparently, unlike the monarchy it once displayed to admiring crowds.",
+                "default": "You glance at the windows. The grey world beyond them is a reminder of what's at stake. Everything. Literally everything."
+            }
+        },
+        {
+            "id": "faded-banners-act3",
+            "name": "Tattered Banners",
+            "zone": {
+                "x": 140,
+                "y": 340,
+                "width": 60,
+                "height": 80
+            },
+            "interactionPoint": {
+                "x": 170,
+                "y": 420
+            },
+            "responses": {
+                "look": "The royal banners still hang from the ceiling, though 'hang' is generous. They droop, moth-eaten and grey, the royal crest -- the disgruntled badger in a crown -- barely visible beneath layers of dust and curse-film. The crimson has faded past pink, past white, to a color that can only be described as 'giving up.' Even the badger looks resigned.",
+                "take": "You tug at a banner. It disintegrates on contact, centuries of fabric integrity dissolving in your hands like wet tissue paper. The badger crest flutters to the floor as a separate fragment. Even in death, the badger looks annoyed.",
+                "use": "A cursed, moth-eaten, disintegrating banner has no practical use. You could wave it dramatically, but the dramatic effect is somewhat undermined when the flag falls apart mid-wave.",
+                "talk": "You address the royal banners. 'You've seen better days.' A piece of fabric detaches and drifts to the floor, as if in agreement. Or protest. Hard to tell with textiles.",
+                "open": "The banners are not openable. They're fabric. Barely. Most of them are more 'fabric-adjacent' -- a suggestion of cloth held together by dust and stubbornness.",
+                "push": "You push a banner aside. It swings lazily, shedding dust and moth wings. Behind it: more wall. Grey wall. The banners were hiding nothing except the castle's declining property values.",
+                "pull": "You yank a banner. It tears free with a sound like a very old sigh, and collapses on you in a cloud of dust, moth corpses, and the lingering smell of a dynasty that peaked several centuries ago. You fight your way free. The banner does not survive the encounter.",
+                "default": "You consider the banners. Once proud. Now grey. The kingdom's history, written in fabric, reads like a tragedy reviewed by moths."
             }
         }
     ],

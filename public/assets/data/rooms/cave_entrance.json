@@ -169,7 +169,11 @@
                 "look": "A natural rock shelf near the cave entrance. Damp and covered in a thin layer of moss. An odd bottle sits among the dust on the ledge.",
                 "take": "The ledge is part of the cave wall. You'd need a pickaxe and significantly more ambition.",
                 "use": "You could use it as a shelf, but your standards for furniture are already low enough.",
-                "default": "You examine the rock ledge. It's a ledge. Made of rock. Riveting."
+                "default": "You examine the rock ledge. It's a ledge. Made of rock. Riveting.",
+                "talk": "You address the Rock Ledge. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Rock Ledge doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Rock Ledge. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Rock Ledge and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         },
         {
@@ -189,7 +193,11 @@
                 "look": "The doorway is framed by a carved stone archway, its edges worn smooth by centuries of weather and neglect. Whoever chiseled this was skilled, patient, and profoundly unbothered by the fact that they were decorating a door in a hillside. Faint runes line the keystone, too eroded to read. Probably said something important once.",
                 "take": "You consider disassembling the stone archway. You'd need a team of masons, several oxen, and a reason. You have none of these.",
                 "use": "It's an archway. You walk through it. That's the full extent of archway interaction, and it's been working for millennia.",
-                "default": "You study the archway's ancient craftsmanship. It's impressive, in the way that anything built by people long dead tends to be."
+                "default": "You study the archway's ancient craftsmanship. It's impressive, in the way that anything built by people long dead tends to be.",
+                "talk": "You address the Stone Archway. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Stone Archway doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Stone Archway. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Stone Archway and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         },
         {
@@ -209,7 +217,11 @@
                 "look": "Thick vines and ivy cling to the rocks around the cave, slowly and persistently reclaiming the stone for nature. Each tendril grips the rock with the quiet determination of someone who knows they have all the time in the world. Give it another century and this whole entrance will be a shrubbery.",
                 "take": "You tug at a vine. It holds fast, anchored deeper into the rock than your commitment to this quest. You let go, humbled by a plant.",
                 "use": "You part the vines expecting a hidden passage or secret message. Behind them: more rock. Nature's idea of a practical joke.",
-                "default": "You regard the creeping vines. They regard the slow, inevitable victory of botany over architecture."
+                "default": "You regard the creeping vines. They regard the slow, inevitable victory of botany over architecture.",
+                "talk": "You address the Cave Vines. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Cave Vines doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Cave Vines. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Cave Vines and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         }
     ],
@@ -229,7 +241,12 @@
             },
             "responses": {
                 "look": "A small glass bottle perched on a rock ledge. The liquid inside shifts between colors you're fairly sure shouldn't exist in nature. The label decomposed sometime during the previous dynasty.",
-                "use": "Drink it? Here? Without even reading the label? Well, the label decomposed centuries ago, so that's a moot point. Still, the liquid is doing things no honest liquid should."
+                "use": "Drink it? Here? Without even reading the label? Well, the label decomposed centuries ago, so that's a moot point. Still, the liquid is doing things no honest liquid should.",
+                "take": "You try to take the Mysterious Bottle, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "talk": "You talk to the Mysterious Bottle. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Mysterious Bottle doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Mysterious Bottle and push. Nothing happens, except a mild strain in your lower back. The Mysterious Bottle wins this round.",
+                "pull": "You heave at the Mysterious Bottle. Your muscles protest, the Mysterious Bottle doesn't. It has the structural advantage of not caring."
             }
         },
         {
@@ -247,7 +264,12 @@
             },
             "responses": {
                 "look": "A mushroom growing on the cave wall, pulsing with an eerie blue bioluminescence. It's either magical, radioactive, or nature's attempt at a nightlight. Possibly all three.",
-                "use": "The mushroom pulses with eerie light. Combined with something sturdy -- a stick, perhaps -- it could make a decent light source."
+                "use": "The mushroom pulses with eerie light. Combined with something sturdy -- a stick, perhaps -- it could make a decent light source.",
+                "take": "You can't take the Glowing Mushroom. It's firmly attached to its current situation, much like your growing sense of confusion.",
+                "talk": "You speak to the Glowing Mushroom in a calm, measured tone. The Glowing Mushroom maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Glowing Mushroom. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Glowing Mushroom with all your might. All your might turns out to be insufficient. The Glowing Mushroom remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Glowing Mushroom. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         }
     ],

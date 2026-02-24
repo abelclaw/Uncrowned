@@ -74,7 +74,11 @@
                 "look": "The hedges were once trimmed into the shapes of heraldic animals. Now they're trimmed into the shape of 'chaos.' What might have been a lion is now an amorphous green blob. A hedge-badger has merged with a hedge-eagle to form something that defies taxonomy.",
                 "use": "You push through the hedges. Thorns scratch your arms. Somewhere inside the green mass, a bird objects loudly to your intrusion.",
                 "take": "You reach for a branch but it's too thick and your hands too soft. The hedge wins this round.",
-                "default": "You contemplate the hedges. They contemplate growth. Neither of you is winning."
+                "default": "You contemplate the hedges. They contemplate growth. Neither of you is winning.",
+                "talk": "You speak to the Overgrown Hedges in a calm, measured tone. The Overgrown Hedges maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Overgrown Hedges. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Overgrown Hedges with all your might. All your might turns out to be insufficient. The Overgrown Hedges remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Overgrown Hedges. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         },
         {
@@ -94,7 +98,11 @@
                 "look": "Several ornamental trees have been completely petrified, their branches frozen mid-sway in solid stone. The detail is remarkable -- individual leaves, bark texture, even a bird's nest are all perfectly preserved in grey stone. It's beautiful and deeply unsettling, like taxidermy for vegetation.",
                 "use": "You tap a petrified branch. It rings like a bell. The sound echoes through the garden with an eerie purity. You don't tap it again.",
                 "take": "You try to snap off a petrified branch. It's solid stone. You'd need a chisel, not ambition.",
-                "default": "You examine the petrified trees. They were alive last season. The curse works faster than gardeners."
+                "default": "You examine the petrified trees. They were alive last season. The curse works faster than gardeners.",
+                "talk": "You attempt a conversation with the Petrified Trees. The Petrified Trees is not a great conversationalist. Then again, neither are you.",
+                "open": "You search the Petrified Trees for a way to open it. There isn't one. It's not that kind of thing.",
+                "push": "You press against the Petrified Trees. It offers the same resistance as a mountain, which is to say, total and indifferent.",
+                "pull": "You pull on the Petrified Trees. Nothing happens. Gravity and architecture conspire against you, as usual."
             }
         },
         {
@@ -114,7 +122,11 @@
                 "look": "A small wooden shed, leaning at an angle that suggests it's in a long-term negotiation with gravity. The door hangs open. Inside: rusted tools, empty pots, and the general atmosphere of a hobby abandoned under duress. Something sits on a shelf -- a rat trap, weathered but functional.",
                 "use": "You poke around the shed. Cobwebs, dust, and the lingering smell of potting soil. The shed has character, if 'character' means 'structural instability.'",
                 "open": "The door is already open. It's been open for so long it's forgotten how to close.",
-                "default": "You inspect the shed. It's the kind of building that gets described as 'rustic' in real estate listings and 'condemned' by anyone honest."
+                "default": "You inspect the shed. It's the kind of building that gets described as 'rustic' in real estate listings and 'condemned' by anyone honest.",
+                "take": "You try to take the Gardener's Shed, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "talk": "You talk to the Gardener's Shed. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "push": "You lean into the Gardener's Shed and push. Nothing happens, except a mild strain in your lower back. The Gardener's Shed wins this round.",
+                "pull": "You heave at the Gardener's Shed. Your muscles protest, the Gardener's Shed doesn't. It has the structural advantage of not caring."
             }
         },
         {
@@ -133,7 +145,12 @@
             "responses": {
                 "look": "A bush bearing clusters of shiny, dark berries. They look delicious -- plump, glistening, practically begging to be eaten. A small faded sign at the base reads 'Atropa belladonna.' That's nightshade. Those berries will kill you. Nature is beautiful and utterly duplicitous.",
                 "use": "You reach toward the berries. They look so inviting. So glossy. So completely and utterly poisonous. Some decisions advertise their consequences in advance.",
-                "default": "You examine the berry bush. It's gorgeous, prolific, and lethal. Like most things in this garden."
+                "default": "You examine the berry bush. It's gorgeous, prolific, and lethal. Like most things in this garden.",
+                "take": "You can't take the Dark Berry Bush. It's firmly attached to its current situation, much like your growing sense of confusion.",
+                "talk": "You address the Dark Berry Bush. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Dark Berry Bush doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Dark Berry Bush. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Dark Berry Bush and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         },
         {
@@ -153,7 +170,11 @@
                 "look": "A moss-covered figure stands on a stone pedestal, its features eroded beyond recognition. It might have been a king, a hero, or a particularly ambitious gardener. Time has rendered the question academic and the answer irrelevant.",
                 "take": "It's stone, it's heavy, and it's attached to a pedestal that's attached to the earth. You'd need to renegotiate with geology.",
                 "use": "Admire it? You do, briefly. It doesn't admire you back. Statues are notoriously poor conversationalists.",
-                "default": "You regard the statue. Whoever it once depicted has been forgotten, which is either tragic or liberating, depending on how you feel about legacy."
+                "default": "You regard the statue. Whoever it once depicted has been forgotten, which is either tragic or liberating, depending on how you feel about legacy.",
+                "talk": "You attempt a conversation with the Garden Statue. The Garden Statue is not a great conversationalist. Then again, neither are you.",
+                "open": "You search the Garden Statue for a way to open it. There isn't one. It's not that kind of thing.",
+                "push": "You press against the Garden Statue. It offers the same resistance as a mountain, which is to say, total and indifferent.",
+                "pull": "You pull on the Garden Statue. Nothing happens. Gravity and architecture conspire against you, as usual."
             }
         },
         {
@@ -173,7 +194,34 @@
                 "look": "An open-air pavilion held up by crumbling stone pillars, its roof partially collapsed and its former grandeur now mostly theoretical. Ivy covers what remains, softening the decay into something almost picturesque.",
                 "take": "You can't take a building. Even a small, partially ruined one. That's not how inventory works.",
                 "use": "It would make decent shelter from rain, if it were raining. Since it's not, it's just a scenic ruin -- lovely for contemplation, useless for progress.",
-                "default": "You study the stone pavilion. It has the quiet dignity of something that has accepted its decline and made peace with the ivy."
+                "default": "You study the stone pavilion. It has the quiet dignity of something that has accepted its decline and made peace with the ivy.",
+                "talk": "You attempt a conversation with the Stone Pavilion. The Stone Pavilion is not a great conversationalist. Then again, neither are you.",
+                "open": "You search the Stone Pavilion for a way to open it. There isn't one. It's not that kind of thing.",
+                "push": "You press against the Stone Pavilion. It offers the same resistance as a mountain, which is to say, total and indifferent.",
+                "pull": "You pull on the Stone Pavilion. Nothing happens. Gravity and architecture conspire against you, as usual."
+            }
+        },
+        {
+            "id": "stone-hedges",
+            "name": "Petrified Hedges",
+            "zone": {
+                "x": 100,
+                "y": 380,
+                "width": 150,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 175,
+                "y": 420
+            },
+            "responses": {
+                "look": "Once-manicured hedges, now turned to grey stone by the curse. They retain their precise geometric shapes -- the gardener's last masterwork, preserved in mineral. Every leaf, every twig, frozen in place. It's beautiful in the way that taxidermy is beautiful: technically impressive and deeply wrong.",
+                "take": "You try to snap off a stone branch. It crumbles in your hand. Petrified shrubbery makes poor souvenirs.",
+                "use": "The hedges are decorative. They were decorative when alive, and they're decorative now that they're stone. Their function hasn't changed. Only their material.",
+                "talk": "You address the petrified hedges. They stand in rigid silence. They were probably better listeners when they were alive. Or at least they swayed in the breeze, which felt more responsive.",
+                "open": "Hedges don't open. Even stone ones. They're barriers, not doors.",
+                "push": "You push against a petrified hedge. It's solid stone. The curse has given these bushes more structural integrity than most buildings.",
+                "pull": "You pull at a stone hedge branch. It snaps off with a mineral crack. A piece of someone's careful gardening is now rubble. Progress."
             }
         }
     ],
@@ -193,7 +241,12 @@
             },
             "responses": {
                 "look": "A bundle of dried sage growing wild among the overgrown herbs. It's old, dusty, and aromatic in a way that suggests it has opinions about the supernatural. The kind of herb that shows up in rituals, recipes, and grandmother's remedies for 'the spiritual malaise.'",
-                "use": "Sage is typically burned, brewed, or waved around with intent. By itself, it's just a fragrant bundle of dead plant matter."
+                "use": "Sage is typically burned, brewed, or waved around with intent. By itself, it's just a fragrant bundle of dead plant matter.",
+                "take": "The Dried Sage isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
+                "talk": "You address the Dried Sage. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Dried Sage doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Dried Sage. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Dried Sage and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         },
         {
@@ -211,7 +264,12 @@
             },
             "responses": {
                 "look": "A spring-loaded rat trap on a shelf in the gardener's shed. It's rusty but functional -- the spring still has tension, and the mechanism clicks when you test it gingerly. Someone built this to last. The rats should be concerned.",
-                "use": "The trap needs to be placed somewhere with rats. This shed is notably rat-free. The servants' quarters, on the other hand..."
+                "use": "The trap needs to be placed somewhere with rats. This shed is notably rat-free. The servants' quarters, on the other hand...",
+                "take": "You try to take the Rat Trap, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "talk": "You talk to the Rat Trap. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Rat Trap doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Rat Trap and push. Nothing happens, except a mild strain in your lower back. The Rat Trap wins this round.",
+                "pull": "You heave at the Rat Trap. Your muscles protest, the Rat Trap doesn't. It has the structural advantage of not caring."
             }
         }
     ],

@@ -63,6 +63,38 @@ export class TextParser {
             };
         }
 
+        // "wait" / "z" — common adventure game idle command
+        if (/^(?:wait|z)$/i.test(normalized)) {
+            return {
+                success: false,
+                error: 'Time passes. Nothing happens. You are slightly older and no wiser.',
+            };
+        }
+
+        // "hello" / "hi" / "hey" with no target — generic greeting
+        if (/^(?:hello|hi|hey|greetings|yo)$/i.test(normalized)) {
+            return {
+                success: false,
+                error: "You say hello to nobody in particular. The room acknowledges you with the enthusiasm of a tax office.",
+            };
+        }
+
+        // "xyzzy" / "plugh" — classic adventure game easter eggs
+        if (/^(?:xyzzy|plugh|plover)$/i.test(normalized)) {
+            return {
+                success: false,
+                error: 'A hollow voice says "Fool." Nothing happens. Were you expecting a magic portal? In this economy?',
+            };
+        }
+
+        // "yes" / "no" outside of dialogue — polite confusion
+        if (/^(?:yes|no|y|maybe|ok|okay|sure|nope|nah)$/i.test(normalized)) {
+            return {
+                success: false,
+                error: "Nobody asked you a question. Try a command like 'look', 'take', or 'go'.",
+            };
+        }
+
         // Check for bare direction shortcuts first (n, s, e, w, north, south, etc.)
         if (normalized in DIRECTION_SHORTCUTS) {
             const direction = DIRECTION_SHORTCUTS[normalized];

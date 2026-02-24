@@ -73,7 +73,12 @@
             "responses": {
                 "look": "A stone display board reads 'NOW SERVING: 3.' It has read 'NOW SERVING: 3' for approximately two hundred years. The ghost on the bench confirms this. The queue system is, in a word, deliberate.",
                 "use": "You press buttons on the display. Nothing changes. The number 3 regards you with the permanence of a mathematical constant.",
-                "default": "You stare at the display. The display stares at the number 3. The number 3 stares into eternity."
+                "default": "You stare at the display. The display stares at the number 3. The number 3 stares into eternity.",
+                "take": "You try to pry the display from the wall. It doesn't budge. The number 3 is committed to this spot in a way you have never been committed to anything.",
+                "talk": "You address the number 3 directly. It does not respond. You are now the kind of person who talks to numbers. The waiting room has claimed another victim.",
+                "open": "The display has no door, no hatch, no secret panel. Whatever dark engine powers the queue, it was not designed to be understood.",
+                "push": "You push the display. The number flickers to 4 for one glorious, heart-stopping instant -- then snaps back to 3.",
+                "pull": "You pull at the display board. A small plaque underneath reads: 'TAMPERING WITH QUEUE INFRASTRUCTURE IS PUNISHABLE BY ADDITIONAL WAITING.'"
             }
         },
         {
@@ -91,7 +96,13 @@
             },
             "responses": {
                 "look": "Stone benches worn smooth by centuries of waiting. Each one has a small brass plaque reading 'PLEASE REMAIN SEATED.' Some have tally marks scratched into them -- the longest set reaches 73,847. Someone was keeping count. They presumably stopped when they ran out of stone. They look comfortable. Suspiciously comfortable.",
-                "default": "You examine the benches. They've hosted more patience than any piece of furniture should have to bear."
+                "default": "You examine the benches. They've hosted more patience than any piece of furniture should have to bear.",
+                "take": "You attempt to lift a stone bench. It weighs approximately the same as your remaining will to live, which is to say: far too much.",
+                "use": "You sit on the stone bench. It is exactly as comfortable as sitting on a stone bench. A brass plaque reads 'PLEASE REMAIN SEATED.' It wasn't a suggestion.",
+                "talk": "You whisper to the bench: 'How do you do it? How do you just... sit here?' The bench does not answer. It has mastered patience through the simple expedient of having no nervous system.",
+                "open": "There is nothing to open on a stone bench. You check anyway, because you are in a waiting room with no end.",
+                "push": "You shove the bench. It doesn't move. It has been here longer than most civilisations and has no intention of going anywhere.",
+                "pull": "You pull at the bench. It is fused to the floor by time, magic, or the sheer accumulated weight of boredom. Probably all three."
             }
         },
         {
@@ -110,7 +121,12 @@
             "responses": {
                 "look": "'HANG IN THERE!' reads one poster, featuring a cat clinging to a branch. The poster is 400 years old. The cat is long dead. The irony writes itself. Another reads 'GOOD THINGS COME TO THOSE WHO WAIT' in a font that suggests the author was being sarcastic.",
                 "use": "You read the posters more carefully. One, half-hidden behind the others, reads: 'For faster service, seek VIP authorization. Check the filing room.' This feels like a hint. Or a trap. In the Screaming Caverns, the distinction is academic.",
-                "default": "You peruse the motivational posters. They motivate nothing except existential dread."
+                "default": "You peruse the motivational posters. They motivate nothing except existential dread.",
+                "take": "You peel a poster from the wall. Underneath is another poster. Underneath that, another. It's posters all the way down.",
+                "talk": "You read the posters aloud, as though they might hear themselves and feel ashamed. 'Hang in there.' The words echo off stone. The posters remain unrepentant.",
+                "open": "These are posters, not doors. Though at this point, you'd try opening a poster if it meant getting out of this queue.",
+                "push": "You push the posters flat against the wall. They spring back, curled at the edges, defiant. Four hundred years of ageing has given them structural opinions.",
+                "pull": "You pull a corner of one poster. It tears, revealing an inscription on the wall: 'Gerald was here. Day 12,045.' Below it: 'Gerald left. Day 12,046. Nobody noticed.'"
             }
         },
         {
@@ -130,7 +146,11 @@
                 "look": "Rows of uncomfortable chairs, designed by someone who understood that waiting should be unpleasant on every possible level.",
                 "take": "They're bolted to the floor. Even the furniture is trapped here.",
                 "use": "You sit briefly. The cushion has the structural integrity of a broken promise.",
-                "default": "You eye the waiting chairs. They offer rest, technically. Comfort, not at all."
+                "default": "You eye the waiting chairs. They offer rest, technically. Comfort, not at all.",
+                "talk": "You speak to the Waiting Chairs in a calm, measured tone. The Waiting Chairs maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Waiting Chairs. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Waiting Chairs with all your might. All your might turns out to be insufficient. The Waiting Chairs remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Waiting Chairs. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         },
         {
@@ -150,7 +170,57 @@
                 "look": "A glowing display shows the current serving number. It hasn't changed in what appears to be centuries. The queue moves at geological speed.",
                 "take": "It's mounted to the wall with magical bindings. Not even theft can speed up this process.",
                 "use": "You stare at it, willing the number to change. It does not change. Bureaucracy wins again.",
-                "default": "You regard the number board. It radiates the quiet authority of a system that will never be rushed."
+                "default": "You regard the number board. It radiates the quiet authority of a system that will never be rushed.",
+                "talk": "You speak to the Number Board in a calm, measured tone. The Number Board maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Number Board. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Number Board with all your might. All your might turns out to be insufficient. The Number Board remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Number Board. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+            }
+        },
+        {
+            "id": "ticket",
+            "name": "Queue Ticket",
+            "zone": {
+                "x": 480,
+                "y": 420,
+                "width": 40,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 500,
+                "y": 445
+            },
+            "responses": {
+                "look": "Your queue ticket reads 847 in faded ink. The paper is thin, slightly warm, and vibrates faintly as though aware of its own insignificance. Below the number, in microscopic print: 'Your patience is mandatory.'",
+                "take": "You already have it. It's in your hand. It's been in your hand since you arrived. Letting go of it would be like letting go of hope -- technically possible but practically unthinkable.",
+                "use": "You hold up the ticket. Nothing happens. Queue position is non-negotiable, non-transferable, and apparently non-functional.",
+                "talk": "You whisper to the ticket: 'When will it be our turn?' The ticket, being paper, offers no comfort. Being number 847 when they're serving 3 is comfort enough.",
+                "open": "It's a slip of paper. It's already as open as paper gets. What were you expecting inside -- a smaller, more optimistic ticket?",
+                "push": "You press the ticket flat. It was already flat. Paper tends to be. Your contribution to its flatness is negligible.",
+                "pull": "You tug at the ticket's edges. The paper stretches slightly but doesn't tear. It's sturdier than it looks, which is the minimum requirement for something that has to outlast bureaucracy."
+            }
+        },
+        {
+            "id": "tally-marks",
+            "name": "Tally Marks",
+            "zone": {
+                "x": 100,
+                "y": 350,
+                "width": 80,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 140,
+                "y": 420
+            },
+            "responses": {
+                "look": "Thousands of tally marks are scratched into the walls, layered over each other in increasingly desperate handwriting. The earliest ones are neat and orderly. The later ones are wild, carved deep into the stone with what appears to be fingernails. One section reads 'Gerald was here. Day 12,045. Still waiting.' Below it, in different handwriting: 'Gerald left. Day 12,046. Nobody noticed.'",
+                "take": "You can't take scratches out of a wall. They're part of the wall now, the way despair is part of the waiting experience.",
+                "use": "You add your own tally mark to the wall. It looks small and hopeful next to the thousands already there. Give it time.",
+                "talk": "You read the tally marks aloud. The numbers are staggering. Someone waited twelve thousand days. Someone else gave up at forty. You feel seen.",
+                "open": "Tally marks don't open. They're scratches. They tell a story, but not the kind with a door in it.",
+                "push": "You press your hand against the tally marks. The scratches are deep enough to feel under your fingers. Each one represents someone who believed their wait would end.",
+                "pull": "You trace the deepest scratches with your fingernails. Someone carved these with desperate force. The wall endured it all, patient as bureaucracy itself."
             }
         }
     ],

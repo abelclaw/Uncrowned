@@ -73,7 +73,12 @@
             "responses": {
                 "look": "The clock mechanism is a masterwork of interlocking gears, springs, and counterweights. It's been frozen by the curse -- the main spring is seized, and several gears have petrified. But the mechanism itself is sound. With a new spring and some oil, it could run again. The curse contract mentioned a date -- 3:47 on the day of the feast. If the clock were set to the correct time, it might slow the curse's advance.",
                 "use": "The clock needs two things: a gear spring to replace the seized main spring, and clock oil to lubricate the frozen gears. Without both, the mechanism is an impressive sculpture.",
-                "default": "You examine the clock mechanism. It's frozen in time, which is either poetic or literal. In this kingdom, it's both."
+                "default": "You examine the clock mechanism. It's frozen in time, which is either poetic or literal. In this kingdom, it's both.",
+                "take": "You consider disassembling the kingdom's only hope of slowing the curse and putting it in your pocket. The mechanism weighs roughly as much as your life's regret, which is considerable.",
+                "talk": "You whisper encouragement to the frozen mechanism. 'You can do it. Believe in yourself.' The gears do not respond. Motivational speaking has its limits.",
+                "open": "The mechanism is already exposed -- its housing long since corroded away. There's nothing to open except the philosophical question of why you tried.",
+                "push": "You shove the mechanism. Several tons of precision clockwork shift imperceptibly and then settle back. Congratulations: great effort, zero results.",
+                "pull": "You pull at the mechanism. It does not budge. It has survived a curse, centuries of neglect, and now you. It is unimpressed by all three."
             }
         },
         {
@@ -92,7 +97,12 @@
             "responses": {
                 "look": "The clock face reads 3:47. The curse began at the feast, which started at 3:47 PM -- the exact moment the wizard's parking was denied. The clock stopped at the moment of the curse's casting. If the clock were repaired and set to the correct time, it would re-synchronize with the curse's temporal anchor and slow its advance.",
                 "use": "You can't adjust the clock face without the mechanism running. The hands are frozen, just like everything else.",
-                "default": "You study the frozen clock face. 3:47. The most petty moment in the kingdom's history, preserved in clockwork."
+                "default": "You study the frozen clock face. 3:47. The most petty moment in the kingdom's history, preserved in clockwork.",
+                "take": "You attempt to pry the clock face off. It's bolted to the tower with the conviction of medieval masonry. The bolts have been here longer than your bloodline.",
+                "talk": "You ask the clock face what time it is. It says 3:47. It has been saying 3:47 for centuries. Consistency is a virtue, you suppose.",
+                "open": "The clock face isn't a door, despite your optimistic approach to architecture. It's a solid disc of iron and glass, and it opens for no one.",
+                "push": "You push against the clock face. The hands don't move. Time itself seems mildly offended by the attempt.",
+                "pull": "You pull at the clock face. The frozen hands resist with the stubbornness of a kingdom that refuses to acknowledge what century it's in."
             }
         },
         {
@@ -110,7 +120,13 @@
             },
             "responses": {
                 "look": "Through the tower's window, you can see the kingdom spread below. The petrification is visible -- a grey wave rolling inward from the edges. Fields, villages, forests, all turning to stone. The ledge outside is narrow, icy, and the wind howls through the opening with enough force to make climbing out a death sentence. From up here, it looks almost beautiful, in the way that endings sometimes are.",
-                "default": "You gaze out at the cursed landscape. The view is comprehensive and thoroughly depressing."
+                "default": "You gaze out at the cursed landscape. The view is comprehensive and thoroughly depressing.",
+                "take": "You try to take the Tower Window, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "use": "Using the Tower Window doesn't accomplish anything obvious. Perhaps it needs to be used with something else. Or perhaps it's just decorative.",
+                "talk": "You speak to the Tower Window in a calm, measured tone. The Tower Window maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Tower Window. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Tower Window with all your might. All your might turns out to be insufficient. The Tower Window remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Tower Window. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         },
         {
@@ -130,7 +146,11 @@
                 "look": "A magnificent array of gears and springs, frozen in time. The irony of a broken clock in a cursed kingdom is not lost on you.",
                 "take": "They're the size of wagon wheels and interlocked. Engineering does not support your kleptomania.",
                 "use": "Without proper tools and knowledge, you'd just jam them further.",
-                "default": "You study the gears. They await repair with the patience of precision engineering."
+                "default": "You study the gears. They await repair with the patience of precision engineering.",
+                "talk": "You talk to the Clock Gears. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Clock Gears doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Clock Gears and push. Nothing happens, except a mild strain in your lower back. The Clock Gears wins this round.",
+                "pull": "You heave at the Clock Gears. Your muscles protest, the Clock Gears doesn't. It has the structural advantage of not caring."
             }
         },
         {
@@ -150,7 +170,80 @@
                 "look": "A pool of luminous green liquid at the base of the clock tower. It bubbles gently, which is never a good sign in underground pools.",
                 "take": "You'd need a bucket, and honestly, do you really want glowing green liquid?",
                 "use": "Touching mysterious glowing liquids has a poor track record in this kingdom.",
-                "default": "You eye the green pool from a safe distance. It bubbles back, unconcerned."
+                "default": "You eye the green pool from a safe distance. It bubbles back, unconcerned.",
+                "talk": "You address the bubbling pool. 'Hello? Anyone down there?' A bubble rises and pops. You interpret this as 'go away.' Wise.",
+                "open": "It's a pool. An open body of liquid. It cannot be more open unless you'd like to widen the floor, which seems structurally inadvisable.",
+                "push": "You push at the green liquid. Your hand goes in. It's warm and slightly viscous. You pull back immediately. It's fine. Probably fine.",
+                "pull": "You cannot pull a liquid. This is a fundamental property of matter that predates the curse, the kingdom, and your questionable decision-making."
+            }
+        },
+        {
+            "id": "pendulum",
+            "name": "Pendulum",
+            "zone": {
+                "x": 150,
+                "y": 200,
+                "width": 80,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 190,
+                "y": 430
+            },
+            "responses": {
+                "look": "The pendulum hangs motionless, a massive weight suspended on a rod of polished steel. It should be swinging. Instead it hangs there like a condemned man's final argument -- still, heavy, and deeply unsettling. When the mechanism runs again, this will be the heartbeat of the tower.",
+                "take": "The pendulum weighs more than you do and is bolted to the mechanism with fittings designed to survive centuries of oscillation. It is not coming home with you.",
+                "use": "The pendulum can't be set swinging manually -- it's driven by the clock mechanism. Fix the mechanism, and the pendulum will do its job.",
+                "talk": "You speak to the pendulum. It hangs in judgment. Silent, heavy judgment. You've had worse conversations with actual people.",
+                "open": "It's a weight on a rod. There is nothing to open. Your creativity is admirable; your grasp of mechanical engineering, less so.",
+                "push": "You shove the pendulum. It sways half an inch and stops dead. Without the mechanism driving it, your push is just a suggestion it's perfectly comfortable ignoring.",
+                "pull": "You pull the pendulum toward you. It resists, then swings back to center with gravitational inevitability."
+            }
+        },
+        {
+            "id": "main-spring",
+            "name": "Main Spring",
+            "zone": {
+                "x": 400,
+                "y": 350,
+                "width": 80,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 440,
+                "y": 420
+            },
+            "responses": {
+                "look": "The main spring is seized -- a coil of tempered steel wound so tight by the curse that it's cracked in three places. This is the heart of the problem. Without a replacement spring, the mechanism is a very elaborate paperweight.",
+                "take": "The seized spring crumbles when you touch it, flaking into rust and regret. You need a replacement -- something like a gear spring.",
+                "use": "The main spring is seized beyond repair. You need a new spring entirely. Perhaps something from a wizard's collection of mechanical curiosities.",
+                "talk": "'I'll find you a replacement,' you promise the seized spring. It says nothing. It's a spring. But the promise feels oddly important.",
+                "open": "Springs don't open. They coil and uncoil. This one does neither, on account of being catastrophically seized.",
+                "push": "You press on the seized spring. A piece of corroded steel snaps off. You've made the situation marginally worse, which is your special talent.",
+                "pull": "You try to pull the seized spring free. It's fused to the mechanism by centuries of rust and magical stasis."
+            }
+        },
+        {
+            "id": "clock-hands",
+            "name": "Clock Hands",
+            "zone": {
+                "x": 620,
+                "y": 360,
+                "width": 60,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 650,
+                "y": 420
+            },
+            "responses": {
+                "look": "The hour and minute hands are frozen at 3:47 -- the exact moment the wizard's parking dispute became everyone's problem. They're made of iron, blackened with age. The minute hand points accusingly at the 9, as if blaming it for the whole mess.",
+                "take": "The hands are riveted to the clock face mechanism. Removing them would require tools you don't have and a disregard for the kingdom's future.",
+                "use": "You can't move the hands manually. They're driven by the mechanism behind them. Fix the mechanism, and the hands will move on their own.",
+                "talk": "'Move,' you command the frozen clock hands. They do not. Time has been ignoring commands from people with delusions of authority since long before this curse.",
+                "open": "Clock hands don't open. They point. Currently they point at 3:47, which points at the kingdom's failure, which points at a parking dispute. It's pointers all the way down.",
+                "push": "You push the minute hand. It doesn't budge. The curse has welded time itself in place.",
+                "pull": "You pull on the hour hand. Iron groans but nothing moves. The hands will turn again when the mechanism is repaired -- and not a moment sooner."
             }
         }
     ],

@@ -115,7 +115,11 @@
                 "look": "A weathered signpost at the path's fork. One arrow points west toward 'Cave' and another north toward 'Village.' A third arrow, pointing straight down, reads 'You Are Here.' Helpful.",
                 "take": "You try to uproot the signpost. It's cemented in. The local council may be incompetent at governance, but their signpost installation is impeccable.",
                 "use": "It's a signpost. You read it. That's... that's how you use a signpost.",
-                "default": "You study the signpost as though it contains the secrets of the universe. It does not. It contains directions."
+                "default": "You study the signpost as though it contains the secrets of the universe. It does not. It contains directions.",
+                "talk": "You read the signpost aloud. 'Village to the north. Forest to the south. Certain death: optional.' The signpost doesn't respond. It's done its job. Whether you listen is your problem.",
+                "open": "It's a wooden post with a plank nailed to it. There's nothing to open. Unless you mean the possibility of going in the direction it points, in which case -- it's already open.",
+                "push": "You shove the signpost. It leans drunkenly to one side, now pointing 'Village' toward the ground and 'Forest' toward the sky. You've improved nothing.",
+                "pull": "You yank the signpost. It resists, rooted in the ground by years of compacted dirt. The signpost has more commitment to this spot than you have to anything."
             }
         },
         {
@@ -134,7 +138,12 @@
             "responses": {
                 "look": "The forest beyond the path is thick and unwelcoming. The trees crowd together like gossips, and the undergrowth is the kind that swallows ankles and ambitions alike. A faded sign reads: 'CERTAIN DEATH THIS WAY.'",
                 "use": "You gaze into the dark forest and wisely decide against entering. Your survival instincts, dormant for most of your life, have chosen this moment to awaken.",
-                "default": "You peer into the dark forest. Something peers back. You both pretend this didn't happen."
+                "default": "You peer into the dark forest. Something peers back. You both pretend this didn't happen.",
+                "take": "You grab at the forest edge. Branches scratch your hands. Leaves crumble. You can't take a forest. You can barely take a hint.",
+                "talk": "You call into the forest. Something rustles in response. Then silence. The forest is not interested in conversation. It has its own dark business.",
+                "open": "The Dark Forest Edge doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You push at the undergrowth. Branches bend and snap back. The forest gives ground reluctantly and reclaims it immediately. It's been practising this for centuries.",
+                "pull": "You pull at branches and brambles. They tangle in your fingers and clothes. The forest edge doesn't want to come with you, and it's making that abundantly clear."
             }
         },
         {
@@ -154,7 +163,11 @@
                 "look": "Green hills roll toward the horizon with the gentle, pastoral beauty of a kingdom that hasn't noticed it's falling apart. The grass sways in the breeze, deceptively peaceful, as though nothing could possibly go wrong in a place this pretty. History disagrees.",
                 "take": "You want to take the hills. Perhaps fold them up and put them in your pocket. This is not how geography works.",
                 "use": "You could roll down them, but you're an adult on a quest, not a child at a picnic. Though the distinction blurs more with each passing hour.",
-                "default": "You survey the rolling hills. They're green, they're pleasant, and they're hiding something. Landscapes this pretty always are."
+                "default": "You survey the rolling hills. They're green, they're pleasant, and they're hiding something. Landscapes this pretty always are.",
+                "talk": "You shout across the hills. The wind carries your voice away into grass and distance. The hills don't answer. They never do. It's part of their charm.",
+                "open": "You search the Rolling Hills for a way to open it. There isn't one. It's not that kind of thing.",
+                "push": "You can't push the hills. They're terrain. Large terrain. The kind measured in acres, not effort.",
+                "pull": "You can't pull the hills closer. They maintain their distance with the quiet stubbornness of geography."
             }
         },
         {
@@ -174,7 +187,126 @@
                 "look": "A well-worn dirt path winds into the distance, packed hard by countless feet that had somewhere more important to be. Ruts from cart wheels suggest commerce. Boot prints suggest purpose. Your footprints suggest aimless wandering.",
                 "take": "You scoop up a handful of dirt from the path. Congratulations. You now own dirt. Your portfolio is really coming together.",
                 "use": "You follow the path with your eyes as it disappears around a bend. It's been leading people to the village for generations, asking nothing in return. The path has a better work ethic than most people you've met.",
-                "default": "You examine the dirt path. It's dirt. It's a path. Together, they exceed the sum of their parts, but only just."
+                "default": "You examine the dirt path. It's dirt. It's a path. Together, they exceed the sum of their parts, but only just.",
+                "talk": "You talk to the path. It stretches on in patient silence. Paths don't talk. They just lead -- sometimes to good places, sometimes to certain death. This one seems undecided.",
+                "open": "The Dirt Path doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push at the dirt. It's dirt. On the ground. Where dirt lives. This is the natural order of things.",
+                "pull": "You scrabble at the path. Dirt comes up under your nails. You have not improved the path. You have, however, made a small hole."
+            }
+        },
+        {
+            "id": "cart-tracks",
+            "name": "Cart Tracks",
+            "zone": {
+                "x": 200,
+                "y": 460,
+                "width": 200,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 300,
+                "y": 460
+            },
+            "responses": {
+                "look": "Deep ruts in the dirt, left by cart wheels that passed this way when the path still saw regular traffic. The tracks are old enough to have developed their own ecosystem of weeds. They lead north toward the village and south into uncertainty.",
+                "take": "You can't take cart tracks. They're impressions in dirt. This is not the kind of treasure you were hoping for.",
+                "use": "You follow the cart tracks with your eyes. They don't lead anywhere you aren't already going.",
+                "talk": "You address the cart tracks. They lie there silently, being tracks. If they could speak, they'd probably complain about the traffic. Or the lack thereof.",
+                "open": "Cart tracks don't open. They're grooves in the ground. Your expectations of the ground continue to be unrealistic.",
+                "push": "You stomp on the cart tracks. The dirt compresses slightly. You've altered history's record by approximately nothing.",
+                "pull": "You can't pull tracks out of the ground. They're not tracks in the removable sense. They're geological autobiography."
+            }
+        },
+        {
+            "id": "wildflowers",
+            "name": "Wildflowers",
+            "zone": {
+                "x": 50,
+                "y": 400,
+                "width": 120,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 110,
+                "y": 430
+            },
+            "responses": {
+                "look": "Scraggly wildflowers line the path, doing their best to be cheerful in a kingdom where the ground itself is slowly turning to stone. Some are genuinely colourful. Others have given up and gone grey at the edges, like optimism in its final stage.",
+                "take": "You pick a wildflower. It wilts immediately in your hand, as though freedom was the one thing it couldn't survive. You feel slightly guilty.",
+                "use": "You sniff a wildflower. It smells faintly of earth and resignation. Not unpleasant, but not exactly a perfume you'd bottle.",
+                "talk": "You compliment the wildflowers on their persistence. They sway in the breeze, which you choose to interpret as modest acknowledgment.",
+                "open": "Flowers don't open on command. They open on their own schedule, which is more than can be said for most doors in this kingdom.",
+                "push": "You push through the wildflowers. They bend and spring back, unbothered. Plants have a resilience you frankly envy.",
+                "pull": "You uproot a wildflower. The earth releases it with a small sigh. Now you have a dying flower and a tiny hole. Achievement unlocked."
+            }
+        },
+        {
+            "id": "well-bucket",
+            "name": "Wooden Bucket",
+            "zone": {
+                "x": 570,
+                "y": 410,
+                "width": 40,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 590,
+                "y": 430
+            },
+            "responses": {
+                "look": "A wooden bucket dangles from a frayed rope over the well. It's seen better days -- the wood is swollen, one iron band has rusted through, and it lists to one side like a sailor after shore leave. Still, it holds together through sheer stubborn refusal to be useless.",
+                "take": "The bucket is tied to the well rope. You'd need to cut it free, and cutting the only bucket seems short-sighted even by your standards.",
+                "use": "You lower the bucket into the well. It descends into darkness, hits water with a hollow splash, and comes back up half-full of dark, cold water. The bucket leaks slightly, as if weeping for its former glory.",
+                "talk": "You address the bucket. It swings on its rope, creaking. This is either acknowledgment or wind. You choose to believe the bucket heard you.",
+                "open": "It's a bucket. It's already open. That's the defining feature of buckets -- the top is off. Permanently. By design.",
+                "push": "You push the bucket. It swings over the well, pendulum-like, then settles back to hanging. The bucket is patient. The bucket always returns.",
+                "pull": "You pull the bucket toward you. The rope goes taut, the bucket resists, and when you let go it swings back over the well with a reproachful creak."
+            }
+        },
+        {
+            "id": "well-rope",
+            "name": "Frayed Rope",
+            "zone": {
+                "x": 580,
+                "y": 380,
+                "width": 20,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 590,
+                "y": 430
+            },
+            "responses": {
+                "look": "A frayed rope connects the bucket to a weathered crossbeam above the well. Several strands have already given up, leaving the rope looking like it's one strong tug away from a career change. The remaining fibres cling together with the determination of things that know they're all that stands between a bucket and oblivion.",
+                "take": "The rope is the only thing holding the bucket over the well. Taking it would strand the bucket, and the bucket doesn't deserve that.",
+                "use": "You pull the rope to lower the bucket. It creaks, strands protest, but it holds. The rope has survived this long. It'll survive you. Probably.",
+                "talk": "You address the rope. It sways slightly. Ropes are not known for their conversational skills, but this one has a certain frayed dignity.",
+                "open": "You can't open a rope. You can untie it, cut it, or fray it further, but opening is not in a rope's repertoire.",
+                "push": "You push the rope. It sways. This is the full extent of rope-pushing outcomes. You've mastered it.",
+                "pull": "You pull the rope. The bucket descends into the well. The rope groans. Somewhere, a strand snaps. The rope forgives you, but it's keeping count."
+            }
+        },
+        {
+            "id": "warning-sign",
+            "name": "Warning Sign",
+            "zone": {
+                "x": 390,
+                "y": 370,
+                "width": 50,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 415,
+                "y": 420
+            },
+            "responses": {
+                "look": "A faded wooden sign nailed to a tree at the forest edge reads: 'CERTAIN DEATH BEYOND THIS POINT.' Someone has crossed out 'CERTAIN' and written 'PROBABLE' in smaller letters. Someone else has crossed out 'PROBABLE' and written 'ENTERTAINING.' The optimism is almost admirable.",
+                "take": "You pry at the sign. The nails hold. Whoever posted this warning about certain death was very certain about the sign staying put.",
+                "use": "You read the sign again. 'CERTAIN DEATH.' 'PROBABLE DEATH.' 'ENTERTAINING DEATH.' Each amendment tells a story. None of the stories end well.",
+                "talk": "You read the sign aloud. 'Certain death beyond this point.' The forest rustles. Was that agreement? Anticipation? Wind? Best not to ask.",
+                "open": "It's a sign, not a book. Its entire message is on the front. There's no sequel, no appendix, no hopeful postscript.",
+                "push": "You push the sign flat against the tree. The word 'DEATH' faces the bark. Out of sight, but not out of forest.",
+                "pull": "You pull the sign. The nails screech but hold. The sign has been warning travellers for years and isn't about to stop for your curiosity."
             }
         }
     ],

@@ -41,32 +41,44 @@ export const VERB_TABLE: VerbDefinition[] = [
     },
     {
         canonical: 'look',
-        synonyms: ['look', 'examine', 'inspect', 'check', 'study', 'read', 'l', 'x'],
+        synonyms: ['look', 'examine', 'inspect', 'check', 'study', 'read', 'search', 'survey', 'scan', 'sniff', 'smell', 'listen', 'observe', 'watch', 'peer', 'describe', 'l', 'x'],
         patterns: [
             /^(?:look|l)\s+(?:around|here|room)$/i,
             // Bare idioms: "take a look around", "have a look" (must be before capture-group pattern)
             /^(?:take|have)\s+a\s+(?:look|peek|gander)(?:\s+(?:around|here|room))?$/i,
             // Phrase idioms: "take a look at X", "have a peek at X"
             /^(?:take|have)\s+a\s+(?:look|peek|gander)\s+(?:at\s+)?(.+)$/i,
-            /^(?:look|examine|inspect|check|study|read|l|x)\s+(?:at\s+)?(.+)$/i,
-            /^(?:look|l)$/i,
+            // Natural language queries: "what is X", "what's X", "tell me about X", "who is X", "describe X"
+            /^(?:what(?:'s|\s+is)|who(?:'s|\s+is)|describe|tell\s+me\s+about)\s+(.+)$/i,
+            // "search X for Y" → look at X (ignore "for Y")
+            /^search\s+(.+?)(?:\s+for\s+.+)?$/i,
+            // "listen to X", "smell X", "sniff at X"
+            /^(?:listen|hear)\s+(?:to\s+)?(.+)$/i,
+            /^(?:smell|sniff)\s+(?:at\s+)?(.+)$/i,
+            // Extended look with prepositions: "look in X", "look inside X", "look through X", "peer under X"
+            /^(?:look|examine|inspect|check|study|read|search|survey|scan|observe|watch|peer|l|x)\s+(?:at|in|inside|into|through|under|behind|beneath|over|around)\s+(.+)$/i,
+            /^(?:look|examine|inspect|check|study|read|search|survey|scan|observe|watch|peer|l|x)\s+(?:at\s+)?(.+)$/i,
+            /^(?:look|l|listen|smell|sniff|search)$/i,
         ],
     },
     {
         canonical: 'take',
-        synonyms: ['take', 'get', 'grab', 'pick', 'collect', 'acquire', 'snag', 'snatch', 'pluck', 'fetch'],
+        synonyms: ['take', 'get', 'grab', 'pick', 'collect', 'acquire', 'snag', 'snatch', 'pluck', 'fetch', 'steal', 'swipe', 'pocket', 'loot', 'nab', 'pilfer'],
         patterns: [
             /^pick\s+up\s+(.+)$/i,
             /^pick\s+(.+?)\s+up$/i,
-            // "pluck/snatch X from Y" → take X (ignore "from Y")
-            /^(?:pluck|snatch)\s+(.+?)\s+(?:from|off|out\s+of)\s+.+$/i,
-            /^(?:take|get|grab|collect|acquire|snag|snatch|pluck|fetch)\s+(.+)$/i,
-            /^(?:take|get|grab|collect|acquire)$/i,
+            // "pluck/snatch/steal X from Y" → take X (ignore "from Y")
+            /^(?:pluck|snatch|steal|swipe|nab|pilfer)\s+(.+?)\s+(?:from|off|out\s+of)\s+.+$/i,
+            /^(?:take|get|grab|collect|acquire|snag|snatch|pluck|fetch|steal|swipe|pocket|loot|nab|pilfer)\s+(.+)$/i,
+            /^(?:take|get|grab|collect|acquire|steal|loot)$/i,
         ],
     },
     {
         canonical: 'use',
-        synonyms: ['use', 'apply', 'give', 'show', 'offer', 'hand', 'pour', 'fill', 'set', 'place', 'put', 'drink', 'eat', 'consume', 'light', 'stamp'],
+        synonyms: ['use', 'apply', 'give', 'show', 'offer', 'hand', 'pour', 'fill', 'set', 'place', 'put', 'drink', 'eat', 'consume', 'light', 'stamp',
+            'turn', 'twist', 'rotate', 'flip', 'activate', 'operate', 'touch', 'rub',
+            'throw', 'toss', 'cut', 'sit', 'wind', 'crank', 'swim', 'ride', 'wield',
+            'dip', 'ring', 'wave', 'play', 'blow', 'stoke', 'insert', 'drop', 'wear'],
         patterns: [
             // "give/show/offer/hand X to Y" → use X on Y
             /^(?:give|show|offer|hand)\s+(.+?)\s+(?:to)\s+(.+)$/i,
@@ -76,34 +88,71 @@ export const VERB_TABLE: VerbDefinition[] = [
             /^(?:set|place|put)\s+(.+?)\s+(?:on|near|by|in|at|next\s+to)\s+(.+)$/i,
             // "stamp X with Y" → use X on Y
             /^stamp\s+(.+?)\s+(?:with|on)\s+(.+)$/i,
+            // "throw/toss X at/into Y" → use X on Y
+            /^(?:throw|toss)\s+(.+?)\s+(?:at|into|to|towards?)\s+(.+)$/i,
+            // "cut/chop X with Y" → use Y on X (tool on target)
+            /^(?:cut|chop|slice)\s+(.+?)\s+(?:with|using)\s+(.+)$/i,
+            // "insert X into/in Y" → use X on Y
+            /^(?:insert|stick|slide)\s+(.+?)\s+(?:into|in|through)\s+(.+)$/i,
+            // "turn/twist/wind X on Y" → use X on Y (e.g., "turn crank on well")
+            /^(?:turn|twist|wind|crank)\s+(.+?)\s+(?:on|at)\s+(.+)$/i,
+            // "sit on/in X", "ride X", "swim in X" → use X
+            /^(?:sit|sleep|rest|lie|lay)\s+(?:on|in|down\s+on|down\s+in)\s+(.+)$/i,
+            /^swim\s+(?:in|across|through)\s+(.+)$/i,
+            /^ride\s+(?:on\s+)?(.+)$/i,
+            // "touch/rub/feel X" → use X
+            /^(?:touch|rub|feel|stroke|caress|poke|prod|tap)\s+(.+)$/i,
             // Standard "use/apply X on/with Y"
             /^(?:use|apply)\s+(.+?)\s+(?:on|with)\s+(.+)$/i,
-            // Bare verb + subject: "drink bottle", "light torch", "pour brew" etc.
+            // "dip X in/into Y" → use X on Y
+            /^dip\s+(.+?)\s+(?:in|into)\s+(.+)$/i,
+            // Bare verb + subject: "drink bottle", "light torch", "turn crank", "ring bell" etc.
             // Excludes give/show/offer/hand (need a target: "give X to Y")
-            /^(?:use|apply|pour|fill|drink|eat|consume|light|place|put)\s+(.+)$/i,
+            /^(?:use|apply|pour|fill|drink|eat|consume|light|place|put|turn|twist|rotate|flip|activate|operate|throw|toss|cut|wind|crank|wield|dip|ring|wave|play|blow|stoke|insert|drop|wear)\s+(.+)$/i,
             /^(?:use|apply)$/i,
         ],
     },
     {
         canonical: 'go',
-        synonyms: ['go', 'walk', 'move', 'enter', 'exit', 'leave', 'head', 'travel', 'proceed', 'run', 'climb', 'follow'],
+        synonyms: ['go', 'walk', 'move', 'enter', 'exit', 'leave', 'head', 'travel', 'proceed', 'run', 'climb', 'follow',
+            'jump', 'leap', 'cross', 'crawl', 'descend', 'ascend', 'sneak', 'tiptoe', 'sprint', 'return'],
         patterns: [
             // "head/proceed north to the hallway" → go north (extract direction, ignore "to X")
-            /^(?:go|walk|move|head|travel|proceed|run|follow)\s+(north|south|east|west|up|down|n|s|e|w)\b/i,
-            /^(?:go|walk|move|head|travel|proceed|run|follow)\s+(?:to\s+)?(.+)$/i,
-            /^(?:enter|exit|leave|climb)\s+(?:to\s+)?(.+)$/i,
-            /^(?:go|walk|move|head|enter|exit|leave|travel|proceed|run|climb|follow)$/i,
+            /^(?:go|walk|move|head|travel|proceed|run|follow|sneak|tiptoe|sprint)\s+(north|south|east|west|up|down|n|s|e|w)\b/i,
+            // "jump over/across X", "leap across X", "cross X" → go X
+            /^(?:jump|leap|hop)\s+(?:over|across|off|down|into)\s+(.+)$/i,
+            /^cross\s+(?:over\s+)?(.+)$/i,
+            // "crawl through/into X" → go X
+            /^(?:crawl|squeeze)\s+(?:through|into|under)\s+(.+)$/i,
+            // "climb up/down X" → go X (with direction hint)
+            /^climb\s+(?:up|down|over|into|through)\s+(.+)$/i,
+            // "descend" / "ascend" as bare directions
+            /^descend$/i,
+            /^ascend$/i,
+            // "go back" / "go through X" / "go to X"
+            /^(?:go|walk|move|head|travel|proceed|run|follow|sneak|tiptoe|sprint)\s+(?:back|through|across|over|into|to)\s+(.+)$/i,
+            /^(?:go|walk|move|head|travel|proceed|run|follow|sneak|tiptoe|sprint|return)\s+(?:to\s+)?(.+)$/i,
+            /^(?:enter|exit|leave|climb|jump|leap|cross|crawl|descend|ascend)\s+(?:to\s+)?(.+)$/i,
+            /^(?:go|walk|move|head|enter|exit|leave|travel|proceed|run|climb|follow|jump|return)$/i,
         ],
     },
     {
         canonical: 'talk',
-        synonyms: ['talk', 'speak', 'say', 'ask', 'chat', 'greet', 'hello'],
+        synonyms: ['talk', 'speak', 'say', 'ask', 'chat', 'greet', 'hello', 'call', 'yell', 'shout', 'whisper', 'hail', 'address', 'question', 'interrogate', 'converse', 'tell'],
         patterns: [
-            /^(?:ask)\s+(.+?)\s+(?:about)\s+(.+)$/i,
-            /^(?:talk|speak|chat)\s+(?:to|with)\s+(.+)$/i,
+            // "ask X about Y", "question X about Y", "interrogate X about Y"
+            /^(?:ask|question|interrogate)\s+(.+?)\s+(?:about|regarding|on)\s+(.+)$/i,
+            // "tell X about Y" → talk X (subject=X, target=Y)
+            /^tell\s+(.+?)\s+(?:about|regarding)\s+(.+)$/i,
+            // "talk/speak/chat to/with X"
+            /^(?:talk|speak|chat|converse|whisper)\s+(?:to|with)\s+(.+)$/i,
+            // "yell/shout/call at/to X"
+            /^(?:yell|shout|call|holler)\s+(?:at|to)\s+(.+)$/i,
             /^(?:talk|speak|chat)\s+(.+)$/i,
-            /^(?:ask)\s+(.+)$/i,
-            /^(?:say|greet|hello)\s+(.+)$/i,
+            /^(?:ask|question|interrogate|address|hail)\s+(.+)$/i,
+            /^(?:say|greet|hello|whisper|yell|shout|call)\s+(.+)$/i,
+            // "say hello" / bare verbs
+            /^(?:say\s+(?:hello|hi|hey))$/i,
         ],
     },
     {
@@ -116,16 +165,22 @@ export const VERB_TABLE: VerbDefinition[] = [
     },
     {
         canonical: 'push',
-        synonyms: ['push', 'press', 'shove'],
+        synonyms: ['push', 'press', 'shove', 'kick', 'punch', 'hit', 'strike', 'smash', 'break', 'bash', 'attack', 'fight', 'knock', 'slam', 'stomp', 'bang', 'bump', 'ram', 'destroy'],
         patterns: [
-            /^(?:push|press|shove)\s+(.+)$/i,
+            // "hit/strike/attack X with Y" → push X (target captured but ignored by push handler)
+            /^(?:hit|strike|attack|smash|bash)\s+(.+?)\s+(?:with|using)\s+(.+)$/i,
+            // "knock on X" → push X
+            /^knock\s+(?:on|at)\s+(.+)$/i,
+            /^(?:push|press|shove|kick|punch|hit|strike|smash|break|bash|attack|fight|knock|slam|stomp|bang|bump|ram|destroy)\s+(.+)$/i,
         ],
     },
     {
         canonical: 'pull',
-        synonyms: ['pull', 'yank', 'tug', 'drag'],
+        synonyms: ['pull', 'yank', 'tug', 'drag', 'wrench', 'pry', 'rip', 'tear'],
         patterns: [
-            /^(?:pull|yank|tug|drag)\s+(.+)$/i,
+            // "pry X open/off" → pull X
+            /^pry\s+(.+?)(?:\s+(?:open|off|loose|apart|free))?\s*$/i,
+            /^(?:pull|yank|tug|drag|wrench|rip|tear)\s+(?:on\s+)?(.+?)(?:\s+(?:open|off|out|down))?\s*$/i,
         ],
     },
 
@@ -140,12 +195,17 @@ export const VERB_TABLE: VerbDefinition[] = [
     },
     {
         canonical: 'hint',
-        synonyms: ['hint', 'help', 'stuck', 'clue'],
+        synonyms: ['hint', 'help', 'stuck', 'clue', 'think'],
         patterns: [
-            /^(?:hint|help|stuck|clue)$/i,
+            /^(?:hint|help|stuck|clue|think)$/i,
             /^(?:give\s+me\s+a\s+)?(?:hint|help|clue)$/i,
             /^(?:i'?m?\s+)?stuck$/i,
             /^what\s+(?:do\s+i\s+do|should\s+i\s+do|now)$/i,
+            // "how do I ..." / "I need help" / "I don't know"
+            /^how\s+do\s+i\s+.+$/i,
+            /^i\s+(?:need|want)\s+(?:a\s+)?(?:hint|help|clue)$/i,
+            /^i\s+don'?t\s+know\s+(?:what\s+to\s+do)?$/i,
+            /^what\s+(?:am\s+i\s+)?(?:supposed|meant)\s+to\s+do$/i,
         ],
     },
     {
@@ -177,4 +237,9 @@ export const DIRECTION_SHORTCUTS: Record<string, string> = {
     'west': 'west', 'w': 'west',
     'up': 'up', 'u': 'up',
     'down': 'down', 'd': 'down',
+    'ascend': 'up', 'descend': 'down',
+    'upstairs': 'up', 'downstairs': 'down',
+    'back': 'back', 'forward': 'north', 'forwards': 'north',
+    'left': 'west', 'right': 'east',
+    'outside': 'out', 'inside': 'in', 'out': 'out', 'in': 'in',
 };

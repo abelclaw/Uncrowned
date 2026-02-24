@@ -73,7 +73,12 @@
             "responses": {
                 "look": "Hundreds of filing cabinets, each with tiny labels: '27-A through 27-A Stroke 14,' '27-B through 27-B Stroke 12,' '27-C (CLASSIFIED),' '28-A through 42-Z (DO NOT OPEN).' The system would make a librarian weep. Finding the right form requires patience, literacy, and a willingness to accept that some filing systems are adversarial by design.",
                 "use": "You start searching the cabinets. Drawer after drawer of forms: tax declarations, death certificates, fishing licenses, a form for filing complaints about forms. The organization is hostile but thorough.",
-                "default": "You face the filing cabinets. They face you back with the quiet confidence of systems designed to outlast civilizations."
+                "default": "You face the filing cabinets. They face you back with the quiet confidence of systems designed to outlast civilizations.",
+                "take": "You try to take the Filing Cabinets, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "talk": "You talk to the Filing Cabinets. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Filing Cabinets doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Filing Cabinets and push. Nothing happens, except a mild strain in your lower back. The Filing Cabinets wins this round.",
+                "pull": "You heave at the Filing Cabinets. Your muscles protest, the Filing Cabinets doesn't. It has the structural advantage of not caring."
             }
         },
         {
@@ -93,7 +98,11 @@
                 "look": "A bottom drawer on the last cabinet, slightly ajar. Unlike the others, it's not labeled. Someone has scratched 'SKIP' into the metal -- either a filing code or advice. The drawer sticks when you try to pull it.",
                 "open": "You pull the drawer. It sticks, then slides open with reluctance. Inside: a single rubber stamp marked 'VIP -- SKIP ALL QUEUES.' Someone hid this here. Someone who got very tired of waiting.",
                 "use": "The drawer needs to be opened first. It's stuck, but not locked -- just stubborn. Like most things in this filing system.",
-                "default": "You examine the bottom drawer. It's the only unlabeled drawer in the entire room, which makes it either unimportant or the most important drawer here."
+                "default": "You examine the bottom drawer. It's the only unlabeled drawer in the entire room, which makes it either unimportant or the most important drawer here.",
+                "take": "You try to take the Bottom Drawer, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "talk": "You talk to the Bottom Drawer. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "push": "You lean into the Bottom Drawer and push. Nothing happens, except a mild strain in your lower back. The Bottom Drawer wins this round.",
+                "pull": "You heave at the Bottom Drawer. Your muscles protest, the Bottom Drawer doesn't. It has the structural advantage of not caring."
             }
         },
         {
@@ -113,7 +122,11 @@
                 "look": "Filing cabinets stretching to the ceiling, stuffed with the accumulated paperwork of a civilization that confused bureaucracy with governance.",
                 "take": "You pull a random file. It's a complaint about a complaint about a complaint. Recursive misery.",
                 "use": "Finding anything useful would require a cataloging system, which itself would require filing a request.",
-                "default": "You contemplate the file stacks. They contemplate you back, silently and judgmentally."
+                "default": "You contemplate the file stacks. They contemplate you back, silently and judgmentally.",
+                "talk": "You speak to the File Stacks in a calm, measured tone. The File Stacks maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the File Stacks. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the File Stacks with all your might. All your might turns out to be insufficient. The File Stacks remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the File Stacks. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         }
     ],
@@ -133,7 +146,12 @@
             },
             "responses": {
                 "look": "A bureaucratic form of stunning complexity. 'FORM 27-B STROKE 6: Application for Sovereign Worthiness Test.' It has forty-seven fields, three of which are 'Name' (first, last, and bureaucratic). The fine print requires a microscope and a law degree.",
-                "use": "The form is blank. You'd need ink to fill it out. Ancient, official ink. The kind that takes bureaucracy personally."
+                "use": "The form is blank. You'd need ink to fill it out. Ancient, official ink. The kind that takes bureaucracy personally.",
+                "take": "The Form 27-B Stroke 6 isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
+                "talk": "You talk to the Form 27-B Stroke 6. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Form 27-B Stroke 6 doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Form 27-B Stroke 6 and push. Nothing happens, except a mild strain in your lower back. The Form 27-B Stroke 6 wins this round.",
+                "pull": "You heave at the Form 27-B Stroke 6. Your muscles protest, the Form 27-B Stroke 6 doesn't. It has the structural advantage of not caring."
             }
         },
         {
@@ -151,7 +169,12 @@
             },
             "responses": {
                 "look": "An unauthorized stamp that reads 'VIP -- SKIP ALL QUEUES.' Someone left it in a hidden drawer, a small act of rebellion against the system. The rubber is still good. The authorization is technically valid. The Clerk would be furious.",
-                "use": "The stamp needs something to stamp. A ticket, perhaps. A queue ticket that could use some... elevation."
+                "use": "The stamp needs something to stamp. A ticket, perhaps. A queue ticket that could use some... elevation.",
+                "take": "You try to take the VIP Authorization Stamp, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "talk": "You speak to the VIP Authorization Stamp in a calm, measured tone. The VIP Authorization Stamp maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the VIP Authorization Stamp. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the VIP Authorization Stamp with all your might. All your might turns out to be insufficient. The VIP Authorization Stamp remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the VIP Authorization Stamp. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         }
     ],

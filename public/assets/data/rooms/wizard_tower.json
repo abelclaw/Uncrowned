@@ -73,7 +73,12 @@
             "responses": {
                 "look": "Shelves of potions in every color, most bubbling quietly despite having been brewed centuries ago. Labels include 'Memory Suppressant (Extra Strength),' 'Parking Curse Mk. VII,' and 'Definitely Not Poison (It Is Poison).' The wizard's organizational system was 'wherever there's space,' which means everywhere.",
                 "take": "You pocket a small vial. Then put it back. Then pick it up again. Then remember the last time you drank a mysterious liquid and put it back permanently.",
-                "default": "You examine the potions. They examine you back, bubbling judgmentally."
+                "default": "You examine the potions. They examine you back, bubbling judgmentally.",
+                "use": "You're not entirely sure how to use the Potion Shelves. Neither is the Potion Shelves, for what it's worth.",
+                "talk": "You attempt a conversation with the Potion Shelves. The Potion Shelves is not a great conversationalist. Then again, neither are you.",
+                "open": "You search the Potion Shelves for a way to open it. There isn't one. It's not that kind of thing.",
+                "push": "You press against the Potion Shelves. It offers the same resistance as a mountain, which is to say, total and indifferent.",
+                "pull": "You pull on the Potion Shelves. Nothing happens. Gravity and architecture conspire against you, as usual."
             }
         },
         {
@@ -92,7 +97,12 @@
             "responses": {
                 "look": "Scattered notes in a frantic hand: 'Parking spot 47-B DENIED. DENIED! After 300 years of service! The feast committee will pay for this. The KINGDOM will pay for this. I'll show them all. Curse Mk. VII should do it. Include expiration clause per section 47-B of Administrative Code -- even curses must follow procedure.' The wizard was a bureaucrat before he was a wizard. The curse has an exit clause because the caster followed the rules even while breaking them. Incredible.",
                 "take": "You take the spell notes. Then realize they're covered in magical residue that makes your fingers tingle. You put them back and wipe your hands on your clothes.",
-                "default": "You read the spell notes. The wizard's rage about parking is... passionate. And surprisingly well-documented."
+                "default": "You read the spell notes. The wizard's rage about parking is... passionate. And surprisingly well-documented.",
+                "use": "You're not entirely sure how to use the Spell Notes. Neither is the Spell Notes, for what it's worth.",
+                "talk": "You speak to the Spell Notes in a calm, measured tone. The Spell Notes maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Spell Notes. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Spell Notes with all your might. All your might turns out to be insufficient. The Spell Notes remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Spell Notes. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         },
         {
@@ -110,7 +120,13 @@
             },
             "responses": {
                 "look": "A heavy iron chest with arcane symbols carved into its surface. A sign reads: 'PERSONAL BELONGINGS -- DO NOT OPEN. ESPECIALLY YOU, MARLOWE. (Wait, I am Marlowe. Note to self: change sign.)' The chest is clearly trapped. The symbols glow faintly when you approach.",
-                "default": "You eye the trapped chest. It eyes you back, magically."
+                "default": "You eye the trapped chest. It eyes you back, magically.",
+                "take": "The Iron Chest isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
+                "use": "You fiddle with the Iron Chest for a moment, then give up. Whatever its purpose, you haven't figured it out.",
+                "talk": "You attempt a conversation with the Iron Chest. The Iron Chest is not a great conversationalist. Then again, neither are you.",
+                "open": "You search the Iron Chest for a way to open it. There isn't one. It's not that kind of thing.",
+                "push": "You press against the Iron Chest. It offers the same resistance as a mountain, which is to say, total and indifferent.",
+                "pull": "You pull on the Iron Chest. Nothing happens. Gravity and architecture conspire against you, as usual."
             }
         },
         {
@@ -129,7 +145,12 @@
             "responses": {
                 "look": "A massive black scorch mark covers one wall, the shape of a wizard silhouetted in char. This is probably how Wizard Marlowe died -- standing too close to his own experiment. The silhouette's arms are raised in what could be triumph or panic. Given the outcome, probably panic.",
                 "use": "You touch the scorch mark. Your finger comes away black with soot and faintly warm, even after centuries. Magic leaves a lasting impression. So does incompetence.",
-                "default": "You study the scorch mark. It tells the entire story of a wizard who was very good at magic and very bad at safety protocols."
+                "default": "You study the scorch mark. It tells the entire story of a wizard who was very good at magic and very bad at safety protocols.",
+                "take": "You try to take the Scorch Mark, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "talk": "You speak to the Scorch Mark in a calm, measured tone. The Scorch Mark maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Scorch Mark. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Scorch Mark with all your might. All your might turns out to be insufficient. The Scorch Mark remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Scorch Mark. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         },
         {
@@ -149,7 +170,11 @@
                 "look": "Ancient tomes open to pages covered in diagrams that make your eyes water. One book appears to be reading itself, pages turning without assistance or apology.",
                 "take": "The books seem to have opinions about being moved. One snaps shut as you reach for it, which is both startling and rude.",
                 "use": "You'd need years of study, and your attention span barely covers minutes. The books sense this and are unimpressed.",
-                "default": "You examine the magic books. They radiate the quiet hostility of knowledge that knows you can't understand it."
+                "default": "You examine the magic books. They radiate the quiet hostility of knowledge that knows you can't understand it.",
+                "talk": "You attempt a conversation with the Magic Books. The Magic Books is not a great conversationalist. Then again, neither are you.",
+                "open": "You search the Magic Books for a way to open it. There isn't one. It's not that kind of thing.",
+                "push": "You press against the Magic Books. It offers the same resistance as a mountain, which is to say, total and indifferent.",
+                "pull": "You pull on the Magic Books. Nothing happens. Gravity and architecture conspire against you, as usual."
             }
         },
         {
@@ -169,7 +194,11 @@
                 "look": "A grand arched window overlooking the land below. The view would be inspiring if the land weren't slowly turning to stone. Even the clouds look nervous.",
                 "take": "It's set in the wall. Architects planned ahead, anticipating the kind of person who would try to steal a window.",
                 "use": "You peer through it. The horizon looks worried. You share the sentiment.",
-                "default": "You gaze through the tower window. The kingdom stretches out below, beautiful and cursed in equal measure."
+                "default": "You gaze through the tower window. The kingdom stretches out below, beautiful and cursed in equal measure.",
+                "talk": "You speak to the Tower Window in a calm, measured tone. The Tower Window maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Tower Window. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Tower Window with all your might. All your might turns out to be insufficient. The Tower Window remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Tower Window. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         }
     ],
@@ -189,7 +218,12 @@
             },
             "responses": {
                 "look": "A small crystal on the wizard's desk, glowing with suppressed light. A label reads: 'Extracted Memories -- Clerk Identity, Pre-Immortality. DO NOT RETURN TO SUBJECT without consent (or spite).' This is the Clerk's memory -- the wizard extracted his own memories of casting the curse before transforming himself into the immortal bureaucrat. The crystal holds the truth of who the Clerk was.",
-                "use": "The memory crystal needs to be shown to the Clerk. It contains his suppressed memories -- proof that the immortal bureaucrat and the disgruntled wizard are the same person."
+                "use": "The memory crystal needs to be shown to the Clerk. It contains his suppressed memories -- proof that the immortal bureaucrat and the disgruntled wizard are the same person.",
+                "take": "The Clerk's Memory Crystal isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
+                "talk": "You talk to the Clerk's Memory Crystal. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Clerk's Memory Crystal doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Clerk's Memory Crystal and push. Nothing happens, except a mild strain in your lower back. The Clerk's Memory Crystal wins this round.",
+                "pull": "You heave at the Clerk's Memory Crystal. Your muscles protest, the Clerk's Memory Crystal doesn't. It has the structural advantage of not caring."
             }
         },
         {
@@ -207,7 +241,12 @@
             },
             "responses": {
                 "look": "A tightly coiled metal spring among the wizard's mechanical components. It looks like it was part of a clock mechanism -- the wizard apparently tinkered with temporal devices in addition to curses. Still has bounce, unlike your hopes.",
-                "use": "A gear spring without a clock is just a coil with ambitions. You need the clock tower to use this."
+                "use": "A gear spring without a clock is just a coil with ambitions. You need the clock tower to use this.",
+                "take": "The Gear Spring isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
+                "talk": "You talk to the Gear Spring. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Gear Spring doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Gear Spring and push. Nothing happens, except a mild strain in your lower back. The Gear Spring wins this round.",
+                "pull": "You heave at the Gear Spring. Your muscles protest, the Gear Spring doesn't. It has the structural advantage of not caring."
             }
         }
     ],

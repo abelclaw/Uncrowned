@@ -176,7 +176,11 @@
                 "look": "The guards who once challenged you for proof of purpose are now stone statues, frozen in their duty. One still has his hand extended, demanding identification from visitors who will never come. Their expressions are stern but not afraid -- they turned to stone while doing their jobs, which is either admirable or deeply unfair. Probably both.",
                 "talk": "You address the stone guards. They maintain their eternal vigil in silence. Their dedication to duty has outlasted their biology.",
                 "use": "The petrified guards are beyond help. Or use. They've been promoted to the rank of Permanent Fixture.",
-                "default": "You study the frozen guards. Their stone faces show no pain, just duty. Perhaps that's a kindness."
+                "default": "You study the frozen guards. Their stone faces show no pain, just duty. Perhaps that's a kindness.",
+                "take": "You attempt to lift a petrified guard. He weighs approximately one solid guard's worth of granite, which is considerably more than you can carry and marginally less than he deserves.",
+                "open": "You try to pry the guard's visor open. The stone doesn't budge. His expression behind it is presumably the same one he wore in life: tolerant disapproval of your life choices.",
+                "push": "You push against a petrified guard. He doesn't move. He didn't move when he was alive and you tried to get past without identification, either. Consistency is a virtue, even in mineral form.",
+                "pull": "You pull on the guard's extended arm. It doesn't budge. His commitment to demanding your papers has survived the transition from biology to geology."
             }
         },
         {
@@ -196,7 +200,11 @@
                 "look": "The well where you once filled a chalice is now solid stone -- bucket, rope, water, all of it. The surface of what was once water is now a grey disc, perfectly smooth, like a mirror that reflects nothing. The curse has frozen even the concept of refreshment.",
                 "use": "The well is stone. The water is stone. The bucket is stone. Everything is stone. You're beginning to see a pattern.",
                 "take": "You cannot draw water from a stone well. This metaphor has become unpleasantly literal.",
-                "default": "You examine the petrified well. It is a monument to the kingdom's hydration infrastructure, now permanently decommissioned."
+                "default": "You examine the petrified well. It is a monument to the kingdom's hydration infrastructure, now permanently decommissioned.",
+                "talk": "You shout down the petrified well. Your voice hits solid stone about three feet in and comes back sounding embarrassed. No echo. No response.",
+                "open": "The well is sealed by its own petrified water. You'd need to un-curse a well to open it, and you're not even sure that's a real discipline.",
+                "push": "You lean against the well's stone rim and push. The well does not budge. It was built to be permanent and the curse has only made it more committed.",
+                "pull": "You grab the petrified rope and pull. It's stone. The bucket is stone. You are pulling on a decorative rock formation shaped like rope."
             }
         },
         {
@@ -215,7 +223,12 @@
             "responses": {
                 "look": "The castle walls are cracking. Not from age -- from the curse. Petrified stone has a different density than carved stone, and the conflicting materials are tearing the architecture apart. Cracks spider-web across the surface. Chunks have fallen. The castle is eating itself.",
                 "push": "You push on a crumbling section. It groans. Dust falls. A stone the size of your head breaks free and thuds to the ground. Perhaps stop pushing the structural components of the building you're inside.",
-                "default": "You observe the crumbling walls. The castle has survived centuries. It may not survive the week."
+                "default": "You observe the crumbling walls. The castle has survived centuries. It may not survive the week.",
+                "take": "You pick up a chunk of fallen wall. It crumbles in your hand to grey dust. Souvenirs from a dying kingdom have a poor shelf life.",
+                "use": "The walls are holding up a castle. They're already in use. They're just not very good at it anymore.",
+                "talk": "You address the crumbling walls. They do not respond, though another chunk falls off. Whether that's a reply or a coincidence is philosophical.",
+                "open": "The Crumbling Castle Walls doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "pull": "You pull a loose stone from the wall. More dust rains down. A crack widens ominously overhead. Structural demolition is not a hobby you should pursue indoors."
             }
         },
         {
@@ -235,7 +248,11 @@
                 "look": "The hedges have turned to stone, preserving every leaf in granite detail. The gardener's worst nightmare, realized literally.",
                 "take": "Stone foliage. Heavy, sharp, and utterly decorative.",
                 "use": "They're past the point of pruning.",
-                "default": "You examine the petrified hedges. The topiary was questionable even before it turned to stone."
+                "default": "You examine the petrified hedges. The topiary was questionable even before it turned to stone.",
+                "talk": "You whisper encouragement to the petrified hedges. They remain stone. Plants were never great conversationalists, and petrification hasn't improved their social skills.",
+                "open": "You try to part the stone hedges. They are, unsurprisingly, not as flexible as they were when alive.",
+                "push": "You shove a petrified hedge. A stone leaf snaps off and shatters on the ground with a sound like breaking pottery.",
+                "pull": "You grab a stone branch and pull. It snaps off in your hand -- a grey twig of solid granite. Congratulations. You've pruned a rock."
             }
         },
         {
@@ -256,7 +273,56 @@
                 "talk": "'Break... the curse...' Aldric manages through half a stone jaw. 'Clock tower... treasury... rite circle... hurry.' Every word costs him visible effort. His flesh hand grips his stone sword. The man is fighting petrification through sheer obstinacy.",
                 "use": "Captain Aldric is not a tool. He is a soldier fighting petrification with willpower alone. Show some respect.",
                 "take": "You cannot take a half-petrified guard captain. He wouldn't fit in your pockets, and he'd object strenuously with his remaining flesh hand.",
-                "default": "Aldric's one good eye follows you. He doesn't need words to communicate 'hurry up.' The stone creeping up his neck says it for him."
+                "default": "Aldric's one good eye follows you. He doesn't need words to communicate 'hurry up.' The stone creeping up his neck says it for him.",
+                "open": "You search the Captain Aldric for a way to open it. There isn't one. It's not that kind of thing.",
+                "push": "You press against the Captain Aldric. It offers the same resistance as a mountain, which is to say, total and indifferent.",
+                "pull": "You pull on the Captain Aldric. Nothing happens. Gravity and architecture conspire against you, as usual."
+            }
+        },
+        {
+            "id": "guard-swords",
+            "name": "Petrified Swords",
+            "zone": {
+                "x": 200,
+                "y": 370,
+                "width": 60,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 230,
+                "y": 420
+            },
+            "responses": {
+                "look": "The guards' swords are raised in an eternal salute to nothing. The blades have turned grey and brittle, frozen mid-swing. Whatever these men were defending against, they never finished the gesture.",
+                "take": "You try to pry a sword from a guard's stone grip. The fingers won't release it. Even in death -- or whatever petrification qualifies as -- a guard holds his weapon.",
+                "use": "The swords are stone. You could use one as a particularly dramatic letter opener, if you could get it free, which you can't.",
+                "talk": "You address the swords. They maintain their salute with the discipline of blades that have been doing this one thing for far too long.",
+                "open": "Swords don't open. They're already as open as a blade gets.",
+                "push": "You push a stone blade. It doesn't move. The guard's grip has transcended biology and entered geology.",
+                "pull": "You pull at a sword hilt. The stone fingers hold fast. The last thing this guard did was grip his sword, and he's not letting go."
+            }
+        },
+        {
+            "id": "courtyard-gate",
+            "name": "Castle Gate",
+            "zone": {
+                "x": 800,
+                "y": 300,
+                "width": 100,
+                "height": 150
+            },
+            "interactionPoint": {
+                "x": 850,
+                "y": 430
+            },
+            "responses": {
+                "look": "The castle gate hangs open, its iron portcullis rusted in the raised position. The guards who once challenged you at this gate are now the stone sentries flanking it. The gate feels wider without someone demanding to see your papers.",
+                "take": "You can't take a castle gate. It's bolted into the walls, which are bolted into the earth. This is architecture, not a shop.",
+                "use": "The gate is open. You can walk through it. That's the full extent of gate usage. It's not complicated.",
+                "talk": "You address the gate. It creaks in the wind. This passes for conversation at the entrance to a cursed castle.",
+                "open": "The gate is already open. The portcullis is stuck in the up position. Nobody's coming to close it. Nobody's left to close it.",
+                "push": "You push the gate. Iron groans but doesn't move. Rust has welded it into its current position. The gate has committed to being open.",
+                "pull": "You pull the gate. It doesn't budge. The hinges have rusted solid. The gate will stay where it is until the castle falls, which given the walls, might be Tuesday."
             }
         }
     ],

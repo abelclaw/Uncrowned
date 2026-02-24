@@ -75,7 +75,10 @@
                 "take": "You reach toward the beehive. Every survival instinct you possess screams in unison. You lower your hand. Good choice.",
                 "talk": "You address the bees politely. They do not acknowledge your existence, which is probably the best outcome here.",
                 "use": "You're not sure what 'using' a beehive entails, but you're fairly certain the bees have strong opinions about it.",
-                "default": "You regard the beehive from what you hope is a safe distance. The bees regard you from what they know is striking distance."
+                "default": "You regard the beehive from what you hope is a safe distance. The bees regard you from what they know is striking distance.",
+                "open": "You search the Suspicious Beehive for a way to open it. There isn't one. It's not that kind of thing.",
+                "push": "You press against the Suspicious Beehive. It offers the same resistance as a mountain, which is to say, total and indifferent.",
+                "pull": "You pull on the Suspicious Beehive. Nothing happens. Gravity and architecture conspire against you, as usual."
             }
         },
         {
@@ -96,7 +99,10 @@
                 "take": "You reach for a flower, but it wilts at your touch before you can pluck it. Nature has standards, apparently.",
                 "use": "You consider arranging a bouquet but decide against it. There's no one to impress, and the flowers know it.",
                 "talk": "You compliment the wildflowers on their resilience. They sway in the breeze, unmoved by flattery.",
-                "default": "You interact with the wildflowers in a way that leaves both parties mildly confused."
+                "default": "You interact with the wildflowers in a way that leaves both parties mildly confused.",
+                "open": "The Wildflowers doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Wildflowers and push. Nothing happens, except a mild strain in your lower back. The Wildflowers wins this round.",
+                "pull": "You heave at the Wildflowers. Your muscles protest, the Wildflowers doesn't. It has the structural advantage of not caring."
             }
         },
         {
@@ -116,7 +122,11 @@
                 "look": "Two ancient trees frame the clearing like gnarled sentinels. Their bark is cracked and twisted into patterns that suggest they've been silently judging passersby since before the kingdom had a name. The canopy above filters the sunlight into something almost holy, if holiness smelled like moss and squirrel droppings.",
                 "take": "You attempt to take an entire tree. The tree does not cooperate. It has been standing here for centuries and is not about to relocate for the likes of you.",
                 "use": "You lean against the tree trunk. It's solid, ancient, and entirely uninterested in your problems. Trees predate the concept of empathy.",
-                "default": "You regard the ancient trees. They regard the centuries. Neither of you is impressed with the other."
+                "default": "You regard the ancient trees. They regard the centuries. Neither of you is impressed with the other.",
+                "talk": "You talk to the Forest Trees. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Forest Trees doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Forest Trees and push. Nothing happens, except a mild strain in your lower back. The Forest Trees wins this round.",
+                "pull": "You heave at the Forest Trees. Your muscles protest, the Forest Trees doesn't. It has the structural advantage of not caring."
             }
         },
         {
@@ -136,7 +146,11 @@
                 "look": "A thick carpet of ferns blankets the forest floor, their fronds unfurling in slow spirals like tiny green fists deciding whether to open. They've been here longer than the path, longer than the kingdom, and will certainly outlast your adventure.",
                 "take": "You reach for a fern frond. It curls away from your hand like a cat that's been petted wrong. The other ferns pretend not to notice.",
                 "use": "You brush the ferns aside, revealing more ferns. Beneath those, more ferns. It's ferns all the way down.",
-                "default": "You contemplate the ferns. The ferns contemplate photosynthesis. One of you is more productive."
+                "default": "You contemplate the ferns. The ferns contemplate photosynthesis. One of you is more productive.",
+                "talk": "You talk to the Ferns. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Ferns doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Ferns and push. Nothing happens, except a mild strain in your lower back. The Ferns wins this round.",
+                "pull": "You heave at the Ferns. Your muscles protest, the Ferns doesn't. It has the structural advantage of not caring."
             }
         },
         {
@@ -156,7 +170,11 @@
                 "look": "Through the gap between the trees, a lake shimmers in the distance like a dropped coin on a ballroom floor. The water catches the light in a way that's almost inviting, if you ignore the fact that it's completely unreachable from here.",
                 "take": "You want to take a distant lake. This is ambitious even by your standards, which are admittedly quite low.",
                 "use": "The lake is scenic but thoroughly distant. You'd need to find a path there, assuming one exists. For now, it remains a pretty thing you can't have, much like competence.",
-                "default": "You gaze at the distant lake. It glitters back, serene and unhelpful."
+                "default": "You gaze at the distant lake. It glitters back, serene and unhelpful.",
+                "talk": "You address the Distant Lake. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Distant Lake doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Distant Lake. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Distant Lake and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         },
         {
@@ -176,7 +194,11 @@
                 "look": "A deep crack runs down the side of the old stump, wide enough to fit your fingers into. Something small and metallic glints inside -- a key, perhaps? Or possibly the stump's life savings. Only one way to find out.",
                 "take": "You can't take a crack. You can, however, take what's inside it. Assuming your hands are brave enough.",
                 "use": "You poke at the crack experimentally. It remains a crack. The thing inside it, however, looks like it could be useful elsewhere.",
-                "default": "You peer into the crack. Something glints back at you, like a tiny metallic eye daring you to reach in."
+                "default": "You peer into the crack. Something glints back at you, like a tiny metallic eye daring you to reach in.",
+                "talk": "You address the Crack in Stump. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Crack in Stump doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Crack in Stump. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Crack in Stump and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         }
     ],
@@ -201,7 +223,8 @@
                 "push": "You push the stump. It does not push back. Score one for you, I suppose.",
                 "pull": "You yank at the stump. Somewhere, a tree ghost is deeply offended.",
                 "talk": "You whisper sweet nothings to the stump. It maintains a dignified silence, which is more than most conversation partners manage.",
-                "default": "You poke at the old stump. Nothing interesting happens, which is exactly what the stump wanted."
+                "default": "You poke at the old stump. Nothing interesting happens, which is exactly what the stump wanted.",
+                "open": "The Old Tree Stump doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest."
             }
         },
         {
@@ -219,7 +242,12 @@
             },
             "responses": {
                 "look": "A small, corroded key wedged into a crack in the stump. It's the color of regret and oxidation.",
-                "use": "Use it on what? You're standing in a forest. Trees don't have locks. Usually."
+                "use": "Use it on what? You're standing in a forest. Trees don't have locks. Usually.",
+                "take": "The Rusty Key isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
+                "talk": "You address the Rusty Key. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Rusty Key doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Rusty Key. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Rusty Key and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         },
         {
@@ -236,7 +264,13 @@
                 "y": 460
             },
             "responses": {
-                "look": "A sturdy-looking stick lying on the ground. Nature's multi-tool. Or at least nature's poking device."
+                "look": "A sturdy-looking stick lying on the ground. Nature's multi-tool. Or at least nature's poking device.",
+                "take": "You try to take the Sturdy Stick, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "use": "Using the Sturdy Stick doesn't accomplish anything obvious. Perhaps it needs to be used with something else. Or perhaps it's just decorative.",
+                "talk": "You speak to the Sturdy Stick in a calm, measured tone. The Sturdy Stick maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Sturdy Stick. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Sturdy Stick with all your might. All your might turns out to be insufficient. The Sturdy Stick remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Sturdy Stick. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         }
     ],

@@ -74,7 +74,11 @@
                 "look": "A small writing desk with a dusty diary lying open. The diary belongs to the head servant -- the last entry reads: 'Rats ate the flour again. Cook is furious. King dead. Curse spreading. Priorities unclear.' Tucked under the diary is a sheet of official-looking parchment. Blank. But very, very official-looking.",
                 "use": "You flip through the diary. Most entries concern meal schedules, staff complaints, and an ongoing feud between the laundry department and the kitchen. The final entries grow increasingly panicked as the curse spreads. The blank parchment underneath seems important.",
                 "open": "You open the diary wider. The spine cracks with the sound of neglected literature. The blank decree underneath shifts into view.",
-                "default": "You study the desk. It's the only evidence that someone in this castle once cared about record-keeping."
+                "default": "You study the desk. It's the only evidence that someone in this castle once cared about record-keeping.",
+                "take": "You try to take the Writing Desk, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "talk": "You attempt a conversation with the Writing Desk. The Writing Desk is not a great conversationalist. Then again, neither are you.",
+                "push": "You press against the Writing Desk. It offers the same resistance as a mountain, which is to say, total and indifferent.",
+                "pull": "You pull on the Writing Desk. Nothing happens. Gravity and architecture conspire against you, as usual."
             }
         },
         {
@@ -94,7 +98,11 @@
                 "look": "Wooden crates stacked against the wall, most bearing labels like 'FLOUR,' 'GRAIN,' and 'PROVISIONS.' The scratching from behind them is persistent and organized. Whatever is back there has established a settlement. Opening the wrong crate seems risky.",
                 "use": "You approach the crates. The scratching intensifies. Something behind the stack is very aware of your presence and not thrilled about it.",
                 "push": "You push a crate. It's lighter than expected -- whatever was inside has been eaten. The scratching behind it gets louder.",
-                "default": "You eye the crates warily. They eye you back, metaphorically, through several hundred sets of small, beady eyes."
+                "default": "You eye the crates warily. They eye you back, metaphorically, through several hundred sets of small, beady eyes.",
+                "take": "You try to take the Storage Crates, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "talk": "You attempt a conversation with the Storage Crates. The Storage Crates is not a great conversationalist. Then again, neither are you.",
+                "open": "You search the Storage Crates for a way to open it. There isn't one. It's not that kind of thing.",
+                "pull": "You pull on the Storage Crates. Nothing happens. Gravity and architecture conspire against you, as usual."
             }
         },
         {
@@ -114,7 +122,11 @@
                 "look": "A row of narrow bunks, each barely wider than a coffin and roughly as comfortable. The blankets are thin, the pillows are flat, and the mattresses have given up any pretense of being soft. Someone has carved 'I QUIT' into the headboard of the nearest bunk, a sentiment apparently shared by the rest of the staff.",
                 "take": "Too large, too depressing, and too structurally unsound to move. The bunks are staying right where generations of underpaid servants left them.",
                 "use": "Tempting to nap, but you have a kingdom to save. The mattress seems to understand, sagging in quiet resignation as you move on.",
-                "default": "You examine the bunk beds. They've hosted the dreams of countless servants, most of whom were probably dreaming about better beds."
+                "default": "You examine the bunk beds. They've hosted the dreams of countless servants, most of whom were probably dreaming about better beds.",
+                "talk": "You talk to the Bunk Beds. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Bunk Beds doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Bunk Beds and push. Nothing happens, except a mild strain in your lower back. The Bunk Beds wins this round.",
+                "pull": "You heave at the Bunk Beds. Your muscles protest, the Bunk Beds doesn't. It has the structural advantage of not caring."
             }
         },
         {
@@ -134,7 +146,11 @@
                 "look": "A small window set in thick stone, its glass grimy enough to turn daylight into a vague suggestion. The view beyond is nothing but a courtyard wall, three feet away. The architect clearly felt servants needed light but not hope.",
                 "take": "It's set in stone. Literally. The window was here before you and will be here long after you've given up trying to remove it.",
                 "use": "You peer through the grimy glass -- just a courtyard wall staring back. Inspiring. The window fulfils its minimum obligation to be a window and not a single thing more.",
-                "default": "You regard the small window. It lets in just enough light to see how depressing the room is, which may not have been the intended design goal."
+                "default": "You regard the small window. It lets in just enough light to see how depressing the room is, which may not have been the intended design goal.",
+                "talk": "You address the Window. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Window doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Window. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Window and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         }
     ],
@@ -154,7 +170,12 @@
             },
             "responses": {
                 "look": "A sheet of parchment so official-looking it could probably govern a small nation. Which is sort of the point. It bears the watermark of the Royal Paper Mill and has the texture of authority. It's completely blank, which makes it either useless or incredibly dangerous.",
-                "use": "A blank decree needs a seal to become an official decree. Without one, it's just very fancy scratch paper."
+                "use": "A blank decree needs a seal to become an official decree. Without one, it's just very fancy scratch paper.",
+                "take": "You try to take the Blank Royal Decree, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "talk": "You attempt a conversation with the Blank Royal Decree. The Blank Royal Decree is not a great conversationalist. Then again, neither are you.",
+                "open": "You search the Blank Royal Decree for a way to open it. There isn't one. It's not that kind of thing.",
+                "push": "You press against the Blank Royal Decree. It offers the same resistance as a mountain, which is to say, total and indifferent.",
+                "pull": "You pull on the Blank Royal Decree. Nothing happens. Gravity and architecture conspire against you, as usual."
             }
         },
         {
@@ -172,7 +193,12 @@
             },
             "responses": {
                 "look": "A sack of flour that the rats somehow missed. It's buried behind the other crates, sealed tight, and apparently invisible to rodent eyes. A small miracle in a kingdom that could use more of them.",
-                "use": "The flour is for Martha the Cook. She's been trying to bake with dust and determination for weeks. This sack would make her day."
+                "use": "The flour is for Martha the Cook. She's been trying to bake with dust and determination for weeks. This sack would make her day.",
+                "take": "You try to take the Flour Sack, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "talk": "You talk to the Flour Sack. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Flour Sack doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Flour Sack and push. Nothing happens, except a mild strain in your lower back. The Flour Sack wins this round.",
+                "pull": "You heave at the Flour Sack. Your muscles protest, the Flour Sack doesn't. It has the structural advantage of not caring."
             }
         }
     ],

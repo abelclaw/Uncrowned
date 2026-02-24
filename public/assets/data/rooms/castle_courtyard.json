@@ -115,7 +115,10 @@
                 "talk": "The guard on the left speaks without moving his lips. 'State your business.' The guard on the right adds, 'And make it good. We've heard every excuse.' They've clearly been doing this for a while.",
                 "use": "You're not sure what 'using' guards entails, but their expressions suggest you shouldn't find out.",
                 "push": "You consider pushing past the guards. They consider pushing back. Their arms are thicker than your torso. Discretion is advised.",
-                "default": "You examine the guards. They examine you back. You are found wanting."
+                "default": "You examine the guards. They examine you back. You are found wanting.",
+                "take": "You try to take the Castle Guards, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "open": "The Castle Guards doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "pull": "You heave at the Castle Guards. Your muscles protest, the Castle Guards doesn't. It has the structural advantage of not caring."
             }
         },
         {
@@ -135,7 +138,11 @@
                 "look": "A stone well in the courtyard corner, still drawing clean water despite the castle's general state of disrepair. The bucket is intact, the rope is strong, and the water is clear. It's the one thing in this courtyard that works as intended.",
                 "use": "You lower the bucket and draw up clear, cold water. It's refreshingly normal in a kingdom where normalcy is in short supply.",
                 "take": "The well is built into the courtyard foundation. It's going nowhere, and neither are you if you keep trying to steal masonry.",
-                "default": "You examine the well. It's a well. It wells. That's its whole thing."
+                "default": "You examine the well. It's a well. It wells. That's its whole thing.",
+                "talk": "You speak to the Courtyard Well in a calm, measured tone. The Courtyard Well maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Courtyard Well. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Courtyard Well with all your might. All your might turns out to be insufficient. The Courtyard Well remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Courtyard Well. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         },
         {
@@ -154,7 +161,12 @@
             "responses": {
                 "look": "The courtyard flagstones are cracked and heaved by decades of neglect and creeping weeds. Several stones show the telltale grey of petrification -- not weathering, but the curse spreading even here, into the heart of the kingdom. The castle is not immune.",
                 "use": "You stomp on a loose flagstone. It rocks back and forth. A beetle underneath looks deeply inconvenienced.",
-                "default": "You study the flagstones. They tell a story of neglect, weeds, and a monarchy that spent its maintenance budget on olive-related catering."
+                "default": "You study the flagstones. They tell a story of neglect, weeds, and a monarchy that spent its maintenance budget on olive-related catering.",
+                "take": "You try to take the Cracked Flagstones, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "talk": "You attempt a conversation with the Cracked Flagstones. The Cracked Flagstones is not a great conversationalist. Then again, neither are you.",
+                "open": "You search the Cracked Flagstones for a way to open it. There isn't one. It's not that kind of thing.",
+                "push": "You press against the Cracked Flagstones. It offers the same resistance as a mountain, which is to say, total and indifferent.",
+                "pull": "You pull on the Cracked Flagstones. Nothing happens. Gravity and architecture conspire against you, as usual."
             }
         },
         {
@@ -174,7 +186,11 @@
                 "look": "Ancient stone archways frame the courtyard entrance, their masonry weathered but still impressive. Someone carved these blocks centuries ago with the quiet confidence that the kingdom would last forever. The kingdom did not, but the arches remain -- outlasting every monarch who walked beneath them.",
                 "take": "You can't take architecture. It's one of those fundamental limitations of having pockets instead of a quarry.",
                 "use": "You're already using them as a doorway, which is precisely their intended purpose. Well done on grasping basic architecture.",
-                "default": "You regard the stone arches overhead. They've been holding up the entrance since before anyone alive can remember. Reliable. Unlike most things around here."
+                "default": "You regard the stone arches overhead. They've been holding up the entrance since before anyone alive can remember. Reliable. Unlike most things around here.",
+                "talk": "You attempt a conversation with the Stone Arches. The Stone Arches is not a great conversationalist. Then again, neither are you.",
+                "open": "You search the Stone Arches for a way to open it. There isn't one. It's not that kind of thing.",
+                "push": "You press against the Stone Arches. It offers the same resistance as a mountain, which is to say, total and indifferent.",
+                "pull": "You pull on the Stone Arches. Nothing happens. Gravity and architecture conspire against you, as usual."
             }
         },
         {
@@ -194,7 +210,11 @@
                 "look": "Thick stone walls surround the courtyard, punctuated by narrow arrow slits that suggest a history of people trying to get in uninvited. The mortar is crumbling in places, but the walls themselves remain stubbornly upright, which is more than you can say for the monarchy they were built to protect.",
                 "take": "You'd need a siege army and several years of dedicated effort. Your pockets are inadequate for this particular heist.",
                 "use": "The walls are already in use -- keeping things out. Or in. Depends on your perspective and current legal standing.",
-                "default": "You study the courtyard walls. They're doing their job with the grim determination of something that has no choice in the matter."
+                "default": "You study the courtyard walls. They're doing their job with the grim determination of something that has no choice in the matter.",
+                "talk": "You address the Courtyard Walls. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Courtyard Walls doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Courtyard Walls. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Courtyard Walls and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         }
     ],

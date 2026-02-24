@@ -98,7 +98,11 @@
                 "look": "The cave walls are slick with moisture and covered in ancient scratches. Some might be writing, some might be the desperate claw marks of someone who really wanted to leave. Hard to tell without better lighting.",
                 "use": "You run your hands along the cave wall. It's wet, cold, and entirely unhelpful. Just like most walls, really.",
                 "take": "You can't take a cave wall. This is not Minecraft.",
-                "default": "You examine the cave walls. They're exactly as cave-wall-like as you'd expect."
+                "default": "You examine the cave walls. They're exactly as cave-wall-like as you'd expect.",
+                "talk": "You whisper to the cave wall. It says nothing back, which is the correct amount of dialogue for a wall. You've now spoken to more walls than people today.",
+                "open": "You search for a secret door, pressing stones like you've seen in every adventure story. Nothing opens. The wall is just a wall. It's not hiding anything except your dignity.",
+                "push": "You push the cave wall with both hands. The cave wall, backed by several thousand tons of mountain, does not budge. Your wrists, however, are now complaining.",
+                "pull": "You try to pull the cave wall toward you. This is not how geology works, but points for optimism."
             }
         },
         {
@@ -118,7 +122,11 @@
                 "look": "The darkness ahead is absolute. Not the friendly darkness of a bedroom at night, but the hostile darkness of a place that does not want you here. You'd need a light source to proceed.",
                 "use": "You attempt to use the darkness. The darkness uses you right back. It's a more experienced user.",
                 "talk": "You call into the darkness. Something calls back. Or maybe that was an echo. You choose to believe it was an echo.",
-                "default": "You stare into the darkness. The darkness stares back. Neither of you blinks, because the darkness doesn't have eyes. You lose on a technicality."
+                "default": "You stare into the darkness. The darkness stares back. Neither of you blinks, because the darkness doesn't have eyes. You lose on a technicality.",
+                "take": "You reach out and try to grab a handful of darkness. You get a handful of nothing, which is technically the same thing. Philosophers have debated this. They were also useless.",
+                "open": "You attempt to open the darkness, like parting curtains. The darkness does not part. It has no seams, no edges, no interest in cooperating. You'd need a light source, not manners.",
+                "push": "You push against the darkness with outstretched arms. It yields -- in the sense that you walk forward into more darkness. This is not progress. This is geography.",
+                "pull": "You try to pull the darkness aside. It clings to everything, indifferent to your efforts. Darkness does not respond to manual labour. It responds to light. Get some."
             }
         },
         {
@@ -138,7 +146,11 @@
                 "look": "A scattering of bones on the cave floor. Too small to be human. Probably a rat. Or a very small adventurer. Best not to dwell on it.",
                 "take": "You consider pocketing some bones, then remember you're not that kind of person. Yet.",
                 "use": "There is no practical use for mysterious cave bones. None. Stop trying to make cave bones happen.",
-                "default": "You regard the bones with the appropriate mix of curiosity and mild horror."
+                "default": "You regard the bones with the appropriate mix of curiosity and mild horror.",
+                "talk": "You address the bones. 'What happened to you?' The bones do not answer, on account of being bones. Their silence is eloquent, though. It says: 'I died in a cave. Don't be me.'",
+                "open": "These are loose bones, not a locked container. There is nothing to open. Whatever secrets they held left with the flesh, and the flesh left a long time ago.",
+                "push": "You nudge the bones with your foot. They scatter with a dry rattle that echoes through the chamber. Somewhere, the former owner is deeply offended.",
+                "pull": "You drag a bone across the cave floor. It scrapes against stone with a sound that makes your teeth hurt. You put it back. The bone seems relieved."
             }
         },
         {
@@ -158,7 +170,11 @@
                 "look": "Uneven steps carved into the bedrock by someone who'd never heard of building codes. Each one is a slightly different height, as if the mason was making it up as they went.",
                 "take": "They're carved into bedrock. You'd need to take the entire mountain, and your pockets aren't that big.",
                 "use": "You're using them right now, one careful step at a time. They're performing admirably for stairs that predate safety standards.",
-                "default": "You regard the stone stairs. They descend with the confidence of architecture that doesn't know it's dangerous."
+                "default": "You regard the stone stairs. They descend with the confidence of architecture that doesn't know it's dangerous.",
+                "talk": "You thank the stairs for their service. They creak. You choose to interpret that as 'you're welcome' rather than 'I'm about to collapse.'",
+                "open": "Stairs don't open. They go up. They go down. That is the full range of stair functionality, and it has been sufficient for civilisation.",
+                "push": "You push a stair. It's bedrock. The stair pushes back with the weight of the entire geological formation beneath it. You are outmatched.",
+                "pull": "You try to pull a step loose. It's carved from the living rock of the mountain. The mountain is not negotiating."
             }
         },
         {
@@ -178,7 +194,11 @@
                 "look": "Faded carvings cover the cave walls -- spiraling patterns and angular symbols in a language that predates the kingdom. They seem to tell a story, though whether it's a warning or a history lesson is anyone's guess. The torch light makes the shadows dance between the grooves.",
                 "use": "You trace a finger along the carvings. The stone is smooth with age. Whatever these symbols mean, they've been waiting patiently for someone to care. You are not that someone, but at least you looked.",
                 "take": "The carvings are part of the wall. You'd need to take the entire cave, and your pockets aren't that big.",
-                "default": "You regard the ancient carvings. They regard eternity. Neither of you blinks."
+                "default": "You regard the ancient carvings. They regard eternity. Neither of you blinks.",
+                "talk": "You read the carvings aloud, guessing wildly at the pronunciation. Nothing happens, which is either because you said them wrong or because ancient cave spells have an expiration date.",
+                "open": "The carvings are etched into solid stone. There's nothing to open here, unless you count the door to self-reflection that comes from staring at symbols you can't read.",
+                "push": "You press on one of the carved symbols, hoping it's a secret button. It is not a secret button. It's a carving. In a wall. Made of stone.",
+                "pull": "You try to pry a carving free from the wall. The carving, being part of the wall, declines. These symbols have been here for millennia. They're not leaving for you."
             }
         },
         {
@@ -198,7 +218,80 @@
                 "look": "Soft green moss, thriving in the damp darkness like it's personally offended by sunlight. It carpets the walls in patches, quietly photosynthesizing through sheer spite.",
                 "take": "It crumbles at your touch, damp and useless. The moss was not meant to travel.",
                 "use": "Moss has very limited practical applications. Decorative, perhaps. Nutritional, absolutely not.",
-                "default": "You examine the cave moss. It's soft, green, and entirely uninterested in your problems."
+                "default": "You examine the cave moss. It's soft, green, and entirely uninterested in your problems.",
+                "talk": "You whisper encouragement to the moss. It continues photosynthesising, neither encouraged nor discouraged. Moss has achieved a level of emotional stability most people never reach.",
+                "open": "You part the moss like a curtain, revealing the cave wall behind it. It's a wall. The moss was not hiding treasure. The moss was hiding more wall.",
+                "push": "You smoosh the moss flat against the stone. It squelches damply. When you remove your hand, it slowly springs back, unperturbed. The moss has outlasted empires.",
+                "pull": "You peel a clump of moss from the wall. It comes away in a sad, wet lump. You stick it back. Neither of you speaks of this again."
+            }
+        },
+        {
+            "id": "dripping-water",
+            "name": "Dripping Water",
+            "zone": {
+                "x": 500,
+                "y": 200,
+                "width": 80,
+                "height": 160
+            },
+            "interactionPoint": {
+                "x": 540,
+                "y": 420
+            },
+            "responses": {
+                "look": "Water drips from the ceiling in a steady rhythm -- plip, plip, plip -- the cave's own heartbeat. Each drop catches what little light exists, glinting briefly before vanishing into a puddle below. It's been doing this since before humans built their first wall. It'll be doing this long after the last one falls.",
+                "take": "You cup your hands under a drip. Cold water pools in your palms. It tastes of minerals and patience. You let it go. Some things aren't meant to be kept.",
+                "use": "The dripping water isn't a tool. It's a process. It carved this chamber one drop at a time, over millennia. You are watching geology happen in real time, and it's about as exciting as that sounds.",
+                "talk": "You speak in rhythm with the drips. Plip. 'Hello.' Plip. 'Anyone there?' Plip. The cave answers with more drips. It was always better at this conversation than you.",
+                "open": "You can't open water. It's already in its most diffuse state -- falling, one drop at a time, into darkness.",
+                "push": "You wave your hand through a falling drop. It splatters on your fingers. You've disrupted a process that's been continuous for millennia.",
+                "pull": "You can't pull water upward. Gravity has opinions about this. Strong ones."
+            }
+        },
+        {
+            "id": "cave-ceiling",
+            "name": "Cave Ceiling",
+            "zone": {
+                "x": 300,
+                "y": 50,
+                "width": 350,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 475,
+                "y": 420
+            },
+            "responses": {
+                "look": "The ceiling vaults upward into darkness, its full height impossible to judge without better light. Stalactites hang like stone teeth, dripping steadily. Somewhere up there, the mountain begins. Down here, you're in its throat.",
+                "take": "You can't take a ceiling. Especially not one that IS a mountain. The logistics alone would require a cart the size of a continent.",
+                "use": "The ceiling is doing its job -- holding up several thousand feet of rock above your head. It doesn't need your help. Please don't distract it.",
+                "talk": "You call up to the ceiling. Your voice echoes and distorts, bouncing off stalactites. For a moment, the cave sounds like it's whispering back. It isn't. Probably.",
+                "open": "You can't open a cave ceiling. It's solid rock. Behind it is more rock. Behind that, mountain. Behind that, sky. None of it is opening for you.",
+                "push": "You can't reach the ceiling, and if you could, pushing on it would be geologically impolite. It's holding up a mountain. Let it work.",
+                "pull": "You jump and grab at a stalactite. You miss. The ceiling remains out of reach, which is how ceilings should be."
+            }
+        },
+        {
+            "id": "cave-puddles",
+            "name": "Puddles",
+            "zone": {
+                "x": 450,
+                "y": 490,
+                "width": 100,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 500,
+                "y": 470
+            },
+            "responses": {
+                "look": "Small puddles collect in the uneven floor, fed by the constant dripping from above. Their surfaces are dark and still, reflecting what little light reaches them. You can see your own face in one, looking concerned. Fair enough.",
+                "take": "You scoop up a handful of cave water. It's cold, slightly gritty, and deeply unappetising. You let it trickle back. The puddle accepts the return without comment.",
+                "use": "You splash in a puddle. The sound echoes through the chamber. It's deeply undignified. Also, your boots are now wet.",
+                "talk": "You whisper to a puddle. Your reflection whispers back, silently. It looks worried. You look worried. Everyone's worried.",
+                "open": "Puddles don't open. They're already as flat and available as liquid gets.",
+                "push": "You kick a puddle. Water splashes. The puddle reforms. Puddles are patient. Puddles always win.",
+                "pull": "You can't pull a puddle. It's water in a depression. It's going to stay in the depression. Rather like your mood."
             }
         }
     ],

@@ -74,7 +74,11 @@
                 "look": "The pool's surface is mirror-still, reflecting the cave ceiling with unsettling clarity. Your reflection stares back at you, looking distinctly more worried than you feel. Or perhaps exactly as worried as you feel. In the depths, something crystalline catches the light. Deeper still, pale shapes rest at the bottom -- bones, if you're not mistaken. Others have tried swimming here. They did not swim back.",
                 "take": "You scoop up a handful of water. It leaks through your fingers immediately, as water is known to do. You've learned nothing.",
                 "talk": "You speak to the pool. Your words ripple across the surface. The pool does not respond, but your reflection mouths something you can't quite read. Unsettling.",
-                "default": "You contemplate the pool. It contemplates you. This is getting existential."
+                "default": "You contemplate the pool. It contemplates you. This is getting existential.",
+                "use": "You're not entirely sure how to use the Pool Surface. Neither is the Pool Surface, for what it's worth.",
+                "open": "You search the Pool Surface for a way to open it. There isn't one. It's not that kind of thing.",
+                "push": "You press against the Pool Surface. It offers the same resistance as a mountain, which is to say, total and indifferent.",
+                "pull": "You pull on the Pool Surface. Nothing happens. Gravity and architecture conspire against you, as usual."
             }
         },
         {
@@ -94,7 +98,11 @@
                 "look": "Crystal formations jut from the cave walls, refracting your torch-light into dozens of tiny rainbows. They're beautiful, in the way that things you can't eat or sell are beautiful. One cluster near the pool's edge seems particularly vibrant.",
                 "take": "You try to break off a crystal. It's harder than it looks, and it looks very hard. These crystals have been growing for millennia and are not interested in being relocated.",
                 "use": "You tap a crystal. It rings with a clear, pure tone that echoes through the chamber. For a moment, the pool's surface ripples in response. Interesting.",
-                "default": "You admire the crystal formations. They sparkle indifferently."
+                "default": "You admire the crystal formations. They sparkle indifferently.",
+                "talk": "You address the Crystal Formations. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Crystal Formations doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Crystal Formations. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Crystal Formations and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         },
         {
@@ -113,7 +121,12 @@
             "responses": {
                 "look": "You look more closely at the pool's reflection. For a moment, the reflected cave ceiling seems to show... letters? Words? No, it's just the mineral patterns in the water. But for a moment, you could have sworn you saw 'LOOK DEEPER' written in the ripples. The crystal at the bottom glows more brightly.",
                 "use": "You wave your torch over the reflection. The light refracts through the water, and for a brief moment, a pattern of light on the ceiling spells out something you can't quite read. The crystal at the bottom pulses in response.",
-                "default": "You study the reflection. It studies you back. You're both equally confused."
+                "default": "You study the reflection. It studies you back. You're both equally confused.",
+                "take": "You can't take the Strange Reflection. It's firmly attached to its current situation, much like your growing sense of confusion.",
+                "talk": "You attempt a conversation with the Strange Reflection. The Strange Reflection is not a great conversationalist. Then again, neither are you.",
+                "open": "You search the Strange Reflection for a way to open it. There isn't one. It's not that kind of thing.",
+                "push": "You press against the Strange Reflection. It offers the same resistance as a mountain, which is to say, total and indifferent.",
+                "pull": "You pull on the Strange Reflection. Nothing happens. Gravity and architecture conspire against you, as usual."
             }
         },
         {
@@ -133,7 +146,11 @@
                 "look": "Smooth rock carved by millennia of water, polished to an almost organic sheen. The walls curve inward like the ribs of some enormous sleeping beast.",
                 "take": "You'd need a quarry's worth of patience and a pickaxe the size of your delusions of grandeur.",
                 "use": "Walls make excellent surfaces for not finding secret passages. You press, push, and prod. Nothing happens, as walls intended.",
-                "default": "You examine the cave walls. They are ancient, wet, and supremely unhelpful."
+                "default": "You examine the cave walls. They are ancient, wet, and supremely unhelpful.",
+                "talk": "You talk to the Cave Walls. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Cave Walls doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Cave Walls and push. Nothing happens, except a mild strain in your lower back. The Cave Walls wins this round.",
+                "pull": "You heave at the Cave Walls. Your muscles protest, the Cave Walls doesn't. It has the structural advantage of not caring."
             }
         },
         {
@@ -153,7 +170,34 @@
                 "look": "A shaft of light piercing the darkness from some unseen crack above, impossibly dramatic. Nature's own spotlight, reserved for moments of quiet contemplation and feeling theatrical.",
                 "take": "You reach for the light. It remains intangible, like most good things in life.",
                 "use": "You bask in it briefly, feeling theatrical. The light does not judge. The cave does.",
-                "default": "You stand in the light shaft. For a moment, everything feels meaningful. Then the moment passes."
+                "default": "You stand in the light shaft. For a moment, everything feels meaningful. Then the moment passes.",
+                "talk": "You talk to the Light Shaft. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Light Shaft doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Light Shaft and push. Nothing happens, except a mild strain in your lower back. The Light Shaft wins this round.",
+                "pull": "You heave at the Light Shaft. Your muscles protest, the Light Shaft doesn't. It has the structural advantage of not caring."
+            }
+        },
+        {
+            "id": "submerged-bones",
+            "name": "Submerged Bones",
+            "zone": {
+                "x": 350,
+                "y": 430,
+                "width": 80,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 390,
+                "y": 430
+            },
+            "responses": {
+                "look": "Pale shapes rest at the bottom of the pool -- bones, bleached white by mineral-rich water. They could be animal. They could be human. The water's surface distorts them just enough to maintain ambiguity. Perhaps that's a mercy.",
+                "take": "The bones are at the bottom of a pool that kills anyone who touches its water. Getting them would require dying first, which rather defeats the purpose.",
+                "use": "You can't use bones at the bottom of a cursed pool. Even if you could reach them, 'wet bones from a death pool' is not a useful inventory category.",
+                "talk": "You address the bones. They say nothing. They've been silent since whatever put them there, and they have no intention of breaking that streak.",
+                "open": "Bones don't open. They're already in their most open state -- separated, scattered, and thoroughly done with being a skeleton.",
+                "push": "You can't reach the bones without touching the water. The water is not safe to touch. This is a problem without a solution you'd survive.",
+                "pull": "The bones are beyond your reach unless you fancy joining them. Which you don't. Presumably."
             }
         }
     ],
@@ -173,7 +217,12 @@
             },
             "responses": {
                 "look": "A small crystal shard at the pool's edge, partially submerged. It hums with faint magical resonance -- warm to the touch, faintly glowing, and deeply unimpressive in appearance. It looks like a piece of enchanted gravel.",
-                "use": "You hold the crystal shard up. It catches the light and throws tiny rainbows across the cave walls. Pretty. Useless, but pretty."
+                "use": "You hold the crystal shard up. It catches the light and throws tiny rainbows across the cave walls. Pretty. Useless, but pretty.",
+                "take": "You can't take the Cave Crystal Shard. It's firmly attached to its current situation, much like your growing sense of confusion.",
+                "talk": "You attempt a conversation with the Cave Crystal Shard. The Cave Crystal Shard is not a great conversationalist. Then again, neither are you.",
+                "open": "You search the Cave Crystal Shard for a way to open it. There isn't one. It's not that kind of thing.",
+                "push": "You press against the Cave Crystal Shard. It offers the same resistance as a mountain, which is to say, total and indifferent.",
+                "pull": "You pull on the Cave Crystal Shard. Nothing happens. Gravity and architecture conspire against you, as usual."
             }
         }
     ],

@@ -75,7 +75,10 @@
                 "use": "The stove is hot. Very hot. You warm your hands briefly. Any closer and you'd be the main course.",
                 "take": "The stove weighs roughly the same as your collective bad decisions. It stays.",
                 "push": "You push the stove. It doesn't move, but it does radiate displeasure in the form of increased heat.",
-                "default": "You examine the stove. It's doing its job admirably, which is more than can be said for most things in this castle."
+                "default": "You examine the stove. It's doing its job admirably, which is more than can be said for most things in this castle.",
+                "talk": "You speak to the Iron Stove in a calm, measured tone. The Iron Stove maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Iron Stove. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "pull": "You tug at the Iron Stove. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
             }
         },
         {
@@ -95,7 +98,11 @@
                 "look": "Wooden shelves line the back wall, mostly empty. A few jars of preserved something sit gathering dust. The flour supply is conspicuously absent -- Martha has mentioned the rat problem in the servants' quarters more than once, each time with increasing volume and decreasing patience.",
                 "use": "You rummage through the pantry. Dust, empty jars, and one extremely stale biscuit that predates the current century. Nothing useful.",
                 "take": "You consider pilfering from the pantry. Martha's peripheral vision is legendary. You think better of it.",
-                "default": "You scan the shelves. They're a monument to scarcity and rats."
+                "default": "You scan the shelves. They're a monument to scarcity and rats.",
+                "talk": "You address the Pantry Shelves. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Pantry Shelves doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Pantry Shelves. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Pantry Shelves and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         },
         {
@@ -115,7 +122,11 @@
                 "look": "A massive stone hearth dominates the kitchen wall, its embers still glowing with a warmth that suggests someone -- probably Martha -- has been feeding it since before dawn. The stonework is blackened by generations of cooking fires and at least one incident nobody talks about.",
                 "take": "You'd burn your pockets. And your hands. And your dignity. The hearth stays where it is.",
                 "use": "You could cook something if you had ingredients. And skill. And Martha's permission, which is the scarcest resource in this kitchen.",
-                "default": "You regard the hearth. It radiates heat and the quiet authority of something that has been the centre of this kitchen longer than any cook has lived."
+                "default": "You regard the hearth. It radiates heat and the quiet authority of something that has been the centre of this kitchen longer than any cook has lived.",
+                "talk": "You address the Hearth. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Hearth doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Hearth. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Hearth and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         },
         {
@@ -135,7 +146,11 @@
                 "look": "Wall shelves cluttered with crockery in various states of disrepair -- chipped bowls, cracked plates, and one mug with a handle that's held on by sheer habit. A thin layer of dust covers everything Martha isn't actively using.",
                 "take": "Martha would notice. Martha notices everything. You'd make it three steps before the cleaver thunked into the doorframe beside your head.",
                 "use": "The shelves are already in use, storing the sad remnants of what was once a royal collection of tableware. They're doing their best.",
-                "default": "You examine the kitchen shelves. They tell the story of a kitchen that once fed a court and now feeds a stubborn cook and her principles."
+                "default": "You examine the kitchen shelves. They tell the story of a kitchen that once fed a court and now feeds a stubborn cook and her principles.",
+                "talk": "You address the Kitchen Shelves. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Kitchen Shelves doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Kitchen Shelves. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Kitchen Shelves and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         },
         {
@@ -155,7 +170,34 @@
                 "look": "Copper pots in various sizes hang from hooks and sit on counters, well-used and dented from years of service. Each one has a patina that professional chefs would call 'character' and everyone else would call 'neglect.'",
                 "take": "You reach for a pot. Martha's cleaver embeds itself in the chopping block with a resonant THUNK. 'Those are mine,' she says, without looking up. You lower your hand.",
                 "use": "Empty, sadly. Without ingredients, these pots are just hollow metal containers with aspirations.",
-                "default": "You study the cooking pots. They've outlasted kings, curses, and countless burnt meals. Copper endures."
+                "default": "You study the cooking pots. They've outlasted kings, curses, and countless burnt meals. Copper endures.",
+                "talk": "You address the Cooking Pots. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Cooking Pots doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Cooking Pots. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Cooking Pots and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+            }
+        },
+        {
+            "id": "kitchen-hearth",
+            "name": "Kitchen Hearth",
+            "zone": {
+                "x": 600,
+                "y": 300,
+                "width": 120,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 660,
+                "y": 420
+            },
+            "responses": {
+                "look": "A massive stone hearth dominates one wall, its mouth blackened by decades of cooking fires. Iron hooks hang from the lintel for suspending pots over the flames. The fire is cold now. Ash and cold coals sit in the grate like the remains of better days.",
+                "take": "You can't take a hearth. It's built into the wall. It IS the wall, in a very real structural sense.",
+                "use": "The hearth is cold. Without fuel, flint, and something to cook, it's just a large decorative hole in the wall. Impressive, but currently useless.",
+                "talk": "You address the cold hearth. No warmth responds. The kitchen's heart has stopped beating. It's a grim metaphor you'd rather not dwell on.",
+                "open": "The hearth is already open. It's a fireplace. The opening is literally the point.",
+                "push": "You push against the hearth stones. They're solid, heat-tempered masonry. The kitchen was built around this hearth. It's not going anywhere.",
+                "pull": "You pull at an iron hook hanging from the lintel. It holds firm. These hooks survived years of heavy pots and angry cooks. Your pulling is trivial."
             }
         }
     ],
@@ -175,7 +217,12 @@
             },
             "responses": {
                 "look": "A dented silver chalice sitting on a shelf, forgotten among the kitchen implements. It was once used for royal toasts. Now it's been demoted to measuring cup. A slight tarnish gives it character. Or neglect. Same thing in this castle.",
-                "use": "It's empty. You'd need to fill it with something. Water would be a start. Something more exotic might be more useful."
+                "use": "It's empty. You'd need to fill it with something. Water would be a start. Something more exotic might be more useful.",
+                "take": "The Empty Chalice isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
+                "talk": "You address the Empty Chalice. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Empty Chalice doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Empty Chalice. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Empty Chalice and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         }
     ],

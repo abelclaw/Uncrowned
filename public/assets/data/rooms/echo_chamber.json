@@ -74,7 +74,11 @@
                 "look": "Rows of stalactites hang from the ceiling, each varying in size and thickness. Tapping them produces musical tones -- the cavern's natural pipe organ. Among the limestone formations, dark chunks of coal cling to the ceiling, deposited by ancient geological processes. Some stalactites look fragile. Others look load-bearing. Telling them apart requires more geological expertise than you possess.",
                 "use": "You tap a stalactite. It rings with a clear note that bounces around the chamber, echoing and re-echoing. The sound pattern reveals something -- letters, formed by the echoes: 'SERVICE.' The third guardian answer? The echo seems deliberate.",
                 "take": "You consider breaking off a stalactite. They've been growing for millennia. You've been alive for considerably less than that. Show some respect.",
-                "default": "You examine the stalactites. They hang with the patient dignity of formations that were here long before you and will be here long after."
+                "default": "You examine the stalactites. They hang with the patient dignity of formations that were here long before you and will be here long after.",
+                "talk": "You address the stalactites. Your voice multiplies in the dome, bouncing back as a chorus. For a moment, the cave itself seems to be speaking. Then it stops. It was just you, all along.",
+                "open": "Stalactites don't open. They grow. One drip at a time, over millennia. They are the most patient things in the world, and they're not waiting for you.",
+                "push": "You push a stalactite. It's solid stone attached to the ceiling by geological forces. Your push registers somewhere between 'insignificant' and 'adorable.'",
+                "pull": "You pull on a low-hanging stalactite. It holds firm. It's been growing here for longer than your entire civilisation has existed. Your tug is noted and dismissed."
             }
         },
         {
@@ -93,7 +97,12 @@
             "responses": {
                 "look": "Ancient carvings depict a figure speaking into the chamber, with sound waves radiating outward. Below the image, text reads: 'The echo speaks truth. The Guardian's third answer is carried in resonance. Strike and listen.' It's both a clue and a warning about volume.",
                 "use": "You trace the carvings with your fingers. The stone is worn smooth by centuries of other fingers doing the same thing. The message is clear: use sound to find the third answer.",
-                "default": "You study the carvings. They're instructions, disguised as art. The kingdom's founders were annoyingly clever."
+                "default": "You study the carvings. They're instructions, disguised as art. The kingdom's founders were annoyingly clever.",
+                "take": "You chip at a carving with your fingernail. A tiny flake comes loose. At this rate, you could remove the entire carving in approximately four thousand years.",
+                "talk": "You read the carvings aloud. Your voice distorts in the echo, making the ancient words sound like something entirely different. The original carvers would be appalled.",
+                "open": "The carvings are not a door. They're art. Very old art. The kind that doesn't come with handles.",
+                "push": "You press your hand against the carvings. The stone is cool and the patterns are deep. Someone spent a lifetime making these. You've spent ten seconds touching them.",
+                "pull": "You try to pull a carving from the wall. It's part of the wall. The wall is part of the mountain. You are attempting to disassemble geography."
             }
         },
         {
@@ -112,7 +121,12 @@
             "responses": {
                 "look": "Black chunks of ancient coal embedded in the cavern ceiling, near the base of several stalactites. The coal is old enough to have opinions about the Carboniferous period. Breaking it free would require careful extraction to avoid bringing the stalactites down.",
                 "use": "You could try to extract the coal, but you'd need to be careful. The stalactites around it look structural.",
-                "default": "You eye the coal deposits. They've been waiting patiently for someone to burn them. The anticipation is presumably palpable, if you're coal."
+                "default": "You eye the coal deposits. They've been waiting patiently for someone to burn them. The anticipation is presumably palpable, if you're coal.",
+                "take": "The Coal Deposits isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
+                "talk": "You talk to the Coal Deposits. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Coal Deposits doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Coal Deposits and push. Nothing happens, except a mild strain in your lower back. The Coal Deposits wins this round.",
+                "pull": "You heave at the Coal Deposits. Your muscles protest, the Coal Deposits doesn't. It has the structural advantage of not caring."
             }
         },
         {
@@ -132,7 +146,11 @@
                 "look": "Luminous blue mist hangs in the air, pulsing gently. It's either magical residue or the cave's attempt at mood lighting.",
                 "take": "You wave your hand through it. The mist parts and reforms, unimpressed by your intervention.",
                 "use": "You breathe it in. It tastes like ozone and old secrets.",
-                "default": "You observe the glowing mist. It drifts with the unhurried grace of something that has nowhere to be."
+                "default": "You observe the glowing mist. It drifts with the unhurried grace of something that has nowhere to be.",
+                "talk": "You address the Glowing Mist. It doesn't respond. This is the most productive conversation you've had today.",
+                "open": "The Glowing Mist doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "push": "You push the Glowing Mist. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You grab the Glowing Mist and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
             }
         },
         {
@@ -152,7 +170,57 @@
                 "look": "The walls are unnaturally smooth, polished by centuries of sound waves bouncing between them. Your reflection is distorted and unflattering.",
                 "take": "Solid stone. Not even a loose piece to pocket.",
                 "use": "You press your ear against the wall. It hums. The whole chamber hums. You've been humming along without noticing.",
-                "default": "You examine the chamber walls. They're smoother than any stonemason could achieve."
+                "default": "You examine the chamber walls. They're smoother than any stonemason could achieve.",
+                "talk": "You speak to the Chamber Walls in a calm, measured tone. The Chamber Walls maintains its silence, which is more than can be said for most things in this kingdom.",
+                "open": "You try to open the Chamber Walls. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
+                "push": "You shove the Chamber Walls with all your might. All your might turns out to be insufficient. The Chamber Walls remains unmoved, both physically and emotionally.",
+                "pull": "You tug at the Chamber Walls. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+            }
+        },
+        {
+            "id": "cavern-dome",
+            "name": "Cavern Dome",
+            "zone": {
+                "x": 200,
+                "y": 20,
+                "width": 400,
+                "height": 80
+            },
+            "interactionPoint": {
+                "x": 400,
+                "y": 420
+            },
+            "responses": {
+                "look": "The dome-shaped cavern arches high above, its acoustics shaped by millennia of water erosion. Every sound bounces off the curved ceiling and returns multiplied, layered, harmonized. It's beautiful and deeply unsettling -- like being inside a stone instrument that's always listening.",
+                "take": "You can't take a dome. It's the ceiling. Removing it would be architecturally catastrophic and acoustically tragic.",
+                "use": "The dome is already in use -- as the world's most elaborate echo chamber. It amplifies everything. Your voice, your footsteps, your growing sense of unease.",
+                "talk": "You call up to the dome. Your voice cascades back in waves, each echo slightly different. For a moment, you're having a conversation with every version of yourself that ever spoke in this room.",
+                "open": "You can't open a dome. It's already open on the underside. That's rather the point of domes -- they're architectural bowls, inverted.",
+                "push": "You can't reach the dome to push it. Which is fortunate. Pushing a geological formation rarely improves it.",
+                "pull": "The dome is far above your head and weighs approximately a mountain's worth of stone. You are not pulling it anywhere."
+            }
+        },
+        {
+            "id": "dripping-water",
+            "name": "Dripping Water",
+            "zone": {
+                "x": 350,
+                "y": 350,
+                "width": 60,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 380,
+                "y": 420
+            },
+            "responses": {
+                "look": "Water drips from somewhere high in the dome, each drop hitting stone with a crystalline plip that the acoustics turn into a gentle rhythm. It's been doing this for centuries. The stalactites above are both the source and the result -- water building stone one patient drop at a time.",
+                "take": "You cup your hands under the drip. Cold water pools in your palms. It tastes of minerals and deep time. You let it go. Some things aren't meant to be kept.",
+                "use": "The dripping water isn't something you use. It's something you listen to. It's the heartbeat of the cavern, counting geological seconds.",
+                "talk": "You speak in rhythm with the drips. Plip. 'Hello.' Plip. 'Is anyone.' Plip. 'There?' The cave answers with more drips. It's always been better at this conversation than you.",
+                "open": "You can't open water. It's already in its most open state -- falling, one drop at a time, through air and into silence.",
+                "push": "You wave your hand through a falling drop. It splatters on your fingers. You've disrupted a process that's been continuous for millennia. The cave will recover. Your conscience might not.",
+                "pull": "You can't pull water upward. Gravity has opinions about this. Strong ones."
             }
         }
     ],
@@ -172,7 +240,12 @@
             },
             "responses": {
                 "look": "Chunks of ancient coal, black and dense. They've been compressed by geological forces for millennia, which means they'll burn hot and long. Perfect for a forge.",
-                "use": "Coal is fuel. It needs a forge, a fire, or at minimum something that burns. By itself, it's just a very old rock."
+                "use": "Coal is fuel. It needs a forge, a fire, or at minimum something that burns. By itself, it's just a very old rock.",
+                "take": "You try to take the Forge Coal, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "talk": "You talk to the Forge Coal. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
+                "open": "The Forge Coal doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "push": "You lean into the Forge Coal and push. Nothing happens, except a mild strain in your lower back. The Forge Coal wins this round.",
+                "pull": "You heave at the Forge Coal. Your muscles protest, the Forge Coal doesn't. It has the structural advantage of not caring."
             }
         }
     ],
