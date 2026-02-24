@@ -198,6 +198,7 @@
         {
             "id": "registration-desk",
             "name": "Registration Desk",
+            "aliases": ["desk", "counter", "front desk", "reception", "reception desk", "stone desk", "clerk desk", "table", "register"],
             "zone": {
                 "x": 400,
                 "y": 370,
@@ -222,6 +223,7 @@
         {
             "id": "numbered-doors",
             "name": "Numbered Doors",
+            "aliases": ["doors", "door", "doorway", "doorways", "entrances", "gates", "numbered door", "cave doors", "locked doors"],
             "zone": {
                 "x": 650,
                 "y": 355,
@@ -246,6 +248,7 @@
         {
             "id": "contradictory-signs",
             "name": "Directional Signs",
+            "aliases": ["signs", "sign", "directions", "signpost", "signposts", "arrows", "pointers", "contradictory signs", "wrong signs"],
             "zone": {
                 "x": 250,
                 "y": 360,
@@ -270,6 +273,7 @@
         {
             "id": "glowing-runes",
             "name": "Glowing Runes",
+            "aliases": ["runes", "rune", "symbols", "glyphs", "markings", "blue runes", "glowing symbols", "ancient symbols", "inscriptions", "writing"],
             "zone": {
                 "x": 50,
                 "y": 100,
@@ -294,6 +298,7 @@
         {
             "id": "blue-portal",
             "name": "Blue Portal",
+            "aliases": ["portal", "archway", "arch", "gateway", "gate", "magic portal", "magical portal", "blue arch", "blue archway", "entrance", "magical entrance", "energy portal"],
             "zone": {
                 "x": 400,
                 "y": 50,
@@ -318,6 +323,7 @@
         {
             "id": "filing-cabinets",
             "name": "Filing Cabinets",
+            "aliases": ["cabinets", "cabinet", "drawers", "drawer", "files", "filing", "file cabinet", "file cabinets", "stone cabinets", "storage"],
             "zone": {
                 "x": 770,
                 "y": 360,
@@ -341,6 +347,7 @@
         {
             "id": "velvet-rope",
             "name": "Velvet Rope",
+            "aliases": ["rope", "barrier", "stanchion", "stanchions", "queue rope", "red rope", "burgundy rope", "crowd control", "velvet barrier", "brass post", "brass posts"],
             "zone": {
                 "x": 30,
                 "y": 400,

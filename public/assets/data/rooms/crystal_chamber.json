@@ -60,6 +60,7 @@
         {
             "id": "force-barrier",
             "name": "Force Barrier",
+            "aliases": ["barrier", "shield", "force field", "forcefield", "energy barrier", "magic barrier", "magical barrier", "shimmer", "energy field", "ward", "protection"],
             "zone": {
                 "x": 380,
                 "y": 350,
@@ -84,6 +85,7 @@
         {
             "id": "crystal-pedestal",
             "name": "Stone Pedestal",
+            "aliases": ["pedestal", "plinth", "stand", "base", "platform", "stone stand", "crystal pedestal", "altar", "dais", "podium"],
             "zone": {
                 "x": 430,
                 "y": 370,
@@ -108,6 +110,7 @@
         {
             "id": "chamber-pillars",
             "name": "Stone Pillars",
+            "aliases": ["pillars", "pillar", "columns", "column", "stone columns", "supports", "posts", "carved pillars"],
             "zone": {
                 "x": 50,
                 "y": 50,
@@ -132,6 +135,7 @@
         {
             "id": "blue-energy",
             "name": "Blue Energy",
+            "aliases": ["energy", "magic", "electricity", "lightning", "tendrils", "blue light", "blue glow", "arcs", "sparks", "magical energy", "power"],
             "zone": {
                 "x": 350,
                 "y": 100,
@@ -156,6 +160,7 @@
         {
             "id": "warning-signs",
             "name": "Warning Signs",
+            "aliases": ["signs", "sign", "warnings", "warning", "notices", "placards", "danger signs", "caution signs", "do not touch"],
             "zone": {
                 "x": 280,
                 "y": 390,
@@ -179,6 +184,7 @@
         {
             "id": "pedestal-symbols",
             "name": "Pedestal Symbols",
+            "aliases": ["symbols", "runes", "glyphs", "inscriptions", "carvings", "writing", "markings", "script", "dwarven script", "engravings", "etchings"],
             "zone": {
                 "x": 435,
                 "y": 400,
@@ -202,6 +208,7 @@
         {
             "id": "chamber-walls",
             "name": "Chamber Walls",
+            "aliases": ["walls", "wall", "cave wall", "cave walls", "stone wall", "stone walls", "rock wall", "rock walls", "cavern walls"],
             "zone": {
                 "x": 0,
                 "y": 200,
@@ -226,6 +233,7 @@
         {
             "id": "chamber-ceiling",
             "name": "Chamber Ceiling",
+            "aliases": ["ceiling", "roof", "stalactites", "cavern ceiling", "cave ceiling", "overhead", "above", "top"],
             "zone": {
                 "x": 200,
                 "y": 0,
@@ -250,6 +258,7 @@
         {
             "id": "dust-motes",
             "name": "Dust Motes",
+            "aliases": ["dust", "motes", "particles", "floating dust", "specks", "sparkles", "drifting dust"],
             "zone": {
                 "x": 300,
                 "y": 150,
@@ -276,6 +285,7 @@
         {
             "id": "crystal-of-mundanity",
             "name": "Crystal of Mundanity",
+            "aliases": ["crystal", "mundanity", "grey crystal", "gray crystal", "artifact", "gem", "stone", "floating crystal", "hovering crystal", "gravel", "relic", "treasure"],
             "zone": {
                 "x": 445,
                 "y": 375,

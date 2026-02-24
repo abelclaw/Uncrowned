@@ -60,6 +60,7 @@
         {
             "id": "panoramic-view",
             "name": "Panoramic View",
+            "aliases": ["view", "panorama", "vista", "landscape", "scenery", "horizon", "overlook", "kingdom", "petrification", "grey tide", "cursed landscape"],
             "zone": {
                 "x": 300,
                 "y": 340,
@@ -84,6 +85,7 @@
         {
             "id": "parapet",
             "name": "Crumbling Parapet",
+            "aliases": ["parapet", "wall", "railing", "ledge", "edge", "battlement", "battlements", "stonework", "low wall", "crumbling wall", "barrier", "rampart"],
             "zone": {
                 "x": 700,
                 "y": 370,
@@ -108,6 +110,7 @@
         {
             "id": "castle-spire",
             "name": "Castle Spire",
+            "aliases": ["spire", "tower", "flag", "banner", "flagpole", "pole", "turret", "pinnacle", "steeple", "badger", "badger flag", "kingdom banner"],
             "zone": {
                 "x": 450,
                 "y": 320,
@@ -132,6 +135,7 @@
         {
             "id": "sunset",
             "name": "Sunset",
+            "aliases": ["sun", "sky", "dusk", "twilight", "evening", "golden light", "purple sky", "gold sky", "sunlight", "setting sun"],
             "zone": {
                 "x": 400,
                 "y": 0,
@@ -156,6 +160,7 @@
         {
             "id": "distant-castle",
             "name": "Distant Castle",
+            "aliases": ["castle", "far castle", "silhouette", "distant building", "other castle", "fortress", "keep", "citadel", "castle silhouette"],
             "zone": {
                 "x": 700,
                 "y": 150,
@@ -180,6 +185,7 @@
         {
             "id": "river-valley",
             "name": "River Valley",
+            "aliases": ["river", "valley", "stream", "water", "creek", "brook", "waterway", "silver river", "ravine", "gorge"],
             "zone": {
                 "x": 400,
                 "y": 250,

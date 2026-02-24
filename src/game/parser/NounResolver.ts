@@ -120,6 +120,13 @@ export class NounResolver {
             }
         }
 
+        // 2.5. Exact hotspot alias match (case-insensitive)
+        for (const h of hotspots) {
+            if (h.aliases?.some(a => a.toLowerCase() === normalized)) {
+                return { type: 'hotspot', id: h.id, confidence: 'exact' };
+            }
+        }
+
         // 3. Exact inventory item ID match
         if (inventoryItems) {
             for (const item of inventoryItems) {
@@ -133,6 +140,14 @@ export class NounResolver {
                     return { type: 'item', id: item.id, confidence: 'exact' };
                 }
             }
+            // 4.25. Exact inventory item alias match (case-insensitive)
+            for (const item of inventoryItems) {
+                if ((item as { aliases?: string[] }).aliases?.some(
+                    (a: string) => a.toLowerCase() === normalized
+                )) {
+                    return { type: 'item', id: item.id, confidence: 'exact' };
+                }
+            }
         }
 
         // 4.5. Synonym expansion: try expanded forms against exact matches
@@ -140,9 +155,12 @@ export class NounResolver {
         for (const variant of synonymVariants) {
             if (variant === normalized) continue; // already tried above
 
-            // Try expanded variant against hotspot names
+            // Try expanded variant against hotspot names and aliases
             for (const h of hotspots) {
                 if (h.name.toLowerCase() === variant) {
+                    return { type: 'hotspot', id: h.id, confidence: 'exact' };
+                }
+                if (h.aliases?.some(a => a.toLowerCase() === variant)) {
                     return { type: 'hotspot', id: h.id, confidence: 'exact' };
                 }
             }
@@ -176,10 +194,12 @@ export class NounResolver {
         let bestScore = 0;
         let bestIsItem = false;
 
-        // Score hotspot partial matches
+        // Score hotspot partial matches (include alias words in matching pool)
         for (const h of hotspots) {
             const hotspotWords = h.name.toLowerCase().split(/\s+/);
-            const matchCount = nounWordsArr.filter(nw => hotspotWords.includes(nw)).length;
+            const aliasWords = (h.aliases ?? []).flatMap(a => a.toLowerCase().split(/\s+/));
+            const allWords = [...hotspotWords, ...aliasWords];
+            const matchCount = nounWordsArr.filter(nw => allWords.includes(nw)).length;
             const headBonus = nounWordsArr.includes(hotspotWords[hotspotWords.length - 1]) ? 1 : 0;
             const score = matchCount * 2 + headBonus;
             if (matchCount > 0 && (score > bestScore || (score === bestScore && !bestIsItem))) {
@@ -261,6 +281,10 @@ export class NounResolver {
                 if (word.length > 2) {
                     candidates.push({ name: word, type: 'hotspot', id: h.id });
                 }
+            }
+            // Also add aliases as fuzzy candidates
+            for (const alias of h.aliases ?? []) {
+                candidates.push({ name: alias, type: 'hotspot', id: h.id });
             }
         }
         if (inventoryItems) {

@@ -77,6 +77,7 @@
         {
             "id": "rite-circle",
             "name": "Rite Circle",
+            "aliases": ["circle", "runes", "rune circle", "ritual circle", "magic circle", "rite", "glowing circle", "floor runes", "ceremony", "symbols", "sigils"],
             "zone": {
                 "x": 350,
                 "y": 400,

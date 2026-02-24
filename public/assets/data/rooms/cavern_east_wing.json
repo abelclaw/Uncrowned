@@ -77,6 +77,7 @@
         {
             "id": "dark-water",
             "name": "Dark Water",
+            "aliases": ["water", "flood", "pool", "lake", "pond", "black water", "flooded area", "deep water", "murky water", "underground water", "river"],
             "zone": {
                 "x": 300,
                 "y": 420,
@@ -101,6 +102,7 @@
         {
             "id": "stone-walkway",
             "name": "Stone Walkway",
+            "aliases": ["walkway", "path", "bridge", "causeway", "footpath", "walkpath", "stone path", "narrow path", "passage", "trail", "catwalk"],
             "zone": {
                 "x": 500,
                 "y": 390,

@@ -84,6 +84,7 @@
         {
             "id": "cave-walls",
             "name": "Cave Walls",
+            "aliases": ["walls", "wall", "rock wall", "rock walls", "stone wall", "stone walls", "cave wall", "scratches", "marks", "claw marks"],
             "zone": {
                 "x": 200,
                 "y": 360,
@@ -108,6 +109,7 @@
         {
             "id": "darkness",
             "name": "Impenetrable Darkness",
+            "aliases": ["dark", "darkness", "shadow", "shadows", "black", "void", "the dark", "pitch black", "gloom", "dark passage", "dark tunnel"],
             "zone": {
                 "x": 600,
                 "y": 360,
@@ -132,6 +134,7 @@
         {
             "id": "old-bones",
             "name": "Scattered Bones",
+            "aliases": ["bones", "bone", "skeleton", "remains", "skull", "skulls", "dead thing", "corpse", "carcass", "rat bones"],
             "zone": {
                 "x": 350,
                 "y": 470,
@@ -156,6 +159,7 @@
         {
             "id": "stone-stairs",
             "name": "Stone Stairs",
+            "aliases": ["stairs", "steps", "stairway", "staircase", "stone steps", "passage", "way up", "way back"],
             "zone": {
                 "x": 350,
                 "y": 200,
@@ -180,6 +184,7 @@
         {
             "id": "cave-carvings",
             "name": "Cave Carvings",
+            "aliases": ["carvings", "carving", "symbols", "runes", "writing", "inscriptions", "markings", "patterns", "spirals", "ancient carvings", "wall carvings", "engravings", "etchings"],
             "zone": {
                 "x": 100,
                 "y": 200,
@@ -204,6 +209,7 @@
         {
             "id": "cave-moss",
             "name": "Cave Moss",
+            "aliases": ["moss", "green moss", "lichen", "algae", "green stuff", "mold", "mould", "plant", "plants"],
             "zone": {
                 "x": 100,
                 "y": 200,
@@ -228,6 +234,7 @@
         {
             "id": "dripping-water",
             "name": "Dripping Water",
+            "aliases": ["water", "drip", "drips", "dripping", "drops", "droplets", "leak", "trickle", "moisture", "water drops"],
             "zone": {
                 "x": 500,
                 "y": 200,
@@ -251,6 +258,7 @@
         {
             "id": "cave-ceiling",
             "name": "Cave Ceiling",
+            "aliases": ["ceiling", "roof", "above", "overhead", "stalactites", "stalactite", "up", "top", "cavern ceiling", "cave roof"],
             "zone": {
                 "x": 300,
                 "y": 50,
@@ -274,6 +282,7 @@
         {
             "id": "cave-puddles",
             "name": "Puddles",
+            "aliases": ["puddle", "puddles", "pool", "pools", "water", "standing water", "wet spots", "reflection"],
             "zone": {
                 "x": 450,
                 "y": 490,
@@ -297,7 +306,7 @@
         {
             "id": "cave-floor",
             "name": "Cave Floor",
-            "aliases": ["floor", "ground", "rocks", "pink thing", "glowing thing", "crystal", "crystals", "mushroom", "mushrooms"],
+            "aliases": ["floor", "ground", "rocks", "pink thing", "glowing thing", "crystal", "crystals", "mushroom", "mushrooms", "stone floor", "cave ground", "gravel", "dirt", "pebbles", "fungi", "deposits", "luminescent"],
             "zone": {
                 "x": 100,
                 "y": 480,

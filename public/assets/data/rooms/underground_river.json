@@ -84,6 +84,7 @@
         {
             "id": "river-current",
             "name": "River Current",
+            "aliases": ["current", "flow", "stream", "river flow", "rapids", "water flow", "strong current", "fast water"],
             "zone": {
                 "x": 300,
                 "y": 360,
@@ -108,6 +109,7 @@
         {
             "id": "rocky-shore",
             "name": "Rocky Shore",
+            "aliases": ["shore", "beach", "bank", "river bank", "riverbank", "rocks", "ground", "land", "shoreline", "edge"],
             "zone": {
                 "x": 600,
                 "y": 400,
@@ -132,6 +134,7 @@
         {
             "id": "rushing-water",
             "name": "Rushing Water",
+            "aliases": ["water", "river", "river water", "dark water", "rapids", "waves", "foam", "white water", "whitewater"],
             "zone": {
                 "x": 200,
                 "y": 300,
@@ -156,6 +159,7 @@
         {
             "id": "cave-waterfall",
             "name": "Cave Waterfall",
+            "aliases": ["waterfall", "falls", "cascade", "water fall", "falling water", "torrent", "cataract"],
             "zone": {
                 "x": 600,
                 "y": 50,
@@ -180,6 +184,7 @@
         {
             "id": "shore-debris",
             "name": "Shore Debris",
+            "aliases": ["debris", "junk", "trash", "flotsam", "jetsam", "driftwood", "wreckage", "rubbish", "stuff", "pile", "garbage"],
             "zone": {
                 "x": 200,
                 "y": 450,
@@ -203,6 +208,7 @@
         {
             "id": "river-mist",
             "name": "River Mist",
+            "aliases": ["mist", "fog", "spray", "haze", "vapour", "vapor", "steam", "cloud", "water spray"],
             "zone": {
                 "x": 300,
                 "y": 300,
@@ -228,6 +234,7 @@
         {
             "id": "old-boat",
             "name": "Old Boat",
+            "aliases": ["boat", "ship", "vessel", "canoe", "raft", "dinghy", "rowboat", "skiff", "wooden boat", "broken boat", "cracked boat"],
             "zone": {
                 "x": 620,
                 "y": 380,

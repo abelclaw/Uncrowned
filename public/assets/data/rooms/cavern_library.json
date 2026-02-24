@@ -60,6 +60,7 @@
         {
             "id": "bookshelves",
             "name": "Ancient Bookshelves",
+            "aliases": ["bookshelves", "bookshelf", "shelves", "shelf", "books", "book", "library shelves", "stacks", "bookcase", "bookcases", "texts", "tomes"],
             "zone": {
                 "x": 200,
                 "y": 345,
@@ -84,6 +85,7 @@
         {
             "id": "reading-desk",
             "name": "Reading Desk",
+            "aliases": ["desk", "table", "study desk", "stone desk", "lectern", "workstation", "reading table", "open book", "stalagmite desk"],
             "zone": {
                 "x": 450,
                 "y": 380,
@@ -108,6 +110,7 @@
         {
             "id": "collapsed-shelves",
             "name": "Collapsed Shelves",
+            "aliases": ["collapsed", "debris", "rubble", "wreckage", "broken shelves", "fallen shelves", "ruins", "pile", "wood pile", "planks", "boards", "lumber"],
             "zone": {
                 "x": 650,
                 "y": 370,
@@ -132,6 +135,7 @@
         {
             "id": "crystal-chandelier",
             "name": "Crystal Chandelier",
+            "aliases": ["chandelier", "light", "lamp", "crystal", "crystals", "ceiling light", "crystal light", "glowing crystal", "ceiling crystal", "lantern"],
             "zone": {
                 "x": 350,
                 "y": 0,
@@ -156,6 +160,7 @@
         {
             "id": "scattered-books",
             "name": "Scattered Books",
+            "aliases": ["scattered books", "floor books", "fallen books", "loose books", "strewn books", "old books", "ancient books", "manuscripts", "pages", "tomes", "volumes"],
             "zone": {
                 "x": 450,
                 "y": 350,
@@ -182,6 +187,7 @@
         {
             "id": "ancient-ink",
             "name": "Ancient Ink",
+            "aliases": ["ink", "ink bottle", "inkwell", "bottle", "black ink", "bureaucratic ink", "old ink", "writing ink", "quill ink", "inkpot"],
             "zone": {
                 "x": 470,
                 "y": 395,
@@ -205,6 +211,7 @@
         {
             "id": "wood-planks",
             "name": "Wood Planks",
+            "aliases": ["planks", "plank", "wood", "boards", "board", "lumber", "timber", "oak", "oak planks", "wooden boards", "shelving"],
             "zone": {
                 "x": 680,
                 "y": 400,

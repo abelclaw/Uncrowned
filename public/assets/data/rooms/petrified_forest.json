@@ -77,6 +77,7 @@
         {
             "id": "petrified-trees",
             "name": "Petrified Trees",
+            "aliases": ["trees", "petrified tree", "stone trees", "grey trees", "gray trees", "trunks", "trunk", "branches", "stone branches", "forest", "dead trees", "tree"],
             "zone": {
                 "x": 300,
                 "y": 340,
@@ -101,6 +102,7 @@
         {
             "id": "stone-flowers",
             "name": "Stone Wildflowers",
+            "aliases": ["flowers", "wildflowers", "stone flowers", "granite flowers", "petals", "blooms", "stone blooms", "petrified flowers", "stone petals", "grey flowers", "gray flowers"],
             "zone": {
                 "x": 150,
                 "y": 450,
@@ -125,6 +127,7 @@
         {
             "id": "curse-boundary",
             "name": "Spreading Grey",
+            "aliases": ["grey", "gray", "boundary", "curse", "spreading", "grey line", "gray line", "petrification", "curse line", "grey boundary", "advancing curse", "edge", "border"],
             "zone": {
                 "x": 600,
                 "y": 380,
@@ -149,6 +152,7 @@
         {
             "id": "stone-trees",
             "name": "Stone Trees",
+            "aliases": ["trees", "stone tree", "grey trees", "gray trees", "trunks", "bark", "stone trunks", "dead trees", "petrified trees", "tree"],
             "zone": {
                 "x": 50,
                 "y": 50,
@@ -173,6 +177,7 @@
         {
             "id": "stone-ground",
             "name": "Stone Ground",
+            "aliases": ["ground", "floor", "grass", "stone grass", "petrified grass", "earth", "dirt", "soil", "grey ground", "gray ground", "stone floor", "needles", "blades"],
             "zone": {
                 "x": 200,
                 "y": 460,
@@ -196,6 +201,7 @@
         {
             "id": "stone-canopy",
             "name": "Stone Canopy",
+            "aliases": ["canopy", "ceiling", "branches", "overhead", "leaves", "stone leaves", "stone branches", "treetops", "tree tops", "above", "sky", "roof"],
             "zone": {
                 "x": 150,
                 "y": 100,

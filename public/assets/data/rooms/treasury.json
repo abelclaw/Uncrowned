@@ -60,6 +60,7 @@
         {
             "id": "empty-pedestals",
             "name": "Empty Pedestals",
+            "aliases": ["pedestals", "pedestal", "empty pedestal", "stands", "stand", "displays", "display", "plinths", "plinth", "platforms", "plaques", "plaque"],
             "zone": {
                 "x": 600,
                 "y": 355,
@@ -84,6 +85,7 @@
         {
             "id": "velvet-cushion",
             "name": "Velvet Display Cushion",
+            "aliases": ["cushion", "velvet", "pillow", "velvet cushion", "velvet pillow", "display cushion", "purple cushion", "display", "purple pillow", "pad"],
             "zone": {
                 "x": 380,
                 "y": 380,
@@ -108,6 +110,7 @@
         {
             "id": "treasury-shelf",
             "name": "Remaining Shelf",
+            "aliases": ["shelf", "shelves", "remaining shelf", "treasury shelf", "bookshelf", "rack", "ledge", "inventory"],
             "zone": {
                 "x": 150,
                 "y": 370,
@@ -132,6 +135,7 @@
         {
             "id": "golden-urns",
             "name": "Golden Urns",
+            "aliases": ["urns", "urn", "golden urn", "gold urns", "gold urn", "vases", "vase", "pots", "pot", "jars", "jar", "containers"],
             "zone": {
                 "x": 100,
                 "y": 100,
@@ -156,6 +160,7 @@
         {
             "id": "treasury-torches",
             "name": "Treasury Torches",
+            "aliases": ["torches", "torch", "fire", "flames", "flame", "light", "lights", "sconces", "sconce", "bracket", "brackets", "wall torch", "wall torches"],
             "zone": {
                 "x": 50,
                 "y": 150,
@@ -180,6 +185,7 @@
         {
             "id": "treasury-cobwebs",
             "name": "Cobwebs",
+            "aliases": ["cobweb", "webs", "web", "spider webs", "spider web", "spiderwebs", "spiderweb", "spiders", "spider", "silk", "webbing"],
             "zone": {
                 "x": 100,
                 "y": 200,
@@ -205,6 +211,7 @@
         {
             "id": "kingdom-seal",
             "name": "Kingdom Administrative Seal",
+            "aliases": ["seal", "kingdom seal", "administrative seal", "royal seal", "stamp", "official seal", "crest", "coat of arms", "sigil", "emblem", "badge", "insignia"],
             "zone": {
                 "x": 400,
                 "y": 390,
@@ -228,6 +235,7 @@
         {
             "id": "clock-oil",
             "name": "Clock Oil",
+            "aliases": ["oil", "vial", "lubricant", "maintenance oil", "clock tower oil", "bottle", "grease", "lube", "mechanical oil", "vial of oil"],
             "zone": {
                 "x": 170,
                 "y": 385,

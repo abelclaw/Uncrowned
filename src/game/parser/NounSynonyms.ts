@@ -635,4 +635,135 @@ export const NOUN_SYNONYMS: Record<string, string> = {
 
     // --- Workstation ---
     'workstation': 'desk',
+
+    // --- Vegetation / nature ground cover ---
+    'vegetation': 'ferns',
+    'undergrowth': 'ferns',
+    'foliage': 'ferns',
+    'greenery': 'ferns',
+    'plants': 'ferns',
+
+    // --- Canopy / overhead ---
+    'canopy': 'trees',
+    'treetops': 'trees',
+    'treetop': 'trees',
+    'branches': 'trees',
+
+    // --- Captain / soldier → guard ---
+    'captain': 'guard',
+    'knight': 'guard',
+    'soldier': 'guard',
+    'officer': 'guard',
+    'watchman': 'guard',
+
+    // --- Inscription / writing → carvings ---
+    'inscription': 'carvings',
+    'writing': 'carvings',
+    'text': 'carvings',
+    'symbols': 'carvings',
+    'symbol': 'carvings',
+    'hieroglyphics': 'carvings',
+
+    // --- Portal ---
+    'portal': 'door',
+
+    // --- Coin / money ---
+    'coin': 'toll',
+    'coins': 'toll',
+    'money': 'toll',
+    'gold': 'toll',
+    'payment': 'toll',
+
+    // --- Note / scroll → decree ---
+    'note': 'decree',
+    'scroll': 'decree',
+    'letter': 'decree',
+
+    // --- Ladder → stairs ---
+    'ladder': 'stairs',
+    'rungs': 'stairs',
+
+    // --- Cobble / paving ---
+    'paving': 'cobblestones',
+    'cobble': 'cobblestones',
+    'pavement': 'cobblestones',
+
+    // --- Handle / knob (door parts) ---
+    'handle': 'door',
+    'knob': 'door',
+    'latch': 'door',
+
+    // --- Recipe / instructions ---
+    'recipe': 'book',
+    'instructions': 'book',
+
+    // --- Wreckage / ruins ---
+    'wreckage': 'debris',
+    'ruins': 'debris',
+    'junk': 'debris',
+
+    // --- Corridor / passage ---
+    'corridor': 'hallway',
+    'passage': 'hallway',
+    'passageway': 'hallway',
+
+    // --- Light / glow ---
+    'glow': 'light',
+    'lanterns': 'sconces',
+    'lamps': 'sconces',
+    'lamp': 'sconces',
+
+    // --- Darkness / shadow ---
+    'darkness': 'dark',
+    'shadow': 'dark',
+    'shadows': 'dark',
+    'gloom': 'dark',
+
+    // --- Bucket → well (often found together) ---
+    'cistern': 'well',
+
+    // --- Seaweed / kelp → moss (aquatic plant cover) ---
+    'lichen': 'moss',
+    'algae': 'moss',
+
+    // --- Rock / boulder / stone (generic) ---
+    'rock': 'stone',
+    'boulder': 'stone',
+    'rocks': 'stones',
+    'boulders': 'stones',
+    'pebble': 'stones',
+    'pebbles': 'stones',
+
+    // --- Stump ---
+    'stump': 'stump',
+    'tree stump': 'stump',
+
+    // --- Sunbeam / shaft (light in forest) ---
+    'sunbeam': 'sunlight',
+    'sunbeams': 'sunlight',
+    'shaft': 'sunlight',
+    'ray': 'sunlight',
+    'rays': 'sunlight',
+
+    // --- Petals (stone/grey) ---
+    'petal': 'petals',
+
+    // --- Petrified ---
+    'petrified': 'stone',
+    'cursed': 'stone',
+
+    // --- Claw marks / scratches ---
+    'clawmarks': 'carvings',
+
+    // --- Bellows ---
+    'blower': 'bellows',
+    'pump': 'bellows',
+
+    // --- Cauldron / pot ---
+    'cauldron': 'pots',
+    'kettle': 'pots',
+
+    // --- Stained glass / rose window ---
+    'stained': 'window',
+    'rosette': 'window',
 };

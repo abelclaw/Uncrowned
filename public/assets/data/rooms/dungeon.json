@@ -84,6 +84,7 @@
         {
             "id": "clerk-desk",
             "name": "Clerk's Desk",
+            "aliases": ["desk", "clerks desk", "table", "work desk", "office desk", "bureau", "writing desk", "clerk desk"],
             "zone": {
                 "x": 350,
                 "y": 380,
@@ -108,6 +109,7 @@
         {
             "id": "trap-door",
             "name": "Trap Door",
+            "aliases": ["trap", "trapdoor", "hatch", "floor door", "floor hatch", "pit", "hole", "door in floor", "trap floor"],
             "zone": {
                 "x": 200,
                 "y": 430,
@@ -132,6 +134,7 @@
         {
             "id": "filing-cells",
             "name": "Filing Cells",
+            "aliases": ["cells", "cell", "prison cells", "prison cell", "dungeon cells", "jail cells", "jail", "cages", "cage", "filing cell"],
             "zone": {
                 "x": 650,
                 "y": 355,
@@ -156,6 +159,7 @@
         {
             "id": "desk-lamp",
             "name": "Desk Lamp",
+            "aliases": ["lamp", "light", "lantern", "candle", "flame", "desk light"],
             "zone": {
                 "x": 200,
                 "y": 150,
@@ -180,6 +184,7 @@
         {
             "id": "filing-cabinets",
             "name": "Filing Cabinets",
+            "aliases": ["cabinets", "cabinet", "filing cabinet", "files", "drawers", "drawer", "file cabinets", "file cabinet", "metal cabinets"],
             "zone": {
                 "x": 600,
                 "y": 100,
@@ -204,6 +209,7 @@
         {
             "id": "barred-window",
             "name": "Barred Window",
+            "aliases": ["window", "bars", "barred", "iron bars", "prison window", "dungeon window", "grate", "opening"],
             "zone": {
                 "x": 350,
                 "y": 50,
@@ -228,6 +234,7 @@
         {
             "id": "dungeon-chains",
             "name": "Wall Chains",
+            "aliases": ["chains", "chain", "shackles", "shackle", "manacles", "manacle", "restraints", "irons", "iron chains", "cuffs", "handcuffs", "fetters"],
             "zone": {
                 "x": 100,
                 "y": 300,
@@ -251,6 +258,7 @@
         {
             "id": "paperwork-stacks",
             "name": "Paperwork",
+            "aliases": ["paperwork", "papers", "paper", "forms", "documents", "stacks", "stack", "paper stacks", "files", "records", "stamps", "stamped documents"],
             "zone": {
                 "x": 350,
                 "y": 350,
@@ -275,6 +283,7 @@
         {
             "id": "dungeon-ceiling",
             "name": "Dungeon Ceiling",
+            "aliases": ["ceiling", "roof", "arches", "arch", "stone arches", "cobwebs", "cobweb", "overhead", "above", "top"],
             "zone": {
                 "x": 200,
                 "y": 30,
@@ -301,6 +310,7 @@
         {
             "id": "treasury-key",
             "name": "Treasury Key",
+            "aliases": ["key", "ornate key", "gold key", "golden key", "paperweight", "heavy key", "big key", "brass key", "iron key"],
             "zone": {
                 "x": 400,
                 "y": 390,
@@ -532,6 +542,7 @@
     "npcs": [
         {
             "id": "the_clerk",
+            "aliases": ["clerk", "bureaucrat", "marlowe", "wizard", "administrator", "official", "man", "spectacles", "guy", "person", "figure"],
             "position": {
                 "x": 400,
                 "y": 395

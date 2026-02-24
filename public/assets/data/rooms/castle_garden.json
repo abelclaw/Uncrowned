@@ -60,6 +60,7 @@
         {
             "id": "overgrown-hedges",
             "name": "Overgrown Hedges",
+            "aliases": ["hedges", "hedge", "bushes", "bush", "overgrown bushes", "shrubs", "shrub", "topiary", "lion hedge", "heraldic hedges", "green hedge"],
             "zone": {
                 "x": 300,
                 "y": 350,
@@ -84,6 +85,7 @@
         {
             "id": "petrified-trees",
             "name": "Petrified Trees",
+            "aliases": ["trees", "tree", "stone trees", "petrified tree", "grey trees", "gray trees", "ornamental trees", "stone branches", "dead trees"],
             "zone": {
                 "x": 600,
                 "y": 345,
@@ -108,6 +110,7 @@
         {
             "id": "gardeners-shed",
             "name": "Gardener's Shed",
+            "aliases": ["shed", "shack", "hut", "tool shed", "garden shed", "wooden shed", "building", "gardener shed", "small building", "storage shed"],
             "zone": {
                 "x": 750,
                 "y": 370,
@@ -132,6 +135,7 @@
         {
             "id": "nightshade-bush",
             "name": "Dark Berry Bush",
+            "aliases": ["berries", "berry", "bush", "nightshade", "belladonna", "poison berries", "dark berries", "berry bush", "poisonous bush", "shiny berries", "black berries", "deadly nightshade", "plant"],
             "zone": {
                 "x": 150,
                 "y": 380,
@@ -156,6 +160,7 @@
         {
             "id": "garden-statue",
             "name": "Garden Statue",
+            "aliases": ["statue", "figure", "sculpture", "stone figure", "pedestal", "monument", "stone statue", "moss statue", "mossy statue"],
             "zone": {
                 "x": 250,
                 "y": 100,
@@ -180,6 +185,7 @@
         {
             "id": "stone-pavilion",
             "name": "Stone Pavilion",
+            "aliases": ["pavilion", "gazebo", "shelter", "structure", "ruins", "ruin", "pillars", "columns", "canopy", "pergola", "stone structure"],
             "zone": {
                 "x": 550,
                 "y": 100,
@@ -204,6 +210,7 @@
         {
             "id": "stone-hedges",
             "name": "Petrified Hedges",
+            "aliases": ["stone hedges", "grey hedges", "gray hedges", "petrified bushes", "stone bushes", "frozen hedges", "stone shrubs", "geometric hedges"],
             "zone": {
                 "x": 100,
                 "y": 380,
@@ -227,6 +234,7 @@
         {
             "id": "stone-paths",
             "name": "Stone Paths",
+            "aliases": ["paths", "path", "walkway", "walkways", "trail", "trails", "flagstones", "cobblestones", "garden path", "garden paths", "pavement"],
             "zone": {
                 "x": 200,
                 "y": 440,
@@ -251,6 +259,7 @@
         {
             "id": "garden-ivy",
             "name": "Creeping Ivy",
+            "aliases": ["ivy", "vines", "vine", "creeper", "creepers", "climbing plant", "green ivy", "wall ivy", "plant"],
             "zone": {
                 "x": 450,
                 "y": 360,
@@ -275,6 +284,7 @@
         {
             "id": "dead-roses",
             "name": "Dead Roses",
+            "aliases": ["roses", "rose", "rose bush", "rose bushes", "flowers", "thorns", "dead flowers", "dried roses", "petals"],
             "zone": {
                 "x": 80,
                 "y": 370,
@@ -299,6 +309,7 @@
         {
             "id": "birds-nest",
             "name": "Petrified Bird's Nest",
+            "aliases": ["nest", "bird nest", "birds nest", "stone nest", "eggs", "stone eggs", "petrified nest"],
             "zone": {
                 "x": 620,
                 "y": 350,
@@ -325,6 +336,7 @@
         {
             "id": "dried-sage",
             "name": "Dried Sage",
+            "aliases": ["sage", "herbs", "herb", "dried herbs", "bundle", "herb bundle", "sage bundle", "spice", "plant"],
             "zone": {
                 "x": 400,
                 "y": 430,
@@ -348,6 +360,7 @@
         {
             "id": "rat-trap",
             "name": "Rat Trap",
+            "aliases": ["trap", "mousetrap", "mouse trap", "spring trap", "rodent trap", "snap trap", "pest trap"],
             "zone": {
                 "x": 770,
                 "y": 400,

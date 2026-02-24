@@ -60,6 +60,7 @@
         {
             "id": "stalactites",
             "name": "Resonating Stalactites",
+            "aliases": ["stalactites", "stalactite", "rock formations", "icicles", "spikes", "hanging rocks", "stone teeth", "rock teeth", "formations", "pipes", "organ", "pipe organ", "musical rocks"],
             "zone": {
                 "x": 300,
                 "y": 340,

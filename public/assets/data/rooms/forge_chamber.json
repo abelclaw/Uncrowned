@@ -77,6 +77,7 @@
         {
             "id": "ancient-forge",
             "name": "Ancient Forge",
+            "aliases": ["forge", "furnace", "kiln", "smelter", "smithy", "hearth", "dwarven forge", "stone forge", "old forge", "fireplace"],
             "zone": {
                 "x": 350,
                 "y": 345,
@@ -101,6 +102,7 @@
         {
             "id": "forge-anvil",
             "name": "Blackened Anvil",
+            "aliases": ["anvil", "iron anvil", "forge anvil", "smithing anvil", "black anvil", "workbench", "metalwork"],
             "zone": {
                 "x": 550,
                 "y": 380,
@@ -125,6 +127,7 @@
         {
             "id": "bellows",
             "name": "Bellows",
+            "aliases": ["bellows", "pump", "air pump", "blower", "leather bellows", "forge bellows", "air bellows"],
             "zone": {
                 "x": 200,
                 "y": 250,
@@ -149,6 +152,7 @@
         {
             "id": "forge-chains",
             "name": "Forge Chains",
+            "aliases": ["chains", "chain", "iron chains", "hanging chains", "ceiling chains", "dangling chains", "links"],
             "zone": {
                 "x": 400,
                 "y": 0,
@@ -173,6 +177,7 @@
         {
             "id": "smith-tools",
             "name": "Smith Tools",
+            "aliases": ["tools", "hammer", "hammers", "tongs", "implements", "smithing tools", "blacksmith tools", "forge tools", "equipment", "instruments"],
             "zone": {
                 "x": 650,
                 "y": 150,
@@ -197,6 +202,7 @@
         {
             "id": "fire-pit",
             "name": "Fire Pit",
+            "aliases": ["pit", "fire", "firepit", "coals", "embers", "hearth pit", "burn pit", "flame pit", "coal pit"],
             "zone": {
                 "x": 370,
                 "y": 380,
@@ -220,6 +226,7 @@
         {
             "id": "forge-chimney",
             "name": "Chimney",
+            "aliases": ["chimney", "flue", "vent", "shaft", "smokestack", "smoke hole", "chimney shaft", "ventilation"],
             "zone": {
                 "x": 390,
                 "y": 50,
@@ -245,6 +252,7 @@
         {
             "id": "broken-seal-stamp",
             "name": "Broken Seal Stamp",
+            "aliases": ["seal", "stamp", "broken seal", "seal stamp", "kingdom seal", "badger seal", "crest", "badge", "sigil", "emblem", "broken stamp", "cracked seal", "seal halves"],
             "zone": {
                 "x": 700,
                 "y": 395,

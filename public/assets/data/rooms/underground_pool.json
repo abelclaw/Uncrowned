@@ -60,6 +60,7 @@
         {
             "id": "pool-surface",
             "name": "Pool Surface",
+            "aliases": ["pool", "water", "lake", "pond", "surface", "water surface", "underground pool", "underground lake", "dark water", "still water"],
             "zone": {
                 "x": 300,
                 "y": 380,
@@ -84,6 +85,7 @@
         {
             "id": "cave-crystals",
             "name": "Crystal Formations",
+            "aliases": ["crystals", "crystal", "formations", "gems", "gemstones", "jewels", "rocks", "mineral", "minerals", "shiny rocks", "sparkly rocks", "rainbow crystals"],
             "zone": {
                 "x": 700,
                 "y": 370,
@@ -108,6 +110,7 @@
         {
             "id": "pool-reflection",
             "name": "Strange Reflection",
+            "aliases": ["reflection", "mirror", "image", "my reflection", "face", "reflected", "ripples", "letters", "words", "writing"],
             "zone": {
                 "x": 400,
                 "y": 420,
@@ -132,6 +135,7 @@
         {
             "id": "pool-cave-walls",
             "name": "Cave Walls",
+            "aliases": ["walls", "wall", "rock wall", "rock walls", "stone wall", "stone walls", "cave wall", "smooth rock", "smooth walls"],
             "zone": {
                 "x": 50,
                 "y": 50,
@@ -156,6 +160,7 @@
         {
             "id": "light-shaft",
             "name": "Light Shaft",
+            "aliases": ["light", "shaft", "beam", "sunbeam", "sun", "sunlight", "ray", "rays", "shaft of light", "beam of light", "crack", "hole above"],
             "zone": {
                 "x": 400,
                 "y": 0,
@@ -180,7 +185,7 @@
         {
             "id": "cave-floor",
             "name": "Cave Floor",
-            "aliases": ["floor", "ground", "rocks"],
+            "aliases": ["floor", "ground", "rocks", "stone floor", "cave ground", "wet floor", "slippery floor", "stone", "gravel"],
             "zone": {
                 "x": 50,
                 "y": 460,
@@ -201,6 +206,7 @@
         {
             "id": "submerged-bones",
             "name": "Submerged Bones",
+            "aliases": ["bones", "bone", "skeleton", "remains", "skulls", "skull", "pale shapes", "underwater bones", "dead", "corpse"],
             "zone": {
                 "x": 350,
                 "y": 430,
@@ -226,7 +232,7 @@
         {
             "id": "cave-crystal-shard",
             "name": "Cave Crystal Shard",
-            "aliases": ["crystal", "shard", "crystal shard", "gem", "pink thing", "glowing thing", "pink crystal", "pink gem", "pink rock"],
+            "aliases": ["crystal", "shard", "crystal shard", "gem", "pink thing", "glowing thing", "pink crystal", "pink gem", "pink rock", "stone", "jewel", "gemstone", "magic crystal", "warm crystal", "glowing crystal", "small crystal", "rock"],
             "zone": {
                 "x": 430,
                 "y": 440,

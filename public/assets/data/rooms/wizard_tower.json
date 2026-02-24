@@ -60,6 +60,7 @@
         {
             "id": "potion-shelves",
             "name": "Potion Shelves",
+            "aliases": ["potions", "potion", "shelves", "shelf", "bottles", "bottle", "vials", "vial", "elixirs", "elixir", "brews", "mixtures", "liquids", "potion shelf", "poison"],
             "zone": {
                 "x": 100,
                 "y": 350,
@@ -84,6 +85,7 @@
         {
             "id": "spell-notes",
             "name": "Spell Notes",
+            "aliases": ["notes", "note", "spell note", "writing", "writings", "scrawl", "scribblings", "research", "research notes", "wizard notes", "curse notes", "parking notes"],
             "zone": {
                 "x": 350,
                 "y": 360,
@@ -108,6 +110,7 @@
         {
             "id": "trapped-chest",
             "name": "Iron Chest",
+            "aliases": ["chest", "iron chest", "treasure chest", "trunk", "box", "strongbox", "safe", "locked chest", "trapped chest", "metal chest", "coffer"],
             "zone": {
                 "x": 700,
                 "y": 400,
@@ -132,6 +135,7 @@
         {
             "id": "scorch-mark",
             "name": "Scorch Mark",
+            "aliases": ["scorch", "burn mark", "burn", "soot", "char", "blackened wall", "silhouette", "shadow", "blast mark", "explosion mark", "charred wall"],
             "zone": {
                 "x": 550,
                 "y": 350,
@@ -156,6 +160,7 @@
         {
             "id": "magic-books",
             "name": "Magic Books",
+            "aliases": ["books", "book", "tomes", "tome", "grimoire", "grimoires", "spellbooks", "spellbook", "library", "reading material", "texts", "volumes", "manuscripts"],
             "zone": {
                 "x": 300,
                 "y": 300,
@@ -180,6 +185,7 @@
         {
             "id": "tower-window",
             "name": "Tower Window",
+            "aliases": ["window", "view", "outside", "arch", "arched window", "glass", "opening", "outlook"],
             "zone": {
                 "x": 350,
                 "y": 50,
@@ -204,6 +210,7 @@
         {
             "id": "star-charts",
             "name": "Star Charts",
+            "aliases": ["charts", "chart", "star chart", "maps", "map", "star maps", "star map", "constellations", "constellation", "astrology", "astronomy", "sky chart"],
             "zone": {
                 "x": 200,
                 "y": 310,
@@ -228,6 +235,7 @@
         {
             "id": "spell-components",
             "name": "Spell Components",
+            "aliases": ["components", "spell", "spells", "ingredients", "reagents", "materials", "magic stuff", "herbs", "crystals", "newt tail", "jars", "workbench", "supplies"],
             "zone": {
                 "x": 750,
                 "y": 340,
@@ -252,6 +260,7 @@
         {
             "id": "parking-book",
             "name": "Parking Regulations Book",
+            "aliases": ["parking book", "parking", "regulations", "regulations book", "parking regulations", "municipal code", "law book", "rule book", "rulebook", "parking manual"],
             "zone": {
                 "x": 430,
                 "y": 340,

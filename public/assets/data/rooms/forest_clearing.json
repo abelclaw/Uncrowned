@@ -60,6 +60,7 @@
         {
             "id": "beehive",
             "name": "Suspicious Beehive",
+            "aliases": ["hive", "beehive", "bees", "bee hive", "nest", "wasp nest", "wasps", "wasp", "bee", "buzzing", "honeycomb", "honey"],
             "zone": {
                 "x": 420,
                 "y": 310,
@@ -84,6 +85,7 @@
         {
             "id": "wildflowers",
             "name": "Wildflowers",
+            "aliases": ["flowers", "wildflower", "flower", "petals", "blooms", "blossoms", "purple flowers", "yellow flowers", "orange flowers", "flower carpet", "carpet"],
             "zone": {
                 "x": 150,
                 "y": 450,
@@ -108,6 +110,7 @@
         {
             "id": "forest-trees",
             "name": "Forest Trees",
+            "aliases": ["trees", "tree", "trunks", "trunk", "bark", "ancient trees", "old trees", "gnarled trees", "sentinels", "oak", "oaks"],
             "zone": {
                 "x": 50,
                 "y": 100,
@@ -132,6 +135,7 @@
         {
             "id": "ferns",
             "name": "Ferns",
+            "aliases": ["fern", "grass", "weeds", "undergrowth", "plants", "vegetation", "bushes", "fronds", "greenery", "ground cover", "foliage"],
             "zone": {
                 "x": 50,
                 "y": 440,
@@ -156,6 +160,7 @@
         {
             "id": "distant-lake",
             "name": "Distant Lake",
+            "aliases": ["lake", "water", "pond", "body of water", "shimmer", "distant water", "river", "pool", "lagoon"],
             "zone": {
                 "x": 700,
                 "y": 200,
@@ -180,6 +185,7 @@
         {
             "id": "stump-crack",
             "name": "Crack in Stump",
+            "aliases": ["crack", "gap", "hole", "crevice", "opening", "split", "fissure", "crack in stump", "stump crack", "glint", "glinting", "metallic", "something shiny"],
             "zone": {
                 "x": 490,
                 "y": 410,
@@ -204,6 +210,7 @@
         {
             "id": "sunlight",
             "name": "Sunlight",
+            "aliases": ["sun", "light", "sunbeam", "sunbeams", "rays", "sun rays", "sunshine", "beam", "beams", "light rays", "golden light", "shaft of light"],
             "zone": {
                 "x": 350,
                 "y": 50,
@@ -228,6 +235,7 @@
         {
             "id": "canopy",
             "name": "Forest Canopy",
+            "aliases": ["canopy", "treetops", "treetop", "leaves", "branches", "ceiling", "sky", "overhead", "above", "top", "tree tops", "leaf canopy", "tree canopy"],
             "zone": {
                 "x": 50,
                 "y": 30,
@@ -252,6 +260,7 @@
         {
             "id": "overhanging-branch",
             "name": "Overhanging Branch",
+            "aliases": ["branch", "limb", "bough", "tree branch", "thick branch", "low branch", "hanging branch"],
             "zone": {
                 "x": 400,
                 "y": 280,
@@ -276,6 +285,7 @@
         {
             "id": "stone-petals",
             "name": "Grey Petals",
+            "aliases": ["grey petals", "gray petals", "stone petals", "petrified petals", "stone flowers", "grey flowers", "gray flowers", "cursed petals", "ashen petals", "dead petals", "petrified flowers"],
             "zone": {
                 "x": 240,
                 "y": 460,
@@ -302,6 +312,7 @@
         {
             "id": "old-stump",
             "name": "Old Tree Stump",
+            "aliases": ["stump", "tree stump", "old stump", "log", "tree", "dead tree", "gnarled stump", "wood", "tree trunk", "trunk"],
             "zone": {
                 "x": 460,
                 "y": 390,
@@ -326,6 +337,7 @@
         {
             "id": "rusty-key",
             "name": "Rusty Key",
+            "aliases": ["key", "old key", "metal key", "corroded key", "small key", "iron key", "rusty thing", "shiny thing"],
             "zone": {
                 "x": 510,
                 "y": 430,
@@ -349,6 +361,7 @@
         {
             "id": "stick",
             "name": "Sturdy Stick",
+            "aliases": ["stick", "branch", "twig", "staff", "pole", "wood", "wooden stick", "rod", "club", "walking stick"],
             "zone": {
                 "x": 300,
                 "y": 470,

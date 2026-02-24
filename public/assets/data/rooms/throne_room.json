@@ -60,6 +60,7 @@
         {
             "id": "throne",
             "name": "Stone Throne",
+            "aliases": ["throne", "chair", "seat", "stone chair", "king's throne", "royal seat", "royal throne", "stone seat", "king seat", "kings chair"],
             "zone": {
                 "x": 450,
                 "y": 340,
@@ -84,6 +85,7 @@
         {
             "id": "faded-banners",
             "name": "Faded Banners",
+            "aliases": ["banners", "banner", "flags", "flag", "tapestry", "tapestries", "crest", "royal crest", "badger", "badger crest", "hanging", "hangings"],
             "zone": {
                 "x": 200,
                 "y": 340,
@@ -108,6 +110,7 @@
         {
             "id": "royal-dais",
             "name": "Royal Dais",
+            "aliases": ["dais", "platform", "stage", "raised platform", "steps", "throne platform", "wooden platform", "table"],
             "zone": {
                 "x": 400,
                 "y": 420,
@@ -132,6 +135,7 @@
         {
             "id": "curtains",
             "name": "Curtains",
+            "aliases": ["curtain", "drapes", "drape", "velvet", "red curtains", "red drapes", "fabric", "cloth", "hangings"],
             "zone": {
                 "x": 750,
                 "y": 50,
@@ -156,6 +160,7 @@
         {
             "id": "skylight",
             "name": "Skylight",
+            "aliases": ["sky light", "window", "ceiling window", "roof window", "glass", "light", "beam", "light beam", "sunlight", "sun"],
             "zone": {
                 "x": 400,
                 "y": 0,
@@ -180,6 +185,7 @@
         {
             "id": "throne-vines",
             "name": "Throne Vines",
+            "aliases": ["vines", "vine", "ivy", "creepers", "creeper", "tendrils", "plants", "plant", "climbing vines", "green vines"],
             "zone": {
                 "x": 100,
                 "y": 100,
@@ -204,6 +210,7 @@
         {
             "id": "ghost-king",
             "name": "Ghost King",
+            "aliases": ["ghost", "king", "mortimer", "king mortimer", "spirit", "spectre", "specter", "phantom", "apparition", "ghost king", "dead king", "royal ghost"],
             "zone": {
                 "x": 440,
                 "y": 250,
@@ -228,6 +235,7 @@
         {
             "id": "throne-dais",
             "name": "Throne Dais",
+            "aliases": ["dais", "platform", "steps", "stone platform", "raised platform", "throne steps", "stage"],
             "zone": {
                 "x": 350,
                 "y": 400,
@@ -251,6 +259,7 @@
         {
             "id": "velvet-cushion",
             "name": "Moth-Eaten Cushion",
+            "aliases": ["cushion", "pillow", "velvet", "seat cushion", "throne cushion", "purple cushion", "moth cushion", "pad"],
             "zone": {
                 "x": 430,
                 "y": 360,
@@ -275,6 +284,7 @@
         {
             "id": "fallen-banner",
             "name": "Fallen Banner",
+            "aliases": ["fallen flag", "flag on floor", "banner on floor", "crumpled banner", "fallen flag", "dropped banner", "floor banner", "royal standard"],
             "zone": {
                 "x": 100,
                 "y": 400,
@@ -299,6 +309,7 @@
         {
             "id": "throne-room-floor",
             "name": "Stone Floor",
+            "aliases": ["floor", "ground", "tiles", "tile", "stone tiles", "stone ground", "flagstones"],
             "zone": {
                 "x": 200,
                 "y": 450,
@@ -325,6 +336,7 @@
         {
             "id": "royal-seal",
             "name": "Royal Seal",
+            "aliases": ["seal", "stamp", "wax seal", "royal stamp", "crest stamp", "badger seal", "signet", "royal crest"],
             "zone": {
                 "x": 550,
                 "y": 400,
