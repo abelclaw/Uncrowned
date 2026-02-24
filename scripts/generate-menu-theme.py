@@ -40,15 +40,14 @@ def soft_square(freq, t):
     return (sine(freq, t) + sine(freq*3, t)/3 + sine(freq*5, t)/5) * 0.7
 
 def warm_lead(freq, t):
-    """Warm melodic lead — mostly sine with a touch of body."""
+    """Pure sine lead with sub-octave warmth."""
     if freq == 0: return 0
-    return 0.75 * sine(freq, t) + 0.15 * triangle(freq, t) + 0.08 * sine(freq*2, t)
+    return 0.9 * sine(freq, t) + 0.1 * sine(freq * 0.5, t)
 
 def pluck(freq, t):
-    """Soft harp-like pluck — pure sine with a gentle volume decay."""
+    """Pure sine pluck — no overtones, just a volume envelope."""
     if freq == 0: return 0
-    brightness = max(0, 1.0 - t * 8)  # fast decay to pure fundamental
-    return sine(freq, t) + brightness * 0.1 * sine(freq*2, t)
+    return sine(freq, t)
 
 def adsr(t, dur, a=0.02, d=0.05, s=0.7, r=0.1):
     """ADSR envelope."""
@@ -329,60 +328,59 @@ def main():
         (['D3', 'F3', 'A3'], 4),
     ]
 
-    # --- ARPEGGIO (harp-like) ---
+    # --- ARPEGGIO (harp-like, voiced low for warmth) ---
     arp_chords = [
         # Intro - prominent arpeggios
-        (['D4', 'F4', 'A4', 'D5'], 4),
-        (['D4', 'F4', 'A4', 'D5'], 4),
-        (['D4', 'F4', 'A4', 'C5'], 2), (['F4', 'A4', 'C5', 'F5'], 2),
-        (['C4', 'E4', 'G4', 'C5'], 2), (['D4', 'F4', 'A4', 'D5'], 2),
-        # Theme A
-        (['D4', 'F4', 'A4', 'D5'], 4),
-        (['Bb3', 'D4', 'F4', 'Bb4'], 2), (['G3', 'Bb3', 'D4', 'G4'], 2),
-        (['F3', 'A3', 'C4', 'F4'], 4),
-        (['G3', 'Bb3', 'D4', 'G4'], 2), (['D3', 'F3', 'A3', 'D4'], 2),
-        (['D4', 'F4', 'A4', 'D5'], 4),
-        (['Bb3', 'D4', 'F4', 'Bb4'], 2), (['C4', 'E4', 'G4', 'C5'], 2),
-        (['F3', 'A3', 'C4', 'F4'], 2), (['Bb3', 'D4', 'F4', 'Bb4'], 2),
-        (['A3', 'C4', 'E4', 'A4'], 2), (['D3', 'F3', 'A3', 'D4'], 2),
-        # Theme B
-        (['Bb3', 'D4', 'F4', 'Bb4'], 4),
-        (['A3', 'C4', 'E4', 'A4'], 2), (['F3', 'A3', 'C4', 'F4'], 2),
-        (['F3', 'A3', 'C4', 'F4'], 2), (['C4', 'E4', 'G4', 'C5'], 2),
-        (['Bb3', 'D4', 'F4', 'Bb4'], 2), (['G3', 'Bb3', 'D4', 'G4'], 2),
-        (['D4', 'F4', 'A4', 'D5'], 4),
-        (['C4', 'E4', 'G4', 'C5'], 2), (['F3', 'A3', 'C4', 'F4'], 2),
-        (['G3', 'Bb3', 'D4', 'G4'], 2), (['Bb3', 'D4', 'F4', 'Bb4'], 2),
-        (['A3', 'C4', 'E4', 'A4'], 2), (['D3', 'F3', 'A3', 'D4'], 2),
-        # Outro
-        (['D4', 'F4', 'A4', 'D5'], 4),
-        (['C4', 'E4', 'G4', 'C5'], 2), (['D4', 'F4', 'A4', 'D5'], 2),
-        (['F4', 'A4', 'C5', 'F5'], 2), (['D4', 'F4', 'A4', 'D5'], 2),
         (['D3', 'F3', 'A3', 'D4'], 4),
+        (['D3', 'F3', 'A3', 'D4'], 4),
+        (['D3', 'F3', 'A3', 'C4'], 2), (['F3', 'A3', 'C4', 'F4'], 2),
+        (['C3', 'E3', 'G3', 'C4'], 2), (['D3', 'F3', 'A3', 'D4'], 2),
+        # Theme A
+        (['D3', 'F3', 'A3', 'D4'], 4),
+        (['Bb3', 'D4', 'F4'], 2), (['G3', 'Bb3', 'D4'], 2),
+        (['F3', 'A3', 'C4'], 4),
+        (['G3', 'Bb3', 'D4'], 2), (['D3', 'F3', 'A3'], 2),
+        (['D3', 'F3', 'A3', 'D4'], 4),
+        (['Bb3', 'D4', 'F4'], 2), (['C3', 'E3', 'G3', 'C4'], 2),
+        (['F3', 'A3', 'C4'], 2), (['Bb3', 'D4', 'F4'], 2),
+        (['A3', 'C4', 'E4'], 2), (['D3', 'F3', 'A3'], 2),
+        # Theme B
+        (['Bb3', 'D4', 'F4'], 4),
+        (['A3', 'C4', 'E4'], 2), (['F3', 'A3', 'C4'], 2),
+        (['F3', 'A3', 'C4'], 2), (['C3', 'E3', 'G3', 'C4'], 2),
+        (['Bb3', 'D4', 'F4'], 2), (['G3', 'Bb3', 'D4'], 2),
+        (['D3', 'F3', 'A3', 'D4'], 4),
+        (['C3', 'E3', 'G3', 'C4'], 2), (['F3', 'A3', 'C4'], 2),
+        (['G3', 'Bb3', 'D4'], 2), (['Bb3', 'D4', 'F4'], 2),
+        (['A3', 'C4', 'E4'], 2), (['D3', 'F3', 'A3'], 2),
+        # Outro
+        (['D3', 'F3', 'A3', 'D4'], 4),
+        (['C3', 'E3', 'G3', 'C4'], 2), (['D3', 'F3', 'A3', 'D4'], 2),
+        (['F3', 'A3', 'C4', 'F4'], 2), (['D3', 'F3', 'A3', 'D4'], 2),
+        (['D3', 'F3', 'A3'], 4),
     ]
 
     print('  Rendering lead melody...')
-    lead = render_voice(lead_notes, warm_lead, vol=0.38, a=0.02, d=0.08, s=0.6, r=0.12)
+    lead = render_voice(lead_notes, warm_lead, vol=0.40, a=0.03, d=0.08, s=0.6, r=0.15)
 
     print('  Rendering bass...')
-    bass = render_voice(bass_notes, sine, vol=0.3, a=0.04, d=0.1, s=0.5, r=0.15)
+    bass = render_voice(bass_notes, sine, vol=0.35, a=0.04, d=0.1, s=0.5, r=0.15)
 
     print('  Rendering chord pad...')
-    pad = render_chords(pad_chords, sine, vol=0.08, a=0.15, d=0.1, s=0.4, r=0.3)
+    pad = render_chords(pad_chords, sine, vol=0.10, a=0.2, d=0.1, s=0.4, r=0.3)
 
     print('  Rendering arpeggio...')
-    arp = render_arpeggio(arp_chords, pluck, vol=0.12, note_beats=0.5, a=0.02, d=0.12, s=0.25, r=0.2)
+    arp = render_arpeggio(arp_chords, pluck, vol=0.10, note_beats=0.5, a=0.04, d=0.15, s=0.2, r=0.25)
 
     print('  Mixing and adding effects...')
-    # Warm up lead and arpeggio with low-pass filter to remove tinny highs
-    lead = lowpass(lead, cutoff=0.25)
-    arp = lowpass(arp, cutoff=0.18)
+    # Three-pass low-pass filter on arpeggio for a very dark, warm sound
+    arp = lowpass(lowpass(lowpass(arp, cutoff=0.15), cutoff=0.15), cutoff=0.15)
 
-    # Add delay to lead for spaciousness
-    lead = add_delay(lead, delay_ms=280, feedback=0.12, mix=0.12)
+    # Gentle low-pass on lead
+    lead = lowpass(lead, cutoff=0.3)
 
-    # Add subtle delay to arpeggio
-    arp = add_delay(arp, delay_ms=200, feedback=0.10, mix=0.08)
+    # Light delay on lead only (no delay on arpeggio — it creates metallic comb artifacts)
+    lead = add_delay(lead, delay_ms=280, feedback=0.10, mix=0.10)
 
     # Mix all tracks
     mixed, scale = mix_and_normalize(lead, bass, pad, arp, target=0.75)
