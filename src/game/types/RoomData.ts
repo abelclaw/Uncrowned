@@ -134,6 +134,10 @@ export interface HotspotData {
     interactionPoint: { x: number; y: number };
     /** Verb-specific text responses for this hotspot */
     responses?: HotspotResponses;
+    /** Optional conditions that control hotspot visibility */
+    conditions?: Array<{ type: string; flag?: string; [key: string]: unknown }>;
+    /** Optional sprite ID for visual representation (loaded from assets/sprites/hotspots/) */
+    spriteId?: string;
 }
 
 /**

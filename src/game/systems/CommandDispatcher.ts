@@ -816,10 +816,10 @@ export class CommandDispatcher {
             }
         }
 
-        // Notable things in the room (hotspots + untaken items)
+        // Notable things in the room (visible hotspots + untaken items)
         const things: string[] = [];
         for (const h of roomData.hotspots) {
-            things.push(h.name);
+            if (this.isHotspotVisible(h)) things.push(h.name);
         }
         if (roomData.items) {
             for (const item of roomData.items) {
@@ -862,24 +862,25 @@ export class CommandDispatcher {
      */
     private findHotspot(subject: string, roomData: RoomData): HotspotData | undefined {
         const lower = subject.toLowerCase();
+        const visible = roomData.hotspots.filter(h => this.isHotspotVisible(h));
 
         // Exact ID match
-        const byId = roomData.hotspots.find(h => h.id === lower || h.id === subject);
+        const byId = visible.find(h => h.id === lower || h.id === subject);
         if (byId) return byId;
 
         // Name match (case-insensitive)
-        const byName = roomData.hotspots.find(h => h.name.toLowerCase() === lower);
+        const byName = visible.find(h => h.name.toLowerCase() === lower);
         if (byName) return byName;
 
         // Alias match (case-insensitive)
-        const byAlias = roomData.hotspots.find(h =>
+        const byAlias = visible.find(h =>
             h.aliases?.some(a => a.toLowerCase() === lower)
         );
         if (byAlias) return byAlias;
 
         // Partial name match (any word in name or aliases)
         const words = lower.split(/\s+/);
-        const byPartial = roomData.hotspots.find(h => {
+        const byPartial = visible.find(h => {
             const hotspotWords = h.name.toLowerCase().split(/\s+/);
             const aliasWords = (h.aliases ?? []).map(a => a.toLowerCase());
             return words.some(w => hotspotWords.includes(w) || aliasWords.includes(w));
@@ -887,6 +888,20 @@ export class CommandDispatcher {
         if (byPartial) return byPartial;
 
         return undefined;
+    }
+
+    /** Check if a hotspot's visibility conditions are met. */
+    private isHotspotVisible(hotspot: HotspotData): boolean {
+        if (!hotspot.conditions || hotspot.conditions.length === 0) return true;
+        return hotspot.conditions.every(cond => {
+            if (cond.type === 'flag-set' && cond.flag) {
+                return this.state.isFlagSet(cond.flag);
+            }
+            if (cond.type === 'flag-not-set' && cond.flag) {
+                return !this.state.isFlagSet(cond.flag);
+            }
+            return true;
+        });
     }
 
     /**

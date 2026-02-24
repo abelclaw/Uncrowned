@@ -92,6 +92,7 @@ export class RoomScene extends Phaser.Scene {
     // Phase 9 lazy-loaded sprites
     private itemSprites: Map<string, Phaser.GameObjects.Image> = new Map();
     private npcSprites: Map<string, Phaser.GameObjects.Image> = new Map();
+    private hotspotSprites: Map<string, Phaser.GameObjects.Image> = new Map();
     // Dynamic background layer images (for flag-based swaps)
     private bgLayerImages: Map<string, Phaser.GameObjects.Image> = new Map();
 
@@ -139,6 +140,7 @@ export class RoomScene extends Phaser.Scene {
         this.activeNpcId = null;
         this.itemSprites = new Map();
         this.npcSprites = new Map();
+        this.hotspotSprites = new Map();
     }
 
     create(): void {
@@ -303,8 +305,22 @@ export class RoomScene extends Phaser.Scene {
             }
         }
 
-        // 5. Hotspot zones
+        // 5. Hotspot zones (respecting visibility conditions)
         for (const hotspot of this.roomData.hotspots) {
+            // Skip hotspots whose conditions are not met
+            if (hotspot.conditions && hotspot.conditions.length > 0) {
+                const visible = hotspot.conditions.every(cond => {
+                    if (cond.type === 'flag-set' && cond.flag) {
+                        return this.gameState.isFlagSet(cond.flag);
+                    }
+                    if (cond.type === 'flag-not-set' && cond.flag) {
+                        return !this.gameState.isFlagSet(cond.flag);
+                    }
+                    return true;
+                });
+                if (!visible) continue;
+            }
+
             const rect = new Phaser.Geom.Rectangle(
                 hotspot.zone.x,
                 hotspot.zone.y,
@@ -312,6 +328,22 @@ export class RoomScene extends Phaser.Scene {
                 hotspot.zone.height
             );
             this.hotspotZones.push({ rect, hotspot });
+
+            // Render hotspot sprite if available
+            if (hotspot.spriteId) {
+                const spriteKey = `hotspot-${hotspot.spriteId}`;
+                if (this.textures.exists(spriteKey)) {
+                    const sprite = this.add.image(
+                        hotspot.zone.x + hotspot.zone.width / 2,
+                        hotspot.zone.y + hotspot.zone.height,
+                        spriteKey
+                    ).setOrigin(0.5, 1).setDepth(5);
+                    const tex = this.textures.get(spriteKey).getSourceImage();
+                    const scale = hotspot.zone.height / tex.height;
+                    sprite.setScale(scale);
+                    this.hotspotSprites.set(hotspot.id, sprite);
+                }
+            }
 
             if (DEBUG) {
                 const gfx = this.add.graphics();
@@ -551,7 +583,7 @@ export class RoomScene extends Phaser.Scene {
             const npcAsHotspots = (this.roomData.npcs ?? [])
                 .map(npc => {
                     const def = this.npcDefs.find(d => d.id === npc.id);
-                    return { id: npc.id, name: def?.name ?? npc.id.replace(/_/g, ' '), zone: npc.zone, interactionPoint: npc.interactionPoint, responses: {} };
+                    return { id: npc.id, name: def?.name ?? npc.id.replace(/_/g, ' '), zone: npc.zone, interactionPoint: npc.interactionPoint, aliases: npc.aliases, responses: {} };
                 });
             const allHotspots = [...npcAsHotspots, ...roomItemsAsHotspots, ...this.roomData.hotspots];
 
@@ -817,6 +849,8 @@ export class RoomScene extends Phaser.Scene {
             this.itemSprites.clear();
             this.npcSprites.forEach(sprite => sprite.destroy());
             this.npcSprites.clear();
+            this.hotspotSprites.forEach(sprite => sprite.destroy());
+            this.hotspotSprites.clear();
 
             // Command log flush cleanup
             if (this.flushLogHandler) {
@@ -888,6 +922,17 @@ export class RoomScene extends Phaser.Scene {
                 const key = `item-${item.id}`;
                 if (!this.textures.exists(key)) {
                     this.load.image(key, `assets/sprites/items/${item.id}.png`);
+                    needsLoad = true;
+                }
+            }
+        }
+
+        // Load hotspot sprites (for hotspots with spriteId)
+        for (const hotspot of this.roomData.hotspots) {
+            if (hotspot.spriteId) {
+                const key = `hotspot-${hotspot.spriteId}`;
+                if (!this.textures.exists(key)) {
+                    this.load.image(key, `assets/sprites/hotspots/${hotspot.spriteId}.png`);
                     needsLoad = true;
                 }
             }

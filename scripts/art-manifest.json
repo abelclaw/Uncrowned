@@ -870,6 +870,15 @@
         "width": 48,
         "height": 64
       }
+    },
+    "stone_toad": {
+      "prompt": "massive stone toad creature, mottled grey-green skin, half petrified, moss on back, enormous golden eyes, wide squat body, sitting pose, fantasy game monster",
+      "seed": 500012,
+      "output": "public/assets/sprites/hotspots/stone-toad.png",
+      "dimensions": {
+        "width": 80,
+        "height": 64
+      }
     }
   }
 }
