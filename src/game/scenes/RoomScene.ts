@@ -9,6 +9,8 @@ import { TextInputBar } from '../ui/TextInputBar';
 import { VerbBar } from '../ui/VerbBar';
 import { NarratorDisplay } from '../ui/NarratorDisplay';
 import { InventoryPanel } from '../ui/InventoryPanel';
+import { ScoreDisplay } from '../ui/ScoreDisplay';
+import { calculateScore, MAX_SCORE } from '../scoring/ScoringTable';
 import { DialogueManager } from '../dialogue/DialogueManager';
 import { DialogueUI } from '../dialogue/DialogueUI';
 import { AudioManager } from '../systems/AudioManager';
@@ -48,6 +50,7 @@ export class RoomScene extends Phaser.Scene {
     private gameState!: GameState;
     private narratorDisplay!: NarratorDisplay;
     private inventoryPanel!: InventoryPanel;
+    private scoreDisplay!: ScoreDisplay;
     private itemDefs: ItemDefinition[] = [];
     private isFirstVisit: boolean = false;
 
@@ -430,6 +433,10 @@ export class RoomScene extends Phaser.Scene {
         // Create InventoryPanel
         this.inventoryPanel = new InventoryPanel(container);
 
+        // Create ScoreDisplay (top-right score badge)
+        this.scoreDisplay = new ScoreDisplay(container);
+        this.updateScoreDisplay();
+
         // Show inventory button and wire click handler
         const invBtn = document.getElementById('inventory-btn');
         if (invBtn) {
@@ -583,7 +590,8 @@ export class RoomScene extends Phaser.Scene {
                 this.narratorDisplay.showInstant(result.response);
             }
 
-            // Update inventory panel after each command (items may have changed)
+            // Update score and inventory after each command (flags/items may have changed)
+            this.updateScoreDisplay();
             this.updateInventoryPanel();
         };
         EventBus.on('command-submitted', this.commandSubmittedHandler);
@@ -617,6 +625,7 @@ export class RoomScene extends Phaser.Scene {
             this.scene.pause();
             this.textInputBar.hide();
             this.inventoryPanel.hide();
+            this.scoreDisplay.hide();
             this.scene.launch('DeathScene', {
                 title: deathData.title,
                 narratorText: deathData.narratorText,
@@ -641,6 +650,7 @@ export class RoomScene extends Phaser.Scene {
             // Hide UI elements
             this.textInputBar.hide();
             this.inventoryPanel.hide();
+            this.scoreDisplay.hide();
 
             // Fade out then start EndingScene (full replacement, not overlay)
             this.cameras.main.fadeOut(1500, 0, 0, 0);
@@ -758,6 +768,7 @@ export class RoomScene extends Phaser.Scene {
             // Phase 4 cleanup
             this.narratorDisplay.destroy();
             this.inventoryPanel.destroy();
+            this.scoreDisplay.destroy();
             EventBus.off('trigger-death', this.triggerDeathHandler);
             EventBus.off('trigger-ending', this.triggerEndingHandler);
             EventBus.off('inventory-toggle', this.inventoryToggleHandler);
@@ -1072,6 +1083,7 @@ export class RoomScene extends Phaser.Scene {
             this.gameState.setDialogueStates(this.dialogueManager.getDialogueStates());
             this.inDialogue = false;
             this.activeNpcId = null;
+            this.updateScoreDisplay();
 
             if (result.lines.length > 0) {
                 this.dialogueUI.showDialogueWithChoices(speakerName, result.lines, []);
@@ -1093,5 +1105,15 @@ export class RoomScene extends Phaser.Scene {
             .filter(item => this.gameState.hasItem(item.id))
             .map(item => ({ id: item.id, name: item.name }));
         this.inventoryPanel.update(items);
+    }
+
+    /**
+     * Recalculate and display the current score from GameState flags.
+     */
+    private updateScoreDisplay(): void {
+        const score = calculateScore(
+            this.gameState.getData().flags as Record<string, boolean | string>,
+        );
+        this.scoreDisplay.update(score, MAX_SCORE);
     }
 }
