@@ -19,6 +19,9 @@ export class MainMenuScene extends Scene {
     private slotItems: Phaser.GameObjects.GameObject[] = [];
     private loadPanel?: Phaser.GameObjects.Graphics;
 
+    /** Music toggle state: false = main theme, true = fugue */
+    private isFugue = false;
+
     constructor() {
         super('MainMenuScene');
     }
@@ -40,6 +43,26 @@ export class MainMenuScene extends Scene {
         const audio = AudioManager.getInstance();
         audio.init(this);
         audio.playMusic('music-menu');
+
+        // ── Music toggle icon (top-right) ──
+        const noteIcon = this.add.text(width - 30, 20, '\u266B', {
+            fontFamily: 'serif',
+            fontSize: '28px',
+            color: '#8a8a9e',
+        }).setOrigin(0.5).setInteractive({ useHandCursor: true });
+
+        noteIcon.on('pointerover', () => noteIcon.setScale(1.2));
+        noteIcon.on('pointerout', () => noteIcon.setScale(1.0));
+        noteIcon.on('pointerdown', () => {
+            this.isFugue = !this.isFugue;
+            if (this.isFugue) {
+                noteIcon.setColor('#c4a46c');
+                AudioManager.getInstance().playMusic('music-menu-fugue');
+            } else {
+                noteIcon.setColor('#8a8a9e');
+                AudioManager.getInstance().playMusic('music-menu');
+            }
+        });
 
         // Fade in from black (matches Preloader's fadeOut)
         this.cameras.main.fadeIn(600, 0, 0, 0);

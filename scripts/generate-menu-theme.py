@@ -352,9 +352,7 @@ def main():
     ]
 
     print('  Rendering lead melody...')
-    lead = render_voice(lead_notes, warm_lead, vol=0.35, a=0.02, d=0.08, s=0.6, r=0.12)
-    # Chorus: slightly detuned copy
-    lead_chorus = render_voice(lead_notes, warm_lead, vol=0.15, a=0.02, d=0.08, s=0.6, r=0.12, detune=1.5)
+    lead = render_voice(lead_notes, warm_lead, vol=0.38, a=0.02, d=0.08, s=0.6, r=0.12)
 
     print('  Rendering bass...')
     bass = render_voice(bass_notes, sine, vol=0.3, a=0.04, d=0.1, s=0.5, r=0.15)
@@ -367,14 +365,13 @@ def main():
 
     print('  Mixing and adding effects...')
     # Add delay to lead for spaciousness
-    lead = add_delay(lead, delay_ms=280, feedback=0.25, mix=0.2)
-    lead_chorus = add_delay(lead_chorus, delay_ms=350, feedback=0.2, mix=0.15)
+    lead = add_delay(lead, delay_ms=280, feedback=0.15, mix=0.15)
 
     # Add subtle delay to arpeggio
-    arp = add_delay(arp, delay_ms=200, feedback=0.2, mix=0.15)
+    arp = add_delay(arp, delay_ms=200, feedback=0.12, mix=0.1)
 
     # Mix all tracks
-    mixed, scale = mix_and_normalize(lead, lead_chorus, bass, pad, arp, target=0.75)
+    mixed, scale = mix_and_normalize(lead, bass, pad, arp, target=0.75)
     final = [s * scale for s in mixed]
 
     # Apply fade-out at the end
