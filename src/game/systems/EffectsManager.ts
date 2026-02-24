@@ -416,11 +416,7 @@ export class EffectsManager {
         // Skip all PostFX and timer-based effects when quality is off or Canvas
         if (skipPostFX) return;
 
-        // Vignette via PostFX
-        if (config.vignette && config.vignette > 0) {
-            this.scene.cameras.main.postFX.addVignette(0.5, 0.5, 0.9, config.vignette);
-            this.postFXActive = true;
-        }
+        // Vignette disabled — room backgrounds already have baked-in atmosphere
 
         // Torch flicker: oscillate lighting overlay alpha on a timer
         if (config.torchFlicker && this.lightingOverlay) {
