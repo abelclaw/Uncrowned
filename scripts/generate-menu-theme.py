@@ -45,10 +45,10 @@ def warm_lead(freq, t):
     return 0.5 * sine(freq, t) + 0.3 * triangle(freq, t) + 0.15 * sine(freq*2, t) + 0.05 * sine(freq*3, t)
 
 def pluck(freq, t):
-    """Plucked string approximation: bright attack that fades to fundamental."""
+    """Plucked string approximation: warm attack that fades to fundamental."""
     if freq == 0: return 0
-    brightness = max(0, 1.0 - t * 4)  # overtones decay quickly
-    return sine(freq, t) + brightness * (0.4 * sine(freq*2, t) + 0.2 * sine(freq*3, t) + 0.1 * sine(freq*4, t))
+    brightness = max(0, 1.0 - t * 6)  # overtones decay faster
+    return sine(freq, t) + brightness * (0.25 * sine(freq*2, t) + 0.08 * sine(freq*3, t))
 
 def adsr(t, dur, a=0.02, d=0.05, s=0.7, r=0.1):
     """ADSR envelope."""
@@ -363,7 +363,7 @@ def main():
     pad = render_chords(pad_chords, sine, vol=0.08, a=0.15, d=0.1, s=0.4, r=0.3)
 
     print('  Rendering arpeggio...')
-    arp = render_arpeggio(arp_chords, pluck, vol=0.18, note_beats=0.5, a=0.005, d=0.12, s=0.2, r=0.2)
+    arp = render_arpeggio(arp_chords, pluck, vol=0.14, note_beats=0.5, a=0.015, d=0.12, s=0.3, r=0.2)
 
     print('  Mixing and adding effects...')
     # Add delay to lead for spaciousness
