@@ -278,14 +278,14 @@
             "id": "empty-chalice",
             "name": "Empty Chalice",
             "zone": {
-                "x": 600,
-                "y": 390,
-                "width": 25,
-                "height": 30
+                "x": 783,
+                "y": 318,
+                "width": 45,
+                "height": 54
             },
             "interactionPoint": {
-                "x": 612,
-                "y": 420
+                "x": 805,
+                "y": 372
             },
             "responses": {
                 "look": "A dented silver chalice sitting on a shelf, forgotten among the kitchen implements. It was once used for royal toasts. Now it's been demoted to measuring cup. A slight tarnish gives it character. Or neglect. Same thing in this castle.",
@@ -447,19 +447,20 @@
         {
             "id": "castle_cook",
             "position": {
-                "x": 450,
-                "y": 395
+                "x": 327,
+                "y": 476
             },
             "interactionPoint": {
-                "x": 420,
-                "y": 420
+                "x": 271,
+                "y": 439
             },
             "zone": {
-                "x": 418,
-                "y": 334,
-                "width": 64,
-                "height": 106
+                "x": 253,
+                "y": 279,
+                "width": 148,
+                "height": 197
             },
+            "aliases": ["martha", "cook", "woman", "chef", "lady"],
             "responses": {
                 "look": "Martha is a stout woman wielding a cleaver with the casual competence of someone who's been threatening vegetables -- and occasionally people -- for thirty years. She eyes you the way one eyes an uninvited guest who's wandered into the kitchen during a crisis.",
                 "talk": "'Can't talk. No flour. No flour means no bread. No bread means the castle starves. Not that there's anyone left to feed, but a cook has standards.' She waves her cleaver in the general direction of 'go away.'",
@@ -509,7 +510,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 480,
-        "y": 460
+        "x": 448,
+        "y": 423
     }
 }

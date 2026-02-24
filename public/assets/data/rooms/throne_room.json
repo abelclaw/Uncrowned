@@ -212,14 +212,14 @@
             "name": "Ghost King",
             "aliases": ["ghost", "king", "mortimer", "king mortimer", "spirit", "spectre", "specter", "phantom", "apparition", "ghost king", "dead king", "royal ghost"],
             "zone": {
-                "x": 440,
-                "y": 250,
-                "width": 80,
-                "height": 150
+                "x": 411,
+                "y": 200,
+                "width": 127,
+                "height": 169
             },
             "interactionPoint": {
-                "x": 480,
-                "y": 430
+                "x": 411,
+                "y": 369
             },
             "responses": {
                 "look": "The Ghost King hovers beside the throne -- a translucent figure in full regal attire, looking exactly as disappointed as you'd expect from a monarch whose dynasty ended over an olive at a feast. His crown flickers in and out of visibility.",
@@ -338,14 +338,14 @@
             "name": "Royal Seal",
             "aliases": ["seal", "stamp", "wax seal", "royal stamp", "crest stamp", "badger seal", "signet", "royal crest"],
             "zone": {
-                "x": 550,
-                "y": 400,
+                "x": 508,
+                "y": 347,
                 "width": 30,
                 "height": 25
             },
             "interactionPoint": {
-                "x": 565,
-                "y": 420
+                "x": 523,
+                "y": 367
             },
             "responses": {
                 "look": "A heavy wax seal stamp sitting on the small table beside the throne. It bears the royal crest -- the disgruntled badger in a crown, rendered in exquisite detail. The badger looks particularly disgruntled today. This is the Royal Seal of Erelhain, used to authorize official decrees.",
@@ -773,19 +773,20 @@
         {
             "id": "ghost_king",
             "position": {
-                "x": 490,
-                "y": 370
+                "x": 474.5,
+                "y": 369
             },
             "interactionPoint": {
-                "x": 450,
-                "y": 420
+                "x": 411,
+                "y": 369
             },
             "zone": {
-                "x": 458,
-                "y": 314,
-                "width": 64,
-                "height": 106
+                "x": 411,
+                "y": 200,
+                "width": 127,
+                "height": 169
             },
+            "aliases": ["king", "ghost", "spirit", "mortimer", "monarch", "spectre", "phantom", "apparition"],
             "conditions": [
                 {
                     "type": "flag-set",
@@ -846,7 +847,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 480,
-        "y": 450
+        "x": 287,
+        "y": 425
     }
 }

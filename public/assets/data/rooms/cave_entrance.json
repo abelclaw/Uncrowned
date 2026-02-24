@@ -408,14 +408,14 @@
             "name": "Mysterious Bottle",
             "aliases": ["bottle", "potion", "flask", "vial", "liquid", "glass bottle", "drink", "elixir", "mystery bottle", "coloured bottle", "colored bottle", "strange bottle"],
             "zone": {
-                "x": 650,
-                "y": 390,
+                "x": 839,
+                "y": 314,
                 "width": 25,
                 "height": 30
             },
             "interactionPoint": {
-                "x": 663,
-                "y": 430
+                "x": 852,
+                "y": 354
             },
             "responses": {
                 "look": "A small glass bottle perched on a rock ledge. The liquid inside shifts between colors you're fairly sure shouldn't exist in nature. The label decomposed sometime during the previous dynasty.",
@@ -432,14 +432,14 @@
             "name": "Glowing Mushroom",
             "aliases": ["mushroom", "fungus", "fungi", "toadstool", "shroom", "glowing thing", "blue mushroom", "blue light", "bioluminescent mushroom", "magic mushroom", "light", "glow"],
             "zone": {
-                "x": 350,
-                "y": 370,
+                "x": 233,
+                "y": 376,
                 "width": 30,
                 "height": 30
             },
             "interactionPoint": {
-                "x": 365,
-                "y": 420
+                "x": 248,
+                "y": 426
             },
             "responses": {
                 "look": "A mushroom growing on the cave wall, pulsing with an eerie blue bioluminescence. It's either magical, radioactive, or nature's attempt at a nightlight. Possibly all three.",
@@ -803,7 +803,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 480,
-        "y": 460
+        "x": 506,
+        "y": 421
     }
 }

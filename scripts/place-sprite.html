@@ -115,6 +115,9 @@ async function loadRoomList() {
 }
 
 async function loadRoom(roomId) {
+  // Auto-save current room before switching
+  if (roomData && sprites.length > 0) saveToLocalStorage();
+
   try {
     const resp = await fetch(ROOMS_BASE + roomId + '.json');
     roomData = await resp.json();
@@ -212,6 +215,9 @@ async function loadRoom(roomId) {
       });
     }
   }
+
+  // Restore any saved positions from localStorage
+  restoreFromLocalStorage(roomId);
 
   selectedIdx = sprites.length > 0 ? 0 : -1;
   buildSpriteChips();
@@ -544,30 +550,53 @@ document.getElementById('btn-reset').addEventListener('click', () => {
   render();
 });
 
+// --- localStorage persistence ---
+function getSpriteData() {
+  return sprites.map(s => ({
+    id: s.id,
+    type: s.type,
+    spriteId: s.spriteId || undefined,
+    zone: {
+      x: Math.round(s.zone.x),
+      y: Math.round(s.zone.y),
+      width: Math.round(s.zone.w),
+      height: Math.round(s.zone.h)
+    },
+    interactionPoint: s.interactionPoint ? {
+      x: Math.round(s.interactionPoint.x),
+      y: Math.round(s.interactionPoint.y)
+    } : undefined,
+    spawnPoint: s.spawnPoint ? {
+      x: Math.round(s.spawnPoint.x),
+      y: Math.round(s.spawnPoint.y)
+    } : undefined
+  }));
+}
+
+function saveToLocalStorage() {
+  if (!roomData) return;
+  localStorage.setItem('sprites-' + roomData.id, JSON.stringify(getSpriteData()));
+}
+
+function restoreFromLocalStorage(roomId) {
+  const saved = localStorage.getItem('sprites-' + roomId);
+  if (!saved) return;
+  try {
+    const arr = JSON.parse(saved);
+    for (const savedSprite of arr) {
+      const match = sprites.find(s => s.id === savedSprite.id && s.type === savedSprite.type);
+      if (!match) continue;
+      match.zone = { x: savedSprite.zone.x, y: savedSprite.zone.y, w: savedSprite.zone.width, h: savedSprite.zone.height };
+      if (savedSprite.interactionPoint) match.interactionPoint = { ...savedSprite.interactionPoint };
+      if (savedSprite.spawnPoint) match.spawnPoint = { ...savedSprite.spawnPoint };
+    }
+  } catch (e) { /* ignore bad data */ }
+}
+
 // Save all
 document.getElementById('btn-save').addEventListener('click', () => {
-  const data = {
-    room: roomData.id,
-    sprites: sprites.map(s => ({
-      id: s.id,
-      type: s.type,
-      spriteId: s.spriteId || undefined,
-      zone: {
-        x: Math.round(s.zone.x),
-        y: Math.round(s.zone.y),
-        width: Math.round(s.zone.w),
-        height: Math.round(s.zone.h)
-      },
-      interactionPoint: s.interactionPoint ? {
-        x: Math.round(s.interactionPoint.x),
-        y: Math.round(s.interactionPoint.y)
-      } : undefined,
-      spawnPoint: s.spawnPoint ? {
-        x: Math.round(s.spawnPoint.x),
-        y: Math.round(s.spawnPoint.y)
-      } : undefined
-    }))
-  };
+  const data = { room: roomData.id, sprites: getSpriteData() };
+  saveToLocalStorage();
 
   const json = JSON.stringify(data, null, 2);
   const blob = new Blob([json], { type: 'application/json' });

@@ -639,19 +639,20 @@
         {
             "id": "the_clerk",
             "position": {
-                "x": 460,
-                "y": 385
+                "x": 362,
+                "y": 500
             },
             "interactionPoint": {
-                "x": 420,
-                "y": 420
+                "x": 316,
+                "y": 494
             },
             "zone": {
-                "x": 428,
-                "y": 319,
-                "width": 64,
-                "height": 106
+                "x": 316,
+                "y": 377,
+                "width": 92,
+                "height": 123
             },
+            "aliases": ["clerk", "man", "bureaucrat", "official", "guy"],
             "responses": {
                 "look": "The Clerk sits behind his desk with the posture of someone who has been sitting behind desks since desks were invented. His spectacles perch on a nose that has looked down at paperwork for so long it has forgotten any other direction exists.",
                 "use": "The Clerk is not an item. He is a bureaucratic institution in spectacles. Submit Form 27-B Stroke 6 if you wish to interact.",
@@ -710,7 +711,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 480,
-        "y": 450
+        "x": 516,
+        "y": 439
     }
 }

@@ -175,14 +175,14 @@
             "id": "ghost-king-act3",
             "name": "Ghost King",
             "zone": {
-                "x": 388,
-                "y": 309,
+                "x": 446,
+                "y": 238,
                 "width": 64,
                 "height": 106
             },
             "interactionPoint": {
-                "x": 380,
-                "y": 420
+                "x": 438,
+                "y": 349
             },
             "responses": {
                 "look": "The Ghost King hovers near the empty throne, his translucent form flickering with an urgency he never showed in life. King Mortimer the Prepared -- though 'the Tragically Unprepared for Olives' would be more accurate -- wears his spectral crown at a slight angle. His expression shifts between regal determination and the weary resignation of a man who died at dinner and has been dealing with the fallout ever since.",
@@ -683,19 +683,20 @@
         {
             "id": "ghost_king",
             "position": {
-                "x": 420,
-                "y": 370
+                "x": 478,
+                "y": 344
             },
             "interactionPoint": {
-                "x": 380,
-                "y": 420
+                "x": 438,
+                "y": 349
             },
             "zone": {
-                "x": 388,
-                "y": 309,
+                "x": 446,
+                "y": 238,
                 "width": 64,
                 "height": 106
-            }
+            },
+            "aliases": ["king", "ghost", "spirit", "mortimer", "monarch", "spectre", "phantom", "apparition"]
         }
     ],
     "audio": {
@@ -755,7 +756,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 480,
-        "y": 450
+        "x": 285,
+        "y": 435
     }
 }

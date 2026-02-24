@@ -235,14 +235,14 @@
             "name": "Cave Crystal Shard",
             "aliases": ["crystal", "shard", "crystal shard", "gem", "pink thing", "glowing thing", "pink crystal", "pink gem", "pink rock", "stone", "jewel", "gemstone", "magic crystal", "warm crystal", "glowing crystal", "small crystal", "rock"],
             "zone": {
-                "x": 430,
-                "y": 440,
+                "x": 816,
+                "y": 461,
                 "width": 30,
                 "height": 20
             },
             "interactionPoint": {
-                "x": 445,
-                "y": 430
+                "x": 831,
+                "y": 451
             },
             "responses": {
                 "look": "A small crystal shard at the pool's edge, partially submerged. It hums with faint magical resonance -- warm to the touch, faintly glowing, and deeply unimpressive in appearance. It looks like a piece of enchanted gravel.",
@@ -415,7 +415,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 400,
-        "y": 440
+        "x": 221,
+        "y": 390
     }
 }

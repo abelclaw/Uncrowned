@@ -284,14 +284,14 @@
             "id": "bridge-toll-coin",
             "name": "Bridge Toll Coin",
             "zone": {
-                "x": 538,
-                "y": 382,
+                "x": 564,
+                "y": 373,
                 "width": 20,
                 "height": 20
             },
             "interactionPoint": {
-                "x": 558,
-                "y": 412
+                "x": 584,
+                "y": 403
             },
             "aliases": ["coin", "toll coin", "old coin", "toll"],
             "responses": {
@@ -525,16 +525,16 @@
         {
             "id": "stone_merchant",
             "position": {
-                "x": 640,
-                "y": 347
+                "x": 654.5,
+                "y": 365
             },
             "interactionPoint": {
-                "x": 673,
-                "y": 325
+                "x": 688,
+                "y": 343
             },
             "zone": {
-                "x": 595,
-                "y": 228,
+                "x": 610,
+                "y": 246,
                 "width": 89,
                 "height": 119
             },
@@ -593,6 +593,6 @@
     ],
     "playerSpawn": {
         "x": 239,
-        "y": 374
+        "y": 375
     }
 }

@@ -395,19 +395,20 @@
         {
             "id": "petrified_guard",
             "position": {
-                "x": 300,
-                "y": 395
+                "x": 626.5,
+                "y": 491
             },
             "interactionPoint": {
-                "x": 260,
-                "y": 420
+                "x": 567,
+                "y": 461
             },
             "zone": {
-                "x": 268,
-                "y": 334,
-                "width": 64,
-                "height": 106
-            }
+                "x": 567,
+                "y": 332,
+                "width": 119,
+                "height": 159
+            },
+            "aliases": ["guard", "captain", "aldric", "soldier", "man", "knight"]
         }
     ],
     "audio": {
@@ -444,7 +445,7 @@
         }
     },
     "playerSpawn": {
-        "x": 480,
-        "y": 460
+        "x": 380,
+        "y": 430
     }
 }
