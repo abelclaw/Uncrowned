@@ -122,9 +122,8 @@ export class SceneTransition {
     }
 
     /**
-     * Slide transition: pans the camera in the specified direction, then starts
-     * the new scene. slide-left means exiting left (camera pans right to reveal
-     * the edge, then new scene loads). slide-right is the reverse.
+     * Slide transition: fades to a black overlay then starts the new scene.
+     * (Previously panned the camera, which exposed parallax layers beyond room bounds.)
      */
     static slideToRoom(
         scene: Phaser.Scene,
@@ -135,21 +134,15 @@ export class SceneTransition {
     ): void {
         scene.input.enabled = false;
 
-        const camera = scene.cameras.main;
-        const panDistance = camera.width;
-
-        // Determine pan target based on direction
-        const targetX = direction === 'slide-right'
-            ? camera.scrollX + panDistance
-            : camera.scrollX - panDistance;
-
-        // Stop following the player during the pan
-        camera.stopFollow();
+        // Black overlay that fades in to cover the scene
+        const rect = scene.add.rectangle(480, 270, 960, 540, 0x000000, 0)
+            .setDepth(1000)
+            .setScrollFactor(0);
 
         scene.tweens.add({
-            targets: camera,
-            scrollX: targetX,
-            ease: 'Cubic.easeInOut',
+            targets: rect,
+            alpha: 1,
+            ease: 'Cubic.easeIn',
             duration,
             onComplete: () => {
                 scene.scene.start('RoomScene', {

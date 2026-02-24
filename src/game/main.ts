@@ -17,7 +17,7 @@ const config: Phaser.Types.Core.GameConfig = {
     width: 960,
     height: 540,
     parent: 'game-container',
-    backgroundColor: '#1a1a2e',
+    backgroundColor: '#000000',
 
     input: {
         keyboard: {

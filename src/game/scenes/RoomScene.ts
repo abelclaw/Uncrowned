@@ -142,6 +142,9 @@ export class RoomScene extends Phaser.Scene {
     }
 
     create(): void {
+        // Start scene fully black — playTransitionIn() will reveal it
+        this.cameras.main.setAlpha(0);
+
         // 1. Lazy-load room assets (backgrounds, item sprites, NPC sprites)
         const loadingText = this.add.text(480, 270, 'Loading...', {
             fontFamily: 'monospace', fontSize: '14px', color: '#ffffff'
@@ -954,6 +957,9 @@ export class RoomScene extends Phaser.Scene {
      * Handles all 7 transition types: fade, slide-left/right, wipe-left/right, pixelate, iris.
      */
     private playTransitionIn(): void {
+        // Restore camera visibility (was set to 0 in create() to prevent flashes)
+        this.cameras.main.setAlpha(1);
+
         const onTransitionComplete = () => {
             this.textInputBar.focus();
             this.showEntryNarration();
@@ -962,18 +968,20 @@ export class RoomScene extends Phaser.Scene {
         switch (this.transitionFrom) {
             case 'slide-left':
             case 'slide-right': {
-                // Slide-in from the opposite direction
-                const camera = this.cameras.main;
-                const offset = camera.width;
-                const startOffsetX = this.transitionFrom === 'slide-right' ? -offset : offset;
-                const originalScrollX = camera.scrollX;
-                camera.scrollX = originalScrollX + startOffsetX;
+                // Fade out a black overlay to reveal the new scene
+                const rect = this.add.rectangle(480, 270, 960, 540, 0x000000)
+                    .setDepth(1000)
+                    .setScrollFactor(0)
+                    .setAlpha(1);
                 this.tweens.add({
-                    targets: camera,
-                    scrollX: originalScrollX,
+                    targets: rect,
+                    alpha: 0,
                     ease: 'Cubic.easeOut',
                     duration: 500,
-                    onComplete: onTransitionComplete,
+                    onComplete: () => {
+                        rect.destroy();
+                        onTransitionComplete();
+                    },
                 });
                 break;
             }
