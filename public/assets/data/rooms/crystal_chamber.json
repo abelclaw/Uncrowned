@@ -77,8 +77,8 @@
                 "default": "You observe the barrier. It observes nothing -- it's a barrier. But it's very good at its job.",
                 "talk": "You address the force barrier. It hums at the same frequency it was already humming at. This is either profound indifference or the magical equivalent of being put on hold.",
                 "open": "You look for a handle, a latch, a polite request form. Force barriers don't come with doors. They come with consequences.",
-                "push": "You lean into the Force Barrier and push. Nothing happens, except a mild strain in your lower back. The Force Barrier wins this round.",
-                "pull": "You heave at the Force Barrier. Your muscles protest, the Force Barrier doesn't. It has the structural advantage of not caring."
+                "push": "The barrier dissolved already. The space where it stood is just air now -- ordinary, unremarkable air. The warning signs remain, guarding nothing, like retired bouncers at a closed nightclub.",
+                "pull": "You attempt to pull the barrier toward you. The barrier does not comply. It exists in all directions equally, like bureaucracy."
             }
         },
         {
@@ -102,7 +102,7 @@
                 "talk": "You speak to the pedestal. It supports you emotionally about as well as it supports the crystal -- silently, and with geological patience.",
                 "open": "You search the pedestal for secret compartments, drawers, or hidden panels. Nothing. Sometimes a pedestal is just a pedestal.",
                 "push": "You shove the pedestal. It doesn't move. It has been here for centuries and has no plans to relocate.",
-                "pull": "You brace yourself and pull. The pedestal remains exactly where it is. It was carved in place and intends to die in place."
+                "pull": "You brace against the pedestal and pull. It's anchored to the chamber floor by what appears to be both masonry and magic. The crystals above sway slightly in protest."
             }
         },
         {
@@ -147,10 +147,10 @@
                 "take": "You reach out. The energy crackles warningly. Message received. Some things are not meant to be held.",
                 "use": "Touching raw magical energy ranks high on the list of things tinkers should avoid. Right between 'annoying dragons' and 'trusting wizards.'",
                 "default": "You observe the blue energy. It arcs and pulses with the indifference of power that does not require your approval.",
-                "talk": "You talk to the Blue Energy. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "open": "The Blue Energy doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Blue Energy and push. Nothing happens, except a mild strain in your lower back. The Blue Energy wins this round.",
-                "pull": "You heave at the Blue Energy. Your muscles protest, the Blue Energy doesn't. It has the structural advantage of not caring."
+                "talk": "You shout at the energy. It arcs indifferently. Magical energy is a poor conversationalist -- all crackle, no substance.",
+                "open": "You can't open energy. Energy opens you. Usually in ways that require stitches.",
+                "push": "You consider pushing the raw magical energy. The energy considers vaporizing you. One of you has better follow-through.",
+                "pull": "You try to pull the energy toward you. It surges briefly in your direction, then snaps back. It was not an invitation. It was a warning."
             }
         },
         {
@@ -172,7 +172,7 @@
                 "use": "The signs are already in use. They are warning you. That is their purpose. They are fulfilling it admirably, even if you refuse to listen.",
                 "talk": "You read the signs aloud. The echo adds gravitas. 'DO NOT TOUCH THE BARRIER' sounds even more authoritative bouncing off ancient stone.",
                 "open": "The signs are not books. They have one message, and it is not hidden. It is, in fact, the opposite of hidden.",
-                "push": "You push a sign. It doesn't budge. Whoever installed these was not interested in them being removable.",
+                "push": "You push a warning sign. It swings on its post, then returns to position with a self-righting mechanism that suggests even the signage here is enchanted.",
                 "pull": "You pull at a sign. The bolts hold. These signs were installed by someone who understood that the kind of person who ignores warnings is also the kind who removes them."
             }
         },
@@ -198,6 +198,78 @@
                 "push": "You press the symbols. Nothing happens. They're decorative, not interactive. Not everything responds to poking.",
                 "pull": "You can't pull carvings out of stone. Well, you can, but then they're just rubble, and rubble tells no tales."
             }
+        },
+        {
+            "id": "chamber-walls",
+            "name": "Chamber Walls",
+            "zone": {
+                "x": 0,
+                "y": 200,
+                "width": 50,
+                "height": 250
+            },
+            "interactionPoint": {
+                "x": 75,
+                "y": 430
+            },
+            "responses": {
+                "look": "The chamber walls are natural stone, worn smooth by aeons of water and wind. Blue energy tendrils arc across their surface, leaving faint scorch marks in patterns that might be meaningful or might just be what happens when magic hits rock for a few centuries.",
+                "take": "You cannot take a wall. Walls are, by definition, the parts of a room that stay where they are.",
+                "use": "You press your hand against the warm stone. The blue energy arcs nearby, and the wall hums faintly under your palm. It's oddly soothing, like a cat that's made of geology.",
+                "talk": "You speak to the wall. The wall does not respond, but the echo is flattering. Your voice sounds deeper and more heroic bouncing off ancient stone.",
+                "open": "You search the walls for a hidden door or secret panel. You find neither. Just wall. Reliable, boring, structural wall.",
+                "push": "You push the wall. The wall, backed by several thousand tons of mountain, remains unimpressed.",
+                "pull": "You can't pull a wall. This is not a design flaw. This is a feature.",
+                "default": "The chamber walls stand firm, streaked with blue energy. They've been here longer than any kingdom."
+            }
+        },
+        {
+            "id": "chamber-ceiling",
+            "name": "Chamber Ceiling",
+            "zone": {
+                "x": 200,
+                "y": 0,
+                "width": 300,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 350,
+                "y": 430
+            },
+            "responses": {
+                "look": "The ceiling arches high above, lost in shadow and blue light. Stalactites hang like stone chandeliers, dripping occasionally with the patient rhythm of geological time. The pillars meet it somewhere up there in the dark.",
+                "take": "You cannot take the ceiling. Nor would you want to. It is currently performing the vital function of not being the floor.",
+                "use": "The ceiling is doing its job. You are not needed for ceiling operations. Ceilings are self-managing.",
+                "talk": "You call up to the ceiling. Your voice echoes back, distorted and lonely. The stalactites offer no commentary.",
+                "open": "The ceiling is solid rock. You can't open it any more than you can open the sky.",
+                "push": "You can't reach the ceiling. Even if you could, pushing it would be architecturally inadvisable.",
+                "pull": "You can't pull down the ceiling. The pillars are handling ceiling-related duties, and they're not accepting help from amateurs.",
+                "default": "The ceiling looms above, ancient and indifferent. It has seen everything and remembers nothing."
+            }
+        },
+        {
+            "id": "dust-motes",
+            "name": "Dust Motes",
+            "zone": {
+                "x": 300,
+                "y": 150,
+                "width": 100,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 350,
+                "y": 430
+            },
+            "responses": {
+                "look": "Dust motes drift through the colored light beams, turning slowly in air that hasn't been disturbed in ages. Each mote catches the blue energy and glows briefly before fading.",
+                "take": "You snatch at a dust mote. You catch approximately one dust mote. Your inventory is not updated, because the universe has standards.",
+                "use": "You blow on the dust motes. They scatter, swirl, and resettle exactly where they were. Dust has patience that borders on malice.",
+                "talk": "You whisper to the drifting particles. They continue drifting. Dust is not a social substance.",
+                "open": "You can't open dust. This is not a concept that applies to particulate matter.",
+                "push": "You wave your hand through the floating dust. It parts, swirls dramatically, and reconvenes. Dust always reconvenes.",
+                "pull": "You cannot pull dust. Dust comes and goes as it pleases. It answers to no one.",
+                "default": "Dust motes drift through the blue light. Each one a tiny universe of nothing much."
+            }
         }
     ],
     "items": [
@@ -218,10 +290,10 @@
                 "look": "The Crystal of Mundanity. Grey. Plain. Hovering. It is the most important artifact in the kingdom, and it looks like a piece of enchanted gravel. The universe has a sense of humor, and that humor is anticlimactic.",
                 "use": "The crystal is behind the force barrier. You can see it, you can want it, but you cannot have it. Not yet.",
                 "take": "You can't take the Crystal of Mundanity. It's firmly attached to its current situation, much like your growing sense of confusion.",
-                "talk": "You address the Crystal of Mundanity. It doesn't respond. This is the most productive conversation you've had today.",
-                "open": "The Crystal of Mundanity doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "push": "You push the Crystal of Mundanity. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
-                "pull": "You grab the Crystal of Mundanity and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "talk": "You address the Crystal of Mundanity. It hovers in silence. It is, after all, a crystal. But even by crystal standards, it seems aggressively uninterested in conversation.",
+                "open": "It's a crystal. Crystals don't open. If this one did, the contents would probably be even more disappointing than the exterior.",
+                "push": "You can't reach it through the barrier. And even if you could, pushing a floating crystal seems like the kind of action that leads to a story someone tells at your memorial.",
+                "pull": "The crystal floats serenely behind the barrier. You can't pull it from here. Destiny has a queue, and you haven't reached the front yet."
             }
         }
     ],

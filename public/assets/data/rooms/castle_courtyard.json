@@ -116,9 +116,9 @@
                 "use": "You're not sure what 'using' guards entails, but their expressions suggest you shouldn't find out.",
                 "push": "You consider pushing past the guards. They consider pushing back. Their arms are thicker than your torso. Discretion is advised.",
                 "default": "You examine the guards. They examine you back. You are found wanting.",
-                "take": "You try to take the Castle Guards, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
-                "open": "The Castle Guards doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "pull": "You heave at the Castle Guards. Your muscles protest, the Castle Guards doesn't. It has the structural advantage of not caring."
+                "take": "You attempt to abduct a castle guard. The guard shifts his grip on his spear with the patience of someone who has seen this exact brand of stupidity before. You reconsider.",
+                "open": "The guards are not doors. They are, in fact, the opposite of doors -- things specifically designed to prevent passage.",
+                "pull": "You tug at the nearest guard's sleeve like a lost child at a market. He looks down at your hand with the expression of someone discovering something unpleasant on their boot. You let go."
             }
         },
         {
@@ -139,10 +139,10 @@
                 "use": "You lower the bucket and draw up clear, cold water. It's refreshingly normal in a kingdom where normalcy is in short supply.",
                 "take": "The well is built into the courtyard foundation. It's going nowhere, and neither are you if you keep trying to steal masonry.",
                 "default": "You examine the well. It's a well. It wells. That's its whole thing.",
-                "talk": "You speak to the Courtyard Well in a calm, measured tone. The Courtyard Well maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Courtyard Well. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Courtyard Well with all your might. All your might turns out to be insufficient. The Courtyard Well remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Courtyard Well. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "talk": "You lean over the well and call down. Your voice echoes back, hollow and distorted, as if the well is mocking your pronunciation. Deep wells make terrible audiences.",
+                "open": "The well is already open -- it's a hole in the ground with a stone rim. That's peak openness for a well. The bucket mechanism still works, if you need water.",
+                "push": "You push against the well's stone rim. It was built to withstand siege warfare. Your upper body strength does not constitute siege warfare.",
+                "pull": "You pull the well's bucket chain. It clinks and rattles, lowering the bucket into darkness. You hear a distant splash. The well still has water. Small victories."
             }
         },
         {
@@ -162,11 +162,11 @@
                 "look": "The courtyard flagstones are cracked and heaved by decades of neglect and creeping weeds. Several stones show the telltale grey of petrification -- not weathering, but the curse spreading even here, into the heart of the kingdom. The castle is not immune.",
                 "use": "You stomp on a loose flagstone. It rocks back and forth. A beetle underneath looks deeply inconvenienced.",
                 "default": "You study the flagstones. They tell a story of neglect, weeds, and a monarchy that spent its maintenance budget on olive-related catering.",
-                "take": "You try to take the Cracked Flagstones, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
-                "talk": "You attempt a conversation with the Cracked Flagstones. The Cracked Flagstones is not a great conversationalist. Then again, neither are you.",
-                "open": "You search the Cracked Flagstones for a way to open it. There isn't one. It's not that kind of thing.",
-                "push": "You press against the Cracked Flagstones. It offers the same resistance as a mountain, which is to say, total and indifferent.",
-                "pull": "You pull on the Cracked Flagstones. Nothing happens. Gravity and architecture conspire against you, as usual."
+                "take": "The flagstones are part of the courtyard floor. Taking them would require a pickaxe, a wheelbarrow, and a fundamental misunderstanding of architecture.",
+                "talk": "You address the flagstones. They crack and crumble in response -- not because they heard you, but because they've been cracking and crumbling for decades. Correlation is not causation.",
+                "open": "You wedge your fingers under a cracked flagstone and lift. Beneath it: dirt, a beetle, and the crushing realization that not everything conceals a secret passage.",
+                "push": "You push a loose flagstone with your foot. It seesaws satisfyingly. The beetle underneath relocates with an air of quiet indignation.",
+                "pull": "You pull at a cracked flagstone. It comes loose with a grinding noise that makes the guards glance over. Underneath: soil. You set it back, trying to look casual."
             }
         },
         {
@@ -187,10 +187,10 @@
                 "take": "You can't take architecture. It's one of those fundamental limitations of having pockets instead of a quarry.",
                 "use": "You're already using them as a doorway, which is precisely their intended purpose. Well done on grasping basic architecture.",
                 "default": "You regard the stone arches overhead. They've been holding up the entrance since before anyone alive can remember. Reliable. Unlike most things around here.",
-                "talk": "You attempt a conversation with the Stone Arches. The Stone Arches is not a great conversationalist. Then again, neither are you.",
-                "open": "You search the Stone Arches for a way to open it. There isn't one. It's not that kind of thing.",
-                "push": "You press against the Stone Arches. It offers the same resistance as a mountain, which is to say, total and indifferent.",
-                "pull": "You pull on the Stone Arches. Nothing happens. Gravity and architecture conspire against you, as usual."
+                "talk": "You whisper to the arches. Your words echo through the vaulted stone, returning to you slightly improved by the acoustics. The arches were designed for royal processions and they make everything sound more important.",
+                "open": "The arches are open by design. That's the whole point of an arch -- it's an opening with pretensions of grandeur. Architecture 101.",
+                "push": "You push against a stone arch. Several tons of ancient masonry regard your effort with geological indifference. The arch has survived wars, sieges, and centuries of weather.",
+                "pull": "You pull at a stone block in the archway. Mortar dust trickles down. The arch does not collapse, because unlike this monarchy, it was built by people who knew what they were doing."
             }
         },
         {
@@ -211,10 +211,58 @@
                 "take": "You'd need a siege army and several years of dedicated effort. Your pockets are inadequate for this particular heist.",
                 "use": "The walls are already in use -- keeping things out. Or in. Depends on your perspective and current legal standing.",
                 "default": "You study the courtyard walls. They're doing their job with the grim determination of something that has no choice in the matter.",
-                "talk": "You address the Courtyard Walls. It doesn't respond. This is the most productive conversation you've had today.",
-                "open": "The Courtyard Walls doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "push": "You push the Courtyard Walls. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
-                "pull": "You grab the Courtyard Walls and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "talk": "You talk to the wall. The wall does not talk back. This is actually the healthiest relationship you've had all day.",
+                "open": "These are walls. Their entire purpose is to be closed. Asking a wall to open is like asking a guard to be friendly -- technically possible, but against union rules.",
+                "push": "You push against the courtyard wall. It was built to withstand sieges, battering rams, and the occasional angry wizard. Your shoulder barely registers.",
+                "pull": "You try to pull a stone from the wall. The mortar crumbles a bit, but the stone holds firm. Somewhere, a long-dead mason feels a brief moment of posthumous satisfaction."
+            }
+        },
+        {
+            "id": "courtyard-weeds",
+            "name": "Courtyard Weeds",
+            "zone": {
+                "x": 300,
+                "y": 450,
+                "width": 100,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 350,
+                "y": 450
+            },
+            "responses": {
+                "look": "Weeds push through every crack in the flagstones with the relentless optimism of things that don't know they're unwanted. Dandelions, crabgrass, and something that might be creeping thyme if you're feeling generous.",
+                "take": "You yank out a fistful of weeds. They come up easily, roots trailing dirt. You hold them for a moment, realize you have no use for a bouquet of crabgrass, and let them fall.",
+                "use": "You step on the weeds. They spring back immediately. These weeds have survived decades of neglect and a petrification curse. Your foot is not a meaningful threat.",
+                "talk": "You address the weeds. 'You're doing well for yourselves,' you say. They are. They're the only things in this kingdom with a growth strategy that's actually working.",
+                "open": "Weeds don't open. They just grow, spread, and conquer -- the only successful territorial expansion this kingdom has seen in decades.",
+                "push": "You push the weeds aside with your foot. They bend, spring back, and continue existing with aggressive indifference.",
+                "pull": "You pull up a weed. Another one is already growing in its place. It's like the monarchy's problems -- remove one and two more appear.",
+                "default": "You contemplate the weeds. They've inherited the courtyard. No one told them. No one had to."
+            }
+        },
+        {
+            "id": "castle-entrance",
+            "name": "Castle Entrance",
+            "zone": {
+                "x": 450,
+                "y": 310,
+                "width": 60,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 480,
+                "y": 420
+            },
+            "responses": {
+                "look": "The main entrance to Castle Erelhain looms behind the guards -- heavy oak doors reinforced with iron bands. They're closed, and the guards have made it abundantly clear they'll stay that way until you produce proof of purpose.",
+                "take": "You cannot take a castle entrance. Even if you could, where would you put it? It's a pair of doors the size of a small house.",
+                "use": "The guards step together, blocking your path. 'Proof of purpose,' the left one says. 'Then you can use the entrance.' Until then, it's purely decorative.",
+                "talk": "You address the castle doors. They are silent, as doors tend to be. The guards exchange a look that suggests they've seen visitors lose their minds before.",
+                "open": "You reach for the door handles. Both guards shift to block you in perfect synchronization. 'Proof of purpose first,' says one. The doors remain firmly shut.",
+                "push": "You press against the entrance doors. They don't budge -- partly because they're locked, and partly because two armed guards are standing in front of them.",
+                "pull": "You pull at the entrance door handles. Nothing happens. The doors are either locked, barred from inside, or simply too heavy.",
+                "default": "The castle entrance is right there. So close. Guarded by two men whose entire career is preventing exactly what you're trying to do."
             }
         }
     ],

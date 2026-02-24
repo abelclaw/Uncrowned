@@ -1,0 +1,19 @@
+{
+    "roomId": "village_square",
+    "overrides": {
+        "notice-board-posting": {
+            "take": "You reach for the official notice. It's pinned firmly to the board with what appears to be a royal tack.",
+            "talk": "You read the notice aloud. 'The kingdom is temporarily inconvenienced.' Your voice echoes across the empty square. The inconvenience is, evidently, permanent.",
+            "open": "It's a piece of parchment, not an envelope. The text is right there on the front, in the kingdom's finest bureaucratic font.",
+            "push": "You press the notice flat against the board. It was already flat. You've accomplished nothing, but at least the notice looks slightly more official now.",
+            "pull": "You tug at the notice. The royal tack holds firm. Whoever pinned this up used a tack enchanted with the same tenacity as the curse itself."
+        },
+        "bridge-toll-coin": {
+            "take": "You wedge your fingers between the cobblestones and pry at the coin. It's stuck fast, wedged in by years of foot traffic.",
+            "talk": "You address the coin. It glints dully. Coins are famously poor conversationalists, though this one has been eavesdropping on village gossip from its crack in the ground for years.",
+            "open": "It's a coin, not a locket. It has two sides -- heads and tails -- and neither of them opens. That's not how currency works.",
+            "push": "You press the coin further into the crack between stones. It wedges deeper. This is the opposite of getting a coin. You are actively making yourself poorer.",
+            "pull": "You dig at the coin with your fingernails. It shifts slightly but remains wedged. The cobblestones grip it like the village's last claim to an economy."
+        }
+    }
+}

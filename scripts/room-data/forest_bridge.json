@@ -1,0 +1,35 @@
+{
+    "roomId": "forest_bridge",
+    "overrides": {
+        "bridge-structure": {
+            "pull": "You grab the rope railing and pull. It stretches like taffy, fraying further with each tug. The bridge sways in sympathy, or possibly protest. Neither inspires confidence.",
+            "open": "It's a bridge, not a drawbridge. There's no mechanism, no counterweight, no dramatic 'open sesame.' Just planks and rope and gravity's patient attention.",
+            "talk": "You address the bridge. It creaks back, which is either a response or a structural warning. In this kingdom, the distinction is meaningless."
+        },
+        "toll-booth": {
+            "push": "You shove the toll booth. It doesn't move. Troll-engineered structures are built to withstand exactly this kind of frustration. The wood is denser than your arguments.",
+            "pull": "You pull the service window shutter. It snaps back with a crack. A small sign drops down: 'THAT'S MUNICIPAL PROPERTY.' The troll infrastructure has opinions.",
+            "open": "You try the service window. It catches on a small lock. A label reads 'EMPLOYEES ONLY -- TRESPASSERS WILL BE INVOICED.' The bureaucracy extends to booth access.",
+            "talk": "The booth doesn't speak. It's a booth. The troll sitting in it, however, might have something to say -- if you address him directly."
+        },
+        "gorge": {
+            "take": "You can't take a hole in the earth. You can fall into it, which is taking it in a sense, but not the sense you intended.",
+            "push": "You push a loose rock over the edge. One. Two. Three. Four. Five. Six. You lose count before it hits bottom. The gorge is deeper than your patience.",
+            "pull": "You can't pull a gorge closed. That's not how erosion works. That's not how anything works, actually.",
+            "open": "The gorge is already maximally open. It's been maximally open for millennia. Opening it further would require continental drift, and you don't have the schedule for that.",
+            "talk": "You shout into the gorge. The echo mocks you back, slightly delayed and distinctly unimpressed. The gorge has been hearing voices since before language existed."
+        },
+        "river": {
+            "push": "You push your hand into the current. The river pushes back with the force of something that weighs several thousand tons and is going somewhere in a hurry. Rivers are not subject to your opinions about direction.",
+            "pull": "You drag your hand through the water, trying to slow it. You lack the biceps and divine authority required for hydraulic engineering.",
+            "open": "The river is already flowing. There's no 'off' position. It's been running since before your ancestors learned the word 'wet.'",
+            "talk": "You shout over the rushing water. The river is busy. It has been busy for ten thousand years and is not taking appointments."
+        },
+        "waterfall": {
+            "push": "The waterfall is a hundred yards away and falling at terminal velocity. You'd need to be there to push it, and if you were there, the waterfall would push you first. Into the gorge.",
+            "pull": "Your arm is not a hundred yards long. The waterfall is not negotiable. These are the facts of the situation.",
+            "open": "Behind every waterfall is a secret cave, according to people who have never actually been behind a waterfall. Behind this one is a rock wall and several hundred gallons per second of 'absolutely not.'",
+            "talk": "You shout at the waterfall. The waterfall is louder than you. Louder than everything. It's been winning shouting matches since before language existed."
+        }
+    }
+}

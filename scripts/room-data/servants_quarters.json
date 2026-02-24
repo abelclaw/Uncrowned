@@ -1,0 +1,42 @@
+{
+    "roomId": "servants_quarters",
+    "overrides": {
+        "writing-desk": {
+            "take": "The desk is a solid piece of furniture that has been here longer than most careers. It's not going anywhere, and frankly, neither is it interested in your opinion on the matter.",
+            "talk": "You address the writing desk. It does not respond, which puts it on par with most of the castle's administrative staff.",
+            "push": "You shove the desk. It grinds against the stone floor with a sound that suggests it hasn't moved since the castle was built and resents the implication that it should start now.",
+            "pull": "You pull the desk toward you. A drawer slides open, revealing a collection of broken quills, dried ink, and a note reading 'STOP STEALING MY QUILLS -- Head Servant.'"
+        },
+        "storage-crates": {
+            "take": "The crates are too large, too heavy, and too full of useless junk to carry. You could take what's inside them, but what's inside them is disappointment.",
+            "talk": "You lean toward the crates and clear your throat. The scratching pauses. Dozens of tiny ears perk up. You have the undivided attention of an entire rodent municipality.",
+            "pull": "You drag a crate away from the wall. The scratching behind it becomes frantic. A pair of beady eyes glare at you from the gap before vanishing into darkness."
+        },
+        "bunk-beds": {
+            "talk": "You whisper goodnight to the bunks. The silence that answers is the most restful thing these beds have produced in years.",
+            "open": "The bunks don't open. They're beds, not treasure chests. Though given the state of this castle, the distinction is increasingly academic.",
+            "push": "You shove a bunk. The frame groans, shifts two inches, and reveals a colony of dust bunnies that have achieved sentience. They scatter.",
+            "pull": "You pull a bunk away from the wall. Behind it: more wall. The servants didn't even get a secret passage."
+        },
+        "sq-window": {
+            "talk": "You ask the window for a better view. It offers the same courtyard wall it's been offering for two hundred years. Consistency is a virtue, apparently.",
+            "open": "You try to open the window. It's painted shut, rusted shut, and philosophically shut. Three layers of refusal.",
+            "push": "You push on the glass. It flexes slightly, threatening to crack. The courtyard wall beyond seems to lean in, concerned.",
+            "pull": "There's no handle, no latch, and no indication this window was ever meant to open. It's less a window and more a transparent wall with delusions of functionality."
+        },
+        "blank-decree": {
+            "talk": "You address the blank decree. It says nothing, which is both its current state and its primary feature.",
+            "open": "It's a rolled parchment. You unroll it. Both sides are blank, waiting for someone with the authority -- or audacity -- to write something official on them.",
+            "push": "You nudge the decree across the desk. Even blank, it moves with more authority than most of the castle's remaining staff.",
+            "pull": "You slide the decree toward you. The parchment practically hums with bureaucratic potential.",
+            "take": "You reach for the blank decree. The parchment is crisp and official-looking -- the kind of paper that commands authority even when it says nothing."
+        },
+        "flour-sack": {
+            "talk": "You address the flour sack. It maintains its composure. Flour has always been the strong, silent type.",
+            "open": "The sack is sealed tight, and for good reason. Opening it here would be a donation to the rat treasury.",
+            "push": "You nudge the flour sack. It's heavy and dense -- the good stuff, not the sawdust blend the castle's been surviving on.",
+            "pull": "You tug the sack toward you. It's wedged behind the crates, and the rats' scratching intensifies at the disturbance.",
+            "take": "You reach for the flour sack. It's heavy, dusty, and has been sitting here long enough to develop a personality."
+        }
+    }
+}

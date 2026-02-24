@@ -75,10 +75,10 @@
                 "use": "The pedestals hold nothing. The kingdom's wealth has been comprehensively distributed elsewhere. Mostly to creditors.",
                 "take": "You pocket a plaque. 'Golden Scepter -- Pawned.' A souvenir from a bankrupt kingdom. How very fitting.",
                 "default": "You examine the empty pedestals. Each absence tells a story of a kingdom slowly spending itself into the ground.",
-                "talk": "You address the Empty Pedestals. It doesn't respond. This is the most productive conversation you've had today.",
-                "open": "The Empty Pedestals doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "push": "You push the Empty Pedestals. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
-                "pull": "You grab the Empty Pedestals and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "talk": "You read the plaques aloud. 'Crown of Aldric the Fastidious -- Donated to Kingdom Defense Fund.' The pedestals listen. They've been listening to their own emptiness for centuries. Your commentary doesn't improve things.",
+                "open": "You check behind the pedestals for hidden compartments. Nothing. The treasury's secret is that there are no secrets. Just a kingdom that spent everything.",
+                "push": "You shove a pedestal. It scrapes across the floor with a noise that would have alarmed guards, had the treasury still warranted guarding. The plaque reads 'Diamond Tiara -- Lost in a card game.'",
+                "pull": "You pull a pedestal toward you. It's lighter than expected -- hollow stone, built to display things that no longer exist. Much like the monarchy itself."
             }
         },
         {
@@ -98,11 +98,11 @@
                 "look": "A deep purple velvet cushion on a stone pedestal, surrounded by dust. The Kingdom Administrative Seal sits atop it, catching what little light enters the treasury. The cushion is the most luxurious thing left in here, which says everything about the state of the kingdom's finances.",
                 "use": "The cushion's sole purpose is displaying the Kingdom Seal. It has fulfilled this purpose for centuries with admirable dedication.",
                 "default": "You examine the velvet cushion. It has been faithfully displaying the Kingdom Seal for longer than most dynasties last.",
-                "take": "The Velvet Display Cushion isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
-                "talk": "You speak to the Velvet Display Cushion in a calm, measured tone. The Velvet Display Cushion maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Velvet Display Cushion. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Velvet Display Cushion with all your might. All your might turns out to be insufficient. The Velvet Display Cushion remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Velvet Display Cushion. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "take": "You could take the cushion, but what would you do with a velvet pillow? Sleep on it? In a treasury? The cushion's sole purpose is displaying the Kingdom Seal, and it's been doing that job longer than most dynasties.",
+                "talk": "You address the velvet cushion. It maintains a regal silence, which is more than the actual monarchy managed in its final decades.",
+                "open": "You lift the cushion, searching for something hidden beneath. Underneath: a perfect outline of the seal in the dust, and nothing else. The cushion kept one secret: how dusty this place really is.",
+                "push": "You push the cushion aside. The Kingdom Seal slides with it, coming perilously close to the edge. You nudge everything back into place before gravity makes an administrative decision.",
+                "pull": "You pull the cushion toward you. The seal slides off and lands on the pedestal with a heavy THUNK. You place it back on the cushion. This is not the heist you were planning."
             }
         },
         {
@@ -122,11 +122,11 @@
                 "look": "A shelf near the door holds the treasury's remaining inventory: a dusty vial of clock oil (labeled 'For Clock Tower Maintenance -- Annual Budget: 2 Copper'), an empty coin purse, and a note reading 'IOU: One Kingdom. Signed, The Curse.'",
                 "use": "You browse the remaining shelf. Slim pickings. The kingdom's treasury has been cleaned out by centuries of fiscal mismanagement and one very expensive apocalypse.",
                 "default": "You inspect the shelf. The treasury's remaining assets are less 'crown jewels' and more 'things nobody remembered to steal.'",
-                "take": "You can't take the Remaining Shelf. It's firmly attached to its current situation, much like your growing sense of confusion.",
-                "talk": "You address the Remaining Shelf. It doesn't respond. This is the most productive conversation you've had today.",
-                "open": "The Remaining Shelf doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "push": "You push the Remaining Shelf. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
-                "pull": "You grab the Remaining Shelf and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "take": "You can't take the shelf. It's bolted to the wall and contains the kingdom's last remaining assets, which fit on a single shelf. That's either efficient storage or tragic financial management.",
+                "talk": "You address the shelf. Its remaining contents -- a vial and an IOU note -- say more about this kingdom than any speech from the throne ever did.",
+                "open": "The shelf is open. Everything on it is visible. The kingdom's remaining wealth is: clock oil, an empty coin purse, and a promissory note from a curse. Transparent accounting, at last.",
+                "push": "You push the shelf. The vial of clock oil wobbles. The empty coin purse doesn't move, because empty coin purses have nothing to lose.",
+                "pull": "You pull the shelf away from the wall. Behind it: a spider, two dust bunnies, and the remnants of the kingdom's financial credibility."
             }
         },
         {
@@ -147,10 +147,10 @@
                 "take": "They're ornamental and bolted to their pedestals. The treasury planners anticipated your type.",
                 "use": "You tap one. It rings hollow. A metaphor, probably.",
                 "default": "You admire the golden urns. They're the most decorative dust containers you've ever seen.",
-                "talk": "You speak to the Golden Urns in a calm, measured tone. The Golden Urns maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Golden Urns. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Golden Urns with all your might. All your might turns out to be insufficient. The Golden Urns remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Golden Urns. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "talk": "You address the urns. They ring faintly, a hollow echo that says more about the treasury's emptiness than any inventory report. The urns are golden but the gold is thin -- plated, not solid. Even the display pieces were on a budget.",
+                "open": "You lift the lid of an urn. Inside: dust, a single copper coin wedged in the bottom, and what appears to be an IOU written on the back of a royal napkin. The kingdom's financial management was... comprehensive in its failure.",
+                "push": "You push an urn. It's bolted to its pedestal, but the lid clatters. A small puff of dust escapes, carrying the last particles of the kingdom's wealth into the air. Fiscal evaporation, literally.",
+                "pull": "You pull at an urn. The bolt holds. These were designed to stay put -- the one competent security decision in a treasury that's been systematically looted by its own government."
             }
         },
         {
@@ -171,10 +171,10 @@
                 "take": "Fire plus pockets equals regret.",
                 "use": "You warm your hands. The treasury is surprisingly cold, possibly from the absence of actual treasure.",
                 "default": "You observe the torches. They burn on, indifferent to the treasury's emptiness.",
-                "talk": "You attempt a conversation with the Treasury Torches. The Treasury Torches is not a great conversationalist. Then again, neither are you.",
-                "open": "You search the Treasury Torches for a way to open it. There isn't one. It's not that kind of thing.",
-                "push": "You press against the Treasury Torches. It offers the same resistance as a mountain, which is to say, total and indifferent.",
-                "pull": "You pull on the Treasury Torches. Nothing happens. Gravity and architecture conspire against you, as usual."
+                "talk": "You address the torches. They crackle in response. Magical fire doesn't need conversation, but it's the most responsive thing in the treasury. Low bar.",
+                "open": "You examine the torch bracket. It's a simple iron holder -- no hidden switch, no secret mechanism. The treasury's security relied on locked doors and booby-trapped pedestals, not torch puzzles.",
+                "push": "You push a torch bracket. It rotates slightly in its holder but triggers nothing. No secret doors, no hidden passages. Just a torch, doing torch things, forever.",
+                "pull": "You yank a torch from its bracket. It comes free, still burning. The flame doesn't waver. Magical torches: the one expense this kingdom didn't regret."
             }
         },
         {
@@ -218,11 +218,11 @@
             "responses": {
                 "look": "The Kingdom Administrative Seal sits on its velvet cushion, heavy and ornate. Unlike the Royal Seal (which bears the disgruntled badger), this seal shows the kingdom's full coat of arms: a badger arguing with a filing cabinet, flanked by two quill pens. It is used for official governmental closures -- ending treaties, finalizing laws, and apparently, breaking curses. Bureaucracy demands precision.",
                 "use": "The Kingdom Seal is needed for the Rite of Administrative Closure. It's the official stamp that will close the curse's filing.",
-                "take": "You try to take the Kingdom Administrative Seal, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
-                "talk": "You talk to the Kingdom Administrative Seal. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "open": "The Kingdom Administrative Seal doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Kingdom Administrative Seal and push. Nothing happens, except a mild strain in your lower back. The Kingdom Administrative Seal wins this round.",
-                "pull": "You heave at the Kingdom Administrative Seal. Your muscles protest, the Kingdom Administrative Seal doesn't. It has the structural advantage of not caring."
+                "take": "The kingdom's seal is bolted to its ceremonial stand, which is in turn bolted to the floor. Whoever secured it understood that seals of authority tend to walk away when no one's watching.",
+                "talk": "You speak to the Kingdom Administrative Seal. It bears the coat of arms: a badger arguing with a filing cabinet. The seal has more authority in its stamp than you have in your entire person. It knows this.",
+                "open": "The seal is solid metal, not a container. It stamps, it presses, it authenticates. If you're looking for something to open, try the door you came through.",
+                "push": "You press the seal against the velvet cushion. It leaves an impression -- the royal crest, slightly lopsided. Even the kingdom's official stamp can't quite get things straight anymore.",
+                "pull": "You pull the seal toward the edge of the cushion. It's heavy -- dense metal, weighted with centuries of administrative authority. The ghost of a thousand rubber-stamped documents hovers in the air."
             }
         },
         {
@@ -242,10 +242,10 @@
                 "look": "A vial of mechanical lubricant, still liquid after all these years. The label reads 'Clock Tower Maintenance Oil -- For Official Use Only.' The annual maintenance budget was two copper coins. The clock hasn't been oiled in decades. This explains several things.",
                 "use": "Clock oil without a clock is just oil. You need the clock tower mechanism to use this properly.",
                 "take": "You can't take the Clock Oil. It's firmly attached to its current situation, much like your growing sense of confusion.",
-                "talk": "You address the Clock Oil. It doesn't respond. This is the most productive conversation you've had today.",
-                "open": "The Clock Oil doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "push": "You push the Clock Oil. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
-                "pull": "You grab the Clock Oil and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "talk": "You address the vial of clock oil. Its label reads 'Annual Budget: 2 Copper.' The clock hasn't been maintained in decades. This vial is proof that even the simplest maintenance gets forgotten when a kingdom is busy collapsing.",
+                "open": "You uncork the vial carefully. The oil inside is still liquid -- magical preservation, probably. It smells of machinery and good intentions. You re-cork it. No point spilling the one useful thing left in the treasury.",
+                "push": "You nudge the vial. It slides across the shelf with the nervous energy of something that knows it's important but doesn't know when it'll be needed.",
+                "pull": "You slide the vial toward you. The oil inside sloshes gently. 'For Official Use Only,' says the label. Everything in this treasury is for official use. The problem is, there are no officials left."
             }
         }
     ],

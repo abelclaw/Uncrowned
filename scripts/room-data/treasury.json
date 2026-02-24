@@ -1,0 +1,8 @@
+{
+    "roomId": "treasury",
+    "overrides": {
+        "kingdom-seal": {
+            "take": "You reach for the kingdom seal. It's heavy with the authority of a government that no longer governs."
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "roomId": "cave_depths",
+    "overrides": {
+        "cave-walls": {
+            "talk": "You address the cave walls. Your voice bounces back distorted, as if the cave is gargling your words. The acoustics down here turn everything into a threat, including you."
+        }
+    }
+}

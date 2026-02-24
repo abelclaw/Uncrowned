@@ -75,10 +75,10 @@
                 "use": "You browse the shelves. Most texts are incomprehensible, but one book -- 'Mushroom Patterns' -- contains a diagram showing a specific sequence: left, right, center, left, center. It's circled in ancient ink. Someone wanted this pattern remembered.",
                 "take": "You try to remove a book. The shelf groans. Removing structural literature is inadvisable.",
                 "default": "You survey the library. It's the kind of place where knowledge goes to retire.",
-                "talk": "You attempt a conversation with the Ancient Bookshelves. The Ancient Bookshelves is not a great conversationalist. Then again, neither are you.",
-                "open": "You search the Ancient Bookshelves for a way to open it. There isn't one. It's not that kind of thing.",
-                "push": "You press against the Ancient Bookshelves. It offers the same resistance as a mountain, which is to say, total and indifferent.",
-                "pull": "You pull on the Ancient Bookshelves. Nothing happens. Gravity and architecture conspire against you, as usual."
+                "talk": "You address the bookshelves. They do not respond. Literature is a one-way conversation, which is probably for the best -- these books have seen things.",
+                "open": "Most of the books are already open, in the sense that their spines have given up entirely. The ones still sealed shut are sealed for a reason.",
+                "push": "You lean into the shelves. They creak ominously. The last person who pushed a bookshelf in here created the 'collapsed shelves' section. Learn from history.",
+                "pull": "You pull at a shelf. Books cascade onto your feet with the enthusiasm of knowledge freed from its prison. The library disapproves. You can tell by the dust."
             }
         },
         {
@@ -98,11 +98,11 @@
                 "look": "A stone reading desk lit by ceiling crystals. An open book lies on it, turned to a page about the Guardian Chamber: 'The Guardian asks three questions. The first concerns the kingdom's founding year. The second concerns the name of the first bureaucrat. The third... the page is torn. Of course it is.",
                 "use": "You sit at the desk and read. The open book reveals clues about the guardian's test. Founding year: 847. First bureaucrat: Aldric the Fastidious. Third question: missing. You'll need to find that answer elsewhere.",
                 "default": "You examine the desk. Someone has been studying here recently. The dust is disturbed in a pattern that suggests frantic research.",
-                "take": "You try to take the Reading Desk, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
-                "talk": "You speak to the Reading Desk in a calm, measured tone. The Reading Desk maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Reading Desk. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Reading Desk with all your might. All your might turns out to be insufficient. The Reading Desk remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Reading Desk. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "take": "The reading desk is carved from a single stalagmite. It was here before the library and will be here after. You cannot take geological furniture.",
+                "talk": "You mutter to the desk. It's a desk. It absorbs your words the way it absorbs everything else -- silently, judgmentally, with centuries of practice.",
+                "open": "You check the desk for drawers. There's one small compartment, but it's been emptied long ago. A faint ring of dust marks where an ink bottle once sat.",
+                "push": "The desk is carved from the cavern floor itself. Pushing it would require relocating the entire geological formation beneath it.",
+                "pull": "You pull at the desk. The desk remains. The cavern remains. Your dignity does not."
             }
         },
         {
@@ -123,10 +123,10 @@
                 "use": "You rummage through the debris. The books are unsalvageable, but the wooden shelving planks are solid -- thick oak that hasn't rotted despite centuries underground. These could be useful.",
                 "take": "The collapsed shelves are too large to take whole, but individual planks could be salvaged.",
                 "default": "You survey the destruction. The library's loss is potentially someone's structural gain.",
-                "talk": "You speak to the Collapsed Shelves in a calm, measured tone. The Collapsed Shelves maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Collapsed Shelves. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Collapsed Shelves with all your might. All your might turns out to be insufficient. The Collapsed Shelves remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Collapsed Shelves. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "talk": "You address the ruins of the collapsed shelves. They have nothing to say. They've already made their statement, and it was loud, wooden, and final.",
+                "open": "The shelves are already as open as shelves can be. More open, in fact. They've achieved a state of openness that transcends their original design parameters.",
+                "push": "You push at the debris pile. It shifts slightly, releasing a cloud of dust and the faint smell of academic ambition gone wrong.",
+                "pull": "You pull at the wreckage. A board comes loose. Then another. The pile settles with a groan that suggests it's not done collapsing -- it's just resting."
             }
         },
         {
@@ -147,10 +147,10 @@
                 "take": "It's twenty feet up and weighs more than your ambitions. Which is saying something, given recent events.",
                 "use": "It's already in use -- illuminating your questionable life choices and the dust motes that narrate your passage through the library.",
                 "default": "You gaze up at the chandelier. It gazes down at you. The power dynamic is clear.",
-                "talk": "You speak to the Crystal Chandelier in a calm, measured tone. The Crystal Chandelier maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Crystal Chandelier. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Crystal Chandelier with all your might. All your might turns out to be insufficient. The Crystal Chandelier remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Crystal Chandelier. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "talk": "You speak to the chandelier. It glows impassively. Crystals are notoriously poor conversationalists -- all brilliance, no substance. Rather like certain monarchs.",
+                "open": "It's a solid crystal formation, not a locket. There is nothing to open. The light it emits is not a door.",
+                "push": "It's on the ceiling. You are on the floor. The geometry of the situation is not in your favor.",
+                "pull": "Even if you could reach it, pulling down a crystal chandelier in an enclosed cavern ranks somewhere between 'unwise' and 'suicidal.'"
             }
         },
         {
@@ -171,10 +171,10 @@
                 "take": "You leaf through one. It's in a language that predates grammar. The illustrations are helpful but deeply unsettling.",
                 "use": "You could read them if you spoke Ancient Bureaucratic. Your education, regrettably, did not cover dead administrative languages.",
                 "default": "You survey the scattered books. They lie where they fell, pages open to chapters nobody will finish.",
-                "talk": "You speak to the Scattered Books in a calm, measured tone. The Scattered Books maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Scattered Books. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Scattered Books with all your might. All your might turns out to be insufficient. The Scattered Books remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Scattered Books. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "talk": "You read aloud from a random page. The words sound like a tax code having a nervous breakdown. The acoustics amplify the misery. You stop.",
+                "open": "You crack open a book that was face-down. The page reads: 'If you are reading this, the library has already claimed you.' You close it again.",
+                "push": "You sweep some books aside with your foot. The dust cloud that rises carries the condensed disappointment of a thousand unfinished dissertations.",
+                "pull": "You pull a book from the pile. Its cover reads 'Advanced Theories of Cavern Acoustics, Vol. XIV.' Someone wrote fourteen volumes on cavern acoustics."
             }
         }
     ],
@@ -195,11 +195,11 @@
             "responses": {
                 "look": "A stoppered bottle of ink on the reading desk. The ink is black as night and slightly iridescent. The label reads 'Official Bureaucratic Ink -- Expires: Never.' It has opinions, apparently.",
                 "use": "The ink needs something to write on. A form, perhaps. An important, bureaucratic form.",
-                "take": "You try to take the Ancient Ink, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
-                "talk": "You address the Ancient Ink. It doesn't respond. This is the most productive conversation you've had today.",
-                "open": "The Ancient Ink doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "push": "You push the Ancient Ink. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
-                "pull": "You grab the Ancient Ink and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "take": "The ancient ink has bonded with its inkwell over centuries. The two are inseparable -- a love story, if you romanticize stationery.",
+                "talk": "You address the ink bottle. It vibrates slightly -- either acknowledging you or expressing displeasure at being spoken to like a common condiment.",
+                "open": "You briefly consider uncorking the bottle here. The ink inside pulses eagerly. Better to keep it sealed until you have something worth writing on.",
+                "push": "You nudge the ink bottle. It slides across the desk with surprising reluctance, as though it has opinions about its placement.",
+                "pull": "You pull the ink bottle toward you. It comes willingly enough. Centuries of sitting on a desk have given it a yearning for adventure."
             }
         },
         {
@@ -218,11 +218,11 @@
             "responses": {
                 "look": "Solid oak planks from the collapsed shelving. Thick, sturdy, and still in good condition despite their age. They'd be useful for building or repairing something that needs to float. Or not collapse.",
                 "use": "Planks are building material, not a finished product. You'd need something specific to build.",
-                "take": "You try to take the Wood Planks, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
-                "talk": "You talk to the Wood Planks. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "open": "The Wood Planks doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Wood Planks and push. Nothing happens, except a mild strain in your lower back. The Wood Planks wins this round.",
-                "pull": "You heave at the Wood Planks. Your muscles protest, the Wood Planks doesn't. It has the structural advantage of not caring."
+                "take": "The wood planks are structural. They're holding up shelves that are holding up books that are holding up the cavern's reputation as a place of learning. Remove one plank and the whole system collapses.",
+                "talk": "You speak to the planks. They do not respond. Wood is famously tight-lipped, even wood that once held the collected works of dwarven bureaucracy.",
+                "open": "They're planks. They don't open. They're the flattest, most fundamentally non-opening objects in existence.",
+                "push": "You shove the planks around. They scrape against the stone floor with a sound that suggests the library disapproves of your furniture rearrangement.",
+                "pull": "You pull a plank free from the debris pile. It comes loose with a groan of splintering wood and the muffled thud of books that were using it as a roof."
             }
         }
     ],

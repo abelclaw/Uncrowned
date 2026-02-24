@@ -1,0 +1,31 @@
+{
+    "roomId": "petrified_forest",
+    "overrides": {
+        "petrified-trees": {
+            "use": "You're not sure what you expected to happen. Rub two stone trees together and start a geological fire? The petrified trunks are as useful as sculpture and roughly as cooperative.",
+            "open": "You search the stone bark for a seam, a hinge, a secret compartment. Trees don't have doors. Petrified trees have even fewer doors, if that's mathematically possible.",
+            "push": "You push a petrified trunk. Solid stone. The tree stood against wind for centuries when alive and stands against you now. The curse gave it permanence, if nothing else.",
+            "pull": "You wrap your arms around a stone trunk and heave. Nothing moves except your lower back, which expresses its displeasure in the universal language of pain."
+        },
+        "stone-flowers": {
+            "use": "You attempt to use the stone flowers. For what? A bouquet? A romantic gesture? They crumble at the edges when touched. Petrification makes poor gifts.",
+            "talk": "You whisper encouragement to the petrified wildflowers. They do not perk up. They will never perk up again. Your motivational skills have met their geological match.",
+            "open": "You try to pry open a stone bud, hoping for a secret inside. The petals crack and fall away, revealing nothing but more stone. Flowers don't keep secrets. Stone flowers keep even fewer.",
+            "push": "You nudge a stone flower with your boot. It snaps off at the stem and rolls away like a grey marble. One less flower. The curse barely noticed.",
+            "pull": "You tug at a stone flower. The stem snaps with a dry crack, leaving you holding a grey, lifeless blossom. It weighs more than a real flower. Everything here weighs more than it should."
+        },
+        "curse-boundary": {
+            "take": "You crouch and try to scoop up the spreading grey. It's not a substance. It's an absence -- colour draining from the world like blood from a wound. You can't take an absence. You can only watch it grow.",
+            "talk": "You address the advancing curse directly. 'Stop,' you say, with all the authority of someone who has none. The grey continues its patient march. It has been advancing for decades. Your words are not on its schedule.",
+            "open": "The curse is not a door, a box, or a metaphor you can crack open. It's a wave of petrification rolling slowly across the landscape, and it opens nothing. It closes everything.",
+            "push": "You press your hands toward the grey line as if you could hold it back. The boundary doesn't resist -- it doesn't need to. It moves at the speed of inevitability, which is slower than you but infinitely more patient.",
+            "pull": "You cannot pull a curse backward. That's not how curses work. That's not how anything works. The grey advances because that's what the grey does. Your hands come back cold."
+        },
+        "stone-trees": {
+            "talk": "You lean close and speak softly to a stone tree. Perhaps, once upon a time, it could hear the wind in its branches. Now it hears nothing. The bark is cold against your cheek. You feel foolish, which is appropriate.",
+            "open": "You look for a hollow, a knot, a door -- anything. But petrification doesn't leave hollows. It fills everything with stone, including the spaces where life used to be.",
+            "push": "You brace against the stone trunk and shove. It has the structural integrity of a small building, because that's essentially what a petrified tree is. A very tree-shaped building with no doors.",
+            "pull": "You try to topple a stone tree. It weighs several tons and has roots that go down to bedrock. The tree will be standing here long after you're gone. It knows this. You suspect it's smug about it."
+        }
+    }
+}

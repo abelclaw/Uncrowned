@@ -98,11 +98,11 @@
                 "look": "The underground river rushes past with alarming speed. The current flows north toward the forge and south toward... the sound of a waterfall. A very loud, very final-sounding waterfall. Going upstream requires a boat. Going downstream requires a death wish.",
                 "use": "You test the current with your foot. It nearly pulls you in. This river has opinions about foot traffic.",
                 "default": "You observe the river. It is going places. Specifically, north to the forge and south to a waterfall. Only one of those destinations is survivable.",
-                "take": "The River Current isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
-                "talk": "You attempt a conversation with the River Current. The River Current is not a great conversationalist. Then again, neither are you.",
-                "open": "You search the River Current for a way to open it. There isn't one. It's not that kind of thing.",
-                "push": "You press against the River Current. It offers the same resistance as a mountain, which is to say, total and indifferent.",
-                "pull": "You pull on the River Current. Nothing happens. Gravity and architecture conspire against you, as usual."
+                "take": "You scoop river water. It's freezing and immediately leaks through your fingers. The current doesn't slow down for anyone, least of all someone trying to pocket it.",
+                "talk": "You shout over the rushing water. Your voice is drowned out instantly. The river has been making noise for centuries and isn't about to let you be heard over it.",
+                "open": "Rivers don't open. They flow. That's the one thing rivers do, and this one does it with aggressive competence.",
+                "push": "You push against the current with your hand. The water shoves back with the force of something that weighs several thousand tons and is going somewhere in a hurry.",
+                "pull": "You drag your hand through the current. It pulls your arm downstream with surprising force. The river wants you to go south, toward the waterfall. The river does not have your best interests at heart."
             }
         },
         {
@@ -121,12 +121,12 @@
             "responses": {
                 "look": "A small rocky shore where the boat is beached. The rocks are smooth from water erosion and covered in a thin layer of cave slime. Various debris has washed up: sticks, stones, and the remains of what might have been another boat. A cautionary tale in driftwood.",
                 "default": "You examine the shore. It's the safest spot by the river, which is like saying it's the driest spot in the ocean.",
-                "take": "You can't take the Rocky Shore. It's firmly attached to its current situation, much like your growing sense of confusion.",
-                "use": "You're not entirely sure how to use the Rocky Shore. Neither is the Rocky Shore, for what it's worth.",
-                "talk": "You speak to the Rocky Shore in a calm, measured tone. The Rocky Shore maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Rocky Shore. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Rocky Shore with all your might. All your might turns out to be insufficient. The Rocky Shore remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Rocky Shore. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "take": "You pocket a smooth stone from the shore. It's cold, wet, and pointless. You now have a rock. The river has millions more. It will not miss this one.",
+                "use": "You kneel on the rocky shore and splash water on your face. It's freezing. Your skin tingles where the mineral-rich water touches it. Refreshing, in the way that being slapped is refreshing.",
+                "talk": "You address the rocky shore. The stones are smooth and silent. They've been polished by the river for longer than your kingdom has existed. They have nothing to say and all the time in the world.",
+                "open": "Shores don't open. They sit there, between water and land, committing to neither. The Switzerland of geological features.",
+                "push": "You kick a rock. It tumbles into the river and is immediately swept downstream. A moment of satisfying violence followed by the complete indifference of nature.",
+                "pull": "You pull a rock from the shore. Beneath it: more rock, wet silt, and a small cave beetle that scurries away, deeply offended by the sudden daylight."
             }
         },
         {
@@ -147,10 +147,10 @@
                 "take": "Water is famously uncooperative about being held.",
                 "use": "Drink it? You don't know where it's been. Actually, you do -- it's been underground. That's worse.",
                 "default": "You watch the water rush past. It has places to be, and none of them involve you.",
-                "talk": "You attempt a conversation with the Rushing Water. The Rushing Water is not a great conversationalist. Then again, neither are you.",
-                "open": "You search the Rushing Water for a way to open it. There isn't one. It's not that kind of thing.",
-                "push": "You press against the Rushing Water. It offers the same resistance as a mountain, which is to say, total and indifferent.",
-                "pull": "You pull on the Rushing Water. Nothing happens. Gravity and architecture conspire against you, as usual."
+                "talk": "You shout at the rushing water. It roars back, louder. The river wins every argument by sheer volume. You've been out-debated by a body of water.",
+                "open": "You can't open water. Water is already as open as a substance gets. The problem isn't access -- it's that the river wants to kill you. Open access to death is not an improvement.",
+                "push": "You thrust your hand into the rushing water. The cold hits first, then the force. The current nearly pulls you off your feet. You extract your hand and several important lessons about hydrodynamics.",
+                "pull": "You try to pull water from the river. It slips through your fingers, returning to the current with the indifference of something that has been flowing since before your ancestors learned to walk upright."
             }
         },
         {
@@ -171,10 +171,10 @@
                 "take": "Waterfalls are, regrettably, non-portable.",
                 "use": "Stand under it for dramatic effect? You'd prefer to stay dry and alive.",
                 "default": "You admire the waterfall from a safe, dry distance.",
-                "talk": "You speak to the Cave Waterfall in a calm, measured tone. The Cave Waterfall maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Cave Waterfall. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Cave Waterfall with all your might. All your might turns out to be insufficient. The Cave Waterfall remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Cave Waterfall. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "talk": "You shout at the waterfall. It responds by being louder. The waterfall has been winning shouting matches since before language existed. You are outclassed.",
+                "open": "You can't open a waterfall. It's already the most dramatically open thing in this cave -- water, falling, openly, with maximum theatrical commitment.",
+                "push": "You push your hand through the waterfall's curtain. Cold water hammers your wrist. Behind the falls: rock wall. No secret cave, no hidden passage. Just water and disappointment.",
+                "pull": "You try to pull the waterfall toward you. The waterfall continues falling exactly where it wants to. Gravity is not negotiable."
             }
         },
         {
@@ -241,11 +241,11 @@
             "responses": {
                 "look": "A small wooden boat, beached on the rocky shore. Its hull has two significant cracks and a missing plank. It floats in the loosest possible definition -- the kind where 'float' and 'sink slowly' are considered synonyms. It needs repairs: wood for the hull and rope to bind it.",
                 "use": "The boat isn't seaworthy. River-worthy? Also no. You'd need wood planks for the hull and rope to secure them. Without repairs, this boat is less 'vessel' and more 'elaborate drowning apparatus.'",
-                "take": "The Old Boat isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
-                "talk": "You speak to the Old Boat in a calm, measured tone. The Old Boat maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Old Boat. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Old Boat with all your might. All your might turns out to be insufficient. The Old Boat remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Old Boat. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "take": "The boat weighs more than your resolve. It's beached on rocks and wedged in silt. Moving it requires repairs first -- then the river can carry it. Until then, it's an immovable monument to someone else's failed river journey.",
+                "talk": "You address the boat. It creaks. Wind in the hull? Or the boat expressing its opinion of your repair skills? Either way, it's the most responsive thing in this cavern.",
+                "open": "The boat has no cabin, no compartment, no hold. It's an open hull -- what you see is what you get. Which is two cracks, a missing plank, and a lot of optimism required.",
+                "push": "You shove the boat toward the water. It scrapes across the rocks, cracking further. Without repairs, pushing it into the river would just create more shore debris.",
+                "pull": "You pull the boat higher onto the shore. It grinds against the rocks with a sound like a dying animal. The boat has seen better days, better captains, and better rivers."
             }
         }
     ],

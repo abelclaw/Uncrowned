@@ -1,0 +1,162 @@
+{
+    "roomId": "crystal_chamber",
+    "overrides": {
+        "force-barrier": {
+            "talk": "You address the force barrier. It hums at the same frequency it was already humming at. This is either profound indifference or the magical equivalent of being put on hold.",
+            "open": "You look for a handle, a latch, a polite request form. Force barriers don't come with doors. They come with consequences.",
+            "push": "The barrier dissolved already. The space where it stood is just air now -- ordinary, unremarkable air. The warning signs remain, guarding nothing, like retired bouncers at a closed nightclub.",
+            "pull": "You attempt to pull the barrier toward you. The barrier does not comply. It exists in all directions equally, like bureaucracy."
+        },
+        "crystal-pedestal": {
+            "take": "It's a stone pedestal. It weighs more than your ambitions and is roughly as movable.",
+            "use": "You run your hands along the pedestal's surface. The carved symbols are cool to the touch and completely unresponsive. It's a pedestal. Its job is to hold things up.",
+            "talk": "You speak to the pedestal. It supports you emotionally about as well as it supports the crystal -- silently, and with geological patience.",
+            "open": "You search the pedestal for secret compartments, drawers, or hidden panels. Nothing. It's a solid block of stone. Sometimes a pedestal is just a pedestal.",
+            "push": "You shove the pedestal. It doesn't move. It has been here for centuries and has no plans to relocate.",
+            "pull": "You brace yourself and pull. The pedestal remains exactly where it is. It has the immovable conviction of something that was carved in place and intends to die in place."
+        },
+        "chamber-pillars": {
+            "talk": "You whisper to a pillar. It says nothing. But the patterns on its surface shift slightly, which is either a response or a coincidence.",
+            "open": "These are solid stone pillars, not doors. Though given dwarven craftsmanship, you wouldn't be surprised if there were secrets inside. You just can't find any.",
+            "push": "You push against a pillar. It holds firm. The ceiling remains where it is. Everyone benefits from your failure here.",
+            "pull": "You wrap your arms around the pillar and pull. Nothing happens, except you now look like someone hugging a very large, very uninterested stone column."
+        },
+        "blue-energy": {
+            "talk": "You shout at the energy. It arcs indifferently. Magical energy is a poor conversationalist -- all crackle, no substance.",
+            "open": "You can't open energy. Energy opens you. Usually in ways that require stitches.",
+            "push": "You consider pushing the raw magical energy. The energy considers vaporizing you. One of you has better follow-through.",
+            "pull": "You try to pull the energy toward you. It surges briefly in your direction, then snaps back. It was not an invitation. It was a warning."
+        },
+        "crystal-of-mundanity": {
+            "talk": "You address the Crystal of Mundanity. It hovers in silence. It is, after all, a crystal. But even by crystal standards, it seems aggressively uninterested in conversation.",
+            "open": "It's a crystal. Crystals don't open. If this one did, the contents would probably be even more disappointing than the exterior.",
+            "push": "You can't reach it through the barrier. And even if you could, pushing a floating crystal seems like the kind of action that leads to a story someone tells at your memorial.",
+            "pull": "The crystal floats serenely behind the barrier. You can't pull it from here. Destiny has a queue, and you haven't reached the front yet."
+        },
+        "warning-signs": {
+            "push": "You push a warning sign. It swings on its post, then returns to position with a self-righting mechanism that suggests even the signage here is enchanted."
+        }
+    },
+    "newHotspots": [
+        {
+            "id": "warning-signs",
+            "name": "Warning Signs",
+            "zone": {
+                "x": 280,
+                "y": 390,
+                "width": 70,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 315,
+                "y": 430
+            },
+            "responses": {
+                "look": "Fourteen warning signs in fourteen languages. You can read three of them. They all say 'DO NOT TOUCH THE BARRIER.' The Dwarven one adds 'SERIOUSLY.' The Elvish one is more poetic but arrives at the same conclusion.",
+                "take": "You try to pry a sign loose. It's bolted to the stone with the conviction of someone who really, really wanted you to read it first.",
+                "use": "The signs are already in use. They are warning you. That is their purpose. They are fulfilling it admirably, even if you refuse to listen.",
+                "talk": "You read the signs aloud. The echo adds gravitas. 'DO NOT TOUCH THE BARRIER' sounds even more authoritative bouncing off ancient stone.",
+                "open": "The signs are not books. They have one message, and it is not hidden. It is, in fact, the opposite of hidden.",
+                "push": "You push a sign. It doesn't budge. Whoever installed these was not interested in them being removable. They were interested in them being read.",
+                "pull": "You pull at a sign. The bolts hold. These signs were installed by someone who understood that the kind of person who ignores warnings is also the kind of person who removes them.",
+                "default": "The warning signs stand resolute, delivering their message to anyone willing to read. You were warned."
+            }
+        },
+        {
+            "id": "chamber-walls",
+            "name": "Chamber Walls",
+            "zone": {
+                "x": 0,
+                "y": 200,
+                "width": 50,
+                "height": 250
+            },
+            "interactionPoint": {
+                "x": 75,
+                "y": 430
+            },
+            "responses": {
+                "look": "The chamber walls are natural stone, worn smooth by aeons of water and wind. Blue energy tendrils arc across their surface, leaving faint scorch marks in patterns that might be meaningful or might just be what happens when magic hits rock for a few centuries.",
+                "take": "You cannot take a wall. Walls are, by definition, the parts of a room that stay where they are.",
+                "use": "You press your hand against the warm stone. The blue energy arcs nearby, and the wall hums faintly under your palm. It's oddly soothing, like a cat that's made of geology.",
+                "talk": "You speak to the wall. The wall does not respond, but the echo is flattering. Your voice sounds deeper and more heroic bouncing off ancient stone.",
+                "open": "You search the walls for a hidden door or secret panel. You find neither. Just wall. Reliable, boring, structural wall.",
+                "push": "You push the wall. The wall, backed by several thousand tons of mountain, remains unimpressed.",
+                "pull": "You can't pull a wall. This is not a design flaw. This is a feature.",
+                "default": "The chamber walls stand firm, streaked with blue energy. They've been here longer than any kingdom."
+            }
+        },
+        {
+            "id": "chamber-ceiling",
+            "name": "Chamber Ceiling",
+            "zone": {
+                "x": 200,
+                "y": 0,
+                "width": 300,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 350,
+                "y": 430
+            },
+            "responses": {
+                "look": "The ceiling arches high above, lost in shadow and blue light. Stalactites hang like stone chandeliers, dripping occasionally with the patient rhythm of geological time. The pillars meet it somewhere up there in the dark.",
+                "take": "You cannot take the ceiling. Nor would you want to. It is currently performing the vital function of not being the floor.",
+                "use": "The ceiling is doing its job. You are not needed for ceiling operations. Ceilings are self-managing.",
+                "talk": "You call up to the ceiling. Your voice echoes back, distorted and lonely. The stalactites offer no commentary.",
+                "open": "The ceiling is solid rock. You can't open it any more than you can open the sky.",
+                "push": "You can't reach the ceiling. Even if you could, pushing it would be architecturally inadvisable.",
+                "pull": "You can't pull down the ceiling. The pillars are handling ceiling-related duties, and they're not accepting help from amateurs.",
+                "default": "The ceiling looms above, ancient and indifferent. It has seen everything and remembers nothing."
+            }
+        },
+        {
+            "id": "pedestal-symbols",
+            "name": "Pedestal Symbols",
+            "zone": {
+                "x": 435,
+                "y": 400,
+                "width": 50,
+                "height": 20
+            },
+            "interactionPoint": {
+                "x": 460,
+                "y": 420
+            },
+            "responses": {
+                "look": "The symbols carved into the pedestal match the ones in the Guardian Chamber -- angular dwarven script interlocked with something older and less geometric. They pulse faintly with the same blue energy that fills the room.",
+                "take": "They're carved into stone. You'd need a chisel, several hours, and a complete disregard for archaeological preservation.",
+                "use": "You trace the symbols with your finger. They're cool and smooth, worn by centuries of other fingers doing exactly what you're doing now. Nothing happens, but there's a certain solidarity in the gesture.",
+                "talk": "You try reading the symbols aloud. The sounds you produce are not words in any language you know. The echo sounds vaguely offended.",
+                "open": "Symbols don't open. They sit there being symbolic. That's the whole arrangement.",
+                "push": "You press the symbols. They're carvings, not buttons. The distinction is important to anyone who values their fingertips.",
+                "pull": "You can't pull carvings out of stone. Well, you can, but then they're just rubble, and rubble tells no tales.",
+                "default": "The symbols pulse faintly with blue energy. Whatever they mean, they mean it with conviction."
+            }
+        },
+        {
+            "id": "dust-motes",
+            "name": "Dust Motes",
+            "zone": {
+                "x": 300,
+                "y": 150,
+                "width": 100,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 350,
+                "y": 430
+            },
+            "responses": {
+                "look": "Dust motes drift through the colored light beams, turning slowly in air that hasn't been disturbed in ages. Each mote catches the blue energy and glows briefly before fading.",
+                "take": "You snatch at a dust mote. You catch approximately one dust mote. Your inventory is not updated, because the universe has standards.",
+                "use": "You blow on the dust motes. They scatter, swirl, and resettle exactly where they were. Dust has patience that borders on malice.",
+                "talk": "You whisper to the drifting particles. They continue drifting. Dust is not a social substance.",
+                "open": "You can't open dust. This is not a concept that applies to particulate matter.",
+                "push": "You wave your hand through the floating dust. It parts, swirls dramatically, and reconvenes. Dust always reconvenes.",
+                "pull": "You cannot pull dust. Dust comes and goes as it pleases. It answers to no one.",
+                "default": "Dust motes drift through the blue light. Each one a tiny universe of nothing much."
+            }
+        }
+    ]
+}

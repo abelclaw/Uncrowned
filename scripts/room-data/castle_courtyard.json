@@ -1,0 +1,21 @@
+{
+    "roomId": "castle_courtyard",
+    "overrides": {
+        "castle-guards": {
+            "take": "You reach for a guard. He's a person. An armoured, armed person who is significantly less portable than you seem to think. Guards are not items. They are consequences."
+        },
+        "courtyard-well": {
+            "talk": "You lean over the well and call down. Your voice echoes back, hollow and distorted, as if the well is mocking your pronunciation. Deep wells make terrible audiences.",
+            "open": "The well is already open -- it's a hole in the ground with a stone rim. That's peak openness for a well. The bucket mechanism still works, if you need water.",
+            "push": "You push against the well's stone rim. It was built to withstand siege warfare. Your upper body strength does not constitute siege warfare.",
+            "pull": "You pull the well's bucket chain. It clinks and rattles, lowering the bucket into darkness. You hear a distant splash. The well still has water. Small victories."
+        },
+        "cracked-flagstones": {
+            "take": "You try to pry up a flagstone. Your fingers find the crack but the stone weighs more than your commitment. The courtyard's flooring was laid by people who built things to last.",
+            "talk": "You address the flagstones. They crack and crumble in response -- not because they heard you, but because they've been cracking and crumbling for decades. Correlation is not causation."
+        },
+        "stone-arches": {
+            "talk": "You whisper to the arches. Your words echo through the vaulted stone, returning to you slightly improved by the acoustics. The arches were designed for royal processions and they make everything sound more important."
+        }
+    }
+}

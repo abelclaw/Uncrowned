@@ -1,0 +1,35 @@
+{
+    "roomId": "throne_room",
+    "overrides": {
+        "throne": {
+            "open": "The throne is a single block of carved stone. It doesn't open. It doesn't have compartments, drawers, or hidden panels. It's a chair for a king who choked on an olive. Expectations should be calibrated accordingly.",
+            "push": "You push the stone throne. It doesn't move. It was carved from the castle's own bedrock, which means pushing it is technically pushing the mountain. You lose.",
+            "pull": "You pull at the throne. Several tons of carved stone decline your invitation to relocate. The throne was here before the monarchy and will be here after you."
+        },
+        "faded-banners": {
+            "use": "What exactly would you do with a faded banner? The fabric is too fragile to use as a rope, too moth-eaten for a blanket, and too depressing for a flag. It has exhausted its career options.",
+            "talk": "You address the banners. They hang there, saying nothing, which is exactly the level of counsel the monarchy has been providing for centuries. Consistent, at least.",
+            "open": "You push a banner aside, revealing the stone wall behind it. No secret passage, no hidden alcove -- just wall. The castle is refreshingly honest in its architecture.",
+            "push": "You push a banner aside. It swings back, releasing a cloud of dust and the faint despair of a dynasty that peaked early and declined spectacularly.",
+            "pull": "You tug a banner downward. The ancient fabric tears with a sound like a disappointed sigh. A corner comes away in your hand, trailing threads and centuries of declining relevance."
+        },
+        "curtains": {
+            "talk": "You address the curtains. They hang there, impassive and moth-eaten, like a textile metaphor for the entire government. Their silence is eloquent in its own way.",
+            "open": "You part the curtains. Behind them: stone wall, dust, and a spider that has been living undisturbed for what appears to be generations. The spider is not pleased about the light.",
+            "push": "You shove the curtains aside. They sway heavily, releasing a cascade of dust and a single moth that flutters toward the skylight with the urgency of a refugee.",
+            "pull": "You pull the curtains toward you. The fabric is heavier than expected -- waterlogged with centuries of damp. The curtain rod groans overhead. You let go before something gives way."
+        },
+        "skylight": {
+            "talk": "You call up at the skylight. Your voice echoes off the glass and comes back slightly diminished, like hearing your own ambitions reflected back at you."
+        },
+        "throne-vines": {
+            "talk": "You whisper to the vines. They don't respond, but they've been slowly conquering this room for decades. Plants don't need conversation. They need patience, and they have centuries of it.",
+            "open": "You part the vine curtain. Beneath the green: crumbling mortar, cracks in the stone, and the slow patient work of roots dismantling a kingdom. Nature doesn't rush.",
+            "push": "You push the vines aside. They spring back immediately, having spent years perfecting their grip. The vines have claimed this wall, and they are not accepting counteroffers.",
+            "pull": "You pull at a vine. It resists, then tears free with a sound of ripping roots and falling mortar. The wall behind looks worse without it. The vine was holding things together."
+        },
+        "royal-seal": {
+            "take": "You reach for the royal seal. It's cold and heavy with the weight of authority that no one is left to exercise."
+        }
+    }
+}

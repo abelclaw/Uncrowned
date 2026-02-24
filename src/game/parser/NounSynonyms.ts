@@ -606,4 +606,33 @@ export const NOUN_SYNONYMS: Record<string, string> = {
     // --- Bough / branch ---
     'bough': 'branch',
     'limb': 'branch',
+
+    // --- Star charts ---
+    'chart': 'star',
+    'charts': 'star',
+    'constellation': 'star',
+    'constellations': 'star',
+
+    // --- Spell components / reagents ---
+    'reagent': 'spell',
+    'reagents': 'spell',
+    'ingredients': 'components',
+    'materials': 'components',
+
+    // --- Parking book ---
+    'regulations': 'parking',
+    'manual': 'book',
+
+    // --- Scorch mark ---
+    'burn': 'scorch',
+    'char': 'scorch',
+    'soot': 'scorch',
+    'silhouette': 'scorch',
+    'stain': 'scorch',
+
+    // --- Mainspring ---
+    'mainspring': 'spring',
+
+    // --- Workstation ---
+    'workstation': 'desk',
 };

@@ -1,0 +1,23 @@
+{
+    "roomId": "forge_chamber",
+    "overrides": {
+        "broken-seal-stamp": {
+            "take": "You reach for the two halves of the ancient seal. The badger on the crest stares back with the fixed fury of heraldic art.",
+            "talk": "You address the broken seal. The badger on the crest stares back with the fixed fury of heraldic art. It has nothing to say, but it has strong opinions about being in two pieces.",
+            "open": "The seal stamp is not a container. It's a stamp. It presses things. It does not open. Being broken doesn't make it an openable object -- it makes it a broken object.",
+            "push": "You push the seal halves together. They don't fuse. Metallurgy requires more than optimism. It requires heat, an anvil, and ideally a spectral dwarven craftsman.",
+            "pull": "You pull the seal halves further apart. This is the opposite of repairing something. The badger on the crest looks even more disgruntled, which you didn't think was possible."
+        },
+        "dwarven_spirit": {
+            "open": "You cannot open a ghost. The spirit glares at you with the intensity of someone who has been dead long enough to know an insult when he sees one.",
+            "push": "You reach toward the dwarven spirit. Your hand passes through him. He looks down at your arm inside his torso, then up at you, with the expression of a man who has endured indignities beyond death.",
+            "pull": "You try to pull the spirit toward you. Your hands close on empty air. He's incorporeal. Being dead tends to do that. The spirit sighs and resumes his meditation."
+        },
+        "ancient-forge": {
+            "open": "The forge is an open structure by design -- fire pit, chimney, bellows. Everything is already accessible. There's no door to open because forges need airflow, not privacy."
+        },
+        "fire-pit": {
+            "pull": "You pull at a stone lining the fire pit. It grinds but doesn't come free. These stones were fitted by dwarven hands and sealed by dwarven fire. Your grip is not the tool for this job."
+        }
+    }
+}

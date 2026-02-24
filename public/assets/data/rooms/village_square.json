@@ -119,7 +119,7 @@
                 "talk": "You speak to the notice board. It does not respond, making it the most consistent government communication channel in the kingdom.",
                 "open": "It's a notice board, not a cabinet. The notices are pinned to the front, in plain view, because the kingdom's approach to classified information is 'pin it up in the town square and hope nobody reads it.'",
                 "push": "You shove the notice board. It rocks back on its posts, several notices fluttering to the ground. Civic vandalism: the hobby of the truly desperate.",
-                "pull": "You grab the notice board and pull. A few rusty nails groan in protest. The board holds firm, because apparently this is the one thing the village built to last."
+                "pull": "You pull at the notice board. It rocks slightly on its post but holds firm, weighed down by centuries of accumulated notices, each more urgent and ignored than the last."
             }
         },
         {
@@ -234,11 +234,11 @@
             "responses": {
                 "look": "An official notice declaring the kingdom 'temporarily inconvenienced' by a petrification curse. It bears the royal seal -- a disgruntled badger wearing a crown. The bureaucratic understatement is, frankly, impressive.",
                 "use": "You read the notice aloud. It doesn't make the situation better, but it does make it official.",
-                "take": "The Town Notice isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
-                "talk": "You talk to the Town Notice. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "open": "The Town Notice doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Town Notice and push. Nothing happens, except a mild strain in your lower back. The Town Notice wins this round.",
-                "pull": "You heave at the Town Notice. Your muscles protest, the Town Notice doesn't. It has the structural advantage of not caring."
+                "take": "You reach for the official notice. It's pinned firmly to the board with what appears to be a royal tack.",
+                "talk": "You read the notice aloud. 'The kingdom is temporarily inconvenienced.' Your voice echoes across the empty square. The inconvenience is, evidently, permanent.",
+                "open": "It's a piece of parchment, not an envelope. The text is right there on the front, in the kingdom's finest bureaucratic font.",
+                "push": "You press the notice flat against the board. It was already flat. You've accomplished nothing, but at least the notice looks slightly more official now.",
+                "pull": "You tug at the notice. The royal tack holds firm. Whoever pinned this up used a tack enchanted with the same tenacity as the curse itself."
             }
         },
         {
@@ -257,11 +257,11 @@
             "responses": {
                 "look": "An old coin wedged between the stones near the fountain. The face on it has worn into a vague smudge. Still legal tender, apparently -- the kingdom has low standards for currency, much like everything else.",
                 "use": "A coin is for spending. You'll need to find something -- or someone -- to spend it on.",
-                "take": "You try to take the Bridge Toll Coin, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
-                "talk": "You speak to the Bridge Toll Coin in a calm, measured tone. The Bridge Toll Coin maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Bridge Toll Coin. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Bridge Toll Coin with all your might. All your might turns out to be insufficient. The Bridge Toll Coin remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Bridge Toll Coin. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "take": "The toll coin is wedged in the collection box slot, just visible but thoroughly stuck. Previous travelers jammed it there, either by accident or spite.",
+                "talk": "You address the coin. It glints dully. Coins are famously poor conversationalists, though this one has been eavesdropping on village gossip from its crack in the ground for years.",
+                "open": "It's a coin, not a locket. It has two sides -- heads and tails -- and neither of them opens. That's not how currency works.",
+                "push": "You press the coin further into the crack between stones. It wedges deeper. This is the opposite of getting a coin. You are actively making yourself poorer.",
+                "pull": "You dig at the coin with your fingernails. It shifts slightly but remains wedged. The cobblestones grip it like the village's last claim to an economy."
             }
         }
     ],
@@ -406,7 +406,7 @@
                 "take": "The merchant weighs several hundred pounds of solid stone. Your ambitions exceed your lifting capacity.",
                 "default": "The stone merchant continues his eternal sales pitch to nobody. Business is, predictably, slow.",
                 "push": "You plant both hands on the merchant's chest and shove. He doesn't move. He does, however, continue to judge you with his frozen expression. You've now assaulted a statue. In public. Well done.",
-                "pull": "You grab the merchant's outstretched arm and pull. His stone fingers remain locked in their eternal sales gesture. If anything, he looks more insistent now.",
+                "pull": "You tug at the stone merchant's sleeve. He shrugs you off with the practiced irritation of someone who has been grabbed by customers before. 'Hands off the merchandise. That includes me.'",
                 "open": "Open the merchant? He's a person. A stone person, but still a person. You can't just open people. That's not how anatomy works, even in a cursed kingdom."
             }
         }

@@ -121,12 +121,12 @@
             "responses": {
                 "look": "Through the tower's window, you can see the kingdom spread below. The petrification is visible -- a grey wave rolling inward from the edges. Fields, villages, forests, all turning to stone. The ledge outside is narrow, icy, and the wind howls through the opening with enough force to make climbing out a death sentence. From up here, it looks almost beautiful, in the way that endings sometimes are.",
                 "default": "You gaze out at the cursed landscape. The view is comprehensive and thoroughly depressing.",
-                "take": "You try to take the Tower Window, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "take": "The clock tower is a building. An entire building. Your inventory does not have a 'building' slot, and even if it did, you'd need planning permission.",
                 "use": "Using the Tower Window doesn't accomplish anything obvious. Perhaps it needs to be used with something else. Or perhaps it's just decorative.",
-                "talk": "You speak to the Tower Window in a calm, measured tone. The Tower Window maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Tower Window. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Tower Window with all your might. All your might turns out to be insufficient. The Tower Window remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Tower Window. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "talk": "You address the clock tower. Wind whistles through the mechanism above in response -- a low moan that sounds like centuries of unanswered maintenance requests.",
+                "open": "The window has no glass -- just an open arch and a very long drop. It's already as open as it gets, which is too open for your liking.",
+                "push": "You push against the window frame. Stone doesn't yield. The wind, however, pushes back considerably harder.",
+                "pull": "There's nothing to pull. It's a hole in a wall. You're attempting to pull architecture, which is a new low even for you."
             }
         },
         {
@@ -147,10 +147,10 @@
                 "take": "They're the size of wagon wheels and interlocked. Engineering does not support your kleptomania.",
                 "use": "Without proper tools and knowledge, you'd just jam them further.",
                 "default": "You study the gears. They await repair with the patience of precision engineering.",
-                "talk": "You talk to the Clock Gears. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "open": "The Clock Gears doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Clock Gears and push. Nothing happens, except a mild strain in your lower back. The Clock Gears wins this round.",
-                "pull": "You heave at the Clock Gears. Your muscles protest, the Clock Gears doesn't. It has the structural advantage of not caring."
+                "talk": "You speak to the gears. They are gears. They have no opinions, no feelings, and no interest in your problems. In this respect they are similar to most of the kingdom's former administration.",
+                "open": "Gears don't open. They mesh, they turn, they grind. Opening them would require unmeshing the unmeshable, which is not a word, much like this is not a plan.",
+                "push": "You push a gear the size of a wagon wheel. It shifts a fraction of an inch with a grinding shriek that echoes through the tower. Nothing else happens, except that your hands now smell like oxidized copper.",
+                "pull": "You pull on a gear tooth. The gear is frozen solid and approximately eight times your weight. The tooth doesn't care about your ambitions."
             }
         },
         {
@@ -242,8 +242,80 @@
                 "use": "You can't move the hands manually. They're driven by the mechanism behind them. Fix the mechanism, and the hands will move on their own.",
                 "talk": "'Move,' you command the frozen clock hands. They do not. Time has been ignoring commands from people with delusions of authority since long before this curse.",
                 "open": "Clock hands don't open. They point. Currently they point at 3:47, which points at the kingdom's failure, which points at a parking dispute. It's pointers all the way down.",
-                "push": "You push the minute hand. It doesn't budge. The curse has welded time itself in place.",
+                "push": "You push a clock hand. The mechanism groans and the hand moves a fraction of an inch, then springs back. The clock has its own opinion about what time it is.",
                 "pull": "You pull on the hour hand. Iron groans but nothing moves. The hands will turn again when the mechanism is repaired -- and not a moment sooner."
+            }
+        },
+        {
+            "id": "counterweights",
+            "name": "Counterweights",
+            "zone": {
+                "x": 100,
+                "y": 100,
+                "width": 100,
+                "height": 150
+            },
+            "interactionPoint": {
+                "x": 150,
+                "y": 430
+            },
+            "responses": {
+                "look": "Heavy stone counterweights dangle from chains, suspended at various heights within the mechanism. They're meant to regulate the clock's power, converting gravity into precision. Currently they're converting gravity into nothing.",
+                "take": "Each counterweight is a block of carved stone roughly the size and weight of a small horse. You are not taking a small horse. You are especially not taking a small horse made of stone.",
+                "use": "The counterweights work automatically when the mechanism runs. They don't need your help. They need the mechanism to be repaired.",
+                "talk": "You speak to the counterweights. They hang there, heavy with purpose and silence. Much like every bureaucrat you've met in this kingdom, except the counterweights serve an actual function.",
+                "open": "Counterweights are solid blocks of stone. They don't open. They are perhaps the least openable objects in the entire kingdom.",
+                "push": "You push a counterweight. It's stone, it's heavy, and it's suspended on a chain. It swings slightly and then hangs still. Physics works. Magic doesn't.",
+                "pull": "You pull a counterweight chain. The weight descends an inch, gears engage briefly, and the clock ticks once before stopping. A taste of functionality. The clock wants to work. It just can't.",
+                "default": "The counterweights hang motionless, waiting for a mechanism that works and a kingdom that deserves the time."
+            }
+        },
+        {
+            "id": "stone-walls",
+            "name": "Stone Walls",
+            "zone": {
+                "x": 0,
+                "y": 300,
+                "width": 60,
+                "height": 150
+            },
+            "interactionPoint": {
+                "x": 60,
+                "y": 430
+            },
+            "responses": {
+                "look": "The tower walls are ancient stonework, cracked and weathered. Gaps between the stones let in shafts of grey light and the perpetual wind. The walls themselves show signs of the curse's reach: hairline cracks filled with grey stone-death.",
+                "take": "You try to pocket a stone from the wall. It's load-bearing. The tower groans above you in a way that suggests removing it would make the rest of your life very exciting and very brief.",
+                "use": "The walls are doing exactly what walls do: holding up the ceiling. Interfering with this arrangement would end your adventure in a pile of rubble.",
+                "talk": "You talk to the walls. The walls, like most of the kingdom's infrastructure, have nothing to say and no plans to start.",
+                "open": "These walls have no doors, no secret panels, and no patience for adventurers who think every flat surface hides a passage. They're walls. Accept it.",
+                "push": "You push against the stone wall. It doesn't move. It's a wall. This is what walls do. Or rather, don't do.",
+                "pull": "You pull at a stone in the wall. Dust sifts down from above, and somewhere overhead, something shifts with a sound that makes you immediately stop pulling.",
+                "default": "The tower's stone walls stand firm, which is more than can be said for most things in this kingdom."
+            }
+        },
+        {
+            "id": "tower-stairs",
+            "name": "Tower Stairs",
+            "zone": {
+                "x": 850,
+                "y": 390,
+                "width": 60,
+                "height": 120
+            },
+            "interactionPoint": {
+                "x": 870,
+                "y": 450
+            },
+            "responses": {
+                "look": "A spiral staircase winds down through the tower's interior, its stone steps worn smooth by centuries of clockmakers' boots. Several steps near the top have cracked, and the railing is more of a suggestion than a safety feature.",
+                "take": "You cannot take stairs. They are a fundamental architectural feature. This should not require explanation, yet here we are.",
+                "use": "The stairs lead down to the courtyard. You can go that way whenever you've finished communing with frozen clockwork and glowing puddles.",
+                "talk": "You address the spiral staircase. It spirals silently. Stairs are not conversationalists, but they're reliable, which puts them ahead of most people you've met.",
+                "open": "Stairs are already open. They're stairs. The concept of a closed staircase is a philosophical exercise you don't have time for.",
+                "push": "You push a loose step. It grinds against its neighbors but stays in place. The staircase has survived the curse, the centuries, and now your prodding.",
+                "pull": "You pull at the stair railing. A section wobbles alarmingly but holds. This is not the time to test the structural limits of your only exit.",
+                "default": "The tower stairs spiral downward -- your path back to the courtyard and the rest of this crumbling kingdom."
             }
         }
     ],

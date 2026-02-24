@@ -73,12 +73,12 @@
             "responses": {
                 "look": "The edge of the balcony drops away into the Crystal Chamber below. There's no railing, no barrier, no safety net. Just air, gravity, and the distant glint of the crystal. The Screaming Caverns' architects were not concerned with occupational health and safety.",
                 "default": "You regard the edge from a respectful distance. The distance is respectful because closer would be fatal.",
-                "take": "The Balcony Edge isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
-                "use": "You fiddle with the Balcony Edge for a moment, then give up. Whatever its purpose, you haven't figured it out.",
-                "talk": "You speak to the Balcony Edge in a calm, measured tone. The Balcony Edge maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Balcony Edge. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Balcony Edge with all your might. All your might turns out to be insufficient. The Balcony Edge remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Balcony Edge. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "take": "You cannot take the edge. The edge, however, can absolutely take you.",
+                "use": "You lean on the balcony edge and immediately regret it. The stone shifts slightly under your weight, showering dust into the darkness below. Best not to push your luck. Or the balcony.",
+                "talk": "You address the void beyond the edge. It does not respond, but you get the distinct impression it's listening. The abyss gazes back, et cetera.",
+                "open": "The edge is already as open as anything can be. That's rather the problem.",
+                "push": "Pushing the edge of a balcony over a bottomless drop. The stone doesn't budge, which is the best possible outcome here.",
+                "pull": "You tug at the lip of the balcony edge. Some loose pebbles skitter off into the void. You count the seconds before they hit bottom. You run out of fingers."
             }
         },
         {
@@ -98,11 +98,11 @@
                 "look": "A sturdy rock formation near the balcony edge, smoothed by age. A rope is coiled around it, anchored with what appears to be a very old but very solid knot. Someone planned ahead.",
                 "use": "The rock anchor is solid. Whatever rope was attached to it could probably support a person. Or a very ambitious goat.",
                 "default": "You examine the rock formation. It's the most trustworthy thing on this balcony.",
-                "take": "You try to take the Rock Anchor, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
-                "talk": "You talk to the Rock Anchor. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "open": "The Rock Anchor doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Rock Anchor and push. Nothing happens, except a mild strain in your lower back. The Rock Anchor wins this round.",
-                "pull": "You heave at the Rock Anchor. Your muscles protest, the Rock Anchor doesn't. It has the structural advantage of not caring."
+                "take": "The rock formations are part of the cavern itself. Removing them would be like trying to take the ceiling home -- ambitious, destructive, and structurally inadvisable.",
+                "talk": "You whisper sweet nothings to the rock formation. It remains stoic. Rocks are famously poor conversationalists, but excellent listeners.",
+                "open": "It's a solid rock formation, not a lunchbox. There's nothing to open here except your expectations, which should be lowered.",
+                "push": "You push the rock anchor. It does not move. It has been here since before your civilization had a word for 'push.'",
+                "pull": "You pull at the rock formation. It does not budge. The mountain would like you to know that it is not taking requests."
             }
         },
         {
@@ -123,10 +123,10 @@
                 "take": "You can't take a view, though several monarchs have tried.",
                 "use": "You lean on the railing and take it all in. For a cursed underground kingdom, it's rather pretty.",
                 "default": "You gaze into the cavern. The blue light below pulses slowly, like a heartbeat.",
-                "talk": "You talk to the Cavern View. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "open": "The Cavern View doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Cavern View and push. Nothing happens, except a mild strain in your lower back. The Cavern View wins this round.",
-                "pull": "You heave at the Cavern View. Your muscles protest, the Cavern View doesn't. It has the structural advantage of not caring."
+                "talk": "You call out into the cavern. Your voice echoes back, distorted and diminished, like hearing yourself on a recording. The cavern doesn't care about your feelings.",
+                "open": "You can't open a cavern. It's already the most open thing you've ever stood inside of.",
+                "push": "You push the air in front of the cavern view. The air yields easily. A hollow victory in every sense.",
+                "pull": "You can't pull a view closer. That's what walking is for, and in this case, walking would involve a fatal drop."
             }
         }
     ],
@@ -147,11 +147,11 @@
             "responses": {
                 "look": "A length of rope coiled around the rock anchor. It looks old but still has the tensile strength of something that was made to last. The weave is tight and the fibers intact. It was last inspected during the previous dynasty, but rope ages better than monarchs.",
                 "use": "Good rope. Strong. The kind that could bind planks to a hull, or secure a line for climbing. You'll know when you need it.",
-                "take": "The Climbing Rope isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
-                "talk": "You attempt a conversation with the Climbing Rope. The Climbing Rope is not a great conversationalist. Then again, neither are you.",
-                "open": "You search the Climbing Rope for a way to open it. There isn't one. It's not that kind of thing.",
-                "push": "You press against the Climbing Rope. It offers the same resistance as a mountain, which is to say, total and indifferent.",
-                "pull": "You pull on the Climbing Rope. Nothing happens. Gravity and architecture conspire against you, as usual."
+                "take": "You reach for the coiled rope. It's thick, strong, and has that satisfying heft of something designed for serious vertical work.",
+                "talk": "You address the rope. It says nothing, being rope. But it has an air of quiet reliability about it, like a competent accountant.",
+                "open": "It's a rope, not an envelope. You can coil it, uncoil it, tie it, or take it, but you cannot open it.",
+                "push": "You nudge the coiled rope. It shifts slightly against the rock anchor. It's not going anywhere unless you untie it and take it with you.",
+                "pull": "You tug the rope experimentally. The knot holds firm against the rock anchor. The rope has tension and strength. It's ready when you are."
             }
         }
     ],

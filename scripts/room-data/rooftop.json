@@ -1,0 +1,44 @@
+{
+    "roomId": "rooftop",
+    "overrides": {
+        "panoramic-view": {
+            "take": "You try to scoop up the panoramic view and put it in your pocket. The view declines. It's the size of a kingdom. Your pockets are not.",
+            "talk": "You address the dying landscape with a few encouraging words. The landscape does not respond. It's busy turning to stone, which is a full-time commitment.",
+            "open": "You cannot open a view. It's already as open as views get. That's rather the point of being on a rooftop.",
+            "push": "You make a pushing motion at the horizon. The horizon remains unmoved, both literally and emotionally.",
+            "pull": "You reach toward the vista and mime pulling it closer. The vista maintains its professional distance."
+        },
+        "parapet": {
+            "take": "You pry a loose stone from the parapet. It crumbles to grey dust in your hands. The curse has made everything here both fragile and worthless.",
+            "talk": "You whisper to the parapet, asking it to hold together just a little longer. The parapet responds by shedding another chunk of masonry into the abyss.",
+            "open": "There is no door in the parapet. It's a wall. A crumbling one. The gaps it already has are generous enough without your help.",
+            "pull": "You tug at a section of parapet. It lurches toward you with the enthusiasm of something that's been wanting to collapse for decades. You let go. Quickly.",
+            "use": "You lean against the parapet and look out. The kingdom stretches below, equal parts beautiful and cursed. The parapet's only use is keeping you from falling, and it's doing an adequate job."
+        },
+        "castle-spire": {
+            "use": "You consider climbing the spire. Then you consider the crumbling stone, the curse eating the mortar, and your complete lack of mountaineering experience. You reconsider.",
+            "talk": "You call up to the flag. The disgruntled badger stares down at you with an expression that suggests it has heard better speeches.",
+            "open": "The spire is solid stone. There's no door, no hatch, no convenient narrative entrance. It's a spire. It points at the sky. That's its entire job.",
+            "push": "You press your hands against the base of the spire and push. The spire, which has stood for centuries, is unmoved by your contribution.",
+            "pull": "You brace your feet and pull at the spire. The architectural community would weep if they could see you. The spire stands. You strain. Physics wins."
+        },
+        "sunset": {
+            "talk": "You tell the sunset it's doing a wonderful job. The sunset, being a celestial event, offers no reply. But it does seem to intensify slightly. Coincidence, probably.",
+            "open": "You cannot open the sunset. It's not a curtain, despite behaving like a theatrical backdrop for the end of the world.",
+            "push": "You make a futile gesture at the sky. The sun continues its descent at its own pace. It has an appointment with the horizon and it will not be rushed.",
+            "pull": "You reach up as if to drag the sun back above the treeline. The sun, which is ninety-three million miles away, does not notice your effort."
+        },
+        "distant-castle": {
+            "talk": "You shout toward the distant castle. Your voice carries across the valley, gets bored, and gives up somewhere over the river. No one answers.",
+            "open": "The distant castle's gates are several miles away. You'd need to walk there first. And survive the cursed landscape. One problem at a time.",
+            "push": "You extend your arms toward the horizon and push. The distant castle remains distant. This is not how geography works.",
+            "pull": "You make a beckoning gesture at the far-off castle. It does not come closer. Castles rarely do."
+        },
+        "river-valley": {
+            "talk": "You call down to the river. It babbles back, but it was already doing that. Rivers are poor conversationalists. They only talk about themselves and they never stop.",
+            "open": "You cannot open a river valley. It opened itself, over millennia, through the patient work of erosion. You haven't got that kind of time.",
+            "push": "You lean forward and make a shoving motion at the valley far below. The valley was carved by geological forces and is unimpressed by your upper body strength.",
+            "pull": "You try to pull the river valley closer for a better look. The valley stays put. It was here before the kingdom and will be here after."
+        }
+    }
+}

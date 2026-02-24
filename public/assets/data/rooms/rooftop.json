@@ -74,11 +74,11 @@
                 "look": "From the rooftop, you can see it all. The forest where you arrived, now grey stone. The village where you met the old man, half-petrified. The bridge where Bertram stood. The path to the Screaming Caverns. Every place you've been, turning to stone. Every person you've met, freezing in place. The curse is nearly complete. Only the castle itself still resists, and not for much longer. Cracks are spreading up the walls from below. You can hear the stone groaning. The kingdom needs you. Not a hero. Not a prophecy. Just someone who will do the paperwork.",
                 "use": "You shade your eyes and look out at the cursed landscape. It's comprehensive devastation, viewed from a comfortable vantage point. The irony of watching the world end from a rooftop is not lost on you.",
                 "default": "You take in the panoramic view. It would be breathtaking if it weren't also heartbreaking.",
-                "take": "You can't take the Panoramic View. It's firmly attached to its current situation, much like your growing sense of confusion.",
-                "talk": "You speak to the Panoramic View in a calm, measured tone. The Panoramic View maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Panoramic View. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Panoramic View with all your might. All your might turns out to be insufficient. The Panoramic View remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Panoramic View. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "take": "You try to scoop up the panoramic view and put it in your pocket. The view declines. It's the size of a kingdom. Your pockets are not.",
+                "talk": "You address the dying landscape with a few encouraging words. The landscape does not respond. It's busy turning to stone, which is a full-time commitment.",
+                "open": "You cannot open a view. It's already as open as views get. That's rather the point of being on a rooftop.",
+                "push": "You make a pushing motion at the horizon. The horizon remains unmoved, both literally and emotionally.",
+                "pull": "You reach toward the vista and mime pulling it closer. The vista maintains its professional distance."
             }
         },
         {
@@ -98,11 +98,11 @@
                 "look": "The parapet is crumbling, half-petrified itself. Gaps in the stonework reveal the dizzying drop to the courtyard below. The wind tugs at your clothes, suggesting activities that your survival instinct firmly vetoes.",
                 "push": "A section of parapet shifts under your hands. Stones tumble into the void below, crashing distantly. That could have been you. Step away from the edge.",
                 "default": "You eye the crumbling parapet with appropriate caution.",
-                "take": "You can't take the Crumbling Parapet. It's firmly attached to its current situation, much like your growing sense of confusion.",
-                "use": "You're not entirely sure how to use the Crumbling Parapet. Neither is the Crumbling Parapet, for what it's worth.",
-                "talk": "You address the Crumbling Parapet. It doesn't respond. This is the most productive conversation you've had today.",
-                "open": "The Crumbling Parapet doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "pull": "You grab the Crumbling Parapet and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "take": "You pry a loose stone from the parapet. It crumbles to grey dust in your hands. The curse has made everything here both fragile and worthless.",
+                "use": "You lean against the crumbling parapet. Stones shift underfoot. The wind tugs at you suggestively. Every instinct says: step back. The view isn't worth the risk.",
+                "talk": "You whisper to the parapet, asking it to hold together just a little longer. The parapet responds by shedding another chunk of masonry into the abyss.",
+                "open": "There is no door in the parapet. It's a wall. A crumbling one. The gaps it already has are generous enough without your help.",
+                "pull": "You tug at a section of parapet. It lurches toward you with the enthusiasm of something that's been wanting to collapse for decades. You let go. Quickly."
             }
         },
         {
@@ -123,10 +123,10 @@
                 "take": "You cannot reach the spire. And even if you could, stealing a kingdom's flag while trying to save that kingdom would be an unusual choice.",
                 "default": "You look up at the castle spire. The flag watches the kingdom's end with the same expression the badger always wears: deeply unimpressed.",
                 "use": "Using the Castle Spire doesn't accomplish anything obvious. Perhaps it needs to be used with something else. Or perhaps it's just decorative.",
-                "talk": "You attempt a conversation with the Castle Spire. The Castle Spire is not a great conversationalist. Then again, neither are you.",
-                "open": "You search the Castle Spire for a way to open it. There isn't one. It's not that kind of thing.",
-                "push": "You press against the Castle Spire. It offers the same resistance as a mountain, which is to say, total and indifferent.",
-                "pull": "You pull on the Castle Spire. Nothing happens. Gravity and architecture conspire against you, as usual."
+                "talk": "You call up to the flag. The disgruntled badger stares down at you with an expression that suggests it has heard better speeches.",
+                "open": "The spire is solid stone. There's no door, no hatch, no convenient narrative entrance. It's a spire. It points at the sky. That's its entire job.",
+                "push": "You press your hands against the base of the spire and push. The spire, which has stood for centuries, is unmoved by your contribution.",
+                "pull": "You brace your feet and pull at the spire. The architectural community would weep if they could see you. The spire stands. You strain. Physics wins."
             }
         },
         {
@@ -147,10 +147,10 @@
                 "take": "You try to capture the moment. It slips through your fingers, as moments do.",
                 "use": "You bask in its glow, briefly forgetting the kingdom is cursed.",
                 "default": "You gaze at the sunset. It's doing its best work tonight, which feels like a farewell performance.",
-                "talk": "You talk to the Sunset. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "open": "The Sunset doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Sunset and push. Nothing happens, except a mild strain in your lower back. The Sunset wins this round.",
-                "pull": "You heave at the Sunset. Your muscles protest, the Sunset doesn't. It has the structural advantage of not caring."
+                "talk": "You tell the sunset it's doing a wonderful job. The sunset, being a celestial event, offers no reply. But it does seem to intensify slightly. Coincidence, probably.",
+                "open": "You cannot open the sunset. It's not a curtain, despite behaving like a theatrical backdrop for the end of the world.",
+                "push": "You make a futile gesture at the sky. The sun continues its descent at its own pace. It has an appointment with the horizon and it will not be rushed.",
+                "pull": "You reach up as if to drag the sun back above the treeline. The sun, which is ninety-three million miles away, does not notice your effort."
             }
         },
         {
@@ -171,10 +171,10 @@
                 "take": "It's miles away and made of stone. Even your ambition has limits.",
                 "use": "You squint at it, trying to spot signs of the curse from here. Everything looks ominous at sunset.",
                 "default": "You study the distant castle silhouette. It looks picturesque and doomed.",
-                "talk": "You attempt a conversation with the Distant Castle. The Distant Castle is not a great conversationalist. Then again, neither are you.",
-                "open": "You search the Distant Castle for a way to open it. There isn't one. It's not that kind of thing.",
-                "push": "You press against the Distant Castle. It offers the same resistance as a mountain, which is to say, total and indifferent.",
-                "pull": "You pull on the Distant Castle. Nothing happens. Gravity and architecture conspire against you, as usual."
+                "talk": "You shout toward the distant castle. Your voice carries across the valley, gets bored, and gives up somewhere over the river. No one answers.",
+                "open": "The distant castle's gates are several miles away. You'd need to walk there first. And survive the cursed landscape. One problem at a time.",
+                "push": "You extend your arms toward the horizon and push. The distant castle remains distant. This is not how geography works.",
+                "pull": "You make a beckoning gesture at the far-off castle. It does not come closer. Castles rarely do."
             }
         },
         {
@@ -195,10 +195,10 @@
                 "take": "Rivers are notoriously difficult to pocket.",
                 "use": "From up here, you can only admire it. Getting down there is someone else's quest.",
                 "default": "You watch the river wind through the valley. It carries on regardless.",
-                "talk": "You speak to the River Valley in a calm, measured tone. The River Valley maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the River Valley. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the River Valley with all your might. All your might turns out to be insufficient. The River Valley remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the River Valley. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "talk": "You call down to the river. It babbles back, but it was already doing that. Rivers are poor conversationalists. They only talk about themselves and they never stop.",
+                "open": "You cannot open a river valley. It opened itself, over millennia, through the patient work of erosion. You haven't got that kind of time.",
+                "push": "You lean forward and make a shoving motion at the valley far below. The valley was carved by geological forces and is unimpressed by your upper body strength.",
+                "pull": "You try to pull the river valley closer for a better look. The valley stays put. It was here before the kingdom and will be here after."
             }
         }
     ],

@@ -1,0 +1,21 @@
+{
+    "roomId": "dungeon",
+    "overrides": {
+        "trap-door": {
+            "use": "The trap door leads down to the treasury. You'd need the treasury key to open it properly, and even then, the rust suggests the hinges will protest loudly.",
+            "talk": "You knock on the trap door. A hollow boom echoes from below, suggesting a chamber of some size. Nothing knocks back, which is either reassuring or deeply suspicious."
+        },
+        "filing-cells": {
+            "take": "The cells are carved into the rock face. Taking them would require relocating a significant portion of the mountain. The kingdom's filing system is literally embedded in geology."
+        },
+        "desk-lamp": {
+            "talk": "You address the desk lamp. Its flame flickers in response -- either acknowledging you or being a flame. The distinction is philosophical and, frankly, unimportant.",
+            "open": "The lamp's glass housing is fused shut with centuries of soot. You could break it, but then you'd have a broken lamp and no light. Poor trade.",
+            "push": "You nudge the lamp across the desk. It slides reluctantly, leaving a trail in the dust. The flame wobbles but holds. The lamp has survived worse than you.",
+            "pull": "You pull the lamp toward you. It's chained to the desk -- because in a dungeon, even the light sources are imprisoned. The irony is structural."
+        },
+        "treasury-key": {
+            "take": "You reach for the treasury key. It hangs on its hook, heavy and ornate, waiting for someone with either the authority or the audacity to use it."
+        }
+    }
+}

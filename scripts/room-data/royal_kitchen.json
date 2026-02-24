@@ -1,0 +1,25 @@
+{
+    "roomId": "royal_kitchen",
+    "overrides": {
+        "iron-stove": {
+            "talk": "You address the stove. It ticks quietly as its metal cools -- or warms, it's hard to tell. Stoves communicate through temperature, not language. This one is lukewarm on the subject of conversation.",
+            "open": "You open the stove door. Inside: cold ashes, a single charred log, and the ghost of whatever meal was last cooked here. The stove has been between jobs for a while.",
+            "pull": "You pull the stove door open wider. The hinges creak with the reluctance of something that hasn't been used since the cook abandoned her post."
+        },
+        "empty-chalice": {
+            "take": "You reach for the empty chalice. It's tarnished but solid -- the kind of drinking vessel that was once used for royal toasts and is now used for nothing."
+        },
+        "pantry-shelves": {
+            "talk": "You address the pantry shelves. A tin can rolls off in response, hitting the floor with a clatter that echoes through the empty kitchen. The shelves have spoken."
+        },
+        "hearth": {
+            "talk": "You address the hearth. Wind whistles down the chimney in response, carrying the faint scent of soot and long-dead fires. The hearth remembers warmth the way you remember childhood: fondly and inaccurately."
+        },
+        "kitchen-shelves": {
+            "talk": "You address the kitchen shelves. A plate slides an inch, teeters on the edge, and settles. The shelves are not speaking to you. They're negotiating with gravity."
+        },
+        "cooking-pots": {
+            "talk": "You address the pots. One of them rings faintly, a resonant hum that fades into silence. Copper pots have excellent acoustics and absolutely nothing to say."
+        }
+    }
+}

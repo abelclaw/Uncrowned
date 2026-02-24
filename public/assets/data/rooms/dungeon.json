@@ -99,10 +99,10 @@
                 "use": "The desk is the Clerk's domain. Touching it without permission would trigger a bureaucratic incident of unprecedented proportions.",
                 "take": "You can't take the Clerk's desk. He'd notice. He notices everything.",
                 "default": "You examine the desk. It's the most organized surface in the kingdom, which is saying something given the kingdom is mostly rubble.",
-                "talk": "You talk to the Clerk's Desk. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "open": "The Clerk's Desk doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Clerk's Desk and push. Nothing happens, except a mild strain in your lower back. The Clerk's Desk wins this round.",
-                "pull": "You heave at the Clerk's Desk. Your muscles protest, the Clerk's Desk doesn't. It has the structural advantage of not caring."
+                "talk": "You address the desk directly. It does not respond. This makes it the second most communicative object in the room, after the Clerk.",
+                "open": "You reach for a desk drawer. The Clerk's hand lands on yours with the speed and precision of a stamping mechanism. 'Drawer access requires Form 12-C,' he says. 'Filed in triplicate.'",
+                "push": "You push against the desk. It doesn't move. It has the gravitational permanence of an institution. The Clerk doesn't even look up.",
+                "pull": "You try to pull the desk toward you. The Clerk raises one eyebrow -- the bureaucratic equivalent of drawing a weapon. The desk stays where it has always been."
             }
         },
         {
@@ -122,11 +122,11 @@
                 "look": "A trap door in the floor, helpfully labeled 'TRAP DOOR -- DO NOT STEP.' Below it: absolute darkness and the sound of something dripping. The dungeon was built with security measures that were simultaneously obvious and lethal. The sign is either a warning or an invitation, depending on your interpretation of bureaucratic signage.",
                 "take": "You cannot take a trap door. It's embedded in the floor. And it's a trap. Two good reasons.",
                 "default": "You study the trap door from a safe distance. The sign is clear. The consequences are clearer.",
-                "use": "You're not entirely sure how to use the Trap Door. Neither is the Trap Door, for what it's worth.",
-                "talk": "You attempt a conversation with the Trap Door. The Trap Door is not a great conversationalist. Then again, neither are you.",
-                "open": "You search the Trap Door for a way to open it. There isn't one. It's not that kind of thing.",
-                "push": "You press against the Trap Door. It offers the same resistance as a mountain, which is to say, total and indifferent.",
-                "pull": "You pull on the Trap Door. Nothing happens. Gravity and architecture conspire against you, as usual."
+                "use": "You stamp on the trap door experimentally. It rattles but holds. Whatever mechanism opens it is either locked, rusted shut, or waiting for a specific trigger.",
+                "talk": "You knock on the trap door. A hollow boom echoes from below, suggesting a chamber of some size. Nothing knocks back, which is either reassuring or deeply suspicious.",
+                "open": "You kneel down and tug at the trap door's edge. It creaks open an inch, releasing a gust of cold air that smells like regret and limestone. From below: a distant, wet thud. You let it fall shut.",
+                "push": "You press your foot against the trap door experimentally. It gives slightly. The sign says 'DO NOT STEP.' Pressing is not stepping, technically.",
+                "pull": "You hook your fingers around the trap door's edge and pull. The hinges groan but the door holds fast -- locked from below, or perhaps just thoroughly rusted shut."
             }
         },
         {
@@ -146,11 +146,11 @@
                 "look": "The dungeon cells have been converted to filing storage. Each cell contains meticulously organized cabinets -- centuries of test records, applicant files, and rejection notices. Cell 3 holds what appears to be the Clerk's personal files, including a folder labeled 'MEMORIES (SUPPRESSED -- DO NOT OPEN).' Ironic, given that the folder is empty.",
                 "use": "You flip through the filing cells. Every applicant who ever attempted the Bureaucratic Test of Sovereign Worthiness is recorded here. The rejection rate is 100%. Until you.",
                 "default": "You browse the filing cells. The dungeon is the most organized prison you've ever seen. The inmates are paperwork.",
-                "take": "The Filing Cells isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
-                "talk": "You address the Filing Cells. It doesn't respond. This is the most productive conversation you've had today.",
-                "open": "The Filing Cells doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "push": "You push the Filing Cells. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
-                "pull": "You grab the Filing Cells and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "take": "The cells are carved into the rock face. Taking them would require relocating a significant portion of the mountain. The kingdom's filing system is literally embedded in geology.",
+                "talk": "You address the filing cells. 'Anyone in there?' Silence. The files don't talk. They don't need to -- their contents speak volumes.",
+                "open": "The cell doors swing open freely -- they haven't held prisoners in centuries. They hold something far more dangerous now: organized information.",
+                "push": "You push against a cell door. It swings open with a creak. Inside: more files. The cells are full. The bureaucracy is overflowing.",
+                "pull": "You pull a cell door closed. It clangs shut with a finality that suggests the files inside are now serving a life sentence."
             }
         },
         {
@@ -171,10 +171,10 @@
                 "take": "It's plugged in. To what, you're not sure -- there's no visible outlet.",
                 "use": "You click it on and off. The shadows dance. The paperwork remains unfiled.",
                 "default": "You examine the lamp. It does its job without complaint, which is more than can be said for most things here.",
-                "talk": "You speak to the Desk Lamp in a calm, measured tone. The Desk Lamp maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Desk Lamp. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Desk Lamp with all your might. All your might turns out to be insufficient. The Desk Lamp remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Desk Lamp. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "talk": "You address the desk lamp. Its flame flickers in response -- either acknowledging you or being a flame. The distinction is philosophical and, frankly, unimportant.",
+                "open": "The lamp's glass housing is fused shut with centuries of soot. You could break it, but then you'd have a broken lamp and no light. Poor trade.",
+                "push": "You nudge the lamp across the desk. It slides reluctantly, leaving a trail in the dust. The flame wobbles but holds. The lamp has survived worse than you.",
+                "pull": "You pull the lamp toward you. It's chained to the desk -- because in a dungeon, even the light sources are imprisoned. The irony is structural."
             }
         },
         {
@@ -195,10 +195,10 @@
                 "take": "They're bolted to the wall. Even furniture can't escape bureaucracy.",
                 "use": "You open a random drawer. It's full of forms about other forms. You close it quickly.",
                 "default": "You regard the filing cabinets. They contain the accumulated paperwork of centuries, organized by someone with too much time and not enough hobbies.",
-                "talk": "You talk to the Filing Cabinets. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "open": "The Filing Cabinets doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Filing Cabinets and push. Nothing happens, except a mild strain in your lower back. The Filing Cabinets wins this round.",
-                "pull": "You heave at the Filing Cabinets. Your muscles protest, the Filing Cabinets doesn't. It has the structural advantage of not caring."
+                "talk": "You mutter at the filing cabinets. They contain centuries of secrets, none of which they are willing to share conversationally.",
+                "open": "You pull open a drawer labeled 'Miscellaneous (Sub-Category: Uncategorizable).' Inside are forms requesting the creation of new categories. Bureaucracy eating its own tail.",
+                "push": "You shove a filing cabinet. It doesn't budge. It's bolted to the wall, the floor, and possibly to the concept of permanence itself.",
+                "pull": "You yank on a cabinet. The bolts hold. The wall holds. Your dignity does not hold. The Clerk watches with detached interest."
             }
         },
         {
@@ -219,10 +219,10 @@
                 "take": "The bars are embedded in stone. Many have tried.",
                 "use": "You peer through the bars. The outside world continues without you. How rude.",
                 "default": "You glance at the barred window. The light it admits is grudging at best.",
-                "talk": "You address the Barred Window. It doesn't respond. This is the most productive conversation you've had today.",
-                "open": "The Barred Window doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "push": "You push the Barred Window. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
-                "pull": "You grab the Barred Window and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "talk": "You shout through the bars. Your voice echoes off stone and returns unchanged and unhelpful. If anyone's out there, they're not interested.",
+                "open": "The window is barred. That's rather the point of a dungeon window -- to let in just enough light to see how trapped you are, without offering any way out.",
+                "push": "You push against the bars. They are iron. You are not. The iron wins, as iron tends to do in contests against human ambition.",
+                "pull": "You wrap your hands around the bars and pull. Nothing happens, except you now have rust on your palms and a renewed appreciation for medieval ironwork."
             }
         },
         {
@@ -247,6 +247,54 @@
                 "push": "You push a chain against the wall. It swings back. Physics continues to function, even in dungeons.",
                 "pull": "You pull a chain. The iron ring holds firm in the stone. These were built to hold people who very much wanted to leave. Your casual tugging doesn't register."
             }
+        },
+        {
+            "id": "paperwork-stacks",
+            "name": "Paperwork",
+            "zone": {
+                "x": 350,
+                "y": 350,
+                "width": 80,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 390,
+                "y": 420
+            },
+            "responses": {
+                "look": "Stacks of forms, applications, and stamped documents cover every horizontal surface. Each one represents someone's hope, duly received and thoroughly crushed by bureaucratic process.",
+                "take": "You pick up a form. 'UNAUTHORIZED REMOVAL OF DOCUMENTS IS A VIOLATION OF--' reads the header. You put it back. Even the paperwork threatens you.",
+                "use": "You attempt to fill out a form. It requires three references, two forms of identification, and the signature of someone who died two centuries ago. Standard procedure.",
+                "talk": "You read a form aloud. It's a request to request a request form. The recursion is deliberate. The Clerk designed this system and it is perfect.",
+                "open": "You unfold a document. It's a denial letter for someone named 'Everybody.' The Clerk believes in efficiency -- one rejection for the entire population.",
+                "push": "You push a stack of papers. They topple, scattering across the floor. The Clerk's pen pauses. The silence is worse than any reprimand.",
+                "pull": "You pull a paper from the bottom of a stack. The stack collapses. The Clerk begins writing a damage report before the last page hits the floor.",
+                "default": "The paperwork grows. Nobody adds to it. Nobody removes it. It simply generates itself, like bureaucratic mitosis."
+            }
+        },
+        {
+            "id": "dungeon-ceiling",
+            "name": "Dungeon Ceiling",
+            "zone": {
+                "x": 200,
+                "y": 30,
+                "width": 400,
+                "height": 80
+            },
+            "interactionPoint": {
+                "x": 400,
+                "y": 400
+            },
+            "responses": {
+                "look": "Low stone arches overhead, blackened by centuries of torch smoke and lamp oil. Cobwebs drape between the keystones like bunting for the world's worst party. The ceiling is just high enough that you don't have to duck, but low enough to make you uncomfortable about it.",
+                "take": "You cannot take a ceiling. This should not need explaining, but here we are, in a dungeon, reaching upward.",
+                "use": "The ceiling's primary use is not falling on you. It has performed this function admirably for centuries. Leave it alone.",
+                "talk": "You address the ceiling. A cobweb drifts down in response, landing on your face. The ceiling's sense of humor is dry and deeply unwelcome.",
+                "open": "Ceilings don't open. If this ceiling opened, you'd be standing in whatever room is above you, which would raise questions about structural engineering that nobody is prepared to answer.",
+                "push": "You press your palm against the ceiling. It's damp, cold, and slightly slimy. You lower your hand and wipe it on your clothes. The ceiling continues to be a ceiling.",
+                "pull": "You reach up and tug at a loose stone in the ceiling. Dust rains down. The stone holds, which is fortunate, because bringing the ceiling down would solve your problems permanently and counterproductively.",
+                "default": "The dungeon ceiling hangs above you with the quiet menace of something that knows exactly how heavy it is."
+            }
         }
     ],
     "items": [
@@ -266,11 +314,11 @@
             "responses": {
                 "look": "An ornate key sitting on the Clerk's desk, serving as a paperweight. It's heavy, gold-plated, and engraved with the kingdom's seal. The Clerk has been using it to keep his forms from blowing away. He has no idea what it opens. Neither does he care -- it's a perfectly functional paperweight.",
                 "use": "The treasury key needs a treasury. The dungeon is east of the treasury door.",
-                "take": "The Treasury Key isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
-                "talk": "You address the Treasury Key. It doesn't respond. This is the most productive conversation you've had today.",
-                "open": "The Treasury Key doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "push": "You push the Treasury Key. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
-                "pull": "You grab the Treasury Key and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "take": "You reach for the treasury key. It hangs on its hook, heavy and ornate, waiting for someone with either the authority or the audacity to use it.",
+                "talk": "You address the key. 'What do you open?' The key maintains its customary silence. Somewhere, a lock waits patiently for someone to make the obvious connection.",
+                "open": "The key opens things. It doesn't get opened. That's not how keys work. Even in a dungeon where the rules of logic have been gently bent by centuries of bureaucracy.",
+                "push": "You nudge the key across the desk. It slides over a stack of forms, leaving a gold scratch on a denial notice. The Clerk notes the damage.",
+                "pull": "You drag the key toward the edge of the desk. The Clerk watches. 'If you want the paperweight,' he says, 'there are forms for that.'"
             }
         }
     ],
@@ -497,6 +545,11 @@
                 "y": 324,
                 "width": 64,
                 "height": 106
+            },
+            "responses": {
+                "open": "The Clerk is not a door, a drawer, or a filing cabinet, though he shares many qualities with all three -- rigid, full of old information, and difficult to get anything useful out of.",
+                "push": "You push the Clerk's shoulder. He doesn't move. He continues writing. Your push has been noted, categorized, and filed under 'Assault (Minor, Unproductive).'",
+                "pull": "You tug the Clerk's sleeve. He pauses. 'Physical contact with administrative personnel requires Form 8-D,' he says. 'Subsection: Unwanted.' He returns to his paperwork."
             }
         }
     ],

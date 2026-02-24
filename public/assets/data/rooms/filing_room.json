@@ -74,11 +74,11 @@
                 "look": "Hundreds of filing cabinets, each with tiny labels: '27-A through 27-A Stroke 14,' '27-B through 27-B Stroke 12,' '27-C (CLASSIFIED),' '28-A through 42-Z (DO NOT OPEN).' The system would make a librarian weep. Finding the right form requires patience, literacy, and a willingness to accept that some filing systems are adversarial by design.",
                 "use": "You start searching the cabinets. Drawer after drawer of forms: tax declarations, death certificates, fishing licenses, a form for filing complaints about forms. The organization is hostile but thorough.",
                 "default": "You face the filing cabinets. They face you back with the quiet confidence of systems designed to outlast civilizations.",
-                "take": "You try to take the Filing Cabinets, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
-                "talk": "You talk to the Filing Cabinets. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "open": "The Filing Cabinets doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Filing Cabinets and push. Nothing happens, except a mild strain in your lower back. The Filing Cabinets wins this round.",
-                "pull": "You heave at the Filing Cabinets. Your muscles protest, the Filing Cabinets doesn't. It has the structural advantage of not caring."
+                "take": "The filing cabinets are bolted to the floor, to the wall, and possibly to each other. The Clerk takes document security seriously. You'd need a crowbar and a disregard for administrative law.",
+                "talk": "You address the filing cabinets. They do not reply, which makes them the most agreeable bureaucratic entity you've encountered so far.",
+                "open": "You try drawer after drawer. Most are locked. The ones that aren't are empty, or contain forms requesting permission to open other drawers. Bureaucratic recursion.",
+                "push": "You shove a cabinet. It's part of the wall. The wall is part of the mountain. You are pushing a mountain. Adjust your expectations accordingly.",
+                "pull": "You pull at a cabinet. The metal groans but holds firm. Built to survive the apocalypse. Not because anyone planned for it, but because bureaucratic furniture is simply that stubborn."
             }
         },
         {
@@ -99,10 +99,10 @@
                 "open": "You pull the drawer. It sticks, then slides open with reluctance. Inside: a single rubber stamp marked 'VIP -- SKIP ALL QUEUES.' Someone hid this here. Someone who got very tired of waiting.",
                 "use": "The drawer needs to be opened first. It's stuck, but not locked -- just stubborn. Like most things in this filing system.",
                 "default": "You examine the bottom drawer. It's the only unlabeled drawer in the entire room, which makes it either unimportant or the most important drawer here.",
-                "take": "You try to take the Bottom Drawer, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
-                "talk": "You talk to the Bottom Drawer. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "push": "You lean into the Bottom Drawer and push. Nothing happens, except a mild strain in your lower back. The Bottom Drawer wins this round.",
-                "pull": "You heave at the Bottom Drawer. Your muscles protest, the Bottom Drawer doesn't. It has the structural advantage of not caring."
+                "take": "The hidden drawer is built into the desk. You can't take a drawer without taking the desk, and the desk is built into the floor. It's turtles all the way down.",
+                "talk": "You whisper to the bottom drawer. It says nothing, but its slight ajar-ness feels conspiratorial. You and this drawer share a secret now.",
+                "push": "You push the drawer closed. It slides shut with a click, then slowly creeps back open a crack, like it's winking at you. Some drawers just refuse to stay closed.",
+                "pull": "You pull the drawer. It sticks, resists, then slides open with the reluctance of someone being dragged to a meeting."
             }
         },
         {
@@ -123,10 +123,130 @@
                 "take": "You pull a random file. It's a complaint about a complaint about a complaint. Recursive misery.",
                 "use": "Finding anything useful would require a cataloging system, which itself would require filing a request.",
                 "default": "You contemplate the file stacks. They contemplate you back, silently and judgmentally.",
-                "talk": "You speak to the File Stacks in a calm, measured tone. The File Stacks maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the File Stacks. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the File Stacks with all your might. All your might turns out to be insufficient. The File Stacks remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the File Stacks. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "talk": "You mutter at the file stacks. Somewhere deep inside, a folder rustles. Probably the draft. Almost certainly the draft.",
+                "open": "You pry open a random drawer from the stacks. Inside: forms, forms, a dried sandwich from what appears to be the Second Age, and more forms. You close it again. Some archaeology is best left undone.",
+                "push": "You lean into the file stack. It sways ominously, and for one terrible moment you envision being buried under centuries of accumulated paperwork. Death by bureaucracy -- the most ironic and least dignified way to go.",
+                "pull": "You pull at a stack of files. Several cascade to the floor in a paper avalanche. You spend a few moments putting them back. They're now in the wrong order, which in this system might actually be an improvement."
+            }
+        },
+        {
+            "id": "cabinet-labels",
+            "name": "Cabinet Labels",
+            "zone": {
+                "x": 320,
+                "y": 340,
+                "width": 160,
+                "height": 20
+            },
+            "interactionPoint": {
+                "x": 400,
+                "y": 420
+            },
+            "responses": {
+                "look": "Tiny brass plaques affixed to each drawer, engraved in a font so small it constitutes an act of hostility. The codes follow no logic you can discern: '27-A Stroke 14,' '13-Q Revised (Twice),' 'FORM B-12 (NOT THE VITAMIN).' One label simply reads 'MISCELLANEOUS DOOM.'",
+                "take": "You try to peel off a label. It's riveted on with the kind of permanence usually reserved for tombstone engravings. The bureaucracy does not permit relabeling.",
+                "use": "You trace a finger along the labels, trying to find a pattern. The pattern, if it exists, operates on a level of abstraction that would give philosophers a migraine.",
+                "talk": "You read the labels aloud. It sounds like an incantation. Nothing happens, but you feel a faint sense of bureaucratic oppression, which may be the intended effect.",
+                "open": "The labels don't open. They are small brass plaques. If you're trying to open them, the filing room has already won.",
+                "push": "You push a label into its holder. It clicks satisfyingly. Interacting with labels is the most productive thing you've done in this filing system.",
+                "pull": "You pull a label free. It reads 'MISCELLANEOUS DOOM.' You slide it back. Some things are better left filed.",
+                "default": "The labels stare back at you with the confidence of a system that knows you'll never crack its code."
+            }
+        },
+        {
+            "id": "dust",
+            "name": "Dust",
+            "zone": {
+                "x": 500,
+                "y": 380,
+                "width": 100,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 550,
+                "y": 420
+            },
+            "responses": {
+                "look": "A fine layer of dust coats every surface. It's the kind of dust that has achieved sentience through sheer persistence -- not alive, exactly, but deeply committed to being here.",
+                "take": "You scoop up a handful of dust. It sifts through your fingers and settles right back where it was, like a cat that's been moved off a chair. The dust lives here. You're just visiting.",
+                "use": "You draw a smiley face in the dust on the nearest cabinet. It stares back at you. You've created the happiest thing in this room, which is profoundly depressing.",
+                "talk": "You sneeze. The dust, offended, rises in a small cloud and resettles. Communication achieved.",
+                "open": "You can't open dust. Dust is already as open as a substance can be. It's everywhere, uncommitted to containment.",
+                "push": "You wave at the dust. It billows up, hangs in the air with theatrical indignation, and settles back down exactly where it was. The dust has tenure.",
+                "pull": "You try to pull dust off a cabinet surface. It clings with the determination of someone who has found their calling.",
+                "default": "You regard the dust. The dust regards you. This is the most meaningful relationship available in this room."
+            }
+        },
+        {
+            "id": "cavern-ceiling",
+            "name": "Ceiling",
+            "zone": {
+                "x": 200,
+                "y": 10,
+                "width": 500,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 420
+            },
+            "responses": {
+                "look": "The cavern ceiling disappears into darkness above the filing cabinets. Stalactites hang down like stone fingers, some of them suspiciously close to the taller cabinets. Nature tried to reclaim this space. The filing cabinets held firm.",
+                "take": "You reach for the ceiling. It's about thirty feet up and made of solid rock. Even your ambition has limits.",
+                "use": "There's nothing on the ceiling you can use, unless you count the stalactites as chandeliers. They are not chandeliers. They are geology.",
+                "talk": "You shout at the ceiling. Your voice echoes back, distorted, as though the cavern is mocking you. It probably is.",
+                "open": "The ceiling is not a hatch. It's solid rock. The concept of opening it is ambitious but geologically unfeasible.",
+                "push": "You can't push the ceiling. It's a ceiling. It's already as 'up' as it can go.",
+                "pull": "You can't pull down the ceiling. Although given what you've seen of this filing system, someone has probably filed a form requesting exactly that.",
+                "default": "You crane your neck at the ceiling. It's the most interesting thing you can see that isn't a filing cabinet, which is admittedly a low bar."
+            }
+        },
+        {
+            "id": "old-paper",
+            "name": "Old Paper",
+            "zone": {
+                "x": 580,
+                "y": 390,
+                "width": 80,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 620,
+                "y": 430
+            },
+            "responses": {
+                "look": "Loose sheets of old paper have escaped from the cabinets and lie scattered on the floor like refugees from a bureaucratic war. You can make out fragments: '...hereby decree that all decrees require a decree...' It's paperwork all the way down.",
+                "take": "You pick up a loose page. It's a tax form from an empire that no longer exists, demanding payment in a currency that no longer has value, from a person who is no longer alive. Somehow, it still feels overdue.",
+                "use": "You could fold it into a paper airplane, but you suspect that would violate at least three municipal codes and a filing regulation you haven't been made aware of.",
+                "talk": "You read aloud from a page. The words are so bureaucratic they form a kind of anti-poetry. If boredom could rhyme, this would be its magnum opus.",
+                "open": "You unfold a crumpled page. It's a memo from one bureaucrat to another: 'Please advise re: whether Form 12-F supersedes Form 12-G, or if both have been superseded by Form 12-F Revised (Unrevised).' There is no reply. There never was.",
+                "push": "You sweep the loose papers into a pile with your foot. They scatter again almost immediately, propelled by a draft that seems to exist solely for this purpose.",
+                "pull": "You pull a sheet free from under a cabinet leg. It tears. The remaining fragment reads: 'VOID IF TORN.' Of course it does.",
+                "default": "You nudge the scattered papers with your foot. They rustle reproachfully. Even dead paperwork demands respect in this place."
+            }
+        },
+        {
+            "id": "room-air",
+            "name": "Air",
+            "zone": {
+                "x": 450,
+                "y": 300,
+                "width": 60,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 480,
+                "y": 420
+            },
+            "responses": {
+                "look": "The air in here is thick with the smell of old paper, iron filings, and institutional misery. Dust motes drift through the faint light like the ghosts of paperwork past.",
+                "take": "You inhale deeply. You now have lungs full of centuries-old bureaucratic dust. This is the most you'll ever take from this room without filling out a requisition form.",
+                "use": "You breathe. The air tolerates this. It's the closest thing to cooperation you'll get from anything in this filing system.",
+                "talk": "You speak into the stale air. Your words hang there, suspended in dust motes, going nowhere. Much like the forms in these cabinets.",
+                "open": "You can't open air. Air is definitionally open. It's the openest thing there is.",
+                "push": "You wave your arms through the stale air. Dust motes scatter briefly, then resume their purposeless drift.",
+                "pull": "You breathe in deeply. You've pulled the air into your lungs. It tastes of old paper and institutional despair.",
+                "default": "You stand in the stale air of the filing room. It hangs around you like the atmosphere of a place that has given up on ventilation as a concept."
             }
         }
     ],
@@ -147,11 +267,11 @@
             "responses": {
                 "look": "A bureaucratic form of stunning complexity. 'FORM 27-B STROKE 6: Application for Sovereign Worthiness Test.' It has forty-seven fields, three of which are 'Name' (first, last, and bureaucratic). The fine print requires a microscope and a law degree.",
                 "use": "The form is blank. You'd need ink to fill it out. Ancient, official ink. The kind that takes bureaucracy personally.",
-                "take": "The Form 27-B Stroke 6 isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
-                "talk": "You talk to the Form 27-B Stroke 6. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "open": "The Form 27-B Stroke 6 doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Form 27-B Stroke 6 and push. Nothing happens, except a mild strain in your lower back. The Form 27-B Stroke 6 wins this round.",
-                "pull": "You heave at the Form 27-B Stroke 6. Your muscles protest, the Form 27-B Stroke 6 doesn't. It has the structural advantage of not caring."
+                "take": "You reach for Form 27-B Stroke 6. The paper is crisp, official, and radiates the quiet authority of documents that control your destiny.",
+                "talk": "You address the form directly. 'I will conquer you,' you announce. The form's forty-seven blank fields stare back, unmoved. Forms have heard this before. Forms have outlasted everyone who said it.",
+                "open": "You unfold the form fully. It's larger than expected -- the back side has another twenty fields, a waiver of liability, and a section titled 'FOR OFFICIAL USE ONLY.' You fold it back up before it gets any bigger.",
+                "push": "You flatten the form against the cabinet. It's already flat. It's a piece of paper. This is like trying to make water wetter.",
+                "pull": "You tug at the corners of the form, testing its structural integrity. It's bureaucratic-grade parchment -- tougher than leather, more resilient than hope."
             }
         },
         {
@@ -170,11 +290,11 @@
             "responses": {
                 "look": "An unauthorized stamp that reads 'VIP -- SKIP ALL QUEUES.' Someone left it in a hidden drawer, a small act of rebellion against the system. The rubber is still good. The authorization is technically valid. The Clerk would be furious.",
                 "use": "The stamp needs something to stamp. A ticket, perhaps. A queue ticket that could use some... elevation.",
-                "take": "You try to take the VIP Authorization Stamp, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
-                "talk": "You speak to the VIP Authorization Stamp in a calm, measured tone. The VIP Authorization Stamp maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the VIP Authorization Stamp. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the VIP Authorization Stamp with all your might. All your might turns out to be insufficient. The VIP Authorization Stamp remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the VIP Authorization Stamp. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "take": "The VIP stamp is chained to its desk. Even rubber stamps are subject to inventory control in this bureaucracy.",
+                "talk": "You hold the stamp up and address it. 'You're going to change everything,' you whisper. The stamp says nothing, because it's a stamp, but its silence feels loaded with revolutionary potential.",
+                "open": "It's a rubber stamp, not a locket. There's nothing to open. Though if there were a secret compartment inside a rubber stamp, this is exactly the filing room where you'd find it.",
+                "push": "You press the stamp against the nearest surface. It leaves a satisfying red 'VIP -- SKIP ALL QUEUES' impression on a filing cabinet. This accomplishes nothing but feels enormously satisfying.",
+                "pull": "You pull at the rubber pad of the stamp. It's firmly attached. Whoever made this contraband office supply did not skimp on construction."
             }
         }
     ],

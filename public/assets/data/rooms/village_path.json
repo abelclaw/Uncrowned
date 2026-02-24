@@ -94,7 +94,7 @@
                 "talk": "You lean over the well and whisper. Your voice echoes back, distorted and eerie. You've just frightened yourself. Well done.",
                 "open": "The well is open-topped. It's not a jar. Though if it were, you'd probably try to take it.",
                 "push": "You shove the well. Several centuries of stonework remain unmoved. Your dignity, however, is rattled.",
-                "pull": "You grab the rope and pull. The bucket comes up, empty except for disappointment and a small spider.",
+                "pull": "You pull at the well's bucket chain. It rattles and clinks, descending into darkness. From far below comes a distant splash, then silence. The well gives nothing back.",
                 "default": "You regard the well thoughtfully. The well regards you back with silent, stony indifference."
             }
         },
@@ -141,7 +141,7 @@
                 "default": "You peer into the dark forest. Something peers back. You both pretend this didn't happen.",
                 "take": "You grab at the forest edge. Branches scratch your hands. Leaves crumble. You can't take a forest. You can barely take a hint.",
                 "talk": "You call into the forest. Something rustles in response. Then silence. The forest is not interested in conversation. It has its own dark business.",
-                "open": "The Dark Forest Edge doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
+                "open": "You can't open a forest. Forests are already open, in the sense that they're outdoors. The trees don't have a door policy.",
                 "push": "You push at the undergrowth. Branches bend and snap back. The forest gives ground reluctantly and reclaims it immediately. It's been practising this for centuries.",
                 "pull": "You pull at branches and brambles. They tangle in your fingers and clothes. The forest edge doesn't want to come with you, and it's making that abundantly clear."
             }
@@ -165,7 +165,7 @@
                 "use": "You could roll down them, but you're an adult on a quest, not a child at a picnic. Though the distinction blurs more with each passing hour.",
                 "default": "You survey the rolling hills. They're green, they're pleasant, and they're hiding something. Landscapes this pretty always are.",
                 "talk": "You shout across the hills. The wind carries your voice away into grass and distance. The hills don't answer. They never do. It's part of their charm.",
-                "open": "You search the Rolling Hills for a way to open it. There isn't one. It's not that kind of thing.",
+                "open": "The rolling hills stretch in every direction, already as open as landscape gets. There's no door in a hill. There's no mechanism to reveal. It's just... earth.",
                 "push": "You can't push the hills. They're terrain. Large terrain. The kind measured in acres, not effort.",
                 "pull": "You can't pull the hills closer. They maintain their distance with the quiet stubbornness of geography."
             }
@@ -189,7 +189,7 @@
                 "use": "You follow the path with your eyes as it disappears around a bend. It's been leading people to the village for generations, asking nothing in return. The path has a better work ethic than most people you've met.",
                 "default": "You examine the dirt path. It's dirt. It's a path. Together, they exceed the sum of their parts, but only just.",
                 "talk": "You talk to the path. It stretches on in patient silence. Paths don't talk. They just lead -- sometimes to good places, sometimes to certain death. This one seems undecided.",
-                "open": "The Dirt Path doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
+                "open": "Paths don't open. They're already open. That's their defining feature. A closed path is just 'ground.'",
                 "push": "You push at the dirt. It's dirt. On the ground. Where dirt lives. This is the natural order of things.",
                 "pull": "You scrabble at the path. Dirt comes up under your nails. You have not improved the path. You have, however, made a small hole."
             }

@@ -74,11 +74,11 @@
                 "look": "Shelves of potions in every color, most bubbling quietly despite having been brewed centuries ago. Labels include 'Memory Suppressant (Extra Strength),' 'Parking Curse Mk. VII,' and 'Definitely Not Poison (It Is Poison).' The wizard's organizational system was 'wherever there's space,' which means everywhere.",
                 "take": "You pocket a small vial. Then put it back. Then pick it up again. Then remember the last time you drank a mysterious liquid and put it back permanently.",
                 "default": "You examine the potions. They examine you back, bubbling judgmentally.",
-                "use": "You're not entirely sure how to use the Potion Shelves. Neither is the Potion Shelves, for what it's worth.",
-                "talk": "You attempt a conversation with the Potion Shelves. The Potion Shelves is not a great conversationalist. Then again, neither are you.",
-                "open": "You search the Potion Shelves for a way to open it. There isn't one. It's not that kind of thing.",
-                "push": "You press against the Potion Shelves. It offers the same resistance as a mountain, which is to say, total and indifferent.",
-                "pull": "You pull on the Potion Shelves. Nothing happens. Gravity and architecture conspire against you, as usual."
+                "use": "You uncork a random potion and sniff it. Your nose goes numb. Your left eye waters. A small voice in your head suggests this was unwise. You re-cork it hastily.",
+                "talk": "You address the potions. 'Definitely Not Poison' bubbles enthusiastically, as if finally someone is paying attention. The others remain aloof. Potion social hierarchies are complex and deeply petty.",
+                "open": "You uncork a potion labeled 'Ambient Freshener.' The room now smells like lavender and regret. The other potions bubble disapprovingly.",
+                "push": "You shove the shelves. Several potions wobble dangerously. One tips, catches itself, and slowly rights back up -- enchanted to resist the stupidity of passersby.",
+                "pull": "You pull a shelf toward you. The potions rattle in protest. A vial labeled 'Liquid Spite' hisses steam at your face. You push the shelf back."
             }
         },
         {
@@ -98,11 +98,11 @@
                 "look": "Scattered notes in a frantic hand: 'Parking spot 47-B DENIED. DENIED! After 300 years of service! The feast committee will pay for this. The KINGDOM will pay for this. I'll show them all. Curse Mk. VII should do it. Include expiration clause per section 47-B of Administrative Code -- even curses must follow procedure.' The wizard was a bureaucrat before he was a wizard. The curse has an exit clause because the caster followed the rules even while breaking them. Incredible.",
                 "take": "You take the spell notes. Then realize they're covered in magical residue that makes your fingers tingle. You put them back and wipe your hands on your clothes.",
                 "default": "You read the spell notes. The wizard's rage about parking is... passionate. And surprisingly well-documented.",
-                "use": "You're not entirely sure how to use the Spell Notes. Neither is the Spell Notes, for what it's worth.",
-                "talk": "You speak to the Spell Notes in a calm, measured tone. The Spell Notes maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Spell Notes. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Spell Notes with all your might. All your might turns out to be insufficient. The Spell Notes remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Spell Notes. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "use": "You try to cast from the notes. The words rearrange themselves into a polite but firm message: 'Unauthorized use of proprietary spellwork is punishable under Section 12-C of the Arcane Licensing Act.' The wizard cursed a kingdom but still respected intellectual property law.",
+                "talk": "You read the notes aloud. The words echo with faint magical resonance, and for a moment you feel the wizard's rage about parking spot 47-B as if it were your own. It passes. Thank the gods.",
+                "open": "The notes are already open. Unfolded. Spread across every surface. The wizard didn't believe in filing so much as in strategic dispersal.",
+                "push": "You push the notes into a pile. They immediately scatter themselves back across the desk, as if tidiness personally offends them. The wizard enchanted his mess to stay messy. Commitment.",
+                "pull": "You tug at a note pinned under a paperweight shaped like a parking meter. It doesn't budge. The wizard's grudge extends to his office supplies."
             }
         },
         {
@@ -121,12 +121,12 @@
             "responses": {
                 "look": "A heavy iron chest with arcane symbols carved into its surface. A sign reads: 'PERSONAL BELONGINGS -- DO NOT OPEN. ESPECIALLY YOU, MARLOWE. (Wait, I am Marlowe. Note to self: change sign.)' The chest is clearly trapped. The symbols glow faintly when you approach.",
                 "default": "You eye the trapped chest. It eyes you back, magically.",
-                "take": "The Iron Chest isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
-                "use": "You fiddle with the Iron Chest for a moment, then give up. Whatever its purpose, you haven't figured it out.",
-                "talk": "You attempt a conversation with the Iron Chest. The Iron Chest is not a great conversationalist. Then again, neither are you.",
-                "open": "You search the Iron Chest for a way to open it. There isn't one. It's not that kind of thing.",
-                "push": "You press against the Iron Chest. It offers the same resistance as a mountain, which is to say, total and indifferent.",
-                "pull": "You pull on the Iron Chest. Nothing happens. Gravity and architecture conspire against you, as usual."
+                "take": "You attempt to lift the iron chest. It doesn't move. It weighs approximately one metric ton of 'absolutely not.' The chest was enchanted to stay put, probably because the wizard didn't trust himself not to misplace it.",
+                "use": "You run your fingers over the chest's arcane symbols, trying to find a pattern. They pulse in sequence -- warming, then hot, then painfully hot. You pull away. The chest's security system has stages, and you've just passed 'warning.'",
+                "talk": "You speak to the chest. 'Hello?' The symbols pulse once, dismissively. The chest heard you. The chest does not care. The chest has been ignoring people for centuries.",
+                "open": "You reach for the chest's lid. The arcane symbols blaze white-hot. A force pushes your hands away -- firmly, the way a parent removes a child's fingers from a candle. The chest will not be opened casually.",
+                "push": "You push the chest. The arcane symbols flare warningly, like a cat whose tail you've just stepped on. You stop pushing. Some things push back.",
+                "pull": "You pull at the chest. The symbols glow brighter -- a graduated threat response. The chest has a better security system than most banks."
             }
         },
         {
@@ -146,11 +146,11 @@
                 "look": "A massive black scorch mark covers one wall, the shape of a wizard silhouetted in char. This is probably how Wizard Marlowe died -- standing too close to his own experiment. The silhouette's arms are raised in what could be triumph or panic. Given the outcome, probably panic.",
                 "use": "You touch the scorch mark. Your finger comes away black with soot and faintly warm, even after centuries. Magic leaves a lasting impression. So does incompetence.",
                 "default": "You study the scorch mark. It tells the entire story of a wizard who was very good at magic and very bad at safety protocols.",
-                "take": "You try to take the Scorch Mark, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
-                "talk": "You speak to the Scorch Mark in a calm, measured tone. The Scorch Mark maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Scorch Mark. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Scorch Mark with all your might. All your might turns out to be insufficient. The Scorch Mark remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Scorch Mark. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "take": "You try to scrape some soot off the wall. It clings with magical stubbornness, the way a stain on your reputation does. Some marks are permanent. This one certainly is.",
+                "talk": "You address the silhouette. 'So, the parking thing -- was it worth it?' The scorch mark offers no reply, which is itself a kind of answer.",
+                "open": "It's a scorch mark on a wall, not a door. Though given the wizard's experiments, there's a nonzero chance it used to be one.",
+                "push": "You press your hand flat against the scorch mark. It's warm. Uncomfortably warm. Like pressing your hand against a memory of fire. You pull away. The wall keeps its secrets.",
+                "pull": "You can't pull a scorch mark off a wall. Physics still applies here, despite the wizard's best efforts to overturn it."
             }
         },
         {
@@ -171,10 +171,10 @@
                 "take": "The books seem to have opinions about being moved. One snaps shut as you reach for it, which is both startling and rude.",
                 "use": "You'd need years of study, and your attention span barely covers minutes. The books sense this and are unimpressed.",
                 "default": "You examine the magic books. They radiate the quiet hostility of knowledge that knows you can't understand it.",
-                "talk": "You attempt a conversation with the Magic Books. The Magic Books is not a great conversationalist. Then again, neither are you.",
-                "open": "You search the Magic Books for a way to open it. There isn't one. It's not that kind of thing.",
-                "push": "You press against the Magic Books. It offers the same resistance as a mountain, which is to say, total and indifferent.",
-                "pull": "You pull on the Magic Books. Nothing happens. Gravity and architecture conspire against you, as usual."
+                "talk": "You ask the self-reading book what it's studying. It turns to a page that simply says 'MIND YOUR OWN BUSINESS' in illuminated script. Fair enough.",
+                "open": "You open a book at random. It's a chapter on 'Temporal Parking Enforcement: A Theoretical Framework.' Somehow every book circles back to parking.",
+                "push": "You push a stack of books aside. They slide grudgingly, then one at the bottom snaps open and flutters its pages at you. Territorial. Like a pigeon, but literate.",
+                "pull": "You pull a book from a shelf. It comes free with a sucking sound, as if the shelf was reluctant to part with it. The book vibrates in your hands. You put it back."
             }
         },
         {
@@ -195,10 +195,106 @@
                 "take": "It's set in the wall. Architects planned ahead, anticipating the kind of person who would try to steal a window.",
                 "use": "You peer through it. The horizon looks worried. You share the sentiment.",
                 "default": "You gaze through the tower window. The kingdom stretches out below, beautiful and cursed in equal measure.",
-                "talk": "You speak to the Tower Window in a calm, measured tone. The Tower Window maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Tower Window. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Tower Window with all your might. All your might turns out to be insufficient. The Tower Window remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Tower Window. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "talk": "You whisper to the window. The glass fogs briefly where your breath touches it, then clears. Even the window doesn't want to hear your thoughts.",
+                "open": "The window is sealed shut. Possibly by magic, possibly by centuries of grime, possibly by the wizard's paranoia about fresh air. Wizards and ventilation have a complicated relationship.",
+                "push": "You push against the window. The glass holds firm, enchanted to withstand magical explosions. It certainly isn't going to yield to you.",
+                "pull": "You pull at the window frame. Nothing happens. The window was built to survive a wizard's worst day. Your best effort doesn't even register."
+            }
+        },
+        {
+            "id": "star-charts",
+            "name": "Star Charts",
+            "zone": {
+                "x": 200,
+                "y": 310,
+                "width": 90,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 245,
+                "y": 400
+            },
+            "responses": {
+                "look": "Scattered star charts mapping constellations you don't recognize, because the wizard invented his own. 'The Parking Meter.' 'The Denied Application.' 'The Bureaucrat's Revenge.' He literally rewrote the heavens to validate his grudge.",
+                "take": "You roll up a star chart. It immediately unrolls itself and flattens back onto the table with passive-aggressive force. The charts have been here for centuries.",
+                "use": "You try to navigate by the charts, but the constellations are fictional and the coordinates are emotional. 'Turn left at Resentment, proceed until you reach Vindication.'",
+                "talk": "You ask the star charts for guidance. A constellation labeled 'The Fool' twinkles faintly. You choose to believe that's coincidence.",
+                "open": "The charts are already spread across every available surface. They cannot be more open. This is peak openness.",
+                "push": "You push the charts aside. They slide across the table and several drift to the floor, where they land face-up and continue being incomprehensible.",
+                "pull": "You pull a chart from under a stack of books. It rips slightly. The tear mends itself instantly, the parchment knitting back together with offended precision.",
+                "default": "The star charts are beautiful, intricate, and completely useless for anyone who isn't nursing a three-century grudge about parking."
+            }
+        },
+        {
+            "id": "spell-components",
+            "name": "Spell Components",
+            "zone": {
+                "x": 750,
+                "y": 340,
+                "width": 100,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 800,
+                "y": 420
+            },
+            "responses": {
+                "look": "Half-finished spell components litter the workbench: dried herbs in unlabeled jars, ground crystals in cracked bowls, a severed newt tail that still twitches occasionally. Everything is precisely measured and covered in dust.",
+                "take": "You pocket some spell components. Then you remember you have no idea what they do and a track record that suggests touching mysterious substances will end badly. You put them back.",
+                "use": "You attempt to combine spell components at random. Nothing happens, which is the best possible outcome and frankly more luck than you deserve.",
+                "talk": "You address the spell components. The newt tail twitches. Whether in response to your voice or in its death throes is unclear and you'd rather not know.",
+                "open": "You open a jar. It smells like burnt ambition and ground cinnamon. You close it. Some jars are better left sealed.",
+                "push": "You push the components around the workbench. A jar of ground crystal rolls to the edge, teeters, and stops. The universe is giving you exactly one warning.",
+                "pull": "You pull a tray of components toward you. The dried herbs crumble slightly, releasing a smell that is equal parts thyme and existential dread.",
+                "default": "Spell components in various states of preparation, waiting for a wizard who will never finish the job."
+            }
+        },
+        {
+            "id": "parking-book",
+            "name": "Parking Regulations Book",
+            "zone": {
+                "x": 430,
+                "y": 340,
+                "width": 70,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 465,
+                "y": 400
+            },
+            "responses": {
+                "look": "A thick volume titled 'Municipal Parking Regulations, Seventh Edition (Annotated With Fury).' Every page is covered in the wizard's margin notes, growing increasingly unhinged. Page one: 'Reasonable enough.' Page three hundred: 'THEY WILL ALL PAY.'",
+                "take": "You pick up the book. It's heavier than expected, weighed down by the sheer density of annotations. You flip through it, feel a migraine forming, and set it down.",
+                "use": "You read a passage aloud: 'Section 47-B: Reserved spots may be reassigned at the discretion of the feast committee.' The room temperature drops two degrees.",
+                "talk": "You read Section 47-B aloud. Somewhere in the tower, a spectral draft sighs. The parking regulations book is the wizard's bible, manifesto, and therapy journal.",
+                "open": "The book falls open to Section 47-B, as it always does. The spine is cracked there from centuries of furious re-reading. The page is tear-stained.",
+                "push": "You push the book off the desk. It hits the floor, falls open to Section 47-B, and stays there. The book knows what it's about.",
+                "pull": "You pull the book toward you. It resists slightly, as if the desk has grown attached to it. Stockholm syndrome, but for furniture.",
+                "default": "The most dangerous book in the tower isn't a grimoire -- it's municipal code."
+            }
+        },
+        {
+            "id": "wizards-desk",
+            "name": "Wizard's Desk",
+            "zone": {
+                "x": 580,
+                "y": 370,
+                "width": 100,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 630,
+                "y": 420
+            },
+            "responses": {
+                "look": "A heavy oak desk buried under centuries of accumulated genius and insanity. Ink stains, candle wax, and at least three different colors of potion residue form a geological record of the wizard's career. A drawer is built into the front, but a small sign reads: 'Drawer enchanted. Opens only for authorized personnel. (Authorization form available in drawer.)'",
+                "take": "The desk weighs approximately as much as the wizard's ego, which is to say it is immovable by mortal means.",
+                "use": "You sit at the desk and feel a sudden, overwhelming urge to write a strongly worded letter about parking enforcement. The wizard's rage is embedded in the furniture. You stand up quickly.",
+                "open": "You try the drawer. It's locked. The authorization form to unlock it is inside the drawer. The wizard understood circular bureaucracy on a molecular level.",
+                "push": "You push the desk. It doesn't budge. It has been here longer than most governments and intends to outlast several more.",
+                "pull": "You pull at the desk drawer. Locked. Enchanted. The wood is warm to the touch, as if the desk remembers the wizard's hands and resents yours.",
+                "talk": "You speak to the desk. A faint groan emanates from the wood -- settling, probably. Or the desk expressing its opinion of you. Furniture in a wizard's tower has earned the right to be judgmental.",
+                "default": "The wizard's desk radiates the quiet authority of a workspace that has witnessed both brilliance and catastrophic failure, often simultaneously."
             }
         }
     ],
@@ -219,11 +315,11 @@
             "responses": {
                 "look": "A small crystal on the wizard's desk, glowing with suppressed light. A label reads: 'Extracted Memories -- Clerk Identity, Pre-Immortality. DO NOT RETURN TO SUBJECT without consent (or spite).' This is the Clerk's memory -- the wizard extracted his own memories of casting the curse before transforming himself into the immortal bureaucrat. The crystal holds the truth of who the Clerk was.",
                 "use": "The memory crystal needs to be shown to the Clerk. It contains his suppressed memories -- proof that the immortal bureaucrat and the disgruntled wizard are the same person.",
-                "take": "The Clerk's Memory Crystal isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
-                "talk": "You talk to the Clerk's Memory Crystal. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "open": "The Clerk's Memory Crystal doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Clerk's Memory Crystal and push. Nothing happens, except a mild strain in your lower back. The Clerk's Memory Crystal wins this round.",
-                "pull": "You heave at the Clerk's Memory Crystal. Your muscles protest, the Clerk's Memory Crystal doesn't. It has the structural advantage of not caring."
+                "take": "You reach for the memory crystal. It pulses warmly, full of centuries of suppressed identity. This holds the truth of who the Clerk was.",
+                "talk": "You speak to the crystal. For a moment, you hear a faint whisper -- the Clerk's voice, or the wizard's, or both. 'Parking spot 47-B...' it murmurs.",
+                "open": "It's a crystal, not a locket. You can't open it. The memories are stored magically, not physically. Though you appreciate the hands-on approach.",
+                "push": "You nudge the memory crystal. It rolls slightly and the glow intensifies, as if the memories inside are jostled and annoyed.",
+                "pull": "You pull the crystal toward you. It slides across the desk, leaving a faint trail of light. The memories inside shift like liquid, restless."
             }
         },
         {
@@ -242,11 +338,11 @@
             "responses": {
                 "look": "A tightly coiled metal spring among the wizard's mechanical components. It looks like it was part of a clock mechanism -- the wizard apparently tinkered with temporal devices in addition to curses. Still has bounce, unlike your hopes.",
                 "use": "A gear spring without a clock is just a coil with ambitions. You need the clock tower to use this.",
-                "take": "The Gear Spring isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
-                "talk": "You talk to the Gear Spring. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "open": "The Gear Spring doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Gear Spring and push. Nothing happens, except a mild strain in your lower back. The Gear Spring wins this round.",
-                "pull": "You heave at the Gear Spring. Your muscles protest, the Gear Spring doesn't. It has the structural advantage of not caring."
+                "take": "You reach for the gear spring. It's been sitting among the wizard's collection for centuries, waiting for someone who needs to fix a clock.",
+                "talk": "You talk to a spring. It does not respond. Springs are famously poor conversationalists, ranking just below rocks and just above certain feast committee members.",
+                "open": "It's a spring. It's already open. It's also already closed. Springs exist in a philosophical gray area between the two states.",
+                "push": "You press the spring down. It compresses with satisfying resistance, then bounces back with more force than expected, nearly taking your eye out.",
+                "pull": "You stretch the spring. It extends reluctantly, then snaps back to its coiled shape with a sharp twang. The spring knows what it is."
             }
         }
     ],
@@ -383,7 +479,10 @@
                 "talk": "The wizard's ghost pauses mid-mutter. 'Hmm? Oh, another one. Read the notes on the desk if you want to know what happened. I'm too dead to explain it twice.' He resumes cataloguing invisible potions.",
                 "use": "The wizard's ghost is incorporeal. You cannot use, bottle, or otherwise interact with spectral academics. University policy.",
                 "take": "Your hand passes through the wizard. He sighs. 'Everyone tries that. Nobody succeeds. It's been centuries. Please stop.'",
-                "default": "The wizard continues muttering about the price of eye of newt. Some obsessions transcend death."
+                "default": "The wizard continues muttering about the price of eye of newt. Some obsessions transcend death.",
+                "open": "You cannot open a ghost. This is not a concept that applies to spectral entities. The wizard's ghost glances at you with weary patience.",
+                "push": "Your hands pass through the ghost. He flickers irritably. 'Physical contact is not possible, metaphysically speaking. I wrote a paper on it.'",
+                "pull": "You swipe at the ghost. Your hand passes through cold air that smells faintly of old books and unresolved resentment. The wizard doesn't even acknowledge the attempt."
             }
         }
     ],

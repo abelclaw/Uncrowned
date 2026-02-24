@@ -1,0 +1,60 @@
+{
+    "roomId": "wizard_tower",
+    "overrides": {
+        "potion-shelves": {
+            "talk": "You address the potions. 'Definitely Not Poison' bubbles enthusiastically, as if finally someone is paying attention. The others remain aloof. Potion social hierarchies are complex and deeply petty."
+        },
+        "spell-notes": {
+            "use": "You try to cast from the notes. The words rearrange themselves into a polite but firm message: 'Unauthorized use of proprietary spellwork is punishable under Section 12-C of the Arcane Licensing Act.' The wizard cursed a kingdom but still respected intellectual property law.",
+            "talk": "You read the notes aloud. The words echo with faint magical resonance, and for a moment you feel the wizard's rage about parking spot 47-B as if it were your own. It passes. Thank the gods.",
+            "open": "The notes are already open. Unfolded. Spread across every surface. The wizard didn't believe in filing so much as in strategic dispersal.",
+            "push": "You push the notes into a pile. They immediately scatter themselves back across the desk, as if tidiness personally offends them. The wizard enchanted his mess to stay messy. Commitment.",
+            "pull": "You tug at a note pinned under a paperweight shaped like a parking meter. It doesn't budge. The wizard's grudge extends to his office supplies."
+        },
+        "trapped-chest": {
+            "take": "You attempt to lift the iron chest. It doesn't move. It weighs approximately one metric ton of 'absolutely not.' The chest was enchanted to stay put, probably because the wizard didn't trust himself not to misplace it.",
+            "use": "You fiddle with the chest's arcane locking mechanism. The symbols pulse in sequence -- a warning pattern that suggests the chest is counting down to something. You stop fiddling.",
+            "talk": "You speak to the chest. 'Hello?' The symbols pulse once, dismissively. The chest heard you. The chest does not care. The chest has been ignoring people for centuries."
+        },
+        "scorch-mark": {
+            "take": "You try to scrape some soot off the wall. It clings with magical stubbornness, the way a stain on your reputation does. Some marks are permanent. This one certainly is.",
+            "talk": "You address the silhouette. 'So, the parking thing -- was it worth it?' The scorch mark offers no reply, which is itself a kind of answer.",
+            "open": "It's a scorch mark on a wall, not a door. Though given the wizard's experiments, there's a nonzero chance it used to be one.",
+            "push": "You press your hand flat against the scorch mark. It's warm. Uncomfortably warm. Like pressing your hand against a memory of fire. You pull away. The wall keeps its secrets.",
+            "pull": "You can't pull a scorch mark off a wall. Physics still applies here, despite the wizard's best efforts to overturn it."
+        },
+        "magic-books": {
+            "talk": "You ask the self-reading book what it's studying. It turns to a page that simply says 'MIND YOUR OWN BUSINESS' in illuminated script. Fair enough."
+        },
+        "tower-window": {
+            "talk": "You whisper to the window. The glass fogs briefly where your breath touches it, then clears. Even the window doesn't want to hear your thoughts.",
+            "open": "The window is sealed shut. Possibly by magic, possibly by centuries of grime, possibly by the wizard's paranoia about fresh air. Wizards and ventilation have a complicated relationship.",
+            "push": "You push against the window. The glass holds firm, enchanted to withstand magical explosions. It certainly isn't going to yield to you.",
+            "pull": "You pull at the window frame. Nothing happens. The window was built to survive a wizard's worst day. Your best effort doesn't even register."
+        },
+        "clerk-memory-crystal": {
+            "take": "You reach for the memory crystal. It pulses warmly, full of centuries of suppressed identity. This holds the truth of who the Clerk was."
+        },
+        "gear-spring": {
+            "take": "You reach for the gear spring. It's been sitting among the wizard's collection for centuries, waiting for someone who needs to fix a clock."
+        }
+    },
+    "newHotspots": [
+        {
+            "id": "wizards-desk",
+            "name": "Wizard's Desk",
+            "zone": {"x": 580, "y": 370, "width": 100, "height": 50},
+            "interactionPoint": {"x": 630, "y": 420},
+            "responses": {
+                "look": "A heavy oak desk buried under centuries of accumulated genius and insanity. Ink stains, candle wax, and at least three different colors of potion residue form a geological record of the wizard's career. A drawer is built into the front, but a small sign reads: 'Drawer enchanted. Opens only for authorized personnel. (Authorization form available in drawer.)'",
+                "take": "The desk weighs approximately as much as the wizard's ego, which is to say it is immovable by mortal means.",
+                "use": "You sit at the desk and feel a sudden, overwhelming urge to write a strongly worded letter about parking enforcement. The wizard's rage is embedded in the furniture. You stand up quickly.",
+                "open": "You try the drawer. It's locked. The authorization form to unlock it is inside the drawer. The wizard understood circular bureaucracy on a molecular level.",
+                "push": "You push the desk. It doesn't budge. It has been here longer than most governments and intends to outlast several more.",
+                "pull": "You pull at the desk drawer. Locked. Enchanted. The wood is warm to the touch, as if the desk remembers the wizard's hands and resents yours.",
+                "talk": "You speak to the desk. A faint groan emanates from the wood -- settling, probably. Or the desk expressing its opinion of you. Furniture in a wizard's tower has earned the right to be judgmental.",
+                "default": "The wizard's desk radiates the quiet authority of a workspace that has witnessed both brilliance and catastrophic failure, often simultaneously."
+            }
+        }
+    ]
+}

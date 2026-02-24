@@ -133,10 +133,10 @@
                 "take": "You reach for a portrait. It feels... warm. Not warm like sunshine. Warm like something that doesn't want to be touched. You retract your hand with admirable speed.",
                 "use": "You straighten a crooked portrait. It immediately tilts back. The painting seems to prefer being askew. Artistic temperament, presumably.",
                 "default": "You examine the portraits. They examine you back. Several appear to be tracking your movement, which is either magical or the sign of a very talented painter.",
-                "talk": "You attempt a conversation with the Royal Portraits. The Royal Portraits is not a great conversationalist. Then again, neither are you.",
-                "open": "You search the Royal Portraits for a way to open it. There isn't one. It's not that kind of thing.",
-                "push": "You press against the Royal Portraits. It offers the same resistance as a mountain, which is to say, total and indifferent.",
-                "pull": "You pull on the Royal Portraits. Nothing happens. Gravity and architecture conspire against you, as usual."
+                "talk": "You address the assembled monarchs. 'Any advice?' King Aldric the Bold stares blankly. Queen Thessaly the Wise offers nothing. King Mortimer the Prepared -- well, he wasn't prepared for an olive, so his counsel is suspect.",
+                "open": "These are portraits, not cupboards. You push one aside, expecting a secret compartment. Just wall. The dynasty's secrets are limited to poor life choices and questionable interior design.",
+                "push": "You push a portrait. It swings out slightly, revealing... more wall. A century of dust cascades onto your head. The portrait settles back into place.",
+                "pull": "You pull a portrait toward you. The wire groans, the frame tilts, and dust rains down. The king depicted looks amused. Or constipated. Hard to tell with oil paint."
             }
         },
         {
@@ -158,9 +158,9 @@
                 "open": "Locked. The bone-shaped keyhole mocks your keyless state. You rattle the handle. The door rattles back. Neither of you gains ground.",
                 "push": "You lean against the door. It holds firm. This door was built to resist exactly this amount of determination.",
                 "default": "You examine the locked door. It's locked. That's its primary characteristic and it's doing an excellent job.",
-                "take": "The Locked Door isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
-                "talk": "You talk to the Locked Door. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "pull": "You heave at the Locked Door. Your muscles protest, the Locked Door doesn't. It has the structural advantage of not caring."
+                "take": "You attempt to remove the door from its hinges through sheer willpower. The door, being a door, remains exactly where doors are supposed to be.",
+                "talk": "You knock politely. 'Hello? Anyone in the kitchen?' The silence from beyond suggests either nobody's home, or the kitchen staff have a very strict policy about answering doors.",
+                "pull": "You pull at the locked door handle. The lock holds with the quiet confidence of something that has been keeping people out for generations."
             }
         },
         {
@@ -181,10 +181,10 @@
                 "use": "The portrait's glow intensifies as you approach. Every instinct says 'don't touch the glowing thing.' Those are good instincts. Listen to them.",
                 "talk": "You address the glowing portrait. The painted eyes seem to flicker toward you. 'Hello?' Nothing. But the glow brightens for a moment. Coincidence, surely.",
                 "default": "You regard the glowing portrait from a safe distance. The safe distance is 'anywhere that isn't touching it.'",
-                "take": "The Glowing Portrait isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
-                "open": "The Glowing Portrait doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "push": "You push the Glowing Portrait. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
-                "pull": "You grab the Glowing Portrait and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "take": "You reach toward the cursed portrait. The green glow flares and your fingers go numb. The portrait does not wish to be relocated. The portrait's wishes are enforced by magic.",
+                "open": "Open a painting? It's not a book. It's not a door. It's a cursed portrait of a dead queen, and it is emphatically not interested in being opened. The glow pulses irritably.",
+                "push": "You reach toward the frame. The green glow flares brighter as your hand approaches, the temperature dropping perceptibly. Every survival instinct you possess suggests reconsidering. You reconsider.",
+                "pull": "You try to pull the portrait from the wall. It clings with supernatural tenacity, the painted eyes following your hands with unmistakable disapproval."
             }
         },
         {
@@ -205,10 +205,10 @@
                 "take": "Structural support isn't portable. That's less a rule and more a law of physics.",
                 "use": "Leaning against them feels disrespectful to the masons who spent years of their lives carving badgers into load-bearing stone.",
                 "default": "You examine the columns. They bear the weight of the castle above with the silent patience of things that were never given a choice.",
-                "talk": "You speak to the Columns in a calm, measured tone. The Columns maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Columns. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Columns with all your might. All your might turns out to be insufficient. The Columns remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Columns. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "talk": "You whisper to a column. 'Holding up all right?' It is. It has been for centuries. It will continue to do so long after you've been forgotten. Columns are good at perspective.",
+                "open": "Columns are solid stone. There is nothing to open. If you're hoping for a secret passage, you've been reading too many adventure novels.",
+                "push": "You shove a column. It doesn't move. It weighs several tons and is holding up a castle. Your contribution to its structural analysis is noted and dismissed.",
+                "pull": "You try to pull a column toward you. This is the architectural equivalent of trying to persuade a mountain to relocate."
             }
         },
         {
@@ -229,10 +229,10 @@
                 "take": "Too heavy, too dusty, and nailed down at both ends. You'd sneeze yourself unconscious before you got it rolled up.",
                 "use": "You're already walking on it. That's the full extent of carpet interaction available to you.",
                 "default": "You regard the hallway carpet. It's witnessed every royal procession, every servant's shuffle, and one king's final olive-impeded footsteps.",
-                "talk": "You speak to the Hallway Carpet in a calm, measured tone. The Hallway Carpet maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Hallway Carpet. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Hallway Carpet with all your might. All your might turns out to be insufficient. The Hallway Carpet remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Hallway Carpet. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "talk": "You address the carpet. It does not respond. Centuries of being trodden on have given it a stoic disposition and absolutely no interest in conversation.",
+                "open": "You lift a corner of the carpet. Underneath: stone floor, dust, and the fossilized remains of someone's optimism. No secret passages.",
+                "push": "You try to push the carpet aside. It's nailed down and weighs roughly the same as your ambitions -- heavy, unwieldy, and going nowhere fast.",
+                "pull": "You pull at the hallway carpet. It bunches and wrinkles but remains stubbornly in place, anchored by the weight of centuries and an impressive amount of castle dust."
             }
         },
         {
@@ -253,10 +253,10 @@
                 "take": "Stealing castle fixtures is frowned upon, and the flames are still lit. You'd burn your inventory and your reputation simultaneously.",
                 "use": "You warm your hands near a sconce. The flame dances obligingly. For a moment, the hallway feels almost hospitable.",
                 "default": "You study the wall sconces. Their persistent burning in an abandoned hallway is either comforting or deeply unsettling, depending on your feelings about unexplained fire.",
-                "talk": "You talk to the Wall Sconces. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "open": "The Wall Sconces doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Wall Sconces and push. Nothing happens, except a mild strain in your lower back. The Wall Sconces wins this round.",
-                "pull": "You heave at the Wall Sconces. Your muscles protest, the Wall Sconces doesn't. It has the structural advantage of not caring."
+                "talk": "You address the flames. They flicker. This could mean anything, from 'I acknowledge your existence' to 'I am fire and do not have opinions.'",
+                "open": "Sconces don't open. They hold fire. That's their entire professional remit. They're not underperforming -- you're over-expecting.",
+                "push": "You push a sconce bracket. It pivots slightly, and for one thrilling moment you think you've found a secret lever. Then it springs back. It was just loose.",
+                "pull": "You yank a sconce. The bracket bends, the flame sputters indignantly, and a shower of rust flakes rains down. The sconce returns to its original position with weary resignation."
             }
         }
     ],

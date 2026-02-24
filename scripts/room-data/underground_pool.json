@@ -1,0 +1,11 @@
+{
+    "roomId": "underground_pool",
+    "overrides": {
+        "pool-surface": {
+            "use": "You dip your hand in the pool. The water is ice-cold and perfectly clear. Your reflection stares back, looking more worried than you'd like."
+        },
+        "cave-crystals": {
+            "pull": "You try to pull a crystal from the wall. It's fused to the rock by millions of years of geological patience. Your fingers are not a compelling counterargument."
+        }
+    }
+}

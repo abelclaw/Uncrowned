@@ -122,11 +122,11 @@
                 "look": "Black chunks of ancient coal embedded in the cavern ceiling, near the base of several stalactites. The coal is old enough to have opinions about the Carboniferous period. Breaking it free would require careful extraction to avoid bringing the stalactites down.",
                 "use": "You could try to extract the coal, but you'd need to be careful. The stalactites around it look structural.",
                 "default": "You eye the coal deposits. They've been waiting patiently for someone to burn them. The anticipation is presumably palpable, if you're coal.",
-                "take": "The Coal Deposits isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
-                "talk": "You talk to the Coal Deposits. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "open": "The Coal Deposits doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Coal Deposits and push. Nothing happens, except a mild strain in your lower back. The Coal Deposits wins this round.",
-                "pull": "You heave at the Coal Deposits. Your muscles protest, the Coal Deposits doesn't. It has the structural advantage of not caring."
+                "take": "You chip at the coal embedded in the ceiling. Fragments fall, but the main deposits are lodged between stalactites. Extracting them without bringing the ceiling down requires more finesse than brute force.",
+                "talk": "You address the coal deposits. They've been compressed into existence over geological ages. They have nothing to say to you, but they'd burn beautifully if given the chance.",
+                "open": "The coal deposits are embedded in the rock face. There's nothing to open -- the coal is right there, exposed by geological process rather than design.",
+                "push": "You push against the coal deposits. Bits of soot crumble onto your hands. The main mass stays put, embedded in the limestone like a dark secret in a bright wall.",
+                "pull": "You try to wrench coal from the ceiling. A small chunk comes free, trailing soot. The stalactites nearby ring faintly, disturbed by the vibration."
             }
         },
         {
@@ -147,10 +147,10 @@
                 "take": "You wave your hand through it. The mist parts and reforms, unimpressed by your intervention.",
                 "use": "You breathe it in. It tastes like ozone and old secrets.",
                 "default": "You observe the glowing mist. It drifts with the unhurried grace of something that has nowhere to be.",
-                "talk": "You address the Glowing Mist. It doesn't respond. This is the most productive conversation you've had today.",
-                "open": "The Glowing Mist doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "push": "You push the Glowing Mist. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
-                "pull": "You grab the Glowing Mist and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "talk": "You whisper into the glowing mist. Your words become visible for a moment -- shapes in the luminous haze, syllables turned to light. Then they dissipate. The mist has heard you. It has no reply.",
+                "open": "You can't open mist. Mist is already as open as a substance can be. It's dispersed particles of moisture. Opening it further would require splitting atoms.",
+                "push": "You push through the glowing mist. It swirls around you, cold and faintly electric. Your skin tingles. The mist is magical residue -- the exhaust fumes of ancient sorcery, still lingering.",
+                "pull": "You try to gather the mist in your arms. It slips through like luminous smoke, reforming in your wake. You can't hold magic's afterglow any more than you can hold a sigh."
             }
         },
         {
@@ -171,10 +171,10 @@
                 "take": "Solid stone. Not even a loose piece to pocket.",
                 "use": "You press your ear against the wall. It hums. The whole chamber hums. You've been humming along without noticing.",
                 "default": "You examine the chamber walls. They're smoother than any stonemason could achieve.",
-                "talk": "You speak to the Chamber Walls in a calm, measured tone. The Chamber Walls maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Chamber Walls. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Chamber Walls with all your might. All your might turns out to be insufficient. The Chamber Walls remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Chamber Walls. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "talk": "You speak to the walls. Your voice bounces back, layered and distorted by the dome's acoustics. For a moment it sounds like someone answering. Then you realize it's just you, multiplied. The loneliest kind of company.",
+                "open": "The walls are solid stone, polished smooth by millennia of sound waves. There's nothing to open. The chamber's only secret is acoustic, not architectural.",
+                "push": "You push against the smooth chamber wall. It's warm from absorbed sound energy, vibrating faintly. The wall has been listening to everything since the cave formed.",
+                "pull": "You press your palms against the wall and pull. Stone doesn't yield. The chamber walls have been standing for longer than language has existed. Your opinion on their position is not required."
             }
         },
         {
@@ -241,11 +241,11 @@
             "responses": {
                 "look": "Chunks of ancient coal, black and dense. They've been compressed by geological forces for millennia, which means they'll burn hot and long. Perfect for a forge.",
                 "use": "Coal is fuel. It needs a forge, a fire, or at minimum something that burns. By itself, it's just a very old rock.",
-                "take": "You try to take the Forge Coal, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
-                "talk": "You talk to the Forge Coal. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "open": "The Forge Coal doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Forge Coal and push. Nothing happens, except a mild strain in your lower back. The Forge Coal wins this round.",
-                "pull": "You heave at the Forge Coal. Your muscles protest, the Forge Coal doesn't. It has the structural advantage of not caring."
+                "take": "The coal is embedded in the chamber walls, fused there by heat and pressure over geological time. You'd need mining equipment and considerably more motivation.",
+                "talk": "You address the coal. It's ancient compressed carbon -- the fossilized remains of forests that died before your species learned to walk upright. It's not going to chat.",
+                "open": "Coal is a solid mineral. It doesn't open. It burns, it crumbles, it stains your fingers, but it has never in the history of geology opened.",
+                "push": "You push the coal chunks with your foot. They scrape across the floor, leaving black streaks. Coal goes where you push it. It's agreeable like that.",
+                "pull": "You pull the coal toward you. It slides across the stone, leaving a dark smear. The coal has no opinions about where it sits."
             }
         }
     ],

@@ -1,0 +1,31 @@
+{
+    "roomId": "echo_chamber",
+    "overrides": {
+        "coal-deposits": {
+            "take": "You chip at the coal embedded in the ceiling. Fragments fall, but the main deposits are lodged between stalactites. Extracting them without bringing the ceiling down requires more finesse than brute force.",
+            "talk": "You address the coal deposits. They've been compressed into existence over geological ages. They have nothing to say to you, but they'd burn beautifully if given the chance.",
+            "open": "The coal deposits are embedded in the rock face. There's nothing to open -- the coal is right there, exposed by geological process rather than design.",
+            "push": "You push against the coal deposits. Bits of soot crumble onto your hands. The main mass stays put, embedded in the limestone like a dark secret in a bright wall.",
+            "pull": "You try to wrench coal from the ceiling. A small chunk comes free, trailing soot. The stalactites nearby ring faintly, disturbed by the vibration."
+        },
+        "coal": {
+            "talk": "You address the coal. It's ancient compressed carbon -- the fossilized remains of forests that died before your species learned to walk upright. It's not going to chat.",
+            "open": "It's coal. A solid lump of compressed carbon. It doesn't open. It burns. Those are very different activities.",
+            "push": "You push the coal chunks with your foot. They scrape across the floor, leaving black streaks. Coal goes where you push it. It's agreeable like that.",
+            "pull": "You pull the coal toward you. It slides across the stone, leaving a dark smear. The coal has no opinions about where it sits.",
+            "take": "You reach for a chunk of coal. It's dense and ancient, compressed by millions of years of geological patience into something useful."
+        },
+        "glowing-mist": {
+            "talk": "You whisper into the glowing mist. Your words become visible for a moment -- shapes in the luminous haze, syllables turned to light. Then they dissipate. The mist has heard you. It has no reply.",
+            "open": "You can't open mist. Mist is already as open as a substance can be. It's dispersed particles of moisture. Opening it further would require splitting atoms.",
+            "push": "You push through the glowing mist. It swirls around you, cold and faintly electric. Your skin tingles. The mist is magical residue -- the exhaust fumes of ancient sorcery, still lingering.",
+            "pull": "You try to gather the mist in your arms. It slips through like luminous smoke, reforming in your wake. You can't hold magic's afterglow any more than you can hold a sigh."
+        },
+        "chamber-walls": {
+            "talk": "You speak to the walls. Your voice bounces back, layered and distorted by the dome's acoustics. For a moment it sounds like someone answering. Then you realize it's just you, multiplied. The loneliest kind of company.",
+            "open": "The walls are solid stone, polished smooth by millennia of sound waves. There's nothing to open. The chamber's only secret is acoustic, not architectural.",
+            "push": "You push against the smooth chamber wall. It's warm from absorbed sound energy, vibrating faintly. The wall has been listening to everything since the cave formed.",
+            "pull": "You press your palms against the wall and pull. Stone doesn't yield. The chamber walls have been standing for longer than language has existed. Your opinion on their position is not required."
+        }
+    }
+}

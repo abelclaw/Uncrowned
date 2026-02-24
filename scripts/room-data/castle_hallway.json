@@ -1,0 +1,39 @@
+{
+    "roomId": "castle_hallway",
+    "overrides": {
+        "royal-portraits": {
+            "talk": "You address the assembled monarchs. 'Any advice?' King Aldric the Bold stares blankly. Queen Thessaly the Wise offers nothing. King Mortimer the Prepared -- well, he wasn't prepared for an olive, so his counsel is suspect.",
+            "open": "These are portraits, not cupboards. You push one aside, expecting a secret compartment. Just wall. The dynasty's secrets are limited to poor life choices and questionable interior design.",
+            "push": "You push a portrait. It swings out slightly, revealing... more wall. A century of dust cascades onto your head. The portrait settles back into place.",
+            "pull": "You pull a portrait toward you. The wire groans, the frame tilts, and dust rains down. The king depicted looks amused. Or constipated. Hard to tell with oil paint."
+        },
+        "locked-door": {
+            "take": "You attempt to remove the door from its hinges through sheer willpower. The door, being a door, remains exactly where doors are supposed to be.",
+            "talk": "You knock politely. 'Hello? Anyone in the kitchen?' The silence from beyond suggests either nobody's home, or the kitchen staff have a very strict policy about answering doors.",
+            "pull": "You grab the handle and pull. The door is locked, not ajar. Pulling a locked door is optimism in its purest and most futile form."
+        },
+        "cursed-portrait": {
+            "open": "Open a painting? It's not a book. It's not a door. It's a cursed portrait of a dead queen, and it is emphatically not interested in being opened. The glow pulses irritably.",
+            "push": "You reach toward the frame. The green glow flares brighter as your hand approaches, the temperature dropping perceptibly. Every survival instinct you possess suggests reconsidering. You reconsider.",
+            "take": "You reach toward the cursed portrait. The green glow flares and your fingers go numb. The portrait does not wish to be relocated. The portrait's wishes are enforced by magic."
+        },
+        "columns": {
+            "talk": "You whisper to a column. 'Holding up all right?' It is. It has been for centuries. It will continue to do so long after you've been forgotten. Columns are good at perspective.",
+            "open": "Columns are solid stone. There is nothing to open. If you're hoping for a secret passage, you've been reading too many adventure novels.",
+            "push": "You shove a column. It doesn't move. It weighs several tons and is holding up a castle. Your contribution to its structural analysis is noted and dismissed.",
+            "pull": "You try to pull a column toward you. This is the architectural equivalent of trying to persuade a mountain to relocate."
+        },
+        "hallway-carpet": {
+            "talk": "You address the carpet. It does not respond. Centuries of being trodden on have given it a stoic disposition and absolutely no interest in conversation.",
+            "open": "You lift a corner of the carpet. Underneath: stone floor, dust, and the fossilized remains of someone's optimism. No secret passages.",
+            "push": "You try to push the carpet aside. It's nailed down and weighs roughly the same as your ambitions -- heavy, unwieldy, and going nowhere fast.",
+            "pull": "You grab an edge and pull. A cloud of dust erupts with the fury of centuries. The carpet moves approximately one inch. A pyrrhic victory at best."
+        },
+        "wall-sconces": {
+            "talk": "You address the flames. They flicker. This could mean anything, from 'I acknowledge your existence' to 'I am fire and do not have opinions.'",
+            "open": "Sconces don't open. They hold fire. That's their entire professional remit. They're not underperforming -- you're over-expecting.",
+            "push": "You push a sconce bracket. It pivots slightly, and for one thrilling moment you think you've found a secret lever. Then it springs back. It was just loose.",
+            "pull": "You yank a sconce. The bracket bends, the flame sputters indignantly, and a shower of rust flakes rains down. The sconce returns to its original position with weary resignation."
+        }
+    }
+}

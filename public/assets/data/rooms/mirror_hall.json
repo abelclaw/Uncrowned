@@ -77,8 +77,8 @@
                 "default": "You face the glowing mirror. It faces you back. The spirit within waits, patient as glass.",
                 "talk": "You address the mirror directly. The glass vibrates faintly but offers no reply. The spirit within prefers to be spoken to as a person, not as furniture. Try talking to the Mirror Spirit -- it has feelings. Probably.",
                 "open": "You search for hinges, a latch, a hidden seam. Nothing. It's a mirror, not a medicine cabinet. The spirit inside didn't get in through a door.",
-                "push": "You lean into the Glowing Mirror and push. Nothing happens, except a mild strain in your lower back. The Glowing Mirror wins this round.",
-                "pull": "You grip the ornate frame and heave. The mirror doesn't budge. It was installed by someone who anticipated exactly this level of adventurer ingenuity."
+                "push": "You push the mirror. Your reflection pushes back. The glass is cold under your palms and doesn't budge. The frame is bolted to the wall with the permanence of something that was meant to stay.",
+                "pull": "You try to pull the central mirror from its mounting. It's fixed to the wall with enchanted brackets that hum warningly when touched. The mirror intends to stay."
             }
         },
         {

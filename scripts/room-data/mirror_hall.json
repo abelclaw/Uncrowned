@@ -1,0 +1,9 @@
+{
+    "roomId": "mirror_hall",
+    "overrides": {
+        "central-mirror": {
+            "push": "You push the mirror. Your reflection pushes back. The glass is cold under your palms and doesn't budge. The frame is bolted to the wall with the permanence of something that was meant to stay.",
+            "pull": "You grab the mirror's edge and pull. It shifts slightly, revealing blank wall behind it. Then some force slides it back into place. The mirror prefers its current position."
+        }
+    }
+}

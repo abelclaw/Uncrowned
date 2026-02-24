@@ -262,7 +262,7 @@
                 "talk": "You address the dais. It does not respond. It is a platform. Platforms are famously non-verbal, which makes them the ideal audience for your increasingly unhinged monologues.",
                 "open": "It's a solid stone platform. There is nothing to open. No secret compartments, no hidden levers, no trapdoors. Just stone, cracks, and the memory of where important people once sat while making bad decisions.",
                 "push": "You push the dais. It doesn't move. It's a stone platform built into the floor. You might as well push the castle. Actually, given the state of things, pushing the castle might be easier.",
-                "pull": "You brace yourself and pull at the dais edge. Nothing. The dais was built to support the weight of monarchy, which is considerably heavier than one confused tinker.",
+                "pull": "You dig your fingers under the dais edge and pull. The stone platform is set into the floor, unmoved by your effort. It was built to hold the weight of sovereignty. Your tugging is merely atmospheric.",
                 "default": "You examine the dais. Once a stage for kings. Now a pedestal for rubble. Still structurally sound, which is more than you can say for most things in this castle."
             }
         },

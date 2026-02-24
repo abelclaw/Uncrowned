@@ -1,0 +1,8 @@
+{
+    "roomId": "underground_river",
+    "overrides": {
+        "rocky-shore": {
+            "use": "You kneel on the rocky shore and dip your hand in the current. Cold. Fast. The river has places to be and is not stopping for tourists."
+        }
+    }
+}

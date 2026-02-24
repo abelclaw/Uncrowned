@@ -92,10 +92,10 @@
                 "use": "You dip a hand in. The water is freezing. Something brushes your fingers. You pull your hand out faster than you've ever pulled anything in your life.",
                 "take": "You scoop up some water. It's cold, dark, and smells like cave. You let it drain through your fingers. Some things are better left in their natural habitat.",
                 "default": "You observe the dark water. It observes you back, from multiple angles, with eyes you can't see.",
-                "talk": "You speak to the Dark Water in a calm, measured tone. The Dark Water maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Dark Water. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Dark Water with all your might. All your might turns out to be insufficient. The Dark Water remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Dark Water. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "talk": "You whisper to the dark water. The surface ripples in response. You choose to believe that was the breeze, because the alternative is that the water heard you.",
+                "open": "Open the water? It's not a door. Though if it were, you absolutely should not go through it. The things on the other side have been fasting.",
+                "push": "You push at the water's surface with your palm. It yields, obviously -- it's water. Something nudges back from below. You stop pushing.",
+                "pull": "You can't pull water. That's not how water works. That's not how anything works. You're in a cave arguing with fluid dynamics."
             }
         },
         {
@@ -114,12 +114,12 @@
             "responses": {
                 "look": "A narrow stone walkway runs above the waterline, connecting the entrance to the deeper passages. It's slick with moisture and barely wide enough for one person. The ancient engineers who built this apparently assumed everyone was thin. And had excellent balance.",
                 "default": "You follow the walkway carefully. It's slippery but solid. The water below makes helpful gurgling sounds that are either calming or ominous.",
-                "take": "You try to take the Stone Walkway, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
+                "take": "The stone walkway is carved from the cavern floor. You'd need to dismantle the entire east wing to take it, which feels like an overcommitment for a souvenir.",
                 "use": "Using the Stone Walkway doesn't accomplish anything obvious. Perhaps it needs to be used with something else. Or perhaps it's just decorative.",
-                "talk": "You speak to the Stone Walkway in a calm, measured tone. The Stone Walkway maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Stone Walkway. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Stone Walkway with all your might. All your might turns out to be insufficient. The Stone Walkway remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Stone Walkway. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "talk": "You address the walkway. 'Thank you for existing,' you say. The stone does not respond, but you sense a quiet structural pride.",
+                "open": "It's a walkway, not a trapdoor. Though given the quality of construction down here, there's probably a trapdoor somewhere. Just not this one.",
+                "push": "You push against the walkway with your foot. It holds. It has been holding for centuries. Your foot is not going to be the thing that changes its mind.",
+                "pull": "You crouch and pull at the walkway's edge. It holds fast. The walkway was here before you, and it will be here after you. Especially if you fall into the water."
             }
         }
     ],

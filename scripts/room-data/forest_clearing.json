@@ -1,0 +1,16 @@
+{
+    "roomId": "forest_clearing",
+    "overrides": {
+        "forest-trees": {
+            "pull": "You pull at a low branch. It bends, then snaps back, showering you in leaves and the quiet judgment of something that was here long before you."
+        },
+        "rusty-key": {
+            "take": "You reach for the rusty key. It's cold, corroded, and shaped for a lock you haven't found yet.",
+            "talk": "You address the key. It jingles faintly in the breeze, which is either a response or the wind. Keys are famously nonverbal.",
+            "open": "You can't open a key. Keys open other things. That's the entire point of keys. You are confused about the direction of this relationship."
+        },
+        "stick": {
+            "take": "You reach for the gnarled stick. It's light, sturdy, and has the rough charm of something that fell off a tree and landed on a destiny."
+        }
+    }
+}

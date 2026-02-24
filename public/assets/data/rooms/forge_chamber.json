@@ -93,7 +93,7 @@
                 "take": "You cannot take a forge. Forges are, by design, immovable. This is both their strength and their limitation.",
                 "default": "You examine the forge. It's waited centuries for someone to light it again. It can wait a few more minutes.",
                 "talk": "You address the forge directly. It does not respond. It is a forge. In its defence, it never claimed to be a conversationalist.",
-                "open": "The forge doesn't open. It's not a box. It's a millennia-old monument to dwarven engineering. You stand before it, not beside a lid.",
+                "open": "The forge is an open structure by design -- fire pit, chimney, bellows. Everything is already accessible. There's no door to open because forges need airflow, not privacy.",
                 "push": "You push against the forge. It doesn't move. You have successfully confirmed that several tons of dwarven stonework outweighs your ambition.",
                 "pull": "You pull at the forge. Nothing happens, except a faint sense that the dwarven spirit is judging you. Which he is. He absolutely is."
             }
@@ -214,7 +214,7 @@
                 "talk": "You peer into the fire pit and call down. Your voice echoes off heat-scarred stone. No one answers. The last fire here died centuries ago.",
                 "open": "It's a pit. It's already open. That's the defining characteristic of pits.",
                 "push": "You push at the stones lining the pit. They're fused together by centuries of heat. Even cooled, they remember being molten.",
-                "pull": "You pull at a fire pit stone. It doesn't budge. These stones survived dwarven forge-heat. Your fingers are not a compelling argument."
+                "pull": "You pull at a stone lining the fire pit. It grinds but doesn't come free. These stones were fitted by dwarven hands and sealed by dwarven fire. Your grip is not the tool for this job."
             }
         },
         {
@@ -258,11 +258,11 @@
             "responses": {
                 "look": "An ancient version of the kingdom's administrative seal, cracked in two. The badger crest is recognizable but angrier than the modern version. This is the original Kingdom Seal -- administrative, not royal. It could be repaired if the forge were operational.",
                 "use": "The seal is broken. It needs to be reforged -- literally. A working forge could repair it.",
-                "take": "The Broken Seal Stamp isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
-                "talk": "You attempt a conversation with the Broken Seal Stamp. The Broken Seal Stamp is not a great conversationalist. Then again, neither are you.",
-                "open": "You search the Broken Seal Stamp for a way to open it. There isn't one. It's not that kind of thing.",
-                "push": "You press against the Broken Seal Stamp. It offers the same resistance as a mountain, which is to say, total and indifferent.",
-                "pull": "You pull on the Broken Seal Stamp. Nothing happens. Gravity and architecture conspire against you, as usual."
+                "take": "You reach for the two halves of the ancient seal. The badger on the crest stares back with the fixed fury of heraldic art.",
+                "talk": "You address the broken seal. The badger on the crest stares back with the fixed fury of heraldic art. It has nothing to say, but it has strong opinions about being in two pieces.",
+                "open": "The seal stamp is not a container. It's a stamp. It presses things. It does not open. Being broken doesn't make it an openable object -- it makes it a broken object.",
+                "push": "You push the seal halves together. They don't fuse. Metallurgy requires more than optimism. It requires heat, an anvil, and ideally a spectral dwarven craftsman.",
+                "pull": "You pull the seal halves further apart. This is the opposite of repairing something. The badger on the crest looks even more disgruntled, which you didn't think was possible."
             }
         }
     ],
@@ -497,7 +497,10 @@
                 "talk": "The dwarven spirit opens one eye. 'Forge needs coal. And fire. Light the forge, and I'll show you what real smithing looks like.' The eye closes again. Conversation over.",
                 "use": "You cannot use a dwarven spirit. They use you. That's how forges work.",
                 "take": "The dwarven spirit is not an item. He is a craftsman. The distinction matters to him, even in death.",
-                "default": "The dwarven spirit continues his eternal vigil over the cold forge. Patience, apparently, is a dwarven virtue."
+                "default": "The dwarven spirit continues his eternal vigil over the cold forge. Patience, apparently, is a dwarven virtue.",
+                "open": "You cannot open a ghost. The spirit glares at you with the intensity of someone who has been dead long enough to know an insult when he sees one.",
+                "push": "You reach toward the dwarven spirit. Your hand passes through him. He looks down at your arm inside his torso, then up at you, with the expression of a man who has endured indignities beyond death.",
+                "pull": "You try to pull the spirit toward you. Your hands close on empty air. He's incorporeal. Being dead tends to do that. The spirit sighs and resumes his meditation."
             }
         }
     ],

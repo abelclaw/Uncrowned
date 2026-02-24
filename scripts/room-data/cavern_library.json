@@ -1,0 +1,50 @@
+{
+    "roomId": "cavern_library",
+    "overrides": {
+        "bookshelves": {
+            "talk": "You address the bookshelves. They do not respond. Literature is a one-way conversation, which is probably for the best -- these books have seen things.",
+            "open": "Most of the books are already open, in the sense that their spines have given up entirely. The ones still sealed shut are sealed for a reason.",
+            "push": "You lean into the shelves. They creak ominously. The last person who pushed a bookshelf in here created the 'collapsed shelves' section. Learn from history.",
+            "pull": "You pull at a shelf. Books cascade onto your feet with the enthusiasm of knowledge freed from its prison. The library disapproves. You can tell by the dust."
+        },
+        "reading-desk": {
+            "take": "It's carved from the cavern floor itself. Taking it would require relocating the geological formation beneath it. You'd need a team of dwarves and a compelling reason. You have neither.",
+            "talk": "You mutter to the desk. It's a desk. It absorbs your words the way it absorbs everything else -- silently, judgmentally, with centuries of practice.",
+            "open": "You check the desk for drawers. There's one small compartment, but it's been emptied long ago. A faint ring of dust marks where an ink bottle once sat.",
+            "push": "The desk is carved from the cavern floor itself. Pushing it would require relocating the entire geological formation beneath it.",
+            "pull": "You pull at the desk. The desk remains. The cavern remains. Your dignity does not."
+        },
+        "collapsed-shelves": {
+            "talk": "You address the ruins of the collapsed shelves. They have nothing to say. They've already made their statement, and it was loud, wooden, and final.",
+            "open": "The shelves are already as open as shelves can be. More open, in fact. They've achieved a state of openness that transcends their original design parameters.",
+            "push": "You push at the debris pile. It shifts slightly, releasing a cloud of dust and the faint smell of academic ambition gone wrong.",
+            "pull": "You pull at the wreckage. A board comes loose. Then another. The pile settles with a groan that suggests it's not done collapsing -- it's just resting."
+        },
+        "crystal-chandelier": {
+            "talk": "You speak to the chandelier. It glows impassively. Crystals are notoriously poor conversationalists -- all brilliance, no substance. Rather like certain monarchs.",
+            "open": "It's a solid crystal formation, not a locket. There is nothing to open. The light it emits is not a door.",
+            "push": "It's on the ceiling. You are on the floor. The geometry of the situation is not in your favor.",
+            "pull": "Even if you could reach it, pulling down a crystal chandelier in an enclosed cavern ranks somewhere between 'unwise' and 'suicidal.'"
+        },
+        "scattered-books": {
+            "talk": "You read aloud from a random page. The words sound like a tax code having a nervous breakdown. The acoustics amplify the misery. You stop.",
+            "open": "You crack open a book that was face-down. The page reads: 'If you are reading this, the library has already claimed you.' You close it again.",
+            "push": "You sweep some books aside with your foot. The dust cloud that rises carries the condensed disappointment of a thousand unfinished dissertations.",
+            "pull": "You pull a book from the pile. Its cover reads 'Advanced Theories of Cavern Acoustics, Vol. XIV.' Someone wrote fourteen volumes on cavern acoustics."
+        },
+        "ancient-ink": {
+            "talk": "You address the ink bottle. It vibrates slightly -- either acknowledging you or expressing displeasure at being spoken to like a common condiment.",
+            "open": "You briefly consider uncorking the bottle here. The ink inside pulses eagerly. Better to keep it sealed until you have something worth writing on.",
+            "push": "You nudge the ink bottle. It slides across the desk with surprising reluctance, as though it has opinions about its placement.",
+            "pull": "You pull the ink bottle toward you. It comes willingly enough. Centuries of sitting on a desk have given it a yearning for adventure.",
+            "take": "You reach for the ink bottle. It slides toward your hand with surprising willingness, as if it has been waiting for someone with the nerve to use it."
+        },
+        "wood-planks": {
+            "talk": "You speak to the planks. They do not respond. Wood is famously tight-lipped, even wood that once held the collected works of dwarven bureaucracy.",
+            "open": "They're planks. They don't open. They're the flattest, most fundamentally non-opening objects in existence.",
+            "push": "You shove the planks around. They scrape against the stone floor with a sound that suggests the library disapproves of your furniture rearrangement.",
+            "pull": "You pull a plank free from the debris pile. It comes loose with a groan of splintering wood and the muffled thud of books that were using it as a roof.",
+            "take": "You grab a plank from the debris pile. It's warped, splintered, and smells of academic ambition gone wrong. Not useful, but you admire its history."
+        }
+    }
+}

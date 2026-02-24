@@ -1,0 +1,20 @@
+{
+    "roomId": "waiting_room",
+    "overrides": {
+        "waiting-chairs": {
+            "talk": "You address the chairs. They creak. Whether this is a response or the natural complaint of furniture that has supported anxious bureaucratic petitioners for centuries is unclear.",
+            "open": "The chairs are solid wood and iron. There's nothing to open. They were designed for one purpose: making you uncomfortable while you wait. They excel at this.",
+            "push": "You shove a chair. It scrapes across the stone floor with a shriek that echoes through the waiting room. Several imaginary petitioners give you disapproving looks.",
+            "pull": "You pull a chair toward you. It resists, its legs catching on every crack in the stone floor. Even the furniture here is uncooperative."
+        },
+        "number-board": {
+            "talk": "You address the number board. It clicks to the next number with mechanical indifference. Whether it heard you or simply advanced on schedule is a question for philosophers, not adventurers.",
+            "open": "The number board is a flat mechanical display bolted to the wall. There's no panel to remove, no back to open. Its inner workings are as inaccessible as the Clerk's emotional range.",
+            "push": "You push the number board. It clicks forward one number. Then back. Then forward three. The mechanism has opinions about being manhandled, and it expresses them numerically.",
+            "pull": "You pull at the number board. It's bolted to the wall with fasteners that were installed by someone who anticipated frustrated petitioners. The bolts hold. The board judges."
+        },
+        "number-display": {
+            "take": "The number display is bolted to the wall and enchanted against removal. The Clerk's institutional paranoia extends to fixtures."
+        }
+    }
+}

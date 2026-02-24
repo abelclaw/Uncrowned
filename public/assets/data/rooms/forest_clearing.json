@@ -76,9 +76,9 @@
                 "talk": "You address the bees politely. They do not acknowledge your existence, which is probably the best outcome here.",
                 "use": "You're not sure what 'using' a beehive entails, but you're fairly certain the bees have strong opinions about it.",
                 "default": "You regard the beehive from what you hope is a safe distance. The bees regard you from what they know is striking distance.",
-                "open": "You search the Suspicious Beehive for a way to open it. There isn't one. It's not that kind of thing.",
-                "push": "You press against the Suspicious Beehive. It offers the same resistance as a mountain, which is to say, total and indifferent.",
-                "pull": "You pull on the Suspicious Beehive. Nothing happens. Gravity and architecture conspire against you, as usual."
+                "open": "You want to open a beehive. With your bare hands. In a forest. Without protective equipment. This is natural selection auditioning candidates, and you're raising your hand.",
+                "push": "You press against the beehive. The buzzing intensifies to a pitch that suggests imminent and extremely personal consequences. You withdraw your hand with the speed of someone who values their face.",
+                "pull": "You reach for the beehive and then immediately reconsider. Your fingers got the message from your brain just in time. The bees continue their day, unaware of how close you came to a catastrophically stupid decision."
             }
         },
         {
@@ -100,9 +100,9 @@
                 "use": "You consider arranging a bouquet but decide against it. There's no one to impress, and the flowers know it.",
                 "talk": "You compliment the wildflowers on their resilience. They sway in the breeze, unmoved by flattery.",
                 "default": "You interact with the wildflowers in a way that leaves both parties mildly confused.",
-                "open": "The Wildflowers doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Wildflowers and push. Nothing happens, except a mild strain in your lower back. The Wildflowers wins this round.",
-                "pull": "You heave at the Wildflowers. Your muscles protest, the Wildflowers doesn't. It has the structural advantage of not caring."
+                "open": "You pry a flower open to examine its inner workings. Congratulations, you've just performed botany's least necessary autopsy. The flower is now slightly worse off, and you've learned nothing.",
+                "push": "You press the wildflowers flat against the ground. They spring back up the moment you remove your hand, because flowers have more determination than you do.",
+                "pull": "You yank a handful of wildflowers from the earth. They immediately go limp in your fist, as if dying out of spite. You drop them, ashamed. The remaining flowers lean away from you."
             }
         },
         {
@@ -123,10 +123,10 @@
                 "take": "You attempt to take an entire tree. The tree does not cooperate. It has been standing here for centuries and is not about to relocate for the likes of you.",
                 "use": "You lean against the tree trunk. It's solid, ancient, and entirely uninterested in your problems. Trees predate the concept of empathy.",
                 "default": "You regard the ancient trees. They regard the centuries. Neither of you is impressed with the other.",
-                "talk": "You talk to the Forest Trees. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "open": "The Forest Trees doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Forest Trees and push. Nothing happens, except a mild strain in your lower back. The Forest Trees wins this round.",
-                "pull": "You heave at the Forest Trees. Your muscles protest, the Forest Trees doesn't. It has the structural advantage of not caring."
+                "talk": "You speak to the trees. They say nothing, because they are trees. If you were expecting a conversation, you may have read too many fairy tales. Then again, you are in one, so perhaps your expectations are simply ahead of schedule.",
+                "open": "You try to pry the bark open. The tree resists with the quiet dignity of something that has endured ice ages, drought, and now this. You are the worst thing that has happened to it today, and it's been struck by lightning twice.",
+                "push": "You shove the tree with both hands. It does not move. It has roots deeper than your ancestry and a trunk wider than your ambitions. The tree wins this one.",
+                "pull": "You pull at a low branch. It bends, then snaps back, showering you in leaves and the quiet judgment of something that was here long before you."
             }
         },
         {
@@ -147,10 +147,10 @@
                 "take": "You reach for a fern frond. It curls away from your hand like a cat that's been petted wrong. The other ferns pretend not to notice.",
                 "use": "You brush the ferns aside, revealing more ferns. Beneath those, more ferns. It's ferns all the way down.",
                 "default": "You contemplate the ferns. The ferns contemplate photosynthesis. One of you is more productive.",
-                "talk": "You talk to the Ferns. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "open": "The Ferns doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Ferns and push. Nothing happens, except a mild strain in your lower back. The Ferns wins this round.",
-                "pull": "You heave at the Ferns. Your muscles protest, the Ferns doesn't. It has the structural advantage of not caring."
+                "talk": "You address the ferns in a low, respectful tone. They unfurl slightly. You choose to interpret this as acknowledgement rather than phototropism, because your self-esteem needs the win.",
+                "open": "You part the ferns like curtains, expecting... what, exactly? A hidden door? A secret message? There's just dirt. Dirt and the faint sense that you've been overthinking this.",
+                "push": "You push the ferns aside. They spring back immediately, having perfected passive resistance long before anyone thought to give it a name.",
+                "pull": "You pull at the ferns. They hold fast to the soil with a grip that suggests centuries of evolutionary commitment to this exact patch of forest floor. Your grip, by comparison, is temporary."
             }
         },
         {
@@ -171,10 +171,10 @@
                 "take": "You want to take a distant lake. This is ambitious even by your standards, which are admittedly quite low.",
                 "use": "The lake is scenic but thoroughly distant. You'd need to find a path there, assuming one exists. For now, it remains a pretty thing you can't have, much like competence.",
                 "default": "You gaze at the distant lake. It glitters back, serene and unhelpful.",
-                "talk": "You address the Distant Lake. It doesn't respond. This is the most productive conversation you've had today.",
-                "open": "The Distant Lake doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "push": "You push the Distant Lake. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
-                "pull": "You grab the Distant Lake and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "talk": "You shout at the lake. The lake does not respond, on account of being a body of water roughly half a mile away. Your voice echoes back, sounding embarrassed on your behalf.",
+                "open": "You cannot open a lake. Lakes are already open. That is, in fact, one of their defining characteristics. Congratulations on attempting the impossible and the unnecessary simultaneously.",
+                "push": "The lake is quite far away. You'd need considerably longer arms, or perhaps a fundamental misunderstanding of physics. You have one of those, at least.",
+                "pull": "You mime pulling the distant lake toward you. The lake remains exactly where it is. Water, as a rule, does not respond to pantomime."
             }
         },
         {
@@ -195,10 +195,106 @@
                 "take": "You can't take a crack. You can, however, take what's inside it. Assuming your hands are brave enough.",
                 "use": "You poke at the crack experimentally. It remains a crack. The thing inside it, however, looks like it could be useful elsewhere.",
                 "default": "You peer into the crack. Something glints back at you, like a tiny metallic eye daring you to reach in.",
-                "talk": "You address the Crack in Stump. It doesn't respond. This is the most productive conversation you've had today.",
-                "open": "The Crack in Stump doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "push": "You push the Crack in Stump. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
-                "pull": "You grab the Crack in Stump and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "talk": "You lean in close and whisper into the crack. Something metallic shifts inside, as if startled. Even the objects in this forest aren't used to being spoken to by passing lunatics.",
+                "open": "You try to pry the crack wider with your fingers. The stump creaks in protest. The crack was here before you, and it will be here after. It has no interest in accommodating your impatient fingers.",
+                "push": "You push on either side of the crack, trying to close it. The stump is unmoved. It's been cracked since before your grandparents were a romantic possibility, and it's not about to change now.",
+                "pull": "You wedge your fingers into the crack and pull. The stump groans but holds firm. Whatever's inside shifts slightly, glinting at you as if to say 'nice try, but you'll need to be more specific.'"
+            }
+        },
+        {
+            "id": "sunlight",
+            "name": "Sunlight",
+            "zone": {
+                "x": 350,
+                "y": 50,
+                "width": 200,
+                "height": 150
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 400
+            },
+            "responses": {
+                "look": "Shafts of golden sunlight pierce the canopy in lazy columns, each one thick with dancing dust motes. The light has a warm, honeyed quality that makes everything it touches look almost nostalgic. It's the kind of sunlight that exists specifically to make you forget that the kingdom is cursed.",
+                "take": "You cup your hands and try to catch a sunbeam. It slips through your fingers, as sunlight does. You've now attempted to steal from the sun. Add that to the list of things you've failed at today.",
+                "use": "You bask in the sunlight for a moment. It's warm, pleasant, and accomplishes absolutely nothing toward saving the kingdom. But at least your vitamin D levels are improving.",
+                "talk": "You address the sunlight directly. It continues to be sunlight. This is a conversation with exactly the depth you deserve.",
+                "open": "You cannot open sunlight. It is already as open as a thing can be. It's literally just photons arriving unannounced.",
+                "push": "You swat at a sunbeam. The photons are unimpressed. They've traveled ninety-three million miles to get here, and you're trying to shoo them away with your hand.",
+                "pull": "You try to pull the sunlight closer. It is already everywhere it intends to be. You are not the sun's priority, and honestly, that's fair.",
+                "default": "You squint up at the dappled sunlight. It's beautiful and warm and completely indifferent to your quest."
+            }
+        },
+        {
+            "id": "canopy",
+            "name": "Forest Canopy",
+            "zone": {
+                "x": 50,
+                "y": 30,
+                "width": 860,
+                "height": 80
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 400
+            },
+            "responses": {
+                "look": "A dense lattice of branches and leaves overhead, filtering the sun into scattered gold coins on the forest floor. The occasional gap reveals blue sky beyond, like portholes in a very leafy ship. Something rustles up there. Probably a squirrel. Hopefully a squirrel.",
+                "take": "You reach upward. The canopy is approximately thirty feet above you. Your arms are approximately not thirty feet long. This is an impasse.",
+                "use": "You're not sure how one 'uses' a canopy. Shelter from rain, perhaps, though it's not raining. Protection from existential dread, though it's not very good at that either.",
+                "talk": "You call up to the canopy. Leaves rustle in response. A bird takes flight, offended by the disturbance. You've successfully annoyed wildlife. Today has been productive.",
+                "open": "You cannot open the canopy. The trees grew it over centuries, and they did not install a sunroof. That would require foresight and zoning permits, neither of which trees possess.",
+                "push": "You jump and push at the lowest branches. They bounce back, showering you with leaves and the quiet contempt of every bird nested above.",
+                "pull": "You reach up and pull at a low-hanging branch. Leaves shower down, along with a startled beetle that lands on your shoulder and expresses its displeasure.",
+                "default": "You gaze up at the forest canopy. It gazes back, in the way that a ceiling made of leaves can gaze, which is not at all."
+            }
+        },
+        {
+            "id": "overhanging-branch",
+            "name": "Overhanging Branch",
+            "zone": {
+                "x": 400,
+                "y": 280,
+                "width": 90,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 445,
+                "y": 380
+            },
+            "responses": {
+                "look": "A thick branch extends over the stump, sagging under the weight of the beehive like a reluctant landlord burdened by terrible tenants. The bark is scarred with claw marks -- something climbs up here regularly, though presumably not for the honey. Nothing is that brave or that stupid.",
+                "take": "The branch is firmly attached to the tree. Trees tend to frown on amputation, and this one has a beehive for security. You'd need a saw and a death wish, and you only have one of those.",
+                "use": "You could swing from the branch, but it's supporting a beehive, and the bees would have very strong opinions about the sudden turbulence. You decide against it.",
+                "talk": "You address the branch. It creaks slightly in the wind, which is not a response so much as a structural complaint. The beehive buzzes disapprovingly at the noise.",
+                "open": "Branches do not open. They are not doors, envelopes, or negotiations. They are wood. Solid, unbothered wood.",
+                "push": "You push the branch. It sways. The beehive sways with it. The bees begin to raise their collective voice. You stop pushing immediately, because you enjoy having an un-stung face.",
+                "pull": "You pull the branch downward. The beehive dips closer to your head. The buzzing intensifies. You release the branch with the speed of someone who has just remembered what regret feels like.",
+                "default": "You eye the branch warily. It holds a beehive. The beehive holds bees. The bees hold grudges."
+            }
+        },
+        {
+            "id": "stone-petals",
+            "name": "Grey Petals",
+            "zone": {
+                "x": 240,
+                "y": 460,
+                "width": 60,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 270,
+                "y": 450
+            },
+            "responses": {
+                "look": "At the edge of the wildflower carpet, several petals have turned an ashen grey. They're stiff to the touch -- not wilted, but petrified. Turning to stone. Whatever curse is spreading through the kingdom, it's reached even the flowers. That's either poetic or deeply unfair. Probably both.",
+                "take": "You pluck a grey petal. It snaps off with a tiny 'tink,' like ceramic. It sits in your palm, cold and rigid. There's nothing useful about a stone petal, but it's a grim little souvenir of a kingdom in decline.",
+                "use": "You rub the stone petal between your fingers. It doesn't crumble -- it's solid through and through. Whatever's turning the kingdom to stone, it's thorough. Even the decorative bits aren't spared.",
+                "talk": "You whisper to the petrified petals. They do not respond, on account of being stone. They didn't respond when they were flowers either, but at least then they had the excuse of being alive.",
+                "open": "You try to peel a stone petal open. It doesn't flex -- it's solid mineral all the way through. Whatever this curse is, it doesn't do things by halves.",
+                "push": "You press a grey petal. It doesn't bend -- it's solid stone all the way through. You tap it with your fingernail and it rings faintly, like a tiny, deeply depressing bell.",
+                "pull": "You tug a stone petal free from its stem. It comes away with a sharp snap. The flower it belonged to doesn't seem to mind, having already moved well past the point of caring about anything.",
+                "default": "You examine the grey petals. They're a reminder that the curse isn't just a rumor. It's here, in the flowers, creeping closer one petal at a time."
             }
         }
     ],
@@ -224,7 +320,7 @@
                 "pull": "You yank at the stump. Somewhere, a tree ghost is deeply offended.",
                 "talk": "You whisper sweet nothings to the stump. It maintains a dignified silence, which is more than most conversation partners manage.",
                 "default": "You poke at the old stump. Nothing interesting happens, which is exactly what the stump wanted.",
-                "open": "The Old Tree Stump doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest."
+                "open": "You pry at the stump's bark, looking for a hidden compartment. There isn't one. It's a stump, not a safe. The crack in its side is about as close to 'open' as a dead tree gets."
             }
         },
         {
@@ -243,11 +339,11 @@
             "responses": {
                 "look": "A small, corroded key wedged into a crack in the stump. It's the color of regret and oxidation.",
                 "use": "Use it on what? You're standing in a forest. Trees don't have locks. Usually.",
-                "take": "The Rusty Key isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
-                "talk": "You address the Rusty Key. It doesn't respond. This is the most productive conversation you've had today.",
-                "open": "The Rusty Key doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "push": "You push the Rusty Key. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
-                "pull": "You grab the Rusty Key and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "take": "You reach for the rusty key. It's cold, corroded, and shaped for a lock you haven't found yet.",
+                "talk": "You address the rusty key. It says nothing, being a key. Keys communicate through function, not conversation. This one's message is: 'I open something. Find out what.'",
+                "open": "You can't open a key. Keys open other things. That's the entire point of keys. You are confused about the direction of this relationship.",
+                "push": "You push the key deeper into the crack. That's the opposite of progress. The key glints at you reproachfully from its new, less accessible position.",
+                "pull": "You could pull the key out. That's essentially what 'take' means. But you've chosen to describe it differently, so here we are, discussing semantics in a forest."
             }
         },
         {
@@ -265,12 +361,12 @@
             },
             "responses": {
                 "look": "A sturdy-looking stick lying on the ground. Nature's multi-tool. Or at least nature's poking device.",
-                "take": "You try to take the Sturdy Stick, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
-                "use": "Using the Sturdy Stick doesn't accomplish anything obvious. Perhaps it needs to be used with something else. Or perhaps it's just decorative.",
-                "talk": "You speak to the Sturdy Stick in a calm, measured tone. The Sturdy Stick maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Sturdy Stick. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Sturdy Stick with all your might. All your might turns out to be insufficient. The Sturdy Stick remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Sturdy Stick. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "take": "The stick is tangled in undergrowth and seems determined to stay in the clearing. You tug, twist, and eventually accept that this particular stick has chosen its life path.",
+                "use": "You wave the stick around experimentally. Nothing happens, but you feel marginally more dangerous. This is what passes for a weapon upgrade in your current situation.",
+                "talk": "You speak to the stick. The stick, being wood, offers no reply. You've now held a conversation with a dead branch. Your social life has reached its nadir.",
+                "open": "You cannot open a stick. Sticks are already in their final form. They have achieved their destiny. You should be so lucky.",
+                "push": "You nudge the stick with your foot. It rolls slightly. This is the most cooperative anything in this forest has been, which says more about the forest than the stick.",
+                "pull": "You drag the stick toward you with your foot. It complies, because sticks have no opinions about direction. You and this stick are going to get along fine."
             }
         }
     ],

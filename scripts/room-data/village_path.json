@@ -1,0 +1,11 @@
+{
+    "roomId": "village_path",
+    "overrides": {
+        "forest-edge": {
+            "open": "You can't open a forest. Forests are already open, in the sense that they're outdoors. The trees don't have a door policy."
+        },
+        "dirt-path": {
+            "open": "Paths don't open. They're already open. That's their defining feature. A closed path is just 'ground.'"
+        }
+    }
+}

@@ -94,7 +94,7 @@
                 "default": "You examine the petrified trees. They are a sobering reminder that time is not on your side. Or anyone's side. Time is on its own side.",
                 "use": "You're not sure what you expected. Rub two stone trees together and start a geological fire?",
                 "open": "You search the stone bark for a seam, a hinge, a secret compartment. Trees don't have doors. Petrified trees especially don't have doors.",
-                "push": "You put your shoulder into a petrified trunk. It doesn't budge. It weighs roughly the same as your accumulated regrets, which is to say: immovable.",
+                "push": "You push a petrified trunk. Solid stone. The tree stood against wind for centuries when alive and stands against you now. The curse gave it permanence, if nothing else.",
                 "pull": "You wrap your arms around a stone trunk and heave. Nothing moves except your lower back, which objects strenuously."
             }
         },
@@ -164,10 +164,10 @@
                 "take": "They're rooted in stone ground. Everything here is stone. That's rather the point.",
                 "use": "You knock on one. It rings like a bell. Even the echoes sound mournful.",
                 "default": "You regard the stone trees. They stand as monuments to a forest that once was.",
-                "talk": "You address the Stone Trees. It doesn't respond. This is the most productive conversation you've had today.",
-                "open": "The Stone Trees doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "push": "You push the Stone Trees. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
-                "pull": "You grab the Stone Trees and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "talk": "You lean close and speak softly to a stone tree. Perhaps, once upon a time, it could hear the wind in its branches. Now it hears nothing. The bark is cold against your cheek. You feel foolish, which is appropriate.",
+                "open": "You look for a hollow, a knot, a door -- anything. But petrification doesn't leave hollows. It fills everything with stone, including the spaces where life used to be.",
+                "push": "You brace against the stone trunk and shove. It has the structural integrity of a small building, because that's essentially what a petrified tree is. A very tree-shaped building with no doors.",
+                "pull": "You try to topple a stone tree. It weighs several tons and has roots that go down to bedrock. The tree will be standing here long after you're gone. It knows this. You suspect it's smug about it."
             }
         },
         {

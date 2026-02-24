@@ -1,0 +1,35 @@
+{
+    "roomId": "cavern_entrance_hall",
+    "overrides": {
+        "registration-desk": {
+            "talk": "You address the desk directly. It absorbs your words into its stone surface, where they join centuries of other ignored requests. The Clerk glances up, then back down. The desk is his domain. You are trespassing on furniture.",
+            "open": "You try the desk drawers. Locked. Every single one. The Clerk watches you tug at them with an expression of infinite patience and zero intention of helping.",
+            "push": "You push the registration desk. It weighs roughly the same as the Clerk's contempt for you, which is to say it is immovable. The stone surface doesn't even scratch.",
+            "pull": "You pull at the desk. It doesn't move. It was carved from the cavern floor itself, making it less 'furniture' and more 'geological feature with organizational aspirations.'"
+        },
+        "numbered-doors": {
+            "take": "You try to remove a door from its frame. It's set in solid rock and enchanted to boot. These doors were installed by someone who anticipated exactly this level of desperation.",
+            "talk": "You knock on Door 3. A small plaque lights up: 'Broom Closet hours: Never. Please submit Form 44-C for broom-related inquiries.' The doors communicate exclusively through bureaucratic signage.",
+            "push": "You push Door 1. It rattles but holds. A sign illuminates: 'UNAUTHORIZED ENTRY ATTEMPT LOGGED. Form 19-A (Apology) now required.' The doors are snitches.",
+            "pull": "You pull a door handle. It comes off. The door remains closed. A new sign appears: 'VANDALISM REPORT FILED. See the Clerk for Form 12-D (Handle Replacement Request).'"
+        },
+        "contradictory-signs": {
+            "take": "You try to pry a sign from the wall. It's bolted in place with fasteners that appear to be enchanted against removal. The sign reads 'DO NOT REMOVE SIGNS (see sign for details).' The sign it points to says 'THERE IS NO SIGN.'",
+            "talk": "You ask the signs for directions. One points left. Another points right. A third points at you and says 'YOU LOOK LOST.' Helpful.",
+            "open": "The signs are flat boards bolted to the wall. They don't open. Though one of them claims to be a door. It is lying.",
+            "push": "You push a sign. It swivels on its bolt, pointing in a new direction that is equally wrong. The navigational chaos has been democratically redistributed.",
+            "pull": "You yank a sign. It springs back to its original position with a snap, as if offended. The bolt holding it has been enchanted to resist exactly this kind of frustrated intervention."
+        },
+        "glowing-runes": {
+            "talk": "You speak to the runes. They pulse once, brightly, then return to their steady glow. Whether that was acknowledgment or irritation is unclear. Ancient magic communicates in lighting cues, not words.",
+            "open": "The runes are carved into solid rock. They're part of the wall. You can't open a wall. Well, you can, but it requires explosives and a disregard for structural integrity that even you haven't reached.",
+            "push": "You press your palm against the runes. They flare warm, then cool. The wall does not move. The runes do not unlock anything. The cavern's magic is decorative, not interactive."
+        },
+        "blue-portal": {
+            "talk": "You address the portal. It hums in response -- a single resonant note that vibrates your teeth. Whether it understood you or simply vibrated at your frequency is an academic distinction you'd rather not explore.",
+            "open": "The portal is already open, in the sense that portals are permanently in a state of openness. That's their whole thing. You can't make it more open. It's peak portal.",
+            "push": "You push into the portal's energy field. Static crackles across your skin and your hair stands on end. The portal pushes back with the impersonal force of something that exists in multiple dimensions simultaneously.",
+            "pull": "You try to pull the portal toward you. Dimensional gateways are not subject to physical force. The portal continues its eternal shimmer, unbothered by your grasp at the fabric of space-time."
+        }
+    }
+}

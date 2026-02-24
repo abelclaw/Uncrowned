@@ -1,0 +1,33 @@
+{
+    "roomId": "cavern_balcony",
+    "overrides": {
+        "balcony-edge": {
+            "take": "You cannot take the edge. The edge, however, can absolutely take you.",
+            "talk": "You address the void beyond the edge. It does not respond, but you get the distinct impression it's listening. The abyss gazes back, et cetera.",
+            "open": "The edge is already as open as anything can be. That's rather the problem.",
+            "push": "Pushing the edge of a balcony over a bottomless drop. The stone doesn't budge, which is the best possible outcome here.",
+            "pull": "You tug at the lip of the balcony edge. Some loose pebbles skitter off into the void. You count the seconds before they hit bottom. You run out of fingers.",
+            "use": "You lean over the edge and look down. The abyss looks back up. You straighten quickly. Some uses of edges are more permanent than others."
+        },
+        "rock-formation": {
+            "take": "The rock formation is part of the mountain. Taking it would require a quarrying operation, three oxen, and considerably more ambition than the situation warrants.",
+            "talk": "You whisper sweet nothings to the rock formation. It remains stoic. Rocks are famously poor conversationalists, but excellent listeners.",
+            "open": "It's a solid rock formation, not a lunchbox. There's nothing to open here except your expectations, which should be lowered.",
+            "push": "You push the rock anchor. It does not move. It has been here since before your civilization had a word for 'push.'",
+            "pull": "You pull at the rock formation. It does not budge. The mountain would like you to know that it is not taking requests."
+        },
+        "cavern-view": {
+            "talk": "You call out into the cavern. Your voice echoes back, distorted and diminished, like hearing yourself on a recording. The cavern doesn't care about your feelings.",
+            "open": "You can't open a cavern. It's already the most open thing you've ever stood inside of.",
+            "push": "You push the air in front of the cavern view. The air yields easily. A hollow victory in every sense.",
+            "pull": "You can't pull a view closer. That's what walking is for, and in this case, walking would involve a fatal drop."
+        },
+        "rope": {
+            "talk": "You address the rope. It says nothing, being rope. But it has an air of quiet reliability about it, like a competent accountant.",
+            "push": "You nudge the coiled rope. It shifts slightly against the rock anchor. It's not going anywhere unless you untie it and take it with you.",
+            "pull": "You tug the rope experimentally. The knot holds firm against the rock anchor. The rope has tension and strength. It's ready when you are.",
+            "open": "It's a rope, not an envelope. You can coil it, uncoil it, tie it, or take it, but you cannot open it.",
+            "take": "You reach for the coiled rope. It's thick, strong, and has that satisfying heft of something designed for serious vertical work."
+        }
+    }
+}

@@ -76,9 +76,9 @@
                 "take": "You can't take a throne. That's called 'seizing power,' and it typically requires an army, not pockets.",
                 "talk": "You address the empty throne. 'Anyone home?' The silence that follows is the most regal thing in the room.",
                 "default": "You study the throne. It sits empty, as it has since King Mortimer's fateful encounter with an olive. The kingdom's problems sit here too, metaphorically. They're much heavier.",
-                "open": "You try to open the Stone Throne. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Stone Throne with all your might. All your might turns out to be insufficient. The Stone Throne remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Stone Throne. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "open": "The throne is solid wood and stone. There are no secret compartments, hidden panels, or conveniently placed levers. It's a chair. A grand one, but still a chair.",
+                "push": "You push the stone throne. It doesn't move. It was carved from the castle's own bedrock, which means pushing it is technically pushing the mountain. You lose.",
+                "pull": "You pull at the throne. Several tons of carved stone decline your invitation to relocate. The throne was here before the monarchy and will be here after you."
             }
         },
         {
@@ -98,11 +98,11 @@
                 "look": "Banners hang from the ceiling, each bearing the royal crest -- the disgruntled badger in a crown. Time has faded them from proud crimson to a color best described as 'exhausted pink.' One banner has fallen entirely and lies in a heap on the floor like a textile casualty.",
                 "take": "You tug at a banner. It disintegrates into dust the moment it separates from the wall. Centuries of decay compressed into one disappointing moment.",
                 "default": "You gaze at the banners. They droop with the weight of history and moths.",
-                "use": "You fiddle with the Faded Banners for a moment, then give up. Whatever its purpose, you haven't figured it out.",
-                "talk": "You speak to the Faded Banners in a calm, measured tone. The Faded Banners maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Faded Banners. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Faded Banners with all your might. All your might turns out to be insufficient. The Faded Banners remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Faded Banners. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "use": "You pull a banner down and drape it over your shoulders like a cape. You look ridiculous. You look like a child playing at being king. You put it back.",
+                "talk": "You address the banners. They hang there, saying nothing, which is exactly the level of counsel the monarchy has been providing for centuries. Consistent, at least.",
+                "open": "You push a banner aside, revealing the stone wall behind it. No secret passage, no hidden alcove -- just wall. The castle is refreshingly honest in its architecture.",
+                "push": "You push a banner aside. It swings back, releasing a cloud of dust and the faint despair of a dynasty that peaked early and declined spectacularly.",
+                "pull": "You tug a banner downward. The ancient fabric tears with a sound like a disappointed sigh. A corner comes away in your hand, trailing threads and centuries of declining relevance."
             }
         },
         {
@@ -123,10 +123,10 @@
                 "use": "You step onto the dais. It groans under your weight. You're not heavy -- the dais is just that compromised. Each step sounds like a small argument between wood and gravity.",
                 "default": "You examine the dais. It's held together by habit and structural stubbornness.",
                 "take": "You can't take the Royal Dais. It's firmly attached to its current situation, much like your growing sense of confusion.",
-                "talk": "You address the Royal Dais. It doesn't respond. This is the most productive conversation you've had today.",
-                "open": "The Royal Dais doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "push": "You push the Royal Dais. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
-                "pull": "You grab the Royal Dais and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "talk": "You address the dais. 'You've seen better days,' you tell it. It has. Every day for the last three centuries has been worse than the one before. The dais could say the same about you.",
+                "open": "You search the dais for hidden compartments. Your fingers find a crack in the stone, but it's just age damage, not a secret. Not everything hides something. Some things are just broken.",
+                "push": "You push against the dais. Stone doesn't push. Stone endures. The dais has endured coronations, funerals, and now you. It rates you somewhere between 'mild inconvenience' and 'forgettable.'",
+                "pull": "You pull at a loose stone on the dais edge. It wiggles but holds. Beneath it: more stone. The dais is solid all the way through, like the disappointment in this room."
             }
         },
         {
@@ -147,10 +147,10 @@
                 "take": "You tug experimentally. The curtain rod groans, dust cascades, and you realize that pulling these down would bury you in several hundred pounds of ancient velvet. A theatrical death, but a death nonetheless.",
                 "use": "Hide behind them? Very dramatic. Very dusty. Very much the sort of thing that works in plays and absolutely nowhere else.",
                 "default": "You consider the curtains. Once grand, now threadbare -- a textile metaphor for the entire kingdom.",
-                "talk": "You speak to the Curtains in a calm, measured tone. The Curtains maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Curtains. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Curtains with all your might. All your might turns out to be insufficient. The Curtains remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Curtains. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "talk": "You address the curtains. They hang there, impassive and moth-eaten, like a textile metaphor for the entire government. Their silence is eloquent in its own way.",
+                "open": "You part the curtains. Behind them: stone wall, dust, and a spider that has been living undisturbed for what appears to be generations. The spider is not pleased about the light.",
+                "push": "You shove the curtains aside. They sway heavily, releasing a cascade of dust and a single moth that flutters toward the skylight with the urgency of a refugee.",
+                "pull": "You pull the curtains toward you. The fabric is heavier than expected -- waterlogged with centuries of damp. The curtain rod groans overhead. You let go before something gives way."
             }
         },
         {
@@ -171,10 +171,10 @@
                 "take": "You can't pocket sunlight, though the impulse is understandable in a castle this gloomy.",
                 "use": "You stand in the beam and feel momentarily important. The dust motes swirl around you like a very small, very underwhelming coronation ceremony.",
                 "default": "You look up at the skylight. The sky beyond is indifferent to the kingdom's problems, which feels about right.",
-                "talk": "You attempt a conversation with the Skylight. The Skylight is not a great conversationalist. Then again, neither are you.",
-                "open": "You search the Skylight for a way to open it. There isn't one. It's not that kind of thing.",
-                "push": "You press against the Skylight. It offers the same resistance as a mountain, which is to say, total and indifferent.",
-                "pull": "You pull on the Skylight. Nothing happens. Gravity and architecture conspire against you, as usual."
+                "talk": "You call up at the skylight. Your voice echoes off the glass and comes back slightly diminished, like hearing your own ambitions reflected back at you.",
+                "open": "The skylight is far above your head and sealed shut. Even if you could reach it, the mechanism is rusted solid. The throne room's one source of natural light is not accepting visitors.",
+                "push": "You can't reach the skylight. It's twenty feet above you, filtering light through decades of grime. You'd need a ladder, scaffolding, or considerably longer arms.",
+                "pull": "The skylight is built into the ceiling. You'd need to fly to reach it, and your attempts at levitation have been consistently unsuccessful."
             }
         },
         {
@@ -195,10 +195,10 @@
                 "take": "Yank them down? The columns might disagree, and you'd rather not find out what happens when you remove the only thing holding certain masonry together.",
                 "use": "Vines aren't particularly useful to a tinker. They don't fix things, brew things, or unlock things. They just grow, slowly and stubbornly, like problems.",
                 "default": "You examine the vines. They've been growing here undisturbed for long enough to consider this their throne room now.",
-                "talk": "You speak to the Throne Vines in a calm, measured tone. The Throne Vines maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Throne Vines. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Throne Vines with all your might. All your might turns out to be insufficient. The Throne Vines remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Throne Vines. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "talk": "You whisper to the vines. They don't respond, but they've been slowly conquering this room for decades. Plants don't need conversation. They need patience, and they have centuries of it.",
+                "open": "You part the vine curtain. Beneath the green: crumbling mortar, cracks in the stone, and the slow patient work of roots dismantling a kingdom. Nature doesn't rush.",
+                "push": "You push the vines aside. They spring back immediately, having spent years perfecting their grip. The vines have claimed this wall, and they are not accepting counteroffers.",
+                "pull": "You pull at a vine. It resists, then tears free with a sound of ripping roots and falling mortar. The wall behind looks worse without it. The vine was holding things together."
             }
         },
         {
@@ -219,10 +219,10 @@
                 "use": "You cannot 'use' a ghost. They tend to have opinions about that sort of thing.",
                 "take": "You reach toward the Ghost King. Your hand passes through him. He looks at you with the resigned patience of someone who has had this conversation before.",
                 "default": "The Ghost King watches you with an expression that somehow manages to be both regal and profoundly tired.",
-                "talk": "You talk to the Ghost King. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "open": "The Ghost King doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Ghost King and push. Nothing happens, except a mild strain in your lower back. The Ghost King wins this round.",
-                "pull": "You heave at the Ghost King. Your muscles protest, the Ghost King doesn't. It has the structural advantage of not caring."
+                "talk": "You address the ghost. He flickers, regarding you with hollow eyes that hold centuries of regret. 'The crown weighs nothing now,' he murmurs. 'It weighs everything.'",
+                "open": "You cannot open a ghost. Ghosts are not containers, doors, or envelopes. They are the lingering emotional residue of the deceased. Opening them is not a valid action.",
+                "push": "Your hand passes through the ghost. Cold shoots up your arm like ice water in your veins. The ghost flickers with mild annoyance. 'That,' he says quietly, 'was rude.'",
+                "pull": "You swipe at the ghost. Your hand passes through freezing air that smells faintly of old stone and royal disappointment. The ghost regards you with the weariness of someone who has been grabbed at by the living for centuries."
             }
         },
         {
@@ -247,6 +247,78 @@
                 "push": "You push against the dais steps. They are part of the floor, which is part of the castle, which is part of the mountain. You are pushing a mountain.",
                 "pull": "You can't pull a dais. It's built into the floor. The floor is built into the earth. You're outmatched."
             }
+        },
+        {
+            "id": "velvet-cushion",
+            "name": "Moth-Eaten Cushion",
+            "zone": {
+                "x": 430,
+                "y": 360,
+                "width": 40,
+                "height": 20
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 420
+            },
+            "responses": {
+                "look": "The throne's cushion has seen better centuries. Moth-eaten velvet in what was once royal purple, now a shade best described as 'bruised twilight.' The stuffing pokes through in places like cotton trying to escape.",
+                "take": "You pull at the cushion. It comes away in a puff of dust and moths. The throne looks worse without it, which is impressive. You put it back. Even ruined dignity is better than none.",
+                "use": "You sit on the cushion. A small cloud of moths erupts around you. The cushion wheezes. Something inside it crunches. You stand up quickly, having learned that not all thrones welcome all bottoms.",
+                "talk": "You address the cushion. A moth flies out of it, which you choose to interpret as a response. The cushion has hosted kings. It now hosts larvae. The career trajectory is regrettable.",
+                "open": "You tear the cushion open. Stuffing spills out -- wool, horsehair, and what appears to be a very old love letter. You tuck the stuffing back in. The letter is none of your business.",
+                "push": "You press the cushion. Dust puffs out. It's like deflating something that's already been deflated by history. The cushion sags back into shape, or what passes for shape after three centuries of neglect.",
+                "pull": "You tug the cushion free from the throne seat. Beneath it: a worn impression in the wood, shaped by countless royal posteriors. The throne remembers every king. The cushion just remembers moths.",
+                "default": "The cushion exists in a state between furniture and archaeology. It's unclear whether it supports the throne or the throne supports it."
+            }
+        },
+        {
+            "id": "fallen-banner",
+            "name": "Fallen Banner",
+            "zone": {
+                "x": 100,
+                "y": 400,
+                "width": 60,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 130,
+                "y": 430
+            },
+            "responses": {
+                "look": "One banner has given up entirely, crumpled on the floor like a flag of surrender that nobody bothered to pick up. The royal crest is visible if you squint -- a crown above crossed swords, now covered in dust and defeat.",
+                "take": "You pick up the fallen banner. It's heavier than expected, waterlogged with centuries of damp. The fabric tears slightly as you lift it. Even the flag doesn't want to be carried anymore.",
+                "use": "You could drape the banner over yourself like a royal cape. But wearing a fallen kingdom's flag while its ghost watches feels like the wrong kind of dress-up.",
+                "talk": "You address the fallen banner. 'Get up,' you tell it. It does not get up. Banners, like kingdoms, don't recover from falling just because someone tells them to.",
+                "open": "You unfurl the banner across the floor. The full crest is visible now -- larger than you expected, more detailed than the faded ones still hanging. This was the king's personal standard. It fell with him.",
+                "push": "You nudge the banner with your foot. It slides across the stone floor, trailing dust. Somewhere, a royal protocol officer turns in their grave.",
+                "pull": "You drag the banner toward you. It catches on a crack in the floor, tears slightly. You've now damaged a historical artifact. The ghost-king's expression does not change, which is somehow worse than anger.",
+                "default": "A fallen banner for a fallen kingdom. At least they match."
+            }
+        },
+        {
+            "id": "throne-room-floor",
+            "name": "Stone Floor",
+            "zone": {
+                "x": 200,
+                "y": 450,
+                "width": 400,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 400,
+                "y": 460
+            },
+            "responses": {
+                "look": "Cold stone tiles stretch across the throne room, dulled by centuries of footsteps that will never come again. Dust lies thick where courtiers once stood. The occasional crack runs through the stone like a timeline of the kingdom's decline.",
+                "take": "You cannot take the floor. It is, definitionally, below you. This is the most literal dead-end in the castle.",
+                "use": "You're standing on it. That's about all the use a floor offers. It's fulfilling its purpose. You should aspire to the same.",
+                "talk": "You address the floor. The echo returns your voice slightly distorted, as if the room itself is mocking you. Given the acoustics of empty throne rooms, it probably is.",
+                "open": "You search for loose tiles. A few wiggle, but beneath them is only more stone and the foundations of a castle that was built to last longer than the dynasty it housed.",
+                "push": "You press a floor tile with your foot. It rocks slightly. Beneath it: mortar, substrate, and the bedrock of a kingdom's ambitions. Nothing useful. Nothing ever useful.",
+                "pull": "You pry at a loose tile. It comes up, revealing grey foundation stone and a single coin that rolled under here sometime during the last century. Finders keepers.",
+                "default": "The floor endures. That's what floors do. Everything above them falls eventually."
+            }
         }
     ],
     "items": [
@@ -266,11 +338,11 @@
             "responses": {
                 "look": "A heavy wax seal stamp sitting on the small table beside the throne. It bears the royal crest -- the disgruntled badger in a crown, rendered in exquisite detail. The badger looks particularly disgruntled today. This is the Royal Seal of Erelhain, used to authorize official decrees.",
                 "use": "A seal needs something to seal. A decree, perhaps. You don't have one yet, but the potential for forgery is noted with mild excitement.",
-                "take": "The Royal Seal isn't going anywhere with you. It belongs here. You, on the other hand, are debatable.",
-                "talk": "You address the Royal Seal. It doesn't respond. This is the most productive conversation you've had today.",
-                "open": "The Royal Seal doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "push": "You push the Royal Seal. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
-                "pull": "You grab the Royal Seal and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "take": "You reach for the royal seal. It's cold and heavy with the weight of authority that no one is left to exercise.",
+                "talk": "You speak to the royal seal. It gleams dully, stamped with the authority of a dead king. The seal has pressed its mark on more important documents than you will ever produce.",
+                "open": "The seal is a solid object. It stamps, it presses, it authenticates. It does not open. Not everything needs to open. Some things are complete as they are.",
+                "push": "You press the seal against the table. It leaves a faint impression in the dust -- the royal crest, still sharp after all these years. The king is dead; the paperwork endures.",
+                "pull": "You pull the seal toward you. It's heavier than expected -- solid metal, weighted with authority. The ghost-king watches you handle it with an expression caught between pride and sorrow."
             }
         }
     ],

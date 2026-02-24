@@ -1,0 +1,19 @@
+{
+    "roomId": "castle_courtyard_act3",
+    "overrides": {
+        "frozen-guards": {
+            "open": "The guards are solid stone now. You can't open a person, and you especially can't open a petrified one. The concept is disturbing on multiple levels.",
+            "pull": "You grab a frozen guard's arm and pull. Stone doesn't yield. The guard's expression remains fixed in whatever emotion they were feeling when the curse hit. Probably confusion."
+        },
+        "crumbling-walls": {
+            "open": "The walls are already opening themselves -- cracks run through the masonry like fault lines. They don't need your help falling apart."
+        },
+        "captain-aldric": {
+            "push": "You push Captain Aldric. He staggers but holds ground. 'Push me again,' he says quietly, 'and I'll show you what happens when the last functioning guard loses patience.' He means it.",
+            "pull": "You tug at Aldric's sleeve. He looks at your hand, then at you, with the expression of a man who has survived the apocalypse and will not tolerate being tugged."
+        },
+        "courtyard-gate": {
+            "pull": "You pull at the courtyard gate. The stone has warped it in its frame, fusing hinges to wall. The gate will never open again. It has become part of the architecture."
+        }
+    }
+}

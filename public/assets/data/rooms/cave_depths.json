@@ -99,7 +99,7 @@
                 "use": "You run your hands along the cave wall. It's wet, cold, and entirely unhelpful. Just like most walls, really.",
                 "take": "You can't take a cave wall. This is not Minecraft.",
                 "default": "You examine the cave walls. They're exactly as cave-wall-like as you'd expect.",
-                "talk": "You whisper to the cave wall. It says nothing back, which is the correct amount of dialogue for a wall. You've now spoken to more walls than people today.",
+                "talk": "You address the cave walls. Your voice bounces back distorted, as if the cave is gargling your words. The acoustics down here turn everything into a threat, including you.",
                 "open": "You search for a secret door, pressing stones like you've seen in every adventure story. Nothing opens. The wall is just a wall. It's not hiding anything except your dignity.",
                 "push": "You push the cave wall with both hands. The cave wall, backed by several thousand tons of mountain, does not budge. Your wrists, however, are now complaining.",
                 "pull": "You try to pull the cave wall toward you. This is not how geology works, but points for optimism."

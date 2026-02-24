@@ -1,0 +1,30 @@
+{
+    "roomId": "castle_garden",
+    "overrides": {
+        "overgrown-hedges": {
+            "talk": "You address the hedges. They rustle in the breeze, which is either a response or the wind doing what wind does. Either way, the hedge-badger-eagle hybrid remains inscrutable.",
+            "open": "You try to part the hedges. Thorns immediately introduce themselves to your forearms. The hedges have been growing unchecked for decades and are not accepting visitors.",
+            "push": "You shove into the hedge wall. Branches snap, thorns scratch, and the green mass absorbs your effort like a vegetable sponge. The hedge barely notices.",
+            "pull": "You grab a handful of hedge and pull. It comes away in a shower of leaves and twigs, revealing more hedge behind it. There is always more hedge."
+        },
+        "petrified-trees": {
+            "talk": "You speak to the petrified trees. They stand in mineral silence. They were probably better listeners when they were alive -- at least they swayed in the breeze, which felt more responsive."
+        },
+        "gardeners-shed": {
+            "take": "You consider taking the shed. The shed considers its own structural integrity. You both reach the same conclusion: it's staying where it is, barely."
+        },
+        "garden-statue": {
+            "talk": "You address the statue. Moss grows over where its mouth would be, which is either a coincidence or nature's way of telling you this conversation is one-sided.",
+            "pull": "You grab the statue and heave. It rocks on its pedestal, showering you in moss flakes. Then it settles back, having briefly considered toppling and decided against it."
+        },
+        "stone-pavilion": {
+            "talk": "You call into the pavilion. Your voice echoes off the crumbling pillars and returns slightly hollowed out, as if the building absorbed the confidence from your words."
+        },
+        "dried-sage": {
+            "take": "You reach for the dried sage bundle. It crumbles slightly at your touch, releasing a pungent aroma."
+        },
+        "rat-trap": {
+            "take": "You reach for the rat trap carefully, keeping your fingers well clear of the spring mechanism. One wrong move and you'll need the trap for your own fingers."
+        }
+    }
+}

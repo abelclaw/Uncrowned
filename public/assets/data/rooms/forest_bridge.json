@@ -160,9 +160,9 @@
                 "take": "You consider stealing a bridge plank. The troll clears his throat. Loudly. You reconsider.",
                 "push": "You push on a bridge support. It sways. The entire bridge sways. The troll sways. Everyone sways. You stop pushing.",
                 "default": "You examine the bridge. It examines your weight distribution and finds it concerning.",
-                "talk": "You address the Rickety Bridge. It doesn't respond. This is the most productive conversation you've had today.",
-                "open": "The Rickety Bridge doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "pull": "You grab the Rickety Bridge and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "talk": "You address the bridge. It creaks back, which is either a response or a structural warning. In this kingdom, the distinction is meaningless.",
+                "open": "It's a bridge, not a drawbridge. There's no mechanism, no counterweight, no dramatic 'open sesame.' Just planks and rope and gravity's patient attention.",
+                "pull": "You pull at a bridge plank. It creaks alarmingly. The bridge sways. Something far below goes 'splash.' You stop pulling. Destroying your only means of crossing seems counterproductive."
             }
         },
         {
@@ -183,10 +183,10 @@
                 "use": "The toll booth's window has a small slot for coins. A bell sits on the counter, polished to a shine. Bertram takes his work seriously.",
                 "take": "The toll booth is bolted to the bridge. Bertram is bolted to the toll booth. The whole arrangement is immovable.",
                 "default": "You inspect the toll booth. It's surprisingly well-maintained for a structure on a barely-maintained bridge.",
-                "talk": "You attempt a conversation with the Toll Booth. The Toll Booth is not a great conversationalist. Then again, neither are you.",
-                "open": "You search the Toll Booth for a way to open it. There isn't one. It's not that kind of thing.",
-                "push": "You press against the Toll Booth. It offers the same resistance as a mountain, which is to say, total and indifferent.",
-                "pull": "You pull on the Toll Booth. Nothing happens. Gravity and architecture conspire against you, as usual."
+                "talk": "The booth doesn't speak. It's a booth. The troll sitting in it, however, might have something to say -- if you address him directly.",
+                "open": "You try the service window. It catches on a small lock. A label reads 'EMPLOYEES ONLY -- TRESPASSERS WILL BE INVOICED.' The bureaucracy extends to booth access.",
+                "push": "You shove the toll booth. It doesn't move. Troll-engineered structures are built to withstand exactly this kind of frustration. The wood is denser than your arguments.",
+                "pull": "You pull the service window shutter. It snaps back with a crack. A small sign drops down: 'THAT'S MUNICIPAL PROPERTY.' The troll infrastructure has opinions."
             }
         },
         {
@@ -206,11 +206,11 @@
                 "look": "The gorge drops away into mist and the distant sound of rushing water. It's the kind of depth that makes your stomach flip and your brain suggest helpful scenarios about falling. The rocks at the bottom look sharp, wet, and thoroughly unsympathetic.",
                 "use": "You lean over the edge slightly. Your survival instincts, which have been mostly dormant, scream in unison. You lean back.",
                 "default": "You gaze into the gorge. The gorge gazes into you. Nietzsche would have opinions about this.",
-                "take": "You try to take the Deep Gorge, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
-                "talk": "You talk to the Deep Gorge. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "open": "The Deep Gorge doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Deep Gorge and push. Nothing happens, except a mild strain in your lower back. The Deep Gorge wins this round.",
-                "pull": "You heave at the Deep Gorge. Your muscles protest, the Deep Gorge doesn't. It has the structural advantage of not caring."
+                "take": "The gorge is a geographical feature carved by millennia of erosion. Your pockets, however deep, are insufficient for topography.",
+                "talk": "You shout into the gorge. The echo mocks you back, slightly delayed and distinctly unimpressed. The gorge has been hearing voices since before language existed.",
+                "open": "The gorge is already maximally open. It's been maximally open for millennia. Opening it further would require continental drift, and you don't have the schedule for that.",
+                "push": "You push a loose rock over the edge. One. Two. Three. Four. Five. Six. You lose count before it hits bottom. The gorge is deeper than your patience.",
+                "pull": "You can't pull a gorge closed. That's not how erosion works. That's not how anything works, actually."
             }
         },
         {
@@ -231,10 +231,10 @@
                 "take": "You want to take the river. Rivers are famously uncooperative about being relocated. This one especially so.",
                 "use": "From up here, 'using' the river would primarily involve falling into it. The river does not offer a refund policy.",
                 "default": "You listen to the river below. It roars with the cheerful indifference of something that has been grinding stone for millennia and intends to continue.",
-                "talk": "You address the River. It doesn't respond. This is the most productive conversation you've had today.",
-                "open": "The River doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "push": "You push the River. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
-                "pull": "You grab the River and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "talk": "You shout over the rushing water. The river is busy. It has been busy for ten thousand years and is not taking appointments.",
+                "open": "The river is already flowing. There's no 'off' position. It's been running since before your ancestors learned the word 'wet.'",
+                "push": "You push your hand into the current. The river pushes back with the force of something that weighs several thousand tons and is going somewhere in a hurry. Rivers are not subject to your opinions about direction.",
+                "pull": "You drag your hand through the water, trying to slow it. You lack the biceps and divine authority required for hydraulic engineering."
             }
         },
         {
@@ -255,10 +255,10 @@
                 "take": "You want to take a waterfall. This ambition, while admirable in its absurdity, is not something physics supports.",
                 "use": "The waterfall is scenic but distinctly not interactive from this distance. Getting closer would require leaving the bridge, which your survival instincts -- faint as they are -- advise against.",
                 "default": "You admire the waterfall from a safe distance. It's majestic, powerful, and completely indifferent to your existence. Rather like the universe, really.",
-                "talk": "You talk to the Waterfall. It says nothing back. You choose to interpret this as deep, contemplative agreement.",
-                "open": "The Waterfall doesn't open. You try from several angles, each equally unsuccessful. At some point, you'll accept this.",
-                "push": "You lean into the Waterfall and push. Nothing happens, except a mild strain in your lower back. The Waterfall wins this round.",
-                "pull": "You heave at the Waterfall. Your muscles protest, the Waterfall doesn't. It has the structural advantage of not caring."
+                "talk": "You shout at the waterfall. The waterfall is louder than you. Louder than everything. It's been winning shouting matches since before language existed.",
+                "open": "Behind every waterfall is a secret cave, according to people who have never actually been behind a waterfall. Behind this one is a rock wall and several hundred gallons per second of 'absolutely not.'",
+                "push": "The waterfall is a hundred yards away and falling at terminal velocity. You'd need to be there to push it, and if you were there, the waterfall would push you first. Into the gorge.",
+                "pull": "Your arm is not a hundred yards long. The waterfall is not negotiable. These are the facts of the situation."
             }
         },
         {

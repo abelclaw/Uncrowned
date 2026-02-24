@@ -1,0 +1,19 @@
+{
+    "roomId": "cavern_east_wing",
+    "overrides": {
+        "dark-water": {
+            "talk": "You whisper to the dark water. The surface ripples in response. You choose to believe that was the breeze, because the alternative is that the water heard you.",
+            "open": "Open the water? It's not a door. Though if it were, you absolutely should not go through it. The things on the other side have been fasting.",
+            "push": "You push at the water's surface with your palm. It yields, obviously -- it's water. Something nudges back from below. You stop pushing.",
+            "pull": "You can't pull water. That's not how water works. That's not how anything works. You're in a cave arguing with fluid dynamics."
+        },
+        "stone-walkway": {
+            "take": "You try to pry up a section of walkway. The only thing between you and the dark water is this stone path. Stealing your own floor is a new low, even for you.",
+            "use": "You're standing on it. That's how walkways work. You walk on them. It's right there in the name. This is not a puzzle.",
+            "talk": "You address the walkway. 'Thank you for existing,' you say. The stone does not respond, but you sense a quiet structural pride.",
+            "open": "It's a walkway, not a trapdoor. Though given the quality of construction down here, there's probably a trapdoor somewhere. Just not this one.",
+            "push": "You push against the walkway with your foot. It holds. It has been holding for centuries. Your foot is not going to be the thing that changes its mind.",
+            "pull": "You crouch and pull at the walkway's edge. It holds fast. The walkway was here before you, and it will be here after you. Especially if you fall into the water."
+        }
+    }
+}

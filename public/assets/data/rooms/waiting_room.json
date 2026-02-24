@@ -74,7 +74,7 @@
                 "look": "A stone display board reads 'NOW SERVING: 3.' It has read 'NOW SERVING: 3' for approximately two hundred years. The ghost on the bench confirms this. The queue system is, in a word, deliberate.",
                 "use": "You press buttons on the display. Nothing changes. The number 3 regards you with the permanence of a mathematical constant.",
                 "default": "You stare at the display. The display stares at the number 3. The number 3 stares into eternity.",
-                "take": "You try to pry the display from the wall. It doesn't budge. The number 3 is committed to this spot in a way you have never been committed to anything.",
+                "take": "The number display is bolted to the wall and enchanted against removal. The Clerk's institutional paranoia extends to fixtures.",
                 "talk": "You address the number 3 directly. It does not respond. You are now the kind of person who talks to numbers. The waiting room has claimed another victim.",
                 "open": "The display has no door, no hatch, no secret panel. Whatever dark engine powers the queue, it was not designed to be understood.",
                 "push": "You push the display. The number flickers to 4 for one glorious, heart-stopping instant -- then snaps back to 3.",
@@ -147,10 +147,10 @@
                 "take": "They're bolted to the floor. Even the furniture is trapped here.",
                 "use": "You sit briefly. The cushion has the structural integrity of a broken promise.",
                 "default": "You eye the waiting chairs. They offer rest, technically. Comfort, not at all.",
-                "talk": "You speak to the Waiting Chairs in a calm, measured tone. The Waiting Chairs maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Waiting Chairs. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Waiting Chairs with all your might. All your might turns out to be insufficient. The Waiting Chairs remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Waiting Chairs. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "talk": "You address the chairs. They creak. Whether this is a response or the natural complaint of furniture that has supported anxious bureaucratic petitioners for centuries is unclear.",
+                "open": "The chairs are solid wood and iron. There's nothing to open. They were designed for one purpose: making you uncomfortable while you wait. They excel at this.",
+                "push": "You shove a chair. It scrapes across the stone floor with a shriek that echoes through the waiting room. Several imaginary petitioners give you disapproving looks.",
+                "pull": "You pull a chair toward you. It resists, its legs catching on every crack in the stone floor. Even the furniture here is uncooperative."
             }
         },
         {
@@ -171,10 +171,10 @@
                 "take": "It's mounted to the wall with magical bindings. Not even theft can speed up this process.",
                 "use": "You stare at it, willing the number to change. It does not change. Bureaucracy wins again.",
                 "default": "You regard the number board. It radiates the quiet authority of a system that will never be rushed.",
-                "talk": "You speak to the Number Board in a calm, measured tone. The Number Board maintains its silence, which is more than can be said for most things in this kingdom.",
-                "open": "You try to open the Number Board. It has no hinges, no latch, and no sympathy for your confusion. It is what it is.",
-                "push": "You shove the Number Board with all your might. All your might turns out to be insufficient. The Number Board remains unmoved, both physically and emotionally.",
-                "pull": "You tug at the Number Board. It refuses to move, with the quiet determination of something that has been here much longer than you and intends to stay."
+                "talk": "You address the number board. It clicks to the next number with mechanical indifference. Whether it heard you or simply advanced on schedule is a question for philosophers, not adventurers.",
+                "open": "The number board is a flat mechanical display bolted to the wall. There's no panel to remove, no back to open. Its inner workings are as inaccessible as the Clerk's emotional range.",
+                "push": "You push the number board. It clicks forward one number. Then back. Then forward three. The mechanism has opinions about being manhandled, and it expresses them numerically.",
+                "pull": "You pull at the number board. It's bolted to the wall with fasteners that were installed by someone who anticipated frustrated petitioners. The bolts hold. The board judges."
             }
         },
         {

@@ -100,9 +100,9 @@
                 "talk": "You address the guardian. Silence. It's stone. For now. That 'for now' is the unsettling part.",
                 "push": "You push the guardian. It does not move. You did not expect it to move, but you are still slightly disappointed.",
                 "default": "You examine the guardian. It examines nothing. Yet.",
-                "take": "You try to take the Stone Guardian, but it's far too heavy, too large, or too attached to where it is. Possibly all three.",
-                "open": "The Stone Guardian doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "pull": "You grab the Stone Guardian and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "take": "The stone guardian is twelve feet tall and carved from a single block of enchanted granite. It weighs several tons. You weigh considerably less. The math doesn't work in your favor.",
+                "open": "You search the guardian for a hatch, a seam, a zipper -- anything suggesting it opens. It does not. It is a solid block of enchanted granite with opinions.",
+                "pull": "You pull the guardian's arm. The arm does not move. Your shoulder, however, nearly leaves its socket."
             }
         },
         {
@@ -122,11 +122,11 @@
                 "look": "A stone pedestal before the guardian, with a seal-shaped indentation. The indentation matches the ancient kingdom seal -- place the seal here, and the guardian awakens. The pedestal is carved with the words: 'PROVE YOUR WORTH. ANSWER THREE. OR ANSWER NONE.'",
                 "use": "The indentation needs a seal. The ancient kingdom seal, specifically. Not the royal seal -- the administrative one. Bureaucracy, even in guardian activation, demands precision.",
                 "default": "You study the pedestal. The seal-shaped indentation waits with geological patience.",
-                "take": "You can't take the Seal Pedestal. It's firmly attached to its current situation, much like your growing sense of confusion.",
-                "talk": "You attempt a conversation with the Seal Pedestal. The Seal Pedestal is not a great conversationalist. Then again, neither are you.",
-                "open": "You search the Seal Pedestal for a way to open it. There isn't one. It's not that kind of thing.",
-                "push": "You press against the Seal Pedestal. It offers the same resistance as a mountain, which is to say, total and indifferent.",
-                "pull": "You pull on the Seal Pedestal. Nothing happens. Gravity and architecture conspire against you, as usual."
+                "take": "It's a stone pedestal fused to the floor. You'd need to take the floor with it, and the floor is rather attached to the cavern.",
+                "talk": "You speak to the pedestal. It maintains a dignified silence, as pedestals do.",
+                "open": "You look for a compartment, a drawer, a secret panel. The pedestal is a solid block of stone with a single indentation. It is aggressively simple.",
+                "push": "You push the pedestal. It doesn't move. It was placed here with purpose and precision by the same people who built a twenty-foot stone guardian. They didn't leave anything loose.",
+                "pull": "You pull the pedestal. Nothing happens, except your lower back files a formal complaint."
             }
         },
         {
@@ -147,10 +147,10 @@
                 "take": "Magical fire doesn't play by the rules of pockets. Or physics.",
                 "use": "You reach toward the flame. It flickers away from your hand, like a cat that doesn't want to be petted.",
                 "default": "You watch the purple flames dance. They're decorative at best, enigmatic at worst.",
-                "talk": "You address the Purple Flames. It doesn't respond. This is the most productive conversation you've had today.",
-                "open": "The Purple Flames doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "push": "You push the Purple Flames. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
-                "pull": "You grab the Purple Flames and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "talk": "You address the flames. They flicker noncommittally. If fire could shrug, this is what it would look like.",
+                "open": "You cannot open fire. You can open fire, but that's a different thing entirely, and you're not equipped for it.",
+                "push": "You push your hand through the purple flame. It parts around your fingers like smoke, then reforms. The flame is more of a suggestion than a substance.",
+                "pull": "You try to pull the flame toward you. It stretches, snaps back, and continues burning exactly where it was. Magic fire has tenure."
             }
         },
         {
@@ -171,10 +171,250 @@
                 "take": "It's a ceiling. You can't take a ceiling.",
                 "use": "You admire the craftsmanship. The guardian doesn't seem to care about interior design.",
                 "default": "You crane your neck at the dome. The architecture is impressive. The neck pain is immediate.",
-                "talk": "You address the Domed Ceiling. It doesn't respond. This is the most productive conversation you've had today.",
-                "open": "The Domed Ceiling doesn't open. It wasn't designed to open. Not everything is a door or a chest, despite what your adventuring instincts suggest.",
-                "push": "You push the Domed Ceiling. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
-                "pull": "You grab the Domed Ceiling and pull. It stays exactly where it is. You've accomplished nothing, but at least you've committed to the effort."
+                "talk": "You speak to the ceiling. Acoustically, it's quite responsive -- your voice echoes impressively. Conversationally, it's a disappointment.",
+                "open": "The ceiling is not a lid. The chamber is not a jar. This is architecture, not tupperware.",
+                "push": "The ceiling is approximately thirty feet above you. Your arms are approximately not thirty feet long. The math does not favor this plan.",
+                "pull": "You reach upward. The ceiling remains exactly where ceilings belong -- above you, doing ceiling things."
+            }
+        },
+        {
+            "id": "ancient-carvings",
+            "name": "Ancient Carvings",
+            "zone": {
+                "x": 600,
+                "y": 100,
+                "width": 200,
+                "height": 120
+            },
+            "interactionPoint": {
+                "x": 700,
+                "y": 430
+            },
+            "responses": {
+                "look": "The carvings cover the walls and ceiling in dense, spiraling patterns. Scenes of the old kingdom: rulers dispensing justice, bureaucrats dispensing paperwork, and the guardian dispensing judgment. The craftsmanship suggests extraordinary skill and extraordinary amounts of free time.",
+                "take": "The carvings are part of the walls. Removing them would require a chisel, a quarrying crew, and several centuries of patience you don't have.",
+                "use": "You trace the carvings with your finger, half-expecting a hidden mechanism. Nothing clicks, slides, or opens. They're carvings. They carved, and now they're done.",
+                "talk": "You read the carvings aloud. The chamber's acoustics give your voice a portentous boom. The carvings remain unimpressed.",
+                "open": "The carvings are etched into solid rock. There is nothing to open. Not every surface in a dungeon conceals a secret passage.",
+                "push": "You press on the carvings. They are the same hardness as the wall behind them, on account of being the wall behind them.",
+                "pull": "You try to pry a carving loose. The carving, having survived several centuries and at least one civilizational collapse, is untroubled by your fingertips.",
+                "default": "The carvings tell stories of a kingdom that once was. They're the most reliable historians here."
+            }
+        },
+        {
+            "id": "rose-window",
+            "name": "Rose Window",
+            "zone": {
+                "x": 380,
+                "y": 30,
+                "width": 100,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 430,
+                "y": 430
+            },
+            "responses": {
+                "look": "A circular stained-glass window at the apex of the dome, depicting a stylized seal surrounded by radiating light. It casts colored beams across the chamber -- purples, golds, and deep reds that shift as the light outside changes.",
+                "take": "The window is thirty feet above you, embedded in a stone dome. Even if you could reach it, stained glass is notoriously uncooperative about being pocketed.",
+                "use": "The window is decorative. It casts light. That's its entire job description, and it's performing admirably without your help.",
+                "talk": "You speak to the window. Light filters through it indifferently. Stained glass has never been a great conversationalist.",
+                "open": "The window is a single piece of crystallized stone -- no hinges, no frame, no mechanism. It was never designed to open. Light passes through it, and that's all the opening it needs.",
+                "push": "You can't reach it. And even if you could, pushing a stained-glass window is how you get a very colorful pile of broken glass.",
+                "pull": "It's thirty feet up. Your vertical reach is, charitably, seven feet. The remaining twenty-three feet are a gap that ambition alone cannot bridge.",
+                "default": "The rose window casts shifting colors across the chamber. Beautiful and entirely out of reach."
+            }
+        },
+        {
+            "id": "chamber-walls",
+            "name": "Chamber Walls",
+            "zone": {
+                "x": 0,
+                "y": 200,
+                "width": 80,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 80,
+                "y": 430
+            },
+            "responses": {
+                "look": "Grey stone walls curve inward to form the chamber's circular shape. The same stone as the guardian -- the whole room might have been carved from a single massive boulder. Between the carvings, the stone is smooth, worn by centuries of nobody touching it.",
+                "take": "You consider taking a wall. Then you consider the structural implications. Then you stop considering it.",
+                "use": "You lean against the wall. It supports you with the same passive indifference it's shown everything for the last several hundred years.",
+                "talk": "You talk to the wall. The wall does not talk back. This is normal wall behavior, but in a room with a talking stone guardian, your expectations have been recalibrated.",
+                "open": "You search the walls for a hidden door or secret panel. You find neither. Just wall. Reliable, boring, structural wall.",
+                "push": "You push the wall. The wall pushes back, courtesy of Newton's Third Law. Neither of you gains ground.",
+                "pull": "You pull on the wall. The wall holds firm, as walls do. It's one of their defining characteristics.",
+                "default": "The chamber walls curve around you, ancient and grey. They've seen more than you'll ever know."
+            }
+        },
+        {
+            "id": "chamber-floor",
+            "name": "Chamber Floor",
+            "zone": {
+                "x": 200,
+                "y": 450,
+                "width": 200,
+                "height": 70
+            },
+            "interactionPoint": {
+                "x": 300,
+                "y": 470
+            },
+            "responses": {
+                "look": "The floor is polished stone arranged in concentric circles radiating outward from the guardian's pedestal. The pattern is deliberate -- everything in this room points to the guardian. Faint scuff marks suggest others have stood here before you. They're not here now.",
+                "take": "You try to pry up a floor tile. It is not a tile. It is the floor. The floor is a single continuous piece of stone. You are outmatched.",
+                "use": "You stand on the floor. It holds your weight. This is the bare minimum you expect from a floor, and it delivers.",
+                "talk": "You address the floor. It says nothing. Floors are the strong, silent type. Always have been.",
+                "open": "There's no trapdoor. You checked. The floor is solid stone, uninterrupted by secret passages or dramatic revelations.",
+                "push": "You stomp on the floor. It does not yield, reveal a trapdoor, or trigger a mechanism. It's just floor. Dependable, thankless floor.",
+                "pull": "You kneel and try to lift the floor. The floor declines. You and the floor have reached an understanding about who supports whom.",
+                "default": "Concentric circles in polished stone. Everything points to the guardian. Including you."
+            }
+        },
+        {
+            "id": "colored-light",
+            "name": "Colored Light",
+            "zone": {
+                "x": 300,
+                "y": 200,
+                "width": 120,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 360,
+                "y": 430
+            },
+            "responses": {
+                "look": "Beams of colored light stream down from the rose window, painting the grey stone in shifting hues of purple, gold, and deep crimson. The light falls across the guardian's face, giving it an almost lifelike quality. Almost.",
+                "take": "You cup your hands under a beam of colored light. The light pools in your palms and then, with the casual cruelty of physics, passes right through.",
+                "use": "You wave your hand through the colored beams. Pretty shadows dance across the walls. You've accomplished nothing, but you've done it beautifully.",
+                "talk": "You address the light. It neither responds nor dims. It has been doing exactly this for centuries.",
+                "open": "You can't open light. Light is already the most open thing in existence. It goes everywhere uninvited.",
+                "push": "You push at a beam of light. Your hand passes through it. You knew it would. You did it anyway.",
+                "pull": "You try to bend the light toward you. It continues in its straight line, because light does not take requests.",
+                "default": "Colored light streams through the chamber. Pretty. Useless. Like most beautiful things."
+            }
+        },
+        {
+            "id": "guardian-eyes",
+            "name": "Guardian Eyes",
+            "zone": {
+                "x": 440,
+                "y": 340,
+                "width": 40,
+                "height": 20
+            },
+            "interactionPoint": {
+                "x": 460,
+                "y": 420
+            },
+            "responses": {
+                "look": "The guardian's eyes are closed -- carved lids of smooth stone over what you assume are also stone eyeballs. The lids are detailed enough to show individual eyelashes. When the guardian awakens, these eyes glow amber.",
+                "take": "You are not going to gouge the eyes out of a twenty-foot stone guardian. Not because it's wrong, though it is, but because it would wake up and the conversation that follows would be brief.",
+                "use": "The eyes are closed. You could try poking them, but given that the guardian has a documented temper when awake, this seems like a decision you'd regret.",
+                "talk": "You speak directly into the guardian's face, inches from its closed eyes. Nothing. Not even a twitch. The intimacy of the moment is wasted on solid rock.",
+                "open": "You consider prying the guardian's eyelids open. Then you consider what might happen when a dormant magical construct is rudely awakened. You decide to let it sleep.",
+                "push": "You poke the guardian's eye. Your finger meets stone. The stone is unimpressed. Your finger is bruised.",
+                "pull": "You try to pull an eyelid open. It doesn't move. The sculptor carved them shut and the magic keeps them that way until the proper ritual.",
+                "default": "The guardian's closed eyes. Patient. Waiting. Unsettlingly lifelike."
+            }
+        },
+        {
+            "id": "guardian-arms",
+            "name": "Guardian Arms",
+            "zone": {
+                "x": 380,
+                "y": 370,
+                "width": 160,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 460,
+                "y": 420
+            },
+            "responses": {
+                "look": "The guardian's arms are crossed over its chest in a posture of patient disapproval. Each arm is thicker than your entire body. The stone fingers are interlocked with the precision of someone who has been crossing their arms for centuries.",
+                "take": "You cannot take the guardian's arms. They are attached to the guardian. The guardian is attached to the floor. You would need to take the entire planet.",
+                "use": "The arms are decorative consequences of the guardian being a humanoid statue. They don't do anything while it's dormant.",
+                "talk": "You address the guardian's crossed arms. They remain crossed. The posture says everything: 'I'm waiting, and I have all of eternity.'",
+                "open": "You try to uncross the guardian's arms. They do not uncross. Twenty-foot stone statues do not accept chiropractic adjustments.",
+                "push": "You push one of the guardian's crossed arms. It has the same give as a granite cliff face, because it essentially is a granite cliff face shaped like an arm.",
+                "pull": "You try to uncross the guardian's arms by pulling. They remain crossed. The guardian's posture is a commitment, not a suggestion.",
+                "default": "Arms crossed. Waiting. The universal pose of something that knows it's in charge."
+            }
+        },
+        {
+            "id": "pedestal-inscription",
+            "name": "Pedestal Inscription",
+            "zone": {
+                "x": 420,
+                "y": 435,
+                "width": 80,
+                "height": 15
+            },
+            "interactionPoint": {
+                "x": 460,
+                "y": 440
+            },
+            "responses": {
+                "look": "'PROVE YOUR WORTH. ANSWER THREE. OR ANSWER NONE.' The words are carved deep into the pedestal in letters that were clearly meant to intimidate. They succeed.",
+                "take": "The inscription is carved into stone. You'd need a chisel, several hours, and a profound misunderstanding of how inscriptions work.",
+                "use": "You trace the letters with your finger. P-R-O-V-E. Nothing happens. The inscription is information, not a button.",
+                "talk": "You read the inscription aloud: 'PROVE YOUR WORTH. ANSWER THREE. OR ANSWER NONE.' The chamber echoes it back to you. It sounds worse the second time.",
+                "open": "Inscriptions are carved text, not books. They don't open. They just sit there, carved into stone, being cryptic. It's what inscriptions do.",
+                "push": "You press your palm against the inscription, half-expecting a secret mechanism. The stone is cold and unhelpful. It's just an engraving.",
+                "pull": "You scratch at the inscription's edges. The letters are deep-carved and going nowhere. They've been here longer than your entire bloodline.",
+                "default": "The inscription states its terms. Three answers. No negotiation."
+            }
+        },
+        {
+            "id": "crystal-passage",
+            "name": "Crystal Passage",
+            "zone": {
+                "x": 440,
+                "y": 300,
+                "width": 80,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 480,
+                "y": 400
+            },
+            "responses": {
+                "look": "A passage beyond the guardian leads deeper into the cavern, toward the crystal chamber. The guardian stands directly in the way, arms crossed, like the world's most patient and least negotiable bouncer.",
+                "take": "You can't take a passage. A passage is an absence of wall. You can't put nothing in your pocket.",
+                "use": "The passage is blocked by the guardian. Pass the guardian's test, and the passage opens. It's a simple arrangement, really.",
+                "talk": "You shout into the passage. Your voice echoes back, slightly distorted. The passage has nothing to say.",
+                "open": "The passage isn't closed in the traditional sense. It's blocked. By a twenty-foot stone guardian. The distinction matters.",
+                "push": "You can't push a passage open. You can push yourself through it, but only after the large stone guardian has been persuaded to move.",
+                "pull": "You can't pull a passage. Passages are defined by the absence of material, and you can't pull something that isn't there.",
+                "default": "The passage to the crystal chamber. Blocked by several tons of opinionated stone."
+            }
+        },
+        {
+            "id": "dust-motes",
+            "name": "Dust Motes",
+            "zone": {
+                "x": 300,
+                "y": 150,
+                "width": 100,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 350,
+                "y": 430
+            },
+            "responses": {
+                "look": "Dust motes drift through the colored light beams, turning slowly in air that hasn't been disturbed in ages. Each mote catches the purple and gold light from the rose window and glows briefly before fading.",
+                "take": "You snatch at a dust mote. You catch approximately one dust mote. Your inventory is not updated, because the universe has standards.",
+                "use": "You blow on the dust motes. They scatter, swirl, and resettle exactly where they were. Dust has patience that borders on malice.",
+                "talk": "You whisper to the drifting particles. They continue drifting. Dust has no opinion on your situation.",
+                "open": "You can't open dust. Dust is already everywhere. It has achieved maximum openness.",
+                "push": "You wave your hand through the floating dust. It parts, swirls dramatically, and reconvenes. Dust always reconvenes. It's the one thing dust is good at.",
+                "pull": "You cannot pull dust. Dust comes and goes as it pleases. It answers to no one. Dust is the freest substance in existence.",
+                "default": "Dust motes drift through colored light. Each one a tiny universe of nothing much."
             }
         }
     ],

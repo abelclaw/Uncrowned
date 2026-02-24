@@ -1,0 +1,308 @@
+[
+    {
+        "roomId": "castle_courtyard_act3",
+        "overrides": {
+            "frozen-guards": {
+                "open": "The guards are solid stone now. You can't open a person, and you especially can't open a petrified one. The concept is disturbing on multiple levels.",
+                "pull": "You grab a frozen guard's arm and pull. Stone doesn't yield. The guard's expression remains fixed in whatever emotion they were feeling when the curse hit. Probably confusion."
+            },
+            "crumbling-walls": {
+                "open": "The walls are already opening themselves -- cracks run through the masonry like fault lines. They don't need your help falling apart."
+            },
+            "captain-aldric": {
+                "push": "You push Captain Aldric. He staggers but holds ground. 'Push me again,' he says quietly, 'and I'll show you what happens when the last functioning guard loses patience.' He means it.",
+                "pull": "You tug at Aldric's sleeve. He looks at your hand, then at you, with the expression of a man who has survived the apocalypse and will not tolerate being tugged."
+            },
+            "courtyard-gate": {
+                "pull": "You pull at the courtyard gate. The stone has warped it in its frame, fusing hinges to wall. The gate will never open again. It has become part of the architecture."
+            }
+        }
+    },
+    {
+        "roomId": "castle_hallway",
+        "overrides": {
+            "locked-door": {
+                "pull": "You grab the handle and pull. The door is locked, not ajar. Pulling a locked door is optimism in its purest and most futile form."
+            },
+            "cursed-portrait": {
+                "take": "You reach toward the cursed portrait. The green glow flares and your fingers go numb. The portrait does not wish to be relocated. The portrait's wishes are enforced by magic."
+            }
+        }
+    },
+    {
+        "roomId": "cave_entrance",
+        "overrides": {
+            "keyhole": {
+                "open": "The keyhole is part of the lock, not the thing that opens. You need a key to open the lock, and by extension, the door. The keyhole is just the middleman.",
+                "pull": "You try to pull the lock mechanism. It's set deep into the stone frame. Lock-picking requires finesse, tools, and training. You have enthusiasm, which is not the same thing."
+            },
+            "mysterious-bottle": {
+                "take": "You reach for the mysterious bottle. Its contents swirl with an urgency that suggests the liquid inside has opinions about being picked up."
+            }
+        }
+    },
+    {
+        "roomId": "cave_depths",
+        "overrides": {
+            "cave-walls": {
+                "talk": "You address the cave walls. Your voice bounces back distorted, as if the cave is gargling your words. The acoustics down here turn everything into a threat, including you."
+            }
+        }
+    },
+    {
+        "roomId": "cavern_library",
+        "overrides": {
+            "bookshelves": {
+                "pull": "You pull at a shelf. Books cascade onto your feet with the enthusiasm of knowledge freed from its prison. The library disapproves. You can tell by the dust."
+            },
+            "reading-desk": {
+                "take": "It's carved from the cavern floor itself. Taking it would require relocating the geological formation beneath it. You'd need a team of dwarves and a compelling reason. You have neither."
+            },
+            "ancient-ink": {
+                "take": "You reach for the ink bottle. It slides toward your hand with surprising willingness, as if it has been waiting for someone with the nerve to use it."
+            },
+            "wood-planks": {
+                "take": "You grab a plank from the debris pile. It's warped, splintered, and smells of academic ambition gone wrong. Not useful, but you admire its history."
+            }
+        }
+    },
+    {
+        "roomId": "clock_tower",
+        "overrides": {
+            "tower-exterior": {
+                "take": "You can't take a tower. Towers are buildings. Buildings are not portable. This is one of the first things they teach you in architecture school, which you did not attend.",
+                "talk": "You address the clock tower. Wind whistles through the mechanism above in response -- a low moan that sounds like centuries of unanswered maintenance requests."
+            },
+            "clock-hands": {
+                "push": "You push a clock hand. The mechanism groans and the hand moves a fraction of an inch, then springs back. The clock has its own opinion about what time it is."
+            },
+            "counterweights": {
+                "pull": "You pull a counterweight chain. The weight descends an inch, gears engage briefly, and the clock ticks once before stopping. A taste of functionality. The clock wants to work. It just can't."
+            }
+        }
+    },
+    {
+        "roomId": "crystal_chamber",
+        "overrides": {
+            "warning-signs": {
+                "push": "You push a warning sign. It swings on its post, then returns to position with a self-righting mechanism that suggests even the signage here is enchanted."
+            }
+        }
+    },
+    {
+        "roomId": "echo_chamber",
+        "overrides": {
+            "coal-deposits": {
+                "open": "The coal deposits are embedded in the rock face. There's nothing to open -- the coal is right there, exposed by geological process rather than design."
+            },
+            "glowing-mist": {
+                "open": "You can't open mist. Mist is already as open as a substance can be. It's dispersed particles of moisture. Opening it further would require splitting atoms."
+            },
+            "coal": {
+                "take": "You reach for a chunk of coal. It's dense and ancient, compressed by millions of years of geological patience into something useful.",
+                "open": "It's coal. A solid lump of compressed carbon. It doesn't open. It burns. Those are very different activities."
+            }
+        }
+    },
+    {
+        "roomId": "filing_room",
+        "overrides": {
+            "filing-cabinets": {
+                "take": "The cabinets are carved from the cavern walls. Taking them would require mining, not inventory management.",
+                "open": "You try drawer after drawer. Most are locked. The ones that aren't are empty, or contain forms requesting permission to open other drawers. Bureaucratic recursion.",
+                "push": "You shove a cabinet. It's part of the wall. The wall is part of the mountain. You are pushing a mountain. Adjust your expectations accordingly."
+            },
+            "hidden-drawer": {
+                "take": "You can't take a drawer that's built into the cabinet that's carved into the wall. The furniture here has roots."
+            },
+            "form-27b-stroke-6": {
+                "take": "You reach for Form 27-B Stroke 6. The paper is crisp, official, and radiates the quiet authority of documents that control your destiny."
+            },
+            "vip-stamp": {
+                "take": "You reach for the VIP stamp. It's small, heavy, and pulsing with the bureaucratic authority to bypass queues. In this kingdom, that's real power."
+            }
+        }
+    },
+    {
+        "roomId": "forest_clearing",
+        "overrides": {
+            "forest-trees": {
+                "pull": "You pull at a low branch. It bends, then snaps back, showering you in leaves and the quiet judgment of something that was here long before you."
+            },
+            "rusty-key": {
+                "take": "You reach for the rusty key. It's cold, corroded, and shaped for a lock you haven't found yet.",
+                "talk": "You address the key. It jingles faintly in the breeze, which is either a response or the wind. Keys are famously nonverbal.",
+                "open": "You can't open a key. Keys open other things. That's the entire point of keys. You are confused about the direction of this relationship."
+            },
+            "stick": {
+                "take": "You reach for the gnarled stick. It's light, sturdy, and has the rough charm of something that fell off a tree and landed on a destiny."
+            }
+        }
+    },
+    {
+        "roomId": "guardian_chamber",
+        "overrides": {
+            "stone-guardian": {
+                "take": "The guardian is a twenty-foot stone construct enchanted to guard a passage. You cannot pick it up. Your ambitions exceed your biceps by approximately ten tons."
+            },
+            "seal-pedestal": {
+                "push": "You push the pedestal. It doesn't move. It was placed here with purpose and precision by the same people who built a twenty-foot stone guardian. They didn't leave anything loose."
+            },
+            "ancient-carvings": {
+                "take": "The carvings are part of the walls. Removing them would require a chisel, a quarrying crew, and several centuries of patience you don't have."
+            },
+            "rose-window": {
+                "open": "The window is a single piece of crystallized stone -- no hinges, no frame, no mechanism. It was never designed to open. Light passes through it, and that's all the opening it needs."
+            },
+            "pedestal-inscription": {
+                "open": "Inscriptions are carved text, not books. They don't open. They just sit there, carved into stone, being cryptic. It's what inscriptions do."
+            }
+        }
+    },
+    {
+        "roomId": "mirror_hall",
+        "overrides": {
+            "central-mirror": {
+                "push": "You push the mirror. Your reflection pushes back. The glass is cold under your palms and doesn't budge. The frame is bolted to the wall with the permanence of something that was meant to stay.",
+                "pull": "You grab the mirror's edge and pull. It shifts slightly, revealing blank wall behind it. Then some force slides it back into place. The mirror prefers its current position."
+            }
+        }
+    },
+    {
+        "roomId": "old_watchtower",
+        "overrides": {
+            "observation-platform": {
+                "pull": "You pull at the platform railing. The wood splinters but holds. It was built to withstand weather, not adventurers, but it's making an effort."
+            },
+            "telescope-lens": {
+                "take": "You reach for the telescope lens. It's heavy glass, ground with precision by someone who cared about seeing things clearly."
+            }
+        }
+    },
+    {
+        "roomId": "servants_quarters",
+        "overrides": {
+            "writing-desk": {
+                "take": "The desk is a solid piece of furniture that has been here longer than most careers. It's not going anywhere, and frankly, neither is it interested in your opinion on the matter."
+            },
+            "storage-crates": {
+                "take": "The crates are too large, too heavy, and too full of useless junk to carry. You could take what's inside them, but what's inside them is disappointment."
+            },
+            "blank-decree": {
+                "take": "You reach for the blank decree. The parchment is crisp and official-looking -- the kind of paper that commands authority even when it says nothing.",
+                "open": "It's a rolled parchment. You unroll it. Both sides are blank, waiting for someone with the authority -- or audacity -- to write something official on them."
+            },
+            "flour-sack": {
+                "take": "You reach for the flour sack. It's heavy, dusty, and has been sitting here long enough to develop a personality."
+            }
+        }
+    },
+    {
+        "roomId": "treasury",
+        "overrides": {
+            "kingdom-seal": {
+                "take": "You reach for the kingdom seal. It's heavy with the authority of a government that no longer governs."
+            }
+        }
+    },
+    {
+        "roomId": "underground_pool",
+        "overrides": {
+            "pool-surface": {
+                "use": "You dip your hand in the pool. The water is ice-cold and perfectly clear. Your reflection stares back, looking more worried than you'd like."
+            },
+            "cave-crystals": {
+                "pull": "You try to pull a crystal from the wall. It's fused to the rock by millions of years of geological patience. Your fingers are not a compelling counterargument."
+            }
+        }
+    },
+    {
+        "roomId": "underground_river",
+        "overrides": {
+            "rocky-shore": {
+                "use": "You kneel on the rocky shore and dip your hand in the current. Cold. Fast. The river has places to be and is not stopping for tourists."
+            }
+        }
+    },
+    {
+        "roomId": "village_path",
+        "overrides": {
+            "forest-edge": {
+                "open": "You can't open a forest. Forests are already open, in the sense that they're outdoors. The trees don't have a door policy."
+            },
+            "dirt-path": {
+                "open": "Paths don't open. They're already open. That's their defining feature. A closed path is just 'ground.'"
+            }
+        }
+    },
+    {
+        "roomId": "forge_chamber",
+        "overrides": {
+            "ancient-forge": {
+                "open": "The forge is an open structure by design -- fire pit, chimney, bellows. Everything is already accessible. There's no door to open because forges need airflow, not privacy."
+            },
+            "fire-pit": {
+                "pull": "You pull at a stone lining the fire pit. It grinds but doesn't come free. These stones were fitted by dwarven hands and sealed by dwarven fire. Your grip is not the tool for this job."
+            }
+        }
+    },
+    {
+        "roomId": "cavern_balcony",
+        "overrides": {
+            "balcony-edge": {
+                "use": "You lean over the edge and look down. The abyss looks back up. You straighten quickly. Some uses of edges are more permanent than others.",
+                "push": "Pushing the edge of a balcony over a bottomless drop. The stone doesn't budge, which is the best possible outcome here."
+            },
+            "rock-formation": {
+                "take": "The rock formation is part of the mountain. Taking it would require a quarrying operation, three oxen, and considerably more ambition than the situation warrants."
+            },
+            "rope": {
+                "take": "You reach for the coiled rope. It's thick, strong, and has that satisfying heft of something designed for serious vertical work."
+            }
+        }
+    },
+    {
+        "roomId": "cavern_east_wing",
+        "overrides": {
+            "stone-walkway": {
+                "take": "You try to pry up a section of walkway. The only thing between you and the dark water is this stone path. Stealing your own floor is a new low, even for you.",
+                "pull": "You crouch and pull at the walkway's edge. It holds fast. The walkway was here before you, and it will be here after you. Especially if you fall into the water."
+            }
+        }
+    },
+    {
+        "roomId": "petrified_forest",
+        "overrides": {
+            "petrified-trees": {
+                "push": "You push a petrified trunk. Solid stone. The tree stood against wind for centuries when alive and stands against you now. The curse gave it permanence, if nothing else."
+            }
+        }
+    },
+    {
+        "roomId": "rooftop",
+        "overrides": {
+            "parapet": {
+                "use": "You lean against the parapet and look out. The kingdom stretches below, equal parts beautiful and cursed. The parapet's only use is keeping you from falling, and it's doing an adequate job."
+            }
+        }
+    },
+    {
+        "roomId": "royal_archive",
+        "overrides": {
+            "petrified-shelves": {
+                "pull": "You pull at a petrified shelf. Stone grinds against stone. A chunk of mineral-shelf crumbles in your hand, releasing the dust of fossilized knowledge."
+            },
+            "narrow-windows": {
+                "pull": "You pull at a window frame. The stone doesn't yield. These windows were built as much for defense as for light, and they defend themselves admirably."
+            }
+        }
+    },
+    {
+        "roomId": "forest_bridge",
+        "overrides": {
+            "gorge": {
+                "take": "You can't take a hole in the earth. You can fall into it, which is taking it in a sense, but not the sense you intended."
+            }
+        }
+    }
+]
