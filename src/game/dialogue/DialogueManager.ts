@@ -79,7 +79,7 @@ export class DialogueManager {
         }
 
         const lines: string[] = [];
-        let tags: string[] = [];
+        const tags: string[] = [];
 
         // Drain all available text
         while (this.activeStory.canContinue) {
@@ -87,8 +87,13 @@ export class DialogueManager {
             if (line && line.trim()) {
                 lines.push(line.trim());
             }
-            // Keep tags from the last line
-            tags = this.activeStory.currentTags ?? [];
+            // Accumulate tags from all lines (earlier lines may have #speaker tags
+            // that later tagless lines shouldn't overwrite)
+            for (const t of this.activeStory.currentTags ?? []) {
+                if (!tags.includes(t)) {
+                    tags.push(t);
+                }
+            }
         }
 
         // Read available choices
