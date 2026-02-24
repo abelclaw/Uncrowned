@@ -418,7 +418,7 @@ export class EffectsManager {
 
         // Vignette via PostFX
         if (config.vignette && config.vignette > 0) {
-            this.scene.cameras.main.postFX.addVignette(0.5, 0.5, 0.5, config.vignette);
+            this.scene.cameras.main.postFX.addVignette(0.5, 0.5, 0.9, config.vignette);
             this.postFXActive = true;
         }
 
