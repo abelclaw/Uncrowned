@@ -22,10 +22,10 @@ EXTERNAL getDeathCount()
 }
 
 // Room visit commentary
-{visitedRoom("forest_clearing") && visitedRoom("cave_entrance") && visitedRoom("village_path"):
+{visitedRoom("forest_clearing") && visitedRoom("cave_depths") && visitedRoom("village_path"):
     You've been around, haven't you? The forest, the cave, the village... quite the explorer. Or quite lost. The distinction is academic at this point.
 - else:
-    {visitedRoom("cave_entrance"):
+    {visitedRoom("cave_depths"):
         Fresh from the cave, I see. Still alive. Color me mildly surprised. The cave has a way of keeping visitors permanently.
     }
     {visitedRoom("village_path"):

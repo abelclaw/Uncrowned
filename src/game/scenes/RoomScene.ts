@@ -486,20 +486,32 @@ export class RoomScene extends Phaser.Scene {
             // Dialogue mode: route input to choice selection
             if (this.inDialogue && this.dialogueManager.isActive()) {
                 const trimmed = text.trim();
-                const choiceNum = parseInt(trimmed, 10);
 
-                if (isNaN(choiceNum) || choiceNum < 1) {
-                    this.narratorDisplay.showInstant('Pick a number to choose a response.');
-                    return;
-                }
+                // Allow movement commands to exit dialogue and navigate away
+                const movePattern = /^(go\s+)?(north|south|east|west|n|s|e|w|up|down|leave|exit|back)$/i;
+                if (movePattern.test(trimmed)) {
+                    this.dialogueManager.endConversation();
+                    this.gameState.setDialogueStates(this.dialogueManager.getDialogueStates());
+                    this.inDialogue = false;
+                    this.activeNpcId = null;
+                    this.updateScoreDisplay();
+                    // Fall through to normal command processing below
+                } else {
+                    const choiceNum = parseInt(trimmed, 10);
 
-                try {
-                    this.dialogueManager.choose(choiceNum - 1); // 0-indexed
-                    this.advanceDialogue();
-                } catch {
-                    this.narratorDisplay.showInstant('That\'s not a valid choice. Pick a number.');
+                    if (isNaN(choiceNum) || choiceNum < 1) {
+                        this.narratorDisplay.showInstant('Pick a number to choose a response.');
+                        return;
+                    }
+
+                    try {
+                        this.dialogueManager.choose(choiceNum - 1); // 0-indexed
+                        this.advanceDialogue();
+                    } catch {
+                        this.narratorDisplay.showInstant('That\'s not a valid choice. Pick a number.');
+                    }
+                    return; // Don't fall through to normal command parsing
                 }
-                return; // Don't fall through to normal command parsing
             }
 
             if (this.isTransitioning) return;

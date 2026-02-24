@@ -33,9 +33,14 @@ export class NarratorDisplay {
         this.keyListener = (e: KeyboardEvent) => {
             if (this.timer === null) return; // only skip when typewriter is active
 
-            // Don't consume keys when the user is typing in the text input
+            // Allow Enter to skip typewriter even from the input field (when empty)
             const tag = (e.target as HTMLElement)?.tagName;
-            if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+            if (tag === 'INPUT' || tag === 'TEXTAREA') {
+                if (e.key === 'Enter' && (e.target as HTMLInputElement).value.trim() === '') {
+                    this.skipToEnd();
+                }
+                return;
+            }
 
             const isArrow = e.key.startsWith('Arrow');
             const isModifier = ['Shift', 'Control', 'Alt', 'Meta', 'Tab', 'Escape',
@@ -66,6 +71,7 @@ export class NarratorDisplay {
         this.timer = setInterval(() => {
             this.charIndex++;
             this.element.textContent = this.fullText.slice(0, this.charIndex);
+            this.element.scrollTop = this.element.scrollHeight;
 
             if (this.charIndex >= this.fullText.length) {
                 this.stop();
@@ -82,6 +88,7 @@ export class NarratorDisplay {
         if (this.timer === null) return;
         this.stop();
         this.element.textContent = this.fullText;
+        this.element.scrollTop = this.element.scrollHeight;
         this.onComplete?.();
     }
 
@@ -93,6 +100,7 @@ export class NarratorDisplay {
         this.stop();
         this.fullText = text;
         this.element.textContent = text;
+        this.element.scrollTop = this.element.scrollHeight;
     }
 
     /**

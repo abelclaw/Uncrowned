@@ -105,8 +105,11 @@ body {
     font-size: 14px;
     line-height: 1.4;
     min-height: 20px;
+    max-height: 150px;
+    overflow-y: auto;
     background: #0f0f23;
     border-bottom: 1px solid #16213e;
+    white-space: pre-wrap;
 }
 
 #parser-input {
