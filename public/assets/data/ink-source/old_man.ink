@@ -25,12 +25,40 @@ EXTERNAL getDeathCount()
 What brings you to my hovel?
 + [Ask about the cave] -> cave_info
 + [Ask about the village] -> village_info
++ {not hasFlag("stone_toad_moved")} [Ask about the stone toad] -> toad_info
 + {hasItem("rusty-key")} [Show the rusty key] -> key_reaction
 + {hasItem("mysterious-bottle")} [Show the mysterious bottle] -> bottle_reaction
 + {hasFlag("knows_cave_name")} [Ask about the Screaming Caverns] -> cavern_details
 + {hasFlag("knows_about_curse")} [Ask about the curse] -> curse_info
 + {hasItem("cave-crystal-shard")} [Show the crystal shard] -> crystal_reaction
++ {hasItem("cave-crystal-shard") && hasFlag("seen_castle")} [Ask where to go next] -> direction_hint
 + [Leave] -> farewell
+
+=== toad_info ===
+The old man glances at the toad and chuckles. #speaker:Old Man #emotion:amused
+Ah, Old Grumble. Been sitting on that path for... three years? Four? Lost count.
+Half turned to stone by the curse, but the other half is very much alive. And very much hungry.
+He won't budge for pushing, shouting, or polite requests. I've tried all three.
++ [What does it eat?] -> toad_food
++ [Can I go around it?] -> toad_around
+
+=== toad_food ===
+The old man taps his nose. #speaker:Old Man #emotion:knowing
+Fish. Specifically the pale ones that live in the deep water.
+{hasFlag("met_old_man"):
+    There's a well not ten feet from where you're standing. Lower the bucket. What comes up might surprise you.
+- else:
+    The well nearby goes deep -- deeper than any well should. Things live in that water. Blind, pale things. Old Grumble used to catch them himself before the curse slowed him down.
+}
+A fish from the well should convince him to shift his considerable backside.
+-> greeting
+
+=== toad_around ===
+The old man shakes his head. #speaker:Old Man #emotion:serious
+Not unless you fancy the forest. And the forest fancies you right back -- in the 'eating you' sense.
+No, Old Grumble is the gatekeeper here. Find something he wants, and he'll move. He's not malicious. Just hungry. And large. And immovable.
+Feed him and he's docile as a stone. Well. More stone than usual.
+-> greeting
 
 === cave_info ===
 The cave? Oh, you mean the Screaming Caverns. #speaker:Old Man #emotion:serious
@@ -111,6 +139,21 @@ The castle guards -- what's left of them -- they recognize that kind of crystal.
 If you're heading toward the castle, that shard might be your ticket in.
 It proves you've been to the deep places. It proves you're... relevant.
 Whether that's a good thing or not is debatable.
+{hasFlag("seen_castle"):
+    You've seen the castle through the telescope, and you've got the crystal. Head back to the watchtower -- there's an old path east of it that leads to the forest bridge. That's your way forward.
+}
+-> greeting
+
+=== direction_hint ===
+The old man squints at you, then at the horizon. #speaker:Old Man #emotion:serious
+You've got the crystal. You've seen the castle. You know what needs doing.
+The watchtower -- go back there. East side. There's an old path that leads down through the forest to a bridge.
+{hasItem("bridge-toll-coin"):
+    And you've got a coin for the toll, I see. Smart. The troll who guards that bridge is a stickler for procedure.
+- else:
+    Mind you, there's a troll at that bridge. Union member. Charges a toll -- one coin, or he'll make you answer a riddle. Check the village square if you need currency. The old fountain's been collecting wishes nobody's coming back for.
+}
+Cross the bridge, follow the path. The castle's that way. So is trouble, but at this point you and trouble are on a first-name basis.
 -> greeting
 
 === farewell ===

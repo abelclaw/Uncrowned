@@ -508,7 +508,7 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "You slot the lens into the telescope housing. It fits, barely. Peering through, the blur resolves into sharp clarity. Beyond the forest, past rolling hills of increasingly grey countryside, stands Castle Erelhain -- a massive stone fortress with towers reaching skyward. Even at this distance, you can see the grey creeping up its walls. The petrification curse is spreading. Whatever is happening to this kingdom, the answer is in that castle. You should probably go there. Against your better judgment, which has been notably absent thus far."
+                    "text": "You slot the lens into the telescope housing. It fits, barely. Peering through, the blur resolves into sharp clarity. Beyond the forest, past rolling hills of increasingly grey countryside, stands Castle Erelhain -- a massive stone fortress with towers reaching skyward. Even at this distance, you can see the grey creeping up its walls. The petrification curse is spreading. Whatever is happening to this kingdom, the answer is in that castle. You notice an overgrown path leading east from the watchtower, down toward the forest. It looks like it leads to a bridge."
                 }
             ],
             "once": true
@@ -583,6 +583,7 @@
         }
     },
     "dynamicDescriptions": {
+        "knows_cavern_secret": "The watchtower's telescope shows Castle Erelhain in the distance, the grey curse visibly spreading up its walls. To the east, an overgrown path leads down through the forest toward a bridge. Now that you know what lies ahead, the path seems passable. The bridge -- and whatever's beyond it -- awaits.",
         "seen_castle": "The watchtower's telescope now shows a clear view of Castle Erelhain in the distance. The image of the grey curse spreading up its walls lingers in your mind. You know where you need to go. You just wish you didn't."
     },
     "audio": {

@@ -55,6 +55,12 @@
             "combinable": false
         },
         {
+            "id": "cave-fish",
+            "name": "Pale Cave Fish",
+            "description": "A blind, translucent fish from deep in the well. It wriggles feebly in your hands, confused by the concept of 'up.'",
+            "combinable": false
+        },
+        {
             "id": "royal-seal",
             "name": "Royal Seal",
             "description": "A heavy wax seal stamp bearing the royal crest: a disgruntled badger wearing a crown. Historically accurate, unfortunately.",
