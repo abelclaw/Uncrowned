@@ -393,19 +393,19 @@ export class CommandDispatcher {
             };
         }
 
-        // Check hotspots
-        const hotspot = this.findHotspot(action.subject, roomData);
-        if (hotspot) {
-            const response = hotspot.responses?.look
-                ?? `Nothing special about the ${hotspot.name}.`;
-            return { response, handled: true };
-        }
-
-        // Check room items (items placed in the room)
+        // Check room items first (interactive/takeable objects take priority)
         const roomItem = this.findRoomItem(action.subject, roomData);
         if (roomItem && !this.state.isRoomItemRemoved(roomData.id, roomItem.id)) {
             const response = roomItem.responses?.look
                 ?? `You see ${roomItem.name}.`;
+            return { response, handled: true };
+        }
+
+        // Check hotspots (scenery)
+        const hotspot = this.findHotspot(action.subject, roomData);
+        if (hotspot) {
+            const response = hotspot.responses?.look
+                ?? `Nothing special about the ${hotspot.name}.`;
             return { response, handled: true };
         }
 

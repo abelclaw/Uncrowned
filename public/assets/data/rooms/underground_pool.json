@@ -180,7 +180,7 @@
         {
             "id": "cave-floor",
             "name": "Cave Floor",
-            "aliases": ["floor", "ground", "rocks", "pink thing", "glowing thing", "pink crystal", "pink gem", "pink rock", "pink light"],
+            "aliases": ["floor", "ground", "rocks"],
             "zone": {
                 "x": 50,
                 "y": 460,
