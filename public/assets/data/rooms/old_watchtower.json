@@ -1,7 +1,7 @@
 {
     "id": "old_watchtower",
     "name": "Old Watchtower",
-    "description": "A crumbling watchtower rises from the village's northern edge, its stones held together by stubbornness and ivy. A rusted telescope sits on the observation platform, pointed vaguely skyward as though it gave up on watching anything specific long ago. The railing is decorative at best, structural at worst, and trustworthy not at all.",
+    "description": "A crumbling watchtower rises from the village's eastern edge, its stones held together by stubbornness and ivy. A rusted telescope sits on the observation platform, pointed vaguely skyward as though it gave up on watching anything specific long ago. The railing is decorative at best, structural at worst, and trustworthy not at all.",
     "background": {
         "layers": [
             {
@@ -41,18 +41,18 @@
         {
             "id": "to-village-square",
             "zone": {
-                "x": 350,
-                "y": 460,
-                "width": 260,
-                "height": 80
+                "x": 0,
+                "y": 350,
+                "width": 80,
+                "height": 200
             },
             "targetRoom": "village_square",
             "spawnPoint": {
-                "x": 480,
+                "x": 680,
                 "y": 460
             },
-            "transition": "fade",
-            "direction": "south",
+            "transition": "slide-left",
+            "direction": "west",
             "label": "village"
         },
         {
