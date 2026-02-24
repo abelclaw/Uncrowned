@@ -1,7 +1,7 @@
 {
     "id": "village_path",
     "name": "Village Path",
-    "description": "A well-worn dirt path winds toward a village in the distance. A massive stone toad squats in the middle of the path, blocking the way north with the quiet authority of something that weighs as much as a small boulder. Its belly rumbles. A stone well stands nearby, and an old man sits on a rock, staring at you with the unsettling intensity of someone who has been expecting you for decades.",
+    "description": "A well-worn dirt path winds toward a village in the distance. A stone well stands nearby, and an old man sits on a rock, staring at you with the unsettling intensity of someone who has been expecting you for decades.",
     "background": {
         "layers": [
             {
@@ -41,18 +41,18 @@
         {
             "id": "to-cave",
             "zone": {
-                "x": 880,
-                "y": 350,
-                "width": 80,
-                "height": 200
+                "x": 350,
+                "y": 480,
+                "width": 260,
+                "height": 60
             },
             "targetRoom": "cave_entrance",
             "spawnPoint": {
-                "x": 380,
-                "y": 460
+                "x": 480,
+                "y": 400
             },
-            "transition": "slide-right",
-            "direction": "east",
+            "transition": "fade",
+            "direction": "south",
             "label": "cave"
         },
         {
@@ -70,49 +70,10 @@
             },
             "transition": "fade",
             "direction": "north",
-            "label": "village",
-            "conditions": [
-                {
-                    "type": "flag-set",
-                    "flag": "stone_toad_moved"
-                }
-            ],
-            "blockedMessage": "A massive stone toad squats in the middle of the path, blocking the way north. Its belly rumbles with a sound like grinding boulders. It stares at you with ancient, hungry eyes. It doesn't seem inclined to move."
+            "label": "village"
         }
     ],
     "hotspots": [
-        {
-            "id": "stone-toad",
-            "name": "Stone Toad",
-            "zone": {
-                "x": 400,
-                "y": 300,
-                "width": 100,
-                "height": 80
-            },
-            "interactionPoint": {
-                "x": 450,
-                "y": 400
-            },
-            "aliases": ["toad", "stone toad", "frog", "monster", "creature", "beast", "giant toad"],
-            "spriteId": "stone-toad",
-            "conditions": [
-                {
-                    "type": "flag-not-set",
-                    "flag": "stone_toad_moved"
-                }
-            ],
-            "responses": {
-                "look": "A massive toad, easily the size of a cartwheel, squats in the middle of the path. Its skin is mottled grey-green, half turned to stone by the creeping curse -- but the parts that aren't stone are very much alive. Its throat bulges rhythmically, and its enormous golden eyes track your every movement. Its belly emits a low, grinding rumble. The toad is hungry. Spectacularly, earth-shakingly hungry. It has been sitting here long enough that moss has started growing on its back, which suggests it won't be moving until something changes its mind.",
-                "talk": "You address the toad. It blinks one enormous eye. Then the other. Its throat inflates like a balloon, and it releases a croak so deep it vibrates your ribcage. You're fairly certain that translates to 'I'm hungry and you're not food, but I'm open to revising that assessment.'",
-                "use": "You're not sure how one 'uses' a giant stone toad. It's not a tool, a vehicle, or a piece of furniture. It's a boulder-sized amphibian with an attitude problem and an empty stomach. Using it would require it to cooperate, and it doesn't seem the cooperative type.",
-                "take": "The toad weighs at least as much as you do, is mostly made of stone, and is looking at you with the expression of something deciding whether you're a threat or a snack. Taking it is not an option. Being taken BY it is more likely.",
-                "push": "You brace yourself against the toad and push. It doesn't budge. You might as well be pushing the well. The toad's skin is rough as sandstone and disturbingly warm. It croaks once, dismissively, and you step back. Your arms hurt. Your dignity hurts more.",
-                "pull": "You grab the toad's leg and pull. Nothing happens. The toad looks at you with what can only be described as pity. It has been sitting here since before you arrived and will be sitting here long after you've given up. Unless you find what it wants.",
-                "open": "You can't open a toad. They're not hinged. They don't have compartments. This isn't that kind of adventure. ...Actually, it might be, but not with this particular toad.",
-                "default": "The stone toad sits immovably in the path, radiating hunger and geological patience. Its belly grumbles like distant thunder."
-            }
-        },
         {
             "id": "well",
             "name": "Stone Well",
@@ -152,7 +113,7 @@
                 "y": 420
             },
             "responses": {
-                "look": "A weathered signpost at the path's fork. One arrow points west toward 'Cave' and another north toward 'Village.' A third arrow, pointing straight down, reads 'You Are Here.' Helpful.",
+                "look": "A weathered signpost at the path's fork. One arrow points south toward 'Cave' and another north toward 'Village.' A third arrow, pointing straight down, reads 'You Are Here.' Helpful.",
                 "take": "You try to uproot the signpost. It's cemented in. The local council may be incompetent at governance, but their signpost installation is impeccable.",
                 "use": "It's a signpost. You read it. That's... that's how you use a signpost.",
                 "default": "You study the signpost as though it contains the secrets of the universe. It does not. It contains directions.",
@@ -381,7 +342,7 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "You lower the bucket into the well. The rope creaks and unspools into darkness. A splash, far below. You wait. When you haul the bucket back up, it's heavier than expected. Inside, flopping weakly in an inch of dark water, is a pale, translucent fish. It's completely blind -- two smooth patches of skin where eyes should be -- and it wriggles with the confused energy of something that has never encountered 'above' before. It's not pretty, but it's alive. And judging by the rumbling from the toad blocking the path, it might be exactly what's needed."
+                    "text": "You lower the bucket into the well. The rope creaks and unspools into darkness. A splash, far below. You wait. When you haul the bucket back up, it's heavier than expected. Inside, flopping weakly in an inch of dark water, is a pale, translucent fish. It's completely blind -- two smooth patches of skin where eyes should be -- and it wriggles with the confused energy of something that has never encountered 'above' before. It's not pretty, but it's alive. And if there's a hungry creature somewhere nearby, this might be exactly what it wants."
                 }
             ],
             "once": true
@@ -413,7 +374,7 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "You lower the bucket into the well. The rope creaks and unspools into darkness. A splash, far below. You wait. When you haul the bucket back up, something is flapping inside -- a pale, eyeless fish, translucent as old glass. It thrashes weakly in an inch of cold water, bewildered by the sudden change in altitude. The stone toad on the path lifts its head, nostrils flaring. It can smell the fish from here."
+                    "text": "You lower the bucket into the well. The rope creaks and unspools into darkness. A splash, far below. You wait. When you haul the bucket back up, something is flapping inside -- a pale, eyeless fish, translucent as old glass. It thrashes weakly in an inch of cold water, bewildered by the sudden change in altitude. You pocket the fish carefully. Something tells you a creature with an empty stomach would find this irresistible."
                 }
             ],
             "once": true
@@ -445,105 +406,7 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "You pull the rope, lowering the bucket into the well's darkness. After a long wait and a distant splash, you haul it back up. Inside: a pale, blind cave fish, flopping in cold water. Its skin is almost transparent -- you can see its tiny heart beating with confused urgency. From the path behind you, the stone toad croaks. It sounds interested."
-                }
-            ],
-            "once": true
-        },
-        {
-            "id": "feed-toad-use",
-            "trigger": {
-                "verb": "use",
-                "subject": "cave-fish",
-                "target": "stone-toad"
-            },
-            "conditions": [
-                {
-                    "type": "has-item",
-                    "item": "cave-fish"
-                },
-                {
-                    "type": "flag-not-set",
-                    "flag": "stone_toad_moved"
-                }
-            ],
-            "actions": [
-                {
-                    "type": "remove-item",
-                    "item": "cave-fish"
-                },
-                {
-                    "type": "set-flag",
-                    "flag": "stone_toad_moved"
-                },
-                {
-                    "type": "narrator-say",
-                    "text": "You hold the cave fish out toward the stone toad. Its enormous eyes lock onto the wriggling pale shape with laser focus. A tongue -- thick, grey, and fast as a whip crack -- shoots out and snatches the fish from your hand before you can blink.\n\nThe toad chews once. Twice. Swallows with a sound like a boulder settling. Its throat bulges with satisfaction.\n\nThen, with a grinding of stone against stone, the massive creature shifts. One leg moves. Then another. Slowly, ponderously, like a glacier deciding to take a holiday, the stone toad shuffles off the path and settles into the grass beside it. It blinks at you once -- was that gratitude? -- then closes its eyes.\n\nThe path north to the village is clear."
-                }
-            ],
-            "once": true
-        },
-        {
-            "id": "feed-toad-give",
-            "trigger": {
-                "verb": "give",
-                "subject": "cave-fish",
-                "target": "stone-toad"
-            },
-            "conditions": [
-                {
-                    "type": "has-item",
-                    "item": "cave-fish"
-                },
-                {
-                    "type": "flag-not-set",
-                    "flag": "stone_toad_moved"
-                }
-            ],
-            "actions": [
-                {
-                    "type": "remove-item",
-                    "item": "cave-fish"
-                },
-                {
-                    "type": "set-flag",
-                    "flag": "stone_toad_moved"
-                },
-                {
-                    "type": "narrator-say",
-                    "text": "You offer the cave fish to the stone toad. It doesn't hesitate. A tongue like a grey battering ram fires out, claiming the fish with surgical precision. The toad chews with the satisfaction of something that has been waiting a very long time for exactly this.\n\nWith a grinding rumble, the massive creature hauls itself off the path and into the grass. It settles with a contented croak that vibrates the ground, tucks its legs beneath its bulk, and closes its eyes.\n\nThe way north is open."
-                }
-            ],
-            "once": true
-        },
-        {
-            "id": "feed-toad-direct",
-            "trigger": {
-                "verb": "use",
-                "subject": "cave-fish"
-            },
-            "conditions": [
-                {
-                    "type": "has-item",
-                    "item": "cave-fish"
-                },
-                {
-                    "type": "flag-not-set",
-                    "flag": "stone_toad_moved"
-                }
-            ],
-            "actions": [
-                {
-                    "type": "remove-item",
-                    "item": "cave-fish"
-                },
-                {
-                    "type": "set-flag",
-                    "flag": "stone_toad_moved"
-                },
-                {
-                    "type": "narrator-say",
-                    "text": "You hold up the cave fish. The stone toad's eyes snap to it with predatory focus. Before you can reconsider, a tongue like a grey whip snatches it from your grip.\n\nOne swallow. One satisfied croak. Then the toad grinds itself off the path with the slow inevitability of tectonic drift, settling into the grass with a thud that shakes the wildflowers.\n\nThe path north is clear. The toad is asleep before you take your first step."
+                    "text": "You pull the rope, lowering the bucket into the well's darkness. After a long wait and a distant splash, you haul it back up. Inside: a pale, blind cave fish, flopping in cold water. Its skin is almost transparent -- you can see its tiny heart beating with confused urgency. You wrap it carefully. Whatever's hungry enough to block a road might find this persuasive."
                 }
             ],
             "once": true
@@ -595,16 +458,15 @@
         }
     },
     "dynamicDescriptions": {
-        "stone_toad_moved": "A well-worn dirt path winds between the cave and the village. The stone toad has settled into the grass beside the path, sleeping off its meal. The way north to the village is clear. The old man sits on his rock, looking mildly impressed -- which, from him, is practically a standing ovation.",
-        "met_old_man": "A well-worn dirt path winds between the cave and the village. A massive stone toad squats across the path to the north, blocking the way with the immovable patience of something that's been sitting in one spot since before your parents were born. Its belly rumbles. The old man sits on his rock, watching you with an expression that suggests he knows exactly how many times you've died. Which is unsettling, because it's probably accurate."
+        "met_old_man": "A well-worn dirt path winds between the cave and the village. The old man sits on his rock, watching you with an expression that suggests he knows exactly how many times you've died. Which is unsettling, because it's probably accurate."
     },
     "puzzleHints": [
         {
             "puzzleId": "fish-from-well",
             "tiers": [
-                "That stone toad looks hungry. Very hungry. Perhaps it would move if it had something to eat. Something from the well, maybe -- there are things living in the dark water down there.",
-                "Lower the bucket into the well. There are cave fish living in the deep water. Catch one and the toad might find it appetizing enough to move.",
-                "Use the well or the bucket to lower it into the water. You'll pull up a pale cave fish. Then give the fish to the stone toad blocking the path north."
+                "That stone toad in the village square looks hungry. Very hungry. Perhaps it would move if it had something to eat. Something from the well, maybe -- there are things living in the dark water down there.",
+                "Lower the bucket into the well. There are cave fish living in the deep water. Catch one and the toad in the village might find it appetizing enough to move.",
+                "Use the well or the bucket to lower it into the water. You'll pull up a pale cave fish. Then take it to the village square and give it to the stone toad blocking the east road."
             ]
         }
     ],

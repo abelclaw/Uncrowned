@@ -64,18 +64,18 @@
         {
             "id": "to-village",
             "zone": {
-                "x": 0,
-                "y": 350,
-                "width": 80,
-                "height": 200
+                "x": 350,
+                "y": 0,
+                "width": 260,
+                "height": 80
             },
             "targetRoom": "village_path",
             "spawnPoint": {
-                "x": 590,
-                "y": 460
+                "x": 460,
+                "y": 490
             },
-            "transition": "slide-left",
-            "direction": "west",
+            "transition": "fade",
+            "direction": "north",
             "label": "village"
         },
         {
