@@ -19,8 +19,10 @@ export class MainMenuScene extends Scene {
     private slotItems: Phaser.GameObjects.GameObject[] = [];
     private loadPanel?: Phaser.GameObjects.Graphics;
 
-    /** Music toggle state: false = main theme, true = fugue */
-    private isFugue = false;
+    /** Music toggle: cycles through 3 themes */
+    private musicIndex = 0;
+    private static readonly MUSIC_KEYS = ['music-menu', 'music-menu-fugue', 'music-menu-ensemble'];
+    private static readonly MUSIC_COLORS = ['#8a8a9e', '#c4a46c', '#6ca4c4'];
 
     constructor() {
         super('MainMenuScene');
@@ -54,14 +56,9 @@ export class MainMenuScene extends Scene {
         noteIcon.on('pointerover', () => noteIcon.setScale(1.2));
         noteIcon.on('pointerout', () => noteIcon.setScale(1.0));
         noteIcon.on('pointerdown', () => {
-            this.isFugue = !this.isFugue;
-            if (this.isFugue) {
-                noteIcon.setColor('#c4a46c');
-                AudioManager.getInstance().playMusic('music-menu-fugue');
-            } else {
-                noteIcon.setColor('#8a8a9e');
-                AudioManager.getInstance().playMusic('music-menu');
-            }
+            this.musicIndex = (this.musicIndex + 1) % MainMenuScene.MUSIC_KEYS.length;
+            noteIcon.setColor(MainMenuScene.MUSIC_COLORS[this.musicIndex]);
+            AudioManager.getInstance().playMusic(MainMenuScene.MUSIC_KEYS[this.musicIndex]);
         });
 
         // Fade in from black (matches Preloader's fadeOut)
@@ -113,7 +110,7 @@ export class MainMenuScene extends Scene {
         });
 
         // ── Conditional extras below the image buttons ──
-        let extraY = 515;
+        let extraY = 525;
 
         // Continue — only when auto-save exists
         if (SaveManager.hasAutoSave()) {

@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """
 Generate a catchy melodic main menu theme for Uncrowned.
-Medieval fantasy adventure feel in D minor, ~35 seconds looping.
-Uses sine/triangle wave synthesis with ADSR envelopes, chorus, and delay.
+Medieval fantasy adventure feel in D minor, ~51 seconds looping.
+Instruments: flute-like lead, string ensemble pad, cello bass, gentle harp.
 """
 
 import wave
 import struct
 import math
 import os
+import random
 
 SAMPLE_RATE = 44100
 BPM = 112
@@ -26,71 +27,101 @@ NOTE_FREQ = {
 }
 
 
+# ── Waveform generators ──
+
 def sine(freq, t):
     return math.sin(2 * math.pi * freq * t) if freq > 0 else 0
 
-def triangle(freq, t):
-    if freq == 0: return 0
-    p = (t * freq) % 1.0
-    return 4 * abs(p - 0.5) - 1
-
-def soft_square(freq, t):
-    """Square wave with only first 3 odd harmonics for a mellow reed/organ tone."""
-    if freq == 0: return 0
-    return (sine(freq, t) + sine(freq*3, t)/3 + sine(freq*5, t)/5) * 0.7
 
 def warm_lead(freq, t):
-    """Pure sine lead with sub-octave warmth."""
-    if freq == 0: return 0
+    """Pure sine lead with sub-octave warmth — no overtones, no vibrato."""
+    if freq == 0:
+        return 0
     return 0.9 * sine(freq, t) + 0.1 * sine(freq * 0.5, t)
 
-def pluck(freq, t):
-    """Pure sine pluck — no overtones, just a volume envelope."""
-    if freq == 0: return 0
-    return sine(freq, t)
+
+def cello(freq, t):
+    """Cello-like: warm fundamental + 2nd partial + slow vibrato."""
+    if freq == 0:
+        return 0
+    vib = 1.0 + 0.004 * math.sin(2 * math.pi * 4.8 * t)
+    f = freq * vib
+    # Fundamental + quiet 2nd harmonic for warmth (not brightness)
+    return 0.8 * sine(f, t) + 0.2 * sine(f * 2, t) * max(0, 1.0 - t * 2)
+
+
+def string_voice(freq, t, detune_hz=0):
+    """Single string player: sine + vibrato + slight detune."""
+    if freq == 0:
+        return 0
+    f = (freq + detune_hz) * (1.0 + 0.003 * math.sin(2 * math.pi * (5.0 + detune_hz) * t))
+    return sine(f, t)
+
+
+def harp_tone(freq, t):
+    """Harp: exponential decay, no sustain. Warm fundamental only."""
+    if freq == 0:
+        return 0
+    # Exponential decay — dies away naturally like a plucked string
+    amp = math.exp(-t * 4.0)
+    # Tiny bit of 2nd harmonic that dies faster (string brightness at attack)
+    brightness = math.exp(-t * 10.0)
+    return amp * (sine(freq, t) + 0.12 * brightness * sine(freq * 2, t))
+
+
+# ── Envelope ──
 
 def adsr(t, dur, a=0.02, d=0.05, s=0.7, r=0.1):
-    """ADSR envelope."""
-    r = min(r, dur * 0.3)  # don't let release exceed 30% of note
-    if t < 0: return 0
-    if t < a: return t / a
-    if t < a + d: return 1.0 - (1.0 - s) * ((t - a) / d)
-    if t < dur - r: return s
-    if t < dur: return s * (1.0 - (t - (dur - r)) / r)
+    r = min(r, dur * 0.3)
+    if t < 0:
+        return 0
+    if t < a:
+        return t / a
+    if t < a + d:
+        return 1.0 - (1.0 - s) * ((t - a) / d)
+    if t < dur - r:
+        return s
+    if t < dur:
+        return s * (1.0 - (t - (dur - r)) / r)
     return 0
 
 
-def render_voice(notes, wave_fn, vol=0.3, a=0.02, d=0.05, s=0.7, r=0.1, detune=0):
-    """
-    Render a note sequence to float samples.
-    notes: list of (note_name, beats) tuples
-    detune: Hz offset for chorus effect
-    """
+# ── Renderers ──
+
+def render_voice(notes, wave_fn, vol=0.3, a=0.02, d=0.05, s=0.7, r=0.1):
+    """Render a monophonic voice."""
     total_beats = sum(b for _, b in notes)
     total_samples = int(total_beats * BEAT * SAMPLE_RATE)
     buf = [0.0] * total_samples
 
     t_offset = 0.0
     for note, beats in notes:
-        freq = NOTE_FREQ.get(note, 0) + detune
+        freq = NOTE_FREQ.get(note, 0)
         dur = beats * BEAT
         n_samp = int(dur * SAMPLE_RATE)
         for i in range(n_samp):
             t = i / SAMPLE_RATE
             idx = int((t_offset + t) * SAMPLE_RATE)
-            if idx >= len(buf): break
+            if idx >= len(buf):
+                break
             env = adsr(t, dur, a, d, s, r)
-            buf[idx] += wave_fn(freq, t_offset + t) * vol * env
+            buf[idx] += wave_fn(freq, t) * vol * env
         t_offset += dur
 
     return buf
 
 
-def render_chords(chords, wave_fn, vol=0.12, a=0.08, d=0.1, s=0.5, r=0.2):
-    """Render chord pads. chords: list of ([note_names], beats)."""
+def render_string_ensemble(chords, vol=0.06, a=0.25, d=0.1, s=0.4, r=0.4):
+    """
+    String ensemble pad: each chord note rendered by 3 'players'
+    with slight detuning (+0, +0.8, -0.7 Hz) for natural ensemble sound.
+    Very slow attack for smooth, lush feel.
+    """
     total_beats = sum(b for _, b in chords)
     total_samples = int(total_beats * BEAT * SAMPLE_RATE)
     buf = [0.0] * total_samples
+
+    detunes = [0, 0.8, -0.7]  # 3 players per note
 
     t_offset = 0.0
     for chord_notes, beats in chords:
@@ -98,20 +129,26 @@ def render_chords(chords, wave_fn, vol=0.12, a=0.08, d=0.1, s=0.5, r=0.2):
         n_samp = int(dur * SAMPLE_RATE)
         for note in chord_notes:
             freq = NOTE_FREQ.get(note, 0)
-            if freq == 0: continue
-            for i in range(n_samp):
-                t = i / SAMPLE_RATE
-                idx = int((t_offset + t) * SAMPLE_RATE)
-                if idx >= len(buf): break
-                env = adsr(t, dur, a, d, s, r)
-                buf[idx] += wave_fn(freq, t_offset + t) * vol * env
+            if freq == 0:
+                continue
+            for dt in detunes:
+                for i in range(n_samp):
+                    t = i / SAMPLE_RATE
+                    idx = int((t_offset + t) * SAMPLE_RATE)
+                    if idx >= len(buf):
+                        break
+                    env = adsr(t, dur, a, d, s, r)
+                    buf[idx] += string_voice(freq, t, dt) * vol * env
         t_offset += dur
 
     return buf
 
 
-def render_arpeggio(chords, wave_fn, vol=0.2, note_beats=0.5, a=0.01, d=0.08, s=0.3, r=0.15):
-    """Render arpeggiated chords. Each chord note played sequentially."""
+def render_harp(chords, vol=0.14, note_beats=0.5):
+    """
+    Gentle harp arpeggiation. Uses exponential decay envelope (no ADSR)
+    for natural plucked-string sound.
+    """
     total_beats = sum(b for _, b in chords)
     total_samples = int(total_beats * BEAT * SAMPLE_RATE)
     buf = [0.0] * total_samples
@@ -121,7 +158,6 @@ def render_arpeggio(chords, wave_fn, vol=0.2, note_beats=0.5, a=0.01, d=0.08, s=
         total_dur = beats * BEAT
         arp_dur = note_beats * BEAT
         n_notes = len(chord_notes)
-        # Cycle through chord notes to fill the beat duration
         arp_idx = 0
         inner_offset = 0.0
         while inner_offset < total_dur - 0.001:
@@ -132,9 +168,9 @@ def render_arpeggio(chords, wave_fn, vol=0.2, note_beats=0.5, a=0.01, d=0.08, s=
             for i in range(n_samp):
                 t = i / SAMPLE_RATE
                 idx = int((t_offset + inner_offset + t) * SAMPLE_RATE)
-                if idx >= len(buf): break
-                env = adsr(t, this_dur, a, d, s, r)
-                buf[idx] += wave_fn(freq, t_offset + inner_offset + t) * vol * env
+                if idx >= len(buf):
+                    break
+                buf[idx] += harp_tone(freq, t) * vol
             inner_offset += this_dur
             arp_idx += 1
         t_offset += total_dur
@@ -142,8 +178,51 @@ def render_arpeggio(chords, wave_fn, vol=0.2, note_beats=0.5, a=0.01, d=0.08, s=
     return buf
 
 
+# ── Effects ──
+
+def reverb(buf, dry=0.75, wet=0.25):
+    """
+    Simple Schroeder-style reverb using 4 comb filters + 2 allpass filters.
+    Simulates room ambience without the metallic quality of a single delay tap.
+    """
+    out = buf[:]
+    length = len(out)
+
+    # Comb filter delays (in samples) — chosen to be mutually prime
+    comb_delays = [1557, 1617, 1491, 1422]
+    comb_feedback = 0.80  # controls decay time
+
+    # Run 4 parallel comb filters and sum
+    comb_sum = [0.0] * length
+    for delay in comb_delays:
+        comb_buf = [0.0] * length
+        for i in range(length):
+            if i >= delay:
+                comb_buf[i] = out[i] + comb_buf[i - delay] * comb_feedback
+            else:
+                comb_buf[i] = out[i]
+        for i in range(length):
+            comb_sum[i] += comb_buf[i] * 0.25  # average of 4 combs
+
+    # Two allpass filters in series for diffusion
+    allpass_delays = [225, 341]
+    allpass_gain = 0.5
+    result = comb_sum
+    for delay in allpass_delays:
+        ap_buf = [0.0] * length
+        for i in range(length):
+            if i >= delay:
+                ap_buf[i] = -allpass_gain * result[i] + result[i - delay] + allpass_gain * ap_buf[i - delay]
+            else:
+                ap_buf[i] = result[i] * (1 - allpass_gain)
+        result = ap_buf
+
+    # Mix dry/wet
+    return [d * dry + w * wet for d, w in zip(buf, result)]
+
+
 def lowpass(buf, cutoff=0.15):
-    """Simple single-pole low-pass filter. cutoff 0..1 (lower = darker)."""
+    """Single-pole low-pass filter. cutoff 0..1 (lower = darker)."""
     out = buf[:]
     prev = 0.0
     for i in range(len(out)):
@@ -152,18 +231,7 @@ def lowpass(buf, cutoff=0.15):
     return out
 
 
-def add_delay(buf, delay_ms=300, feedback=0.3, mix=0.25):
-    """Simple delay/echo effect."""
-    delay_samples = int(SAMPLE_RATE * delay_ms / 1000)
-    out = buf[:]
-    for i in range(delay_samples, len(out)):
-        out[i] += out[i - delay_samples] * feedback
-    # Mix wet/dry
-    return [d * (1 - mix) + w * mix for d, w in zip(buf, out)]
-
-
 def mix_and_normalize(*tracks, target=0.75):
-    """Mix tracks and normalize to target amplitude."""
     length = max(len(t) for t in tracks)
     mixed = [0.0] * length
     for track in tracks:
@@ -176,7 +244,6 @@ def mix_and_normalize(*tracks, target=0.75):
 
 
 def apply_fadeout(buf, fade_seconds=2.0):
-    """Apply fade-out to the end."""
     fade_samples = int(SAMPLE_RATE * fade_seconds)
     start = len(buf) - fade_samples
     for i in range(fade_samples):
@@ -208,87 +275,63 @@ def main():
     # Total: 24 bars = 96 beats ≈ 51 seconds
     # ================================================================
 
-    # q=1, e=0.5, h=2, dq=1.5, w=4, s=0.25
-
-    # --- LEAD MELODY ---
+    # --- LEAD MELODY (warm sine) ---
     lead_notes = [
-        # == INTRO (4 bars) - gentle opening ==
-        ('R', 4),  # Bar 1: rest (arpeggio plays alone)
-        ('R', 4),  # Bar 2: rest
-        ('A4', 1.5), ('G4', 0.5), ('F4', 1), ('D4', 1),  # Bar 3: gentle entry
-        ('E4', 1), ('F4', 1), ('A4', 2),                   # Bar 4: building
+        # == INTRO (4 bars) ==
+        ('R', 4), ('R', 4),
+        ('A4', 1.5), ('G4', 0.5), ('F4', 1), ('D4', 1),
+        ('E4', 1), ('F4', 1), ('A4', 2),
 
-        # == THEME A (8 bars) - main hook ==
-        # Bar 5: THE HOOK - ascending D minor arpeggio
+        # == THEME A (8 bars) ==
         ('D4', 1), ('F4', 0.5), ('A4', 0.5), ('D5', 2),
-        # Bar 6: answer phrase - descending
         ('C5', 1), ('Bb4', 0.5), ('A4', 0.5), ('G4', 2),
-        # Bar 7: rising phrase
         ('F4', 1), ('G4', 0.5), ('A4', 0.5), ('Bb4', 1.5), ('A4', 0.5),
-        # Bar 8: resolution
         ('G4', 1), ('F4', 1), ('D4', 2),
-        # Bar 9: hook repeat with variation
         ('D4', 0.5), ('E4', 0.5), ('F4', 0.5), ('A4', 0.5), ('D5', 1), ('C5', 1),
-        # Bar 10: soaring answer
         ('Bb4', 1), ('C5', 0.5), ('D5', 0.5), ('E5', 2),
-        # Bar 11: climax
         ('F5', 1), ('E5', 0.5), ('D5', 0.5), ('C5', 1), ('Bb4', 1),
-        # Bar 12: resolution home
         ('A4', 1.5), ('G4', 0.5), ('F4', 1), ('D4', 1),
 
-        # == THEME B (8 bars) - development, slightly different feel ==
-        # Bar 13: new motif - Bb major feel
+        # == THEME B (8 bars) ==
         ('Bb4', 1), ('D5', 1), ('C5', 1), ('Bb4', 1),
-        # Bar 14: walking down
         ('A4', 1), ('G4', 1), ('F4', 1), ('E4', 1),
-        # Bar 15: call
         ('F4', 1.5), ('A4', 0.5), ('C5', 2),
-        # Bar 16: response
         ('Bb4', 1), ('A4', 1), ('G4', 2),
-        # Bar 17: recapitulation of hook
         ('D4', 1), ('F4', 0.5), ('A4', 0.5), ('D5', 2),
-        # Bar 18: different continuation
         ('C5', 1), ('D5', 0.5), ('E5', 0.5), ('F5', 2),
-        # Bar 19: dramatic descent
         ('E5', 1), ('D5', 0.5), ('C5', 0.5), ('Bb4', 1), ('A4', 1),
-        # Bar 20: final resolution
         ('G4', 1), ('F4', 0.5), ('E4', 0.5), ('D4', 2),
 
-        # == OUTRO (4 bars) - winding down ==
-        # Bar 21
+        # == OUTRO (4 bars) ==
         ('A4', 1.5), ('G4', 0.5), ('F4', 2),
-        # Bar 22
         ('E4', 1), ('F4', 1), ('D4', 2),
-        # Bar 23
         ('F4', 1), ('A4', 1), ('D5', 2),
-        # Bar 24: final note
         ('D4', 4),
     ]
 
-    # --- BASS LINE ---
+    # --- BASS (cello) ---
     bass_notes = [
-        # Intro
         ('D3', 4), ('D3', 4),
         ('D3', 2), ('F3', 2),
         ('C3', 2), ('D3', 2),
         # Theme A
-        ('D3', 4),                          # Dm
-        ('Bb3', 2), ('G3', 2),             # Bb, Gm (using Bb3 not too low)
-        ('F3', 4),                          # F
-        ('G3', 2), ('D3', 2),              # Gm, Dm
-        ('D3', 4),                          # Dm
-        ('Bb3', 2), ('C3', 2),             # Bb, C (using C3)
-        ('F3', 2), ('Bb3', 2),             # F, Bb
-        ('A3', 2), ('D3', 2),              # Am, Dm
+        ('D3', 4),
+        ('Bb3', 2), ('G3', 2),
+        ('F3', 4),
+        ('G3', 2), ('D3', 2),
+        ('D3', 4),
+        ('Bb3', 2), ('C3', 2),
+        ('F3', 2), ('Bb3', 2),
+        ('A3', 2), ('D3', 2),
         # Theme B
-        ('Bb3', 4),                         # Bb
-        ('A3', 2), ('F3', 2),              # Am, F
-        ('F3', 2), ('C3', 2),              # F, C
-        ('Bb3', 2), ('G3', 2),             # Bb, Gm
-        ('D3', 4),                          # Dm
-        ('C3', 2), ('F3', 2),              # C, F
-        ('G3', 2), ('Bb3', 2),             # Gm, Bb
-        ('A3', 2), ('D3', 2),              # Am, Dm
+        ('Bb3', 4),
+        ('A3', 2), ('F3', 2),
+        ('F3', 2), ('C3', 2),
+        ('Bb3', 2), ('G3', 2),
+        ('D3', 4),
+        ('C3', 2), ('F3', 2),
+        ('G3', 2), ('Bb3', 2),
+        ('A3', 2), ('D3', 2),
         # Outro
         ('D3', 4),
         ('C3', 2), ('D3', 2),
@@ -296,31 +339,30 @@ def main():
         ('D3', 4),
     ]
 
-    # --- CHORD PAD ---
+    # --- STRING ENSEMBLE PAD ---
     pad_chords = [
-        # Intro
-        (['D4', 'F4', 'A4'], 4),           # Dm
-        (['D4', 'F4', 'A4'], 4),           # Dm
+        (['D4', 'F4', 'A4'], 4),
+        (['D4', 'F4', 'A4'], 4),
         (['D4', 'F4', 'A4'], 2), (['F4', 'A4', 'C5'], 2),
         (['C4', 'E4', 'G4'], 2), (['D4', 'F4', 'A4'], 2),
         # Theme A
-        (['D4', 'F4', 'A4'], 4),           # Dm
-        (['Bb3', 'D4', 'F4'], 2), (['G3', 'Bb3', 'D4'], 2),  # Bb, Gm
-        (['F3', 'A3', 'C4'], 4),           # F
-        (['G3', 'Bb3', 'D4'], 2), (['D3', 'F3', 'A3'], 2),  # Gm, Dm
-        (['D4', 'F4', 'A4'], 4),           # Dm
-        (['Bb3', 'D4', 'F4'], 2), (['C4', 'E4', 'G4'], 2),  # Bb, C
-        (['F3', 'A3', 'C4'], 2), (['Bb3', 'D4', 'F4'], 2),  # F, Bb
-        (['A3', 'C4', 'E4'], 2), (['D3', 'F3', 'A3'], 2),   # Am, Dm
+        (['D4', 'F4', 'A4'], 4),
+        (['Bb3', 'D4', 'F4'], 2), (['G3', 'Bb3', 'D4'], 2),
+        (['F3', 'A3', 'C4'], 4),
+        (['G3', 'Bb3', 'D4'], 2), (['D3', 'F3', 'A3'], 2),
+        (['D4', 'F4', 'A4'], 4),
+        (['Bb3', 'D4', 'F4'], 2), (['C4', 'E4', 'G4'], 2),
+        (['F3', 'A3', 'C4'], 2), (['Bb3', 'D4', 'F4'], 2),
+        (['A3', 'C4', 'E4'], 2), (['D3', 'F3', 'A3'], 2),
         # Theme B
-        (['Bb3', 'D4', 'F4'], 4),          # Bb
-        (['A3', 'C4', 'E4'], 2), (['F3', 'A3', 'C4'], 2),   # Am, F
-        (['F3', 'A3', 'C4'], 2), (['C4', 'E4', 'G4'], 2),   # F, C
-        (['Bb3', 'D4', 'F4'], 2), (['G3', 'Bb3', 'D4'], 2), # Bb, Gm
-        (['D4', 'F4', 'A4'], 4),           # Dm
-        (['C4', 'E4', 'G4'], 2), (['F3', 'A3', 'C4'], 2),   # C, F
-        (['G3', 'Bb3', 'D4'], 2), (['Bb3', 'D4', 'F4'], 2), # Gm, Bb
-        (['A3', 'C4', 'E4'], 2), (['D3', 'F3', 'A3'], 2),   # Am, Dm
+        (['Bb3', 'D4', 'F4'], 4),
+        (['A3', 'C4', 'E4'], 2), (['F3', 'A3', 'C4'], 2),
+        (['F3', 'A3', 'C4'], 2), (['C4', 'E4', 'G4'], 2),
+        (['Bb3', 'D4', 'F4'], 2), (['G3', 'Bb3', 'D4'], 2),
+        (['D4', 'F4', 'A4'], 4),
+        (['C4', 'E4', 'G4'], 2), (['F3', 'A3', 'C4'], 2),
+        (['G3', 'Bb3', 'D4'], 2), (['Bb3', 'D4', 'F4'], 2),
+        (['A3', 'C4', 'E4'], 2), (['D3', 'F3', 'A3'], 2),
         # Outro
         (['D4', 'F4', 'A4'], 4),
         (['C4', 'E4', 'G4'], 2), (['D4', 'F4', 'A4'], 2),
@@ -328,68 +370,64 @@ def main():
         (['D3', 'F3', 'A3'], 4),
     ]
 
-    # --- ARPEGGIO (harp-like, voiced low for warmth) ---
-    arp_chords = [
-        # Intro - prominent arpeggios
-        (['D3', 'F3', 'A3', 'D4'], 4),
-        (['D3', 'F3', 'A3', 'D4'], 4),
-        (['D3', 'F3', 'A3', 'C4'], 2), (['F3', 'A3', 'C4', 'F4'], 2),
-        (['C3', 'E3', 'G3', 'C4'], 2), (['D3', 'F3', 'A3', 'D4'], 2),
+    # --- HARP ARPEGGIOS (mid-range, gentle) ---
+    harp_chords = [
+        (['D4', 'F4', 'A4'], 4),
+        (['D4', 'F4', 'A4'], 4),
+        (['D4', 'F4', 'A4'], 2), (['F4', 'A4', 'C5'], 2),
+        (['C4', 'E4', 'G4'], 2), (['D4', 'F4', 'A4'], 2),
         # Theme A
-        (['D3', 'F3', 'A3', 'D4'], 4),
+        (['D4', 'F4', 'A4'], 4),
         (['Bb3', 'D4', 'F4'], 2), (['G3', 'Bb3', 'D4'], 2),
         (['F3', 'A3', 'C4'], 4),
         (['G3', 'Bb3', 'D4'], 2), (['D3', 'F3', 'A3'], 2),
-        (['D3', 'F3', 'A3', 'D4'], 4),
-        (['Bb3', 'D4', 'F4'], 2), (['C3', 'E3', 'G3', 'C4'], 2),
+        (['D4', 'F4', 'A4'], 4),
+        (['Bb3', 'D4', 'F4'], 2), (['C4', 'E4', 'G4'], 2),
         (['F3', 'A3', 'C4'], 2), (['Bb3', 'D4', 'F4'], 2),
         (['A3', 'C4', 'E4'], 2), (['D3', 'F3', 'A3'], 2),
         # Theme B
         (['Bb3', 'D4', 'F4'], 4),
         (['A3', 'C4', 'E4'], 2), (['F3', 'A3', 'C4'], 2),
-        (['F3', 'A3', 'C4'], 2), (['C3', 'E3', 'G3', 'C4'], 2),
+        (['F3', 'A3', 'C4'], 2), (['C4', 'E4', 'G4'], 2),
         (['Bb3', 'D4', 'F4'], 2), (['G3', 'Bb3', 'D4'], 2),
-        (['D3', 'F3', 'A3', 'D4'], 4),
-        (['C3', 'E3', 'G3', 'C4'], 2), (['F3', 'A3', 'C4'], 2),
+        (['D4', 'F4', 'A4'], 4),
+        (['C4', 'E4', 'G4'], 2), (['F3', 'A3', 'C4'], 2),
         (['G3', 'Bb3', 'D4'], 2), (['Bb3', 'D4', 'F4'], 2),
         (['A3', 'C4', 'E4'], 2), (['D3', 'F3', 'A3'], 2),
         # Outro
-        (['D3', 'F3', 'A3', 'D4'], 4),
-        (['C3', 'E3', 'G3', 'C4'], 2), (['D3', 'F3', 'A3', 'D4'], 2),
-        (['F3', 'A3', 'C4', 'F4'], 2), (['D3', 'F3', 'A3', 'D4'], 2),
+        (['D4', 'F4', 'A4'], 4),
+        (['C4', 'E4', 'G4'], 2), (['D4', 'F4', 'A4'], 2),
+        (['F3', 'A3', 'C4'], 2), (['D4', 'F4', 'A4'], 2),
         (['D3', 'F3', 'A3'], 4),
     ]
+
+    # ── Render each instrument ──
 
     print('  Rendering lead melody...')
     lead = render_voice(lead_notes, warm_lead, vol=0.40, a=0.03, d=0.08, s=0.6, r=0.15)
 
-    print('  Rendering bass...')
-    bass = render_voice(bass_notes, sine, vol=0.35, a=0.04, d=0.1, s=0.5, r=0.15)
+    print('  Rendering cello bass...')
+    bass = render_voice(bass_notes, cello, vol=0.30, a=0.06, d=0.1, s=0.5, r=0.2)
 
-    print('  Rendering chord pad...')
-    pad = render_chords(pad_chords, sine, vol=0.10, a=0.2, d=0.1, s=0.4, r=0.3)
+    print('  Rendering string ensemble...')
+    strings = render_string_ensemble(pad_chords, vol=0.05, a=0.3, d=0.1, s=0.35, r=0.5)
 
-    print('  Rendering arpeggio...')
-    arp = render_arpeggio(arp_chords, pluck, vol=0.10, note_beats=0.5, a=0.04, d=0.15, s=0.2, r=0.25)
+    print('  Rendering harp...')
+    harp = render_harp(harp_chords, vol=0.10, note_beats=0.5)
 
-    print('  Mixing and adding effects...')
-    # Three-pass low-pass filter on arpeggio for a very dark, warm sound
-    arp = lowpass(lowpass(lowpass(arp, cutoff=0.15), cutoff=0.15), cutoff=0.15)
+    # ── Effects ──
+    print('  Adding reverb...')
+    lead = reverb(lead, dry=0.80, wet=0.20)
+    harp = reverb(harp, dry=0.70, wet=0.30)
+    # Strings already sound lush from ensemble detuning; light reverb
+    strings = reverb(strings, dry=0.85, wet=0.15)
 
-    # Gentle low-pass on lead
-    lead = lowpass(lead, cutoff=0.3)
-
-    # Light delay on lead only (no delay on arpeggio — it creates metallic comb artifacts)
-    lead = add_delay(lead, delay_ms=280, feedback=0.10, mix=0.10)
-
-    # Mix all tracks
-    mixed, scale = mix_and_normalize(lead, bass, pad, arp, target=0.75)
+    # ── Mix ──
+    print('  Mixing...')
+    mixed, scale = mix_and_normalize(lead, bass, strings, harp, target=0.75)
     final = [s * scale for s in mixed]
-
-    # Apply fade-out at the end
     final = apply_fadeout(final, fade_seconds=3.0)
 
-    # Output
     output_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                                'public', 'assets', 'audio', 'music', 'menu.wav')
     write_wav(output_path, final)

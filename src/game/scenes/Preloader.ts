@@ -254,6 +254,7 @@ export class Preloader extends Scene {
         this.load.audio('music-village', 'assets/audio/music/village.wav');
         this.load.audio('music-menu', 'assets/audio/music/menu.wav');
         this.load.audio('music-menu-fugue', 'assets/audio/music/menu-fugue.wav');
+        this.load.audio('music-menu-ensemble', 'assets/audio/music/menu-ensemble.wav');
 
         // Ambient loops
         this.load.audio('amb-forest-birds', 'assets/audio/ambient/forest-birds.wav');
@@ -270,7 +271,7 @@ export class Preloader extends Scene {
 
         // Show clickable "Ready" text after a brief pause at 100%
         this.time.delayedCall(400, () => {
-            const ready = this.add.text(cx, Preloader.BAR_Y + Preloader.BAR_H + 30, '▶  Ready', {
+            const ready = this.add.text(cx, Preloader.BAR_Y + Preloader.BAR_H + 58, '▶  Ready', {
                 fontFamily: 'monospace',
                 fontSize: '18px',
                 color: '#d4a847',
