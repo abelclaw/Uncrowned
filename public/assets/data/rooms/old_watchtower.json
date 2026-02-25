@@ -541,7 +541,7 @@
             "id": "look-ground-lens",
             "trigger": {
                 "verb": "look",
-                "subject": "ground"
+                "subject": "observation-platform"
             },
             "conditions": [
                 {
@@ -553,44 +553,6 @@
                 {
                     "type": "narrator-say",
                     "text": "You scan the ground carefully. Among the cracked flagstones and weeds, something catches the light -- a curved piece of glass, half-buried in grime near the platform edge. A telescope lens, cracked but intact. Someone must have removed it from the telescope, or it fell out on its own. Either way, it's just sitting there, waiting to be picked up."
-                }
-            ]
-        },
-        {
-            "id": "look-floor-lens",
-            "trigger": {
-                "verb": "look",
-                "subject": "floor"
-            },
-            "conditions": [
-                {
-                    "type": "item-not-taken",
-                    "item": "telescope-lens"
-                }
-            ],
-            "actions": [
-                {
-                    "type": "narrator-say",
-                    "text": "You scan the ground carefully. Among the cracked flagstones and weeds, something catches the light -- a curved piece of glass, half-buried in grime near the platform edge. A telescope lens, cracked but intact. Someone must have removed it from the telescope, or it fell out on its own. Either way, it's just sitting there, waiting to be picked up."
-                }
-            ]
-        },
-        {
-            "id": "look-shiny",
-            "trigger": {
-                "verb": "look",
-                "subject": "glint"
-            },
-            "conditions": [
-                {
-                    "type": "item-not-taken",
-                    "item": "telescope-lens"
-                }
-            ],
-            "actions": [
-                {
-                    "type": "narrator-say",
-                    "text": "You kneel to examine the glint of light. It's a telescope lens -- cracked but functional -- resting among the stones near the platform edge. It must have fallen from the telescope, or been removed. You could take it and fit it back in."
                 }
             ]
         },
