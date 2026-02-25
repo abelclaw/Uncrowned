@@ -448,7 +448,7 @@
             "id": "castle_cook",
             "position": {
                 "x": 327,
-                "y": 476
+                "y": 377
             },
             "interactionPoint": {
                 "x": 271,
@@ -460,7 +460,13 @@
                 "width": 148,
                 "height": 197
             },
-            "aliases": ["martha", "cook", "woman", "chef", "lady"],
+            "aliases": [
+                "martha",
+                "cook",
+                "woman",
+                "chef",
+                "lady"
+            ],
             "responses": {
                 "look": "Martha is a stout woman wielding a cleaver with the casual competence of someone who's been threatening vegetables -- and occasionally people -- for thirty years. She eyes you the way one eyes an uninvited guest who's wandered into the kitchen during a crisis.",
                 "talk": "'Can't talk. No flour. No flour means no bread. No bread means the castle starves. Not that there's anyone left to feed, but a cook has standards.' She waves her cleaver in the general direction of 'go away.'",
@@ -510,7 +516,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 448,
-        "y": 423
+        "x": 623,
+        "y": 464
     }
 }

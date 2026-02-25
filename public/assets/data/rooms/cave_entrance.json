@@ -94,7 +94,15 @@
             "transition": "fade",
             "direction": "north",
             "label": "depths",
-            "aliases": ["in", "inside", "enter", "cave", "door", "deeper", "forward"],
+            "aliases": [
+                "in",
+                "inside",
+                "enter",
+                "cave",
+                "door",
+                "deeper",
+                "forward"
+            ],
             "conditions": [
                 {
                     "type": "flag-set",
@@ -108,7 +116,18 @@
         {
             "id": "cave-mouth",
             "name": "Dark Cave Mouth",
-            "aliases": ["cave", "cave mouth", "entrance", "opening", "dark opening", "hole", "cave opening", "dark cave", "cave entry", "doorway"],
+            "aliases": [
+                "cave",
+                "cave mouth",
+                "entrance",
+                "opening",
+                "dark opening",
+                "hole",
+                "cave opening",
+                "dark cave",
+                "cave entry",
+                "doorway"
+            ],
             "zone": {
                 "x": 450,
                 "y": 340,
@@ -133,7 +152,17 @@
         {
             "id": "locked-door",
             "name": "Heavy Oak Door",
-            "aliases": ["door", "oak door", "locked door", "wooden door", "heavy door", "gate", "iron door", "cave door", "big door"],
+            "aliases": [
+                "door",
+                "oak door",
+                "locked door",
+                "wooden door",
+                "heavy door",
+                "gate",
+                "iron door",
+                "cave door",
+                "big door"
+            ],
             "zone": {
                 "x": 480,
                 "y": 380,
@@ -158,7 +187,16 @@
         {
             "id": "rock-ledge",
             "name": "Rock Ledge",
-            "aliases": ["ledge", "shelf", "rock shelf", "stone ledge", "stone shelf", "outcropping", "overhang", "ridge"],
+            "aliases": [
+                "ledge",
+                "shelf",
+                "rock shelf",
+                "stone ledge",
+                "stone shelf",
+                "outcropping",
+                "overhang",
+                "ridge"
+            ],
             "zone": {
                 "x": 630,
                 "y": 370,
@@ -183,7 +221,17 @@
         {
             "id": "stone-archway",
             "name": "Stone Archway",
-            "aliases": ["arch", "archway", "stone arch", "carved arch", "door frame", "doorframe", "frame", "carved stone", "gateway"],
+            "aliases": [
+                "arch",
+                "archway",
+                "stone arch",
+                "carved arch",
+                "door frame",
+                "doorframe",
+                "frame",
+                "carved stone",
+                "gateway"
+            ],
             "zone": {
                 "x": 350,
                 "y": 50,
@@ -208,7 +256,18 @@
         {
             "id": "cave-vines",
             "name": "Cave Vines",
-            "aliases": ["vines", "vine", "ivy", "creepers", "creeper", "plants", "tendrils", "climbing plants", "vegetation", "greenery"],
+            "aliases": [
+                "vines",
+                "vine",
+                "ivy",
+                "creepers",
+                "creeper",
+                "plants",
+                "tendrils",
+                "climbing plants",
+                "vegetation",
+                "greenery"
+            ],
             "zone": {
                 "x": 100,
                 "y": 200,
@@ -233,7 +292,18 @@
         {
             "id": "iron-bands",
             "name": "Iron Bands",
-            "aliases": ["bands", "iron", "metal bands", "metal", "rivets", "straps", "iron straps", "door bands", "hinges", "ironwork"],
+            "aliases": [
+                "bands",
+                "iron",
+                "metal bands",
+                "metal",
+                "rivets",
+                "straps",
+                "iron straps",
+                "door bands",
+                "hinges",
+                "ironwork"
+            ],
             "zone": {
                 "x": 470,
                 "y": 390,
@@ -258,7 +328,16 @@
         {
             "id": "keyhole",
             "name": "Rusted Keyhole",
-            "aliases": ["keyhole", "key hole", "lock", "door lock", "slot", "hole", "rusty lock", "mechanism"],
+            "aliases": [
+                "keyhole",
+                "key hole",
+                "lock",
+                "door lock",
+                "slot",
+                "hole",
+                "rusty lock",
+                "mechanism"
+            ],
             "zone": {
                 "x": 500,
                 "y": 420,
@@ -283,7 +362,16 @@
         {
             "id": "cave-moss",
             "name": "Damp Moss",
-            "aliases": ["moss", "green moss", "lichen", "algae", "green stuff", "mold", "mould", "damp stuff"],
+            "aliases": [
+                "moss",
+                "green moss",
+                "lichen",
+                "algae",
+                "green stuff",
+                "mold",
+                "mould",
+                "damp stuff"
+            ],
             "zone": {
                 "x": 640,
                 "y": 380,
@@ -308,7 +396,21 @@
         {
             "id": "eroded-runes",
             "name": "Eroded Runes",
-            "aliases": ["runes", "symbols", "carvings", "writing", "inscriptions", "inscription", "markings", "letters", "text", "glyphs", "hieroglyphs", "ancient writing", "carved symbols"],
+            "aliases": [
+                "runes",
+                "symbols",
+                "carvings",
+                "writing",
+                "inscriptions",
+                "inscription",
+                "markings",
+                "letters",
+                "text",
+                "glyphs",
+                "hieroglyphs",
+                "ancient writing",
+                "carved symbols"
+            ],
             "zone": {
                 "x": 440,
                 "y": 60,
@@ -333,7 +435,16 @@
         {
             "id": "stone-stairs",
             "name": "Stone Stairs",
-            "aliases": ["stairs", "steps", "stairway", "staircase", "stone steps", "passage", "way down", "descending stairs"],
+            "aliases": [
+                "stairs",
+                "steps",
+                "stairway",
+                "staircase",
+                "stone steps",
+                "passage",
+                "way down",
+                "descending stairs"
+            ],
             "zone": {
                 "x": 480,
                 "y": 370,
@@ -358,7 +469,20 @@
         {
             "id": "rocky-hillside",
             "name": "Rocky Hillside",
-            "aliases": ["hillside", "hill", "rocks", "rock face", "cliff", "cliff face", "mountain", "mountainside", "stone wall", "rock wall", "crag", "craggy hillside"],
+            "aliases": [
+                "hillside",
+                "hill",
+                "rocks",
+                "rock face",
+                "cliff",
+                "cliff face",
+                "mountain",
+                "mountainside",
+                "stone wall",
+                "rock wall",
+                "crag",
+                "craggy hillside"
+            ],
             "zone": {
                 "x": 200,
                 "y": 100,
@@ -383,7 +507,17 @@
         {
             "id": "cave-floor",
             "name": "Cave Floor",
-            "aliases": ["floor", "ground", "rocks", "stone floor", "cave ground", "gravel", "dirt", "pebbles", "rubble"],
+            "aliases": [
+                "floor",
+                "ground",
+                "rocks",
+                "stone floor",
+                "cave ground",
+                "gravel",
+                "dirt",
+                "pebbles",
+                "rubble"
+            ],
             "zone": {
                 "x": 100,
                 "y": 400,
@@ -406,7 +540,20 @@
         {
             "id": "mysterious-bottle",
             "name": "Mysterious Bottle",
-            "aliases": ["bottle", "potion", "flask", "vial", "liquid", "glass bottle", "drink", "elixir", "mystery bottle", "coloured bottle", "colored bottle", "strange bottle"],
+            "aliases": [
+                "bottle",
+                "potion",
+                "flask",
+                "vial",
+                "liquid",
+                "glass bottle",
+                "drink",
+                "elixir",
+                "mystery bottle",
+                "coloured bottle",
+                "colored bottle",
+                "strange bottle"
+            ],
             "zone": {
                 "x": 839,
                 "y": 314,
@@ -430,7 +577,20 @@
         {
             "id": "glowing-mushroom",
             "name": "Glowing Mushroom",
-            "aliases": ["mushroom", "fungus", "fungi", "toadstool", "shroom", "glowing thing", "blue mushroom", "blue light", "bioluminescent mushroom", "magic mushroom", "light", "glow"],
+            "aliases": [
+                "mushroom",
+                "fungus",
+                "fungi",
+                "toadstool",
+                "shroom",
+                "glowing thing",
+                "blue mushroom",
+                "blue light",
+                "bioluminescent mushroom",
+                "magic mushroom",
+                "light",
+                "glow"
+            ],
             "zone": {
                 "x": 233,
                 "y": 376,
@@ -840,7 +1000,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 506,
-        "y": 421
+        "x": 477,
+        "y": 439
     }
 }

@@ -118,7 +118,21 @@
         {
             "id": "mushroom-clusters",
             "name": "Bioluminescent Mushrooms",
-            "aliases": ["mushrooms", "mushroom", "fungi", "fungus", "shrooms", "glowing mushrooms", "bio mushrooms", "luminescent mushrooms", "clusters", "mushroom clusters", "toadstools", "lights", "glowing fungi"],
+            "aliases": [
+                "mushrooms",
+                "mushroom",
+                "fungi",
+                "fungus",
+                "shrooms",
+                "glowing mushrooms",
+                "bio mushrooms",
+                "luminescent mushrooms",
+                "clusters",
+                "mushroom clusters",
+                "toadstools",
+                "lights",
+                "glowing fungi"
+            ],
             "zone": {
                 "x": 300,
                 "y": 360,
@@ -143,7 +157,17 @@
         {
             "id": "cave-path",
             "name": "Cave Path",
-            "aliases": ["path", "trail", "walkway", "passage", "road", "corridor", "track", "cave trail", "cave floor"],
+            "aliases": [
+                "path",
+                "trail",
+                "walkway",
+                "passage",
+                "road",
+                "corridor",
+                "track",
+                "cave trail",
+                "cave floor"
+            ],
             "zone": {
                 "x": 300,
                 "y": 300,
@@ -168,7 +192,22 @@
         {
             "id": "organic-growth",
             "name": "Organic Growth",
-            "aliases": ["growth", "membrane", "fungal growth", "organic seal", "seal", "blockage", "obstruction", "fungal wall", "moss", "slime", "mold", "organic barrier", "biological wall", "living wall"],
+            "aliases": [
+                "growth",
+                "membrane",
+                "fungal growth",
+                "organic seal",
+                "seal",
+                "blockage",
+                "obstruction",
+                "fungal wall",
+                "moss",
+                "slime",
+                "mold",
+                "organic barrier",
+                "biological wall",
+                "living wall"
+            ],
             "zone": {
                 "x": 10,
                 "y": 370,
@@ -192,7 +231,17 @@
         {
             "id": "cave-walls",
             "name": "Cave Walls",
-            "aliases": ["walls", "wall", "rock wall", "rock walls", "stone wall", "stone walls", "cavern wall", "cavern walls", "rock face"],
+            "aliases": [
+                "walls",
+                "wall",
+                "rock wall",
+                "rock walls",
+                "stone wall",
+                "stone walls",
+                "cavern wall",
+                "cavern walls",
+                "rock face"
+            ],
             "zone": {
                 "x": 100,
                 "y": 360,
@@ -216,7 +265,20 @@
         {
             "id": "water-droplets",
             "name": "Water Droplets",
-            "aliases": ["droplets", "drips", "dripping", "water", "drops", "water drops", "drip", "moisture", "condensation", "seepage", "leak", "leaks"],
+            "aliases": [
+                "droplets",
+                "drips",
+                "dripping",
+                "water",
+                "drops",
+                "water drops",
+                "drip",
+                "moisture",
+                "condensation",
+                "seepage",
+                "leak",
+                "leaks"
+            ],
             "zone": {
                 "x": 700,
                 "y": 370,
@@ -338,7 +400,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 480,
-        "y": 460
+        "x": 534,
+        "y": 477
     }
 }

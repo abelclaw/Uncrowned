@@ -87,7 +87,11 @@
                 "x": 635,
                 "y": 420
             },
-            "aliases": ["well", "stone well", "the well"],
+            "aliases": [
+                "well",
+                "stone well",
+                "the well"
+            ],
             "responses": {
                 "look": "A sturdy stone well built from mossy grey stone, its rim worn smooth by generations of hands hauling water. A wooden bucket hangs from a frayed rope, swaying gently over a darkness that seems to go down much further than a well has any right to. You lean over the edge -- the water below is impossibly far down, a tiny circle of reflected sky. Something moves in the depths. Probably your reflection. Probably.",
                 "take": "The well weighs approximately four tons. Your back weighs approximately one hernia. Let's not.",
@@ -254,7 +258,11 @@
                 "x": 590,
                 "y": 430
             },
-            "aliases": ["bucket", "wooden bucket", "well bucket"],
+            "aliases": [
+                "bucket",
+                "wooden bucket",
+                "well bucket"
+            ],
             "responses": {
                 "look": "A wooden bucket dangles from a frayed rope over the well. It's seen better days -- the wood is swollen, one iron band has rusted through, and it lists to one side like a sailor after shore leave. The inside is stained dark from years of hauling water from whatever's down there. Still, it holds together through sheer stubborn refusal to be useless.",
                 "take": "The bucket is tied to the well rope with a knot that's half seamanship, half desperation. You'd need to cut it free, and cutting the only bucket seems short-sighted even by your standards. Besides, something tells you the bucket is happier up here than down there.",
@@ -278,7 +286,11 @@
                 "x": 590,
                 "y": 430
             },
-            "aliases": ["rope", "frayed rope", "well rope"],
+            "aliases": [
+                "rope",
+                "frayed rope",
+                "well rope"
+            ],
             "responses": {
                 "look": "A frayed rope connects the bucket to a weathered crossbeam above the well. Several strands have already given up, leaving the rope looking like it's one strong tug away from a career change. The remaining fibres cling together with the determination of things that know they're all that stands between a bucket and oblivion. You wouldn't trust it with a bucket, let alone a person.",
                 "take": "The rope is the only thing holding the bucket over the well. Taking it would strand the bucket, and the bucket doesn't deserve that. Besides, the rope looks like it would snap if asked to support anything heavier than regret.",
@@ -462,20 +474,29 @@
         {
             "id": "old_man",
             "position": {
-                "x": 653,
-                "y": 472
+                "x": 644,
+                "y": 407
             },
             "interactionPoint": {
-                "x": 623,
-                "y": 452
+                "x": 605,
+                "y": 451
             },
             "zone": {
-                "x": 621,
-                "y": 366,
-                "width": 64,
-                "height": 106
+                "x": 592,
+                "y": 338,
+                "width": 104,
+                "height": 139
             },
-            "aliases": ["man", "old man", "hermit", "guy", "elder", "old guy", "old fellow", "geezer"],
+            "aliases": [
+                "man",
+                "old man",
+                "hermit",
+                "guy",
+                "elder",
+                "old guy",
+                "old fellow",
+                "geezer"
+            ],
             "responses": {
                 "look": "An old man sits on a rock by the path, watching you with the kind of intensity normally reserved for chess grandmasters and cats who've spotted a bird. His clothes are patched so many times they're more patch than cloth.",
                 "talk": "The old man peers at you. 'Heading to the village? Watch yourself. The square's fountain turned folk to stone last week. The castle's worse.' He pauses. 'But you look like the sort who ignores good advice. Go north. See for yourself.'",
@@ -512,7 +533,7 @@
         ]
     },
     "playerSpawn": {
-        "x": 402,
-        "y": 404
+        "x": 389,
+        "y": 460
     }
 }

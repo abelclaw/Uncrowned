@@ -201,9 +201,9 @@ async function loadRoom(roomId) {
     const img = await loadImage(PLAYER_SPRITE).catch(() => null);
     if (img) {
       // Default zone: use image natural size, bottom-center at spawn point
-      const h = 64;
-      const scale = h / img.naturalHeight;
-      const w = Math.round(img.naturalWidth * scale);
+      // (matches RoomScene which renders player at natural size with setOrigin(0.5, 1))
+      const h = img.naturalHeight;
+      const w = img.naturalWidth;
       const spawn = roomData.playerSpawn;
       sprites.push({
         id: 'player',
@@ -219,7 +219,7 @@ async function loadRoom(roomId) {
     }
   }
 
-  // Restore any saved positions from localStorage
+  // Restore any saved positions from localStorage (persists edits when switching rooms)
   restoreFromLocalStorage(roomId);
 
   selectedIdx = sprites.length > 0 ? 0 : -1;

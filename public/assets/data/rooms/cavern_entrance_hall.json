@@ -198,7 +198,17 @@
         {
             "id": "registration-desk",
             "name": "Registration Desk",
-            "aliases": ["desk", "counter", "front desk", "reception", "reception desk", "stone desk", "clerk desk", "table", "register"],
+            "aliases": [
+                "desk",
+                "counter",
+                "front desk",
+                "reception",
+                "reception desk",
+                "stone desk",
+                "clerk desk",
+                "table",
+                "register"
+            ],
             "zone": {
                 "x": 400,
                 "y": 370,
@@ -223,7 +233,17 @@
         {
             "id": "numbered-doors",
             "name": "Numbered Doors",
-            "aliases": ["doors", "door", "doorway", "doorways", "entrances", "gates", "numbered door", "cave doors", "locked doors"],
+            "aliases": [
+                "doors",
+                "door",
+                "doorway",
+                "doorways",
+                "entrances",
+                "gates",
+                "numbered door",
+                "cave doors",
+                "locked doors"
+            ],
             "zone": {
                 "x": 650,
                 "y": 355,
@@ -248,7 +268,17 @@
         {
             "id": "contradictory-signs",
             "name": "Directional Signs",
-            "aliases": ["signs", "sign", "directions", "signpost", "signposts", "arrows", "pointers", "contradictory signs", "wrong signs"],
+            "aliases": [
+                "signs",
+                "sign",
+                "directions",
+                "signpost",
+                "signposts",
+                "arrows",
+                "pointers",
+                "contradictory signs",
+                "wrong signs"
+            ],
             "zone": {
                 "x": 250,
                 "y": 360,
@@ -273,7 +303,18 @@
         {
             "id": "glowing-runes",
             "name": "Glowing Runes",
-            "aliases": ["runes", "rune", "symbols", "glyphs", "markings", "blue runes", "glowing symbols", "ancient symbols", "inscriptions", "writing"],
+            "aliases": [
+                "runes",
+                "rune",
+                "symbols",
+                "glyphs",
+                "markings",
+                "blue runes",
+                "glowing symbols",
+                "ancient symbols",
+                "inscriptions",
+                "writing"
+            ],
             "zone": {
                 "x": 50,
                 "y": 100,
@@ -298,7 +339,20 @@
         {
             "id": "blue-portal",
             "name": "Blue Portal",
-            "aliases": ["portal", "archway", "arch", "gateway", "gate", "magic portal", "magical portal", "blue arch", "blue archway", "entrance", "magical entrance", "energy portal"],
+            "aliases": [
+                "portal",
+                "archway",
+                "arch",
+                "gateway",
+                "gate",
+                "magic portal",
+                "magical portal",
+                "blue arch",
+                "blue archway",
+                "entrance",
+                "magical entrance",
+                "energy portal"
+            ],
             "zone": {
                 "x": 400,
                 "y": 50,
@@ -323,7 +377,18 @@
         {
             "id": "filing-cabinets",
             "name": "Filing Cabinets",
-            "aliases": ["cabinets", "cabinet", "drawers", "drawer", "files", "filing", "file cabinet", "file cabinets", "stone cabinets", "storage"],
+            "aliases": [
+                "cabinets",
+                "cabinet",
+                "drawers",
+                "drawer",
+                "files",
+                "filing",
+                "file cabinet",
+                "file cabinets",
+                "stone cabinets",
+                "storage"
+            ],
             "zone": {
                 "x": 770,
                 "y": 360,
@@ -347,7 +412,19 @@
         {
             "id": "velvet-rope",
             "name": "Velvet Rope",
-            "aliases": ["rope", "barrier", "stanchion", "stanchions", "queue rope", "red rope", "burgundy rope", "crowd control", "velvet barrier", "brass post", "brass posts"],
+            "aliases": [
+                "rope",
+                "barrier",
+                "stanchion",
+                "stanchions",
+                "queue rope",
+                "red rope",
+                "burgundy rope",
+                "crowd control",
+                "velvet barrier",
+                "brass post",
+                "brass posts"
+            ],
             "zone": {
                 "x": 30,
                 "y": 400,
@@ -640,7 +717,7 @@
             "id": "the_clerk",
             "position": {
                 "x": 362,
-                "y": 500
+                "y": 438
             },
             "interactionPoint": {
                 "x": 316,
@@ -652,7 +729,13 @@
                 "width": 92,
                 "height": 123
             },
-            "aliases": ["clerk", "man", "bureaucrat", "official", "guy"],
+            "aliases": [
+                "clerk",
+                "man",
+                "bureaucrat",
+                "official",
+                "guy"
+            ],
             "responses": {
                 "look": "The Clerk sits behind his desk with the posture of someone who has been sitting behind desks since desks were invented. His spectacles perch on a nose that has looked down at paperwork for so long it has forgotten any other direction exists.",
                 "use": "The Clerk is not an item. He is a bureaucratic institution in spectacles. Submit Form 27-B Stroke 6 if you wish to interact.",
@@ -711,7 +794,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 516,
-        "y": 439
+        "x": 575,
+        "y": 482
     }
 }

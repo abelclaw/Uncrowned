@@ -77,7 +77,19 @@
         {
             "id": "rite-circle",
             "name": "Rite Circle",
-            "aliases": ["circle", "runes", "rune circle", "ritual circle", "magic circle", "rite", "glowing circle", "floor runes", "ceremony", "symbols", "sigils"],
+            "aliases": [
+                "circle",
+                "runes",
+                "rune circle",
+                "ritual circle",
+                "magic circle",
+                "rite",
+                "glowing circle",
+                "floor runes",
+                "ceremony",
+                "symbols",
+                "sigils"
+            ],
             "zone": {
                 "x": 350,
                 "y": 400,
@@ -684,7 +696,7 @@
             "id": "ghost_king",
             "position": {
                 "x": 478,
-                "y": 344
+                "y": 291
             },
             "interactionPoint": {
                 "x": 438,
@@ -696,7 +708,16 @@
                 "width": 64,
                 "height": 106
             },
-            "aliases": ["king", "ghost", "spirit", "mortimer", "monarch", "spectre", "phantom", "apparition"]
+            "aliases": [
+                "king",
+                "ghost",
+                "spirit",
+                "mortimer",
+                "monarch",
+                "spectre",
+                "phantom",
+                "apparition"
+            ]
         }
     ],
     "audio": {
@@ -756,7 +777,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 285,
-        "y": 435
+        "x": 213,
+        "y": 462
     }
 }

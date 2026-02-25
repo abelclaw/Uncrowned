@@ -60,7 +60,21 @@
         {
             "id": "stalactites",
             "name": "Resonating Stalactites",
-            "aliases": ["stalactites", "stalactite", "rock formations", "icicles", "spikes", "hanging rocks", "stone teeth", "rock teeth", "formations", "pipes", "organ", "pipe organ", "musical rocks"],
+            "aliases": [
+                "stalactites",
+                "stalactite",
+                "rock formations",
+                "icicles",
+                "spikes",
+                "hanging rocks",
+                "stone teeth",
+                "rock teeth",
+                "formations",
+                "pipes",
+                "organ",
+                "pipe organ",
+                "musical rocks"
+            ],
             "zone": {
                 "x": 300,
                 "y": 340,
@@ -230,14 +244,14 @@
             "id": "coal",
             "name": "Forge Coal",
             "zone": {
-                "x": 220,
-                "y": 370,
+                "x": 253,
+                "y": 466,
                 "width": 30,
                 "height": 20
             },
             "interactionPoint": {
-                "x": 240,
-                "y": 420
+                "x": 273,
+                "y": 516
             },
             "responses": {
                 "look": "Chunks of ancient coal, black and dense. They've been compressed by geological forces for millennia, which means they'll burn hot and long. Perfect for a forge.",
@@ -394,7 +408,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 480,
-        "y": 450
+        "x": 689,
+        "y": 469
     }
 }

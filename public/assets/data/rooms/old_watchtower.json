@@ -54,7 +54,12 @@
             "transition": "fade",
             "direction": "south",
             "label": "village",
-            "aliases": ["west", "down", "back", "square"]
+            "aliases": [
+                "west",
+                "down",
+                "back",
+                "square"
+            ]
         }
     ],
     "hotspots": [
@@ -181,7 +186,11 @@
         {
             "id": "tower-door",
             "name": "Tower Door",
-            "aliases": ["door", "entrance", "doorway"],
+            "aliases": [
+                "door",
+                "entrance",
+                "doorway"
+            ],
             "zone": {
                 "x": 600,
                 "y": 340,
@@ -206,7 +215,12 @@
         {
             "id": "observation-platform",
             "name": "Observation Platform",
-            "aliases": ["ground", "floor", "platform", "flagstones"],
+            "aliases": [
+                "ground",
+                "floor",
+                "platform",
+                "flagstones"
+            ],
             "zone": {
                 "x": 100,
                 "y": 380,
@@ -398,7 +412,12 @@
         {
             "id": "telescope-lens",
             "name": "Telescope Lens",
-            "aliases": ["lens", "orb", "glass", "crystal"],
+            "aliases": [
+                "lens",
+                "orb",
+                "glass",
+                "crystal"
+            ],
             "zone": {
                 "x": 236,
                 "y": 392,
@@ -595,7 +614,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 486,
-        "y": 411
+        "x": 510,
+        "y": 453
     }
 }

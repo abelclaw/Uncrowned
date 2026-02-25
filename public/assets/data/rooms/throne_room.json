@@ -894,8 +894,8 @@
         {
             "id": "ghost_king",
             "position": {
-                "x": 475,
-                "y": 369
+                "x": 474,
+                "y": 284
             },
             "interactionPoint": {
                 "x": 411,
@@ -977,7 +977,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 287,
-        "y": 425
+        "x": 355,
+        "y": 505
     }
 }

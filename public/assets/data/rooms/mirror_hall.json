@@ -343,7 +343,7 @@
             "id": "mirror_spirit",
             "position": {
                 "x": 873,
-                "y": 315
+                "y": 262
             },
             "interactionPoint": {
                 "x": 833,
@@ -405,7 +405,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 360,
-        "y": 387
+        "x": 428,
+        "y": 449
     }
 }

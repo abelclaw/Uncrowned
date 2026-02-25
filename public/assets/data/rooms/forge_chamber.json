@@ -566,8 +566,8 @@
         {
             "id": "dwarven_spirit",
             "position": {
-                "x": 343,
-                "y": 454
+                "x": 342,
+                "y": 357
             },
             "interactionPoint": {
                 "x": 288,
@@ -639,7 +639,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 656,
-        "y": 392
+        "x": 588,
+        "y": 461
     }
 }

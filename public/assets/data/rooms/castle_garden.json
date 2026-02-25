@@ -54,7 +54,9 @@
             "transition": "fade",
             "direction": "south",
             "label": "courtyard",
-            "aliases": ["back"]
+            "aliases": [
+                "back"
+            ]
         }
     ],
     "hotspots": [
@@ -637,7 +639,7 @@
         }
     },
     "playerSpawn": {
-        "x": 538,
-        "y": 422
+        "x": 545,
+        "y": 433
     }
 }

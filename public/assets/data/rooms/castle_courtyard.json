@@ -54,7 +54,9 @@
             "transition": "fade",
             "direction": "south",
             "label": "bridge",
-            "aliases": ["back"]
+            "aliases": [
+                "back"
+            ]
         },
         {
             "id": "to-hallway",
@@ -72,7 +74,14 @@
             "transition": "fade",
             "direction": "north",
             "label": "hallway",
-            "aliases": ["enter", "inside", "in", "castle", "entrance", "door"],
+            "aliases": [
+                "enter",
+                "inside",
+                "in",
+                "castle",
+                "entrance",
+                "door"
+            ],
             "conditions": [
                 {
                     "type": "flag-set",
@@ -103,7 +112,20 @@
         {
             "id": "castle-guards",
             "name": "Castle Guards",
-            "aliases": ["guards", "guard", "soldiers", "soldiers", "men", "sentries", "sentry", "watchmen", "gatekeepers", "armored men", "armoured men", "castle guard"],
+            "aliases": [
+                "guards",
+                "guard",
+                "soldiers",
+                "soldiers",
+                "men",
+                "sentries",
+                "sentry",
+                "watchmen",
+                "gatekeepers",
+                "armored men",
+                "armoured men",
+                "castle guard"
+            ],
             "zone": {
                 "x": 420,
                 "y": 355,
@@ -128,7 +150,18 @@
         {
             "id": "courtyard-well",
             "name": "Courtyard Well",
-            "aliases": ["well", "water well", "stone well", "water", "bucket", "rope", "fountain", "spring", "cistern", "castle well"],
+            "aliases": [
+                "well",
+                "water well",
+                "stone well",
+                "water",
+                "bucket",
+                "rope",
+                "fountain",
+                "spring",
+                "cistern",
+                "castle well"
+            ],
             "zone": {
                 "x": 700,
                 "y": 370,
@@ -153,7 +186,19 @@
         {
             "id": "cracked-flagstones",
             "name": "Cracked Flagstones",
-            "aliases": ["flagstones", "flagstone", "stones", "floor", "ground", "cracks", "cracked stones", "paving", "pavement", "tiles", "cobblestones"],
+            "aliases": [
+                "flagstones",
+                "flagstone",
+                "stones",
+                "floor",
+                "ground",
+                "cracks",
+                "cracked stones",
+                "paving",
+                "pavement",
+                "tiles",
+                "cobblestones"
+            ],
             "zone": {
                 "x": 200,
                 "y": 430,
@@ -178,7 +223,17 @@
         {
             "id": "stone-arches",
             "name": "Stone Arches",
-            "aliases": ["arches", "arch", "archway", "archways", "entrance arch", "gateway", "gate arch", "stone arch", "doorway"],
+            "aliases": [
+                "arches",
+                "arch",
+                "archway",
+                "archways",
+                "entrance arch",
+                "gateway",
+                "gate arch",
+                "stone arch",
+                "doorway"
+            ],
             "zone": {
                 "x": 300,
                 "y": 50,
@@ -203,7 +258,16 @@
         {
             "id": "courtyard-walls",
             "name": "Courtyard Walls",
-            "aliases": ["walls", "wall", "stone walls", "castle walls", "ramparts", "fortifications", "battlements", "arrow slits"],
+            "aliases": [
+                "walls",
+                "wall",
+                "stone walls",
+                "castle walls",
+                "ramparts",
+                "fortifications",
+                "battlements",
+                "arrow slits"
+            ],
             "zone": {
                 "x": 50,
                 "y": 100,
@@ -228,7 +292,17 @@
         {
             "id": "courtyard-weeds",
             "name": "Courtyard Weeds",
-            "aliases": ["weeds", "weed", "plants", "dandelions", "crabgrass", "thyme", "grass", "vegetation", "overgrowth"],
+            "aliases": [
+                "weeds",
+                "weed",
+                "plants",
+                "dandelions",
+                "crabgrass",
+                "thyme",
+                "grass",
+                "vegetation",
+                "overgrowth"
+            ],
             "zone": {
                 "x": 300,
                 "y": 450,
@@ -253,7 +327,19 @@
         {
             "id": "castle-entrance",
             "name": "Castle Entrance",
-            "aliases": ["entrance", "door", "doors", "oak doors", "main door", "main entrance", "castle door", "castle doors", "front door", "gate", "entry"],
+            "aliases": [
+                "entrance",
+                "door",
+                "doors",
+                "oak doors",
+                "main door",
+                "main entrance",
+                "castle door",
+                "castle doors",
+                "front door",
+                "gate",
+                "entry"
+            ],
             "zone": {
                 "x": 450,
                 "y": 310,
@@ -654,7 +740,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 465,
-        "y": 354
+        "x": 338,
+        "y": 407
     }
 }

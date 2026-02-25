@@ -60,7 +60,18 @@
         {
             "id": "filing-cabinets",
             "name": "Filing Cabinets",
-            "aliases": ["cabinets", "cabinet", "filing cabinet", "files", "drawers", "drawer", "filing drawers", "file cabinets", "file cabinet", "metal cabinets"],
+            "aliases": [
+                "cabinets",
+                "cabinet",
+                "filing cabinet",
+                "files",
+                "drawers",
+                "drawer",
+                "filing drawers",
+                "file cabinets",
+                "file cabinet",
+                "metal cabinets"
+            ],
             "zone": {
                 "x": 300,
                 "y": 350,
@@ -85,7 +96,16 @@
         {
             "id": "hidden-drawer",
             "name": "Bottom Drawer",
-            "aliases": ["drawer", "hidden drawer", "bottom", "secret drawer", "last drawer", "skip drawer", "ajar drawer", "unlabeled drawer"],
+            "aliases": [
+                "drawer",
+                "hidden drawer",
+                "bottom",
+                "secret drawer",
+                "last drawer",
+                "skip drawer",
+                "ajar drawer",
+                "unlabeled drawer"
+            ],
             "zone": {
                 "x": 700,
                 "y": 400,
@@ -110,7 +130,18 @@
         {
             "id": "file-stacks",
             "name": "File Stacks",
-            "aliases": ["stacks", "stack", "file stack", "papers", "paper stacks", "piles", "pile", "documents", "records", "paperwork"],
+            "aliases": [
+                "stacks",
+                "stack",
+                "file stack",
+                "papers",
+                "paper stacks",
+                "piles",
+                "pile",
+                "documents",
+                "records",
+                "paperwork"
+            ],
             "zone": {
                 "x": 50,
                 "y": 50,
@@ -135,7 +166,20 @@
         {
             "id": "cabinet-labels",
             "name": "Cabinet Labels",
-            "aliases": ["labels", "label", "plaques", "plaque", "brass plaques", "brass plaque", "tags", "tag", "signs", "sign", "codes", "markings"],
+            "aliases": [
+                "labels",
+                "label",
+                "plaques",
+                "plaque",
+                "brass plaques",
+                "brass plaque",
+                "tags",
+                "tag",
+                "signs",
+                "sign",
+                "codes",
+                "markings"
+            ],
             "zone": {
                 "x": 320,
                 "y": 340,
@@ -160,7 +204,15 @@
         {
             "id": "dust",
             "name": "Dust",
-            "aliases": ["dirt", "grime", "filth", "powder", "particles", "dust layer", "dusty"],
+            "aliases": [
+                "dirt",
+                "grime",
+                "filth",
+                "powder",
+                "particles",
+                "dust layer",
+                "dusty"
+            ],
             "zone": {
                 "x": 500,
                 "y": 380,
@@ -185,7 +237,17 @@
         {
             "id": "cavern-ceiling",
             "name": "Ceiling",
-            "aliases": ["roof", "cavern ceiling", "cave ceiling", "stalactites", "stalactite", "above", "overhead", "top", "cave roof"],
+            "aliases": [
+                "roof",
+                "cavern ceiling",
+                "cave ceiling",
+                "stalactites",
+                "stalactite",
+                "above",
+                "overhead",
+                "top",
+                "cave roof"
+            ],
             "zone": {
                 "x": 200,
                 "y": 10,
@@ -210,7 +272,19 @@
         {
             "id": "old-paper",
             "name": "Old Paper",
-            "aliases": ["paper", "papers", "loose paper", "loose papers", "scattered papers", "sheets", "sheet", "pages", "page", "parchment", "scraps"],
+            "aliases": [
+                "paper",
+                "papers",
+                "loose paper",
+                "loose papers",
+                "scattered papers",
+                "sheets",
+                "sheet",
+                "pages",
+                "page",
+                "parchment",
+                "scraps"
+            ],
             "zone": {
                 "x": 580,
                 "y": 390,
@@ -235,7 +309,15 @@
         {
             "id": "room-air",
             "name": "Air",
-            "aliases": ["smell", "atmosphere", "breeze", "draft", "stale air", "room", "nothing"],
+            "aliases": [
+                "smell",
+                "atmosphere",
+                "breeze",
+                "draft",
+                "stale air",
+                "room",
+                "nothing"
+            ],
             "zone": {
                 "x": 450,
                 "y": 300,
@@ -262,16 +344,32 @@
         {
             "id": "form-27b-stroke-6",
             "name": "Form 27-B Stroke 6",
-            "aliases": ["form", "form 27b", "27b", "application", "application form", "bureaucratic form", "paper", "document", "parchment", "worthiness form", "sovereign form", "test form", "27-b stroke 6", "form 27-b", "stroke 6"],
+            "aliases": [
+                "form",
+                "form 27b",
+                "27b",
+                "application",
+                "application form",
+                "bureaucratic form",
+                "paper",
+                "document",
+                "parchment",
+                "worthiness form",
+                "sovereign form",
+                "test form",
+                "27-b stroke 6",
+                "form 27-b",
+                "stroke 6"
+            ],
             "zone": {
-                "x": 420,
-                "y": 395,
+                "x": 226,
+                "y": 250,
                 "width": 30,
                 "height": 20
             },
             "interactionPoint": {
-                "x": 435,
-                "y": 420
+                "x": 241,
+                "y": 275
             },
             "responses": {
                 "look": "A bureaucratic form of stunning complexity. 'FORM 27-B STROKE 6: Application for Sovereign Worthiness Test.' It has forty-seven fields, three of which are 'Name' (first, last, and bureaucratic). The fine print requires a microscope and a law degree.",
@@ -286,16 +384,27 @@
         {
             "id": "vip-stamp",
             "name": "VIP Authorization Stamp",
-            "aliases": ["stamp", "vip stamp", "rubber stamp", "vip", "authorization stamp", "authorization", "skip stamp", "queue stamp", "red stamp", "contraband stamp"],
+            "aliases": [
+                "stamp",
+                "vip stamp",
+                "rubber stamp",
+                "vip",
+                "authorization stamp",
+                "authorization",
+                "skip stamp",
+                "queue stamp",
+                "red stamp",
+                "contraband stamp"
+            ],
             "zone": {
-                "x": 715,
-                "y": 410,
+                "x": 756,
+                "y": 330,
                 "width": 25,
                 "height": 15
             },
             "interactionPoint": {
-                "x": 730,
-                "y": 420
+                "x": 771,
+                "y": 340
             },
             "responses": {
                 "look": "An unauthorized stamp that reads 'VIP -- SKIP ALL QUEUES.' Someone left it in a hidden drawer, a small act of rebellion against the system. The rubber is still good. The authorization is technically valid. The Clerk would be furious.",
@@ -607,7 +716,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 480,
-        "y": 450
+        "x": 542,
+        "y": 439
     }
 }

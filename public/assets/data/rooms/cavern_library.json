@@ -60,7 +60,20 @@
         {
             "id": "bookshelves",
             "name": "Ancient Bookshelves",
-            "aliases": ["bookshelves", "bookshelf", "shelves", "shelf", "books", "book", "library shelves", "stacks", "bookcase", "bookcases", "texts", "tomes"],
+            "aliases": [
+                "bookshelves",
+                "bookshelf",
+                "shelves",
+                "shelf",
+                "books",
+                "book",
+                "library shelves",
+                "stacks",
+                "bookcase",
+                "bookcases",
+                "texts",
+                "tomes"
+            ],
             "zone": {
                 "x": 200,
                 "y": 345,
@@ -85,7 +98,17 @@
         {
             "id": "reading-desk",
             "name": "Reading Desk",
-            "aliases": ["desk", "table", "study desk", "stone desk", "lectern", "workstation", "reading table", "open book", "stalagmite desk"],
+            "aliases": [
+                "desk",
+                "table",
+                "study desk",
+                "stone desk",
+                "lectern",
+                "workstation",
+                "reading table",
+                "open book",
+                "stalagmite desk"
+            ],
             "zone": {
                 "x": 450,
                 "y": 380,
@@ -110,7 +133,20 @@
         {
             "id": "collapsed-shelves",
             "name": "Collapsed Shelves",
-            "aliases": ["collapsed", "debris", "rubble", "wreckage", "broken shelves", "fallen shelves", "ruins", "pile", "wood pile", "planks", "boards", "lumber"],
+            "aliases": [
+                "collapsed",
+                "debris",
+                "rubble",
+                "wreckage",
+                "broken shelves",
+                "fallen shelves",
+                "ruins",
+                "pile",
+                "wood pile",
+                "planks",
+                "boards",
+                "lumber"
+            ],
             "zone": {
                 "x": 650,
                 "y": 370,
@@ -135,7 +171,18 @@
         {
             "id": "crystal-chandelier",
             "name": "Crystal Chandelier",
-            "aliases": ["chandelier", "light", "lamp", "crystal", "crystals", "ceiling light", "crystal light", "glowing crystal", "ceiling crystal", "lantern"],
+            "aliases": [
+                "chandelier",
+                "light",
+                "lamp",
+                "crystal",
+                "crystals",
+                "ceiling light",
+                "crystal light",
+                "glowing crystal",
+                "ceiling crystal",
+                "lantern"
+            ],
             "zone": {
                 "x": 350,
                 "y": 0,
@@ -160,7 +207,19 @@
         {
             "id": "scattered-books",
             "name": "Scattered Books",
-            "aliases": ["scattered books", "floor books", "fallen books", "loose books", "strewn books", "old books", "ancient books", "manuscripts", "pages", "tomes", "volumes"],
+            "aliases": [
+                "scattered books",
+                "floor books",
+                "fallen books",
+                "loose books",
+                "strewn books",
+                "old books",
+                "ancient books",
+                "manuscripts",
+                "pages",
+                "tomes",
+                "volumes"
+            ],
             "zone": {
                 "x": 450,
                 "y": 350,
@@ -187,16 +246,27 @@
         {
             "id": "ancient-ink",
             "name": "Ancient Ink",
-            "aliases": ["ink", "ink bottle", "inkwell", "bottle", "black ink", "bureaucratic ink", "old ink", "writing ink", "quill ink", "inkpot"],
+            "aliases": [
+                "ink",
+                "ink bottle",
+                "inkwell",
+                "bottle",
+                "black ink",
+                "bureaucratic ink",
+                "old ink",
+                "writing ink",
+                "quill ink",
+                "inkpot"
+            ],
             "zone": {
-                "x": 470,
-                "y": 395,
-                "width": 20,
-                "height": 20
+                "x": 284,
+                "y": 374,
+                "width": 31,
+                "height": 31
             },
             "interactionPoint": {
-                "x": 480,
-                "y": 420
+                "x": 300,
+                "y": 413
             },
             "responses": {
                 "look": "A stoppered bottle of ink on the reading desk. The ink is black as night and slightly iridescent. The label reads 'Official Bureaucratic Ink -- Expires: Never.' It has opinions, apparently.",
@@ -211,16 +281,28 @@
         {
             "id": "wood-planks",
             "name": "Wood Planks",
-            "aliases": ["planks", "plank", "wood", "boards", "board", "lumber", "timber", "oak", "oak planks", "wooden boards", "shelving"],
+            "aliases": [
+                "planks",
+                "plank",
+                "wood",
+                "boards",
+                "board",
+                "lumber",
+                "timber",
+                "oak",
+                "oak planks",
+                "wooden boards",
+                "shelving"
+            ],
             "zone": {
-                "x": 680,
-                "y": 400,
+                "x": 679,
+                "y": 473,
                 "width": 40,
                 "height": 20
             },
             "interactionPoint": {
-                "x": 700,
-                "y": 420
+                "x": 699,
+                "y": 493
             },
             "responses": {
                 "look": "Solid oak planks from the collapsed shelving. Thick, sturdy, and still in good condition despite their age. They'd be useful for building or repairing something that needs to float. Or not collapse.",
@@ -412,7 +494,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 480,
-        "y": 450
+        "x": 417,
+        "y": 489
     }
 }

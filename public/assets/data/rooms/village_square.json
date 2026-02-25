@@ -646,8 +646,8 @@
         {
             "id": "stone_merchant",
             "position": {
-                "x": 655,
-                "y": 365
+                "x": 654,
+                "y": 305
             },
             "interactionPoint": {
                 "x": 688,
@@ -724,7 +724,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 239,
-        "y": 375
+        "x": 283,
+        "y": 440
     }
 }

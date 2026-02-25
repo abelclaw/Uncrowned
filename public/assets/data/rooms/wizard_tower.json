@@ -585,7 +585,7 @@
             "id": "wizard_ghost",
             "position": {
                 "x": 287,
-                "y": 498
+                "y": 410
             },
             "interactionPoint": {
                 "x": 221,
@@ -651,7 +651,7 @@
         }
     },
     "playerSpawn": {
-        "x": 573,
-        "y": 317
+        "x": 586,
+        "y": 379
     }
 }
