@@ -776,6 +776,26 @@ export class RoomScene extends Phaser.Scene {
                     }
                 }
             }
+
+            // Hide/show hotspot sprites when flag changes affect their conditions
+            if (action.type === 'set-flag') {
+                for (const hotspot of this.roomData.hotspots) {
+                    if (!hotspot.spriteId || !hotspot.conditions?.length) continue;
+                    const visible = hotspot.conditions.every(cond => {
+                        if (cond.type === 'flag-set' && cond.flag) {
+                            return this.gameState.isFlagSet(cond.flag);
+                        }
+                        if (cond.type === 'flag-not-set' && cond.flag) {
+                            return !this.gameState.isFlagSet(cond.flag);
+                        }
+                        return true;
+                    });
+                    const sprite = this.hotspotSprites.get(hotspot.id);
+                    if (sprite) {
+                        sprite.setVisible(visible);
+                    }
+                }
+            }
         };
         EventBus.on('room-update', this.roomUpdateHandler);
 
