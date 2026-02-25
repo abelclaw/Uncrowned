@@ -1,7 +1,7 @@
 {
     "id": "castle_courtyard",
     "name": "Castle Courtyard",
-    "description": "You stand in the courtyard of Castle Erelhain, and 'grandeur in decline' doesn't begin to cover it. Cracked flagstones sprout weeds with the tenacity of things that have given up on aesthetics. Two guards flank the main entrance, their armor polished to a shine that makes the surrounding decay look even worse. An overgrown garden sprawls to the east, and a stone well sits in the corner, still functional despite the general atmosphere of institutional failure.",
+    "description": "You stand in the courtyard of Castle Erelhain, and 'grandeur in decline' doesn't begin to cover it. Cracked flagstones sprout weeds with the tenacity of things that have given up on aesthetics. Two guards flank the main entrance, their armor polished to a shine that makes the surrounding decay look even worse. An overgrown garden sprawls to the north, and a stone well sits in the corner, still functional despite the general atmosphere of institutional failure. The bridge back to the forest lies to the south.",
     "background": {
         "layers": [
             {
@@ -41,25 +41,26 @@
         {
             "id": "to-bridge",
             "zone": {
-                "x": 0,
-                "y": 350,
-                "width": 80,
-                "height": 200
+                "x": 350,
+                "y": 460,
+                "width": 260,
+                "height": 80
             },
             "targetRoom": "forest_bridge",
             "spawnPoint": {
-                "x": 200,
-                "y": 169
+                "x": 150,
+                "y": 460
             },
-            "transition": "slide-left",
-            "direction": "west",
-            "label": "bridge"
+            "transition": "fade",
+            "direction": "south",
+            "label": "bridge",
+            "aliases": ["back"]
         },
         {
             "id": "to-hallway",
             "zone": {
                 "x": 440,
-                "y": 350,
+                "y": 310,
                 "width": 80,
                 "height": 80
             },
@@ -69,30 +70,31 @@
                 "y": 450
             },
             "transition": "fade",
-            "direction": "north",
             "label": "hallway",
+            "aliases": ["enter", "inside", "in", "castle", "entrance", "door"],
             "conditions": [
                 {
                     "type": "flag-set",
                     "flag": "crystal_shown_to_guards"
                 }
-            ]
+            ],
+            "blockedMessage": "The guards step together, blocking the entrance. 'Proof of purpose,' the left one says firmly. 'No entry without it.' Perhaps you should show them something from your travels."
         },
         {
             "id": "to-garden",
             "zone": {
-                "x": 880,
-                "y": 350,
-                "width": 80,
-                "height": 200
+                "x": 350,
+                "y": 0,
+                "width": 260,
+                "height": 80
             },
             "targetRoom": "castle_garden",
             "spawnPoint": {
                 "x": 330,
                 "y": 460
             },
-            "transition": "slide-right",
-            "direction": "east",
+            "transition": "fade",
+            "direction": "north",
             "label": "garden"
         }
     ],
