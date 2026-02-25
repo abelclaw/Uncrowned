@@ -143,19 +143,21 @@ export const VERB_TABLE: VerbDefinition[] = [
     },
     {
         canonical: 'talk',
-        synonyms: ['talk', 'speak', 'say', 'ask', 'chat', 'greet', 'hello', 'call', 'yell', 'shout', 'whisper', 'hail', 'address', 'question', 'interrogate', 'converse', 'tell'],
+        synonyms: ['talk', 'speak', 'say', 'ask', 'chat', 'greet', 'hello', 'call', 'yell', 'shout', 'whisper', 'hail', 'address', 'question', 'interrogate', 'converse', 'tell', 'answer', 'reply', 'respond'],
         patterns: [
             // "ask X about Y", "question X about Y", "interrogate X about Y"
             /^(?:ask|question|interrogate)\s+(.+?)\s+(?:about|regarding|on)\s+(.+)$/i,
             // "tell X about Y" → talk X (subject=X, target=Y)
             /^tell\s+(.+?)\s+(?:about|regarding)\s+(.+)$/i,
+            // "the answer is X", "it's a X", "it is a X" → talk X (for riddle answers)
+            /^(?:the\s+answer\s+is|it'?s?\s+(?:a|an)?)\s+(.+)$/i,
             // "talk/speak/chat to/with X"
             /^(?:talk|speak|chat|converse|whisper)\s+(?:to|with)\s+(.+)$/i,
             // "yell/shout/call at/to X"
             /^(?:yell|shout|call|holler)\s+(?:at|to)\s+(.+)$/i,
             /^(?:talk|speak|chat)\s+(.+)$/i,
             /^(?:ask|question|interrogate|address|hail)\s+(.+)$/i,
-            /^(?:say|greet|hello|whisper|yell|shout|call)\s+(.+)$/i,
+            /^(?:say|answer|reply|respond|greet|hello|whisper|yell|shout|call)\s+(.+)$/i,
             // "say hello" / bare verbs
             /^(?:say\s+(?:hello|hi|hey))$/i,
         ],

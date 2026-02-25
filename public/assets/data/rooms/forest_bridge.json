@@ -286,7 +286,646 @@
         }
     ],
     "items": [],
-    "puzzles": [],
+    "puzzles": [
+        {
+            "id": "meet-troll",
+            "trigger": {
+                "verb": "talk",
+                "subject": "bridge_troll"
+            },
+            "conditions": [
+                {
+                    "type": "flag-not-set",
+                    "flag": "met_troll"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "met_troll"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "met_old_man"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram looks up from his book and adjusts his reading glasses. 'Ah, a traveller. Bridge Troll Local 47 -- Bertram, at your service.' He gestures at a sign: BRIDGE TOLL: One Correct Answer OR One Coin.\n\n'Two options, friend. Say RIDDLE and I'll give you a riddle to answer. Get it right and you cross for free. Or, if you've got a toll coin, that works too.' He settles back. 'Or you can turn around and leave. No hard feelings. The bridge isn't going anywhere. Neither am I.'"
+                }
+            ]
+        },
+        {
+            "id": "hear-riddle",
+            "trigger": {
+                "verb": "talk",
+                "subject": "riddle"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "met_troll"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram opens his Official Book of Riddles with the reverence of a priest opening scripture. 'Right then. Here's your riddle:'\n\nHe clears his throat. 'I am tall when I am young, and short when I am old. What am I?'\n\nHe waits patiently. 'Say the answer when you know it. Take your time -- I've got three hundred pages left of this mystery novel.'"
+                }
+            ]
+        },
+        {
+            "id": "ask-for-riddle-talk",
+            "trigger": {
+                "verb": "talk",
+                "subject": "bridge_troll"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "met_troll"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram looks up. 'Ready for the riddle? Say RIDDLE and I'll give it to you. Or pay the toll coin if you'd rather skip the brain exercise.'"
+                }
+            ]
+        },
+        {
+            "id": "riddle-reminder",
+            "trigger": {
+                "verb": "talk",
+                "subject": "bridge_troll"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram looks up from his book. 'Still thinking? No rush. The riddle was: I am tall when I am young, and short when I am old. What am I?' He turns a page. 'Say the answer when you've got it. Or pay the toll. Either way, I'm not going anywhere.'"
+                }
+            ]
+        },
+        {
+            "id": "answer-candle",
+            "trigger": {
+                "verb": "talk",
+                "subject": "candle"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "bridge_crossing_earned"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-courtyard"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram nods approvingly. 'A candle. Correct.' He stamps a small card and slides it across the counter. 'You may cross. Please watch your step -- several planks are load-bearing in theory only.' He returns to his book, a mystery novel. Even trolls need hobbies."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "answer-pencil",
+            "trigger": {
+                "verb": "talk",
+                "subject": "pencil"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "bridge_crossing_earned"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-courtyard"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram pauses. He flips through his Official Book of Riddles, frowns, flips back. 'A pencil,' he repeats slowly. 'Tall when new, short when used...' He scratches his chin. 'That's not the answer in my book, but I'll be damned if it doesn't work.' He stamps your card with visible respect. 'Creative thinking. You may cross.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "answer-chalk",
+            "trigger": {
+                "verb": "talk",
+                "subject": "chalk"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "bridge_crossing_earned"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-courtyard"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram blinks. 'Chalk?' He consults his book, running a thick finger down the page. 'Tall when new... short when used up...' A slow grin spreads across his face. 'Well, that's not what I've got written here, but the logic is sound. I respect a lateral thinker.' He stamps your card. 'You may cross.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "answer-crayon",
+            "trigger": {
+                "verb": "talk",
+                "subject": "crayon"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "bridge_crossing_earned"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-courtyard"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram tilts his head. 'A crayon. Hmm.' He flips through several pages of his riddle book, muttering. 'Starts tall, gets shorter the more you use it... technically correct, which is the best kind of correct.' He stamps your card. 'The union manual says I have to accept any answer that fits the criteria. And it does. You may cross.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "answer-soap",
+            "trigger": {
+                "verb": "talk",
+                "subject": "soap"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "bridge_crossing_earned"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-courtyard"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram stares at you. 'Soap.' He opens his mouth, closes it, opens it again. 'A bar of soap. Tall when new, short when old.' He rubs his temples. 'I've been asking this riddle for forty years and nobody has ever said soap.' He stamps your card, shaking his head in admiration. 'You may cross. I need to sit with this.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "answer-eraser",
+            "trigger": {
+                "verb": "talk",
+                "subject": "eraser"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "bridge_crossing_earned"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-courtyard"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram considers this for a long moment. 'An eraser. Wears down with use.' He nods slowly. 'Not what I had in my book, but I can't argue with the logic. You're the first person to give that answer.' He stamps your card. 'You may cross. I'm going to add that one to the appendix.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "answer-incense",
+            "trigger": {
+                "verb": "talk",
+                "subject": "incense"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "bridge_crossing_earned"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-courtyard"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "'Incense,' Bertram repeats, inhaling thoughtfully as if he can smell it. 'Burns down from a tall stick to ash. Poetic, even.' He stamps your card with a flourish. 'You may cross. I appreciate someone who thinks beyond the obvious.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "answer-matchstick",
+            "trigger": {
+                "verb": "talk",
+                "subject": "matchstick"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "bridge_crossing_earned"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-courtyard"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram strikes an imaginary match. 'A matchstick. Tall before you light it, short stub after.' He nods. 'Technically correct. The union manual is very clear on technically correct answers -- they count.' He stamps your card. 'You may cross.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "answer-match",
+            "trigger": {
+                "verb": "talk",
+                "subject": "match"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "bridge_crossing_earned"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-courtyard"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram strikes an imaginary match. 'A match. Tall before you light it, burnt stub after.' He nods. 'Technically correct. The union manual is very clear on technically correct answers -- they count.' He stamps your card. 'You may cross.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "answer-cigarette",
+            "trigger": {
+                "verb": "talk",
+                "subject": "cigarette"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "bridge_crossing_earned"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-courtyard"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram raises an eyebrow. 'A cigarette? Starts long, burns down to a butt.' He chuckles. 'Not the answer in my book, and frankly a bit anachronistic for this kingdom, but the logic holds.' He stamps your card. 'You may cross. And don't smoke near my bridge -- the planks are dry.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "answer-cigar",
+            "trigger": {
+                "verb": "talk",
+                "subject": "cigar"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "bridge_crossing_earned"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-courtyard"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram strokes his chin. 'A cigar. Starts tall, ends as a stub.' He flips through his book one more time, then closes it with a definitive snap. 'Not the official answer, but I'm a reasonable troll. The logic is sound.' He stamps your card. 'You may cross.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "answer-ice",
+            "trigger": {
+                "verb": "talk",
+                "subject": "ice"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "bridge_crossing_earned"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-courtyard"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "'Ice,' Bertram muses. 'Tall when frozen, short when it melts.' He sits back, visibly impressed. 'That's almost philosophical. The official answer is more mundane, but yours has a certain elegance.' He stamps your card. 'You may cross. I'm going to think about that one for the rest of the day.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "answer-wax",
+            "trigger": {
+                "verb": "talk",
+                "subject": "wax"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "bridge_crossing_earned"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-courtyard"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "'Wax,' Bertram repeats. 'Close enough to the answer in my book that I'd feel petty denying it.' He stamps your card. 'A candle is wax, wax is a candle -- semantics, really. You may cross.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "pay-toll",
+            "trigger": {
+                "verb": "use",
+                "subject": "bridge-toll-coin",
+                "target": "bridge_troll"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "bridge-toll-coin"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "bridge-toll-coin"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "bridge_crossing_earned"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-courtyard"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram examines the coin with professional interest. 'Bit worn, but legal tender's legal tender.' He drops it into a lockbox with a satisfying clink. 'You may cross without the riddle. Personally, I think you're missing out -- it was a good one -- but the union contract is clear on alternatives.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "pay-toll-on-booth",
+            "trigger": {
+                "verb": "use",
+                "subject": "bridge-toll-coin",
+                "target": "toll-booth"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "bridge-toll-coin"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "bridge-toll-coin"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "bridge_crossing_earned"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-courtyard"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You slide the coin through the toll booth slot. Bertram hears the clink, inspects it, and nods. 'Legal tender. You're cleared to cross.' He makes a note in his ledger. 'Riddle waived per Section 4, Paragraph 2: Alternative Payment Accepted.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "give-toll",
+            "trigger": {
+                "verb": "use",
+                "subject": "bridge-toll-coin"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "bridge-toll-coin"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "bridge-toll-coin"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "bridge_crossing_earned"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-courtyard"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You hold out the coin. Bertram takes it, examines both sides with professional thoroughness, and drops it into his lockbox. 'Toll paid. You may cross without the riddle.' He pauses. 'Though between you and me, it was a good one. Shame to miss it.'"
+                }
+            ],
+            "once": true
+        }
+    ],
     "deathTriggers": [
         {
             "id": "insult-troll",
@@ -383,11 +1022,19 @@
     },
     "puzzleHints": [
         {
-            "puzzleId": "answer-riddle-correct",
+            "puzzleId": "hear-riddle",
             "tiers": [
-                "Bertram asked you a riddle. 'Tall when young, short when old.' Perhaps think about things that shrink as they age. Or burn. Or melt. Something along those lines.",
-                "The answer is something you might light on a birthday cake or during a power outage. It starts tall and melts down to nothing. Your ancestors used them before electricity.",
-                "The answer to the riddle is a candle. Talk to the troll again to give your answer. A candle is tall when new and short when old. I'm embarrassed for both of us."
+                "Bertram offered you a riddle. Say RIDDLE to hear it. Or you could pay with a coin if you have one.",
+                "Talk to Bertram and say RIDDLE to get his riddle. Then say the answer out loud when you figure it out.",
+                "Say RIDDLE to Bertram. He'll ask you a riddle. The answer is something that starts tall and gets shorter over time. Think about things that burn or melt."
+            ]
+        },
+        {
+            "puzzleId": "answer-candle",
+            "tiers": [
+                "Bertram asked you a riddle. 'Tall when young, short when old.' Think about things that shrink as they age. Things that burn, melt, or wear down. There are several valid answers.",
+                "The classic answer is something you might light on a birthday cake or during a power outage. But a pencil, chalk, or even a bar of soap would also work -- anything that starts tall and gets shorter with use.",
+                "Say CANDLE to answer the riddle. But Bertram will also accept: pencil, chalk, crayon, soap, eraser, incense, match, cigarette, cigar, or ice. Anything that's tall when new and short when old."
             ]
         },
         {
