@@ -48,8 +48,8 @@
             },
             "targetRoom": "cave_entrance",
             "spawnPoint": {
-                "x": 480,
-                "y": 460
+                "x": 477,
+                "y": 439
             },
             "transition": "fade",
             "direction": "north",
@@ -74,8 +74,8 @@
             },
             "targetRoom": "underground_pool",
             "spawnPoint": {
-                "x": 400,
-                "y": 440
+                "x": 238,
+                "y": 449
             },
             "transition": "fade",
             "direction": "east",

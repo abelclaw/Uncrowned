@@ -48,8 +48,8 @@
             },
             "targetRoom": "village_square",
             "spawnPoint": {
-                "x": 680,
-                "y": 460
+                "x": 283,
+                "y": 440
             },
             "transition": "slide-right",
             "direction": "east",
@@ -69,8 +69,8 @@
             },
             "targetRoom": "castle_courtyard",
             "spawnPoint": {
-                "x": 280,
-                "y": 460
+                "x": 338,
+                "y": 407
             },
             "transition": "slide-left",
             "direction": "west",
@@ -93,8 +93,8 @@
             },
             "targetRoom": "cavern_entrance_hall",
             "spawnPoint": {
-                "x": 480,
-                "y": 450
+                "x": 575,
+                "y": 482
             },
             "transition": "fade",
             "direction": "north",

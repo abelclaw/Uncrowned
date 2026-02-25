@@ -48,8 +48,8 @@
             },
             "targetRoom": "throne_room_act3",
             "spawnPoint": {
-                "x": 480,
-                "y": 450
+                "x": 213,
+                "y": 462
             },
             "transition": "fade",
             "direction": "south",

@@ -48,8 +48,8 @@
             },
             "targetRoom": "village_square",
             "spawnPoint": {
-                "x": 480,
-                "y": 400
+                "x": 283,
+                "y": 440
             },
             "transition": "fade",
             "direction": "south",

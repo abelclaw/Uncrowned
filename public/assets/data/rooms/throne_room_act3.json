@@ -48,8 +48,8 @@
             },
             "targetRoom": "castle_courtyard_act3",
             "spawnPoint": {
-                "x": 480,
-                "y": 460
+                "x": 380,
+                "y": 430
             },
             "transition": "fade",
             "direction": "south",
@@ -65,8 +65,8 @@
             },
             "targetRoom": "rooftop",
             "spawnPoint": {
-                "x": 350,
-                "y": 440
+                "x": 188,
+                "y": 374
             },
             "transition": "fade",
             "direction": "north",

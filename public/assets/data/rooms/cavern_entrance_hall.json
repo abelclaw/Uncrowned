@@ -48,8 +48,8 @@
             },
             "targetRoom": "forest_bridge",
             "spawnPoint": {
-                "x": 450,
-                "y": 169
+                "x": 724,
+                "y": 206
             },
             "transition": "fade",
             "direction": "south",
@@ -65,7 +65,7 @@
             },
             "targetRoom": "petrified_forest",
             "spawnPoint": {
-                "x": 600,
+                "x": 480,
                 "y": 460
             },
             "transition": "fade",
@@ -97,8 +97,8 @@
             },
             "targetRoom": "cavern_library",
             "spawnPoint": {
-                "x": 480,
-                "y": 450
+                "x": 417,
+                "y": 489
             },
             "transition": "fade",
             "direction": "north",
@@ -114,8 +114,8 @@
             },
             "targetRoom": "filing_room",
             "spawnPoint": {
-                "x": 320,
-                "y": 450
+                "x": 542,
+                "y": 439
             },
             "transition": "slide-right",
             "direction": "east",
@@ -131,8 +131,8 @@
             },
             "targetRoom": "waiting_room",
             "spawnPoint": {
-                "x": 640,
-                "y": 450
+                "x": 382,
+                "y": 427
             },
             "transition": "slide-left",
             "direction": "west",
@@ -155,8 +155,8 @@
             },
             "targetRoom": "cavern_west_wing",
             "spawnPoint": {
-                "x": 600,
-                "y": 460
+                "x": 534,
+                "y": 477
             },
             "transition": "fade",
             "direction": "west",
@@ -179,8 +179,8 @@
             },
             "targetRoom": "cavern_east_wing",
             "spawnPoint": {
-                "x": 280,
-                "y": 450
+                "x": 305,
+                "y": 417
             },
             "transition": "fade",
             "direction": "east",

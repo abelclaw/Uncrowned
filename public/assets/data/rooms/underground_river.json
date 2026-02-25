@@ -48,8 +48,8 @@
             },
             "targetRoom": "cavern_east_wing",
             "spawnPoint": {
-                "x": 450,
-                "y": 450
+                "x": 305,
+                "y": 417
             },
             "transition": "slide-left",
             "direction": "west",
@@ -65,8 +65,8 @@
             },
             "targetRoom": "forge_chamber",
             "spawnPoint": {
-                "x": 480,
-                "y": 450
+                "x": 588,
+                "y": 461
             },
             "transition": "fade",
             "direction": "north",

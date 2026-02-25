@@ -48,8 +48,8 @@
             },
             "targetRoom": "castle_hallway",
             "spawnPoint": {
-                "x": 600,
-                "y": 450
+                "x": 380,
+                "y": 474
             },
             "transition": "slide-left",
             "direction": "west",

@@ -48,8 +48,8 @@
             },
             "targetRoom": "cave_entrance",
             "spawnPoint": {
-                "x": 480,
-                "y": 400
+                "x": 477,
+                "y": 439
             },
             "transition": "fade",
             "direction": "south",
@@ -65,8 +65,8 @@
             },
             "targetRoom": "village_square",
             "spawnPoint": {
-                "x": 480,
-                "y": 460
+                "x": 283,
+                "y": 440
             },
             "transition": "fade",
             "direction": "north",

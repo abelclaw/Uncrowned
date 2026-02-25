@@ -48,8 +48,8 @@
             },
             "targetRoom": "castle_courtyard",
             "spawnPoint": {
-                "x": 480,
-                "y": 460
+                "x": 338,
+                "y": 407
             },
             "transition": "fade",
             "direction": "south",
@@ -65,8 +65,8 @@
             },
             "targetRoom": "throne_room",
             "spawnPoint": {
-                "x": 300,
-                "y": 450
+                "x": 355,
+                "y": 505
             },
             "transition": "slide-right",
             "direction": "east",
@@ -82,8 +82,8 @@
             },
             "targetRoom": "servants_quarters",
             "spawnPoint": {
-                "x": 480,
-                "y": 450
+                "x": 468,
+                "y": 403
             },
             "transition": "fade",
             "direction": "north",
@@ -99,8 +99,8 @@
             },
             "targetRoom": "royal_kitchen",
             "spawnPoint": {
-                "x": 680,
-                "y": 460
+                "x": 623,
+                "y": 464
             },
             "transition": "slide-left",
             "direction": "west",

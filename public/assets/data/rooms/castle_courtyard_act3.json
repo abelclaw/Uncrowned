@@ -48,7 +48,7 @@
             },
             "targetRoom": "petrified_forest",
             "spawnPoint": {
-                "x": 600,
+                "x": 480,
                 "y": 460
             },
             "transition": "fade",
@@ -65,8 +65,8 @@
             },
             "targetRoom": "throne_room_act3",
             "spawnPoint": {
-                "x": 480,
-                "y": 450
+                "x": 213,
+                "y": 462
             },
             "transition": "fade",
             "direction": "north",
@@ -82,8 +82,8 @@
             },
             "targetRoom": "royal_archive",
             "spawnPoint": {
-                "x": 300,
-                "y": 450
+                "x": 622,
+                "y": 438
             },
             "transition": "slide-right",
             "direction": "east",
@@ -99,8 +99,8 @@
             },
             "targetRoom": "clock_tower",
             "spawnPoint": {
-                "x": 480,
-                "y": 450
+                "x": 434,
+                "y": 432
             },
             "transition": "fade",
             "direction": "south",
@@ -116,8 +116,8 @@
             },
             "targetRoom": "wizard_tower",
             "spawnPoint": {
-                "x": 480,
-                "y": 450
+                "x": 586,
+                "y": 379
             },
             "transition": "fade",
             "direction": "north",
@@ -133,8 +133,8 @@
             },
             "targetRoom": "mirror_hall",
             "spawnPoint": {
-                "x": 300,
-                "y": 450
+                "x": 428,
+                "y": 449
             },
             "transition": "fade",
             "direction": "east",
@@ -150,8 +150,8 @@
             },
             "targetRoom": "dungeon",
             "spawnPoint": {
-                "x": 480,
-                "y": 450
+                "x": 522,
+                "y": 423
             },
             "transition": "fade",
             "direction": "down",

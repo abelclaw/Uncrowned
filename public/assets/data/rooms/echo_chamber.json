@@ -48,8 +48,8 @@
             },
             "targetRoom": "cavern_west_wing",
             "spawnPoint": {
-                "x": 480,
-                "y": 460
+                "x": 534,
+                "y": 477
             },
             "transition": "fade",
             "direction": "south",

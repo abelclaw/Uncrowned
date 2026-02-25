@@ -48,8 +48,8 @@
             },
             "targetRoom": "castle_courtyard_act3",
             "spawnPoint": {
-                "x": 480,
-                "y": 460
+                "x": 380,
+                "y": 430
             },
             "transition": "fade",
             "direction": "north",
@@ -65,8 +65,8 @@
             },
             "targetRoom": "treasury",
             "spawnPoint": {
-                "x": 350,
-                "y": 450
+                "x": 676,
+                "y": 409
             },
             "transition": "slide-right",
             "direction": "east",

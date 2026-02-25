@@ -48,8 +48,8 @@
             },
             "targetRoom": "forge_chamber",
             "spawnPoint": {
-                "x": 480,
-                "y": 450
+                "x": 588,
+                "y": 461
             },
             "transition": "fade",
             "direction": "south",
@@ -65,8 +65,8 @@
             },
             "targetRoom": "crystal_chamber",
             "spawnPoint": {
-                "x": 480,
-                "y": 450
+                "x": 259,
+                "y": 463
             },
             "transition": "fade",
             "direction": "north",

@@ -48,8 +48,8 @@
             },
             "targetRoom": "castle_courtyard",
             "spawnPoint": {
-                "x": 480,
-                "y": 400
+                "x": 338,
+                "y": 407
             },
             "transition": "fade",
             "direction": "south",

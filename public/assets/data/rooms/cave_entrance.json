@@ -54,8 +54,8 @@
             },
             "targetRoom": "forest_clearing",
             "spawnPoint": {
-                "x": 480,
-                "y": 400
+                "x": 420,
+                "y": 470
             },
             "transition": "fade",
             "direction": "south",
@@ -71,8 +71,8 @@
             },
             "targetRoom": "village_path",
             "spawnPoint": {
-                "x": 460,
-                "y": 490
+                "x": 389,
+                "y": 460
             },
             "transition": "slide-right",
             "direction": "east",
@@ -88,8 +88,8 @@
             },
             "targetRoom": "cave_depths",
             "spawnPoint": {
-                "x": 480,
-                "y": 460
+                "x": 413,
+                "y": 461
             },
             "transition": "fade",
             "direction": "north",

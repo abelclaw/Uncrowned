@@ -48,8 +48,8 @@
             },
             "targetRoom": "underground_river",
             "spawnPoint": {
-                "x": 400,
-                "y": 450
+                "x": 590,
+                "y": 506
             },
             "transition": "fade",
             "direction": "south",
@@ -65,8 +65,8 @@
             },
             "targetRoom": "guardian_chamber",
             "spawnPoint": {
-                "x": 480,
-                "y": 450
+                "x": 692,
+                "y": 497
             },
             "transition": "fade",
             "direction": "north",

@@ -48,8 +48,8 @@
             },
             "targetRoom": "dungeon",
             "spawnPoint": {
-                "x": 600,
-                "y": 450
+                "x": 522,
+                "y": 423
             },
             "transition": "slide-left",
             "direction": "west",

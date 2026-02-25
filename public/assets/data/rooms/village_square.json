@@ -48,7 +48,7 @@
             },
             "targetRoom": "village_path",
             "spawnPoint": {
-                "x": 460,
+                "x": 389,
                 "y": 460
             },
             "transition": "fade",
@@ -65,8 +65,8 @@
             },
             "targetRoom": "old_watchtower",
             "spawnPoint": {
-                "x": 480,
-                "y": 490
+                "x": 510,
+                "y": 453
             },
             "transition": "fade",
             "direction": "north",
@@ -82,8 +82,8 @@
             },
             "targetRoom": "forest_bridge",
             "spawnPoint": {
-                "x": 730,
-                "y": 169
+                "x": 724,
+                "y": 206
             },
             "transition": "slide-right",
             "direction": "east",
