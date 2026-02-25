@@ -53,25 +53,8 @@
             },
             "transition": "fade",
             "direction": "south",
-            "label": "village"
-        },
-        {
-            "id": "to-forest-bridge",
-            "zone": {
-                "x": 880,
-                "y": 350,
-                "width": 80,
-                "height": 200
-            },
-            "targetRoom": "forest_bridge",
-            "spawnPoint": {
-                "x": 300,
-                "y": 460
-            },
-            "transition": "fade",
-            "direction": "east",
-            "label": "bridge",
-            "aliases": ["forest", "path", "east"]
+            "label": "village",
+            "aliases": ["west", "down", "back", "square"]
         }
     ],
     "hotspots": [
