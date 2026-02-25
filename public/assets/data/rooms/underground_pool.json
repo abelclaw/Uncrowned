@@ -349,7 +349,7 @@
             "responses": {
                 "look": "A small crystal shard at the pool's edge, partially submerged. It hums with faint magical resonance -- warm to the touch, faintly glowing, and deeply unimpressive in appearance. It looks like a piece of enchanted gravel.",
                 "use": "You hold the crystal shard up. It catches the light and throws tiny rainbows across the cave walls. Pretty. Useless, but pretty.",
-                "take": "You can't take the Cave Crystal Shard. It's firmly attached to its current situation, much like your growing sense of confusion.",
+                "take": "You've already taken the crystal shard. Your pockets are not a geological storage facility, but they'll have to do.",
                 "talk": "You speak to the crystal shard. It hums in response -- a warm vibration that passes from your fingers into your palm. The shard has been absorbing the cave's sounds for centuries. It has a lot to say, but only in frequencies you can't hear.",
                 "open": "The shard is solid crystal. There's nothing inside to access. Though it glows as if something is trying to get out. Magical resonance, probably. Not sentience. Probably.",
                 "push": "You press the shard against the ground. It leaves a faint glowing mark that fades after a moment. The crystal's magic is gentle -- a whisper, not a shout.",
@@ -392,10 +392,6 @@
                 {
                     "type": "item-not-taken",
                     "item": "cave-crystal-shard"
-                },
-                {
-                    "type": "flag-set",
-                    "flag": "pool_investigated"
                 }
             ],
             "actions": [
@@ -413,29 +409,6 @@
                 }
             ],
             "once": true
-        },
-        {
-            "id": "take-crystal-no-investigate",
-            "trigger": {
-                "verb": "take",
-                "subject": "cave-crystal-shard"
-            },
-            "conditions": [
-                {
-                    "type": "item-not-taken",
-                    "item": "cave-crystal-shard"
-                },
-                {
-                    "type": "flag-not-set",
-                    "flag": "pool_investigated"
-                }
-            ],
-            "actions": [
-                {
-                    "type": "narrator-say",
-                    "text": "You can see something at the pool's edge, but you haven't looked closely enough to tell what it is. Try examining the pool first."
-                }
-            ]
         }
     ],
     "deathTriggers": [
@@ -504,15 +477,15 @@
             "tiers": [
                 "The pool is more than scenic ambiance. Something is down there, catching the light and throwing it back. Perhaps a closer look at the surface would reveal what the depths are hiding.",
                 "Look at the pool surface more carefully. The mineral-laden water obscures what's at the shallow edge. A thorough examination will reveal a crystal shard buried in the silt.",
-                "Look at the pool surface to investigate it. This reveals a cave crystal shard at the pool's edge. You must investigate the pool before you can take the shard."
+                "Look at the pool surface to investigate it. This reveals more detail about the cave crystal shard at the pool's edge."
             ]
         },
         {
             "puzzleId": "take-crystal-shard",
             "tiers": [
-                "There's something at the edge of the pool, half-buried and glowing. But you can't just grab blindly at things underwater. Investigate first, then retrieve.",
-                "After examining the pool surface, a cave crystal shard becomes visible at the shallow edge. Now you can take it. The crystal has faint magical resonance -- it may prove useful elsewhere.",
-                "After looking at the pool surface, take the cave crystal shard from the pool's edge. You need to investigate the pool first or the shard won't be accessible."
+                "There's something at the edge of the pool, half-buried and glowing. A small crystal shard, pulsing with faint warmth. It looks like it could be pried free.",
+                "A cave crystal shard rests at the pool's shallow edge. Take it -- the crystal has faint magical resonance and may prove useful elsewhere.",
+                "Take the cave crystal shard from the pool's edge. It has magical properties that will be important later."
             ]
         }
     ],

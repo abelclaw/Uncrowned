@@ -84,8 +84,15 @@ export class DialogueManager {
         const lines: string[] = [];
         const tags: string[] = [];
 
-        // Drain all available text
+        // Drain all available text (with iteration limit to prevent infinite loops
+        // from malformed ink stories or corrupted saved state)
+        const MAX_CONTINUE = 500;
+        let iterations = 0;
         while (this.activeStory.canContinue) {
+            if (++iterations > MAX_CONTINUE) {
+                console.error('[DialogueManager] continueAll exceeded max iterations — aborting');
+                break;
+            }
             const line = this.activeStory.Continue();
             if (line && line.trim()) {
                 lines.push(line.trim());

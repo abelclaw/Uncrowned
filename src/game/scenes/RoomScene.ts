@@ -41,6 +41,7 @@ export class RoomScene extends Phaser.Scene {
     private player!: Player;
     private navigation!: NavigationSystem;
     private isTransitioning: boolean = false;
+    private transitionSafetyTimer: ReturnType<typeof setTimeout> | null = null;
     private exitZones: Array<{ rect: Phaser.Geom.Rectangle; exit: ExitData }> = [];
     private hotspotZones: Array<{ rect: Phaser.Geom.Rectangle; hotspot: HotspotData }> = [];
     private spawnOverride?: { x: number; y: number };
@@ -674,7 +675,8 @@ export class RoomScene extends Phaser.Scene {
         // Death trigger handler
         this.triggerDeathHandler = (deathId: string) => {
             if (this.isTransitioning) return;
-            this.isTransitioning = true; // Prevent further input
+            this.isTransitioning = true;
+            this.startTransitionSafetyTimer();
 
             const deathData = this.roomData.deaths?.[deathId];
             if (!deathData) {
@@ -729,6 +731,7 @@ export class RoomScene extends Phaser.Scene {
         this.triggerEndingHandler = (endingId: string) => {
             if (this.isTransitioning) return;
             this.isTransitioning = true;
+            this.startTransitionSafetyTimer();
 
             // Record ending BEFORE starting EndingScene (same pattern as death recording)
             const meta = MetaGameState.getInstance();
@@ -851,6 +854,9 @@ export class RoomScene extends Phaser.Scene {
         EventBus.on('start-dialogue', this.startDialogueHandler);
 
         // 9. Transition-in effect (matches the exit transition used to arrive here)
+        // Block commands until the transition-in animation completes to prevent
+        // camera fade conflicts (e.g. fadeOut during fadeIn swallowing the complete event)
+        this.isTransitioning = true;
         this.playTransitionIn();
 
         // 10. EventBus scene-ready
@@ -910,6 +916,12 @@ export class RoomScene extends Phaser.Scene {
 
             // Phase 7 audio cleanup (remove EventBus listeners, keep audio playing for crossfade)
             this.audioManager.cleanup();
+
+            // Transition safety timer cleanup
+            if (this.transitionSafetyTimer) {
+                clearTimeout(this.transitionSafetyTimer);
+                this.transitionSafetyTimer = null;
+            }
 
             // Phase 6 dialogue cleanup
             if (this.dialogueManager?.isActive()) {
@@ -1031,6 +1043,7 @@ export class RoomScene extends Phaser.Scene {
     private handleExitReached(exit: ExitData): void {
         if (this.isTransitioning) return;
         this.isTransitioning = true;
+        this.startTransitionSafetyTimer();
 
         // Stop player movement during transition
         this.player.stopMovement();
@@ -1045,6 +1058,24 @@ export class RoomScene extends Phaser.Scene {
     }
 
     /**
+     * Start a safety timer that resets isTransitioning after 5 seconds.
+     * Prevents permanent lockout if a scene transition fails to complete
+     * (e.g., camera fade conflict with transition-in animation).
+     */
+    private startTransitionSafetyTimer(): void {
+        if (this.transitionSafetyTimer) {
+            clearTimeout(this.transitionSafetyTimer);
+        }
+        this.transitionSafetyTimer = setTimeout(() => {
+            if (this.isTransitioning) {
+                console.warn('[RoomScene] Transition safety timeout — resetting isTransitioning');
+                this.isTransitioning = false;
+                this.input.enabled = true;
+            }
+        }, 5000);
+    }
+
+    /**
      * Play the transition-in animation matching how we arrived at this room.
      * Handles all 7 transition types: fade, slide-left/right, wipe-left/right, pixelate, iris.
      */
@@ -1053,6 +1084,7 @@ export class RoomScene extends Phaser.Scene {
         this.cameras.main.setAlpha(1);
 
         const onTransitionComplete = () => {
+            this.isTransitioning = false;
             this.textInputBar.focus();
             this.showEntryNarration();
         };
