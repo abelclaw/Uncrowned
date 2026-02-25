@@ -219,6 +219,37 @@ export class RoomScene extends Phaser.Scene {
                     }
                 }
             }
+
+            // Render hotspot sprites (must be after load completes so textures exist)
+            for (const hotspot of this.roomData.hotspots) {
+                if (hotspot.spriteId) {
+                    // Skip hotspots whose conditions are not met
+                    if (hotspot.conditions && hotspot.conditions.length > 0) {
+                        const visible = hotspot.conditions.every(cond => {
+                            if (cond.type === 'flag-set' && cond.flag) {
+                                return this.gameState.isFlagSet(cond.flag);
+                            }
+                            if (cond.type === 'flag-not-set' && cond.flag) {
+                                return !this.gameState.isFlagSet(cond.flag);
+                            }
+                            return true;
+                        });
+                        if (!visible) continue;
+                    }
+                    const spriteKey = `hotspot-${hotspot.spriteId}`;
+                    if (this.textures.exists(spriteKey)) {
+                        const sprite = this.add.image(
+                            hotspot.zone.x + hotspot.zone.width / 2,
+                            hotspot.zone.y + hotspot.zone.height,
+                            spriteKey
+                        ).setOrigin(0.5, 1).setDepth(5);
+                        const tex = this.textures.get(spriteKey).getSourceImage();
+                        const scale = hotspot.zone.height / tex.height;
+                        sprite.setScale(scale);
+                        this.hotspotSprites.set(hotspot.id, sprite);
+                    }
+                }
+            }
         });
 
         // 2. Navigation system from walkable area polygon
@@ -328,22 +359,6 @@ export class RoomScene extends Phaser.Scene {
                 hotspot.zone.height
             );
             this.hotspotZones.push({ rect, hotspot });
-
-            // Render hotspot sprite if available
-            if (hotspot.spriteId) {
-                const spriteKey = `hotspot-${hotspot.spriteId}`;
-                if (this.textures.exists(spriteKey)) {
-                    const sprite = this.add.image(
-                        hotspot.zone.x + hotspot.zone.width / 2,
-                        hotspot.zone.y + hotspot.zone.height,
-                        spriteKey
-                    ).setOrigin(0.5, 1).setDepth(5);
-                    const tex = this.textures.get(spriteKey).getSourceImage();
-                    const scale = hotspot.zone.height / tex.height;
-                    sprite.setScale(scale);
-                    this.hotspotSprites.set(hotspot.id, sprite);
-                }
-            }
 
             if (DEBUG) {
                 const gfx = this.add.graphics();
