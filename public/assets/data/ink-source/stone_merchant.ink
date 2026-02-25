@@ -51,10 +51,16 @@ I sell... everything! Well... I SOLD... everything.
 Now... I sell... mostly... dust... and... regret.
 He tries to lift a petrified apple from the display.
 This... used to... be... a Honeycrisp. Now... it's... a Stonecrisp.
-Not... my... best... seller.
-My business... plan... didn't... account... for... magical... petrification.
-A pause.
-Who... plans... for... that?
+{hasFlag("has_hat"):
+    At least... I sold... one... hat... today. He glances at your head. Looks... good... on you.
+- else:
+    {hasItem("bridge-toll-coin"):
+        Only... thing... I've got... left... is this... hat. He produces a battered, lopsided hat from under the counter. #speaker:Stone Merchant #emotion:hopeful
+        One... coin... and... it's... yours. Just... say... the word.
+    - else:
+        Only... thing... I've got... left... is a hat. But... you'd... need... a coin. #speaker:Stone Merchant #emotion:melancholy
+    }
+}
 -> menu
 
 === crystal_talk ===

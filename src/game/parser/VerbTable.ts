@@ -79,7 +79,7 @@ export const VERB_TABLE: VerbDefinition[] = [
             'turn', 'twist', 'rotate', 'flip', 'activate', 'operate', 'touch', 'rub',
             'throw', 'toss', 'cut', 'sit', 'wind', 'crank', 'swim', 'ride', 'wield',
             'dip', 'ring', 'wave', 'play', 'blow', 'stoke', 'insert', 'drop', 'wear',
-            'lower', 'feed', 'raise', 'hoist'],
+            'lower', 'feed', 'raise', 'hoist', 'buy', 'purchase', 'trade', 'pay'],
         patterns: [
             // "give/show/offer/hand X to Y" → use X on Y
             /^(?:give|show|offer|hand)\s+(.+?)\s+(?:to)\s+(.+)$/i,
@@ -95,6 +95,10 @@ export const VERB_TABLE: VerbDefinition[] = [
             /^(?:cut|chop|slice)\s+(.+?)\s+(?:with|using)\s+(.+)$/i,
             // "insert X into/in Y" → use X on Y
             /^(?:insert|stick|slide)\s+(.+?)\s+(?:into|in|through)\s+(.+)$/i,
+            // "buy/purchase X from Y" → use X on Y
+            /^(?:buy|purchase)\s+(.+?)\s+(?:from|at)\s+(.+)$/i,
+            // "pay X for Y" → use X on Y (e.g., "pay merchant for hat")
+            /^pay\s+(.+?)\s+(?:for|with)\s+(.+)$/i,
             // "turn/twist/wind X on Y" → use X on Y (e.g., "turn crank on well")
             /^(?:turn|twist|wind|crank)\s+(.+?)\s+(?:on|at)\s+(.+)$/i,
             // "sit on/in X", "ride X", "swim in X" → use X

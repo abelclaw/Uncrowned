@@ -279,6 +279,32 @@
                 "push": "You push the valve handle. It doesn't turn. It's seized solid with corrosion. The valve retired years ago and is not taking new assignments.",
                 "pull": "You pull the valve. It grinds, shrieks, and produces a puff of copper-green dust. No water. The pipe behind it is as dry as the kingdom's treasury."
             }
+        },
+        {
+            "id": "hat",
+            "name": "Hat",
+            "zone": {
+                "x": 630,
+                "y": 280,
+                "width": 50,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 655,
+                "y": 365
+            },
+            "conditions": [
+                {
+                    "type": "flag-not-set",
+                    "flag": "has_hat"
+                }
+            ],
+            "responses": {
+                "look": "A battered, slightly lopsided hat sits on the merchant's counter. It's seen better days, better decades, and possibly better centuries. But it's the only thing for sale that hasn't been turned to stone.",
+                "take": "The merchant's one mobile eye narrows. 'That's... merchandise... not... charity.' He wants a coin for it.",
+                "use": "You'd need to buy it first. The merchant is eyeing you and the hat with the protective instinct of someone whose entire inventory is one item.",
+                "default": "The hat sits on the counter, waiting for a customer. It's been waiting a while."
+            }
         }
     ],
     "items": [
@@ -506,6 +532,71 @@
                 {
                     "type": "narrator-say",
                     "text": "You hold up the cave fish. The stone toad's eyes snap to it with predatory focus. Before you can reconsider, a tongue like a grey whip snatches it from your grip.\n\nOne swallow. One satisfied croak. Then the toad grinds itself off the road with the slow inevitability of tectonic drift, settling into the corner of the square with a thud that shakes the cobblestones.\n\nThe eastern road is clear. The toad is asleep before you take your first step."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "buy-hat-from-merchant",
+            "trigger": {
+                "verb": "use",
+                "subject": "bridge-toll-coin",
+                "target": "stone_merchant"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "bridge-toll-coin"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "has_hat"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "bridge-toll-coin"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "has_hat"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "The merchant's mobile eye lights up. 'A... customer! A REAL... customer!' He reaches under the counter with his good arm and produces a battered, slightly lopsided hat. 'One... coin... and... it's... yours.' You hand over the coin. He places the hat on your head with surprising tenderness. 'Suits... you. Very... adventurer... chic. First... sale... in... three... months.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "buy-hat-direct",
+            "trigger": {
+                "verb": "use",
+                "subject": "hat"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "bridge-toll-coin"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "has_hat"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "bridge-toll-coin"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "has_hat"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "The merchant's mobile eye lights up. 'A... customer! A REAL... customer!' He reaches under the counter with his good arm and produces a battered, slightly lopsided hat. 'One... coin... and... it's... yours.' You hand over the coin. He places the hat on your head with surprising tenderness. 'Suits... you. Very... adventurer... chic. First... sale... in... three... months.'"
                 }
             ],
             "once": true
