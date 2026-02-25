@@ -64,7 +64,7 @@
         {
             "id": "to-village",
             "zone": {
-                "x": 0,
+                "x": 880,
                 "y": 350,
                 "width": 80,
                 "height": 200
@@ -74,8 +74,8 @@
                 "x": 460,
                 "y": 490
             },
-            "transition": "slide-left",
-            "direction": "west",
+            "transition": "slide-right",
+            "direction": "east",
             "label": "village"
         },
         {

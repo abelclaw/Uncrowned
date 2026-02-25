@@ -41,10 +41,10 @@
         {
             "id": "to-cave",
             "zone": {
-                "x": 350,
-                "y": 0,
-                "width": 260,
-                "height": 80
+                "x": 880,
+                "y": 350,
+                "width": 80,
+                "height": 200
             },
             "targetRoom": "cave_entrance",
             "spawnPoint": {
@@ -52,7 +52,7 @@
                 "y": 490
             },
             "transition": "fade",
-            "direction": "north",
+            "direction": "east",
             "label": "cave"
         }
     ],
