@@ -1167,10 +1167,11 @@ export class RoomScene extends Phaser.Scene {
         }
 
         // Run narrator_history ink for dynamic commentary based on past player actions.
+        // Only on first visit — otherwise the recap dumps every time you re-enter a room.
         // This runs BEFORE markRoomVisited so the current room isn't counted as
         // "already visited" (which would trigger misleading commentary like
         // "Fresh from the cave" when you just arrived there).
-        const narratorHistoryJson = this.cache.json.get('dialogue-narrator_history');
+        const narratorHistoryJson = this.isFirstVisit && this.cache.json.get('dialogue-narrator_history');
         if (narratorHistoryJson) {
             // Use a temporary DialogueManager conversation (non-NPC) to run the narrator script
             this.dialogueManager.startConversation('narrator_history', JSON.stringify(narratorHistoryJson));
