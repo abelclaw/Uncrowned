@@ -295,10 +295,6 @@
             },
             "conditions": [
                 {
-                    "type": "flag-set",
-                    "flag": "met_bridge_troll"
-                },
-                {
                     "type": "flag-not-set",
                     "flag": "riddle_heard"
                 },
@@ -314,7 +310,30 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "Bertram opens his Official Book of Riddles with the reverence of a priest opening scripture. 'Right then. Here's your riddle:'\n\nHe clears his throat. 'I am tall when I am young, and short when I am old. What am I?'\n\nHe waits patiently. 'Say the answer when you know it. Take your time -- I've got three hundred pages left of this mystery novel.'"
+                    "text": "Bertram opens his Official Book of Riddles with the reverence of a priest opening scripture. 'Right then. Here's your riddle:'\n\nHe clears his throat. 'I am tall when I am young, and short when I am old. What am I?'\n\nHe waits patiently. 'Say the answer when you know it -- just SAY followed by your answer. Take your time. I've got three hundred pages left of this mystery novel.'"
+                }
+            ]
+        },
+        {
+            "id": "repeat-riddle",
+            "trigger": {
+                "verb": "talk",
+                "subject": "riddle"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram repeats the riddle patiently: 'I am tall when I am young, and short when I am old. What am I?'\n\nHe folds his arms. 'Just say your answer -- SAY followed by whatever you think it is.'"
                 }
             ]
         },
@@ -733,6 +752,282 @@
                 }
             ],
             "once": true
+        },
+        {
+            "id": "troll-riddle-reminder",
+            "trigger": {
+                "verb": "talk",
+                "subject": "troll"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram looks up expectantly. 'Got an answer for me? The riddle was: I am tall when I am young, and short when I am old. What am I?' He settles back on his stool. 'Just SAY your answer when you've figured it out.'"
+                }
+            ]
+        },
+        {
+            "id": "troll-riddle-reminder-bertram",
+            "trigger": {
+                "verb": "talk",
+                "subject": "bertram"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram looks up expectantly. 'Got an answer for me? The riddle was: I am tall when I am young, and short when I am old. What am I?' He settles back on his stool. 'Just SAY your answer when you've figured it out.'"
+                }
+            ]
+        },
+        {
+            "id": "troll-riddle-reminder-id",
+            "trigger": {
+                "verb": "talk",
+                "subject": "bridge_troll"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram looks up expectantly. 'Got an answer for me? The riddle was: I am tall when I am young, and short when I am old. What am I?' He settles back on his stool. 'Just SAY your answer when you've figured it out.'"
+                }
+            ]
+        },
+        {
+            "id": "troll-riddle-reminder-name",
+            "trigger": {
+                "verb": "talk",
+                "subject": "bridge troll"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram looks up expectantly. 'Got an answer for me? The riddle was: I am tall when I am young, and short when I am old. What am I?' He settles back on his stool. 'Just SAY your answer when you've figured it out.'"
+                }
+            ]
+        },
+        {
+            "id": "wrong-answer-tree",
+            "trigger": {
+                "verb": "talk",
+                "subject": "tree"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram shakes his head. 'Trees grow taller as they age, not shorter. Think smaller. Something that diminishes over its lifetime.' He reopens his book. 'Try again.'"
+                }
+            ]
+        },
+        {
+            "id": "wrong-answer-person",
+            "trigger": {
+                "verb": "talk",
+                "subject": "person"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram tilts his head. 'People? They get taller as they grow up, then stay about the same. Not quite right.' He taps his book. 'Think about something that burns, melts, or wears away. Try again.'"
+                }
+            ]
+        },
+        {
+            "id": "wrong-answer-human",
+            "trigger": {
+                "verb": "talk",
+                "subject": "human"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram shakes his head gently. 'Humans don't really get shorter when they're old. Well, a bit, but that's not the spirit of the thing.' He gestures encouragingly. 'Think about objects. Things you might find around a house. Things that burn down.'"
+                }
+            ]
+        },
+        {
+            "id": "wrong-answer-shadow",
+            "trigger": {
+                "verb": "talk",
+                "subject": "shadow"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram considers this carefully. 'Shadows change length with the sun, but they're not really young or old, are they? They just... exist temporarily.' He scratches his chin. 'Think about something with a lifespan. Something you'd light on a dark night, perhaps.'"
+                }
+            ]
+        },
+        {
+            "id": "wrong-answer-man",
+            "trigger": {
+                "verb": "talk",
+                "subject": "man"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram shakes his head. 'That's the answer to a different riddle -- the Sphinx's, if I recall. Mine's simpler. Think about small household objects that get shorter as you use them.' He waits patiently."
+                }
+            ]
+        },
+        {
+            "id": "wrong-answer-life",
+            "trigger": {
+                "verb": "talk",
+                "subject": "life"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram considers this philosophically. 'Poetic, but no. Life doesn't literally start tall and end short.' He leans forward. 'Think more literally. Something physical. Something you might find on a table during a power outage.'"
+                }
+            ]
+        },
+        {
+            "id": "wrong-answer-fire",
+            "trigger": {
+                "verb": "talk",
+                "subject": "fire"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram waves his hand in a so-so gesture. 'You're warm -- literally. Fire itself isn't tall or short. But you're on the right track. Think about what you PUT fire on.' He waits."
+                }
+            ]
+        },
+        {
+            "id": "wrong-answer-torch",
+            "trigger": {
+                "verb": "talk",
+                "subject": "torch"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "riddle_heard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram scratches behind his ear. 'Close, very close. Torches do burn down, but they're more of a stick that happens to be on fire. Think thinner. Something made of wax, perhaps?' He's practically giving it away now."
+                }
+            ]
         },
         {
             "id": "pay-toll",
