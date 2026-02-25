@@ -502,18 +502,18 @@
         {
             "id": "bridge_troll",
             "position": {
-                "x": 524,
-                "y": 241
+                "x": 485,
+                "y": 165
             },
             "interactionPoint": {
-                "x": 494,
-                "y": 221
+                "x": 444,
+                "y": 209
             },
             "zone": {
-                "x": 492,
-                "y": 135,
-                "width": 64,
-                "height": 106
+                "x": 431,
+                "y": 93,
+                "width": 107,
+                "height": 143
             },
             "aliases": ["troll", "bertram", "bridge troll", "creature", "monster", "guy"]
         }
@@ -566,7 +566,7 @@
         }
     ],
     "playerSpawn": {
-        "x": 721,
-        "y": 190
+        "x": 730,
+        "y": 169
     }
 }
