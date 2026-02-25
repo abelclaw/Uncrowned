@@ -38,7 +38,7 @@
             "name": "Cave Crystal Shard",
             "description": "A small shard of crystal that hums with faint magical resonance. It is warm to the touch and deeply unimpressive.",
             "combinable": false,
-            "aliases": ["crystal", "shard", "crystal shard"]
+            "aliases": ["crystal", "shard", "crystal shard", "gem", "stone", "gemstone", "cave crystal"]
         },
         {
             "id": "telescope-lens",

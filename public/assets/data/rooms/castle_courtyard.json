@@ -312,6 +312,38 @@
             "once": true
         },
         {
+            "id": "show-crystal-no-target",
+            "trigger": {
+                "verb": "use",
+                "subject": "cave-crystal-shard"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "cave-crystal-shard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "crystal_shown_to_guards"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "crystal_shown_to_guards"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-hallway"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You hold up the crystal shard. Both guards lean forward, their professional detachment cracking like the flagstones beneath your feet. 'That's... that's a cave crystal,' the left guard whispers. 'From the deep places.' The right guard nods slowly. 'You've been to the Screaming Caverns. That's proof enough.' They step aside, the castle entrance yawning open behind them. 'Welcome to Castle Erelhain. Try not to break anything. There's precious little left to break.'"
+                }
+            ],
+            "once": true
+        },
+        {
             "id": "show-crystal-talk",
             "trigger": {
                 "verb": "talk",
