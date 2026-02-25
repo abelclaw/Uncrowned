@@ -733,6 +733,116 @@
                 }
             ],
             "once": true
+        },
+        {
+            "id": "pay-toll",
+            "trigger": {
+                "verb": "use",
+                "subject": "bridge-toll-coin",
+                "target": "bridge_troll"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "bridge-toll-coin"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "bridge-toll-coin"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "bridge_crossing_earned"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-courtyard"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "Bertram examines the coin, turning it over in his massive fingers. 'A toll coin. Haven't seen one of these in months.' He drops it into a lockbox with a hollow clink. 'You may cross.' He pauses, looking genuinely disappointed. 'But between you and me, I had a really good riddle picked out. Classic. Would've been a highlight of your adventure.' He sighs and returns to his book. 'Nobody appreciates the craft anymore.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "pay-toll-on-booth",
+            "trigger": {
+                "verb": "use",
+                "subject": "bridge-toll-coin",
+                "target": "toll-booth"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "bridge-toll-coin"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "bridge-toll-coin"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "bridge_crossing_earned"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-courtyard"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You slide the coin through the booth slot. Bertram hears the clink, fishes it out, and inspects it. 'Toll paid,' he says flatly. 'You may cross.' He looks at you with the wounded expression of a man whose riddle went unappreciated. 'I spent forty years perfecting that riddle, you know. Forty years. And you just... paid.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "give-toll",
+            "trigger": {
+                "verb": "use",
+                "subject": "bridge-toll-coin"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "bridge-toll-coin"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bridge_crossing_earned"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "bridge-toll-coin"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "bridge_crossing_earned"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-courtyard"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You hold out the coin. Bertram takes it with a sigh that could extinguish a candle -- which, incidentally, was the answer to his riddle. 'Money talks, I suppose.' He stamps your card. 'You may cross. But you'll never know what you missed.' He returns to his book, muttering about the decline of intellectual curiosity."
+                }
+            ],
+            "once": true
         }
     ],
     "deathTriggers": [
