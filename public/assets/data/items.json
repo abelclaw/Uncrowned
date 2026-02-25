@@ -10,7 +10,8 @@
             "id": "glowing-mushroom",
             "name": "Glowing Mushroom",
             "description": "A bioluminescent fungus that pulses with an eerie blue light. Nutritional value: questionable. Aesthetic value: undeniable.",
-            "combinable": true
+            "combinable": true,
+            "aliases": ["mushroom", "fungus", "shroom", "toadstool", "glow"]
         },
         {
             "id": "stick",
@@ -22,19 +23,22 @@
             "id": "makeshift-torch",
             "name": "Makeshift Torch",
             "description": "A stick with a glowing mushroom wedged on top. It provides light and existential dread in equal measure.",
-            "combinable": false
+            "combinable": false,
+            "aliases": ["torch", "light", "lamp"]
         },
         {
             "id": "mysterious-bottle",
             "name": "Mysterious Bottle",
             "description": "A small glass bottle containing something that's either medicine, poison, or an ancient smoothie recipe. The label has long since decomposed.",
-            "combinable": false
+            "combinable": false,
+            "aliases": ["bottle", "potion", "flask"]
         },
         {
             "id": "cave-crystal-shard",
             "name": "Cave Crystal Shard",
             "description": "A small shard of crystal that hums with faint magical resonance. It is warm to the touch and deeply unimpressive.",
-            "combinable": false
+            "combinable": false,
+            "aliases": ["crystal", "shard", "crystal shard"]
         },
         {
             "id": "telescope-lens",
@@ -52,7 +56,8 @@
             "id": "bridge-toll-coin",
             "name": "Bridge Toll Coin",
             "description": "A coin so old the face on it has worn into a vague smudge. Still legal tender, apparently.",
-            "combinable": false
+            "combinable": false,
+            "aliases": ["coin", "toll", "money"]
         },
         {
             "id": "cave-fish",

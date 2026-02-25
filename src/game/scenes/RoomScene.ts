@@ -591,12 +591,12 @@ export class RoomScene extends Phaser.Scene {
             // Get current inventory item info for noun resolution
             const inventoryItems = this.itemDefs
                 .filter(item => this.gameState.hasItem(item.id))
-                .map(item => ({ id: item.id, name: item.name }));
+                .map(item => ({ id: item.id, name: item.name, aliases: item.aliases }));
 
             // Merge room items (not yet taken) into hotspots for noun resolution
             const roomItemsAsHotspots = (this.roomData.items ?? [])
                 .filter(item => !this.gameState.isRoomItemRemoved(this.roomData.id, item.id))
-                .map(item => ({ id: item.id, name: item.name, zone: item.zone, interactionPoint: item.interactionPoint, responses: item.responses ?? {} }));
+                .map(item => ({ id: item.id, name: item.name, zone: item.zone, interactionPoint: item.interactionPoint, responses: item.responses ?? {}, aliases: item.aliases }));
             // Merge NPCs into hotspots so text parser can resolve NPC names
             // NPCs go FIRST so they win tie-breaks (e.g. "talk to man by the well"
             // should resolve to the old_man NPC, not the well hotspot)

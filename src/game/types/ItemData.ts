@@ -8,4 +8,6 @@ export interface ItemDefinition {
     description: string;
     /** Whether item can be combined with others */
     combinable?: boolean;
+    /** Alternative names the player might use to refer to this item */
+    aliases?: string[];
 }

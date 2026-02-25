@@ -721,6 +721,43 @@
                 }
             ],
             "once": true
+        },
+        {
+            "id": "use-mushroom-on-stick",
+            "trigger": {
+                "verb": "use",
+                "subject": "glowing-mushroom",
+                "target": "stick"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "stick"
+                },
+                {
+                    "type": "has-item",
+                    "item": "glowing-mushroom"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "stick"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "glowing-mushroom"
+                },
+                {
+                    "type": "add-item",
+                    "item": "makeshift-torch"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You wedge the glowing mushroom onto the stick. It holds, mostly. You've created a makeshift torch that casts an eerie blue glow. MacGyver would be... not exactly proud, but perhaps mildly amused."
+                }
+            ],
+            "once": true
         }
     ],
     "deathTriggers": [
