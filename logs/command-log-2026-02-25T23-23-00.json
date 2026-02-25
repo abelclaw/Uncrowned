@@ -1,0 +1,2315 @@
+[
+  {
+    "timestamp": 1771955108843,
+    "room": "forest_clearing",
+    "rawInput": "look at water",
+    "parsed": true,
+    "verb": "look",
+    "subject": "distant-lake",
+    "target": null
+  },
+  {
+    "timestamp": 1771955114982,
+    "room": "forest_clearing",
+    "rawInput": "look at ground",
+    "parsed": true,
+    "verb": "look",
+    "subject": "ferns",
+    "target": null
+  },
+  {
+    "timestamp": 1771955124992,
+    "room": "forest_clearing",
+    "rawInput": "get key",
+    "parsed": true,
+    "verb": "take",
+    "subject": "rusty-key",
+    "target": null
+  },
+  {
+    "timestamp": 1771955125966,
+    "room": "forest_clearing",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771955131299,
+    "room": "cave_entrance",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771955142383,
+    "room": "village_path",
+    "rawInput": "look in well",
+    "parsed": true,
+    "verb": "look",
+    "subject": "well",
+    "target": null
+  },
+  {
+    "timestamp": 1771955148742,
+    "room": "village_path",
+    "rawInput": "get bucket",
+    "parsed": true,
+    "verb": "take",
+    "subject": "well-bucket",
+    "target": null
+  },
+  {
+    "timestamp": 1771955163850,
+    "room": "village_path",
+    "rawInput": "climb down rope",
+    "parsed": true,
+    "verb": "go",
+    "subject": "rope",
+    "target": null
+  },
+  {
+    "timestamp": 1771955174780,
+    "room": "village_path",
+    "rawInput": "go down well",
+    "parsed": true,
+    "verb": "go",
+    "subject": "down",
+    "target": null
+  },
+  {
+    "timestamp": 1771955177750,
+    "room": "village_path",
+    "rawInput": "enter well",
+    "parsed": true,
+    "verb": "go",
+    "subject": "well",
+    "target": null
+  },
+  {
+    "timestamp": 1771955282095,
+    "room": "village_path",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771955283533,
+    "room": "village_path",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771955290794,
+    "room": "cave_entrance",
+    "rawInput": "unlock door",
+    "parsed": true,
+    "verb": "open",
+    "subject": "locked-door",
+    "target": null
+  },
+  {
+    "timestamp": 1771955292800,
+    "room": "cave_entrance",
+    "rawInput": "enter",
+    "parsed": true,
+    "verb": "go",
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1771955295216,
+    "room": "cave_entrance",
+    "rawInput": "enter cave",
+    "parsed": true,
+    "verb": "go",
+    "subject": "to-depths",
+    "target": null
+  },
+  {
+    "timestamp": 1771955301346,
+    "room": "cave_depths",
+    "rawInput": "wander",
+    "parsed": false,
+    "verb": null,
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1771955303557,
+    "room": "cave_depths",
+    "rawInput": "go east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771955317567,
+    "room": "cave_depths",
+    "rawInput": "up",
+    "parsed": true,
+    "verb": "go",
+    "subject": "up",
+    "target": null
+  },
+  {
+    "timestamp": 1771955319725,
+    "room": "cave_entrance",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771955530413,
+    "room": "village_path",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771955535516,
+    "room": "village_square",
+    "rawInput": "talk to man",
+    "parsed": true,
+    "verb": "talk",
+    "subject": "market-stalls",
+    "target": null
+  },
+  {
+    "timestamp": 1771955542593,
+    "room": "village_square",
+    "rawInput": "look",
+    "parsed": true,
+    "verb": "look",
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1771955556524,
+    "room": "village_square",
+    "rawInput": "talk to merchant",
+    "parsed": true,
+    "verb": "talk",
+    "subject": "stone_merchant",
+    "target": null
+  },
+  {
+    "timestamp": 1771957456553,
+    "room": "forest_clearing",
+    "rawInput": "get key",
+    "parsed": true,
+    "verb": "take",
+    "subject": "rusty-key",
+    "target": null
+  },
+  {
+    "timestamp": 1771957458610,
+    "room": "forest_clearing",
+    "rawInput": "get stick",
+    "parsed": true,
+    "verb": "take",
+    "subject": "stick",
+    "target": null
+  },
+  {
+    "timestamp": 1771957459896,
+    "room": "forest_clearing",
+    "rawInput": "get flower",
+    "parsed": true,
+    "verb": "take",
+    "subject": "wildflowers",
+    "target": null
+  },
+  {
+    "timestamp": 1771957465888,
+    "room": "forest_clearing",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771957470064,
+    "room": "cave_entrance",
+    "rawInput": "unlock door",
+    "parsed": true,
+    "verb": "open",
+    "subject": "locked-door",
+    "target": null
+  },
+  {
+    "timestamp": 1771957471322,
+    "room": "cave_entrance",
+    "rawInput": "enter",
+    "parsed": true,
+    "verb": "go",
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1771957472929,
+    "room": "cave_entrance",
+    "rawInput": "enter cave",
+    "parsed": true,
+    "verb": "go",
+    "subject": "to-depths",
+    "target": null
+  },
+  {
+    "timestamp": 1771957474355,
+    "room": "cave_depths",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771957483888,
+    "room": "cave_depths",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771957485588,
+    "room": "cave_entrance",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771957487940,
+    "room": "village_path",
+    "rawInput": "enter well",
+    "parsed": true,
+    "verb": "go",
+    "subject": "well",
+    "target": null
+  },
+  {
+    "timestamp": 1771957496851,
+    "room": "village_path",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771957500524,
+    "room": "village_square",
+    "rawInput": "talk to man",
+    "parsed": true,
+    "verb": "talk",
+    "subject": "market-stalls",
+    "target": null
+  },
+  {
+    "timestamp": 1771957504997,
+    "room": "village_square",
+    "rawInput": "talk to merchat",
+    "parsed": true,
+    "verb": "talk",
+    "subject": "stone_merchant",
+    "target": null
+  },
+  {
+    "timestamp": 1771957519888,
+    "room": "village_square",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771957521355,
+    "room": "village_square",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771957525422,
+    "room": "old_watchtower",
+    "rawInput": "get lens",
+    "parsed": true,
+    "verb": "take",
+    "subject": "telescope-lens",
+    "target": null
+  },
+  {
+    "timestamp": 1771957527579,
+    "room": "old_watchtower",
+    "rawInput": "use lens",
+    "parsed": true,
+    "verb": "use",
+    "subject": "telescope-lens",
+    "target": null
+  },
+  {
+    "timestamp": 1771957532222,
+    "room": "old_watchtower",
+    "rawInput": "use telescope",
+    "parsed": true,
+    "verb": "use",
+    "subject": "telescope",
+    "target": null
+  },
+  {
+    "timestamp": 1771957540938,
+    "room": "old_watchtower",
+    "rawInput": "look at castle",
+    "parsed": true,
+    "verb": "look",
+    "subject": "castle-erelhain",
+    "target": null
+  },
+  {
+    "timestamp": 1771957544755,
+    "room": "old_watchtower",
+    "rawInput": "south",
+    "parsed": true,
+    "verb": "go",
+    "subject": "south",
+    "target": null
+  },
+  {
+    "timestamp": 1771957547163,
+    "room": "old_watchtower",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771957548888,
+    "room": "old_watchtower",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771957551522,
+    "room": "village_square",
+    "rawInput": "south",
+    "parsed": true,
+    "verb": "go",
+    "subject": "south",
+    "target": null
+  },
+  {
+    "timestamp": 1771957553758,
+    "room": "village_path",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771957561746,
+    "room": "cave_entrance",
+    "rawInput": "get mushroom",
+    "parsed": true,
+    "verb": "take",
+    "subject": "glowing-mushroom",
+    "target": null
+  },
+  {
+    "timestamp": 1771957566046,
+    "room": "cave_entrance",
+    "rawInput": "use mushroom with stick",
+    "parsed": true,
+    "verb": "use",
+    "subject": "glowing-mushroom",
+    "target": "stick"
+  },
+  {
+    "timestamp": 1771957568630,
+    "room": "cave_entrance",
+    "rawInput": "enter cave",
+    "parsed": true,
+    "verb": "go",
+    "subject": "to-depths",
+    "target": null
+  },
+  {
+    "timestamp": 1771957570396,
+    "room": "cave_depths",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771957572637,
+    "room": "underground_pool",
+    "rawInput": "look",
+    "parsed": true,
+    "verb": "look",
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1771957574529,
+    "room": "underground_pool",
+    "rawInput": "look at water",
+    "parsed": true,
+    "verb": "look",
+    "subject": "pool-surface",
+    "target": null
+  },
+  {
+    "timestamp": 1771957587597,
+    "room": "underground_pool",
+    "rawInput": "what is the pink thing",
+    "parsed": true,
+    "verb": "look",
+    "subject": "pink thing",
+    "target": null
+  },
+  {
+    "timestamp": 1771957590775,
+    "room": "underground_pool",
+    "rawInput": "get shard",
+    "parsed": true,
+    "verb": "take",
+    "subject": "cave-crystal-shard",
+    "target": null
+  },
+  {
+    "timestamp": 1771957593963,
+    "room": "underground_pool",
+    "rawInput": "look at shard",
+    "parsed": true,
+    "verb": "look",
+    "subject": "cave-crystal-shard",
+    "target": null
+  },
+  {
+    "timestamp": 1771957599496,
+    "room": "underground_pool",
+    "rawInput": "where can i go",
+    "parsed": true,
+    "verb": "look",
+    "subject": "__exits__",
+    "target": null
+  },
+  {
+    "timestamp": 1771957602230,
+    "room": "underground_pool",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771957604338,
+    "room": "cave_depths",
+    "rawInput": "exit",
+    "parsed": true,
+    "verb": "go",
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1771957606279,
+    "room": "cave_entrance",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771957608680,
+    "room": "village_path",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771957644480,
+    "room": "village_square",
+    "rawInput": "hint",
+    "parsed": true,
+    "verb": "hint",
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1771957651575,
+    "room": "village_square",
+    "rawInput": "look in fountain",
+    "parsed": true,
+    "verb": "look",
+    "subject": "petrified-fountain",
+    "target": null
+  },
+  {
+    "timestamp": 1771957668414,
+    "room": "village_square",
+    "rawInput": "look at ground",
+    "parsed": true,
+    "verb": "look",
+    "subject": "ground",
+    "target": null
+  },
+  {
+    "timestamp": 1771957672155,
+    "room": "village_square",
+    "rawInput": "what is here",
+    "parsed": true,
+    "verb": "look",
+    "subject": "__overview__",
+    "target": null
+  },
+  {
+    "timestamp": 1771957688976,
+    "room": "village_square",
+    "rawInput": "get coin",
+    "parsed": true,
+    "verb": "take",
+    "subject": "bridge-toll-coin",
+    "target": null
+  },
+  {
+    "timestamp": 1771957695664,
+    "room": "village_square",
+    "rawInput": "get paper",
+    "parsed": true,
+    "verb": "take",
+    "subject": "paper",
+    "target": null
+  },
+  {
+    "timestamp": 1771957829763,
+    "room": "village_square",
+    "rawInput": "hint",
+    "parsed": true,
+    "verb": "hint",
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1771957958173,
+    "room": "village_square",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771957962326,
+    "room": "old_watchtower",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771957964327,
+    "room": "old_watchtower",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771959286090,
+    "room": "forest_clearing",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771959287805,
+    "room": "forest_clearing",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771959292105,
+    "room": "cave_entrance",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771959294122,
+    "room": "village_path",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771959297271,
+    "room": "village_path",
+    "rawInput": "noth",
+    "parsed": false,
+    "verb": null,
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1771959613321,
+    "room": "village_path",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771959617804,
+    "room": "village_path",
+    "rawInput": "look in well",
+    "parsed": true,
+    "verb": "look",
+    "subject": "well",
+    "target": null
+  },
+  {
+    "timestamp": 1771959621618,
+    "room": "village_path",
+    "rawInput": "lower bucket",
+    "parsed": false,
+    "verb": null,
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1771959625605,
+    "room": "village_path",
+    "rawInput": "look in well",
+    "parsed": true,
+    "verb": "look",
+    "subject": "well",
+    "target": null
+  },
+  {
+    "timestamp": 1771959637578,
+    "room": "village_path",
+    "rawInput": "get fish",
+    "parsed": true,
+    "verb": "take",
+    "subject": "fish",
+    "target": null
+  },
+  {
+    "timestamp": 1771959640977,
+    "room": "village_path",
+    "rawInput": "lower bucket",
+    "parsed": false,
+    "verb": null,
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1771959661274,
+    "room": "village_path",
+    "rawInput": "south",
+    "parsed": true,
+    "verb": "go",
+    "subject": "south",
+    "target": null
+  },
+  {
+    "timestamp": 1771960166079,
+    "room": "forest_clearing",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771960167810,
+    "room": "forest_clearing",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771960170522,
+    "room": "cave_entrance",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771960173001,
+    "room": "cave_entrance",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771960174668,
+    "room": "forest_clearing",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771960177233,
+    "room": "cave_entrance",
+    "rawInput": "where can i go",
+    "parsed": true,
+    "verb": "look",
+    "subject": "__exits__",
+    "target": null
+  },
+  {
+    "timestamp": 1771960256453,
+    "room": "cave_entrance",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771960258752,
+    "room": "village_path",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771960267901,
+    "room": "village_square",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771960272495,
+    "room": "village_square",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771962147417,
+    "room": "forest_clearing",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771962149047,
+    "room": "forest_clearing",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771962150881,
+    "room": "cave_entrance",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771962153478,
+    "room": "village_path",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771962244323,
+    "room": "forest_clearing",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771962246414,
+    "room": "cave_entrance",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771962249664,
+    "room": "village_path",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771962257656,
+    "room": "forest_clearing",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771962259122,
+    "room": "cave_entrance",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771962261239,
+    "room": "village_path",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771971471638,
+    "room": "forest_clearing",
+    "rawInput": "get key",
+    "parsed": true,
+    "verb": "take",
+    "subject": "rusty-key",
+    "target": null
+  },
+  {
+    "timestamp": 1771971473219,
+    "room": "forest_clearing",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771971474676,
+    "room": "forest_clearing",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771971476735,
+    "room": "cave_entrance",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771971478802,
+    "room": "village_path",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771971480917,
+    "room": "village_path",
+    "rawInput": "south",
+    "parsed": true,
+    "verb": "go",
+    "subject": "south",
+    "target": null
+  },
+  {
+    "timestamp": 1771971498135,
+    "room": "forest_clearing",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771971505202,
+    "room": "cave_entrance",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771971511047,
+    "room": "village_path",
+    "rawInput": "look in well",
+    "parsed": true,
+    "verb": "look",
+    "subject": "well",
+    "target": null
+  },
+  {
+    "timestamp": 1771971513200,
+    "room": "village_path",
+    "rawInput": "get fish",
+    "parsed": true,
+    "verb": "take",
+    "subject": "fish",
+    "target": null
+  },
+  {
+    "timestamp": 1771971515803,
+    "room": "village_path",
+    "rawInput": "use bucket",
+    "parsed": true,
+    "verb": "use",
+    "subject": "well-bucket",
+    "target": null
+  },
+  {
+    "timestamp": 1771971528470,
+    "room": "village_path",
+    "rawInput": "look in bucket",
+    "parsed": true,
+    "verb": "look",
+    "subject": "well-bucket",
+    "target": null
+  },
+  {
+    "timestamp": 1771971533251,
+    "room": "village_path",
+    "rawInput": "get fish",
+    "parsed": true,
+    "verb": "take",
+    "subject": "fish",
+    "target": null
+  },
+  {
+    "timestamp": 1771971536727,
+    "room": "village_path",
+    "rawInput": "look in bucket",
+    "parsed": true,
+    "verb": "look",
+    "subject": "well-bucket",
+    "target": null
+  },
+  {
+    "timestamp": 1771976949473,
+    "room": "forest_clearing",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771976952425,
+    "room": "forest_clearing",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771976958214,
+    "room": "cave_entrance",
+    "rawInput": "south",
+    "parsed": true,
+    "verb": "go",
+    "subject": "south",
+    "target": null
+  },
+  {
+    "timestamp": 1771976967430,
+    "room": "cave_entrance",
+    "rawInput": "where can i go",
+    "parsed": true,
+    "verb": "look",
+    "subject": "__exits__",
+    "target": null
+  },
+  {
+    "timestamp": 1771976970350,
+    "room": "cave_entrance",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771976973958,
+    "room": "forest_clearing",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771976976601,
+    "room": "cave_entrance",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771976988709,
+    "room": "village_path",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771977006396,
+    "room": "village_square",
+    "rawInput": "grab thing on top of fountain",
+    "parsed": true,
+    "verb": "take",
+    "subject": "petrified-fountain",
+    "target": null
+  },
+  {
+    "timestamp": 1771977022059,
+    "room": "village_square",
+    "rawInput": "look",
+    "parsed": true,
+    "verb": "look",
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1771977041966,
+    "room": "village_square",
+    "rawInput": "grab toad",
+    "parsed": true,
+    "verb": "take",
+    "subject": "stone-toad",
+    "target": null
+  },
+  {
+    "timestamp": 1771977108399,
+    "room": "forest_clearing",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771977109831,
+    "room": "cave_entrance",
+    "rawInput": "est",
+    "parsed": false,
+    "verb": null,
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1771977111115,
+    "room": "cave_entrance",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771977114407,
+    "room": "village_path",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771981993510,
+    "room": "forest_clearing",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771981996718,
+    "room": "forest_clearing",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771982000878,
+    "room": "forest_clearing",
+    "rawInput": "where can i go",
+    "parsed": true,
+    "verb": "look",
+    "subject": "__exits__",
+    "target": null
+  },
+  {
+    "timestamp": 1771982482709,
+    "room": "forest_clearing",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771982484075,
+    "room": "forest_clearing",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771982486525,
+    "room": "forest_clearing",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771982489085,
+    "room": "forest_clearing",
+    "rawInput": "where can i go",
+    "parsed": true,
+    "verb": "look",
+    "subject": "__exits__",
+    "target": null
+  },
+  {
+    "timestamp": 1771982498225,
+    "room": "forest_clearing",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771982499453,
+    "room": "forest_clearing",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771982502592,
+    "room": "cave_entrance",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771982504859,
+    "room": "village_path",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771982892421,
+    "room": "forest_clearing",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771982893929,
+    "room": "cave_entrance",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771982895712,
+    "room": "village_path",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771983051862,
+    "room": "forest_clearing",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771983053620,
+    "room": "cave_entrance",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771983055204,
+    "room": "village_path",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771983062886,
+    "room": "village_square",
+    "rawInput": "south",
+    "parsed": true,
+    "verb": "go",
+    "subject": "south",
+    "target": null
+  },
+  {
+    "timestamp": 1771983065685,
+    "room": "village_path",
+    "rawInput": "use well",
+    "parsed": true,
+    "verb": "use",
+    "subject": "well",
+    "target": null
+  },
+  {
+    "timestamp": 1771983084765,
+    "room": "village_path",
+    "rawInput": "get fish",
+    "parsed": true,
+    "verb": "take",
+    "subject": "cave-fish",
+    "target": null
+  },
+  {
+    "timestamp": 1771983087502,
+    "room": "village_path",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771983091804,
+    "room": "village_square",
+    "rawInput": "give fish to toad",
+    "parsed": true,
+    "verb": "use",
+    "subject": "cave-fish",
+    "target": "stone-toad"
+  },
+  {
+    "timestamp": 1771983102005,
+    "room": "village_square",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771983107807,
+    "room": "old_watchtower",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1771983148146,
+    "room": "village_square",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771983149870,
+    "room": "village_square",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771983158054,
+    "room": "old_watchtower",
+    "rawInput": "look",
+    "parsed": true,
+    "verb": "look",
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1771983282994,
+    "room": "old_watchtower",
+    "rawInput": "get lens",
+    "parsed": true,
+    "verb": "take",
+    "subject": "telescope-lens",
+    "target": null
+  },
+  {
+    "timestamp": 1771983284537,
+    "room": "old_watchtower",
+    "rawInput": "use lens",
+    "parsed": true,
+    "verb": "use",
+    "subject": "telescope-lens",
+    "target": null
+  },
+  {
+    "timestamp": 1771983290428,
+    "room": "old_watchtower",
+    "rawInput": "use telescope",
+    "parsed": true,
+    "verb": "use",
+    "subject": "telescope",
+    "target": null
+  },
+  {
+    "timestamp": 1771983295928,
+    "room": "old_watchtower",
+    "rawInput": "south",
+    "parsed": true,
+    "verb": "go",
+    "subject": "south",
+    "target": null
+  },
+  {
+    "timestamp": 1771983296812,
+    "room": "old_watchtower",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771984326920,
+    "room": "forest_clearing",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771984328419,
+    "room": "cave_entrance",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771984330077,
+    "room": "village_path",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771984333030,
+    "room": "village_square",
+    "rawInput": "south",
+    "parsed": true,
+    "verb": "go",
+    "subject": "south",
+    "target": null
+  },
+  {
+    "timestamp": 1771984335864,
+    "room": "village_path",
+    "rawInput": "use well",
+    "parsed": true,
+    "verb": "use",
+    "subject": "well",
+    "target": null
+  },
+  {
+    "timestamp": 1771984355564,
+    "room": "village_path",
+    "rawInput": "get fish",
+    "parsed": true,
+    "verb": "take",
+    "subject": "cave-fish",
+    "target": null
+  },
+  {
+    "timestamp": 1771984356711,
+    "room": "village_path",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1771984359869,
+    "room": "village_square",
+    "rawInput": "give fish to toad",
+    "parsed": true,
+    "verb": "use",
+    "subject": "cave-fish",
+    "target": "stone-toad"
+  },
+  {
+    "timestamp": 1771984362226,
+    "room": "village_square",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1771984370283,
+    "room": "forest_bridge",
+    "rawInput": "talk to troll",
+    "parsed": true,
+    "verb": "talk",
+    "subject": "bridge_troll",
+    "target": null
+  },
+  {
+    "timestamp": 1771984400556,
+    "room": "forest_bridge",
+    "rawInput": "no idea",
+    "parsed": false,
+    "verb": null,
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1771984404363,
+    "room": "forest_bridge",
+    "rawInput": "hin",
+    "parsed": false,
+    "verb": null,
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1771984405578,
+    "room": "forest_bridge",
+    "rawInput": "hint",
+    "parsed": true,
+    "verb": "hint",
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1771984414426,
+    "room": "forest_bridge",
+    "rawInput": "a stick",
+    "parsed": false,
+    "verb": null,
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1771984420262,
+    "room": "forest_bridge",
+    "rawInput": "a candle",
+    "parsed": false,
+    "verb": null,
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1772060994409,
+    "room": "forest_clearing",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1772061002948,
+    "room": "forest_clearing",
+    "rawInput": "get key",
+    "parsed": true,
+    "verb": "take",
+    "subject": "rusty-key",
+    "target": null
+  },
+  {
+    "timestamp": 1772061016893,
+    "room": "forest_clearing",
+    "rawInput": "grab residiue",
+    "parsed": true,
+    "verb": "take",
+    "subject": "residiue",
+    "target": null
+  },
+  {
+    "timestamp": 1772061025584,
+    "room": "forest_clearing",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1772061030385,
+    "room": "cave_entrance",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1772061032530,
+    "room": "cave_entrance",
+    "rawInput": "s",
+    "parsed": true,
+    "verb": "go",
+    "subject": "south",
+    "target": null
+  },
+  {
+    "timestamp": 1772061039022,
+    "room": "forest_clearing",
+    "rawInput": "get flower",
+    "parsed": true,
+    "verb": "take",
+    "subject": "wildflowers",
+    "target": null
+  },
+  {
+    "timestamp": 1772061055316,
+    "room": "forest_clearing",
+    "rawInput": "look",
+    "parsed": true,
+    "verb": "look",
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1772061080583,
+    "room": "forest_clearing",
+    "rawInput": "grab stick",
+    "parsed": true,
+    "verb": "take",
+    "subject": "stick",
+    "target": null
+  },
+  {
+    "timestamp": 1772061083469,
+    "room": "forest_clearing",
+    "rawInput": "w",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1772061084951,
+    "room": "forest_clearing",
+    "rawInput": "e",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1772061090515,
+    "room": "cave_entrance",
+    "rawInput": "get mushroom",
+    "parsed": true,
+    "verb": "take",
+    "subject": "glowing-mushroom",
+    "target": null
+  },
+  {
+    "timestamp": 1772061093550,
+    "room": "cave_entrance",
+    "rawInput": "make torch",
+    "parsed": false,
+    "verb": null,
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1772061109168,
+    "room": "cave_entrance",
+    "rawInput": "combine stick and mushroom",
+    "parsed": true,
+    "verb": "combine",
+    "subject": "stick",
+    "target": "glowing-mushroom"
+  },
+  {
+    "timestamp": 1772061117589,
+    "room": "cave_entrance",
+    "rawInput": "grab potion",
+    "parsed": true,
+    "verb": "take",
+    "subject": "mysterious-bottle",
+    "target": null
+  },
+  {
+    "timestamp": 1772061132980,
+    "room": "cave_entrance",
+    "rawInput": "open chest",
+    "parsed": true,
+    "verb": "open",
+    "subject": "chest",
+    "target": null
+  },
+  {
+    "timestamp": 1772061137089,
+    "room": "cave_entrance",
+    "rawInput": "flick lever",
+    "parsed": false,
+    "verb": null,
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1772061147212,
+    "room": "cave_entrance",
+    "rawInput": "open door",
+    "parsed": true,
+    "verb": "open",
+    "subject": "locked-door",
+    "target": null
+  },
+  {
+    "timestamp": 1772061150820,
+    "room": "cave_entrance",
+    "rawInput": "south",
+    "parsed": true,
+    "verb": "go",
+    "subject": "south",
+    "target": null
+  },
+  {
+    "timestamp": 1772061155573,
+    "room": "forest_clearing",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1772061157915,
+    "room": "forest_clearing",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1772061167552,
+    "room": "forest_clearing",
+    "rawInput": "e",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1772061171582,
+    "room": "cave_entrance",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1772061177616,
+    "room": "cave_depths",
+    "rawInput": "use torch",
+    "parsed": true,
+    "verb": "use",
+    "subject": "makeshift-torch",
+    "target": null
+  },
+  {
+    "timestamp": 1772061184216,
+    "room": "cave_depths",
+    "rawInput": "go in cave",
+    "parsed": true,
+    "verb": "go",
+    "subject": "in cave",
+    "target": null
+  },
+  {
+    "timestamp": 1772061190390,
+    "room": "cave_depths",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1772061206655,
+    "room": "underground_pool",
+    "rawInput": "grab crystal",
+    "parsed": true,
+    "verb": "take",
+    "subject": "cave-crystal-shard",
+    "target": null
+  },
+  {
+    "timestamp": 1772061217709,
+    "room": "underground_pool",
+    "rawInput": "crystal",
+    "parsed": false,
+    "verb": null,
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1772061236324,
+    "room": "underground_pool",
+    "rawInput": "look at pool",
+    "parsed": true,
+    "verb": "look",
+    "subject": "pool-surface",
+    "target": null
+  },
+  {
+    "timestamp": 1772061258585,
+    "room": "underground_pool",
+    "rawInput": "grab crystal",
+    "parsed": true,
+    "verb": "take",
+    "subject": "cave-crystal-shard",
+    "target": null
+  },
+  {
+    "timestamp": 1772061267449,
+    "room": "underground_pool",
+    "rawInput": "south",
+    "parsed": true,
+    "verb": "go",
+    "subject": "south",
+    "target": null
+  },
+  {
+    "timestamp": 1772061269649,
+    "room": "underground_pool",
+    "rawInput": "south",
+    "parsed": true,
+    "verb": "go",
+    "subject": "south",
+    "target": null
+  },
+  {
+    "timestamp": 1772061271485,
+    "room": "underground_pool",
+    "rawInput": "s",
+    "parsed": true,
+    "verb": "go",
+    "subject": "south",
+    "target": null
+  },
+  {
+    "timestamp": 1772061272480,
+    "room": "underground_pool",
+    "rawInput": "w",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1772061273833,
+    "room": "underground_pool",
+    "rawInput": "n",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1772061279453,
+    "room": "cave_depths",
+    "rawInput": "n",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1772061282828,
+    "room": "cave_entrance",
+    "rawInput": "westt",
+    "parsed": false,
+    "verb": null,
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1772061285115,
+    "room": "cave_entrance",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1772061286916,
+    "room": "cave_entrance",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1772061288976,
+    "room": "cave_entrance",
+    "rawInput": "west",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1772061300383,
+    "room": "cave_entrance",
+    "rawInput": "east",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1772061305100,
+    "room": "village_path",
+    "rawInput": "go in well",
+    "parsed": true,
+    "verb": "go",
+    "subject": "in well",
+    "target": null
+  },
+  {
+    "timestamp": 1772061312372,
+    "room": "village_path",
+    "rawInput": "go in stone well",
+    "parsed": true,
+    "verb": "go",
+    "subject": "in stone well",
+    "target": null
+  },
+  {
+    "timestamp": 1772061315316,
+    "room": "village_path",
+    "rawInput": "go to cave",
+    "parsed": true,
+    "verb": "go",
+    "subject": "to-cave",
+    "target": null
+  },
+  {
+    "timestamp": 1772061321455,
+    "room": "cave_entrance",
+    "rawInput": "co to village",
+    "parsed": false,
+    "verb": null,
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1772061328833,
+    "room": "cave_entrance",
+    "rawInput": "go to village",
+    "parsed": true,
+    "verb": "go",
+    "subject": "to-village",
+    "target": null
+  },
+  {
+    "timestamp": 1772061338966,
+    "room": "village_path",
+    "rawInput": "jump in well",
+    "parsed": true,
+    "verb": "go",
+    "subject": "in well",
+    "target": null
+  },
+  {
+    "timestamp": 1772061362746,
+    "room": "village_path",
+    "rawInput": "climb down well",
+    "parsed": true,
+    "verb": "go",
+    "subject": "well",
+    "target": null
+  },
+  {
+    "timestamp": 1772061388868,
+    "room": "village_path",
+    "rawInput": "drink potion",
+    "parsed": true,
+    "verb": "use",
+    "subject": "mysterious-bottle",
+    "target": null
+  },
+  {
+    "timestamp": 1772061393351,
+    "room": "village_path",
+    "rawInput": "me",
+    "parsed": false,
+    "verb": null,
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1772061399560,
+    "room": "village_path",
+    "rawInput": "use well",
+    "parsed": true,
+    "verb": "use",
+    "subject": "well",
+    "target": null
+  },
+  {
+    "timestamp": 1772061421222,
+    "room": "village_path",
+    "rawInput": "grab fish",
+    "parsed": true,
+    "verb": "take",
+    "subject": "cave-fish",
+    "target": null
+  },
+  {
+    "timestamp": 1772061427041,
+    "room": "village_path",
+    "rawInput": "north",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1772061441502,
+    "room": "village_square",
+    "rawInput": "go nortj",
+    "parsed": true,
+    "verb": "go",
+    "subject": "nortj",
+    "target": null
+  },
+  {
+    "timestamp": 1772061444486,
+    "room": "village_square",
+    "rawInput": "go nortj",
+    "parsed": true,
+    "verb": "go",
+    "subject": "nortj",
+    "target": null
+  },
+  {
+    "timestamp": 1772061446023,
+    "room": "village_square",
+    "rawInput": "n",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1772061470021,
+    "room": "old_watchtower",
+    "rawInput": "grab mirror",
+    "parsed": true,
+    "verb": "take",
+    "subject": "mirror",
+    "target": null
+  },
+  {
+    "timestamp": 1772061472330,
+    "room": "old_watchtower",
+    "rawInput": "look",
+    "parsed": true,
+    "verb": "look",
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1772061494741,
+    "room": "old_watchtower",
+    "rawInput": "look at ground",
+    "parsed": true,
+    "verb": "look",
+    "subject": "observation-platform",
+    "target": null
+  },
+  {
+    "timestamp": 1772061506916,
+    "room": "old_watchtower",
+    "rawInput": "grab flagstone",
+    "parsed": true,
+    "verb": "take",
+    "subject": "observation-platform",
+    "target": null
+  },
+  {
+    "timestamp": 1772061521085,
+    "room": "old_watchtower",
+    "rawInput": "use telescope",
+    "parsed": true,
+    "verb": "use",
+    "subject": "telescope",
+    "target": null
+  },
+  {
+    "timestamp": 1772061530000,
+    "room": "old_watchtower",
+    "rawInput": "grab lens",
+    "parsed": true,
+    "verb": "take",
+    "subject": "telescope-lens",
+    "target": null
+  },
+  {
+    "timestamp": 1772061544842,
+    "room": "old_watchtower",
+    "rawInput": "use lens on telescope",
+    "parsed": true,
+    "verb": "use",
+    "subject": "telescope-lens",
+    "target": "telescope"
+  },
+  {
+    "timestamp": 1772061559449,
+    "room": "old_watchtower",
+    "rawInput": "e",
+    "parsed": true,
+    "verb": "go",
+    "subject": "east",
+    "target": null
+  },
+  {
+    "timestamp": 1772061562086,
+    "room": "old_watchtower",
+    "rawInput": "w",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1772061564842,
+    "room": "village_square",
+    "rawInput": "n",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1772061576164,
+    "room": "old_watchtower",
+    "rawInput": "enter",
+    "parsed": true,
+    "verb": "go",
+    "subject": null,
+    "target": null
+  },
+  {
+    "timestamp": 1772061581948,
+    "room": "old_watchtower",
+    "rawInput": "use telescope",
+    "parsed": true,
+    "verb": "use",
+    "subject": "telescope",
+    "target": null
+  },
+  {
+    "timestamp": 1772061593648,
+    "room": "old_watchtower",
+    "rawInput": "grab lens",
+    "parsed": true,
+    "verb": "take",
+    "subject": "telescope",
+    "target": null
+  },
+  {
+    "timestamp": 1772061598428,
+    "room": "old_watchtower",
+    "rawInput": "use lens",
+    "parsed": true,
+    "verb": "use",
+    "subject": "telescope",
+    "target": null
+  },
+  {
+    "timestamp": 1772061604140,
+    "room": "old_watchtower",
+    "rawInput": "w",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1772061608340,
+    "room": "village_square",
+    "rawInput": "n",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1772061610084,
+    "room": "old_watchtower",
+    "rawInput": "w",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1772061611606,
+    "room": "village_square",
+    "rawInput": "n",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1772061613903,
+    "room": "old_watchtower",
+    "rawInput": "w",
+    "parsed": true,
+    "verb": "go",
+    "subject": "west",
+    "target": null
+  },
+  {
+    "timestamp": 1772061615233,
+    "room": "village_square",
+    "rawInput": "n",
+    "parsed": true,
+    "verb": "go",
+    "subject": "north",
+    "target": null
+  },
+  {
+    "timestamp": 1772061617840,
+    "room": "old_watchtower",
+    "rawInput": "s",
+    "parsed": true,
+    "verb": "go",
+    "subject": "south",
+    "target": null
+  }
+]
