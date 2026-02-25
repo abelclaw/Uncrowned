@@ -1,5 +1,6 @@
 import { Story } from 'inkjs';
 import type { GameState } from '../state/GameState';
+import EventBus from '../EventBus';
 
 /**
  * Result returned from continueAll() after advancing the ink story.
@@ -186,6 +187,7 @@ export class DialogueManager {
 
         this.activeStory.BindExternalFunction('setFlag', (flagName: string) => {
             this.state.setFlag(flagName, true);
+            EventBus.emit('room-update', { type: 'set-flag', flag: flagName });
         });
 
         this.activeStory.BindExternalFunction('addItem', (itemId: string) => {

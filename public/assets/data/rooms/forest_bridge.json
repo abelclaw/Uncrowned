@@ -1,7 +1,7 @@
 {
     "id": "forest_bridge",
     "name": "Forest Bridge",
-    "description": "A rickety wooden bridge spans a gorge that's deeper than your capacity for good decisions. Below, a river churns through rocks with the enthusiasm of someone who genuinely enjoys erosion. A large, surprisingly well-groomed troll sits on a stool at the bridge's midpoint, reading a leather-bound book. He has a toll booth, a nameplate reading 'Bertram,' and the patient expression of someone who has heard every excuse.",
+    "description": "A rickety wooden bridge spans a gorge that's deeper than your capacity for good decisions. Below, a river churns through rocks with the enthusiasm of someone who genuinely enjoys erosion. A large, surprisingly well-groomed troll sits on a stool at the bridge's midpoint, reading a leather-bound book. He has a small booth, a nameplate reading 'Bertram,' and the patient expression of someone who has heard every excuse.",
     "background": {
         "layers": [
             {
@@ -78,7 +78,7 @@
                     "flag": "bridge_crossing_earned"
                 }
             ],
-            "blockedMessage": "Bertram holds up a hand politely but firmly. 'Riddle or toll coin, friend. Bridge Troll regulations. Talk to me and we'll sort it out.'"
+            "blockedMessage": "Bertram holds up a hand politely but firmly. 'Riddle first, friend. Bridge Troll regulations. Talk to me and we'll sort it out.'"
         },
         {
             "id": "to-cavern",
@@ -156,8 +156,8 @@
                 "y": 420
             },
             "responses": {
-                "look": "A small wooden booth with a sign reading 'BRIDGE TOLL: One Correct Answer OR One Coin. No Exceptions. No Refunds. Yes, This Is A Real Job.' Below it, in smaller text: 'Bridge Troll Local 47 -- Proud Member Since 1247.'",
-                "use": "The toll booth's window has a small slot for coins. A bell sits on the counter, polished to a shine. Bertram takes his work seriously.",
+                "look": "A small wooden booth with a sign reading 'BRIDGE TOLL: One Correct Answer. No Exceptions. No Refunds. Yes, This Is A Real Job.' Below it, in smaller text: 'Bridge Troll Local 47 -- Proud Member Since 1247.'",
+                "use": "The toll booth's window has a small service counter. A bell sits on it, polished to a shine. Bertram takes his work seriously.",
                 "take": "The toll booth is bolted to the bridge. Bertram is bolted to the toll booth. The whole arrangement is immovable.",
                 "default": "You inspect the toll booth. It's surprisingly well-maintained for a structure on a barely-maintained bridge.",
                 "talk": "The booth doesn't speak. It's a booth. The troll sitting in it, however, might have something to say -- if you address him directly.",
@@ -288,37 +288,6 @@
     "items": [],
     "puzzles": [
         {
-            "id": "meet-troll",
-            "trigger": {
-                "verb": "talk",
-                "subject": "bridge_troll"
-            },
-            "conditions": [
-                {
-                    "type": "flag-not-set",
-                    "flag": "met_troll"
-                },
-                {
-                    "type": "flag-not-set",
-                    "flag": "bridge_crossing_earned"
-                }
-            ],
-            "actions": [
-                {
-                    "type": "set-flag",
-                    "flag": "met_troll"
-                },
-                {
-                    "type": "set-flag",
-                    "flag": "met_old_man"
-                },
-                {
-                    "type": "narrator-say",
-                    "text": "Bertram looks up from his book and adjusts his reading glasses. 'Ah, a traveller. Bridge Troll Local 47 -- Bertram, at your service.' He gestures at a sign: BRIDGE TOLL: One Correct Answer OR One Coin.\n\n'Two options, friend. Say RIDDLE and I'll give you a riddle to answer. Get it right and you cross for free. Or, if you've got a toll coin, that works too.' He settles back. 'Or you can turn around and leave. No hard feelings. The bridge isn't going anywhere. Neither am I.'"
-                }
-            ]
-        },
-        {
             "id": "hear-riddle",
             "trigger": {
                 "verb": "talk",
@@ -327,7 +296,7 @@
             "conditions": [
                 {
                     "type": "flag-set",
-                    "flag": "met_troll"
+                    "flag": "met_bridge_troll"
                 },
                 {
                     "type": "flag-not-set",
@@ -346,56 +315,6 @@
                 {
                     "type": "narrator-say",
                     "text": "Bertram opens his Official Book of Riddles with the reverence of a priest opening scripture. 'Right then. Here's your riddle:'\n\nHe clears his throat. 'I am tall when I am young, and short when I am old. What am I?'\n\nHe waits patiently. 'Say the answer when you know it. Take your time -- I've got three hundred pages left of this mystery novel.'"
-                }
-            ]
-        },
-        {
-            "id": "ask-for-riddle-talk",
-            "trigger": {
-                "verb": "talk",
-                "subject": "bridge_troll"
-            },
-            "conditions": [
-                {
-                    "type": "flag-set",
-                    "flag": "met_troll"
-                },
-                {
-                    "type": "flag-not-set",
-                    "flag": "riddle_heard"
-                },
-                {
-                    "type": "flag-not-set",
-                    "flag": "bridge_crossing_earned"
-                }
-            ],
-            "actions": [
-                {
-                    "type": "narrator-say",
-                    "text": "Bertram looks up. 'Ready for the riddle? Say RIDDLE and I'll give it to you. Or pay the toll coin if you'd rather skip the brain exercise.'"
-                }
-            ]
-        },
-        {
-            "id": "riddle-reminder",
-            "trigger": {
-                "verb": "talk",
-                "subject": "bridge_troll"
-            },
-            "conditions": [
-                {
-                    "type": "flag-set",
-                    "flag": "riddle_heard"
-                },
-                {
-                    "type": "flag-not-set",
-                    "flag": "bridge_crossing_earned"
-                }
-            ],
-            "actions": [
-                {
-                    "type": "narrator-say",
-                    "text": "Bertram looks up from his book. 'Still thinking? No rush. The riddle was: I am tall when I am young, and short when I am old. What am I?' He turns a page. 'Say the answer when you've got it. Or pay the toll. Either way, I'm not going anywhere.'"
                 }
             ]
         },
@@ -814,116 +733,6 @@
                 }
             ],
             "once": true
-        },
-        {
-            "id": "pay-toll",
-            "trigger": {
-                "verb": "use",
-                "subject": "bridge-toll-coin",
-                "target": "bridge_troll"
-            },
-            "conditions": [
-                {
-                    "type": "has-item",
-                    "item": "bridge-toll-coin"
-                },
-                {
-                    "type": "flag-not-set",
-                    "flag": "bridge_crossing_earned"
-                }
-            ],
-            "actions": [
-                {
-                    "type": "remove-item",
-                    "item": "bridge-toll-coin"
-                },
-                {
-                    "type": "set-flag",
-                    "flag": "bridge_crossing_earned"
-                },
-                {
-                    "type": "open-exit",
-                    "exit": "to-courtyard"
-                },
-                {
-                    "type": "narrator-say",
-                    "text": "Bertram examines the coin with professional interest. 'Bit worn, but legal tender's legal tender.' He drops it into a lockbox with a satisfying clink. 'You may cross without the riddle. Personally, I think you're missing out -- it was a good one -- but the union contract is clear on alternatives.'"
-                }
-            ],
-            "once": true
-        },
-        {
-            "id": "pay-toll-on-booth",
-            "trigger": {
-                "verb": "use",
-                "subject": "bridge-toll-coin",
-                "target": "toll-booth"
-            },
-            "conditions": [
-                {
-                    "type": "has-item",
-                    "item": "bridge-toll-coin"
-                },
-                {
-                    "type": "flag-not-set",
-                    "flag": "bridge_crossing_earned"
-                }
-            ],
-            "actions": [
-                {
-                    "type": "remove-item",
-                    "item": "bridge-toll-coin"
-                },
-                {
-                    "type": "set-flag",
-                    "flag": "bridge_crossing_earned"
-                },
-                {
-                    "type": "open-exit",
-                    "exit": "to-courtyard"
-                },
-                {
-                    "type": "narrator-say",
-                    "text": "You slide the coin through the toll booth slot. Bertram hears the clink, inspects it, and nods. 'Legal tender. You're cleared to cross.' He makes a note in his ledger. 'Riddle waived per Section 4, Paragraph 2: Alternative Payment Accepted.'"
-                }
-            ],
-            "once": true
-        },
-        {
-            "id": "give-toll",
-            "trigger": {
-                "verb": "use",
-                "subject": "bridge-toll-coin"
-            },
-            "conditions": [
-                {
-                    "type": "has-item",
-                    "item": "bridge-toll-coin"
-                },
-                {
-                    "type": "flag-not-set",
-                    "flag": "bridge_crossing_earned"
-                }
-            ],
-            "actions": [
-                {
-                    "type": "remove-item",
-                    "item": "bridge-toll-coin"
-                },
-                {
-                    "type": "set-flag",
-                    "flag": "bridge_crossing_earned"
-                },
-                {
-                    "type": "open-exit",
-                    "exit": "to-courtyard"
-                },
-                {
-                    "type": "narrator-say",
-                    "text": "You hold out the coin. Bertram takes it, examines both sides with professional thoroughness, and drops it into his lockbox. 'Toll paid. You may cross without the riddle.' He pauses. 'Though between you and me, it was a good one. Shame to miss it.'"
-                }
-            ],
-            "once": true
         }
     ],
     "deathTriggers": [
@@ -1024,7 +833,7 @@
         {
             "puzzleId": "hear-riddle",
             "tiers": [
-                "Bertram offered you a riddle. Say RIDDLE to hear it. Or you could pay with a coin if you have one.",
+                "Bertram offered you a riddle. Say RIDDLE to hear it.",
                 "Talk to Bertram and say RIDDLE to get his riddle. Then say the answer out loud when you figure it out.",
                 "Say RIDDLE to Bertram. He'll ask you a riddle. The answer is something that starts tall and gets shorter over time. Think about things that burn or melt."
             ]
@@ -1035,14 +844,6 @@
                 "Bertram asked you a riddle. 'Tall when young, short when old.' Think about things that shrink as they age. Things that burn, melt, or wear down. There are several valid answers.",
                 "The classic answer is something you might light on a birthday cake or during a power outage. But a pencil, chalk, or even a bar of soap would also work -- anything that starts tall and gets shorter with use.",
                 "Say CANDLE to answer the riddle. But Bertram will also accept: pencil, chalk, crayon, soap, eraser, incense, match, cigarette, cigar, or ice. Anything that's tall when new and short when old."
-            ]
-        },
-        {
-            "puzzleId": "pay-toll",
-            "tiers": [
-                "The sign says the toll accepts 'One Correct Answer OR One Coin.' If riddles aren't your forte, perhaps currency is.",
-                "Bertram accepts a coin as an alternative to the riddle. If you found a toll coin somewhere -- the village square, perhaps -- you could pay your way across.",
-                "Use the bridge toll coin on Bertram the troll or the toll booth. Money talks. Especially to unionized bridge trolls."
             ]
         }
     ],

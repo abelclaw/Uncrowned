@@ -155,6 +155,7 @@ export class Preloader extends Scene {
 
         // Player static sprite (single standing pose, displayed in scenes)
         this.load.image('player-static', 'assets/sprites/player-static.png');
+        this.load.image('player-with-hat', 'assets/sprites/hero-hat.png');
 
         // Legacy spritesheet (needed by Player class internals)
         this.load.spritesheet('player', 'assets/sprites/player.png', {

@@ -95,6 +95,8 @@ export class RoomScene extends Phaser.Scene {
     private hotspotSprites: Map<string, Phaser.GameObjects.Image> = new Map();
     // Dynamic background layer images (for flag-based swaps)
     private bgLayerImages: Map<string, Phaser.GameObjects.Image> = new Map();
+    // Player static image reference (for hat sprite swap)
+    private playerImg: Phaser.GameObjects.Image | null = null;
 
     constructor() {
         super('RoomScene');
@@ -262,16 +264,20 @@ export class RoomScene extends Phaser.Scene {
         this.player.getSprite().setVisible(false); // hide spritesheet-based player
 
         // Show static player image with subtle idle animation
-        if (this.textures.exists('player-static')) {
-            const playerImg = this.add.image(spawnX, spawnY, 'player-static')
+        // Use hat variant if player has purchased the hat
+        const playerSpriteKey = this.gameState.isFlagSet('has_hat') && this.textures.exists('player-with-hat')
+            ? 'player-with-hat' : 'player-static';
+        if (this.textures.exists(playerSpriteKey)) {
+            this.playerImg = this.add.image(spawnX, spawnY, playerSpriteKey)
                 .setOrigin(0.5, 1)
+                .setDisplaySize(45, 106)
                 .setDepth(50);
 
             // Gentle breathing: slight vertical squash-stretch
             this.tweens.add({
-                targets: playerImg,
-                scaleY: 1.015,
-                scaleX: 0.99,
+                targets: this.playerImg,
+                scaleY: this.playerImg.scaleY * 1.015,
+                scaleX: this.playerImg.scaleX * 0.99,
                 duration: 2000,
                 yoyo: true,
                 repeat: -1,
@@ -280,7 +286,7 @@ export class RoomScene extends Phaser.Scene {
 
             // Subtle hair sway: tiny rotation oscillation
             this.tweens.add({
-                targets: playerImg,
+                targets: this.playerImg,
                 angle: { from: -0.8, to: 0.8 },
                 duration: 3000,
                 yoyo: true,
@@ -774,6 +780,14 @@ export class RoomScene extends Phaser.Scene {
                     if (img && this.textures.exists(swap.to)) {
                         img.setTexture(swap.to);
                     }
+                }
+            }
+
+            // Swap player sprite when hat is purchased
+            if (action.type === 'set-flag' && action.flag === 'has_hat' && this.playerImg) {
+                if (this.textures.exists('player-with-hat')) {
+                    this.playerImg.setTexture('player-with-hat');
+                    this.playerImg.setDisplaySize(45, 106);
                 }
             }
 

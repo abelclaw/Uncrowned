@@ -28,6 +28,7 @@ EXTERNAL getDeathCount()
 === menu ===
 + [Ask about the curse] -> curse_talk
 + [Ask what he sells] -> shop_talk
++ {hasItem("bridge-toll-coin") && not hasFlag("has_hat")} [Buy the hat] -> buy_hat
 + {hasFlag("knows_about_curse")} [Ask about the crystal shards] -> crystal_talk
 + {hasItem("cave-crystal-shard")} [Show the crystal shard] -> show_crystal
 + [Leave] -> farewell
@@ -76,6 +77,19 @@ They'll... know... what... it means. It means... hope.
 His stone arm seems to glow faintly near the crystal.
 Or... I'm... hallucinating. The petrification... does... things... to your... mind.
 Either... way... GO. Before... this... whole... kingdom... is... a... sculpture... garden.
+-> menu
+
+=== buy_hat ===
+The merchant's mobile eye lights up at the sight of the coin. #speaker:Stone Merchant #emotion:excited
+A... customer! A REAL... customer!
+He reaches under the counter with his good arm and produces a battered, slightly lopsided hat.
+It's... not... much. But... it keeps... the rain... off. Mostly.
+One... coin... and... it's... yours.
+~ removeItem("bridge-toll-coin")
+~ setFlag("has_hat")
+He places the hat on your head with surprising tenderness. #speaker:Stone Merchant #emotion:happy
+Suits... you. Very... adventurer... chic.
+First... sale... in... three... months. I'm... putting... this... in... my... memoir.
 -> menu
 
 === farewell ===
