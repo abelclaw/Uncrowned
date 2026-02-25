@@ -75,34 +75,10 @@
             "conditions": [
                 {
                     "type": "flag-set",
-                    "flag": "riddle_answered"
+                    "flag": "bridge_crossing_earned"
                 }
             ],
-            "blockedMessage": "The bridge troll blocks your path, arms folded. He won't let anyone cross without answering his riddle first."
-        },
-        {
-            "id": "to-courtyard-toll",
-            "zone": {
-                "x": 880,
-                "y": 350,
-                "width": 80,
-                "height": 200
-            },
-            "targetRoom": "castle_courtyard",
-            "spawnPoint": {
-                "x": 280,
-                "y": 460
-            },
-            "transition": "slide-right",
-            "direction": "east",
-            "label": "castle",
-            "conditions": [
-                {
-                    "type": "flag-set",
-                    "flag": "toll_paid"
-                }
-            ],
-            "blockedMessage": "The bridge troll blocks your path. He's muttering something about a toll that needs paying."
+            "blockedMessage": "Bertram holds up a hand politely but firmly. 'Riddle or toll coin, friend. Bridge Troll regulations. Talk to me and we'll sort it out.'"
         },
         {
             "id": "to-cavern",
@@ -310,149 +286,7 @@
         }
     ],
     "items": [],
-    "puzzles": [
-        {
-            "id": "answer-riddle-correct",
-            "trigger": {
-                "verb": "talk",
-                "subject": "bridge_troll"
-            },
-            "conditions": [
-                {
-                    "type": "flag-set",
-                    "flag": "riddle_heard"
-                },
-                {
-                    "type": "flag-not-set",
-                    "flag": "riddle_answered"
-                }
-            ],
-            "actions": [
-                {
-                    "type": "set-flag",
-                    "flag": "riddle_answered"
-                },
-                {
-                    "type": "open-exit",
-                    "exit": "to-courtyard"
-                },
-                {
-                    "type": "narrator-say",
-                    "text": "Bertram nods approvingly. 'A candle. Correct.' He stamps a small card and slides it across the counter. 'You may cross. Please watch your step, several planks are load-bearing in theory only.' He returns to his book -- a mystery novel, you notice. Even trolls need hobbies."
-                }
-            ],
-            "once": true
-        },
-        {
-            "id": "answer-riddle",
-            "trigger": {
-                "verb": "talk",
-                "subject": "bridge_troll"
-            },
-            "conditions": [
-                {
-                    "type": "flag-not-set",
-                    "flag": "riddle_answered"
-                },
-                {
-                    "type": "flag-not-set",
-                    "flag": "toll_paid"
-                }
-            ],
-            "actions": [
-                {
-                    "type": "set-flag",
-                    "flag": "riddle_heard"
-                },
-                {
-                    "type": "narrator-say",
-                    "text": "Bertram adjusts his reading glasses and opens his Official Book of Riddles. 'Right then. Bridge Troll regulations require one riddle before crossing. I am tall when I am young, and short when I am old. What am I?' He waits patiently. Speak the answer to me when you know it."
-                }
-            ]
-        },
-        {
-            "id": "pay-toll",
-            "trigger": {
-                "verb": "use",
-                "subject": "bridge-toll-coin",
-                "target": "bridge_troll"
-            },
-            "conditions": [
-                {
-                    "type": "has-item",
-                    "item": "bridge-toll-coin"
-                },
-                {
-                    "type": "flag-not-set",
-                    "flag": "riddle_answered"
-                },
-                {
-                    "type": "flag-not-set",
-                    "flag": "toll_paid"
-                }
-            ],
-            "actions": [
-                {
-                    "type": "remove-item",
-                    "item": "bridge-toll-coin"
-                },
-                {
-                    "type": "set-flag",
-                    "flag": "toll_paid"
-                },
-                {
-                    "type": "open-exit",
-                    "exit": "to-courtyard-toll"
-                },
-                {
-                    "type": "narrator-say",
-                    "text": "Bertram examines the coin with professional interest. 'Bit worn, but legal tender's legal tender.' He drops it into a lockbox with a satisfying clink. 'You may cross without the riddle. Personally, I think you're missing out -- it was a good one -- but the union contract is clear on alternatives.'"
-                }
-            ],
-            "once": true
-        },
-        {
-            "id": "pay-toll-on-booth",
-            "trigger": {
-                "verb": "use",
-                "subject": "bridge-toll-coin",
-                "target": "toll-booth"
-            },
-            "conditions": [
-                {
-                    "type": "has-item",
-                    "item": "bridge-toll-coin"
-                },
-                {
-                    "type": "flag-not-set",
-                    "flag": "riddle_answered"
-                },
-                {
-                    "type": "flag-not-set",
-                    "flag": "toll_paid"
-                }
-            ],
-            "actions": [
-                {
-                    "type": "remove-item",
-                    "item": "bridge-toll-coin"
-                },
-                {
-                    "type": "set-flag",
-                    "flag": "toll_paid"
-                },
-                {
-                    "type": "open-exit",
-                    "exit": "to-courtyard-toll"
-                },
-                {
-                    "type": "narrator-say",
-                    "text": "You slide the coin through the toll booth slot. Bertram catches it with practiced ease. 'Payment accepted. You may cross. Mind the gap at plank seventeen -- it's more of a suggestion than a plank at this point.'"
-                }
-            ],
-            "once": true
-        }
-    ],
+    "puzzles": [],
     "deathTriggers": [
         {
             "id": "insult-troll",
@@ -496,8 +330,7 @@
         }
     },
     "dynamicDescriptions": {
-        "riddle_answered": "The forest bridge stretches across the gorge. Bertram sits at his toll booth, reading contentedly. He nods as you pass -- you've earned crossing rights. The gorge below still churns, but it's someone else's problem now.",
-        "toll_paid": "The forest bridge spans the gorge as before. Bertram gives you a professional nod -- your toll has been recorded. The bridge creaks under your feet but holds. Mostly."
+        "bridge_crossing_earned": "The forest bridge stretches across the gorge. Bertram sits at his toll booth, reading contentedly. He nods as you pass -- you've earned crossing rights. The gorge below still churns, but it's someone else's problem now."
     },
     "npcs": [
         {

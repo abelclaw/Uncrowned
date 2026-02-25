@@ -33,9 +33,42 @@ Bertram straightens his vest professionally. #speaker:Bertram #emotion:serious
 Bridge Troll Regulations, Chapter 7: All crossers must answer one riddle OR pay one toll coin.
 I didn't make the rules. Well, actually, we voted on them at the union meeting. But the SPIRIT of the rules predates me.
 The riddle is: I am tall when I am young, and short when I am old. What am I?
-He waits with the patience of someone who has asked this question ten thousand times.
-A candle. The answer is a candle. Everyone gets it. I really need new material.
++ [A candle] -> riddle_correct
++ [A tree] -> riddle_wrong
++ [A person] -> riddle_wrong
++ [I don't know] -> riddle_give_up
+
+=== riddle_correct ===
+Bertram blinks, then nods approvingly. #speaker:Bertram #emotion:pleased
+'A candle. Correct.' He stamps a small card and slides it across the counter.
+'You may cross. Please watch your step -- several planks are load-bearing in theory only.'
+He returns to his book. A mystery novel, you notice. Even trolls need hobbies.
 ~ setFlag("riddle_answered")
+~ setFlag("bridge_crossing_earned")
+-> greeting
+
+=== riddle_wrong ===
+Bertram winces sympathetically. #speaker:Bertram #emotion:concerned
+'No, I'm afraid not. Would you like to try again?'
++ [Try again] -> riddle_retry
++ [Leave] -> farewell
+
+=== riddle_retry ===
+Bertram clears his throat. #speaker:Bertram #emotion:serious
+'Right then. Same riddle. I am tall when I am young, and short when I am old. What am I?'
++ [A candle] -> riddle_correct
++ [A tree] -> riddle_wrong
++ [A person] -> riddle_wrong
++ [I still don't know] -> riddle_give_up
+
+=== riddle_give_up ===
+Bertram sighs. #speaker:Bertram #emotion:melancholy
+'It's a candle. They're tall when new and short when they've burned down. Classic riddle.'
+He pauses.
+'Tell you what -- you clearly tried. I'll count that as a pass. Union rules are flexible on effort-based exemptions.'
+He stamps your card anyway.
+~ setFlag("riddle_answered")
+~ setFlag("bridge_crossing_earned")
 -> greeting
 
 === bridge_info ===
@@ -63,6 +96,7 @@ Bit worn, but legal tender is legal tender. He drops it into a lockbox.
 You may cross without the riddle. Personally, I think you're missing out. It was a good one.
 But the union contract is clear on alternatives. Coin accepted. Bridge is yours.
 ~ setFlag("toll_paid")
+~ setFlag("bridge_crossing_earned")
 ~ removeItem("bridge-toll-coin")
 -> greeting
 
