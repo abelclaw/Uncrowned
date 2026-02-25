@@ -333,7 +333,7 @@
         },
         {
             "id": "bridge-toll-coin",
-            "name": "Bridge Toll Coin",
+            "name": "Old Coin",
             "zone": {
                 "x": 564,
                 "y": 373,
@@ -346,9 +346,9 @@
             },
             "aliases": [
                 "coin",
-                "toll coin",
                 "old coin",
-                "toll"
+                "gold coin",
+                "money"
             ],
             "responses": {
                 "look": "An old coin sitting in the dry fountain basin, half-hidden among dust and dead leaves. The face on it has worn into a vague smudge. Still legal tender, apparently -- the kingdom has low standards for currency, much like everything else. Someone must have tossed it in when the fountain still worked. Their wish didn't come true.",
@@ -711,7 +711,7 @@
             "tiers": [
                 "Bridges cost money, or so I've heard. Perhaps there's a coin hiding somewhere in this square, wedged into a crack or crevice. Not that I'd know.",
                 "There's a coin wedged between the stones near the fountain area. Coins are useful for tolls, or so the bridge-adjacent economy suggests.",
-                "Take the bridge toll coin wedged between the stones near the fountain. You'll need it at the forest bridge unless you fancy answering riddles."
+                "Take the old coin wedged between the stones near the fountain. It might come in handy -- coins usually do."
             ]
         },
         {

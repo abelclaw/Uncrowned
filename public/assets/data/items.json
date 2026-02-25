@@ -54,10 +54,10 @@
         },
         {
             "id": "bridge-toll-coin",
-            "name": "Bridge Toll Coin",
+            "name": "Old Coin",
             "description": "A coin so old the face on it has worn into a vague smudge. Still legal tender, apparently.",
             "combinable": false,
-            "aliases": ["coin", "toll", "money"]
+            "aliases": ["coin", "money", "gold"]
         },
         {
             "id": "cave-fish",
