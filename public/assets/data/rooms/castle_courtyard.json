@@ -1,7 +1,7 @@
 {
     "id": "castle_courtyard",
     "name": "Castle Courtyard",
-    "description": "You stand in the courtyard of Castle Erelhain, and 'grandeur in decline' doesn't begin to cover it. Cracked flagstones sprout weeds with the tenacity of things that have given up on aesthetics. Two guards flank the main entrance, their armor polished to a shine that makes the surrounding decay look even worse. An overgrown garden sprawls to the north, and a stone well sits in the corner, still functional despite the general atmosphere of institutional failure. The bridge back to the forest lies to the south.",
+    "description": "You stand in the courtyard of Castle Erelhain, and 'grandeur in decline' doesn't begin to cover it. Cracked flagstones sprout weeds with the tenacity of things that have given up on aesthetics. Two guards flank the main entrance, their armor polished to a shine that makes the surrounding decay look even worse. An overgrown garden sprawls to the east, and a stone well sits in the corner, still functional despite the general atmosphere of institutional failure. The bridge back to the forest lies to the south.",
     "background": {
         "layers": [
             {
@@ -70,6 +70,7 @@
                 "y": 450
             },
             "transition": "fade",
+            "direction": "north",
             "label": "hallway",
             "aliases": ["enter", "inside", "in", "castle", "entrance", "door"],
             "conditions": [
@@ -94,7 +95,7 @@
                 "y": 460
             },
             "transition": "fade",
-            "direction": "north",
+            "direction": "east",
             "label": "garden"
         }
     ],
