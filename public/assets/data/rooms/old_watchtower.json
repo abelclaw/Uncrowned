@@ -41,18 +41,18 @@
         {
             "id": "to-village-square",
             "zone": {
-                "x": 0,
-                "y": 350,
-                "width": 80,
-                "height": 200
+                "x": 350,
+                "y": 480,
+                "width": 260,
+                "height": 60
             },
             "targetRoom": "village_square",
             "spawnPoint": {
-                "x": 680,
-                "y": 460
+                "x": 480,
+                "y": 400
             },
-            "transition": "slide-left",
-            "direction": "west",
+            "transition": "fade",
+            "direction": "south",
             "label": "village"
         },
         {

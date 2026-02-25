@@ -39,21 +39,21 @@
     ],
     "exits": [
         {
-            "id": "to-watchtower",
+            "id": "to-village",
             "zone": {
                 "x": 0,
                 "y": 350,
                 "width": 80,
                 "height": 200
             },
-            "targetRoom": "old_watchtower",
+            "targetRoom": "village_square",
             "spawnPoint": {
-                "x": 560,
-                "y": 450
+                "x": 680,
+                "y": 460
             },
             "transition": "slide-left",
             "direction": "west",
-            "label": "watchtower"
+            "label": "village"
         },
         {
             "id": "to-courtyard",

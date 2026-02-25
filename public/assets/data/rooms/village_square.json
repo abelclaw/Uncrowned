@@ -58,19 +58,36 @@
         {
             "id": "to-watchtower",
             "zone": {
+                "x": 350,
+                "y": 0,
+                "width": 260,
+                "height": 80
+            },
+            "targetRoom": "old_watchtower",
+            "spawnPoint": {
+                "x": 480,
+                "y": 490
+            },
+            "transition": "fade",
+            "direction": "north",
+            "label": "watchtower"
+        },
+        {
+            "id": "to-bridge",
+            "zone": {
                 "x": 880,
                 "y": 350,
                 "width": 80,
                 "height": 200
             },
-            "targetRoom": "old_watchtower",
+            "targetRoom": "forest_bridge",
             "spawnPoint": {
-                "x": 400,
-                "y": 450
+                "x": 300,
+                "y": 460
             },
-            "transition": "iris",
+            "transition": "slide-right",
             "direction": "east",
-            "label": "watchtower",
+            "label": "bridge",
             "conditions": [
                 {
                     "type": "flag-set",
