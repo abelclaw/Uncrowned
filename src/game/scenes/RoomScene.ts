@@ -270,7 +270,6 @@ export class RoomScene extends Phaser.Scene {
         if (this.textures.exists(playerSpriteKey)) {
             this.playerImg = this.add.image(spawnX, spawnY, playerSpriteKey)
                 .setOrigin(0.5, 1)
-                .setDisplaySize(45, 106)
                 .setDepth(50);
 
             // Gentle breathing: slight vertical squash-stretch
@@ -787,7 +786,6 @@ export class RoomScene extends Phaser.Scene {
             if (action.type === 'set-flag' && action.flag === 'has_hat' && this.playerImg) {
                 if (this.textures.exists('player-with-hat')) {
                     this.playerImg.setTexture('player-with-hat');
-                    this.playerImg.setDisplaySize(45, 106);
                 }
             }
 
