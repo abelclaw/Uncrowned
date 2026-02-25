@@ -1,0 +1,654 @@
+{
+    "id": "clock_tower",
+    "name": "Clock Tower",
+    "description": "The kingdom's clock tower is a marvel of engineering in its death throes. A massive clockwork mechanism fills the space, gears the size of wagon wheels interlocking in a frozen symphony of precision. The clock stopped when the curse reached it -- the main spring seized, the pendulum froze, and time in Erelhain became theoretical. Through gaps in the stone walls, you can see the curse spreading across the landscape below. The clock's face, visible from outside, reads 3:47. It has read 3:47 for a very long time.",
+    "background": {
+        "layers": [
+            {
+                "key": "bg-shared-act3-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act3-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-clock_tower",
+                "scrollFactor": 1
+            }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
+    ],
+    "exits": [
+        {
+            "id": "to-courtyard-act3",
+            "zone": {
+                "x": 440,
+                "y": 350,
+                "width": 80,
+                "height": 80
+            },
+            "targetRoom": "castle_courtyard_act3",
+            "spawnPoint": {
+                "x": 480,
+                "y": 460
+            },
+            "transition": "fade",
+            "direction": "north",
+            "label": "courtyard"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "clock-mechanism",
+            "name": "Clock Mechanism",
+            "zone": {
+                "x": 350,
+                "y": 340,
+                "width": 200,
+                "height": 80
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 420
+            },
+            "responses": {
+                "look": "The clock mechanism is a masterwork of interlocking gears, springs, and counterweights. It's been frozen by the curse -- the main spring is seized, and several gears have petrified. But the mechanism itself is sound. With a new spring and some oil, it could run again. Etched into the base plate is a faded inscription: 'Synchronise to the astronomical marker on the outer wall.' The marker must be on the tower's exterior -- too high to read from ground level.",
+                "use": "The clock needs two things: a gear spring to replace the seized main spring, and clock oil to lubricate the frozen gears. Without both, the mechanism is an impressive sculpture.",
+                "default": "You examine the clock mechanism. It's frozen in time, which is either poetic or literal. In this kingdom, it's both.",
+                "take": "You consider disassembling the kingdom's only hope of slowing the curse and putting it in your pocket. The mechanism weighs roughly as much as your life's regret, which is considerable.",
+                "talk": "You whisper encouragement to the frozen mechanism. 'You can do it. Believe in yourself.' The gears do not respond. Motivational speaking has its limits.",
+                "open": "The mechanism is already exposed -- its housing long since corroded away. There's nothing to open except the philosophical question of why you tried.",
+                "push": "You shove the mechanism. Several tons of precision clockwork shift imperceptibly and then settle back. Congratulations: great effort, zero results.",
+                "pull": "You pull at the mechanism. It does not budge. It has survived a curse, centuries of neglect, and now you. It is unimpressed by all three."
+            }
+        },
+        {
+            "id": "clock-face",
+            "name": "Clock Face",
+            "zone": {
+                "x": 600,
+                "y": 350,
+                "width": 100,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 650,
+                "y": 420
+            },
+            "responses": {
+                "look": "The clock face reads 3:47. The curse began at the feast, which started at 3:47 PM -- the exact moment the wizard's parking was denied. The clock stopped at the moment of the curse's casting. If the clock were repaired and set to the correct time, it would re-synchronize with the curse's temporal anchor and slow its advance.",
+                "use": "You can't adjust the clock face without the mechanism running. The hands are frozen, just like everything else.",
+                "default": "You study the frozen clock face. 3:47. The most petty moment in the kingdom's history, preserved in clockwork.",
+                "take": "You attempt to pry the clock face off. It's bolted to the tower with the conviction of medieval masonry. The bolts have been here longer than your bloodline.",
+                "talk": "You ask the clock face what time it is. It says 3:47. It has been saying 3:47 for centuries. Consistency is a virtue, you suppose.",
+                "open": "The clock face isn't a door, despite your optimistic approach to architecture. It's a solid disc of iron and glass, and it opens for no one.",
+                "push": "You push against the clock face. The hands don't move. Time itself seems mildly offended by the attempt.",
+                "pull": "You pull at the clock face. The frozen hands resist with the stubbornness of a kingdom that refuses to acknowledge what century it's in."
+            }
+        },
+        {
+            "id": "tower-exterior",
+            "name": "Tower Window",
+            "zone": {
+                "x": 800,
+                "y": 360,
+                "width": 80,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 840,
+                "y": 420
+            },
+            "responses": {
+                "look": "Through the tower's window, you can see the kingdom spread below. The petrification is visible -- a grey wave rolling inward from the edges. Fields, villages, forests, all turning to stone. The ledge outside is narrow, icy, and the wind howls through the opening with enough force to make climbing out a death sentence. From up here, it looks almost beautiful, in the way that endings sometimes are.",
+                "default": "You gaze out at the cursed landscape. The view is comprehensive and thoroughly depressing.",
+                "take": "The clock tower is a building. An entire building. Your inventory does not have a 'building' slot, and even if it did, you'd need planning permission.",
+                "use": "Using the Tower Window doesn't accomplish anything obvious. Perhaps it needs to be used with something else. Or perhaps it's just decorative.",
+                "talk": "You address the clock tower. Wind whistles through the mechanism above in response -- a low moan that sounds like centuries of unanswered maintenance requests.",
+                "open": "The window has no glass -- just an open arch and a very long drop. It's already as open as it gets, which is too open for your liking.",
+                "push": "You push against the window frame. Stone doesn't yield. The wind, however, pushes back considerably harder.",
+                "pull": "There's nothing to pull. It's a hole in a wall. You're attempting to pull architecture, which is a new low even for you."
+            }
+        },
+        {
+            "id": "clock-gears",
+            "name": "Clock Gears",
+            "zone": {
+                "x": 250,
+                "y": 50,
+                "width": 450,
+                "height": 300
+            },
+            "interactionPoint": {
+                "x": 475,
+                "y": 430
+            },
+            "responses": {
+                "look": "A magnificent array of gears and springs, frozen in time. The irony of a broken clock in a cursed kingdom is not lost on you.",
+                "take": "They're the size of wagon wheels and interlocked. Engineering does not support your kleptomania.",
+                "use": "Without proper tools and knowledge, you'd just jam them further.",
+                "default": "You study the gears. They await repair with the patience of precision engineering.",
+                "talk": "You speak to the gears. They are gears. They have no opinions, no feelings, and no interest in your problems. In this respect they are similar to most of the kingdom's former administration.",
+                "open": "Gears don't open. They mesh, they turn, they grind. Opening them would require unmeshing the unmeshable, which is not a word, much like this is not a plan.",
+                "push": "You push a gear the size of a wagon wheel. It shifts a fraction of an inch with a grinding shriek that echoes through the tower. Nothing else happens, except that your hands now smell like oxidized copper.",
+                "pull": "You pull on a gear tooth. The gear is frozen solid and approximately eight times your weight. The tooth doesn't care about your ambitions."
+            }
+        },
+        {
+            "id": "green-pool",
+            "name": "Green Pool",
+            "zone": {
+                "x": 300,
+                "y": 400,
+                "width": 350,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 475,
+                "y": 430
+            },
+            "responses": {
+                "look": "A pool of luminous green liquid at the base of the clock tower. It bubbles gently, which is never a good sign in underground pools.",
+                "take": "You'd need a bucket, and honestly, do you really want glowing green liquid?",
+                "use": "Touching mysterious glowing liquids has a poor track record in this kingdom.",
+                "default": "You eye the green pool from a safe distance. It bubbles back, unconcerned.",
+                "talk": "You address the bubbling pool. 'Hello? Anyone down there?' A bubble rises and pops. You interpret this as 'go away.' Wise.",
+                "open": "It's a pool. An open body of liquid. It cannot be more open unless you'd like to widen the floor, which seems structurally inadvisable.",
+                "push": "You push at the green liquid. Your hand goes in. It's warm and slightly viscous. You pull back immediately. It's fine. Probably fine.",
+                "pull": "You cannot pull a liquid. This is a fundamental property of matter that predates the curse, the kingdom, and your questionable decision-making."
+            }
+        },
+        {
+            "id": "pendulum",
+            "name": "Pendulum",
+            "zone": {
+                "x": 150,
+                "y": 200,
+                "width": 80,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 190,
+                "y": 430
+            },
+            "responses": {
+                "look": "The pendulum hangs motionless, a massive weight suspended on a rod of polished steel. It should be swinging. Instead it hangs there like a condemned man's final argument -- still, heavy, and deeply unsettling. When the mechanism runs again, this will be the heartbeat of the tower.",
+                "take": "The pendulum weighs more than you do and is bolted to the mechanism with fittings designed to survive centuries of oscillation. It is not coming home with you.",
+                "use": "The pendulum can't be set swinging manually -- it's driven by the clock mechanism. Fix the mechanism, and the pendulum will do its job.",
+                "talk": "You speak to the pendulum. It hangs in judgment. Silent, heavy judgment. You've had worse conversations with actual people.",
+                "open": "It's a weight on a rod. There is nothing to open. Your creativity is admirable; your grasp of mechanical engineering, less so.",
+                "push": "You shove the pendulum. It sways half an inch and stops dead. Without the mechanism driving it, your push is just a suggestion it's perfectly comfortable ignoring.",
+                "pull": "You pull the pendulum toward you. It resists, then swings back to center with gravitational inevitability."
+            }
+        },
+        {
+            "id": "main-spring",
+            "name": "Main Spring",
+            "zone": {
+                "x": 400,
+                "y": 350,
+                "width": 80,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 440,
+                "y": 420
+            },
+            "responses": {
+                "look": "The main spring is seized -- a coil of tempered steel wound so tight by the curse that it's cracked in three places. This is the heart of the problem. Without a replacement spring, the mechanism is a very elaborate paperweight.",
+                "take": "The seized spring crumbles when you touch it, flaking into rust and regret. You need a replacement -- something like a gear spring.",
+                "use": "The main spring is seized beyond repair. You need a new spring entirely. Perhaps something from a wizard's collection of mechanical curiosities.",
+                "talk": "'I'll find you a replacement,' you promise the seized spring. It says nothing. It's a spring. But the promise feels oddly important.",
+                "open": "Springs don't open. They coil and uncoil. This one does neither, on account of being catastrophically seized.",
+                "push": "You press on the seized spring. A piece of corroded steel snaps off. You've made the situation marginally worse, which is your special talent.",
+                "pull": "You try to pull the seized spring free. It's fused to the mechanism by centuries of rust and magical stasis."
+            }
+        },
+        {
+            "id": "clock-hands",
+            "name": "Clock Hands",
+            "zone": {
+                "x": 620,
+                "y": 360,
+                "width": 60,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 650,
+                "y": 420
+            },
+            "responses": {
+                "look": "The hour and minute hands are frozen at 3:47 -- the exact moment the wizard's parking dispute became everyone's problem. They're made of iron, blackened with age. The minute hand points accusingly at the 9, as if blaming it for the whole mess.",
+                "take": "The hands are riveted to the clock face mechanism. Removing them would require tools you don't have and a disregard for the kingdom's future.",
+                "use": "The hands are frozen solid. The mechanism needs to be repaired before they'll move -- and then they'll need to be set to the correct time.",
+                "talk": "'Move,' you command the frozen clock hands. They do not. Time has been ignoring commands from people with delusions of authority since long before this curse.",
+                "open": "Clock hands don't open. They point. Currently they point at 3:47, which points at the kingdom's failure, which points at a parking dispute. It's pointers all the way down.",
+                "push": "You push a clock hand. The mechanism groans and the hand moves a fraction of an inch, then springs back. The clock has its own opinion about what time it is.",
+                "pull": "You pull on the hour hand. Iron groans but nothing moves. The hands will turn again when the mechanism is repaired -- and not a moment sooner."
+            }
+        },
+        {
+            "id": "counterweights",
+            "name": "Counterweights",
+            "zone": {
+                "x": 100,
+                "y": 100,
+                "width": 100,
+                "height": 150
+            },
+            "interactionPoint": {
+                "x": 150,
+                "y": 430
+            },
+            "responses": {
+                "look": "Heavy stone counterweights dangle from chains, suspended at various heights within the mechanism. They're meant to regulate the clock's power, converting gravity into precision. Currently they're converting gravity into nothing.",
+                "take": "Each counterweight is a block of carved stone roughly the size and weight of a small horse. You are not taking a small horse. You are especially not taking a small horse made of stone.",
+                "use": "The counterweights work automatically when the mechanism runs. They don't need your help. They need the mechanism to be repaired.",
+                "talk": "You speak to the counterweights. They hang there, heavy with purpose and silence. Much like every bureaucrat you've met in this kingdom, except the counterweights serve an actual function.",
+                "open": "Counterweights are solid blocks of stone. They don't open. They are perhaps the least openable objects in the entire kingdom.",
+                "push": "You push a counterweight. It's stone, it's heavy, and it's suspended on a chain. It swings slightly and then hangs still. Physics works. Magic doesn't.",
+                "pull": "You pull a counterweight chain. The weight descends an inch, gears engage briefly, and the clock ticks once before stopping. A taste of functionality. The clock wants to work. It just can't.",
+                "default": "The counterweights hang motionless, waiting for a mechanism that works and a kingdom that deserves the time."
+            }
+        },
+        {
+            "id": "stone-walls",
+            "name": "Stone Walls",
+            "zone": {
+                "x": 0,
+                "y": 300,
+                "width": 60,
+                "height": 150
+            },
+            "interactionPoint": {
+                "x": 60,
+                "y": 430
+            },
+            "responses": {
+                "look": "The tower walls are ancient stonework, cracked and weathered. Gaps between the stones let in shafts of grey light and the perpetual wind. The walls themselves show signs of the curse's reach: hairline cracks filled with grey stone-death.",
+                "take": "You try to pocket a stone from the wall. It's load-bearing. The tower groans above you in a way that suggests removing it would make the rest of your life very exciting and very brief.",
+                "use": "The walls are doing exactly what walls do: holding up the ceiling. Interfering with this arrangement would end your adventure in a pile of rubble.",
+                "talk": "You talk to the walls. The walls, like most of the kingdom's infrastructure, have nothing to say and no plans to start.",
+                "open": "These walls have no doors, no secret panels, and no patience for adventurers who think every flat surface hides a passage. They're walls. Accept it.",
+                "push": "You push against the stone wall. It doesn't move. It's a wall. This is what walls do. Or rather, don't do.",
+                "pull": "You pull at a stone in the wall. Dust sifts down from above, and somewhere overhead, something shifts with a sound that makes you immediately stop pulling.",
+                "default": "The tower's stone walls stand firm, which is more than can be said for most things in this kingdom."
+            }
+        },
+        {
+            "id": "tower-stairs",
+            "name": "Tower Stairs",
+            "zone": {
+                "x": 850,
+                "y": 390,
+                "width": 60,
+                "height": 120
+            },
+            "interactionPoint": {
+                "x": 870,
+                "y": 450
+            },
+            "responses": {
+                "look": "A spiral staircase winds down through the tower's interior, its stone steps worn smooth by centuries of clockmakers' boots. Several steps near the top have cracked, and the railing is more of a suggestion than a safety feature.",
+                "take": "You cannot take stairs. They are a fundamental architectural feature. This should not require explanation, yet here we are.",
+                "use": "The stairs lead down to the courtyard. You can go that way whenever you've finished communing with frozen clockwork and glowing puddles.",
+                "talk": "You address the spiral staircase. It spirals silently. Stairs are not conversationalists, but they're reliable, which puts them ahead of most people you've met.",
+                "open": "Stairs are already open. They're stairs. The concept of a closed staircase is a philosophical exercise you don't have time for.",
+                "push": "You push a loose step. It grinds against its neighbors but stays in place. The staircase has survived the curse, the centuries, and now your prodding.",
+                "pull": "You pull at the stair railing. A section wobbles alarmingly but holds. This is not the time to test the structural limits of your only exit.",
+                "default": "The tower stairs spiral downward -- your path back to the courtyard and the rest of this crumbling kingdom."
+            }
+        }
+    ],
+    "items": [],
+    "puzzles": [
+        {
+            "id": "repair-clock",
+            "trigger": {
+                "verb": "use",
+                "subject": "gear-spring",
+                "target": "clock-mechanism"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "gear-spring"
+                },
+                {
+                    "type": "has-item",
+                    "item": "clock-oil"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "clock_repaired"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "gear-spring"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "clock-oil"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "clock_repaired"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You replace the seized spring with the gear spring and oil the frozen gears. The mechanism resists, groans, and then -- with a sound like a kingdom exhaling -- begins to move. Gears turn. The pendulum swings. But the clock hands spin freely, clicking past numbers without stopping. The mechanism works, but the hands need to be set to the correct time. Without the right time, the clock is just noise -- impressive noise, but noise all the same."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "repair-clock-oil-first",
+            "trigger": {
+                "verb": "use",
+                "subject": "clock-oil",
+                "target": "clock-mechanism"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "gear-spring"
+                },
+                {
+                    "type": "has-item",
+                    "item": "clock-oil"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "clock_repaired"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "gear-spring"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "clock-oil"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "clock_repaired"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You oil the frozen gears first, then slot in the new spring. The mechanism coughs, sputters, and catches. Gears begin to turn. The pendulum swings. But the clock hands whirl aimlessly, spinning past every hour without settling. The mechanism runs, but it needs to be set to the correct time. An astronomical time, you suspect -- something more precise than the cursed 3:47 the face was frozen at."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "set-clock-time",
+            "trigger": {
+                "verb": "use",
+                "subject": "clock-hands"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "clock_repaired"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "seen_clock_time"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "clock_time_set"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "clock_time_set"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "clock-fixed"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You recall the astronomical marker on the tower's outer wall -- VII:XIII. The seventh hour, the thirteenth minute. You grip the clock hands and force them into position. Seven... thirteen. The hands lock into place with a resonant click that vibrates through the entire tower. The clock chimes once -- a deep, bone-shaking tone that echoes across the kingdom. Outside, the grey advance shudders and slows. The curse's temporal anchor has been disrupted. The petrification hasn't stopped, but time moves again in Erelhain. Not much time. But enough."
+                }
+            ],
+            "once": true,
+            "endingInfluence": true
+        },
+        {
+            "id": "set-clock-no-knowledge",
+            "trigger": {
+                "verb": "use",
+                "subject": "clock-hands"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "clock_repaired"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "seen_clock_time"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "clock_time_set"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "You grab the spinning clock hands and try to set them. But to what time? 3:47 was when the curse began -- setting it back there would accomplish nothing. The mechanism needs a specific astronomical time to disrupt the curse's anchor. There must be a way to find the correct time. Perhaps something visible only from a distance, or through magnification."
+                }
+            ]
+        },
+        {
+            "id": "clock-hands-not-repaired",
+            "trigger": {
+                "verb": "use",
+                "subject": "clock-hands"
+            },
+            "conditions": [
+                {
+                    "type": "flag-not-set",
+                    "flag": "clock_repaired"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "You try to move the clock hands. They're frozen solid -- seized by the curse along with everything else. The mechanism needs to be repaired before the hands will budge."
+                }
+            ]
+        },
+        {
+            "id": "need-both-parts",
+            "trigger": {
+                "verb": "use",
+                "subject": "gear-spring",
+                "target": "clock-mechanism"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "gear-spring"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "clock_repaired"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "You slot the gear spring into the mechanism. It fits perfectly. But the gears are still frozen -- they need lubrication. Clock oil, specifically. Without it, the spring has nothing to drive."
+                }
+            ]
+        },
+        {
+            "id": "need-spring",
+            "trigger": {
+                "verb": "use",
+                "subject": "clock-oil",
+                "target": "clock-mechanism"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "clock-oil"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "clock_repaired"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "You pour oil on the frozen gears. They gleam, lubricated but still immobile. The main spring is seized -- you need a replacement spring before the oil can do any good."
+                }
+            ]
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "climb-gears",
+            "trigger": {
+                "verb": "use",
+                "subject": "clock-face"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "clock_repaired"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "clock-crush"
+                }
+            ]
+        },
+        {
+            "id": "climb-outside",
+            "trigger": {
+                "verb": "go",
+                "subject": "tower-exterior"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "clock-fall"
+                }
+            ]
+        },
+        {
+            "id": "climb-outside-use",
+            "trigger": {
+                "verb": "use",
+                "subject": "tower-exterior"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "clock-fall"
+                }
+            ]
+        }
+    ],
+    "deaths": {
+        "clock-crush": {
+            "title": "Death by Clockwork",
+            "narratorText": "You reach into the now-running clock mechanism to adjust the face. The gears, which were politely frozen moments ago, are now enthusiastically operational. They catch your sleeve first, then your arm, and then the rest of you with the mechanical indifference of precise engineering. The clock's gears continue to turn. You no longer do. Time waits for no one, least of all people who stick their hands into active machinery."
+        },
+        "clock-fall": {
+            "title": "Death by Altitude",
+            "narratorText": "You climb through the tower window for a better view. The wind has opinions about this. Strong opinions. The ledge outside is narrow, icy with condensation, and entirely uninterested in supporting your weight. You slip. The view from the clock tower is spectacular on the way down. The view from the ground, less so. The clock tower has claimed another sightseer. At least the view was worth it. Briefly."
+        }
+    },
+    "dynamicDescriptions": {
+        "clock_repaired": "The clock tower hums with motion. Gears turn, the pendulum swings, but the clock hands spin freely without settling on a time. The mechanism works, but it needs to be set to the correct astronomical time before it can disrupt the curse's anchor. The inscription on the base plate mentions a marker on the tower's outer wall.",
+        "clock-fixed": "The clock tower is alive with purpose. Gears turn, the pendulum swings, and the clock face reads 7:13 -- the astronomical time that disrupts the curse's anchor. Through the windows, the curse's advance has visibly slowed. The chiming echoes across the kingdom -- a heartbeat restored to a body that nearly died."
+    },
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            {
+                "key": "amb-wind-light",
+                "volume": 0.8
+            },
+            {
+                "key": "amb-cave-drips",
+                "volume": 0.2
+            }
+        ]
+    },
+    "effects": {
+        "ambient": [
+            {
+                "type": "dust-motes",
+                "intensity": 0.4
+            },
+            {
+                "type": "embers",
+                "intensity": 0.2
+            }
+        ],
+        "lighting": {
+            "tint": "#665544",
+            "brightness": 0.6,
+            "vignette": 0.35,
+            "torchFlicker": true
+        }
+    },
+    "puzzleHints": [
+        {
+            "puzzleId": "repair-clock",
+            "tiers": [
+                "The clock mechanism is frozen. It needs two things to run again -- a replacement for the seized spring, and something to loosen the gears. Both exist somewhere in the kingdom.",
+                "A gear spring from the wizard's tower and clock oil from the royal treasury are what you need. Use either on the clock mechanism when you have both in your inventory.",
+                "Use the gear spring on the clock mechanism while you also have the clock oil. The spring is in the wizard's tower, the oil is in the treasury. But repairing the mechanism is only half the job -- you'll also need to set the hands to the correct time."
+            ]
+        },
+        {
+            "puzzleId": "set-clock-time",
+            "tiers": [
+                "The mechanism runs, but the hands need to be set to a specific astronomical time. The inscription on the mechanism mentions a marker on the tower's outer wall -- but it's too high to read from ground level.",
+                "You need to see the astronomical marker on the clock tower's exterior. Something that magnifies distant objects would help. Is there a telescope anywhere in the kingdom?",
+                "Use the telescope in the old watchtower (with the lens) to see the clock tower's astronomical marker. It reads VII:XIII -- 7:13. Then return here and use the clock hands to set the time."
+            ]
+        }
+    ],
+    "playerSpawn": {
+        "x": 396,
+        "y": 364
+    }
+}

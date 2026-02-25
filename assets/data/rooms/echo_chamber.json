@@ -1,0 +1,400 @@
+{
+    "id": "echo_chamber",
+    "name": "Echo Chamber",
+    "description": "A dome-shaped cavern with acoustics so precise that a whisper carries from wall to wall. Stalactites hang from the ceiling in rows, each one resonating at a different pitch when struck. The sound of dripping water creates a natural rhythm. Ancient carvings on the wall depict a figure speaking, sound waves radiating outward. Coal deposits glint black among the stalactites -- ancient fuel compressed by millennia of geological patience.",
+    "background": {
+        "layers": [
+            {
+                "key": "bg-shared-act2-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act2-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-echo_chamber",
+                "scrollFactor": 1
+            }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
+    ],
+    "exits": [
+        {
+            "id": "to-west-wing",
+            "zone": {
+                "x": 440,
+                "y": 450,
+                "width": 80,
+                "height": 80
+            },
+            "targetRoom": "cavern_west_wing",
+            "spawnPoint": {
+                "x": 480,
+                "y": 460
+            },
+            "transition": "fade",
+            "direction": "south",
+            "label": "west wing"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "stalactites",
+            "name": "Resonating Stalactites",
+            "aliases": ["stalactites", "stalactite", "rock formations", "icicles", "spikes", "hanging rocks", "stone teeth", "rock teeth", "formations", "pipes", "organ", "pipe organ", "musical rocks"],
+            "zone": {
+                "x": 300,
+                "y": 340,
+                "width": 200,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 400,
+                "y": 420
+            },
+            "responses": {
+                "look": "Rows of stalactites hang from the ceiling, each varying in size and thickness. Tapping them produces musical tones -- the cavern's natural pipe organ. Among the limestone formations, dark chunks of coal cling to the ceiling, deposited by ancient geological processes. Some stalactites look fragile. Others look load-bearing. Telling them apart requires more geological expertise than you possess.",
+                "use": "You tap a stalactite. It rings with a clear note that bounces around the chamber, echoing and re-echoing. The sound pattern reveals something -- letters, formed by the echoes: 'SERVICE.' The third guardian answer? The echo seems deliberate.",
+                "take": "You consider breaking off a stalactite. They've been growing for millennia. You've been alive for considerably less than that. Show some respect.",
+                "default": "You examine the stalactites. They hang with the patient dignity of formations that were here long before you and will be here long after.",
+                "talk": "You address the stalactites. Your voice multiplies in the dome, bouncing back as a chorus. For a moment, the cave itself seems to be speaking. Then it stops. It was just you, all along.",
+                "open": "Stalactites don't open. They grow. One drip at a time, over millennia. They are the most patient things in the world, and they're not waiting for you.",
+                "push": "You push a stalactite. It's solid stone attached to the ceiling by geological forces. Your push registers somewhere between 'insignificant' and 'adorable.'",
+                "pull": "You pull on a low-hanging stalactite. It holds firm. It's been growing here for longer than your entire civilisation has existed. Your tug is noted and dismissed."
+            }
+        },
+        {
+            "id": "wall-carvings",
+            "name": "Wall Carvings",
+            "zone": {
+                "x": 650,
+                "y": 360,
+                "width": 80,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 690,
+                "y": 420
+            },
+            "responses": {
+                "look": "Ancient carvings depict a figure speaking into the chamber, with sound waves radiating outward. Below the image, text reads: 'The echo speaks truth. The Guardian's third answer is carried in resonance. Strike and listen.' It's both a clue and a warning about volume.",
+                "use": "You trace the carvings with your fingers. The stone is worn smooth by centuries of other fingers doing the same thing. The message is clear: use sound to find the third answer.",
+                "default": "You study the carvings. They're instructions, disguised as art. The kingdom's founders were annoyingly clever.",
+                "take": "You chip at a carving with your fingernail. A tiny flake comes loose. At this rate, you could remove the entire carving in approximately four thousand years.",
+                "talk": "You read the carvings aloud. Your voice distorts in the echo, making the ancient words sound like something entirely different. The original carvers would be appalled.",
+                "open": "The carvings are not a door. They're art. Very old art. The kind that doesn't come with handles.",
+                "push": "You press your hand against the carvings. The stone is cool and the patterns are deep. Someone spent a lifetime making these. You've spent ten seconds touching them.",
+                "pull": "You try to pull a carving from the wall. It's part of the wall. The wall is part of the mountain. You are attempting to disassemble geography."
+            }
+        },
+        {
+            "id": "coal-deposits",
+            "name": "Coal Deposits",
+            "zone": {
+                "x": 200,
+                "y": 350,
+                "width": 80,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 240,
+                "y": 420
+            },
+            "responses": {
+                "look": "Black chunks of ancient coal embedded in the cavern ceiling, near the base of several stalactites. The coal is old enough to have opinions about the Carboniferous period. Breaking it free would require careful extraction to avoid bringing the stalactites down.",
+                "use": "You could try to extract the coal, but you'd need to be careful. The stalactites around it look structural.",
+                "default": "You eye the coal deposits. They've been waiting patiently for someone to burn them. The anticipation is presumably palpable, if you're coal.",
+                "take": "You chip at the coal embedded in the ceiling. Fragments fall, but the main deposits are lodged between stalactites. Extracting them without bringing the ceiling down requires more finesse than brute force.",
+                "talk": "You address the coal deposits. They've been compressed into existence over geological ages. They have nothing to say to you, but they'd burn beautifully if given the chance.",
+                "open": "The coal deposits are embedded in the rock face. There's nothing to open -- the coal is right there, exposed by geological process rather than design.",
+                "push": "You push against the coal deposits. Bits of soot crumble onto your hands. The main mass stays put, embedded in the limestone like a dark secret in a bright wall.",
+                "pull": "You try to wrench coal from the ceiling. A small chunk comes free, trailing soot. The stalactites nearby ring faintly, disturbed by the vibration."
+            }
+        },
+        {
+            "id": "glowing-mist",
+            "name": "Glowing Mist",
+            "zone": {
+                "x": 200,
+                "y": 100,
+                "width": 550,
+                "height": 250
+            },
+            "interactionPoint": {
+                "x": 475,
+                "y": 430
+            },
+            "responses": {
+                "look": "Luminous blue mist hangs in the air, pulsing gently. It's either magical residue or the cave's attempt at mood lighting.",
+                "take": "You wave your hand through it. The mist parts and reforms, unimpressed by your intervention.",
+                "use": "You breathe it in. It tastes like ozone and old secrets.",
+                "default": "You observe the glowing mist. It drifts with the unhurried grace of something that has nowhere to be.",
+                "talk": "You whisper into the glowing mist. Your words become visible for a moment -- shapes in the luminous haze, syllables turned to light. Then they dissipate. The mist has heard you. It has no reply.",
+                "open": "You can't open mist. Mist is already as open as a substance can be. It's dispersed particles of moisture. Opening it further would require splitting atoms.",
+                "push": "You push through the glowing mist. It swirls around you, cold and faintly electric. Your skin tingles. The mist is magical residue -- the exhaust fumes of ancient sorcery, still lingering.",
+                "pull": "You try to gather the mist in your arms. It slips through like luminous smoke, reforming in your wake. You can't hold magic's afterglow any more than you can hold a sigh."
+            }
+        },
+        {
+            "id": "chamber-walls",
+            "name": "Chamber Walls",
+            "zone": {
+                "x": 50,
+                "y": 50,
+                "width": 150,
+                "height": 400
+            },
+            "interactionPoint": {
+                "x": 125,
+                "y": 430
+            },
+            "responses": {
+                "look": "The walls are unnaturally smooth, polished by centuries of sound waves bouncing between them. Your reflection is distorted and unflattering.",
+                "take": "Solid stone. Not even a loose piece to pocket.",
+                "use": "You press your ear against the wall. It hums. The whole chamber hums. You've been humming along without noticing.",
+                "default": "You examine the chamber walls. They're smoother than any stonemason could achieve.",
+                "talk": "You speak to the walls. Your voice bounces back, layered and distorted by the dome's acoustics. For a moment it sounds like someone answering. Then you realize it's just you, multiplied. The loneliest kind of company.",
+                "open": "The walls are solid stone, polished smooth by millennia of sound waves. There's nothing to open. The chamber's only secret is acoustic, not architectural.",
+                "push": "You push against the smooth chamber wall. It's warm from absorbed sound energy, vibrating faintly. The wall has been listening to everything since the cave formed.",
+                "pull": "You press your palms against the wall and pull. Stone doesn't yield. The chamber walls have been standing for longer than language has existed. Your opinion on their position is not required."
+            }
+        },
+        {
+            "id": "cavern-dome",
+            "name": "Cavern Dome",
+            "zone": {
+                "x": 200,
+                "y": 20,
+                "width": 400,
+                "height": 80
+            },
+            "interactionPoint": {
+                "x": 400,
+                "y": 420
+            },
+            "responses": {
+                "look": "The dome-shaped cavern arches high above, its acoustics shaped by millennia of water erosion. Every sound bounces off the curved ceiling and returns multiplied, layered, harmonized. It's beautiful and deeply unsettling -- like being inside a stone instrument that's always listening.",
+                "take": "You can't take a dome. It's the ceiling. Removing it would be architecturally catastrophic and acoustically tragic.",
+                "use": "The dome is already in use -- as the world's most elaborate echo chamber. It amplifies everything. Your voice, your footsteps, your growing sense of unease.",
+                "talk": "You call up to the dome. Your voice cascades back in waves, each echo slightly different. For a moment, you're having a conversation with every version of yourself that ever spoke in this room.",
+                "open": "You can't open a dome. It's already open on the underside. That's rather the point of domes -- they're architectural bowls, inverted.",
+                "push": "You can't reach the dome to push it. Which is fortunate. Pushing a geological formation rarely improves it.",
+                "pull": "The dome is far above your head and weighs approximately a mountain's worth of stone. You are not pulling it anywhere."
+            }
+        },
+        {
+            "id": "dripping-water",
+            "name": "Dripping Water",
+            "zone": {
+                "x": 350,
+                "y": 350,
+                "width": 60,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 380,
+                "y": 420
+            },
+            "responses": {
+                "look": "Water drips from somewhere high in the dome, each drop hitting stone with a crystalline plip that the acoustics turn into a gentle rhythm. It's been doing this for centuries. The stalactites above are both the source and the result -- water building stone one patient drop at a time.",
+                "take": "You cup your hands under the drip. Cold water pools in your palms. It tastes of minerals and deep time. You let it go. Some things aren't meant to be kept.",
+                "use": "The dripping water isn't something you use. It's something you listen to. It's the heartbeat of the cavern, counting geological seconds.",
+                "talk": "You speak in rhythm with the drips. Plip. 'Hello.' Plip. 'Is anyone.' Plip. 'There?' The cave answers with more drips. It's always been better at this conversation than you.",
+                "open": "You can't open water. It's already in its most open state -- falling, one drop at a time, through air and into silence.",
+                "push": "You wave your hand through a falling drop. It splatters on your fingers. You've disrupted a process that's been continuous for millennia. The cave will recover. Your conscience might not.",
+                "pull": "You can't pull water upward. Gravity has opinions about this. Strong ones."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "coal",
+            "name": "Forge Coal",
+            "zone": {
+                "x": 220,
+                "y": 370,
+                "width": 30,
+                "height": 20
+            },
+            "interactionPoint": {
+                "x": 240,
+                "y": 420
+            },
+            "responses": {
+                "look": "Chunks of ancient coal, black and dense. They've been compressed by geological forces for millennia, which means they'll burn hot and long. Perfect for a forge.",
+                "use": "Coal is fuel. It needs a forge, a fire, or at minimum something that burns. By itself, it's just a very old rock.",
+                "take": "The coal is embedded in the chamber walls, fused there by heat and pressure over geological time. You'd need mining equipment and considerably more motivation.",
+                "talk": "You address the coal. It's ancient compressed carbon -- the fossilized remains of forests that died before your species learned to walk upright. It's not going to chat.",
+                "open": "Coal is a solid mineral. It doesn't open. It burns, it crumbles, it stains your fingers, but it has never in the history of geology opened.",
+                "push": "You push the coal chunks with your foot. They scrape across the floor, leaving black streaks. Coal goes where you push it. It's agreeable like that.",
+                "pull": "You pull the coal toward you. It slides across the stone, leaving a dark smear. The coal has no opinions about where it sits."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "take-coal",
+            "trigger": {
+                "verb": "take",
+                "subject": "coal"
+            },
+            "conditions": [
+                {
+                    "type": "item-not-taken",
+                    "item": "coal"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "add-item",
+                    "item": "coal"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You carefully extract chunks of coal from around the stalactites. The coal is dense, warm to the touch, and has been waiting since before humanity invented fire. It's the geological equivalent of someone who bought concert tickets decades early. Your hands are now black. This is the least of your problems."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "solve-echo-puzzle",
+            "trigger": {
+                "verb": "use",
+                "subject": "stalactites"
+            },
+            "conditions": [
+                {
+                    "type": "flag-not-set",
+                    "flag": "echo_puzzle_solved"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "echo_puzzle_solved"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "knows_third_answer"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You tap the stalactites in sequence. Each one rings at a different pitch, and the echoes combine, bounce, layer, and reform. In the reverberating silence between notes, the echoes spell out a word: 'SERVICE.' The Guardian's third answer -- the purpose of the kingdom's bureaucracy. Service. The echo chamber stores this answer in resonance, and now it stores it in your memory. Three answers: 847, Aldric the Fastidious, Service."
+                }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "scream-in-chamber",
+            "trigger": {
+                "verb": "talk",
+                "subject": "echo_chamber"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "echo-scream"
+                }
+            ]
+        },
+        {
+            "id": "break-stalactite",
+            "trigger": {
+                "verb": "push",
+                "subject": "stalactites"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "stalactite-fall"
+                }
+            ]
+        },
+        {
+            "id": "break-stalactite-pull",
+            "trigger": {
+                "verb": "pull",
+                "subject": "stalactites"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "stalactite-fall"
+                }
+            ]
+        }
+    ],
+    "deaths": {
+        "echo-scream": {
+            "title": "Death by Acoustics",
+            "narratorText": "You shout into the echo chamber. The dome's perfect acoustics amplify your voice. And amplify it. And amplify it. The sound wave bounces between walls, ceiling, and floor, building in intensity until the air itself vibrates at a lethal frequency. The stalactites shatter. The floor cracks. Your eardrums fail first, then everything else. The cavern has opinions about volume, and it expresses them with extreme prejudice. The echo of your scream continues for several minutes after you can no longer hear it."
+        },
+        "stalactite-fall": {
+            "title": "Death by Geology",
+            "narratorText": "You push a stalactite. It turns out that stalactite was load-bearing -- holding up not just itself but a considerable section of the ceiling. The geological equivalent of pulling the wrong Jenga block. The ceiling comes down with the slow majesty of a cathedral collapsing, each stalactite striking the next in a cascade of limestone and poor decisions. In retrospect, they ALL looked load-bearing. You were right to be suspicious. You were wrong to push one anyway."
+        }
+    },
+    "dynamicDescriptions": {
+        "echo_puzzle_solved": "The echo chamber resonates with the fading memory of sound. The stalactites still hum faintly with the pattern that revealed the Guardian's third answer: Service. The coal deposits remain, dark and patient."
+    },
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            {
+                "key": "amb-cave-drips",
+                "volume": 0.9
+            }
+        ]
+    },
+    "effects": {
+        "ambient": [
+            {
+                "type": "dust-motes",
+                "intensity": 0.3
+            }
+        ],
+        "lighting": {
+            "tint": "#334444",
+            "brightness": 0.5,
+            "vignette": 0.4
+        }
+    },
+    "puzzleHints": [
+        {
+            "puzzleId": "solve-echo-puzzle",
+            "tiers": [
+                "The stalactites here aren't just decorative geological formations. They're musical ones. The wall carvings suggest that striking them in a particular way reveals something hidden in the echoes. Something the Guardian wants to hear.",
+                "Use the stalactites to tap out a sequence. The echoes will combine and spell out the Guardian's third answer -- the one missing from the library book. The carvings on the wall confirm: 'Strike and listen.'",
+                "Use the stalactites. The echoes spell out 'SERVICE' -- the Guardian's third answer about the true purpose of the kingdom's bureaucracy. You need this before answering the Guardian's final question."
+            ]
+        }
+    ],
+    "playerSpawn": {
+        "x": 480,
+        "y": 450
+    }
+}

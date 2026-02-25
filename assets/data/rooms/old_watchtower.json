@@ -1,0 +1,601 @@
+{
+    "id": "old_watchtower",
+    "name": "Old Watchtower",
+    "description": "A crumbling watchtower rises from the village's eastern edge, its stones held together by stubbornness and ivy. A rusted telescope sits on the observation platform, pointed vaguely skyward as though it gave up on watching anything specific long ago. The railing is decorative at best, structural at worst, and trustworthy not at all.",
+    "background": {
+        "layers": [
+            {
+                "key": "bg-shared-act1-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act1-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-old_watchtower",
+                "scrollFactor": 1
+            }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        {
+            "x": 50,
+            "y": 390
+        },
+        {
+            "x": 910,
+            "y": 390
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
+    ],
+    "exits": [
+        {
+            "id": "to-village-square",
+            "zone": {
+                "x": 350,
+                "y": 480,
+                "width": 260,
+                "height": 60
+            },
+            "targetRoom": "village_square",
+            "spawnPoint": {
+                "x": 480,
+                "y": 400
+            },
+            "transition": "fade",
+            "direction": "south",
+            "label": "village",
+            "aliases": ["west", "down", "back", "square"]
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "telescope",
+            "name": "Rusted Telescope",
+            "zone": {
+                "x": 500,
+                "y": 360,
+                "width": 80,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 540,
+                "y": 420
+            },
+            "responses": {
+                "look": "A brass telescope, corroded green with age. The lens housing is cracked, and the tripod leans at an angle that suggests it has given up on perpendicularity. Without a replacement lens, it's just an expensive tube for looking at a blur.",
+                "use": "You peer through the telescope. Everything is a blur. The lens is cracked beyond usefulness. You'd need a replacement lens to see anything meaningful.",
+                "take": "The telescope is bolted to the platform. Whoever installed it was paranoid about telescope theft, which is either commendable foresight or deeply concerning.",
+                "talk": "You whisper encouraging words to the telescope. It does not improve. Morale is low in the optics department.",
+                "default": "You fiddle with the telescope. It swivels reluctantly, squeaking in protest. Without a working lens, it shows nothing but artistic blur.",
+                "open": "You try to pry open the lens housing. It's rusted shut, fused by decades of neglect into a single corroded unit.",
+                "push": "You push the telescope. It swivels grudgingly on its mount, squealing like a cat in a bath. It now points at a slightly different section of blur.",
+                "pull": "You pull the telescope toward you. The eyepiece lurches uncomfortably close to your face, offering an intimate view of absolutely nothing."
+            }
+        },
+        {
+            "id": "railing",
+            "name": "Crumbling Railing",
+            "zone": {
+                "x": 700,
+                "y": 370,
+                "width": 80,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 740,
+                "y": 420
+            },
+            "responses": {
+                "look": "The watchtower railing is more decorative suggestion than structural barrier. Several sections have rusted through entirely, offering picturesque views of a very long drop. A sign reading 'DO NOT LEAN' has itself fallen over, which rather proves its point.",
+                "use": "You gently test the railing. It wobbles. You step back. The railing sighs with relief.",
+                "push": "You push the railing. A section gives way and tumbles into the void below. The clatter echoes for an uncomfortably long time. Perhaps... don't push more railings.",
+                "take": "A piece of railing comes away in your hand. You put it back. Quickly. Before the rest of the railing gets ideas.",
+                "default": "You eye the railing with the suspicion it deserves.",
+                "talk": "You address the railing sternly, reminding it of its structural responsibilities. It creaks noncommittally.",
+                "open": "The railing is not a door. It's barely a railing. Asking it to be something else entirely seems unfair to everyone involved.",
+                "pull": "You pull the railing toward you. It bends inward with a groan of rusty protest, then slowly bends back, swaying like a drunk trying to look sober."
+            }
+        },
+        {
+            "id": "tower-view",
+            "name": "Panoramic View",
+            "zone": {
+                "x": 300,
+                "y": 350,
+                "width": 120,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 360,
+                "y": 410
+            },
+            "responses": {
+                "look": "From the watchtower, you can see the forest stretching in every direction, the village below, and -- in the far distance -- the hazy outline of something large. A castle, perhaps? Mountains? An unusually ambitious cloud? Hard to tell without a working telescope.",
+                "use": "You shade your eyes and look into the distance. There's definitely something out there beyond the forest, but without magnification, it's just a grey smudge on the horizon. Could be a castle. Could be weather.",
+                "default": "You admire the view. It's scenic, if you ignore the encroaching petrification of everything below.",
+                "take": "You want to take the view. It exists in the space between your eyes and the horizon. You can't fold it up and pocket it, though several artists have tried.",
+                "talk": "You shout into the distance. The wind carries your words away to places that don't care. An echo returns, but it sounds vaguely mocking.",
+                "open": "You can't open a view. It's already open. That's the entire point of views.",
+                "push": "You lean forward to push the... view? The view remains unmoved. Figuratively and literally.",
+                "pull": "You reach out as if to pull the horizon closer. It stays exactly where it is, smugly distant."
+            }
+        },
+        {
+            "id": "mountains",
+            "name": "Mountains",
+            "zone": {
+                "x": 400,
+                "y": 50,
+                "width": 500,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 650,
+                "y": 410
+            },
+            "responses": {
+                "look": "A distant mountain range lines the horizon, its blue-grey peaks jagged against the sky like the teeth of something enormous and sleeping. The kingdom stretches all the way to their feet, which means the curse probably does too. On a clear day, you can almost convince yourself they look peaceful. Today is not that day.",
+                "take": "You want to take the mountains. They're several hundred miles away and weigh approximately everything. Perhaps lower your ambitions slightly.",
+                "use": "The mountains are decorative at this distance. Useful only for making you feel small and insignificant, which they accomplish effortlessly.",
+                "default": "You gaze at the distant mountains. They gaze at nothing, being mountains. You envy their composure.",
+                "talk": "You call out to the mountains. They do not answer. They've been ignoring people for geological ages and they're not about to stop for you.",
+                "open": "You can't open mountains. That's not how geology works. Although, to be fair, you're in a kingdom with a petrification curse, so perhaps normal rules don't apply. They still don't open, though.",
+                "push": "You extend your arms toward the distant peaks and push. The mountains do not move. They were here before you and will be here long after. Your arms feel silly.",
+                "pull": "You mime pulling the mountains closer. They remain exactly where they are, hundreds of miles away, thoroughly unimpressed by your mime work."
+            }
+        },
+        {
+            "id": "tower-ivy",
+            "name": "Tower Ivy",
+            "zone": {
+                "x": 200,
+                "y": 150,
+                "width": 200,
+                "height": 250
+            },
+            "interactionPoint": {
+                "x": 300,
+                "y": 410
+            },
+            "responses": {
+                "look": "Thick ivy clings to the watchtower walls with the tenacity of a debt collector. Its roots have worked into every crack and crevice, slowly and patiently dismantling masonry that took teams of builders to erect. Nature is nothing if not persistently petty.",
+                "take": "You pull at the ivy. A small section comes away, revealing crumbling mortar beneath. The tower shudders almost imperceptibly. Perhaps leave the structural vegetation alone.",
+                "use": "You consider climbing the ivy. It looks sturdy enough, but the last person who tested that theory is presumably at the bottom of the tower. In several pieces.",
+                "default": "You regard the ivy covering the tower. It's winning the long war against architecture, one root at a time.",
+                "talk": "You compliment the ivy on its persistence. It rustles slightly in the breeze. Whether this is acknowledgment or contempt is impossible to say. Plants are inscrutable like that.",
+                "open": "You part the ivy like a curtain, expecting a hidden alcove or secret passage. Behind it: wall. Just wall. The ivy was not hiding anything except its deep commitment to property damage.",
+                "push": "You push the ivy against the wall. It's already against the wall. It's been against the wall for decades. You've accomplished nothing, which is becoming a theme.",
+                "pull": "You yank a fistful of ivy from the stonework. Mortar crumbles and a small stone tumbles free. The tower groans. You've just accelerated entropy. Congratulations."
+            }
+        },
+        {
+            "id": "tower-door",
+            "name": "Tower Door",
+            "aliases": ["door", "entrance", "doorway"],
+            "zone": {
+                "x": 600,
+                "y": 340,
+                "width": 80,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 640,
+                "y": 430
+            },
+            "responses": {
+                "look": "A heavy wooden door set into the tower wall, reinforced with iron bands that have rusted into abstract art. It leads down into the tower's interior -- or it would, if the staircase hadn't collapsed decades ago. Through the gap you can see rubble and darkness. Not exactly inviting.",
+                "open": "You pull on the door. It swings open with a theatrical groan, revealing a staircase that ends abruptly three steps down in a pile of collapsed masonry. The tower's interior is thoroughly impassable. Whatever was down there is now entombed in rubble and regret.",
+                "use": "You try the door. It opens, but the staircase beyond has collapsed into rubble. There's nowhere to go but back. The tower's interior is as useful as its exterior is precarious.",
+                "push": "You push the door. It swings inward, banging against the wall with a dramatic thud that echoes down the ruined stairwell. Dust billows up from below. Nothing else happens. The staircase is still collapsed.",
+                "pull": "You pull the door toward you. The rusty hinges shriek in protest, showering orange flakes onto the flagstones. Beyond: darkness and rubble. The tower keeps its secrets behind structural failure.",
+                "take": "It's a door. Bolted to a wall. In a tower. You'd need to disassemble the entire doorframe, and frankly the tower might not survive the procedure.",
+                "talk": "You knock on the door and call out. Your voice echoes down into the collapsed stairwell and comes back sounding vaguely disappointed in you. Nobody home. Nobody has been home for a very long time.",
+                "default": "You examine the tower door. Iron-banded oak, weathered but solid. More than can be said for the staircase behind it."
+            }
+        },
+        {
+            "id": "observation-platform",
+            "name": "Observation Platform",
+            "aliases": ["ground", "floor", "platform", "flagstones"],
+            "zone": {
+                "x": 100,
+                "y": 380,
+                "width": 760,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 480,
+                "y": 420
+            },
+            "responses": {
+                "look": "The observation platform is a generous name for what is essentially a flat stone surface with ambitions. Flagstones are cracked and uneven, with weeds pushing through the gaps. It creaks when you shift your weight, which is not the reassurance you were hoping for from the thing between you and a fatal drop.",
+                "take": "You consider prying up a flagstone. But removing pieces of the floor while standing on said floor ranks among the worse ideas you've had today.",
+                "use": "You're standing on it. That's the primary function of a platform. You're already using it to its full potential.",
+                "talk": "You address the platform, thanking it for its continued structural support. A flagstone shifts slightly underfoot.",
+                "open": "There's no trapdoor in the platform. You checked. Twice. Solid stone all the way down.",
+                "push": "You stomp on the flagstones experimentally. They hold. One wobbles. You stop stomping.",
+                "pull": "You pull at the platform railing. The wood splinters but holds. It was built to withstand weather, not adventurers, but it's making an effort."
+            }
+        },
+        {
+            "id": "do-not-lean-sign",
+            "name": "Warning Sign",
+            "zone": {
+                "x": 730,
+                "y": 400,
+                "width": 50,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 755,
+                "y": 430
+            },
+            "responses": {
+                "look": "A weathered wooden sign that once read 'DO NOT LEAN' in stern capital letters. It has itself fallen over and now lies on the platform, face-up, delivering its warning to the sky. The irony is so thick you could lean on it.",
+                "take": "You pick up the sign, consider it briefly, then put it back down. Carrying around a 'DO NOT LEAN' sign feels like a cry for help you're not ready to make.",
+                "use": "You prop the sign back up against the railing. It immediately falls over again. The sign has made its philosophical position on standing upright quite clear.",
+                "talk": "You read the sign aloud: 'DO NOT LEAN.' Sound advice for the railing, the tower, the kingdom, and frankly, your life choices.",
+                "open": "It's a sign, not a book. Although given the state of literacy in this kingdom, the distinction may be academic.",
+                "push": "You nudge the fallen sign with your foot. It slides across the flagstones. It now reads 'DO NOT LEAN' to a slightly different audience of no one.",
+                "pull": "You pull the sign toward you. The wood is soft with rot and a corner breaks off in your hand. The sign now reads 'DO NOT LEA.' Still good advice."
+            }
+        },
+        {
+            "id": "village-below",
+            "name": "Village Below",
+            "zone": {
+                "x": 80,
+                "y": 300,
+                "width": 200,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 180,
+                "y": 410
+            },
+            "responses": {
+                "look": "The village sprawls below the watchtower like a collection of boxes a giant child abandoned mid-tantrum. Thatched roofs, cobbled streets, and the occasional plume of chimney smoke suggest life continues down there, oblivious to the curse slowly turning everything grey.",
+                "take": "You can't take an entire village. You can barely take responsibility for your own actions. One thing at a time.",
+                "use": "The village is below you. To use it, you'd need to go down there. This isn't a complicated logistics problem.",
+                "talk": "You shout down to the village. A dog barks in response. A door slams. The village has heard enough from people shouting from towers.",
+                "open": "You can't open a village. It's already there. It's been there for centuries.",
+                "push": "You can't push a village from up here. Gravity works in one direction, and the village didn't do anything to deserve being pushed.",
+                "pull": "You can't pull the village closer. It's exactly as far away as the bottom of the tower."
+            }
+        },
+        {
+            "id": "tower-stones",
+            "name": "Tower Stones",
+            "zone": {
+                "x": 50,
+                "y": 150,
+                "width": 150,
+                "height": 250
+            },
+            "interactionPoint": {
+                "x": 125,
+                "y": 410
+            },
+            "responses": {
+                "look": "The watchtower is built from grey stone blocks, each one placed with care by builders who are now almost certainly dead. Mortar crumbles between the joints, and several stones have shifted ominously outward, as though the tower is slowly exhaling. Stubbornness and ivy are doing most of the structural work at this point.",
+                "take": "You tug at a loose stone. It shifts, and dust trickles from above. Somewhere in the tower's architecture, a load-bearing assumption has been challenged. You push the stone back and pretend nothing happened.",
+                "use": "You're not sure what you'd do with a wall. Lean on it, perhaps, but the sign had opinions about leaning and frankly the sign made a good point.",
+                "talk": "You press your ear to the stone. It's cold and silent. If walls could talk, these ones would probably just scream.",
+                "open": "You search the stones for a hidden switch or secret door. You find nothing but crumbling mortar and a spider who seems annoyed by the intrusion.",
+                "push": "You push against the tower wall. A trickle of mortar dust falls from somewhere above. The tower was already dying slowly. You don't need to help.",
+                "pull": "You work a loose stone free. Behind it is more stone. And behind that, presumably, more stone. It's stone all the way down. You put it back.",
+                "default": "You run your hand along the ancient stonework. Cold, rough, and slowly falling apart. Rather like morale."
+            }
+        },
+        {
+            "id": "telescope-tripod",
+            "name": "Telescope Tripod",
+            "zone": {
+                "x": 510,
+                "y": 410,
+                "width": 60,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 540,
+                "y": 440
+            },
+            "responses": {
+                "look": "The tripod supporting the telescope is a corroded brass affair, listing to one side like a sailor three drinks in. One leg is shorter than the others. It's bolted to the platform, which is the only reason the whole apparatus hasn't toppled over the edge.",
+                "take": "The tripod is bolted to the platform with rivets that have fused into the stone through sheer oxidation. You'd need a blacksmith and a grudge to remove it.",
+                "use": "You try to adjust the tripod's legs to level the telescope. One leg moves. The other two have opinions about remaining exactly where they are. The telescope is now pointed at a different patch of sky. Equally useless.",
+                "talk": "You address the tripod's structural inadequacy. It leans further, sulking. Motivational speaking is clearly not your calling.",
+                "open": "Tripods don't open. They stand. Or in this case, lean. With great commitment and questionable results.",
+                "push": "You push one of the tripod legs. The entire telescope assembly swivels with a reluctant screech. Brass flakes rain down like sad confetti. Nothing is improved.",
+                "pull": "You pull at a tripod leg. It doesn't come free, but it does bend slightly, adding a new dimension to the telescope's already creative interpretation of 'level.'",
+                "default": "You examine the tripod. It's doing its best, which is not very good."
+            }
+        },
+        {
+            "id": "dusty-shelf",
+            "name": "Dusty Shelf",
+            "zone": {
+                "x": 320,
+                "y": 450,
+                "width": 80,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 360,
+                "y": 460
+            },
+            "responses": {
+                "look": "A stone shelf built into the tower wall, thick with dust and the ghosts of things once stored here. A few scratches in the dust suggest something was recently placed -- or removed. The shelf itself is solid, which makes it the most reliable piece of construction in the entire watchtower.",
+                "take": "It's a shelf carved into the wall. You'd need to take the wall with it, and the wall is currently employed holding up the rest of the tower. Union rules.",
+                "use": "You could store something on the shelf, but your inventory management system doesn't support depositing items in random locations. Bureaucracy extends even to adventuring, apparently.",
+                "talk": "You ask the shelf if it's holding up alright. It's a shelf. It's literally holding up. That's the whole job. You feel the question was redundant.",
+                "open": "It's an open shelf. It's already open. It's been open since the day some mason chiseled it out of the wall. This is as open as shelving gets.",
+                "push": "You push on the shelf, half-expecting a secret mechanism. Nothing happens. It's just a shelf. Not everything is a puzzle. Sometimes masonry is just masonry.",
+                "pull": "You pull at the dusty shelf. It comes away from the wall slightly, spilling dust and mouse droppings. Then it swings back, having been attached all along by a rusty bracket.",
+                "default": "You examine the dusty shelf. It's a shelf. It has dust. The narrative possibilities are limited."
+            }
+        },
+        {
+            "id": "distant-forest",
+            "name": "Distant Forest",
+            "zone": {
+                "x": 600,
+                "y": 260,
+                "width": 300,
+                "height": 80
+            },
+            "interactionPoint": {
+                "x": 750,
+                "y": 410
+            },
+            "responses": {
+                "look": "A vast forest blankets the landscape beyond the village, its canopy a dark green sea stretching to the horizon. Something about the forest's colour seems wrong in patches -- grey creeping through the green like mold through bread. The petrification curse doesn't discriminate between stone and wood, apparently.",
+                "take": "You want to take the forest. The entire forest. You'd need pockets the size of a kingdom, and even then the squirrels would object.",
+                "use": "The forest is too far away to use from here. You'd need to climb down and walk there, like a person who understands how distance works.",
+                "talk": "You address the forest from the watchtower. The trees rustle. Probably the wind. Hopefully the wind. Trees that respond to conversation would be an entirely new category of problem.",
+                "open": "You can't open a forest. You can enter one, sure, but that requires walking there first. The east path leads toward the forest bridge, if you've found enough reason to go.",
+                "push": "Pushing a forest from the top of a watchtower. This is the caliber of problem-solving that got the kingdom cursed in the first place, presumably.",
+                "pull": "You reach toward the distant forest. It does not come to you. Forests are famously sedentary. You'll have to go to it.",
+                "default": "You study the distant forest from the tower. It looks peaceful. Forests always do, right up until they aren't."
+            }
+        },
+        {
+            "id": "castle-erelhain",
+            "name": "Castle Erelhain",
+            "zone": {
+                "x": 700,
+                "y": 100,
+                "width": 160,
+                "height": 120
+            },
+            "interactionPoint": {
+                "x": 780,
+                "y": 410
+            },
+            "responses": {
+                "look": "You squint into the distance. There's a grey smudge on the horizon that might be a castle, might be a mountain, might be a weather system with delusions of architecture. Without a working telescope, it's impossible to tell.",
+                "take": "You can't take a castle. Especially not one that's several days' journey away and potentially cursed. Add it to the long list of things you can't have.",
+                "use": "The castle -- if that's what it is -- is far too distant to use from here. You'd need to actually travel there, which requires the kind of commitment and poor judgment you're still working up to.",
+                "talk": "You shout toward the distant grey shape. Your voice carries about forty feet before the wind shreds it to nothing. The castle does not respond. It has bigger problems than you.",
+                "open": "You can't open a castle from the top of a watchtower. That's not how castles work. That's not how anything works.",
+                "push": "The castle is several hundred miles away. You push the air in its general direction. The air is uncooperative. The castle is unaware.",
+                "pull": "You can't pull a castle across a kingdom. Even the curse isn't that ambitious.",
+                "default": "You stare at the distant grey shape on the horizon. It stares back, or seems to. Probably just the light."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "telescope-lens",
+            "name": "Telescope Lens",
+            "aliases": ["lens", "orb", "glass", "crystal"],
+            "zone": {
+                "x": 236,
+                "y": 392,
+                "width": 30,
+                "height": 20
+            },
+            "interactionPoint": {
+                "x": 251,
+                "y": 382
+            },
+            "responses": {
+                "look": "A cracked but functional telescope lens, resting among the stones on the ground. Someone removed it from the telescope -- or it fell out, given the general state of maintenance here. It catches the light with a faint glimmer. It magnifies your view and your insecurities.",
+                "use": "A lens by itself is just a paperweight for people with delusions of astronomy. You'd need a telescope to use it properly.",
+                "take": "You reach for the telescope lens. It's heavy glass, ground with precision by someone who cared about seeing things clearly.",
+                "talk": "You hold the lens up and address it. Through the magnification, your own face stares back, distorted and unflattering. The lens has nothing to say that your reflection hasn't already communicated.",
+                "open": "It's a lens. A single piece of curved glass. There is nothing to open. It's already as open as glass gets, which is transparent.",
+                "push": "You nudge the lens across the stones. It rolls slightly, catches the light, and projects a tiny rainbow onto the wall. Beautiful. Useless. Like most things here.",
+                "pull": "You slide the lens toward you across the ground, leaving a trail in the grime. A tiny archaeological record of the moment you decided to touch things."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "take-lens",
+            "trigger": {
+                "verb": "take",
+                "subject": "telescope-lens"
+            },
+            "conditions": [
+                {
+                    "type": "item-not-taken",
+                    "item": "telescope-lens"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "add-item",
+                    "item": "telescope-lens"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You pocket the telescope lens. It's cracked but still functional -- like most things in this kingdom, including the governance. It magnifies what you look through it at, which is either useful or terrifying depending on what you point it at."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "use-lens-on-telescope",
+            "trigger": {
+                "verb": "use",
+                "subject": "telescope-lens",
+                "target": "telescope"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "telescope-lens"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "seen_castle"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "telescope-lens"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "seen_castle"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "seen_clock_time"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You slot the lens into the telescope housing. It fits, barely. Peering through, the blur resolves into sharp clarity. Beyond the forest stands Castle Erelhain -- a massive stone fortress with the grey curse visibly creeping up its walls. The petrification is spreading. Whatever is happening to this kingdom, the answer is in that castle. You swing the telescope and the kingdom's clock tower snaps into focus. Its face is frozen, but not at the time you'd expect -- through the magnification, you can make out a second dial on the tower's outer wall, an astronomical marker. It reads VII:XIII. The seventh hour, the thirteenth minute. You commit the number to memory. It feels important."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "use-telescope-with-lens",
+            "trigger": {
+                "verb": "use",
+                "subject": "telescope"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "telescope-lens"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "seen_castle"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "telescope-lens"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "seen_castle"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "seen_clock_time"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You fit your lens into the telescope and peer through. The blur resolves into sharp clarity. Beyond the forest stands Castle Erelhain -- the grey curse visibly creeping up its walls. You pan across the landscape and the kingdom's clock tower comes into view. Its main face reads 3:47, frozen like everything else. But there's a second dial on the outer wall -- an astronomical marker, too small to read without magnification. VII:XIII. The seventh hour, the thirteenth minute. You make a mental note. Something about that number feels like it matters."
+                }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "climb-railing",
+            "trigger": {
+                "verb": "use",
+                "subject": "railing"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "fall-death"
+                }
+            ]
+        },
+        {
+            "id": "climb-railing-go",
+            "trigger": {
+                "verb": "go",
+                "subject": "railing"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "fall-death"
+                }
+            ]
+        }
+    ],
+    "deaths": {
+        "fall-death": {
+            "title": "Death by Ambition",
+            "narratorText": "You climb the railing. The railing, as previously noted, is decorative. It was never meant to support the weight of a person, let alone a person with pockets full of quest items. The railing gives way with the resigned creak of something that warned you repeatedly. The fall is long enough for you to reflect on your choices, but not long enough to reach any useful conclusions. The ground is unimpressed by your arrival."
+        }
+    },
+    "dynamicDescriptions": {
+        "knows_cavern_secret": "The watchtower's telescope showed you Castle Erelhain and the clock tower's astronomical marker -- VII:XIII. To the east, an overgrown path leads down through the forest toward a bridge. The bridge -- and whatever's beyond it -- awaits.",
+        "seen_castle": "The watchtower's telescope showed Castle Erelhain in the distance, the grey curse spreading up its walls, and the clock tower's astronomical dial reading VII:XIII -- the seventh hour, the thirteenth minute. You know where you need to go. You just wish you didn't."
+    },
+    "audio": {
+        "music": "music-village",
+        "ambient": [
+            {
+                "key": "amb-wind-light",
+                "volume": 0.8
+            }
+        ]
+    },
+    "effects": {
+        "weather": {
+            "type": "dust",
+            "intensity": 0.3
+        },
+        "ambient": [
+            {
+                "type": "dust-motes",
+                "intensity": 0.4
+            }
+        ],
+        "lighting": {
+            "brightness": 0.85,
+            "vignette": 0.25
+        }
+    },
+    "puzzleHints": [
+        {
+            "puzzleId": "use-lens-on-telescope",
+            "tiers": [
+                "A telescope without a lens is just an expensive tube. I wonder if there's a replacement lens lying around this watchtower somewhere. On the ground, perhaps.",
+                "There's a cracked telescope lens on the ground near the platform edge. Pick it up and fit it into the telescope. You might see something important in the distance.",
+                "Take the telescope lens from the ground and use it on the rusted telescope. You'll see the castle and the clock tower's astronomical marker. Remember the number it shows -- you'll need it later."
+            ]
+        }
+    ],
+    "playerSpawn": {
+        "x": 486,
+        "y": 411
+    }
+}

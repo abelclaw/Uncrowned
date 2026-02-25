@@ -1,0 +1,846 @@
+{
+    "id": "cave_entrance",
+    "name": "Cave Entrance",
+    "description": "A rocky hillside looms before you, its face scarred by weather and time. Set into the stone is a heavy oak door bound in iron, sealed tight against whatever lies beyond. Cold air seeps through the gaps, carrying the faint smell of damp stone and old regrets. Someone built a door into a hillside, which raises more questions than it answers.",
+    "background": {
+        "layers": [
+            {
+                "key": "bg-shared-act1-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act1-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-cave_entrance_closed",
+                "scrollFactor": 1
+            }
+        ],
+        "worldWidth": 1920
+    },
+    "dynamicBackgrounds": {
+        "door-unlocked": {
+            "from": "bg-rooms-cave_entrance_closed",
+            "to": "bg-rooms-cave_entrance"
+        }
+    },
+    "walkableArea": [
+        {
+            "x": 50,
+            "y": 390
+        },
+        {
+            "x": 910,
+            "y": 390
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
+    ],
+    "exits": [
+        {
+            "id": "to-forest",
+            "zone": {
+                "x": 350,
+                "y": 480,
+                "width": 260,
+                "height": 60
+            },
+            "targetRoom": "forest_clearing",
+            "spawnPoint": {
+                "x": 480,
+                "y": 400
+            },
+            "transition": "fade",
+            "direction": "south",
+            "label": "forest"
+        },
+        {
+            "id": "to-village",
+            "zone": {
+                "x": 880,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
+            "targetRoom": "village_path",
+            "spawnPoint": {
+                "x": 460,
+                "y": 490
+            },
+            "transition": "slide-right",
+            "direction": "east",
+            "label": "village"
+        },
+        {
+            "id": "to-depths",
+            "zone": {
+                "x": 480,
+                "y": 360,
+                "width": 60,
+                "height": 80
+            },
+            "targetRoom": "cave_depths",
+            "spawnPoint": {
+                "x": 480,
+                "y": 460
+            },
+            "transition": "fade",
+            "direction": "north",
+            "label": "depths",
+            "aliases": ["in", "inside", "enter", "cave", "door", "deeper", "forward"],
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "door-unlocked"
+                }
+            ],
+            "blockedMessage": "The heavy oak door is firmly locked. Through the gaps you can feel cold air and hear a faint dripping from somewhere below. A rusted keyhole suggests you'll need a key to get through."
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "cave-mouth",
+            "name": "Dark Cave Mouth",
+            "aliases": ["cave", "cave mouth", "entrance", "opening", "dark opening", "hole", "cave opening", "dark cave", "cave entry", "doorway"],
+            "zone": {
+                "x": 450,
+                "y": 340,
+                "width": 100,
+                "height": 80
+            },
+            "interactionPoint": {
+                "x": 500,
+                "y": 420
+            },
+            "responses": {
+                "look": "A dark opening in the hillside, framed by rough-hewn stone. You can't see much past the heavy door set into it, but cold air and the faint sound of dripping water suggest it goes deep. Whatever's down there has been waiting patiently.",
+                "take": "You consider taking the cave. Where would you even put it? Your pockets aren't that big.",
+                "use": "You're not entirely sure how one 'uses' a cave entrance. Staring at it ominously, perhaps? You're already doing that.",
+                "talk": "You call into the gap around the door. 'Hello?' Something drips in reply. Then silence. Rude.",
+                "open": "The cave mouth is open -- it's the door set into it that's the problem.",
+                "push": "You push against the rock face. The mountain does not yield. Shocking.",
+                "pull": "You try to pull the hillside open wider. Geology disagrees with your approach.",
+                "default": "You study the dark cave mouth. It offers no answers, just cold air and the faint promise of regret."
+            }
+        },
+        {
+            "id": "locked-door",
+            "name": "Heavy Oak Door",
+            "aliases": ["door", "oak door", "locked door", "wooden door", "heavy door", "gate", "iron door", "cave door", "big door"],
+            "zone": {
+                "x": 480,
+                "y": 380,
+                "width": 60,
+                "height": 80
+            },
+            "interactionPoint": {
+                "x": 510,
+                "y": 440
+            },
+            "responses": {
+                "look": "A heavy oak door bound in iron, set deep into the cave wall. A rusted keyhole suggests someone once cared about privacy down here. The door is old enough to have opinions about modern craftsmanship.",
+                "use": "It's locked. You'd need a key. Preferably one that isn't currently disintegrating.",
+                "open": "It's locked. The door rattles in its frame but holds firm. Somewhere, a locksmith is smirking.",
+                "push": "You lean into the door with all your weight. The door laughs silently at your efforts. It has been laughing for centuries.",
+                "pull": "You pull on the door handle. Locked. From the other side. Of course.",
+                "take": "You can't take an entire door. Well, you could, but you'd need a much bigger inventory and a much smaller sense of dignity.",
+                "talk": "You knock politely. Nobody answers. Rude, but expected from a door that old.",
+                "default": "You examine the locked door. It remains steadfastly locked, as is its right."
+            }
+        },
+        {
+            "id": "rock-ledge",
+            "name": "Rock Ledge",
+            "aliases": ["ledge", "shelf", "rock shelf", "stone ledge", "stone shelf", "outcropping", "overhang", "ridge"],
+            "zone": {
+                "x": 630,
+                "y": 370,
+                "width": 80,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 670,
+                "y": 430
+            },
+            "responses": {
+                "look": "A natural rock shelf near the cave entrance. Damp and covered in a thin layer of moss. An odd bottle sits among the dust on the ledge.",
+                "take": "The ledge is part of the cave wall. You'd need a pickaxe and significantly more ambition.",
+                "use": "You could use it as a shelf, but your standards for furniture are already low enough.",
+                "default": "You examine the rock ledge. It's a ledge. Made of rock. Riveting.",
+                "talk": "You address the rock ledge. It maintains a stony silence. You've had warmer conversations with furniture.",
+                "open": "You search the ledge for a hidden compartment. Nothing. It's just rock all the way down. Nature doesn't do drawers.",
+                "push": "You push the ledge. The ledge, being a geological feature, does not budge. Nor does it care.",
+                "pull": "You try to pull the ledge off the wall. It has been attached to this mountain since before your species existed. It's not leaving now."
+            }
+        },
+        {
+            "id": "stone-archway",
+            "name": "Stone Archway",
+            "aliases": ["arch", "archway", "stone arch", "carved arch", "door frame", "doorframe", "frame", "carved stone", "gateway"],
+            "zone": {
+                "x": 350,
+                "y": 50,
+                "width": 260,
+                "height": 300
+            },
+            "interactionPoint": {
+                "x": 480,
+                "y": 420
+            },
+            "responses": {
+                "look": "The doorway is framed by a carved stone archway, its edges worn smooth by centuries of weather and neglect. Whoever chiseled this was skilled, patient, and profoundly unbothered by the fact that they were decorating a door in a hillside. Faint runes line the keystone, too eroded to read. Probably said something important once.",
+                "take": "You consider disassembling the stone archway. You'd need a team of masons, several oxen, and a reason. You have none of these.",
+                "use": "It's an archway. You walk through it. That's the full extent of archway interaction, and it's been working for millennia.",
+                "default": "You study the archway's ancient craftsmanship. It's impressive, in the way that anything built by people long dead tends to be.",
+                "talk": "You speak to the ancient stonework. The archway has heard prayers, curses, and the last words of braver people than you. It's not impressed.",
+                "open": "It's an archway. It's already open. That's the entire point. You're thinking of a door.",
+                "push": "You shove the stone archway. It has withstood centuries of weather, geological shifts, and neglect. Your palms are not the threat it was worried about.",
+                "pull": "You pull at the stone arch. It was carved from the hillside itself -- pulling it would require removing the hill, which exceeds both your strength and your authorization."
+            }
+        },
+        {
+            "id": "cave-vines",
+            "name": "Cave Vines",
+            "aliases": ["vines", "vine", "ivy", "creepers", "creeper", "plants", "tendrils", "climbing plants", "vegetation", "greenery"],
+            "zone": {
+                "x": 100,
+                "y": 200,
+                "width": 150,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 175,
+                "y": 420
+            },
+            "responses": {
+                "look": "Thick vines and ivy cling to the rocks around the cave, slowly and persistently reclaiming the stone for nature. Each tendril grips the rock with the quiet determination of someone who knows they have all the time in the world. Give it another century and this whole entrance will be a shrubbery.",
+                "take": "You tug at a vine. It holds fast, anchored deeper into the rock than your commitment to this quest. You let go, humbled by a plant.",
+                "use": "You part the vines expecting a hidden passage or secret message. Behind them: more rock. Nature's idea of a practical joke.",
+                "default": "You regard the creeping vines. They regard the slow, inevitable victory of botany over architecture.",
+                "talk": "You whisper encouragement to the vines. They continue growing at their own pace, indifferent to your motivational speech. Plants are terrible listeners.",
+                "open": "You try to open the curtain of vines like a set of drapes. They spring back immediately. Nature does not do curtain calls.",
+                "push": "You push the vines aside. They swing back and slap you gently across the face. A measured, botanical rebuke.",
+                "pull": "You yank a vine. It snaps back and whips your hand. The vine network has a strict no-touching policy."
+            }
+        },
+        {
+            "id": "iron-bands",
+            "name": "Iron Bands",
+            "aliases": ["bands", "iron", "metal bands", "metal", "rivets", "straps", "iron straps", "door bands", "hinges", "ironwork"],
+            "zone": {
+                "x": 470,
+                "y": 390,
+                "width": 80,
+                "height": 20
+            },
+            "interactionPoint": {
+                "x": 510,
+                "y": 440
+            },
+            "responses": {
+                "look": "Heavy iron bands riveted across the oak door, rusted to the color of dried blood. They've been holding this door together longer than most dynasties last.",
+                "take": "You try to pry an iron band free. It's been rusted in place for centuries. You'd need a forge, a blacksmith, and a complete disregard for structural integrity.",
+                "use": "You run your fingers along the iron. It's cold, rough, and deeply uninterested in being useful to you. Rust flakes off under your touch.",
+                "talk": "You compliment the ironwork. Flattery gets you nowhere with ferrous metals. They've heard it all before.",
+                "open": "The iron bands are riveted to the door. They don't open. They hold things closed. That's their entire career.",
+                "push": "You press against the iron bands. They're harder than your resolve and older than your bloodline. They don't move.",
+                "pull": "You tug at a band of iron. It holds fast, bonded to the oak by centuries of rust and spite.",
+                "default": "Iron bands, rusted and resolute. They've been doing their job since before you were born."
+            }
+        },
+        {
+            "id": "keyhole",
+            "name": "Rusted Keyhole",
+            "aliases": ["keyhole", "key hole", "lock", "door lock", "slot", "hole", "rusty lock", "mechanism"],
+            "zone": {
+                "x": 500,
+                "y": 420,
+                "width": 20,
+                "height": 20
+            },
+            "interactionPoint": {
+                "x": 510,
+                "y": 440
+            },
+            "responses": {
+                "look": "A rusted keyhole set into the heavy oak door. You press your eye to it and see nothing but darkness. Cold air blows through it directly into your eyeball.",
+                "take": "You can't take a keyhole. It's a hole. In a door. You'd be stealing the concept of absence, which is philosophically ambitious but practically useless.",
+                "use": "You'd need a key first. The keyhole sits there, patiently waiting, like a bureaucrat who knows you forgot your paperwork.",
+                "talk": "You whisper into the keyhole. Your voice echoes down into the depths below. Something shifts in the darkness. You immediately regret this.",
+                "open": "The keyhole is part of the lock, not the thing that opens. You need a key to open the lock, and by extension, the door. The keyhole is just the middleman.",
+                "push": "You push your finger into the keyhole. Cold air pushes back. The cave is breathing, and it has terrible breath.",
+                "pull": "You try to pull the lock mechanism. It's set deep into the stone frame. Lock-picking requires finesse, tools, and training. You have enthusiasm, which is not the same thing.",
+                "default": "A keyhole, waiting for its key. Patient as only metal can be."
+            }
+        },
+        {
+            "id": "cave-moss",
+            "name": "Damp Moss",
+            "aliases": ["moss", "green moss", "lichen", "algae", "green stuff", "mold", "mould", "damp stuff"],
+            "zone": {
+                "x": 640,
+                "y": 380,
+                "width": 60,
+                "height": 20
+            },
+            "interactionPoint": {
+                "x": 670,
+                "y": 430
+            },
+            "responses": {
+                "look": "A thin carpet of moss covers the rock ledge, thriving in the damp air. It's the soft, vivid green of something that has never once worried about paying rent.",
+                "take": "You scrape some moss off the ledge. It comes away in a sad, damp clump. You hold it for a moment, question every choice that led here, and put it back.",
+                "use": "You smear the moss between your fingers. It's wet, cold, and about as useful as you'd expect a handful of cave moss to be.",
+                "talk": "You address the moss. It doesn't respond, but it does continue photosynthesizing in the dark, which is more productive than anything you've done today.",
+                "open": "You can't open moss. Moss is already as open as a plant gets. It's literally growing on a rock.",
+                "push": "You press the moss flat against the stone. It squishes. Satisfying, in a deeply sad way.",
+                "pull": "You peel a strip of moss off the rock. Underneath: more rock, slightly damper. The revelations just keep coming.",
+                "default": "Damp moss, thriving in the cave entrance. It's the most successful thing here."
+            }
+        },
+        {
+            "id": "eroded-runes",
+            "name": "Eroded Runes",
+            "aliases": ["runes", "symbols", "carvings", "writing", "inscriptions", "inscription", "markings", "letters", "text", "glyphs", "hieroglyphs", "ancient writing", "carved symbols"],
+            "zone": {
+                "x": 440,
+                "y": 60,
+                "width": 80,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 480,
+                "y": 420
+            },
+            "responses": {
+                "look": "Faint symbols carved into the keystone of the archway, worn nearly smooth by time. You can make out fragments -- what might be a warning, a blessing, or a recipe for bread.",
+                "take": "You try to scrape the runes off the stone. They've been eroding naturally for centuries. They don't need your help accelerating the process.",
+                "use": "You trace the runes with your finger, half-expecting something magical. Nothing does. The runes were probably decorative. Or the magic expired.",
+                "talk": "You read the runes aloud, or try to. What comes out sounds like a sneeze filtered through a dead language. The archway does not react.",
+                "open": "These are carvings in stone, not a puzzle box. There's nothing to open, despite what your adventuring instincts insist.",
+                "push": "You press your palm against the runes. The stone is cold and utterly inert. If there was ever a magic button here, it ran out of batteries long ago.",
+                "pull": "You can't pull carvings out of stone. That's not how stone works. That's not how anything works.",
+                "default": "Ancient runes, worn almost smooth. Whatever they said, time has had the last word."
+            }
+        },
+        {
+            "id": "stone-stairs",
+            "name": "Stone Stairs",
+            "aliases": ["stairs", "steps", "stairway", "staircase", "stone steps", "passage", "way down", "descending stairs"],
+            "zone": {
+                "x": 480,
+                "y": 370,
+                "width": 60,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 510,
+                "y": 440
+            },
+            "responses": {
+                "look": "Stone stairs descend into the darkness beyond the open door, each step worn smooth in the center by countless feet. They curve downward and out of sight. The air smells like a cellar that predates the concept of cellars.",
+                "take": "You can't take stairs. Even if you could, where would the stairs to carry the stairs be? It's stairs all the way down.",
+                "use": "You could walk down them. That's generally what stairs are for. Whether you should is an entirely separate philosophical question.",
+                "talk": "You call down the stairway. Your voice bounces off wet stone and returns to you, slightly distorted and considerably more frightened.",
+                "open": "The stairs are open. They're stairs. They don't close. That would just be a ramp with ambition.",
+                "push": "You stomp on the top stair. It holds. It's survived centuries of foot traffic. Your tantrum is noted and dismissed.",
+                "pull": "You can't pull stairs up. That's a drawbridge. Different technology entirely.",
+                "default": "Stone stairs, descending into darkness. An invitation and a warning."
+            }
+        },
+        {
+            "id": "rocky-hillside",
+            "name": "Rocky Hillside",
+            "aliases": ["hillside", "hill", "rocks", "rock face", "cliff", "cliff face", "mountain", "mountainside", "stone wall", "rock wall", "crag", "craggy hillside"],
+            "zone": {
+                "x": 200,
+                "y": 100,
+                "width": 150,
+                "height": 250
+            },
+            "interactionPoint": {
+                "x": 275,
+                "y": 420
+            },
+            "responses": {
+                "look": "A craggy hillside of grey stone, scarred by weather. Someone carved a doorway into it, which is the architectural equivalent of performing surgery on a mountain.",
+                "take": "You try to take the hillside. It's a hill. On a side. You'd need to rethink your approach to property ownership.",
+                "use": "You lean against the hillside. It's solid, cold, and makes a terrible conversation partner.",
+                "talk": "You speak to the hillside. Geologists say rocks have stories to tell. This one's story is: 'I'm a rock. Leave me alone.'",
+                "open": "You can't open a hillside. Mountains don't come with doors. Well, this one does. But the hillside itself doesn't.",
+                "push": "You push the hillside. The hillside does not move. You have not discovered the limits of geology, but you have discovered the limits of optimism.",
+                "pull": "You pull at the rocky hillside. Geology remains unmoved. The hillside has been here since before the kingdom existed and intends to remain after it's gone.",
+                "default": "The rocky hillside looms above the cave entrance. It was here first, and it knows it."
+            }
+        },
+        {
+            "id": "cave-floor",
+            "name": "Cave Floor",
+            "aliases": ["floor", "ground", "rocks", "stone floor", "cave ground", "gravel", "dirt", "pebbles", "rubble"],
+            "zone": {
+                "x": 100,
+                "y": 400,
+                "width": 760,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 480,
+                "y": 430
+            },
+            "responses": {
+                "look": "The cave floor is rough and uneven, littered with loose stones and patches of damp moss. Near the wall, a glowing mushroom pulses with faint blue light. On a rock ledge to the right, a small bottle catches what little light reaches this far in. The ground is slick in places -- watch your step.",
+                "take": "You scoop up a handful of gravel. Cold, damp, and entirely useless. You let it fall through your fingers like the sands of time, except less poetic and more pointy.",
+                "use": "You're standing on it. That's the primary use of a floor. You're already exceeding its expectations.",
+                "default": "You examine the cave floor. Rough stone, loose gravel, and the occasional puddle. Standard cave furnishings."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "mysterious-bottle",
+            "name": "Mysterious Bottle",
+            "aliases": ["bottle", "potion", "flask", "vial", "liquid", "glass bottle", "drink", "elixir", "mystery bottle", "coloured bottle", "colored bottle", "strange bottle"],
+            "zone": {
+                "x": 839,
+                "y": 314,
+                "width": 25,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 852,
+                "y": 354
+            },
+            "responses": {
+                "look": "A small glass bottle perched on a rock ledge. The liquid inside shifts between colors you're fairly sure shouldn't exist in nature. The label decomposed sometime during the previous dynasty.",
+                "use": "Drink it? Here? Without even reading the label? Well, the label decomposed centuries ago, so that's a moot point. Still, the liquid is doing things no honest liquid should.",
+                "take": "The mysterious bottle is wedged between rocks and sealed with something that might be wax, might be magic, and definitely isn't cooperating with your fingers.",
+                "talk": "You hold the bottle up and ask it what it is. The liquid shifts from violet to a sullen ochre. That's not an answer. That's an evasion.",
+                "open": "You consider uncorking the bottle. A faint hiss escapes the seal, and the liquid inside churns eagerly. It wants out. That alone should give you pause.",
+                "push": "You nudge the bottle with your finger. It teeters on the ledge. The liquid inside briefly turns a threatening shade of crimson. Message received.",
+                "pull": "You drag the bottle closer. It scrapes across the stone with a sound that sets your teeth on edge. The liquid inside gurgles. Bottles shouldn't gurgle."
+            }
+        },
+        {
+            "id": "glowing-mushroom",
+            "name": "Glowing Mushroom",
+            "aliases": ["mushroom", "fungus", "fungi", "toadstool", "shroom", "glowing thing", "blue mushroom", "blue light", "bioluminescent mushroom", "magic mushroom", "light", "glow"],
+            "zone": {
+                "x": 233,
+                "y": 376,
+                "width": 30,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 248,
+                "y": 426
+            },
+            "responses": {
+                "look": "A mushroom growing on the cave wall, pulsing with an eerie blue bioluminescence. It's either magical, radioactive, or nature's attempt at a nightlight. Possibly all three.",
+                "use": "The mushroom pulses with eerie light. Combined with something sturdy -- a stick, perhaps -- it could make a decent light source.",
+                "take": "You can't take the Glowing Mushroom. It's firmly attached to its current situation, much like your growing sense of confusion.",
+                "talk": "You address the mushroom. It pulses once, brightly. Was that acknowledgment or a spore release? In the fungal kingdom, these are disturbingly similar.",
+                "open": "It's a mushroom, not a locket. You can't open it. Well, you could split it open, but then you'd just have two sad halves of a formerly luminous fungus.",
+                "push": "You poke the mushroom. It wobbles on its stem and flashes indignantly. Even fungi have personal boundaries.",
+                "pull": "You tug the mushroom gently. It stretches but holds to the wall. Pulling harder would detach it."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "take-mushroom",
+            "trigger": {
+                "verb": "take",
+                "subject": "glowing-mushroom"
+            },
+            "conditions": [
+                {
+                    "type": "item-not-taken",
+                    "item": "glowing-mushroom"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "add-item",
+                    "item": "glowing-mushroom"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You pluck the glowing mushroom from the wall. It pulses warmly in your hand, like a nightlight for the terminally adventurous. Your pockets will smell of fungus for weeks."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "take-bottle",
+            "trigger": {
+                "verb": "take",
+                "subject": "mysterious-bottle"
+            },
+            "conditions": [
+                {
+                    "type": "item-not-taken",
+                    "item": "mysterious-bottle"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "add-item",
+                    "item": "mysterious-bottle"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You pocket the mysterious bottle. The liquid sloshes ominously. This is definitely the kind of decision that looks great in hindsight. Or terrible. One of those."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "use-key-on-door",
+            "trigger": {
+                "verb": "use",
+                "subject": "rusty-key",
+                "target": "locked-door"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "rusty-key"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "door-unlocked"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "door-unlocked"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "rusty-key"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-depths"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "The rusty key grinds into the lock with a sound that makes your teeth ache. With a reluctant clunk, the door swings open, revealing stairs descending into darkness. The key crumbles to rust dust in your hand. One-time use, apparently. Just like your courage."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "open-door-no-target",
+            "trigger": {
+                "verb": "open",
+                "subject": "locked-door"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "rusty-key"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "door-unlocked"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "door-unlocked"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "rusty-key"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-depths"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "The rusty key grinds into the lock with a sound that makes your teeth ache. With a reluctant clunk, the door swings open, revealing stairs descending into darkness. The key crumbles to rust dust in your hand. One-time use, apparently. Just like your courage."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "open-door-with-key",
+            "trigger": {
+                "verb": "open",
+                "subject": "locked-door",
+                "target": "rusty-key"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "rusty-key"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "door-unlocked"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "door-unlocked"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "rusty-key"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-depths"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "The rusty key grinds into the lock with a sound that makes your teeth ache. With a reluctant clunk, the door swings open, revealing stairs descending into darkness. The key crumbles to rust dust in your hand. One-time use, apparently. Just like your courage."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "combine-stick-mushroom",
+            "trigger": {
+                "verb": "combine",
+                "subject": "stick",
+                "target": "glowing-mushroom"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "stick"
+                },
+                {
+                    "type": "has-item",
+                    "item": "glowing-mushroom"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "stick"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "glowing-mushroom"
+                },
+                {
+                    "type": "add-item",
+                    "item": "makeshift-torch"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You wedge the glowing mushroom onto the stick. It holds, mostly. You've created a makeshift torch that casts an eerie blue glow. MacGyver would be... not exactly proud, but perhaps mildly amused."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "combine-mushroom-stick",
+            "trigger": {
+                "verb": "combine",
+                "subject": "glowing-mushroom",
+                "target": "stick"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "stick"
+                },
+                {
+                    "type": "has-item",
+                    "item": "glowing-mushroom"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "stick"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "glowing-mushroom"
+                },
+                {
+                    "type": "add-item",
+                    "item": "makeshift-torch"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You wedge the glowing mushroom onto the stick. It holds, mostly. You've created a makeshift torch that casts an eerie blue glow. MacGyver would be... not exactly proud, but perhaps mildly amused."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "use-stick-on-mushroom",
+            "trigger": {
+                "verb": "use",
+                "subject": "stick",
+                "target": "glowing-mushroom"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "stick"
+                },
+                {
+                    "type": "has-item",
+                    "item": "glowing-mushroom"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "stick"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "glowing-mushroom"
+                },
+                {
+                    "type": "add-item",
+                    "item": "makeshift-torch"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You wedge the glowing mushroom onto the stick. It holds, mostly. You've created a makeshift torch that casts an eerie blue glow. MacGyver would be... not exactly proud, but perhaps mildly amused."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "use-mushroom-on-stick",
+            "trigger": {
+                "verb": "use",
+                "subject": "glowing-mushroom",
+                "target": "stick"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "stick"
+                },
+                {
+                    "type": "has-item",
+                    "item": "glowing-mushroom"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "stick"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "glowing-mushroom"
+                },
+                {
+                    "type": "add-item",
+                    "item": "makeshift-torch"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You wedge the glowing mushroom onto the stick. It holds, mostly. You've created a makeshift torch that casts an eerie blue glow. MacGyver would be... not exactly proud, but perhaps mildly amused."
+                }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "drink-bottle",
+            "trigger": {
+                "verb": "use",
+                "subject": "mysterious-bottle"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "mysterious-bottle"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "bottle-safe"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "poison-death"
+                }
+            ]
+        }
+    ],
+    "deaths": {
+        "poison-death": {
+            "title": "Death by Curiosity",
+            "narratorText": "You drink the mysterious liquid. It tastes like regret, bad decisions, and something that might once have been a plum. The colors in your vision expand to include shades that don't exist, and then contract to include nothing at all. You crumple to the floor in a heap of poor judgment. The bottle rolls away, unfinished. Even it doesn't want to be associated with you anymore."
+        }
+    },
+    "dynamicDescriptions": {
+        "door-unlocked": "The heavy oak door in the hillside now hangs open, revealing a dark passage descending into the earth. Cold air pours out freely, carrying the smell of ancient stone and the faint sound of dripping water. Whatever's down there, the door is no longer keeping it a secret."
+    },
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            {
+                "key": "amb-cave-drips",
+                "volume": 0.7
+            }
+        ]
+    },
+    "effects": {
+        "weather": {
+            "type": "fog",
+            "intensity": 0.4
+        },
+        "ambient": [
+            {
+                "type": "dust-motes",
+                "intensity": 0.2
+            }
+        ],
+        "lighting": {
+            "tint": "#332244",
+            "brightness": 0.4,
+            "vignette": 0.6,
+            "torchFlicker": true
+        }
+    },
+    "puzzleHints": [
+        {
+            "puzzleId": "use-key-on-door",
+            "tiers": [
+                "There's a locked door here. Locked doors typically respond to one particular type of object. I'm sure you'll work it out eventually.",
+                "The heavy oak door has a rusted keyhole. If only you had a rusty key from, say, a forest clearing to the south. What a coincidence that would be.",
+                "Use the rusty key on the locked door. Key goes in lock. Lock opens. This is not advanced engineering."
+            ]
+        },
+        {
+            "puzzleId": "combine-stick-mushroom",
+            "tiers": [
+                "It's awfully dark in caves, isn't it? If only there were a way to combine something long and sturdy with something that glows. But what do I know.",
+                "You have a stick. You have a glowing mushroom. One provides structure, the other provides light. I trust even you can see where this is going.",
+                "Combine the stick with the glowing mushroom to make a makeshift torch. I genuinely cannot simplify this further without using hand puppets."
+            ]
+        }
+    ],
+    "playerSpawn": {
+        "x": 506,
+        "y": 421
+    }
+}

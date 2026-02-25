@@ -1,0 +1,645 @@
+{
+    "id": "forge_chamber",
+    "name": "Forge Chamber",
+    "description": "An ancient dwarven forge dominates this chamber, its anvil blackened by millennia of metalwork. The forge itself is cold -- a massive stone structure with bellows, a chimney cut into the rock above, and a fire pit that hasn't seen flame in centuries. Tools hang on the walls: hammers, tongs, files. A spectral blue glow emanates from the forge's foundation, and a translucent dwarven figure sits cross-legged beside the anvil, eyes closed, as though meditating on metallurgy.",
+    "background": {
+        "layers": [
+            {
+                "key": "bg-shared-act2-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act2-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-forge_chamber",
+                "scrollFactor": 1
+            }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
+    ],
+    "exits": [
+        {
+            "id": "to-river",
+            "zone": {
+                "x": 440,
+                "y": 450,
+                "width": 80,
+                "height": 80
+            },
+            "targetRoom": "underground_river",
+            "spawnPoint": {
+                "x": 400,
+                "y": 450
+            },
+            "transition": "fade",
+            "direction": "south",
+            "label": "river"
+        },
+        {
+            "id": "to-guardian",
+            "zone": {
+                "x": 440,
+                "y": 350,
+                "width": 80,
+                "height": 80
+            },
+            "targetRoom": "guardian_chamber",
+            "spawnPoint": {
+                "x": 480,
+                "y": 450
+            },
+            "transition": "fade",
+            "direction": "north",
+            "label": "guardian chamber"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "ancient-forge",
+            "name": "Ancient Forge",
+            "aliases": [
+                "forge",
+                "furnace",
+                "kiln",
+                "smelter",
+                "smithy",
+                "hearth",
+                "dwarven forge",
+                "stone forge",
+                "old forge",
+                "fireplace"
+            ],
+            "zone": {
+                "x": 350,
+                "y": 345,
+                "width": 150,
+                "height": 70
+            },
+            "interactionPoint": {
+                "x": 425,
+                "y": 420
+            },
+            "responses": {
+                "look": "A dwarven forge of extraordinary craftsmanship. The fire pit is cold but structurally sound. Bellows hang ready. The chimney cuts through solid rock. This forge was built to last forever, and so far it's on schedule. It needs coal and a fire source to operate.",
+                "use": "The forge is cold. You'd need coal for fuel and something to light it -- a torch, perhaps. The ancient infrastructure is ready. It just needs someone to restart it.",
+                "take": "You cannot take a forge. Forges are, by design, immovable. This is both their strength and their limitation.",
+                "default": "You examine the forge. It's waited centuries for someone to light it again. It can wait a few more minutes.",
+                "talk": "You address the forge directly. It does not respond. It is a forge. In its defence, it never claimed to be a conversationalist.",
+                "open": "The forge is an open structure by design -- fire pit, chimney, bellows. Everything is already accessible. There's no door to open because forges need airflow, not privacy.",
+                "push": "You push against the forge. It doesn't move. You have successfully confirmed that several tons of dwarven stonework outweighs your ambition.",
+                "pull": "You pull at the forge. Nothing happens, except a faint sense that the dwarven spirit is judging you. Which he is. He absolutely is."
+            }
+        },
+        {
+            "id": "forge-anvil",
+            "name": "Blackened Anvil",
+            "aliases": [
+                "anvil",
+                "iron anvil",
+                "forge anvil",
+                "smithing anvil",
+                "black anvil",
+                "workbench",
+                "metalwork"
+            ],
+            "zone": {
+                "x": 550,
+                "y": 380,
+                "width": 60,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 580,
+                "y": 420
+            },
+            "responses": {
+                "look": "A massive iron anvil, blackened by use and age. Hammer marks cover its surface like a record of every weapon, tool, and artifact ever made here. The dwarven spirit sits nearby, watching you examine his workplace with the critical eye of a craftsman evaluating a tourist.",
+                "use": "The anvil is for forging. Without a lit forge and materials, it's just an extremely heavy paperweight.",
+                "default": "You admire the anvil. It has the quiet authority of something that has shaped kingdoms.",
+                "take": "You attempt to lift the anvil. It weighs more than your entire future. Dwarves didn't build things to be portable. They built things to be there when the mountain eroded around them.",
+                "talk": "You speak to the anvil. It absorbs your words the way it has absorbed ten thousand hammer blows -- silently, and with an air of having heard better.",
+                "open": "Anvils don't open. They are solid iron. This is, in fact, the entire point of being an anvil.",
+                "push": "You push the anvil. It doesn't move. It hasn't moved in centuries. It has outlasted dynasties by being exactly where it is.",
+                "pull": "You try to drag the anvil. The anvil wins. It was always going to win. This was never a contest."
+            }
+        },
+        {
+            "id": "bellows",
+            "name": "Bellows",
+            "aliases": [
+                "bellows",
+                "pump",
+                "air pump",
+                "blower",
+                "leather bellows",
+                "forge bellows",
+                "air bellows"
+            ],
+            "zone": {
+                "x": 200,
+                "y": 250,
+                "width": 100,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 250,
+                "y": 430
+            },
+            "responses": {
+                "look": "Massive leather bellows, cracked with age but still functional-looking. They've been waiting centuries for someone to give them a good squeeze.",
+                "take": "They're bolted to the forge. Someone anticipated theft, or at least enthusiastic borrowing.",
+                "use": "You pump the bellows. The forge flares briefly, then settles back down. Satisfying, in a deeply primal way.",
+                "default": "You examine the bellows. They wheeze expectantly, ready to breathe life into cold metal.",
+                "talk": "You whisper encouragement to the bellows. They wheeze in response. This is either a connection or a respiratory condition.",
+                "open": "Bellows don't open in the traditional sense. They expand and contract, like lungs, or like your confidence when you try things you're not qualified for.",
+                "push": "You shove the bellows closed. They compress with a defeated sigh and a puff of ancient dust.",
+                "pull": "You pull the bellows open. They inhale with a geriatric wheeze, filling with air they've no fire to feed. Potential energy, wasted."
+            }
+        },
+        {
+            "id": "forge-chains",
+            "name": "Forge Chains",
+            "aliases": [
+                "chains",
+                "chain",
+                "iron chains",
+                "hanging chains",
+                "ceiling chains",
+                "dangling chains",
+                "links"
+            ],
+            "zone": {
+                "x": 400,
+                "y": 0,
+                "width": 200,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 500,
+                "y": 430
+            },
+            "responses": {
+                "look": "Heavy iron chains dangle from the ceiling, purpose unclear. Decorative? Structural? Intimidating? All three, probably. Dwarven interior design priorities differ from yours.",
+                "take": "They're anchored in the stone above. You'd need wings and bolt cutters, and you have neither.",
+                "use": "You tug one experimentally. It holds. The ceiling creaks. You stop tugging. Some experiments are best left incomplete.",
+                "default": "You regard the chains. They hang with the gravity of things that have been hanging for a very long time.",
+                "talk": "You talk to the chains. They clink softly in response. You choose to interpret this as meaningful dialogue rather than a draft.",
+                "open": "These are chains, not a gate. There's nothing to open. They just hang there, being ominous. It's what chains do.",
+                "push": "You push a chain. It swings away and then back toward you. Physics is undefeated. The chain doesn't care about your intentions.",
+                "pull": "You yank a chain. The ceiling groans. Dust falls. You release the chain with the sudden clarity of someone who nearly made a load-bearing mistake."
+            }
+        },
+        {
+            "id": "smith-tools",
+            "name": "Smith Tools",
+            "aliases": [
+                "tools",
+                "hammer",
+                "hammers",
+                "tongs",
+                "implements",
+                "smithing tools",
+                "blacksmith tools",
+                "forge tools",
+                "equipment",
+                "instruments"
+            ],
+            "zone": {
+                "x": 650,
+                "y": 150,
+                "width": 150,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 725,
+                "y": 430
+            },
+            "responses": {
+                "look": "Tongs, hammers, and implements whose names you don't know but whose purposes look painful. A complete set, maintained by spectral habit.",
+                "take": "These belong to the forge spirit. Stealing from ghosts seems unwise -- they have eternity to hold a grudge.",
+                "use": "Without proper training, you'd just make modern art. The dwarven spirit's expression suggests he's thinking the same thing.",
+                "default": "You survey the smith's tools. Each one tells a story of metal bent to purpose by hands that knew what they were doing.",
+                "talk": "You address the tools. They do not respond. The dwarven spirit gives you a look that says, 'I've been dead for centuries and even I don't talk to hammers.'",
+                "open": "Tools don't open. They're not a gift set. Though they are arranged with obsessive precision that suggests someone would notice if you rearranged them.",
+                "push": "You push the tools along the wall. They clatter and rearrange themselves. The dwarven spirit's eye twitches. You have committed a sin against organisational metallurgy.",
+                "pull": "You pull a hammer off the wall. It's heavier than expected. You put it back, pretending you were just testing gravity. The spirit pretends not to have noticed."
+            }
+        },
+        {
+            "id": "fire-pit",
+            "name": "Fire Pit",
+            "aliases": [
+                "pit",
+                "fire",
+                "firepit",
+                "coals",
+                "embers",
+                "hearth pit",
+                "burn pit",
+                "flame pit",
+                "coal pit"
+            ],
+            "zone": {
+                "x": 370,
+                "y": 380,
+                "width": 80,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 410,
+                "y": 420
+            },
+            "responses": {
+                "look": "A deep fire pit at the heart of the forge, lined with heat-cracked stone. It hasn't held a proper fire in centuries, though the stone still radiates a ghost of warmth. Or perhaps that's the spectral dwarven smith's lingering influence.",
+                "take": "You can't take a pit. That's not how pits work. They're defined by their absence, not their presence.",
+                "use": "The fire pit is cold and empty. Without fuel and a working bellows, it's just a fancy hole in the ground.",
+                "talk": "You peer into the fire pit and call down. Your voice echoes off heat-scarred stone. No one answers. The last fire here died centuries ago.",
+                "open": "It's a pit. It's already open. That's the defining characteristic of pits.",
+                "push": "You push at the stones lining the pit. They're fused together by centuries of heat. Even cooled, they remember being molten.",
+                "pull": "You pull at a stone lining the fire pit. It grinds but doesn't come free. These stones were fitted by dwarven hands and sealed by dwarven fire. Your grip is not the tool for this job."
+            }
+        },
+        {
+            "id": "forge-chimney",
+            "name": "Chimney",
+            "aliases": [
+                "chimney",
+                "flue",
+                "vent",
+                "shaft",
+                "smokestack",
+                "smoke hole",
+                "chimney shaft",
+                "ventilation"
+            ],
+            "zone": {
+                "x": 390,
+                "y": 50,
+                "width": 70,
+                "height": 120
+            },
+            "interactionPoint": {
+                "x": 425,
+                "y": 420
+            },
+            "responses": {
+                "look": "A chimney cut into the rock above the forge, disappearing into darkness. It was designed to vent smoke from the forge fire up through the mountain itself. Soot still cakes its walls. A faint breeze trickles down -- it still connects to the outside air, somewhere far above.",
+                "take": "You can't take a chimney. It's a vertical shaft through solid rock. Your pockets are not that deep.",
+                "use": "Without a fire below, the chimney is just a very tall, very narrow, very dark hole. It vents a thin breeze. That's all it does now.",
+                "talk": "You shout up the chimney. Your voice echoes for an impressively long time, bouncing off soot-covered walls. No response comes back.",
+                "open": "The chimney is already open. It's a shaft through rock. The dwarves built it open because smoke, unlike some adventurers, knows which way to go.",
+                "push": "You push the walls of the chimney. Soot rains down on your head. The chimney is unimpressed. You are now filthy.",
+                "pull": "You reach up into the chimney and pull. Soot. More soot. A dead bat. And your dignity, falling like flakes of carbon."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "broken-seal-stamp",
+            "name": "Broken Seal Stamp",
+            "aliases": [
+                "seal",
+                "stamp",
+                "broken seal",
+                "seal stamp",
+                "kingdom seal",
+                "badger seal",
+                "crest",
+                "badge",
+                "sigil",
+                "emblem",
+                "broken stamp",
+                "cracked seal",
+                "seal halves"
+            ],
+            "zone": {
+                "x": 606,
+                "y": 272,
+                "width": 30,
+                "height": 25
+            },
+            "interactionPoint": {
+                "x": 621,
+                "y": 297
+            },
+            "responses": {
+                "look": "An ancient version of the kingdom's administrative seal, cracked in two. The badger crest is recognizable but angrier than the modern version. This is the original Kingdom Seal -- administrative, not royal. It could be repaired if the forge were operational.",
+                "use": "The seal is broken. It needs to be reforged -- literally. A working forge could repair it.",
+                "take": "You reach for the two halves of the ancient seal. The badger on the crest stares back with the fixed fury of heraldic art.",
+                "talk": "You address the broken seal. The badger on the crest stares back with the fixed fury of heraldic art. It has nothing to say, but it has strong opinions about being in two pieces.",
+                "open": "The seal stamp is not a container. It's a stamp. It presses things. It does not open. Being broken doesn't make it an openable object -- it makes it a broken object.",
+                "push": "You push the seal halves together. They don't fuse. Metallurgy requires more than optimism. It requires heat, an anvil, and ideally a spectral dwarven craftsman.",
+                "pull": "You pull the seal halves further apart. This is the opposite of repairing something. The badger on the crest looks even more disgruntled, which you didn't think was possible."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "take-broken-seal",
+            "trigger": {
+                "verb": "take",
+                "subject": "broken-seal-stamp"
+            },
+            "conditions": [
+                {
+                    "type": "item-not-taken",
+                    "item": "broken-seal-stamp"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "add-item",
+                    "item": "broken-seal-stamp"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You pick up the two halves of the ancient seal stamp. The metal is cold and heavy. The badger on the crest looks disgruntled -- more disgruntled than the modern version, which is saying something. This seal predates the current kingdom by centuries. With a working forge, it could be made whole again."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "light-forge",
+            "trigger": {
+                "verb": "use",
+                "subject": "coal",
+                "target": "ancient-forge"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "coal"
+                },
+                {
+                    "type": "has-item",
+                    "item": "makeshift-torch"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "forge_lit"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "coal"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "forge_lit"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You load the ancient coal into the forge's fire pit and touch your torch to it. The coal catches immediately -- centuries of compression have made it eager to burn. Flames leap. The forge roars to life with a sound like a sleeping giant clearing its throat. Heat blasts outward. The dwarven spirit opens one eye, nods approvingly, and says nothing. The forge is operational. It's been waiting for this."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "light-forge-alt",
+            "trigger": {
+                "verb": "use",
+                "subject": "makeshift-torch",
+                "target": "ancient-forge"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "coal"
+                },
+                {
+                    "type": "has-item",
+                    "item": "makeshift-torch"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "forge_lit"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "coal"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "forge_lit"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You stack coal in the forge and light it with your torch. The ancient fuel ignites with enthusiasm. The forge bellows awaken. Heat fills the chamber. The dwarven spirit nods. The forge is ready."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "repair-seal",
+            "trigger": {
+                "verb": "use",
+                "subject": "broken-seal-stamp",
+                "target": "ancient-forge"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "broken-seal-stamp"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "forge_lit"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "broken-seal-stamp"
+                },
+                {
+                    "type": "add-item",
+                    "item": "ancient-seal"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "seal_repaired"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You place the broken seal halves on the anvil. The dwarven spirit rises, grips a ghostly hammer, and strikes -- not the seal, but the forge itself. The flames intensify. The metal glows. The broken pieces fuse into a whole -- the Ancient Guardian Seal, restored to its former glory. The badger on the crest looks slightly less disgruntled. Progress. The spirit sets down his hammer and nods once. 'Good metal,' he says. It's the highest compliment a dwarven smith can give."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "repair-seal-anvil",
+            "trigger": {
+                "verb": "use",
+                "subject": "broken-seal-stamp",
+                "target": "forge-anvil"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "broken-seal-stamp"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "forge_lit"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "broken-seal-stamp"
+                },
+                {
+                    "type": "add-item",
+                    "item": "ancient-seal"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "seal_repaired"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You set the broken seal on the anvil and the dwarven spirit does the rest. Ghostly hammer meets ancient metal. The seal fuses, mends, becomes whole. The ancient kingdom seal is restored -- the administrative seal of Erelhain, older than the monarchy itself."
+                }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "touch-forge",
+            "trigger": {
+                "verb": "use",
+                "subject": "ancient-forge"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "forge_lit"
+                },
+                {
+                    "type": "not-has-item",
+                    "item": "broken-seal-stamp"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "forge-burn"
+                }
+            ]
+        }
+    ],
+    "deaths": {
+        "forge-burn": {
+            "title": "Death by Metallurgy",
+            "narratorText": "You reach into the active forge. The forge was hot. This information was available visually (the glowing coals), audibly (the roaring flames), and now experientially (the searing pain). The dwarven spirit watches with the expression of someone who has seen this exact thing happen many times and has stopped being surprised. Your hand is educational. Your arm is cautionary. The rest of you is a lesson in thermal conductivity."
+        }
+    },
+    "dynamicDescriptions": {
+        "forge_lit": "The forge chamber blazes with heat and light. The ancient forge roars, its coals burning hot enough to reshape metal and melt doubts. The dwarven spirit sits watchfully beside the anvil, ready to assist.",
+        "seal_repaired": "The forge burns steadily. On the anvil, the memory of the seal's repair lingers -- metal made whole by spectral craftsmanship. The dwarven spirit sits contentedly, the finest work of his afterlife complete."
+    },
+    "npcs": [
+        {
+            "id": "dwarven_spirit",
+            "position": {
+                "x": 343,
+                "y": 454
+            },
+            "interactionPoint": {
+                "x": 288,
+                "y": 427
+            },
+            "zone": {
+                "x": 270,
+                "y": 261,
+                "width": 145,
+                "height": 193
+            },
+            "aliases": [
+                "dwarf",
+                "spirit",
+                "ghost",
+                "smith",
+                "blacksmith",
+                "forgemaster"
+            ],
+            "responses": {
+                "look": "A translucent dwarven figure sits cross-legged near the forge, eyes closed in what might be meditation or might be the afterlife equivalent of a nap. His spectral beard is magnificent -- braided with care that death has not diminished.",
+                "talk": "The dwarven spirit opens one eye. 'Forge needs coal. And fire. Light the forge, and I'll show you what real smithing looks like.' The eye closes again. Conversation over.",
+                "use": "You cannot use a dwarven spirit. They use you. That's how forges work.",
+                "take": "The dwarven spirit is not an item. He is a craftsman. The distinction matters to him, even in death.",
+                "default": "The dwarven spirit continues his eternal vigil over the cold forge. Patience, apparently, is a dwarven virtue.",
+                "open": "You cannot open a ghost. The spirit glares at you with the intensity of someone who has been dead long enough to know an insult when he sees one.",
+                "push": "You reach toward the dwarven spirit. Your hand passes through him. He looks down at your arm inside his torso, then up at you, with the expression of a man who has endured indignities beyond death.",
+                "pull": "You try to pull the spirit toward you. Your hands close on empty air. He's incorporeal. Being dead tends to do that. The spirit sighs and resumes his meditation."
+            }
+        }
+    ],
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            {
+                "key": "amb-cave-drips",
+                "volume": 0.3
+            },
+            {
+                "key": "amb-wind-light",
+                "volume": 0.4
+            }
+        ]
+    },
+    "effects": {
+        "ambient": [
+            {
+                "type": "embers",
+                "intensity": 0.6
+            }
+        ]
+    },
+    "puzzleHints": [
+        {
+            "puzzleId": "light-forge",
+            "tiers": [
+                "The forge is cold. It needs fuel and fire -- the former compressed by geological patience, the latter carried by someone who had the foresight to bring a light source into a dark cave system.",
+                "You need coal from the echo chamber and a makeshift torch (made from a stick and bioluminescent mushroom in the cave entrance). Use the coal on the forge while carrying the torch.",
+                "Take coal from the echo chamber. Craft a makeshift torch by combining a stick with a bioluminescent mushroom at the cave entrance. Use the coal on the ancient forge while holding the torch. The forge ignites."
+            ]
+        },
+        {
+            "puzzleId": "repair-seal",
+            "tiers": [
+                "That broken seal on the floor has seen better centuries. The two halves look like they could be joined again, if only someone had access to a working forge and the metallurgical goodwill of a spectral dwarven craftsman.",
+                "With the forge lit, you can repair the broken seal stamp. Use the broken seal on the forge or the anvil. The dwarven spirit will assist in fusing the halves back together.",
+                "Light the forge first (coal plus torch). Then take the broken seal stamp and use it on the ancient forge or the blackened anvil. The dwarven spirit reforges it into the ancient kingdom seal needed for the Guardian."
+            ]
+        }
+    ],
+    "playerSpawn": {
+        "x": 656,
+        "y": 392
+    }
+}

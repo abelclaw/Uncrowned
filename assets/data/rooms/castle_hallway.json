@@ -1,0 +1,496 @@
+{
+    "id": "castle_hallway",
+    "name": "Castle Hallway",
+    "description": "A long stone corridor stretches through the castle's interior. Portraits of past monarchs line the walls, each one looking more disappointed than the last -- a dynasty of escalating disapproval. Doors branch off in every direction: south to the courtyard, east to the throne room, and north to the servants' quarters. One door to the west is conspicuously locked, its keyhole shaped like a bone. A faded carpet runs the length of the hall, threadbare and stained with centuries of royal foot traffic.",
+    "background": {
+        "layers": [
+            {
+                "key": "bg-shared-act1-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act1-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-castle_hallway",
+                "scrollFactor": 1
+            }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
+    ],
+    "exits": [
+        {
+            "id": "to-courtyard",
+            "zone": {
+                "x": 440,
+                "y": 450,
+                "width": 80,
+                "height": 80
+            },
+            "targetRoom": "castle_courtyard",
+            "spawnPoint": {
+                "x": 480,
+                "y": 460
+            },
+            "transition": "fade",
+            "direction": "south",
+            "label": "courtyard"
+        },
+        {
+            "id": "to-throne-room",
+            "zone": {
+                "x": 880,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
+            "targetRoom": "throne_room",
+            "spawnPoint": {
+                "x": 300,
+                "y": 450
+            },
+            "transition": "slide-right",
+            "direction": "east",
+            "label": "throne room"
+        },
+        {
+            "id": "to-servants",
+            "zone": {
+                "x": 440,
+                "y": 350,
+                "width": 80,
+                "height": 80
+            },
+            "targetRoom": "servants_quarters",
+            "spawnPoint": {
+                "x": 480,
+                "y": 450
+            },
+            "transition": "fade",
+            "direction": "north",
+            "label": "servants quarters"
+        },
+        {
+            "id": "to-kitchen",
+            "zone": {
+                "x": 0,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
+            "targetRoom": "royal_kitchen",
+            "spawnPoint": {
+                "x": 680,
+                "y": 460
+            },
+            "transition": "slide-left",
+            "direction": "west",
+            "label": "kitchen",
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "skeleton-key-used"
+                }
+            ],
+            "blockedMessage": "The kitchen door is locked. A large, ornate keyhole suggests this requires no ordinary key -- something skeletal, perhaps."
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "royal-portraits",
+            "name": "Royal Portraits",
+            "aliases": [
+                "portraits",
+                "portrait",
+                "paintings",
+                "painting",
+                "pictures",
+                "picture",
+                "gallery",
+                "monarchs",
+                "kings",
+                "queens",
+                "royal portraits",
+                "art"
+            ],
+            "zone": {
+                "x": 200,
+                "y": 350,
+                "width": 120,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 260,
+                "y": 420
+            },
+            "responses": {
+                "look": "A gallery of royal portraits stretches down the hallway. King Aldric the Bold, who was mostly bald. Queen Thessaly the Wise, who was mostly sarcastic. King Mortimer the Prepared, who choked on an olive. The artistic quality decreases as the dynasty progresses, as if the painters were losing hope in real time.",
+                "take": "You reach for a portrait. It feels... warm. Not warm like sunshine. Warm like something that doesn't want to be touched. You retract your hand with admirable speed.",
+                "use": "You straighten a crooked portrait. It immediately tilts back. The painting seems to prefer being askew. Artistic temperament, presumably.",
+                "default": "You examine the portraits. They examine you back. Several appear to be tracking your movement, which is either magical or the sign of a very talented painter.",
+                "talk": "You address the assembled monarchs. 'Any advice?' King Aldric the Bold stares blankly. Queen Thessaly the Wise offers nothing. King Mortimer the Prepared -- well, he wasn't prepared for an olive, so his counsel is suspect.",
+                "open": "These are portraits, not cupboards. You push one aside, expecting a secret compartment. Just wall. The dynasty's secrets are limited to poor life choices and questionable interior design.",
+                "push": "You push a portrait. It swings out slightly, revealing... more wall. A century of dust cascades onto your head. The portrait settles back into place.",
+                "pull": "You pull a portrait toward you. The wire groans, the frame tilts, and dust rains down. The king depicted looks amused. Or constipated. Hard to tell with oil paint."
+            }
+        },
+        {
+            "id": "locked-door",
+            "name": "Locked Door",
+            "aliases": [
+                "door",
+                "kitchen door",
+                "locked door",
+                "bone keyhole",
+                "keyhole",
+                "wooden door",
+                "west door",
+                "lock",
+                "bone lock"
+            ],
+            "zone": {
+                "x": 50,
+                "y": 370,
+                "width": 60,
+                "height": 70
+            },
+            "interactionPoint": {
+                "x": 100,
+                "y": 420
+            },
+            "responses": {
+                "look": "A sturdy wooden door with a keyhole shaped distinctly like a bone. The door itself is unremarkable except for a small plaque reading 'Kitchen & Stores -- Staff Only.' Whoever locked it clearly didn't want casual visitors wandering in. The keyhole is ornate enough that a regular key won't work.",
+                "use": "The door is locked. The keyhole is shaped like a bone -- you'd need a skeleton key, which is either a pun or a very specific security measure. Possibly both.",
+                "open": "Locked. The bone-shaped keyhole mocks your keyless state. You rattle the handle. The door rattles back. Neither of you gains ground.",
+                "push": "You lean against the door. It holds firm. This door was built to resist exactly this amount of determination.",
+                "default": "You examine the locked door. It's locked. That's its primary characteristic and it's doing an excellent job.",
+                "take": "You attempt to remove the door from its hinges through sheer willpower. The door, being a door, remains exactly where doors are supposed to be.",
+                "talk": "You knock politely. 'Hello? Anyone in the kitchen?' The silence from beyond suggests either nobody's home, or the kitchen staff have a very strict policy about answering doors.",
+                "pull": "You pull at the locked door handle. The lock holds with the quiet confidence of something that has been keeping people out for generations."
+            }
+        },
+        {
+            "id": "cursed-portrait",
+            "name": "Glowing Portrait",
+            "aliases": [
+                "glowing portrait",
+                "cursed portrait",
+                "green portrait",
+                "green glow",
+                "thessaly",
+                "queen thessaly",
+                "queen",
+                "glowing painting",
+                "green painting",
+                "magic portrait",
+                "enchanted portrait"
+            ],
+            "zone": {
+                "x": 650,
+                "y": 355,
+                "width": 60,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 680,
+                "y": 420
+            },
+            "responses": {
+                "look": "One portrait stands out from the rest -- it glows faintly around the edges with a sickly green light. The subject is a woman in royal attire, her expression caught between serene and predatory. A small plaque reads 'Queen Thessaly the Wise.' The glow pulses gently, like a heartbeat. Or a warning.",
+                "use": "The portrait's glow intensifies as you approach. Every instinct says 'don't touch the glowing thing.' Those are good instincts. Listen to them.",
+                "talk": "You address the glowing portrait. The painted eyes seem to flicker toward you. 'Hello?' Nothing. But the glow brightens for a moment. Coincidence, surely.",
+                "default": "You regard the glowing portrait from a safe distance. The safe distance is 'anywhere that isn't touching it.'",
+                "take": "You reach toward the cursed portrait. The green glow flares and your fingers go numb. The portrait does not wish to be relocated. The portrait's wishes are enforced by magic.",
+                "open": "Open a painting? It's not a book. It's not a door. It's a cursed portrait of a dead queen, and it is emphatically not interested in being opened. The glow pulses irritably.",
+                "push": "You reach toward the frame. The green glow flares brighter as your hand approaches, the temperature dropping perceptibly. Every survival instinct you possess suggests reconsidering. You reconsider.",
+                "pull": "You try to pull the portrait from the wall. It clings with supernatural tenacity, the painted eyes following your hands with unmistakable disapproval."
+            }
+        },
+        {
+            "id": "columns",
+            "name": "Columns",
+            "aliases": [
+                "column",
+                "pillars",
+                "pillar",
+                "stone pillars",
+                "stone columns",
+                "carved pillars",
+                "carvings",
+                "supports"
+            ],
+            "zone": {
+                "x": 100,
+                "y": 50,
+                "width": 100,
+                "height": 400
+            },
+            "interactionPoint": {
+                "x": 150,
+                "y": 430
+            },
+            "responses": {
+                "look": "Carved stone pillars line the hallway, each one holding up centuries of architectural ambition and questionable governance. The carvings depict scenes of royal life -- feasts, hunts, and what appears to be a badger coronation.",
+                "take": "Structural support isn't portable. That's less a rule and more a law of physics.",
+                "use": "Leaning against them feels disrespectful to the masons who spent years of their lives carving badgers into load-bearing stone.",
+                "default": "You examine the columns. They bear the weight of the castle above with the silent patience of things that were never given a choice.",
+                "talk": "You whisper to a column. 'Holding up all right?' It is. It has been for centuries. It will continue to do so long after you've been forgotten. Columns are good at perspective.",
+                "open": "Columns are solid stone. There is nothing to open. If you're hoping for a secret passage, you've been reading too many adventure novels.",
+                "push": "You shove a column. It doesn't move. It weighs several tons and is holding up a castle. Your contribution to its structural analysis is noted and dismissed.",
+                "pull": "You try to pull a column toward you. This is the architectural equivalent of trying to persuade a mountain to relocate."
+            }
+        },
+        {
+            "id": "hallway-carpet",
+            "name": "Hallway Carpet",
+            "aliases": [
+                "carpet",
+                "rug",
+                "runner",
+                "red carpet",
+                "crimson carpet",
+                "floor carpet",
+                "tapestry",
+                "mat",
+                "threadbare carpet"
+            ],
+            "zone": {
+                "x": 300,
+                "y": 350,
+                "width": 300,
+                "height": 150
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 440
+            },
+            "responses": {
+                "look": "A faded crimson carpet runs the length of the hallway, threadbare in the middle where centuries of feet have worn a path. The edges still show hints of the original deep red, a colour now best described as 'nostalgic pink.'",
+                "take": "Too heavy, too dusty, and nailed down at both ends. You'd sneeze yourself unconscious before you got it rolled up.",
+                "use": "You're already walking on it. That's the full extent of carpet interaction available to you.",
+                "default": "You regard the hallway carpet. It's witnessed every royal procession, every servant's shuffle, and one king's final olive-impeded footsteps.",
+                "talk": "You address the carpet. It does not respond. Centuries of being trodden on have given it a stoic disposition and absolutely no interest in conversation.",
+                "open": "You lift a corner of the carpet. Underneath: stone floor, dust, and the fossilized remains of someone's optimism. No secret passages.",
+                "push": "You try to push the carpet aside. It's nailed down and weighs roughly the same as your ambitions -- heavy, unwieldy, and going nowhere fast.",
+                "pull": "You pull at the hallway carpet. It bunches and wrinkles but remains stubbornly in place, anchored by the weight of centuries and an impressive amount of castle dust."
+            }
+        },
+        {
+            "id": "wall-sconces",
+            "name": "Wall Sconces",
+            "aliases": [
+                "sconces",
+                "sconce",
+                "torches",
+                "torch",
+                "lights",
+                "light",
+                "flames",
+                "flame",
+                "fire",
+                "lanterns",
+                "lantern",
+                "brackets",
+                "torch holders"
+            ],
+            "zone": {
+                "x": 750,
+                "y": 150,
+                "width": 60,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 780,
+                "y": 430
+            },
+            "responses": {
+                "look": "Iron torch sconces line the walls, their flames flickering in brackets. Who lights them? Nobody seems to know. The castle has been largely unstaffed for months, yet the torches burn on -- either magical, self-sustaining, or maintained by someone very committed to ambiance.",
+                "take": "Stealing castle fixtures is frowned upon, and the flames are still lit. You'd burn your inventory and your reputation simultaneously.",
+                "use": "You warm your hands near a sconce. The flame dances obligingly. For a moment, the hallway feels almost hospitable.",
+                "default": "You study the wall sconces. Their persistent burning in an abandoned hallway is either comforting or deeply unsettling, depending on your feelings about unexplained fire.",
+                "talk": "You address the flames. They flicker. This could mean anything, from 'I acknowledge your existence' to 'I am fire and do not have opinions.'",
+                "open": "Sconces don't open. They hold fire. That's their entire professional remit. They're not underperforming -- you're over-expecting.",
+                "push": "You push a sconce bracket. It pivots slightly, and for one thrilling moment you think you've found a secret lever. Then it springs back. It was just loose.",
+                "pull": "You yank a sconce. The bracket bends, the flame sputters indignantly, and a shower of rust flakes rains down. The sconce returns to its original position with weary resignation."
+            }
+        }
+    ],
+    "items": [],
+    "puzzles": [
+        {
+            "id": "use-skeleton-key",
+            "trigger": {
+                "verb": "use",
+                "subject": "skeleton-key",
+                "target": "locked-door"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "skeleton-key"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "skeleton-key-used"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "skeleton-key"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "skeleton-key-used"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-kitchen"
+                },
+                {
+                    "type": "add-item",
+                    "item": "castle-map"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "The skeleton key slides into the bone-shaped keyhole with a satisfying click. The door swings open, revealing the castle kitchen beyond -- and on the wall just inside, a detailed map of the kingdom. You pull it down. It shows routes through the forest, past the bridge, and deep into the earth: the Screaming Caverns. Someone marked the path with a dotted line and the annotation 'HERE BE BUREAUCRACY.' The key crumbles to bone dust in your hand."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "use-skeleton-key-on-door-open",
+            "trigger": {
+                "verb": "open",
+                "subject": "locked-door"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "skeleton-key"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "skeleton-key-used"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "skeleton-key"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "skeleton-key-used"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-kitchen"
+                },
+                {
+                    "type": "add-item",
+                    "item": "castle-map"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You try the skeleton key in the door. It fits perfectly -- bone to bone. The lock turns, the door opens. Inside, among kitchen supplies, you spot a map pinned to the wall -- a map of the kingdom showing the route to the Screaming Caverns. You take it. The key disintegrates. Job done."
+                }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "take-cursed-portrait",
+            "trigger": {
+                "verb": "take",
+                "subject": "cursed-portrait"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "portrait-curse"
+                }
+            ]
+        },
+        {
+            "id": "pull-cursed-portrait",
+            "trigger": {
+                "verb": "pull",
+                "subject": "cursed-portrait"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "portrait-curse"
+                }
+            ]
+        }
+    ],
+    "deaths": {
+        "portrait-curse": {
+            "title": "Death by Art Appreciation",
+            "narratorText": "You grab the glowing portrait. The green light flares. The painted eyes snap to life, locking onto yours with an intensity that would make a lighthouse feel inadequate. Queen Thessaly the Wise was wise enough to curse her own portrait against theft. The curse hits you like a freight train made of bad decisions and green light. You have time to think 'some portraits are worth dying for' before realizing this was not one of them."
+        }
+    },
+    "dynamicDescriptions": {
+        "skeleton-key-used": "The castle hallway stretches before you, portraits judging from every wall. The door to the kitchen now stands open, the bone-shaped keyhole empty. The smell of dust and spices drifts from beyond. All paths are now accessible -- for better or worse."
+    },
+    "audio": {
+        "music": "music-village",
+        "ambient": [
+            {
+                "key": "amb-wind-light",
+                "volume": 0.3
+            }
+        ]
+    },
+    "effects": {
+        "ambient": [
+            {
+                "type": "dust-motes",
+                "intensity": 0.3
+            }
+        ],
+        "lighting": {
+            "tint": "#ccaa77",
+            "brightness": 0.75,
+            "vignette": 0.3
+        }
+    },
+    "puzzleHints": [
+        {
+            "puzzleId": "use-skeleton-key",
+            "tiers": [
+                "That locked door to the west has a bone-shaped keyhole. An oddly specific security measure. One imagines the matching key would be equally... skeletal.",
+                "The bone-shaped keyhole requires a skeleton key. Martha the Cook in the royal kitchen has one -- she found it in a sock drawer. She might trade it for something she desperately needs.",
+                "Give flour to Martha the Cook in the kitchen to get the skeleton key. Then use the skeleton key on the locked door. The flour is in the servants' quarters, behind the rat-infested crates."
+            ]
+        }
+    ],
+    "playerSpawn": {
+        "x": 401,
+        "y": 406
+    }
+}

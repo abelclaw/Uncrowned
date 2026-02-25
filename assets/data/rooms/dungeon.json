@@ -1,0 +1,739 @@
+{
+    "id": "dungeon",
+    "name": "Castle Dungeon",
+    "description": "The dungeon beneath Castle Erelhain is less a prison and more an office with bars. Filing cabinets line the cells. A desk sits in the central chamber, piled with forms and stamped documents. This is where the Clerk retreated when the cavern test was completed -- back to his original office, the bureaucratic heart of the kingdom's subterranean administration. The Clerk sits behind his desk, spectacles gleaming, processing paperwork with the mechanical fury of someone whose entire worldview has been challenged. A trap door in the floor is helpfully marked 'TRAP DOOR -- DO NOT STEP.'",
+    "background": {
+        "layers": [
+            {
+                "key": "bg-shared-act3-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act3-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-dungeon",
+                "scrollFactor": 1
+            }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
+    ],
+    "exits": [
+        {
+            "id": "to-courtyard-act3",
+            "zone": {
+                "x": 440,
+                "y": 350,
+                "width": 80,
+                "height": 80
+            },
+            "targetRoom": "castle_courtyard_act3",
+            "spawnPoint": {
+                "x": 480,
+                "y": 460
+            },
+            "transition": "fade",
+            "direction": "north",
+            "label": "courtyard"
+        },
+        {
+            "id": "to-treasury",
+            "zone": {
+                "x": 880,
+                "y": 380,
+                "width": 80,
+                "height": 150
+            },
+            "targetRoom": "treasury",
+            "spawnPoint": {
+                "x": 350,
+                "y": 450
+            },
+            "transition": "slide-right",
+            "direction": "east",
+            "label": "treasury",
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "treasury_opened"
+                }
+            ],
+            "blockedMessage": "A heavy iron gate bars the way to the treasury. It's sealed tight -- you'll need to find another way to open it."
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "clerk-desk",
+            "name": "Clerk's Desk",
+            "aliases": [
+                "desk",
+                "clerks desk",
+                "table",
+                "work desk",
+                "office desk",
+                "bureau",
+                "writing desk",
+                "clerk desk"
+            ],
+            "zone": {
+                "x": 350,
+                "y": 380,
+                "width": 120,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 410,
+                "y": 420
+            },
+            "responses": {
+                "look": "The Clerk's desk is identical to the one in the cavern entrance hall. The same stamps. The same forms. The same organizational precision. He's been doing this for so long that the desk has become an extension of his identity. Among the stacks of paperwork, a heavy ornate key serves as a paperweight. The key looks old. And important. And like it opens something the Clerk has forgotten about.",
+                "use": "The desk is the Clerk's domain. Touching it without permission would trigger a bureaucratic incident of unprecedented proportions.",
+                "take": "You can't take the Clerk's desk. He'd notice. He notices everything.",
+                "default": "You examine the desk. It's the most organized surface in the kingdom, which is saying something given the kingdom is mostly rubble.",
+                "talk": "You address the desk directly. It does not respond. This makes it the second most communicative object in the room, after the Clerk.",
+                "open": "You reach for a desk drawer. The Clerk's hand lands on yours with the speed and precision of a stamping mechanism. 'Drawer access requires Form 12-C,' he says. 'Filed in triplicate.'",
+                "push": "You push against the desk. It doesn't move. It has the gravitational permanence of an institution. The Clerk doesn't even look up.",
+                "pull": "You try to pull the desk toward you. The Clerk raises one eyebrow -- the bureaucratic equivalent of drawing a weapon. The desk stays where it has always been."
+            }
+        },
+        {
+            "id": "trap-door",
+            "name": "Trap Door",
+            "aliases": [
+                "trap",
+                "trapdoor",
+                "hatch",
+                "floor door",
+                "floor hatch",
+                "pit",
+                "hole",
+                "door in floor",
+                "trap floor"
+            ],
+            "zone": {
+                "x": 200,
+                "y": 430,
+                "width": 80,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 240,
+                "y": 420
+            },
+            "responses": {
+                "look": "A trap door in the floor, helpfully labeled 'TRAP DOOR -- DO NOT STEP.' Below it: absolute darkness and the sound of something dripping. The dungeon was built with security measures that were simultaneously obvious and lethal. The sign is either a warning or an invitation, depending on your interpretation of bureaucratic signage.",
+                "take": "You cannot take a trap door. It's embedded in the floor. And it's a trap. Two good reasons.",
+                "default": "You study the trap door from a safe distance. The sign is clear. The consequences are clearer.",
+                "use": "You stamp on the trap door experimentally. It rattles but holds. Whatever mechanism opens it is either locked, rusted shut, or waiting for a specific trigger.",
+                "talk": "You knock on the trap door. A hollow boom echoes from below, suggesting a chamber of some size. Nothing knocks back, which is either reassuring or deeply suspicious.",
+                "open": "You kneel down and tug at the trap door's edge. It creaks open an inch, releasing a gust of cold air that smells like regret and limestone. From below: a distant, wet thud. You let it fall shut.",
+                "push": "You press your foot against the trap door experimentally. It gives slightly. The sign says 'DO NOT STEP.' Pressing is not stepping, technically.",
+                "pull": "You hook your fingers around the trap door's edge and pull. The hinges groan but the door holds fast -- locked from below, or perhaps just thoroughly rusted shut."
+            }
+        },
+        {
+            "id": "filing-cells",
+            "name": "Filing Cells",
+            "aliases": [
+                "cells",
+                "cell",
+                "prison cells",
+                "prison cell",
+                "dungeon cells",
+                "jail cells",
+                "jail",
+                "cages",
+                "cage",
+                "filing cell"
+            ],
+            "zone": {
+                "x": 650,
+                "y": 355,
+                "width": 100,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 700,
+                "y": 420
+            },
+            "responses": {
+                "look": "The dungeon cells have been converted to filing storage. Each cell contains meticulously organized cabinets -- centuries of test records, applicant files, and rejection notices. Cell 3 holds what appears to be the Clerk's personal files, including a folder labeled 'MEMORIES (SUPPRESSED -- DO NOT OPEN).' Ironic, given that the folder is empty.",
+                "use": "You flip through the filing cells. Every applicant who ever attempted the Bureaucratic Test of Sovereign Worthiness is recorded here. The rejection rate is 100%. Until you.",
+                "default": "You browse the filing cells. The dungeon is the most organized prison you've ever seen. The inmates are paperwork.",
+                "take": "The cells are carved into the rock face. Taking them would require relocating a significant portion of the mountain. The kingdom's filing system is literally embedded in geology.",
+                "talk": "You address the filing cells. 'Anyone in there?' Silence. The files don't talk. They don't need to -- their contents speak volumes.",
+                "open": "The cell doors swing open freely -- they haven't held prisoners in centuries. They hold something far more dangerous now: organized information.",
+                "push": "You push against a cell door. It swings open with a creak. Inside: more files. The cells are full. The bureaucracy is overflowing.",
+                "pull": "You pull a cell door closed. It clangs shut with a finality that suggests the files inside are now serving a life sentence."
+            }
+        },
+        {
+            "id": "desk-lamp",
+            "name": "Desk Lamp",
+            "aliases": [
+                "lamp",
+                "light",
+                "lantern",
+                "candle",
+                "flame",
+                "desk light"
+            ],
+            "zone": {
+                "x": 200,
+                "y": 150,
+                "width": 80,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 240,
+                "y": 430
+            },
+            "responses": {
+                "look": "A desk lamp casting warm light over paperwork that hasn't been filed since the previous dynasty.",
+                "take": "It's plugged in. To what, you're not sure -- there's no visible outlet.",
+                "use": "You click it on and off. The shadows dance. The paperwork remains unfiled.",
+                "default": "You examine the lamp. It does its job without complaint, which is more than can be said for most things here.",
+                "talk": "You address the desk lamp. Its flame flickers in response -- either acknowledging you or being a flame. The distinction is philosophical and, frankly, unimportant.",
+                "open": "The lamp's glass housing is fused shut with centuries of soot. You could break it, but then you'd have a broken lamp and no light. Poor trade.",
+                "push": "You nudge the lamp across the desk. It slides reluctantly, leaving a trail in the dust. The flame wobbles but holds. The lamp has survived worse than you.",
+                "pull": "You pull the lamp toward you. It's chained to the desk -- because in a dungeon, even the light sources are imprisoned. The irony is structural."
+            }
+        },
+        {
+            "id": "filing-cabinets",
+            "name": "Filing Cabinets",
+            "aliases": [
+                "cabinets",
+                "cabinet",
+                "filing cabinet",
+                "files",
+                "drawers",
+                "drawer",
+                "file cabinets",
+                "file cabinet",
+                "metal cabinets"
+            ],
+            "zone": {
+                "x": 600,
+                "y": 100,
+                "width": 200,
+                "height": 300
+            },
+            "interactionPoint": {
+                "x": 700,
+                "y": 430
+            },
+            "responses": {
+                "look": "Rows of filing cabinets, each drawer labeled with arcane bureaucratic categories. 'Complaints (Justified)', 'Complaints (Unjustified)', 'Complaints (Existential)'.",
+                "take": "They're bolted to the wall. Even furniture can't escape bureaucracy.",
+                "use": "You open a random drawer. It's full of forms about other forms. You close it quickly.",
+                "default": "You regard the filing cabinets. They contain the accumulated paperwork of centuries, organized by someone with too much time and not enough hobbies.",
+                "talk": "You mutter at the filing cabinets. They contain centuries of secrets, none of which they are willing to share conversationally.",
+                "open": "You pull open a drawer labeled 'Miscellaneous (Sub-Category: Uncategorizable).' Inside are forms requesting the creation of new categories. Bureaucracy eating its own tail.",
+                "push": "You shove a filing cabinet. It doesn't budge. It's bolted to the wall, the floor, and possibly to the concept of permanence itself.",
+                "pull": "You yank on a cabinet. The bolts hold. The wall holds. Your dignity does not hold. The Clerk watches with detached interest."
+            }
+        },
+        {
+            "id": "barred-window",
+            "name": "Barred Window",
+            "aliases": [
+                "window",
+                "bars",
+                "barred",
+                "iron bars",
+                "prison window",
+                "dungeon window",
+                "grate",
+                "opening"
+            ],
+            "zone": {
+                "x": 350,
+                "y": 50,
+                "width": 150,
+                "height": 120
+            },
+            "interactionPoint": {
+                "x": 425,
+                "y": 430
+            },
+            "responses": {
+                "look": "A small window with iron bars, offering a view that's technically freedom but functionally a taunt.",
+                "take": "The bars are embedded in stone. Many have tried.",
+                "use": "You peer through the bars. The outside world continues without you. How rude.",
+                "default": "You glance at the barred window. The light it admits is grudging at best.",
+                "talk": "You shout through the bars. Your voice echoes off stone and returns unchanged and unhelpful. If anyone's out there, they're not interested.",
+                "open": "The window is barred. That's rather the point of a dungeon window -- to let in just enough light to see how trapped you are, without offering any way out.",
+                "push": "You push against the bars. They are iron. You are not. The iron wins, as iron tends to do in contests against human ambition.",
+                "pull": "You wrap your hands around the bars and pull. Nothing happens, except you now have rust on your palms and a renewed appreciation for medieval ironwork."
+            }
+        },
+        {
+            "id": "dungeon-chains",
+            "name": "Wall Chains",
+            "aliases": [
+                "chains",
+                "chain",
+                "shackles",
+                "shackle",
+                "manacles",
+                "manacle",
+                "restraints",
+                "irons",
+                "iron chains",
+                "cuffs",
+                "handcuffs",
+                "fetters"
+            ],
+            "zone": {
+                "x": 100,
+                "y": 300,
+                "width": 60,
+                "height": 80
+            },
+            "interactionPoint": {
+                "x": 130,
+                "y": 420
+            },
+            "responses": {
+                "look": "Rusted chains hang from iron rings embedded in the dungeon walls. They're old enough to have their own patina and heavy enough to make you reconsider your life choices. Some still have manacles attached. The occupants are long gone, but the chains remember.",
+                "take": "The chains are bolted into the stone walls with hardware that was designed to hold very determined prisoners. Your determination is insufficient.",
+                "use": "You rattle a chain. It clinks mournfully in the darkness. The sound echoes off stone walls with the kind of resonance that makes you glad you're a visitor and not a resident.",
+                "talk": "You address the chains. They clink in the draft. It's not conversation, but it's more response than most things in this dungeon offer.",
+                "open": "The manacles are rusted shut. Even if you could open them, there's no one inside to free. The dungeon's hospitality ended long ago.",
+                "push": "You push a chain against the wall. It swings back. Physics continues to function, even in dungeons.",
+                "pull": "You pull a chain. The iron ring holds firm in the stone. These were built to hold people who very much wanted to leave. Your casual tugging doesn't register."
+            }
+        },
+        {
+            "id": "paperwork-stacks",
+            "name": "Paperwork",
+            "aliases": [
+                "paperwork",
+                "papers",
+                "paper",
+                "forms",
+                "documents",
+                "stacks",
+                "stack",
+                "paper stacks",
+                "files",
+                "records",
+                "stamps",
+                "stamped documents"
+            ],
+            "zone": {
+                "x": 350,
+                "y": 350,
+                "width": 80,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 390,
+                "y": 420
+            },
+            "responses": {
+                "look": "Stacks of forms, applications, and stamped documents cover every horizontal surface. Each one represents someone's hope, duly received and thoroughly crushed by bureaucratic process.",
+                "take": "You pick up a form. 'UNAUTHORIZED REMOVAL OF DOCUMENTS IS A VIOLATION OF--' reads the header. You put it back. Even the paperwork threatens you.",
+                "use": "You attempt to fill out a form. It requires three references, two forms of identification, and the signature of someone who died two centuries ago. Standard procedure.",
+                "talk": "You read a form aloud. It's a request to request a request form. The recursion is deliberate. The Clerk designed this system and it is perfect.",
+                "open": "You unfold a document. It's a denial letter for someone named 'Everybody.' The Clerk believes in efficiency -- one rejection for the entire population.",
+                "push": "You push a stack of papers. They topple, scattering across the floor. The Clerk's pen pauses. The silence is worse than any reprimand.",
+                "pull": "You pull a paper from the bottom of a stack. The stack collapses. The Clerk begins writing a damage report before the last page hits the floor.",
+                "default": "The paperwork grows. Nobody adds to it. Nobody removes it. It simply generates itself, like bureaucratic mitosis."
+            }
+        },
+        {
+            "id": "dungeon-ceiling",
+            "name": "Dungeon Ceiling",
+            "aliases": [
+                "ceiling",
+                "roof",
+                "arches",
+                "arch",
+                "stone arches",
+                "cobwebs",
+                "cobweb",
+                "overhead",
+                "above",
+                "top"
+            ],
+            "zone": {
+                "x": 200,
+                "y": 30,
+                "width": 400,
+                "height": 80
+            },
+            "interactionPoint": {
+                "x": 400,
+                "y": 400
+            },
+            "responses": {
+                "look": "Low stone arches overhead, blackened by centuries of torch smoke and lamp oil. Cobwebs drape between the keystones like bunting for the world's worst party. The ceiling is just high enough that you don't have to duck, but low enough to make you uncomfortable about it.",
+                "take": "You cannot take a ceiling. This should not need explaining, but here we are, in a dungeon, reaching upward.",
+                "use": "The ceiling's primary use is not falling on you. It has performed this function admirably for centuries. Leave it alone.",
+                "talk": "You address the ceiling. A cobweb drifts down in response, landing on your face. The ceiling's sense of humor is dry and deeply unwelcome.",
+                "open": "Ceilings don't open. If this ceiling opened, you'd be standing in whatever room is above you, which would raise questions about structural engineering that nobody is prepared to answer.",
+                "push": "You press your palm against the ceiling. It's damp, cold, and slightly slimy. You lower your hand and wipe it on your clothes. The ceiling continues to be a ceiling.",
+                "pull": "You reach up and tug at a loose stone in the ceiling. Dust rains down. The stone holds, which is fortunate, because bringing the ceiling down would solve your problems permanently and counterproductively.",
+                "default": "The dungeon ceiling hangs above you with the quiet menace of something that knows exactly how heavy it is."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "treasury-key",
+            "name": "Treasury Key",
+            "aliases": [
+                "key",
+                "ornate key",
+                "gold key",
+                "golden key",
+                "paperweight",
+                "heavy key",
+                "big key",
+                "brass key",
+                "iron key"
+            ],
+            "zone": {
+                "x": 283,
+                "y": 306,
+                "width": 30,
+                "height": 15
+            },
+            "interactionPoint": {
+                "x": 298,
+                "y": 336
+            },
+            "responses": {
+                "look": "An ornate key sitting on the Clerk's desk, serving as a paperweight. It's heavy, gold-plated, and engraved with the kingdom's seal. The Clerk has been using it to keep his forms from blowing away. He has no idea what it opens. Neither does he care -- it's a perfectly functional paperweight.",
+                "use": "The treasury key needs a treasury. The dungeon is east of the treasury door.",
+                "take": "You reach for the treasury key. It hangs on its hook, heavy and ornate, waiting for someone with either the authority or the audacity to use it.",
+                "talk": "You address the key. 'What do you open?' The key maintains its customary silence. Somewhere, a lock waits patiently for someone to make the obvious connection.",
+                "open": "The key opens things. It doesn't get opened. That's not how keys work. Even in a dungeon where the rules of logic have been gently bent by centuries of bureaucracy.",
+                "push": "You nudge the key across the desk. It slides over a stack of forms, leaving a gold scratch on a denial notice. The Clerk notes the damage.",
+                "pull": "You drag the key toward the edge of the desk. The Clerk watches. 'If you want the paperweight,' he says, 'there are forms for that.'"
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "take-treasury-key",
+            "trigger": {
+                "verb": "take",
+                "subject": "treasury-key"
+            },
+            "conditions": [
+                {
+                    "type": "item-not-taken",
+                    "item": "treasury-key"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "add-item",
+                    "item": "treasury-key"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You take the treasury key from the Clerk's desk. The Clerk watches you remove his paperweight with an expression of mild bureaucratic displeasure. 'That is government property,' he says. Then he pauses. 'But then, everything in this dungeon is government property. Including, technically, you, since you're standing on government floor.' He returns to his paperwork. The key is ornate, heavy, and clearly opens something important. Something the Clerk has been sitting on -- literally and figuratively -- for centuries."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "use-treasury-key",
+            "trigger": {
+                "verb": "use",
+                "subject": "treasury-key",
+                "target": "filing-cells"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "treasury-key"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "treasury_opened"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "treasury-key"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "treasury_opened"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-treasury"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You try the ornate key on the locked door beside the filing cells. It turns with a deep, satisfying click. The door swings open to reveal a passage to the Royal Treasury. The Clerk looks up. 'Ah. That's what that key opened.' His tone suggests this revelation is mildly interesting and entirely irrelevant to his filing."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "confront-clerk",
+            "trigger": {
+                "verb": "talk",
+                "subject": "the_clerk"
+            },
+            "conditions": [
+                {
+                    "type": "flag-not-set",
+                    "flag": "clerk_confronted"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "clerk_confronted"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "The Clerk sets down his pen. 'You passed the test,' he says. 'This has not happened in four hundred years. The paperwork this generates is...' He pauses. 'Considerable.' His expression is unreadable -- not angry, not pleased, just processing. 'I followed you here because procedure demands it. The test administrator must be present for the outcome, whatever that outcome may be.' He adjusts his spectacles. There's something behind those eyes. Something he doesn't remember."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "show-memory-crystal",
+            "trigger": {
+                "verb": "use",
+                "subject": "clerk-memory-crystal",
+                "target": "the_clerk"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "clerk-memory-crystal"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "clerk_confronted"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "clerk_allied"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "clerk-memory-crystal"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "clerk_remembers"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "clerk_allied"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You hold the memory crystal before the Clerk. His spectacles catch its light. His eyes widen -- the first genuine expression you've seen on his face. The crystal pulses. Memories flood back. His hands tremble. 'I...' His voice cracks. For the first time in centuries, it sounds human. 'I was Marlowe. The wizard. I cast the curse because of a parking spot. A PARKING SPOT.' He takes off his spectacles and presses his palms to his eyes. 'Four hundred years of administration. Of forms and stamps and procedures. All to maintain a curse I cast because I couldn't park my cart at a feast.' The horror in his voice is real. 'I need to help fix this. What do you need?' The Clerk -- Marlowe -- is now your ally. The bureaucrat who built the system will help you file the paperwork to destroy it. Something shifts in the air. The kind of shift that changes how stories end."
+                }
+            ],
+            "once": true,
+            "endingInfluence": true
+        },
+        {
+            "id": "outwit-clerk",
+            "trigger": {
+                "verb": "use",
+                "subject": "original-curse-contract",
+                "target": "the_clerk"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "original-curse-contract"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "clerk_confronted"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "clerk_allied"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "clerk_outwitted"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "clerk_allied"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You unfurl the Original Curse Contract before the Clerk. His eyes snap to it with the intensity of a bureaucrat confronted with procedure. You point to Clause 47-B. 'The curse has an expiration clause,' you say. 'Filed under Section C-7 of the Royal Archive. Per Administrative Code, any curse with an expiration clause MUST be closed when closure is requested by a registered applicant.' The Clerk reads the clause. And reads it again. His jaw tightens. 'This is... procedurally correct.' The words cost him physically. 'The closure clause is valid. The curse has proper administrative channels for termination.' He stands. 'I am obligated by my own rules to assist in the closure. This is... unprecedented.' He adjusts his spectacles. 'Very well. I will officiate. Under protest. But procedurally valid protest.' The Clerk is now your ally. Outwitted by his own bureaucracy. The Clerk's cooperation, such as it is, feels like it will echo. Some choices shape more than the moment."
+                }
+            ],
+            "once": true,
+            "endingInfluence": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "step-on-trap",
+            "trigger": {
+                "verb": "go",
+                "subject": "trap-door"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "dungeon-pit"
+                }
+            ]
+        },
+        {
+            "id": "step-on-trap-use",
+            "trigger": {
+                "verb": "use",
+                "subject": "trap-door"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "dungeon-pit"
+                }
+            ]
+        }
+    ],
+    "deaths": {
+        "dungeon-pit": {
+            "title": "Death by Architecture",
+            "narratorText": "You step on the trap door. The sign said 'DO NOT STEP.' The sign was not being ironic. The door swings open beneath you with the smooth efficiency of a mechanism that has been waiting for this moment. The fall is long, dark, and accompanied by the distant sound of the Clerk stamping 'DECEASED' on a form he apparently had pre-prepared. Trap floors: the original terms and conditions nobody reads. Except, in this case, you read them. You read the sign. You stepped anyway. The narrator is at a loss for sympathy."
+        }
+    },
+    "dynamicDescriptions": {
+        "clerk_allied": "The dungeon is quieter now. The Clerk -- Marlowe -- sits at his desk, but the mechanical fury of his paperwork has been replaced with something like reflection. His spectacles sit on the desk. For the first time in centuries, he looks like a person, not a process.",
+        "treasury_opened": "The passage to the Royal Treasury stands open, the ornate door unlocked. The Clerk has resumed his paperwork, but with notably less enthusiasm. The dungeon feels less like an office and more like a place where someone is having a very long think."
+    },
+    "npcs": [
+        {
+            "id": "the_clerk",
+            "aliases": [
+                "clerk",
+                "bureaucrat",
+                "marlowe",
+                "wizard",
+                "administrator",
+                "official",
+                "man",
+                "spectacles",
+                "guy",
+                "person",
+                "figure"
+            ],
+            "position": {
+                "x": 693,
+                "y": 470
+            },
+            "interactionPoint": {
+                "x": 631,
+                "y": 455
+            },
+            "zone": {
+                "x": 632,
+                "y": 307,
+                "width": 122,
+                "height": 163
+            },
+            "responses": {
+                "open": "The Clerk is not a door, a drawer, or a filing cabinet, though he shares many qualities with all three -- rigid, full of old information, and difficult to get anything useful out of.",
+                "push": "You push the Clerk's shoulder. He doesn't move. He continues writing. Your push has been noted, categorized, and filed under 'Assault (Minor, Unproductive).'",
+                "pull": "You tug the Clerk's sleeve. He pauses. 'Physical contact with administrative personnel requires Form 8-D,' he says. 'Subsection: Unwanted.' He returns to his paperwork."
+            }
+        }
+    ],
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            {
+                "key": "amb-cave-drips",
+                "volume": 0.7
+            },
+            {
+                "key": "amb-wind-light",
+                "volume": 0.2
+            }
+        ]
+    },
+    "effects": {
+        "ambient": [
+            {
+                "type": "dust-motes",
+                "intensity": 0.4
+            }
+        ],
+        "lighting": {
+            "tint": "#333344",
+            "brightness": 0.45,
+            "vignette": 0.5,
+            "torchFlicker": true
+        }
+    },
+    "puzzleHints": [
+        {
+            "puzzleId": "use-treasury-key",
+            "tiers": [
+                "There's a locked door near the filing cells. The Clerk has been using an ornate key as a paperweight for centuries without wondering what it opens. Bureaucrats. Try it on the obvious locked door.",
+                "Take the treasury key from the Clerk's desk. Use it on the filing cells area -- the locked door beside them leads to the Royal Treasury.",
+                "Take the treasury key from the Clerk's desk. Use the treasury key on the filing cells to unlock the passage to the treasury. The treasury contains the kingdom seal and clock oil."
+            ]
+        },
+        {
+            "puzzleId": "show-memory-crystal",
+            "tiers": [
+                "The Clerk has no memory of who he really is. But somewhere in a wizard's tower, a crystal holds the memories that were extracted centuries ago. Returning them might be... illuminating. And therapeutic. Mostly illuminating.",
+                "The Clerk's memory crystal from the wizard's tower can restore the Clerk's memories. Talk to the Clerk first (to confront him), then use the memory crystal on him. He becomes your ally when he remembers he was Wizard Marlowe.",
+                "Talk to the Clerk first to trigger the confrontation. Then use the clerk-memory-crystal (from the wizard's tower) on the Clerk. He remembers he's Marlowe, the wizard who cast the curse, and agrees to help undo it."
+            ]
+        },
+        {
+            "puzzleId": "outwit-clerk",
+            "tiers": [
+                "The Clerk is a creature of rules. His own rules. If someone were to find the original curse contract and point to its expiration clause, the Clerk would be legally obligated to cooperate. By his own bureaucracy. Delicious.",
+                "The original curse contract in the Royal Archive has Clause 47-B -- an expiration clause. Talk to the Clerk first, then show him the contract. He cannot refuse a procedurally valid closure request.",
+                "Talk to the Clerk to confront him. Then use the original-curse-contract (from the Royal Archive, Section C-7) on the Clerk. Clause 47-B forces him to assist with the Rite. This is an alternative to the memory crystal approach."
+            ]
+        }
+    ],
+    "playerSpawn": {
+        "x": 552,
+        "y": 410
+    }
+}

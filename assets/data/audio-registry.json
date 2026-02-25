@@ -1,0 +1,9 @@
+{
+    "sfxEvents": {
+        "item-picked-up": "sfx-item-pickup",
+        "go-command": "sfx-door-transition",
+        "trigger-death": "sfx-death-sting",
+        "start-dialogue": "sfx-dialogue-start",
+        "command-submitted": "sfx-command-blip"
+    }
+}

@@ -1,0 +1,251 @@
+{
+    "id": "cavern_balcony",
+    "name": "Cavern Balcony",
+    "description": "A natural stone balcony juts out over the Crystal Chamber far below. The view is vertigo-inducing -- you can see the crystal's pedestal, the force barrier shimmer, and a dizzying drop to the chamber floor. A coil of old rope is anchored to a rock formation near the edge. The railing situation is nonexistent, which is either a design choice or a test of nerve.",
+    "background": {
+        "layers": [
+            {
+                "key": "bg-shared-act2-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act2-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-cavern_balcony",
+                "scrollFactor": 1
+            }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
+    ],
+    "exits": [
+        {
+            "id": "to-west-wing",
+            "zone": {
+                "x": 440,
+                "y": 450,
+                "width": 80,
+                "height": 80
+            },
+            "targetRoom": "cavern_west_wing",
+            "spawnPoint": {
+                "x": 480,
+                "y": 460
+            },
+            "transition": "fade",
+            "direction": "south",
+            "label": "west wing"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "balcony-edge",
+            "name": "Balcony Edge",
+            "aliases": ["edge", "ledge", "drop", "cliff", "precipice", "rim", "brink", "lip", "overhang", "balcony ledge"],
+            "zone": {
+                "x": 350,
+                "y": 360,
+                "width": 200,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 400
+            },
+            "responses": {
+                "look": "The edge of the balcony drops away into the Crystal Chamber below. There's no railing, no barrier, no safety net. Just air, gravity, and the distant glint of the crystal. The Screaming Caverns' architects were not concerned with occupational health and safety.",
+                "default": "You regard the edge from a respectful distance. The distance is respectful because closer would be fatal.",
+                "take": "You cannot take the edge. The edge, however, can absolutely take you.",
+                "use": "You lean on the balcony edge and immediately regret it. The stone shifts slightly under your weight, showering dust into the darkness below. Best not to push your luck. Or the balcony.",
+                "talk": "You address the void beyond the edge. It does not respond, but you get the distinct impression it's listening. The abyss gazes back, et cetera.",
+                "open": "The edge is already as open as anything can be. That's rather the problem.",
+                "push": "Pushing the edge of a balcony over a bottomless drop. The stone doesn't budge, which is the best possible outcome here.",
+                "pull": "You tug at the lip of the balcony edge. Some loose pebbles skitter off into the void. You count the seconds before they hit bottom. You run out of fingers."
+            }
+        },
+        {
+            "id": "rock-formation",
+            "name": "Rock Anchor",
+            "aliases": ["rock", "anchor", "boulder", "stone", "rock formation", "formation", "outcrop", "outcropping", "knob", "rope anchor"],
+            "zone": {
+                "x": 600,
+                "y": 370,
+                "width": 60,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 630,
+                "y": 420
+            },
+            "responses": {
+                "look": "A sturdy rock formation near the balcony edge, smoothed by age. A rope is coiled around it, anchored with what appears to be a very old but very solid knot. Someone planned ahead.",
+                "use": "The rock anchor is solid. Whatever rope was attached to it could probably support a person. Or a very ambitious goat.",
+                "default": "You examine the rock formation. It's the most trustworthy thing on this balcony.",
+                "take": "The rock formations are part of the cavern itself. Removing them would be like trying to take the ceiling home -- ambitious, destructive, and structurally inadvisable.",
+                "talk": "You whisper sweet nothings to the rock formation. It remains stoic. Rocks are famously poor conversationalists, but excellent listeners.",
+                "open": "It's a solid rock formation, not a lunchbox. There's nothing to open here except your expectations, which should be lowered.",
+                "push": "You push the rock anchor. It does not move. It has been here since before your civilization had a word for 'push.'",
+                "pull": "You pull at the rock formation. It does not budge. The mountain would like you to know that it is not taking requests."
+            }
+        },
+        {
+            "id": "cavern-view",
+            "name": "Cavern View",
+            "aliases": ["view", "cavern", "panorama", "vista", "scenery", "blue light", "crystal below", "chasm", "abyss", "depths", "below"],
+            "zone": {
+                "x": 400,
+                "y": 50,
+                "width": 500,
+                "height": 350
+            },
+            "interactionPoint": {
+                "x": 650,
+                "y": 430
+            },
+            "responses": {
+                "look": "An enormous cavern stretches below, lit by a column of blue light. The scale makes you feel appropriately insignificant.",
+                "take": "You can't take a view, though several monarchs have tried.",
+                "use": "You lean on the railing and take it all in. For a cursed underground kingdom, it's rather pretty.",
+                "default": "You gaze into the cavern. The blue light below pulses slowly, like a heartbeat.",
+                "talk": "You call out into the cavern. Your voice echoes back, distorted and diminished, like hearing yourself on a recording. The cavern doesn't care about your feelings.",
+                "open": "You can't open a cavern. It's already the most open thing you've ever stood inside of.",
+                "push": "You push the air in front of the cavern view. The air yields easily. A hollow victory in every sense.",
+                "pull": "You can't pull a view closer. That's what walking is for, and in this case, walking would involve a fatal drop."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "rope",
+            "name": "Climbing Rope",
+            "aliases": ["rope", "cord", "line", "coil", "twine", "cable", "climbing line", "old rope", "coiled rope", "hemp"],
+            "zone": {
+                "x": 620,
+                "y": 395,
+                "width": 30,
+                "height": 25
+            },
+            "interactionPoint": {
+                "x": 635,
+                "y": 420
+            },
+            "responses": {
+                "look": "A length of rope coiled around the rock anchor. It looks old but still has the tensile strength of something that was made to last. The weave is tight and the fibers intact. It was last inspected during the previous dynasty, but rope ages better than monarchs.",
+                "use": "Good rope. Strong. The kind that could bind planks to a hull, or secure a line for climbing. You'll know when you need it.",
+                "take": "You reach for the coiled rope. It's thick, strong, and has that satisfying heft of something designed for serious vertical work.",
+                "talk": "You address the rope. It says nothing, being rope. But it has an air of quiet reliability about it, like a competent accountant.",
+                "open": "It's a rope, not an envelope. You can coil it, uncoil it, tie it, or take it, but you cannot open it.",
+                "push": "You nudge the coiled rope. It shifts slightly against the rock anchor. It's not going anywhere unless you untie it and take it with you.",
+                "pull": "You tug the rope experimentally. The knot holds firm against the rock anchor. The rope has tension and strength. It's ready when you are."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "take-rope",
+            "trigger": {
+                "verb": "take",
+                "subject": "rope"
+            },
+            "conditions": [
+                {
+                    "type": "item-not-taken",
+                    "item": "rope"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "add-item",
+                    "item": "rope"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You uncoil the rope from its anchor. It's long, strong, and smells like centuries of cave air. The rope joins your increasingly eclectic inventory. You're carrying a torch, various bureaucratic documents, and now a rope. You're either an adventurer or a very well-equipped hobo."
+                }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "lean-over-edge",
+            "trigger": {
+                "verb": "use",
+                "subject": "balcony-edge"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "balcony-fall"
+                }
+            ]
+        },
+        {
+            "id": "go-edge",
+            "trigger": {
+                "verb": "go",
+                "subject": "edge"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "balcony-fall"
+                }
+            ]
+        }
+    ],
+    "deaths": {
+        "balcony-fall": {
+            "title": "Death by Vertigo",
+            "narratorText": "You lean over the balcony edge. For a moment, you have a spectacular view of the Crystal Chamber below -- the pedestal, the barrier, the ancient stonework. Then gravity reminds you that looking down was optional but falling is not. The descent is long enough for reflection and short enough to prevent useful conclusions. The Crystal of Mundanity watches your arrival at the chamber floor with the indifference of an artifact that has seen this happen before."
+        }
+    },
+    "dynamicDescriptions": {},
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            {
+                "key": "amb-wind-light",
+                "volume": 0.8
+            }
+        ]
+    },
+    "effects": {
+        "ambient": [
+            {
+                "type": "dust-motes",
+                "intensity": 0.3
+            }
+        ],
+        "lighting": {
+            "tint": "#334455",
+            "brightness": 0.45,
+            "vignette": 0.5
+        }
+    },
+    "playerSpawn": {
+        "x": 400,
+        "y": 450
+    }
+}

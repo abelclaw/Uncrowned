@@ -1,0 +1,516 @@
+{
+    "id": "royal_kitchen",
+    "name": "Royal Kitchen",
+    "description": "The royal kitchen is a battlefield of flour, frustration, and fading grandeur. Copper pots hang from ceiling hooks, tarnished but serviceable. A massive iron stove dominates one wall, radiating heat and the smell of something that might once have been bread. Martha the Cook stands at a chopping block, wielding a cleaver with the confidence of someone who has solved most of life's problems with sharp objects. She is, by all accounts, the only functional member of the castle staff.",
+    "background": {
+        "layers": [
+            {
+                "key": "bg-shared-act1-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act1-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-royal_kitchen",
+                "scrollFactor": 1
+            }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
+    ],
+    "exits": [
+        {
+            "id": "to-hallway",
+            "zone": {
+                "x": 880,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
+            "targetRoom": "castle_hallway",
+            "spawnPoint": {
+                "x": 480,
+                "y": 450
+            },
+            "transition": "slide-right",
+            "direction": "east",
+            "label": "hallway"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "iron-stove",
+            "name": "Iron Stove",
+            "zone": {
+                "x": 300,
+                "y": 355,
+                "width": 100,
+                "height": 70
+            },
+            "interactionPoint": {
+                "x": 350,
+                "y": 420
+            },
+            "responses": {
+                "look": "A massive cast-iron stove, the kind that could heat a castle or cook a dragon. It's currently radiating enough heat to make the kitchen feel like a sauna with ambitions. The burners glow red, and the metal creaks with thermal expansion. Someone has scratched 'DO NOT TOUCH' into the surface, which was either a warning or a dare.",
+                "use": "The stove is hot. Very hot. You warm your hands briefly. Any closer and you'd be the main course.",
+                "take": "The stove weighs roughly the same as your collective bad decisions. It stays.",
+                "push": "You push the stove. It doesn't move, but it does radiate displeasure in the form of increased heat.",
+                "default": "You examine the stove. It's doing its job admirably, which is more than can be said for most things in this castle.",
+                "talk": "You address the stove. It ticks quietly as its metal cools -- or warms, it's hard to tell. Stoves communicate through temperature, not language. This one is lukewarm on the subject of conversation.",
+                "open": "You open the stove door. Inside: cold ashes, a single charred log, and the ghost of whatever meal was last cooked here. The stove has been between jobs for a while.",
+                "pull": "You pull the stove door open wider. The hinges creak with the reluctance of something that hasn't been used since the cook abandoned her post."
+            }
+        },
+        {
+            "id": "pantry-shelves",
+            "name": "Pantry Shelves",
+            "zone": {
+                "x": 700,
+                "y": 360,
+                "width": 80,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 740,
+                "y": 420
+            },
+            "responses": {
+                "look": "Wooden shelves line the back wall, mostly empty. A few jars of preserved something sit gathering dust. The flour supply is conspicuously absent -- Martha has mentioned the rat problem in the servants' quarters more than once, each time with increasing volume and decreasing patience.",
+                "use": "You rummage through the pantry. Dust, empty jars, and one extremely stale biscuit that predates the current century. Nothing useful.",
+                "take": "You consider pilfering from the pantry. Martha's peripheral vision is legendary. You think better of it.",
+                "default": "You scan the shelves. They're a monument to scarcity and rats.",
+                "talk": "You address the pantry shelves. A tin can rolls off in response, hitting the floor with a clatter that echoes through the empty kitchen. The shelves have spoken.",
+                "open": "The shelves are open by design. The jars on them are sealed by desperation -- whatever's inside has been preserved so long it may have achieved sentience.",
+                "push": "You shove the pantry shelves. They creak ominously and a jar of something pickled wobbles toward the edge. You stop pushing before gravity and Martha's wrath combine forces.",
+                "pull": "You pull the shelves toward you. Behind them: wall. No secret passage, no hidden treasure. Just more wall."
+            }
+        },
+        {
+            "id": "hearth",
+            "name": "Hearth",
+            "zone": {
+                "x": 300,
+                "y": 50,
+                "width": 350,
+                "height": 300
+            },
+            "interactionPoint": {
+                "x": 475,
+                "y": 440
+            },
+            "responses": {
+                "look": "A massive stone hearth dominates the kitchen wall, its embers still glowing with a warmth that suggests someone -- probably Martha -- has been feeding it since before dawn. The stonework is blackened by generations of cooking fires and at least one incident nobody talks about.",
+                "take": "You'd burn your pockets. And your hands. And your dignity. The hearth stays where it is.",
+                "use": "You could cook something if you had ingredients. And skill. And Martha's permission, which is the scarcest resource in this kitchen.",
+                "default": "You regard the hearth. It radiates heat and the quiet authority of something that has been the centre of this kitchen longer than any cook has lived.",
+                "talk": "You address the hearth. Wind whistles down the chimney in response, carrying the faint scent of soot and long-dead fires. The hearth remembers warmth the way you remember childhood: fondly and inaccurately.",
+                "open": "You peer into the hearth's firebox. Embers glow back at you like angry orange eyes. There's no hidden compartment, just heat, ash, and carbonised memories.",
+                "push": "You push against the hearth stones. They've been in place since the castle was built and they intend to stay. Your shoulder now has a bruise with character.",
+                "pull": "You try to pull stones from the hearth. They're mortared in place by centuries of soot, grease, and the structural stubbornness of medieval masonry."
+            }
+        },
+        {
+            "id": "kitchen-shelves",
+            "name": "Kitchen Shelves",
+            "zone": {
+                "x": 50,
+                "y": 50,
+                "width": 200,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 150,
+                "y": 430
+            },
+            "responses": {
+                "look": "Wall shelves cluttered with crockery in various states of disrepair -- chipped bowls, cracked plates, and one mug with a handle that's held on by sheer habit. A thin layer of dust covers everything Martha isn't actively using.",
+                "take": "Martha would notice. Martha notices everything. You'd make it three steps before the cleaver thunked into the doorframe beside your head.",
+                "use": "The shelves are already in use, storing the sad remnants of what was once a royal collection of tableware. They're doing their best.",
+                "default": "You examine the kitchen shelves. They tell the story of a kitchen that once fed a court and now feeds a stubborn cook and her principles.",
+                "talk": "You address the kitchen shelves. A plate slides an inch, teeters on the edge, and settles. The shelves are not speaking to you. They're negotiating with gravity.",
+                "open": "They're shelves, not cabinets. They're as open as they're going to get. The crockery is as exposed as the castle's budget deficit.",
+                "push": "You give the shelves a shove. Crockery rattles. A plate slides to the edge, teeters, and -- through sheer spite -- stays put. Martha glares at you.",
+                "pull": "You pull on the shelves. Plates rattle like ceramic teeth chattering in fear. Nothing comes loose except your confidence in this plan."
+            }
+        },
+        {
+            "id": "cooking-pots",
+            "name": "Cooking Pots",
+            "zone": {
+                "x": 400,
+                "y": 200,
+                "width": 200,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 500,
+                "y": 440
+            },
+            "responses": {
+                "look": "Copper pots in various sizes hang from hooks and sit on counters, well-used and dented from years of service. Each one has a patina that professional chefs would call 'character' and everyone else would call 'neglect.'",
+                "take": "You reach for a pot. Martha's cleaver embeds itself in the chopping block with a resonant THUNK. 'Those are mine,' she says, without looking up. You lower your hand.",
+                "use": "Empty, sadly. Without ingredients, these pots are just hollow metal containers with aspirations.",
+                "default": "You study the cooking pots. They've outlasted kings, curses, and countless burnt meals. Copper endures.",
+                "talk": "You address the pots. One of them rings faintly, a resonant hum that fades into silence. Copper pots have excellent acoustics and absolutely nothing to say.",
+                "open": "You lift the lid of the nearest pot. Inside: emptiness, a faint smell of last week's stew, and the lingering sadness of a kitchen without supplies.",
+                "push": "You push a copper pot across the counter. It grinds against the stone with a noise that makes Martha's left eye twitch. You stop.",
+                "pull": "You pull a pot off its hook. It swings back and clangs against its neighbour, starting a chain reaction of metallic percussion. Martha's grip tightens. You rehang it."
+            }
+        },
+        {
+            "id": "kitchen-hearth",
+            "name": "Kitchen Hearth",
+            "zone": {
+                "x": 600,
+                "y": 300,
+                "width": 120,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 660,
+                "y": 420
+            },
+            "responses": {
+                "look": "A massive stone hearth dominates one wall, its mouth blackened by decades of cooking fires. Iron hooks hang from the lintel for suspending pots over the flames. The fire is cold now. Ash and cold coals sit in the grate like the remains of better days.",
+                "take": "You can't take a hearth. It's built into the wall. It IS the wall, in a very real structural sense.",
+                "use": "The hearth is cold. Without fuel, flint, and something to cook, it's just a large decorative hole in the wall. Impressive, but currently useless.",
+                "talk": "You address the cold hearth. No warmth responds. The kitchen's heart has stopped beating. It's a grim metaphor you'd rather not dwell on.",
+                "open": "The hearth is already open. It's a fireplace. The opening is literally the point.",
+                "push": "You push against the hearth stones. They're solid, heat-tempered masonry. The kitchen was built around this hearth. It's not going anywhere.",
+                "pull": "You pull at an iron hook hanging from the lintel. It holds firm. These hooks survived years of heavy pots and angry cooks. Your pulling is trivial."
+            }
+        },
+        {
+            "id": "chopping-block",
+            "name": "Chopping Block",
+            "zone": {
+                "x": 430,
+                "y": 390,
+                "width": 70,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 465,
+                "y": 440
+            },
+            "responses": {
+                "look": "A thick oak chopping block, its surface scarred with a thousand cuts like a map of Martha's frustrations. It's been chopped on so extensively that the centre has worn into a shallow bowl. Currently, it holds nothing but memories and wood shavings.",
+                "take": "The chopping block weighs roughly as much as Martha's disapproval, which is considerable. It's not going anywhere. Neither, apparently, are you.",
+                "use": "You mime chopping on the block. Martha watches you pretend to be useful with the expression of someone who has seen many interns and been impressed by none of them.",
+                "talk": "You address the chopping block. It says nothing. It's heard things you haven't -- the thud of the cleaver, Martha's muttered curses, the occasional scream of an onion meeting its fate.",
+                "open": "It's a solid block of wood. There's nothing inside it except more wood. This is how blocks work. You're thinking of boxes.",
+                "push": "You push the chopping block. It scrapes across the floor half an inch. Martha's glare pins you in place with more force than the block's weight ever could.",
+                "pull": "You pull the chopping block toward you. It grinds across stone. Martha says, 'Put that back.' You put it back. Survival instincts: finally functioning.",
+                "default": "The chopping block endures. It has been battered, scarred, and soaked with the juices of a thousand vegetables. It perseveres. There's a lesson there."
+            }
+        },
+        {
+            "id": "ceiling-hooks",
+            "name": "Ceiling Hooks",
+            "zone": {
+                "x": 380,
+                "y": 30,
+                "width": 180,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 470,
+                "y": 440
+            },
+            "responses": {
+                "look": "Iron hooks hang from ceiling beams, most still holding copper pots and dried herbs. A few are empty, their former cargo claimed by rust, gravity, or Martha's throwing arm during a particularly bad supply day.",
+                "take": "The hooks are embedded in century-old ceiling beams. You'd need a ladder, a pry bar, and a death wish -- the last because Martha uses those hooks and Martha does not share.",
+                "use": "You hang your jacket on a hook. Martha removes it, hands it back to you, and says nothing. The hooks are for kitchen implements only. You are not a kitchen implement. Debatable.",
+                "talk": "You address the ceiling hooks. They don't respond. They've been silently holding pots for decades. Strong, reliable, uncomplaining. More than can be said for most people.",
+                "open": "Hooks don't open. They hook. That's the one thing they do, and they do it without complaint or existential crisis.",
+                "push": "You push a hanging pot. It swings on its hook, clanging against its neighbor. The percussion echoes through the kitchen. Martha's eye twitches. You stop the swinging.",
+                "pull": "You pull a pot off a hook. It's heavier than expected and nearly brains you on the way down. You rehang it quickly. The hook accepts it back without judgment.",
+                "default": "The ceiling hooks do their job. Silently. Indefinitely. They're the most competent employees in this castle."
+            }
+        },
+        {
+            "id": "kitchen-cleaver",
+            "name": "Martha's Cleaver",
+            "zone": {
+                "x": 440,
+                "y": 380,
+                "width": 40,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 460,
+                "y": 430
+            },
+            "responses": {
+                "look": "Martha's cleaver rests within arm's reach at all times. It's less a cooking tool and more an extension of her personality -- sharp, heavy, and capable of ending a conversation from across the room.",
+                "take": "You reach for the cleaver. Martha's hand is there first, having moved at a speed that shouldn't be possible for someone who claims to have a bad hip. 'Mine,' she says.",
+                "use": "You suggest you could help with the chopping. Martha looks at you, looks at the cleaver, and makes a decision about which of you she trusts more. It's the cleaver.",
+                "talk": "You admire the cleaver aloud. Martha almost smiles. Almost. The cleaver is the one thing in this kitchen she's genuinely proud of. It was her mother's. Don't touch it.",
+                "open": "It's a cleaver, not a Swiss army knife. It has one function, performed with devastating efficiency. Simplicity is a virtue Martha understands.",
+                "push": "You nudge the cleaver with a finger. Martha's hand slams down next to yours with a THWACK that makes the pots rattle. 'Don't,' she says. Message received.",
+                "pull": "You try to slide the cleaver toward you. Martha intercepts it mid-slide. 'I will use this on the next person who touches it,' she says. She's not joking. She's never joking about the cleaver.",
+                "default": "Martha's cleaver: the real authority in this kitchen. The cook just swings it."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "empty-chalice",
+            "name": "Empty Chalice",
+            "zone": {
+                "x": 783,
+                "y": 318,
+                "width": 45,
+                "height": 54
+            },
+            "interactionPoint": {
+                "x": 805,
+                "y": 372
+            },
+            "responses": {
+                "look": "A dented silver chalice sitting on a shelf, forgotten among the kitchen implements. It was once used for royal toasts. Now it's been demoted to measuring cup. A slight tarnish gives it character. Or neglect. Same thing in this castle.",
+                "use": "It's empty. You'd need to fill it with something. Water would be a start. Something more exotic might be more useful.",
+                "take": "You reach for the empty chalice. It's tarnished but solid -- the kind of drinking vessel that was once used for royal toasts and is now used for nothing.",
+                "talk": "You speak to the chalice. It doesn't answer, but the tarnish on its surface seems to deepen, as though embarrassed on your behalf.",
+                "open": "It's a chalice, not a locket. It's already open. Maximally open. The most open a drinking vessel can be.",
+                "push": "You push the chalice across the shelf. It scrapes along with the indignity of former royalty reduced to casual shoving.",
+                "pull": "You pull the chalice toward the edge of the shelf. It teeters with the dramatic instinct of something that was once centre stage at state banquets."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "take-chalice",
+            "trigger": {
+                "verb": "take",
+                "subject": "empty-chalice"
+            },
+            "conditions": [
+                {
+                    "type": "item-not-taken",
+                    "item": "empty-chalice"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "add-item",
+                    "item": "empty-chalice"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You pocket the chalice. Martha glances over. 'Taking the old measuring cup? Fine. I've been using a ladle anyway. Everything in this castle has been repurposed at least three times.' She returns to her chopping. The chalice is dented but functional -- like the kingdom itself."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "give-flour-to-cook",
+            "trigger": {
+                "verb": "use",
+                "subject": "flour-sack",
+                "target": "castle_cook"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "flour-sack"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "flour_delivered"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "flour-sack"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "flour_delivered"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "cook_befriended"
+                },
+                {
+                    "type": "add-item",
+                    "item": "skeleton-key"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "Martha's eyes light up at the sight of flour. 'You beautiful, beautiful person. Do you know how long I've been trying to make bread with DUST?' She snatches the sack, weighs it expertly, and nods. 'This'll do. Right then -- a deal's a deal.' She reaches into her apron and produces a key made of what appears to be actual bone. 'Skeleton key. Opens the locked door in the hallway. Found it in the old king's sock drawer. Don't ask why I was in the old king's sock drawer.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "give-flour-talk",
+            "trigger": {
+                "verb": "talk",
+                "subject": "castle_cook"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "flour-sack"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "flour_delivered"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "Martha eyes the flour sack poking out of your inventory. 'Is that FLOUR? Real flour? Not stone flour, not dust flour, ACTUAL flour?' She reaches for it eagerly. Perhaps you should give it to her."
+                }
+            ]
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "torch-stove",
+            "trigger": {
+                "verb": "use",
+                "subject": "makeshift-torch",
+                "target": "iron-stove"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "makeshift-torch"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "kitchen-fire"
+                }
+            ]
+        },
+        {
+            "id": "torch-stove-2",
+            "trigger": {
+                "verb": "use",
+                "subject": "makeshift-torch"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "makeshift-torch"
+                },
+                {
+                    "type": "in-room",
+                    "room": "royal_kitchen"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "kitchen-fire"
+                }
+            ]
+        }
+    ],
+    "deaths": {
+        "kitchen-fire": {
+            "title": "Death by Culinary Disaster",
+            "narratorText": "You bring your makeshift torch near the stove. The stove, already operating at temperatures that would concern a metallurgist, reacts to the open flame with the enthusiasm of a chemistry experiment going wrong. Grease, heat, and bioluminescent fungus combine in a fireball that rewrites the castle's kitchen safety manual. Martha dives behind the chopping block. You are less fortunate. The explosion is brief but thorough. On the bright side, the bread Martha was attempting is now perfectly toasted."
+        }
+    },
+    "dynamicDescriptions": {
+        "flour_delivered": "The royal kitchen hums with renewed energy. Martha the Cook is actually baking, flour dusting her apron and a genuine smile on her face for the first time in months. The smell of fresh bread replaces the usual aroma of institutional despair. She nods at you as you pass -- you've earned her respect, which in this castle is worth more than gold.",
+        "cook_befriended": "Martha moves through her kitchen with purpose, the flour you brought being transformed into bread with practiced efficiency. She's the most competent person in this castle, and now she considers you an ally. This feels like a significant achievement."
+    },
+    "npcs": [
+        {
+            "id": "castle_cook",
+            "position": {
+                "x": 327,
+                "y": 476
+            },
+            "interactionPoint": {
+                "x": 271,
+                "y": 439
+            },
+            "zone": {
+                "x": 253,
+                "y": 279,
+                "width": 148,
+                "height": 197
+            },
+            "aliases": ["martha", "cook", "woman", "chef", "lady"],
+            "responses": {
+                "look": "Martha is a stout woman wielding a cleaver with the casual competence of someone who's been threatening vegetables -- and occasionally people -- for thirty years. She eyes you the way one eyes an uninvited guest who's wandered into the kitchen during a crisis.",
+                "talk": "'Can't talk. No flour. No flour means no bread. No bread means the castle starves. Not that there's anyone left to feed, but a cook has standards.' She waves her cleaver in the general direction of 'go away.'",
+                "use": "Martha is not a kitchen implement. She will, however, use a kitchen implement on you if you don't stop bothering her.",
+                "take": "You reach toward Martha. She raises the cleaver. You reconsider. Fastest decision you've made all day.",
+                "default": "Martha chops something with unnecessary force. You decide not to investigate what.",
+                "push": "You put your hand on Martha's shoulder. She looks at it. She looks at her cleaver. She looks back at your hand. You remove your hand. The entire exchange takes two seconds and ages you five years.",
+                "pull": "You tug Martha's sleeve. She spins with a speed that contradicts her build, cleaver at the ready. 'Touch me again and I'll julienne your fingers,' she says calmly.",
+                "open": "Martha is a person, not a cupboard. Though she does contain a surprising amount of useful information -- if you can get past the wall of culinary hostility."
+            }
+        }
+    ],
+    "audio": {
+        "music": "music-village",
+        "ambient": [
+            {
+                "key": "amb-wind-light",
+                "volume": 0.2
+            }
+        ]
+    },
+    "effects": {
+        "ambient": [
+            {
+                "type": "dust-motes",
+                "intensity": 0.5
+            },
+            {
+                "type": "embers",
+                "intensity": 0.2
+            }
+        ],
+        "lighting": {
+            "tint": "#ddaa66",
+            "brightness": 0.8,
+            "vignette": 0.2
+        }
+    },
+    "puzzleHints": [
+        {
+            "puzzleId": "give-flour-to-cook",
+            "tiers": [
+                "Martha seems rather frustrated about something. Missing ingredients, perhaps. A cook without supplies is just an angry person holding a cleaver.",
+                "Martha needs flour. Desperately. The servants' quarters might have some -- if you can get past the resident rodent population first. Rats are territorial about their grain.",
+                "Get the flour sack from the servants' quarters (use the rat trap on the storage crates first), then use the flour on Martha the Cook. She'll give you a skeleton key in return."
+            ]
+        }
+    ],
+    "playerSpawn": {
+        "x": 448,
+        "y": 423
+    }
+}

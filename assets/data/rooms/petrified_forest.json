@@ -1,0 +1,325 @@
+{
+    "id": "petrified_forest",
+    "name": "Petrified Forest",
+    "description": "The forest clearing you remember is... wrong. The trees stand rigid, their bark turned grey stone, branches frozen mid-sway like the arms of statues reaching for help that never came. The wildflowers are granite. The grass crunches underfoot -- not with the sound of frost, but of crumbling rock. The petrification curse has reached the outskirts, and it is not subtle about it. The air smells of dust and dying magic. Somewhere ahead, Castle Erelhain rises through the stone canopy, its towers wrapped in grey like a kingdom wearing its own funeral shroud.",
+    "background": {
+        "layers": [
+            {
+                "key": "bg-shared-act3-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act3-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-petrified_forest",
+                "scrollFactor": 1
+            }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        {
+            "x": 50,
+            "y": 380
+        },
+        {
+            "x": 910,
+            "y": 380
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
+    ],
+    "exits": [
+        {
+            "id": "to-cavern",
+            "zone": {
+                "x": 0,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
+            "targetRoom": "cavern_entrance_hall",
+            "spawnPoint": {
+                "x": 650,
+                "y": 450
+            },
+            "transition": "fade",
+            "direction": "west",
+            "label": "caverns"
+        },
+        {
+            "id": "to-courtyard-act3",
+            "zone": {
+                "x": 880,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
+            "targetRoom": "castle_courtyard_act3",
+            "spawnPoint": {
+                "x": 300,
+                "y": 460
+            },
+            "transition": "fade",
+            "direction": "east",
+            "label": "castle"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "petrified-trees",
+            "name": "Petrified Trees",
+            "aliases": ["trees", "petrified tree", "stone trees", "grey trees", "gray trees", "trunks", "trunk", "branches", "stone branches", "forest", "dead trees", "tree"],
+            "zone": {
+                "x": 300,
+                "y": 340,
+                "width": 120,
+                "height": 80
+            },
+            "interactionPoint": {
+                "x": 360,
+                "y": 420
+            },
+            "responses": {
+                "look": "Trees turned to stone, every ring preserved in grey granite. The bark's texture is flawless -- you can count the knots, trace the grain. Nature's portrait, rendered in the medium of catastrophe. Some branches still have stone leaves. Others snapped under their own weight and lie in rocky fragments on the ground.",
+                "take": "You try to snap off a stone branch. It breaks, and a chunk of petrified wood falls to the ground. It's heavy, cold, and deeply sad. You leave it where it fell.",
+                "talk": "You address the stone trees. They do not respond. They have been silenced more permanently than any conversation partner you've encountered, and you once argued with a wall.",
+                "default": "You examine the petrified trees. They are a sobering reminder that time is not on your side. Or anyone's side. Time is on its own side.",
+                "use": "You're not sure what you expected. Rub two stone trees together and start a geological fire?",
+                "open": "You search the stone bark for a seam, a hinge, a secret compartment. Trees don't have doors. Petrified trees especially don't have doors.",
+                "push": "You push a petrified trunk. Solid stone. The tree stood against wind for centuries when alive and stands against you now. The curse gave it permanence, if nothing else.",
+                "pull": "You wrap your arms around a stone trunk and heave. Nothing moves except your lower back, which objects strenuously."
+            }
+        },
+        {
+            "id": "stone-flowers",
+            "name": "Stone Wildflowers",
+            "aliases": ["flowers", "wildflowers", "stone flowers", "granite flowers", "petals", "blooms", "stone blooms", "petrified flowers", "stone petals", "grey flowers", "gray flowers"],
+            "zone": {
+                "x": 150,
+                "y": 450,
+                "width": 100,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 200,
+                "y": 440
+            },
+            "responses": {
+                "look": "The wildflowers that once bloomed in defiant cheerfulness are now frozen in stone. Every petal, every stem, perfectly preserved and utterly lifeless. They were the first things you saw when you arrived in Erelhain. Now they're the first evidence of what you're trying to stop.",
+                "take": "You try to pick a stone flower. It is, unsurprisingly, made of stone. Your fingers report that stone is heavy and uncooperative.",
+                "default": "You regard the stone flowers. They are beautiful, in the way that endings are sometimes beautiful.",
+                "use": "You attempt to use the stone flowers. For what? A bouquet? A romantic gesture? Stone flowers say 'I care about you' and 'I have concerning hobbies' simultaneously.",
+                "talk": "You whisper encouragement to the petrified wildflowers. They do not perk up. Encouragement cannot reverse mineral transmutation. You knew this.",
+                "open": "You try to pry open a stone bud, hoping for a secret inside. It crumbles. Inside: more stone. The curse doesn't do subtlety.",
+                "push": "You nudge a stone flower with your boot. It snaps off at the stem and rolls away. You've just committed botanical vandalism on a geological timescale.",
+                "pull": "You tug at a stone flower. The stem snaps with a dry crack. It lies in your hand like a grey cigarette. You set it down carefully. Respect for the dead is all you've got."
+            }
+        },
+        {
+            "id": "curse-boundary",
+            "name": "Spreading Grey",
+            "aliases": ["grey", "gray", "boundary", "curse", "spreading", "grey line", "gray line", "petrification", "curse line", "grey boundary", "advancing curse", "edge", "border"],
+            "zone": {
+                "x": 600,
+                "y": 380,
+                "width": 120,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 660,
+                "y": 430
+            },
+            "responses": {
+                "look": "The petrification advances in a visible line across the ground. Behind you: stone. Ahead: not yet stone, but getting there. The boundary creeps forward as you watch -- slow, but inexorable. Grass turns grey, then rigid, then cracks. The curse is patient, and it has no intention of stopping.",
+                "use": "You cannot 'use' an advancing magical curse. You can run from it, or you can stop it. Those are the options. There is no third option. Well, there's 'become a statue,' but that hardly counts.",
+                "default": "You watch the curse spread. It's hypnotic. It's also terrifying. You should probably stop watching and start doing something about it.",
+                "take": "You crouch and try to scoop up the spreading grey. It's not a substance. It's an absence -- colour being drained, life being silenced. You can't take nothing. That's the whole problem.",
+                "talk": "You address the advancing curse directly. 'Stop,' you say, with all the authority of someone who has none. The grey does not stop. It has never stopped.",
+                "open": "The curse is not a door, a box, or a metaphor you can crack open. It's a force. It's spreading. And it doesn't have a handle.",
+                "push": "You press your hands toward the grey line as if you could hold it back. The stone prickles against your palms. You pull away quickly. It's warmer than it should be.",
+                "pull": "You cannot pull a curse backward. That's not how curses work. That's not how anything works."
+            }
+        },
+        {
+            "id": "stone-trees",
+            "name": "Stone Trees",
+            "aliases": ["trees", "stone tree", "grey trees", "gray trees", "trunks", "bark", "stone trunks", "dead trees", "petrified trees", "tree"],
+            "zone": {
+                "x": 50,
+                "y": 50,
+                "width": 200,
+                "height": 350
+            },
+            "interactionPoint": {
+                "x": 150,
+                "y": 430
+            },
+            "responses": {
+                "look": "Trees turned to grey stone, still reaching for a sky that can no longer nourish them. The bark texture is preserved perfectly, which somehow makes it sadder.",
+                "take": "They're rooted in stone ground. Everything here is stone. That's rather the point.",
+                "use": "You knock on one. It rings like a bell. Even the echoes sound mournful.",
+                "default": "You regard the stone trees. They stand as monuments to a forest that once was.",
+                "talk": "You lean close and speak softly to a stone tree. Perhaps, once upon a time, it could hear the wind in its branches. Now it hears nothing. The bark is cold against your cheek. You feel foolish, which is appropriate.",
+                "open": "You look for a hollow, a knot, a door -- anything. But petrification doesn't leave hollows. It fills everything with stone, including the spaces where life used to be.",
+                "push": "You brace against the stone trunk and shove. It has the structural integrity of a small building, because that's essentially what a petrified tree is. A very tree-shaped building with no doors.",
+                "pull": "You try to topple a stone tree. It weighs several tons and has roots that go down to bedrock. The tree will be standing here long after you're gone. It knows this. You suspect it's smug about it."
+            }
+        },
+        {
+            "id": "stone-ground",
+            "name": "Stone Ground",
+            "aliases": ["ground", "floor", "grass", "stone grass", "petrified grass", "earth", "dirt", "soil", "grey ground", "gray ground", "stone floor", "needles", "blades"],
+            "zone": {
+                "x": 200,
+                "y": 460,
+                "width": 500,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 470
+            },
+            "responses": {
+                "look": "The grass crunches underfoot -- not with the soft give of vegetation, but with the brittle snap of stone. Every blade has been petrified where it stood, creating a carpet of grey needles that prickle through your boots. Small stone insects lie scattered among the blades, frozen mid-crawl.",
+                "take": "You snap off a blade of stone grass. It's sharp, brittle, and utterly useless. You now have a stone blade of grass. Your inventory expands in the most disappointing way possible.",
+                "use": "You walk carefully across the stone ground. Each step crunches. The sound is deeply unpleasant, like walking on a graveyard made of china.",
+                "talk": "You address the petrified ground. It crunches under your feet in response. This is the most hostile floor you've ever stood on.",
+                "open": "You can't open the ground. It's solid petrified earth all the way down.",
+                "push": "You stamp on the stone grass. Brittle blades snap under your boot. You've destroyed several hundred years of petrification in a square foot. Well done.",
+                "pull": "You pull at a clump of stone grass. It snaps off at the roots with a crystalline crack. Underneath is more grey stone. It's stone all the way down."
+            }
+        },
+        {
+            "id": "stone-canopy",
+            "name": "Stone Canopy",
+            "aliases": ["canopy", "ceiling", "branches", "overhead", "leaves", "stone leaves", "stone branches", "treetops", "tree tops", "above", "sky", "roof"],
+            "zone": {
+                "x": 150,
+                "y": 100,
+                "width": 600,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 420
+            },
+            "responses": {
+                "look": "Above you, the petrified branches interlock to form a canopy of grey stone. What were once leaves are now thin sheets of mineral, filtering the light into a pale, colourless wash. It should be oppressive, but there's an eerie beauty to it -- like a cathedral designed by entropy.",
+                "take": "You reach up for a stone branch. Even the lowest ones are well above your head, and climbing a stone tree seems like an excellent way to add yourself to the sculpture collection.",
+                "use": "The stone canopy filters the light above you. You can't use it for anything. It's already using itself -- as a monument to the curse's thoroughness.",
+                "talk": "You call up to the canopy. Your voice echoes off stone branches and comes back flat and grey, like everything else here.",
+                "open": "You can't open a canopy. Especially not one made of stone. It would take a geological event to change this overhead situation.",
+                "push": "You can't reach the canopy to push it. Which is fortunate, because pushing a ceiling made of stone branches would likely result in a very elaborate burial.",
+                "pull": "You jump and grab at a low stone branch. It holds your weight briefly, then snaps. You land in a shower of grey fragments. The canopy barely notices."
+            }
+        }
+    ],
+    "items": [],
+    "puzzles": [
+        {
+            "id": "enter-act3",
+            "trigger": {
+                "verb": "look",
+                "subject": "curse-boundary"
+            },
+            "conditions": [
+                {
+                    "type": "flag-not-set",
+                    "flag": "curse_accelerating"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "curse_accelerating"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "The curse is accelerating. You can see it -- the grey line creeps forward faster than before, as if sensing that someone finally has the means to stop it and is determined to petrify the kingdom before they get the chance. The Crystal of Mundanity hums in your pack, responding to the magic. Time is running out. The Rite of Administrative Closure awaits in the throne room, but you'll need more than a crystal and good intentions. Much more."
+                }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "touch-petrified",
+            "trigger": {
+                "verb": "use",
+                "subject": "petrified-trees"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "petrify-touch"
+                }
+            ]
+        },
+        {
+            "id": "touch-petrified-push",
+            "trigger": {
+                "verb": "push",
+                "subject": "petrified-trees"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "petrify-touch"
+                }
+            ]
+        }
+    ],
+    "deaths": {
+        "petrify-touch": {
+            "title": "Death by Petrification",
+            "narratorText": "You press your bare hand against a petrified tree. The curse is patient, but it is also opportunistic. Grey spreads from the bark to your fingertips with the speed of gossip in a small village. Your hand goes rigid. Then your wrist. Then your arm. You watch yourself turn to stone with the detached fascination of someone who knows they've made a terrible mistake but can't look away from it. In your final moments, you become a very realistic statue. Pigeons will, eventually, find you."
+        }
+    },
+    "dynamicDescriptions": {
+        "curse_accelerating": "The Petrified Forest stands in grey silence, the curse visibly advancing through the trees. The Crystal of Mundanity pulses in your inventory, resonating with the dark magic. The path to Castle Erelhain lies east, through stone trees and the ruins of a once-green kingdom."
+    },
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            {
+                "key": "amb-wind-light",
+                "volume": 0.9
+            }
+        ]
+    },
+    "effects": {
+        "weather": {
+            "type": "fog",
+            "intensity": 0.5
+        },
+        "ambient": [
+            {
+                "type": "dust-motes",
+                "intensity": 0.3
+            }
+        ],
+        "lighting": {
+            "tint": "#667788",
+            "brightness": 0.6,
+            "vignette": 0.5,
+            "postfx": [
+                "desaturate"
+            ]
+        }
+    },
+    "playerSpawn": {
+        "x": 480,
+        "y": 460
+    }
+}

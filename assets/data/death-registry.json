@@ -1,0 +1,446 @@
+{
+  "version": 1,
+  "totalDeaths": 44,
+  "deaths": [
+    {
+      "id": "bee-death",
+      "roomId": "forest_clearing",
+      "roomName": "Forest Clearing",
+      "title": "Death by Enthusiasm",
+      "narratorText": "You shove the beehive because... why? What possible good outcome did you envision? The bees have a very clear opinion about property rights, and they enforce it with approximately ten thousand tiny lawyers. Each one stings. It's the last debate you'll ever lose.",
+      "category": "Nature",
+      "galleryHint": "The forest clearing buzzes with potential consequences...",
+      "imageId": "swarm"
+    },
+    {
+      "id": "poison-death",
+      "roomId": "cave_entrance",
+      "roomName": "Cave Entrance",
+      "title": "Death by Curiosity",
+      "narratorText": "You drink the mysterious liquid. It tastes like regret, bad decisions, and something that might once have been a plum. The colors in your vision expand to include shades that don't exist, and then contract to include nothing at all. You crumple to the floor in a heap of poor judgment. The bottle rolls away, unfinished. Even it doesn't want to be associated with you anymore.",
+      "category": "Poison",
+      "galleryHint": "A mysterious bottle raises the age-old question: to drink, or not to drink?",
+      "imageId": "poison"
+    },
+    {
+      "id": "lost-death",
+      "roomId": "village_path",
+      "roomName": "Village Path",
+      "title": "Death by Poor Navigation",
+      "narratorText": "You wander off the path into the deep forest. The sign that said 'CERTAIN DEATH THIS WAY' was, in retrospect, being entirely literal. The trees close behind you like a curtain. The last sound you hear is a bird, singing what you can only assume is a eulogy. It's not a very good one.",
+      "category": "Recklessness",
+      "galleryHint": "Some signs along the village path are more literal than they appear...",
+      "imageId": "lost"
+    },
+    {
+      "id": "well-death",
+      "roomId": "village_path",
+      "roomName": "Village Path",
+      "title": "Death by Excessive Curiosity",
+      "narratorText": "You swing a leg over the well's rim and grab the rope, which immediately announces its resignation with a decisive snap. For a brief, beautiful moment you are suspended in the air, held aloft by nothing but optimism. Then gravity remembers you exist.\n\nThe fall is long enough to reflect on your choices. The well is much deeper than it looked -- impossibly deep, really, as though the earth itself opened up to swallow you. The circle of sky above shrinks to a coin, then a pin-prick, then nothing.\n\nThe splash, when it comes, is surprisingly dignified. The water is freezing. The walls are smooth. There is no way back up.\n\nSomewhere above, the old man shakes his head. 'They always go for the well,' he mutters. The bucket, now ropeless, sits on the rim -- the only survivor of your expedition.",
+      "category": "Recklessness",
+      "galleryHint": "The old man's well is deeper than it looks. Much, much deeper...",
+      "imageId": "well-fall"
+    },
+    {
+      "id": "drown-death",
+      "roomId": "underground_pool",
+      "roomName": "Underground Pool",
+      "title": "Death by Overconfidence",
+      "narratorText": "You dive into the underground pool with the confidence of someone who can swim. You cannot swim. This was always true. Nobody thought to mention it, because nobody expected you to voluntarily enter a freezing underground body of water in a cave. The crystal at the bottom watches your final bubbles rise. It is unimpressed.",
+      "category": "Recklessness",
+      "galleryHint": "The underground pool is deep, dark, and entirely indifferent to your swimming ability...",
+      "imageId": "drowning"
+    },
+    {
+      "id": "fall-death",
+      "roomId": "old_watchtower",
+      "roomName": "Old Watchtower",
+      "title": "Death by Ambition",
+      "narratorText": "You climb the railing. The railing, as previously noted, is decorative. It was never meant to support the weight of a person, let alone a person with pockets full of quest items. The railing gives way with the resigned creak of something that warned you repeatedly. The fall is long enough for you to reflect on your choices, but not long enough to reach any useful conclusions. The ground is unimpressed by your arrival.",
+      "category": "Gravity",
+      "galleryHint": "The old watchtower offers spectacular views, if you can resist the urge to lean...",
+      "imageId": "falling"
+    },
+    {
+      "id": "dark-death",
+      "roomId": "cave_depths",
+      "roomName": "Cave Depths",
+      "title": "Death by Insufficient Preparation",
+      "narratorText": "You stride boldly into the darkness without a light source. What could go wrong? The answer, as it turns out, is: a pit. A deep, completely avoidable pit that has been here for centuries, patiently waiting for someone exactly this foolish. What you can't see CAN hurt you. In this case, it was a pit. With spikes. Because of course there are spikes.",
+      "category": "Recklessness",
+      "galleryHint": "The cave depths are dark. Remarkably, dangerously, absolutely dark...",
+      "imageId": "pit"
+    },
+    {
+      "id": "stone-touch",
+      "roomId": "village_square",
+      "roomName": "Village Square",
+      "title": "Death by Tactile Curiosity",
+      "narratorText": "You place your hand on the petrified fountain. The stone is warm -- no, hot. No, it's spreading. The grey creeps up your fingers, your wrist, your arm, with the steady inevitability of a Monday morning. You watch, fascinated and horrified in equal measure, as you become a permanent addition to the village square's already impressive collection of statues. Touching cursed objects: an activity with a 100% regret rate.",
+      "category": "Petrification",
+      "galleryHint": "The petrified fountain in the village square is warm to the touch. Ominously warm...",
+      "imageId": "petrification"
+    },
+    {
+      "id": "troll-rage",
+      "roomId": "forest_bridge",
+      "roomName": "Forest Bridge",
+      "title": "Death by Poor Diplomacy",
+      "narratorText": "You antagonize Bertram. This is a mistake. Bertram has a book club, a mortgage, three bridge-tending certifications, and very little tolerance for rudeness. He picks you up with one enormous hand, considers his options briefly, and drops you into the gorge with the casual efficiency of someone who has done this before. Many times. The fall is educational, if brief.",
+      "category": "Violence",
+      "galleryHint": "Bertram the troll has a short temper and a long drop beneath his bridge...",
+      "imageId": "troll"
+    },
+    {
+      "id": "guard-arrest",
+      "roomId": "castle_courtyard",
+      "roomName": "Castle Courtyard",
+      "title": "Death by Heroic Stupidity",
+      "narratorText": "You attack the castle guards. Two professionally trained soldiers in full plate armor. With your bare hands. Or possibly a stick. Either way, the outcome is immediate, thorough, and entirely predictable. The left guard doesn't even draw his sword -- he simply steps on your foot, grabs your collar, and introduces your face to the flagstones with the practiced efficiency of someone who has done this exact thing at least twice today.",
+      "category": "Violence",
+      "galleryHint": "The castle courtyard guards are professionals. You are not...",
+      "imageId": "guards"
+    },
+    {
+      "id": "portrait-curse",
+      "roomId": "castle_hallway",
+      "roomName": "Castle Hallway",
+      "title": "Death by Art Appreciation",
+      "narratorText": "You grab the glowing portrait. The green light flares. The painted eyes snap to life, locking onto yours with an intensity that would make a lighthouse feel inadequate. Queen Thessaly the Wise was wise enough to curse her own portrait against theft. The curse hits you like a freight train made of bad decisions and green light. You have time to think 'some portraits are worth dying for' before realizing this was not one of them.",
+      "category": "Curiosity",
+      "galleryHint": "A portrait in the castle hallway glows with an inviting green light. How charitable...",
+      "imageId": "portrait-curse"
+    },
+    {
+      "id": "throne-collapse",
+      "roomId": "throne_room",
+      "roomName": "Throne Room",
+      "title": "Death by Ambition (Seated Edition)",
+      "narratorText": "You sit on the throne again. The weakened dais, already protesting from your first attempt, finally gives up. The wood splinters, the stone shifts, and the entire throne platform collapses with a sound like a building having a nervous breakdown. Centuries of termite damage, one too many monarchs, and your specific body weight conspire to bring the monarchy crashing down. Literally. The throne lands on you. It's the most regal way to die, and also the most embarrassing.",
+      "category": "Curiosity",
+      "galleryHint": "The throne has supported generations of royalty. It may not support one more...",
+      "imageId": "collapse"
+    },
+    {
+      "id": "kitchen-fire",
+      "roomId": "royal_kitchen",
+      "roomName": "Royal Kitchen",
+      "title": "Death by Culinary Disaster",
+      "narratorText": "You bring your makeshift torch near the stove. The stove, already operating at temperatures that would concern a metallurgist, reacts to the open flame with the enthusiasm of a chemistry experiment going wrong. Grease, heat, and bioluminescent fungus combine in a fireball that rewrites the castle's kitchen safety manual. Martha dives behind the chopping block. You are less fortunate. The explosion is brief but thorough. On the bright side, the bread Martha was attempting is now perfectly toasted.",
+      "category": "Recklessness",
+      "galleryHint": "The royal kitchen runs hot. Adding more fire is not the answer...",
+      "imageId": "fire"
+    },
+    {
+      "id": "poison-herb",
+      "roomId": "castle_garden",
+      "roomName": "Castle Garden",
+      "title": "Death by Botany",
+      "narratorText": "You eat the nightshade berries. They taste wonderful -- sweet, rich, with a subtle note of 'you have made a catastrophic error.' The botanical name 'Atropa belladonna' translates roughly to 'beautiful lady who will absolutely murder you,' which is information you could have used thirty seconds ago. Your vision blurs. The garden seems to spin. The last thing you see is the faded warning sign, which, in your defense, was really quite small.",
+      "category": "Poison",
+      "galleryHint": "The castle garden grows things both beautiful and lethal. Taste-testing is inadvisable...",
+      "imageId": "poison"
+    },
+    {
+      "id": "rat-swarm",
+      "roomId": "servants_quarters",
+      "roomName": "Servants' Quarters",
+      "title": "Death by Vermin",
+      "narratorText": "You open a crate. The scratching stops. A moment of terrible silence. Then they pour out -- a torrent of rats, organized, numerous, and deeply territorial. They've been running this storage room for weeks, and they do not recognize your authority. The swarm engulfs you with the efficiency of a well-managed operation. The rats have a hierarchy, a delegation system, and apparently a policy regarding intruders. You have been outvoted by approximately four hundred to one.",
+      "category": "Nature",
+      "galleryHint": "Something in the servants' quarters is scratching. Something plural...",
+      "imageId": "swarm"
+    },
+    {
+      "id": "ghost-wrath",
+      "roomId": "throne_room",
+      "roomName": "Throne Room",
+      "title": "Death by Royal Displeasure",
+      "narratorText": "You attempt to antagonize the Ghost King. In his own throne room. While he is a ghost with centuries of accumulated grievances and nothing but time. The temperature drops to absolute zero. The Ghost King's spectral eyes blaze with the cold fury of a monarch who choked on an olive and has been angry about it ever since. A wave of ghostly force hits you like a winter you can't survive. Insulting a ghost king in his own throne room: bold, terminal, and entirely your own fault.",
+      "category": "Violence",
+      "galleryHint": "The Ghost King's patience is as cold as his spectral presence...",
+      "imageId": "ghost-wrath"
+    },
+    {
+      "id": "clerk-stamped",
+      "roomId": "cavern_entrance_hall",
+      "roomName": "Cavern Entrance Hall",
+      "title": "Death by Bureaucracy",
+      "narratorText": "You submit the wrong form for the third time. The Clerk's expression does not change -- it has never changed -- but something shifts in the air. He reaches for his stamp. Not the approval stamp. The OTHER stamp. The one marked 'DENIED (PERMANENTLY).' He stamps you. Not the form. You. The stamp hits your forehead with the force of administrative finality. The ink burns. The bureaucratic magic takes hold. You are filed under 'D' for 'Deceased.' Your application has been permanently rejected.",
+      "category": "Bureaucracy",
+      "galleryHint": "The bureaucratic process has its own form of capital punishment...",
+      "imageId": "clerk-stamp"
+    },
+    {
+      "id": "mushroom-poison",
+      "roomId": "cavern_west_wing",
+      "roomName": "West Wing Corridor",
+      "title": "Death by Bioluminescent Snacking",
+      "narratorText": "You pluck a glowing mushroom and eat it. The taste is initially pleasant -- earthy, with notes of cave soil and bad decisions. Then the bioluminescence kicks in. Your stomach glows. Your veins glow. Your eyes glow. You briefly become the most visible thing in the Screaming Caverns, which would be impressive if you weren't also dying. The mushroom was a light source, not a food source. This distinction, like most important distinctions, is learned too late.",
+      "category": "Nature",
+      "galleryHint": "The glowing mushrooms of the west wing corridor look appetizing. They are not...",
+      "imageId": "poison"
+    },
+    {
+      "id": "shelf-collapse",
+      "roomId": "cavern_library",
+      "roomName": "Cavern Library",
+      "title": "Death by Literature",
+      "narratorText": "You climb the bookshelves. This is a library, not a gymnasium. The ancient shelving, which has been holding together through sheer literary stubbornness for centuries, finally gives way. An avalanche of books, wood, and accumulated dust buries you under the weight of knowledge -- literally. The irony is not lost on the narrator. You are crushed by the very texts that could have taught you not to climb unstable furniture. The library is, if nothing else, thorough in its lessons.",
+      "category": "Curiosity",
+      "galleryHint": "The cavern library shelves are ancient, unstable, and climbable. Two of those are warnings...",
+      "imageId": "collapse"
+    },
+    {
+      "id": "filed-away",
+      "roomId": "filing_room",
+      "roomName": "Filing Room",
+      "title": "Death by Organization",
+      "narratorText": "You open a random cabinet. This one is trapped -- a spring-loaded mechanism fires a wall of razor-sharp filing tabs directly at your face. The Clerk's filing system is thorough, organized, and apparently weaponized. You are filed under 'D' for 'Deceased,' which is at least alphabetically correct. The cabinet clicks shut behind you with the satisfaction of a system that works exactly as designed.",
+      "category": "Bureaucracy",
+      "galleryHint": "The filing room cabinets are organized with lethal precision...",
+      "imageId": "filing-death"
+    },
+    {
+      "id": "boredom-death",
+      "roomId": "waiting_room",
+      "roomName": "The Waiting Room",
+      "title": "Death by Patience",
+      "narratorText": "You sit down to wait. And wait. And wait. Time passes. Seasons change above ground. Empires rise and fall. The number display remains at 3. Your body slows, your breathing shallows, and eventually you simply... stop. The ghost nearby pats your shoulder sympathetically. 'Don't worry,' he says. 'You get used to it. After the first century.' Your skeleton continues to wait. It is very patient now.",
+      "category": "Bureaucracy",
+      "galleryHint": "The waiting room number display hasn't changed in centuries. Take a seat...",
+      "imageId": "boredom"
+    },
+    {
+      "id": "drown-river",
+      "roomId": "underground_river",
+      "roomName": "Underground River",
+      "title": "Death by Optimistic Engineering",
+      "narratorText": "You climb into the unrepaired boat and push off. The boat makes it approximately fifteen seconds before the cracks in the hull remember they're cracks and the missing plank remembers it's missing. Water floods in with the enthusiasm of a liquid that has been waiting centuries for this exact opportunity. The boat sinks. You sink with it. The river continues, indifferent to your engineering philosophy of 'it'll probably be fine.'",
+      "category": "Recklessness",
+      "galleryHint": "The underground river has a boat. The boat has holes. Optimism has limits...",
+      "imageId": "drowning"
+    },
+    {
+      "id": "waterfall-death",
+      "roomId": "underground_river",
+      "roomName": "Underground River",
+      "title": "Death by Gravity (Assisted by Water)",
+      "narratorText": "You follow the river downstream. The sound of the waterfall grows louder -- from 'distant rumble' to 'imminent catastrophe' in about thirty seconds. The current accelerates. The cavern ceiling lowers. And then the floor disappears. The waterfall is tall enough that you have time to contemplate the word 'downstream' -- it's a direction, not a suggestion. Nature's way of reminding you that water goes down, and you, being mostly water, go with it.",
+      "category": "Gravity",
+      "galleryHint": "The underground river flows somewhere. That somewhere is straight down...",
+      "imageId": "waterfall"
+    },
+    {
+      "id": "forge-burn",
+      "roomId": "forge_chamber",
+      "roomName": "Forge Chamber",
+      "title": "Death by Metallurgy",
+      "narratorText": "You reach into the active forge. The forge was hot. This information was available visually (the glowing coals), audibly (the roaring flames), and now experientially (the searing pain). The dwarven spirit watches with the expression of someone who has seen this exact thing happen many times and has stopped being surprised. Your hand is educational. Your arm is cautionary. The rest of you is a lesson in thermal conductivity.",
+      "category": "Recklessness",
+      "galleryHint": "The forge chamber is hot. The forge itself is hotter. Your hands are not fireproof...",
+      "imageId": "fire"
+    },
+    {
+      "id": "guardian-smash",
+      "roomId": "guardian_chamber",
+      "roomName": "Guardian Chamber",
+      "title": "Death by Misplaced Aggression",
+      "narratorText": "You attack the stone guardian. With your bare hands. It is a twenty-foot statue made of enchanted granite, and you are a tinker who weighs less than its left foot. The guardian does not need to hit back -- you've essentially punched a mountain. Physics handles the rest. Your knuckles shatter. Then your wrist. The guardian watches with the patience of something that has centuries of practice in not reacting to foolishness.",
+      "category": "Violence",
+      "galleryHint": "The stone guardian is twenty feet of enchanted granite. You are considerably less...",
+      "imageId": "guardian"
+    },
+    {
+      "id": "guardian-wrong",
+      "roomId": "guardian_chamber",
+      "roomName": "Guardian Chamber",
+      "title": "Death by Ignorance",
+      "narratorText": "You guess the third answer. The guardian asked three questions. You answered two correctly. You guessed the third. The guardian's expression does not change -- it is incapable of expressions -- but the amber glow in its eyes shifts from neutral to terminal. 'INCORRECT,' it says. 'THE TEST IS FAILED. THE APPLICANT IS... PROCESSED.' The guardian's stone fist is the size of your torso. It moves slowly. You do not. The difference in speed does not matter. The difference in mass does.",
+      "category": "Violence",
+      "galleryHint": "The guardian asks three questions. Guessing is not a strategy...",
+      "imageId": "guardian"
+    },
+    {
+      "id": "echo-scream",
+      "roomId": "echo_chamber",
+      "roomName": "Echo Chamber",
+      "title": "Death by Acoustics",
+      "narratorText": "You shout into the echo chamber. The dome's perfect acoustics amplify your voice. And amplify it. And amplify it. The sound wave bounces between walls, ceiling, and floor, building in intensity until the air itself vibrates at a lethal frequency. The stalactites shatter. The floor cracks. Your eardrums fail first, then everything else. The cavern has opinions about volume, and it expresses them with extreme prejudice. The echo of your scream continues for several minutes after you can no longer hear it.",
+      "category": "Engineering",
+      "galleryHint": "The echo chamber has perfect acoustics. Perfect, amplifying, lethal acoustics...",
+      "imageId": "echo-scream"
+    },
+    {
+      "id": "stalactite-fall",
+      "roomId": "echo_chamber",
+      "roomName": "Echo Chamber",
+      "title": "Death by Geology",
+      "narratorText": "You push a stalactite. It turns out that stalactite was load-bearing -- holding up not just itself but a considerable section of the ceiling. The geological equivalent of pulling the wrong Jenga block. The ceiling comes down with the slow majesty of a cathedral collapsing, each stalactite striking the next in a cascade of limestone and poor decisions. In retrospect, they ALL looked load-bearing. You were right to be suspicious. You were wrong to push one anyway.",
+      "category": "Engineering",
+      "galleryHint": "Every stalactite in the echo chamber looks load-bearing. Some of them are...",
+      "imageId": "stalactite"
+    },
+    {
+      "id": "barrier-zap",
+      "roomId": "crystal_chamber",
+      "roomName": "Crystal Chamber",
+      "title": "Death by Impatience",
+      "narratorText": "You touch the force barrier. The magical energy was clearly visible, audibly humming, and posted with warning signs in fourteen languages. You touched it anyway. The barrier does not discriminate -- it delivers its electrical response with the democratic enthusiasm of a system that treats all organic matter equally. You become, briefly, the most illuminated person in the Screaming Caverns. Then you become the most deceased. The warning signs remain, for the next applicant.",
+      "category": "Recklessness",
+      "galleryHint": "The crystal chamber's force barrier hums with visible, audible, posted warnings...",
+      "imageId": "barrier-zap"
+    },
+    {
+      "id": "balcony-fall",
+      "roomId": "cavern_balcony",
+      "roomName": "Cavern Balcony",
+      "title": "Death by Vertigo",
+      "narratorText": "You lean over the balcony edge. For a moment, you have a spectacular view of the Crystal Chamber below -- the pedestal, the barrier, the ancient stonework. Then gravity reminds you that looking down was optional but falling is not. The descent is long enough for reflection and short enough to prevent useful conclusions. The Crystal of Mundanity watches your arrival at the chamber floor with the indifference of an artifact that has seen this happen before.",
+      "category": "Gravity",
+      "galleryHint": "The cavern balcony offers a spectacular view. The edge offers a spectacular fall...",
+      "imageId": "falling"
+    },
+    {
+      "id": "dark-water",
+      "roomId": "cavern_east_wing",
+      "roomName": "East Wing Corridor",
+      "title": "Death by Aquatic Confidence",
+      "narratorText": "You wade into the dark water. The water is dark for a reason. Several reasons, actually. All of them have teeth. The things that live in underground rivers have evolved beyond the need for eyes, but they've compensated with an extraordinary sense of vibration and an appetite that would shame a buffet restaurant. Your thrashing provides a convenient dinner bell. The water goes still again. It was dark before you entered. It is dark after.",
+      "category": "Recklessness",
+      "galleryHint": "The dark water in the east wing is dark for a reason. Several toothy reasons...",
+      "imageId": "drowning"
+    },
+    {
+      "id": "paper-cut",
+      "roomId": "filing_room",
+      "roomName": "Filing Room",
+      "title": "Death by Irony",
+      "narratorText": "You attempt to weaponize the bureaucratic form. Bureaucracy weaponizes you first. The form's edges are sharper than they have any right to be -- centuries of administrative magic have honed them to a monomolecular edge. The paper cut starts at your finger and keeps going. It turns out forms 27-B are classified as lethal weapons in three jurisdictions. You are now a cautionary tale in the Clerk's incident report.",
+      "category": "Bureaucracy",
+      "galleryHint": "The filing room forms are sharper than they look. Much, much sharper...",
+      "imageId": "filing-death"
+    },
+    {
+      "id": "petrify-touch",
+      "roomId": "petrified_forest",
+      "roomName": "Petrified Forest",
+      "title": "Death by Petrification",
+      "narratorText": "You press your bare hand against a petrified tree. The curse is patient, but it is also opportunistic. Grey spreads from the bark to your fingertips with the speed of gossip in a small village. Your hand goes rigid. Then your wrist. Then your arm. You watch yourself turn to stone with the detached fascination of someone who knows they've made a terrible mistake but can't look away from it. In your final moments, you become a very realistic statue. Pigeons will, eventually, find you.",
+      "category": "Petrification",
+      "galleryHint": "The petrified trees invite a curious touch. The curse invites the rest...",
+      "imageId": "petrification"
+    },
+    {
+      "id": "petrify-slow",
+      "roomId": "castle_courtyard_act3",
+      "roomName": "Castle Courtyard (Petrified)",
+      "title": "Death by Procrastination",
+      "narratorText": "You linger in the courtyard, examining the petrified well, and the curse catches up. It starts with your boots -- your feet go heavy, then rigid. By the time you look down, grey has climbed to your knees. You try to run, but running requires legs, and yours have been permanently reassigned to the mineral kingdom. The petrification climbs your torso. Your arms. Your neck. In your final moments, you become a monument to indecision. Pigeons will nest on you. Tourists will take photographs. The curse does not discriminate between heroes and time-wasters.",
+      "category": "Petrification",
+      "galleryHint": "The petrified courtyard rewards lingering with a permanent stay...",
+      "imageId": "petrification"
+    },
+    {
+      "id": "archive-collapse",
+      "roomId": "royal_archive",
+      "roomName": "Royal Archive",
+      "title": "Death by Bibliography",
+      "narratorText": "You pull a stone scroll from the petrified shelves. This is a mistake. The shelves were held together by the weight of their contents, and removing one scroll shifts the balance. The shelf tilts. The one behind it tilts. A domino cascade of stone shelving and fossilized paperwork descends upon you with the enthusiasm of centuries of accumulated knowledge falling on someone who should have known better. You are buried under the weight of every law, decree, and tax record the kingdom ever produced. The archive was held together by the books. Removing one was... structural.",
+      "category": "Curiosity",
+      "galleryHint": "The royal archive shelves are a delicate balance of weight and history. Removing one piece...",
+      "imageId": "collapse"
+    },
+    {
+      "id": "wizard-trap",
+      "roomId": "wizard_tower",
+      "roomName": "Wizard's Tower",
+      "title": "Death by Greed",
+      "narratorText": "You open the wizard's chest. The arcane symbols flare. A magical trap triggers -- not fire, not lightning, but something worse. The chest simply closes on your hand and refuses to let go. Then the chest begins pulling. Not physically -- magically. It pulls your essence, your vitality, your everything, into the chest. You are filed. Permanently. The wizard trapped his belongings against theft, and his traps do not distinguish between thieves and curious adventurers. The chest closes. It is full. Your consciousness joins the wizard's old socks in the darkness. At least you're organized.",
+      "category": "Curiosity",
+      "galleryHint": "The wizard's chest glows with arcane symbols. They are not decorative...",
+      "imageId": "wizard-death"
+    },
+    {
+      "id": "wizard-explosion",
+      "roomId": "wizard_tower",
+      "roomName": "Wizard's Tower",
+      "title": "Death by Chemistry",
+      "narratorText": "You mix two random potions together. The wizard labeled them, but you didn't read the labels. 'Memory Suppressant' and 'Parking Curse Mk. VII' do not combine well. They combine explosively. The resulting detonation is magical, chemical, and deeply personal -- the explosion seems specifically annoyed at you. The scorch mark on the wall gets a companion. Future adventurers will note the two wizard-shaped silhouettes and wonder about the aesthetic choices. Mixing random magical components: the alchemical equivalent of pressing buttons in an elevator and hoping for the best.",
+      "category": "Recklessness",
+      "galleryHint": "The wizard's tower has many labeled potions. Reading labels is optional. Surviving is not...",
+      "imageId": "wizard-death"
+    },
+    {
+      "id": "clock-crush",
+      "roomId": "clock_tower",
+      "roomName": "Clock Tower",
+      "title": "Death by Clockwork",
+      "narratorText": "You reach into the now-running clock mechanism to adjust the face. The gears, which were politely frozen moments ago, are now enthusiastically operational. They catch your sleeve first, then your arm, and then the rest of you with the mechanical indifference of precise engineering. The clock's gears continue to turn. You no longer do. Time waits for no one, least of all people who stick their hands into active machinery.",
+      "category": "Engineering",
+      "galleryHint": "The clock tower gears are operational. Hands are for telling time, not adjusting it...",
+      "imageId": "clock-crush"
+    },
+    {
+      "id": "clock-fall",
+      "roomId": "clock_tower",
+      "roomName": "Clock Tower",
+      "title": "Death by Altitude",
+      "narratorText": "You climb through the tower window for a better view. The wind has opinions about this. Strong opinions. The ledge outside is narrow, icy with condensation, and entirely uninterested in supporting your weight. You slip. The view from the clock tower is spectacular on the way down. The view from the ground, less so. The clock tower has claimed another sightseer. At least the view was worth it. Briefly.",
+      "category": "Gravity",
+      "galleryHint": "The clock tower window offers a view worth dying for. Literally...",
+      "imageId": "falling"
+    },
+    {
+      "id": "dungeon-pit",
+      "roomId": "dungeon",
+      "roomName": "Castle Dungeon",
+      "title": "Death by Architecture",
+      "narratorText": "You step on the trap door. The sign said 'DO NOT STEP.' The sign was not being ironic. The door swings open beneath you with the smooth efficiency of a mechanism that has been waiting for this moment. The fall is long, dark, and accompanied by the distant sound of the Clerk stamping 'DECEASED' on a form he apparently had pre-prepared. Trap floors: the original terms and conditions nobody reads. Except, in this case, you read them. You read the sign. You stepped anyway. The narrator is at a loss for sympathy.",
+      "category": "Curiosity",
+      "galleryHint": "The dungeon has a sign that says 'DO NOT STEP.' It is not being ironic...",
+      "imageId": "dungeon-pit"
+    },
+    {
+      "id": "mirror-shatter",
+      "roomId": "mirror_hall",
+      "roomName": "Hall of Mirrors",
+      "title": "Death by Superstition",
+      "narratorText": "You break the mirror. Every mirror. The shattering cascades -- one breaks, then another, then another, glass falling in a crystalline avalanche. The Mirror Spirit screams, a sound that echoes between the falling shards. The reflections go dark. And then the shards fly. Not down, but out. Every fragment becomes a projectile, and the Hall of Mirrors becomes a blender of broken glass. Seven years of bad luck is an understatement. Zero years of any luck is more accurate. The hall falls silent. The spirit is free. You are not.",
+      "category": "Curiosity",
+      "galleryHint": "The hall of mirrors has many reflections. Breaking one starts a chain reaction...",
+      "imageId": "mirror-shatter"
+    },
+    {
+      "id": "rooftop-fall",
+      "roomId": "rooftop",
+      "roomName": "Castle Rooftop",
+      "title": "Death by Sightseeing",
+      "narratorText": "You lean over the parapet for a better view of the curse's progress. The parapet, which has been crumbling since before you were born, chooses this exact moment to complete its structural journey. The stone gives way under your weight with a resigned crumble. You pitch forward. The view on the way down is spectacular -- you can see the entire kingdom, the spreading curse, the sunset, and the rapidly approaching courtyard. You leaned out to see the curse spreading. The curse appreciated your enthusiasm. Gravity did not.",
+      "category": "Gravity",
+      "galleryHint": "The castle rooftop parapet has been crumbling for decades. Today it finishes...",
+      "imageId": "falling"
+    },
+    {
+      "id": "treasury-trap",
+      "roomId": "treasury",
+      "roomName": "Royal Treasury",
+      "title": "Death by Avarice",
+      "narratorText": "You reach for something on one of the empty pedestals. The pedestal isn't empty -- it's booby-trapped. A pressure plate detects the change in weight (from something to nothing, or in this case, from nothing to your hand). Ancient security measures activate. Crossbow bolts fire from the walls with the enthusiasm of a system that has been loaded and waiting for centuries. The irony of dying in a treasury with nothing left to steal is not lost on the narrator. The treasury was booby-trapped. The wealth is gone, but the security budget was apparently eternal.",
+      "category": "Curiosity",
+      "galleryHint": "The royal treasury is empty. The security system is not...",
+      "imageId": "treasury-trap"
+    },
+    {
+      "id": "rite-fail",
+      "roomId": "throne_room_act3",
+      "roomName": "Throne Room (Final)",
+      "title": "Death by Incorrect Paperwork",
+      "narratorText": "You attempt the Rite with the wrong seal. The Royal Seal, not the Kingdom Seal. A distinction that matters to bureaucracy, even magical bureaucracy. Especially magical bureaucracy. The rite circle flares red. The curse, sensing an incompetent closure attempt, accelerates catastrophically. Grey stone races up the walls, across the floor, over your feet, your legs, your -- well, all of you. The Ghost King sighs. 'Wrong seal. It was the Kingdom Administrative Seal. Not the Royal Seal. Different departments.' His disappointment is the last thing you hear before geology claims you permanently. Filing errors have consequences.",
+      "category": "Bureaucracy",
+      "galleryHint": "The final rite requires the correct seal. The Royal Seal and the Kingdom Seal are different departments...",
+      "imageId": "rite-fail"
+    }
+  ]
+}

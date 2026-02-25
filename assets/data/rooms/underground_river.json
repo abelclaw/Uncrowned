@@ -1,0 +1,463 @@
+{
+    "id": "underground_river",
+    "name": "Underground River",
+    "description": "An underground river carves through the cavern, its current swift and dark. The water rushes past with the confidence of something that knows exactly where it's going -- downstream, off a waterfall, into oblivion. An old boat is pulled up on a rocky shore, its hull cracked and its sails nonexistent. It floats, technically. Whether it will continue to float with you in it is a matter of optimistic engineering.",
+    "background": {
+        "layers": [
+            {
+                "key": "bg-shared-act2-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act2-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-underground_river",
+                "scrollFactor": 1
+            }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
+    ],
+    "exits": [
+        {
+            "id": "to-east-wing",
+            "zone": {
+                "x": 0,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
+            "targetRoom": "cavern_east_wing",
+            "spawnPoint": {
+                "x": 450,
+                "y": 450
+            },
+            "transition": "slide-left",
+            "direction": "west",
+            "label": "east wing"
+        },
+        {
+            "id": "to-forge",
+            "zone": {
+                "x": 440,
+                "y": 350,
+                "width": 80,
+                "height": 80
+            },
+            "targetRoom": "forge_chamber",
+            "spawnPoint": {
+                "x": 480,
+                "y": 450
+            },
+            "transition": "fade",
+            "direction": "north",
+            "label": "forge",
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "boat_repaired"
+                }
+            ],
+            "blockedMessage": "The forge lies across the underground river, but there's no way to cross. The water is too deep and fast to swim. You'd need some kind of vessel."
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "river-current",
+            "name": "River Current",
+            "aliases": ["current", "flow", "stream", "river flow", "rapids", "water flow", "strong current", "fast water"],
+            "zone": {
+                "x": 300,
+                "y": 360,
+                "width": 200,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 400,
+                "y": 420
+            },
+            "responses": {
+                "look": "The underground river rushes past with alarming speed. The current flows north toward the forge and south toward... the sound of a waterfall. A very loud, very final-sounding waterfall. Going upstream requires a boat. Going downstream requires a death wish.",
+                "use": "You test the current with your foot. It nearly pulls you in. This river has opinions about foot traffic.",
+                "default": "You observe the river. It is going places. Specifically, north to the forge and south to a waterfall. Only one of those destinations is survivable.",
+                "take": "You scoop river water. It's freezing and immediately leaks through your fingers. The current doesn't slow down for anyone, least of all someone trying to pocket it.",
+                "talk": "You shout over the rushing water. Your voice is drowned out instantly. The river has been making noise for centuries and isn't about to let you be heard over it.",
+                "open": "Rivers don't open. They flow. That's the one thing rivers do, and this one does it with aggressive competence.",
+                "push": "You push against the current with your hand. The water shoves back with the force of something that weighs several thousand tons and is going somewhere in a hurry.",
+                "pull": "You drag your hand through the current. It pulls your arm downstream with surprising force. The river wants you to go south, toward the waterfall. The river does not have your best interests at heart."
+            }
+        },
+        {
+            "id": "rocky-shore",
+            "name": "Rocky Shore",
+            "aliases": ["shore", "beach", "bank", "river bank", "riverbank", "rocks", "ground", "land", "shoreline", "edge"],
+            "zone": {
+                "x": 600,
+                "y": 400,
+                "width": 100,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 650,
+                "y": 420
+            },
+            "responses": {
+                "look": "A small rocky shore where the boat is beached. The rocks are smooth from water erosion and covered in a thin layer of cave slime. Various debris has washed up: sticks, stones, and the remains of what might have been another boat. A cautionary tale in driftwood.",
+                "default": "You examine the shore. It's the safest spot by the river, which is like saying it's the driest spot in the ocean.",
+                "take": "You pocket a smooth stone from the shore. It's cold, wet, and pointless. You now have a rock. The river has millions more. It will not miss this one.",
+                "use": "You kneel on the rocky shore and splash water on your face. It's freezing. Your skin tingles where the mineral-rich water touches it. Refreshing, in the way that being slapped is refreshing.",
+                "talk": "You address the rocky shore. The stones are smooth and silent. They've been polished by the river for longer than your kingdom has existed. They have nothing to say and all the time in the world.",
+                "open": "Shores don't open. They sit there, between water and land, committing to neither. The Switzerland of geological features.",
+                "push": "You kick a rock. It tumbles into the river and is immediately swept downstream. A moment of satisfying violence followed by the complete indifference of nature.",
+                "pull": "You pull a rock from the shore. Beneath it: more rock, wet silt, and a small cave beetle that scurries away, deeply offended by the sudden daylight."
+            }
+        },
+        {
+            "id": "rushing-water",
+            "name": "Rushing Water",
+            "aliases": ["water", "river", "river water", "dark water", "rapids", "waves", "foam", "white water", "whitewater"],
+            "zone": {
+                "x": 200,
+                "y": 300,
+                "width": 600,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 500,
+                "y": 430
+            },
+            "responses": {
+                "look": "Dark water rushes past with the urgency of someone late for a very important meeting. White foam crests suggest rocks below.",
+                "take": "Water is famously uncooperative about being held.",
+                "use": "Drink it? You don't know where it's been. Actually, you do -- it's been underground. That's worse.",
+                "default": "You watch the water rush past. It has places to be, and none of them involve you.",
+                "talk": "You shout at the rushing water. It roars back, louder. The river wins every argument by sheer volume. You've been out-debated by a body of water.",
+                "open": "You can't open water. Water is already as open as a substance gets. The problem isn't access -- it's that the river wants to kill you. Open access to death is not an improvement.",
+                "push": "You thrust your hand into the rushing water. The cold hits first, then the force. The current nearly pulls you off your feet. You extract your hand and several important lessons about hydrodynamics.",
+                "pull": "You try to pull water from the river. It slips through your fingers, returning to the current with the indifference of something that has been flowing since before your ancestors learned to walk upright."
+            }
+        },
+        {
+            "id": "cave-waterfall",
+            "name": "Cave Waterfall",
+            "aliases": ["waterfall", "falls", "cascade", "water fall", "falling water", "torrent", "cataract"],
+            "zone": {
+                "x": 600,
+                "y": 50,
+                "width": 200,
+                "height": 250
+            },
+            "interactionPoint": {
+                "x": 700,
+                "y": 430
+            },
+            "responses": {
+                "look": "Water cascades from somewhere above, crashing into the river with theatrical enthusiasm. The mist is refreshing. The noise is not.",
+                "take": "Waterfalls are, regrettably, non-portable.",
+                "use": "Stand under it for dramatic effect? You'd prefer to stay dry and alive.",
+                "default": "You admire the waterfall from a safe, dry distance.",
+                "talk": "You shout at the waterfall. It responds by being louder. The waterfall has been winning shouting matches since before language existed. You are outclassed.",
+                "open": "You can't open a waterfall. It's already the most dramatically open thing in this cave -- water, falling, openly, with maximum theatrical commitment.",
+                "push": "You push your hand through the waterfall's curtain. Cold water hammers your wrist. Behind the falls: rock wall. No secret cave, no hidden passage. Just water and disappointment.",
+                "pull": "You try to pull the waterfall toward you. The waterfall continues falling exactly where it wants to. Gravity is not negotiable."
+            }
+        },
+        {
+            "id": "shore-debris",
+            "name": "Shore Debris",
+            "aliases": ["debris", "junk", "trash", "flotsam", "jetsam", "driftwood", "wreckage", "rubbish", "stuff", "pile", "garbage"],
+            "zone": {
+                "x": 200,
+                "y": 450,
+                "width": 100,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 250,
+                "y": 450
+            },
+            "responses": {
+                "look": "Various debris has washed up on the rocky shore: sticks, smooth stones, and the occasional bit of cloth or leather. The river brings gifts from upstream, though 'gifts' is generous for what amounts to a curated collection of garbage.",
+                "take": "You sift through the debris. Sticks, stones, a waterlogged boot with no partner. Nothing useful. The river's offerings are generous in quantity but disappointing in quality.",
+                "use": "You poke through the shore debris. There's nothing of practical use -- just the flotsam and jetsam of a kingdom that's slowly coming apart. Literally.",
+                "talk": "You address the pile of washed-up junk. It has no opinions, no feelings, and no useful information. Rather like most advisory councils.",
+                "open": "You can't open debris. It's already in its most chaotic state. Entropy has done its work here.",
+                "push": "You kick at the debris. Sticks scatter. Stones roll. The pile reforms downstream. The river will just bring more.",
+                "pull": "You drag a waterlogged branch from the pile. It's heavy, soggy, and entirely useless. You put it back. The pile accepts it without comment."
+            }
+        },
+        {
+            "id": "river-mist",
+            "name": "River Mist",
+            "aliases": ["mist", "fog", "spray", "haze", "vapour", "vapor", "steam", "cloud", "water spray"],
+            "zone": {
+                "x": 300,
+                "y": 300,
+                "width": 200,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 400,
+                "y": 420
+            },
+            "responses": {
+                "look": "A fine mist rises from where the waterfall meets the river, catching the dim light and creating a perpetual haze. It's refreshing on your face and makes the cavern smell of clean stone and wild water. It's the freshest thing in this entire underground complex.",
+                "take": "You wave your hands through the mist. It swirls around your fingers and reforms. You can't take mist. It's water that hasn't committed to a direction yet.",
+                "use": "You stand in the mist for a moment. It's cool and refreshing. For a brief instant, you almost forget you're in a cursed underground cavern beneath a dying kingdom. Almost.",
+                "talk": "You whisper into the mist. Your words dissolve into droplets. The mist is the best listener you've met -- it absorbs everything and judges nothing.",
+                "open": "You can't open mist. It's already as diffuse as matter gets while still being visible. This is peak openness.",
+                "push": "You sweep your arm through the mist. It parts, swirls, and closes behind you. Mist is patient. Mist always wins.",
+                "pull": "You try to gather the mist in your hands. It escapes between your fingers. Mist cannot be held. Neither can most things worth having."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "old-boat",
+            "name": "Old Boat",
+            "aliases": ["boat", "ship", "vessel", "canoe", "raft", "dinghy", "rowboat", "skiff", "wooden boat", "broken boat", "cracked boat"],
+            "zone": {
+                "x": 620,
+                "y": 380,
+                "width": 80,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 660,
+                "y": 420
+            },
+            "responses": {
+                "look": "A small wooden boat, beached on the rocky shore. Its hull has two significant cracks and a missing plank. It floats in the loosest possible definition -- the kind where 'float' and 'sink slowly' are considered synonyms. It needs repairs: wood for the hull and rope to bind it.",
+                "use": "The boat isn't seaworthy. River-worthy? Also no. You'd need wood planks for the hull and rope to secure them. Without repairs, this boat is less 'vessel' and more 'elaborate drowning apparatus.'",
+                "take": "The boat weighs more than your resolve. It's beached on rocks and wedged in silt. Moving it requires repairs first -- then the river can carry it. Until then, it's an immovable monument to someone else's failed river journey.",
+                "talk": "You address the boat. It creaks. Wind in the hull? Or the boat expressing its opinion of your repair skills? Either way, it's the most responsive thing in this cavern.",
+                "open": "The boat has no cabin, no compartment, no hold. It's an open hull -- what you see is what you get. Which is two cracks, a missing plank, and a lot of optimism required.",
+                "push": "You shove the boat toward the water. It scrapes across the rocks, cracking further. Without repairs, pushing it into the river would just create more shore debris.",
+                "pull": "You pull the boat higher onto the shore. It grinds against the rocks with a sound like a dying animal. The boat has seen better days, better captains, and better rivers."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "repair-boat",
+            "trigger": {
+                "verb": "use",
+                "subject": "wood-planks",
+                "target": "old-boat"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "wood-planks"
+                },
+                {
+                    "type": "has-item",
+                    "item": "rope"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "boat_repaired"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "wood-planks"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "rope"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "boat_repaired"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-forge"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You patch the hull with oak planks from the library and bind them tight with the balcony rope. The boat goes from 'barely floating' to 'probably floating.' You push it into the current and it holds. The river carries it north, toward the forge. You have a boat. It's not pretty, but it's yours, and it floats. For now."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "repair-boat-rope",
+            "trigger": {
+                "verb": "use",
+                "subject": "rope",
+                "target": "old-boat"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "wood-planks"
+                },
+                {
+                    "type": "has-item",
+                    "item": "rope"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "boat_repaired"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "wood-planks"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "rope"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "boat_repaired"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-forge"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "Planks, rope, boat. You lash the oak planks over the hull cracks and tie them secure. The boat achieves the status of 'seaworthy' -- or at least 'river-adjacent.' The current accepts it northward. Your engineering is questionable but functional."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "repair-boat-no-materials",
+            "trigger": {
+                "verb": "use",
+                "subject": "old-boat"
+            },
+            "conditions": [
+                {
+                    "type": "flag-not-set",
+                    "flag": "boat_repaired"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "The boat has two cracks and a missing plank. You'd need wood planks to patch the hull and rope to secure them. Without both, this boat is just a slightly curved piece of future driftwood."
+                }
+            ]
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "sail-broken-boat",
+            "trigger": {
+                "verb": "go",
+                "subject": "river-current"
+            },
+            "conditions": [
+                {
+                    "type": "flag-not-set",
+                    "flag": "boat_repaired"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "drown-river"
+                }
+            ]
+        },
+        {
+            "id": "go-downstream",
+            "trigger": {
+                "verb": "go",
+                "subject": "south"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "waterfall-death"
+                }
+            ]
+        }
+    ],
+    "deaths": {
+        "drown-river": {
+            "title": "Death by Optimistic Engineering",
+            "narratorText": "You climb into the unrepaired boat and push off. The boat makes it approximately fifteen seconds before the cracks in the hull remember they're cracks and the missing plank remembers it's missing. Water floods in with the enthusiasm of a liquid that has been waiting centuries for this exact opportunity. The boat sinks. You sink with it. The river continues, indifferent to your engineering philosophy of 'it'll probably be fine.'"
+        },
+        "waterfall-death": {
+            "title": "Death by Gravity (Assisted by Water)",
+            "narratorText": "You follow the river downstream. The sound of the waterfall grows louder -- from 'distant rumble' to 'imminent catastrophe' in about thirty seconds. The current accelerates. The cavern ceiling lowers. And then the floor disappears. The waterfall is tall enough that you have time to contemplate the word 'downstream' -- it's a direction, not a suggestion. Nature's way of reminding you that water goes down, and you, being mostly water, go with it."
+        }
+    },
+    "dynamicDescriptions": {
+        "boat_repaired": "The underground river flows past the rocky shore where the now-repaired boat sits ready. The oak planks hold, the rope binding is tight, and the boat is, against all reasonable expectations, seaworthy. The current flows north toward the forge."
+    },
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            {
+                "key": "amb-cave-drips",
+                "volume": 1
+            },
+            {
+                "key": "amb-wind-light",
+                "volume": 0.5
+            }
+        ]
+    },
+    "effects": {
+        "weather": {
+            "type": "fog",
+            "intensity": 0.4
+        },
+        "ambient": [
+            {
+                "type": "dust-motes",
+                "intensity": 0.3
+            }
+        ],
+        "lighting": {
+            "tint": "#223355",
+            "brightness": 0.4,
+            "vignette": 0.5,
+            "torchFlicker": true
+        }
+    },
+    "puzzleHints": [
+        {
+            "puzzleId": "repair-boat",
+            "tiers": [
+                "The boat has ambitions of floating but lacks the structural integrity to follow through. It needs two things: something to patch the hull, and something to hold the patches in place. Both exist elsewhere in these caverns.",
+                "Wood planks from the collapsed shelves in the cavern library and rope from the cavern balcony are what you need. Use either on the old boat when you have both items in your inventory.",
+                "Take wood planks from the collapsed shelves in the cavern library. Take rope from the cavern balcony. Use the wood planks on the old boat (with rope in inventory). The repaired boat gives access to the forge chamber upstream."
+            ]
+        }
+    ],
+    "playerSpawn": {
+        "x": 400,
+        "y": 450
+    }
+}

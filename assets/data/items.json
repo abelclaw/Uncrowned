@@ -1,0 +1,237 @@
+{
+    "items": [
+        {
+            "id": "rusty-key",
+            "name": "Rusty Key",
+            "description": "A key so corroded it might unlock a door or give you tetanus. Possibly both.",
+            "combinable": false
+        },
+        {
+            "id": "glowing-mushroom",
+            "name": "Glowing Mushroom",
+            "description": "A bioluminescent fungus that pulses with an eerie blue light. Nutritional value: questionable. Aesthetic value: undeniable.",
+            "combinable": true,
+            "aliases": ["mushroom", "fungus", "shroom", "toadstool", "glow"]
+        },
+        {
+            "id": "stick",
+            "name": "Sturdy Stick",
+            "description": "A stick. Not just any stick -- this one has character. And splinters.",
+            "combinable": true
+        },
+        {
+            "id": "makeshift-torch",
+            "name": "Makeshift Torch",
+            "description": "A stick with a glowing mushroom wedged on top. It provides light and existential dread in equal measure.",
+            "combinable": false,
+            "aliases": ["torch", "light", "lamp"]
+        },
+        {
+            "id": "mysterious-bottle",
+            "name": "Mysterious Bottle",
+            "description": "A small glass bottle containing something that's either medicine, poison, or an ancient smoothie recipe. The label has long since decomposed.",
+            "combinable": false,
+            "aliases": ["bottle", "potion", "flask"]
+        },
+        {
+            "id": "cave-crystal-shard",
+            "name": "Cave Crystal Shard",
+            "description": "A small shard of crystal that hums with faint magical resonance. It is warm to the touch and deeply unimpressive.",
+            "combinable": false,
+            "aliases": ["crystal", "shard", "crystal shard", "gem", "stone", "gemstone", "cave crystal"]
+        },
+        {
+            "id": "telescope-lens",
+            "name": "Telescope Lens",
+            "description": "A cracked but functional lens. It magnifies your view and your insecurities.",
+            "combinable": false
+        },
+        {
+            "id": "notice-board-posting",
+            "name": "Town Notice",
+            "description": "An official notice declaring the kingdom 'temporarily inconvenienced' by a petrification curse. Bureaucratic understatement at its finest.",
+            "combinable": false
+        },
+        {
+            "id": "bridge-toll-coin",
+            "name": "Old Coin",
+            "description": "A coin so old the face on it has worn into a vague smudge. Still legal tender, apparently.",
+            "combinable": false,
+            "aliases": ["coin", "money", "gold"]
+        },
+        {
+            "id": "cave-fish",
+            "name": "Pale Cave Fish",
+            "description": "A blind, translucent fish from deep in the well. It wriggles feebly in your hands, confused by the concept of 'up.'",
+            "combinable": false
+        },
+        {
+            "id": "royal-seal",
+            "name": "Royal Seal",
+            "description": "A heavy wax seal stamp bearing the royal crest: a disgruntled badger wearing a crown. Historically accurate, unfortunately.",
+            "combinable": true
+        },
+        {
+            "id": "blank-decree",
+            "name": "Blank Royal Decree",
+            "description": "A sheet of parchment so official-looking it could probably govern a small nation. Which is sort of the point.",
+            "combinable": true
+        },
+        {
+            "id": "sealed-decree",
+            "name": "Sealed Royal Decree",
+            "description": "A forged royal document bearing the royal crest. Your mother would be so disappointed.",
+            "combinable": false
+        },
+        {
+            "id": "dried-sage",
+            "name": "Dried Sage",
+            "description": "A bundle of sage so old it has more in common with dust than herbs. Still technically aromatic.",
+            "combinable": true
+        },
+        {
+            "id": "empty-chalice",
+            "name": "Empty Chalice",
+            "description": "A dented silver chalice. Once held wine for kings. Now holds your hopes, which are equally intoxicating.",
+            "combinable": true
+        },
+        {
+            "id": "water-chalice",
+            "name": "Water-Filled Chalice",
+            "description": "A chalice filled with clear well water. It looks almost regal again. Almost.",
+            "combinable": true
+        },
+        {
+            "id": "spirit-brew",
+            "name": "Spirit Brew",
+            "description": "A chalice of sage-infused water that glows faintly. It smells like a retirement home for ghosts.",
+            "combinable": false
+        },
+        {
+            "id": "rat-trap",
+            "name": "Rat Trap",
+            "description": "A rusty spring-loaded contraption that has seen better days. So have the rats, to be fair.",
+            "combinable": false
+        },
+        {
+            "id": "flour-sack",
+            "name": "Flour Sack",
+            "description": "A sack of flour that the rats didn't get to. Miracles do happen.",
+            "combinable": false
+        },
+        {
+            "id": "skeleton-key",
+            "name": "Skeleton Key",
+            "description": "A key shaped from actual bone. Whether human or animal is a question best left unasked.",
+            "combinable": false
+        },
+        {
+            "id": "castle-map",
+            "name": "Castle Map",
+            "description": "A map of the kingdom showing routes to the Screaming Caverns. Includes a helpful 'You are here' arrow pointing at nothing.",
+            "combinable": false
+        },
+        {
+            "id": "form-27b-stroke-6",
+            "name": "Form 27-B Stroke 6",
+            "description": "A bureaucratic form of such stunning complexity that reading it counts as a puzzle in itself.",
+            "combinable": false
+        },
+        {
+            "id": "ancient-ink",
+            "name": "Ancient Ink",
+            "description": "Ink so old it has developed opinions. Still writes, grudgingly.",
+            "combinable": false
+        },
+        {
+            "id": "queue-ticket",
+            "name": "Queue Ticket #847",
+            "description": "A numbered ticket. You are number 847. Currently serving: 3. This may take a while.",
+            "combinable": false
+        },
+        {
+            "id": "vip-stamp",
+            "name": "VIP Authorization Stamp",
+            "description": "An unauthorized stamp that says 'VIP -- SKIP ALL QUEUES.' Someone left it in a filing cabinet. Bless them.",
+            "combinable": false
+        },
+        {
+            "id": "old-boat",
+            "name": "Old Boat",
+            "description": "A boat in the loosest possible definition. It floats. Mostly. When it feels like it.",
+            "combinable": true
+        },
+        {
+            "id": "rope",
+            "name": "Climbing Rope",
+            "description": "A length of rope that looks like it was last inspected during the previous dynasty. It holds. Probably.",
+            "combinable": true
+        },
+        {
+            "id": "wood-planks",
+            "name": "Wood Planks",
+            "description": "Planks salvaged from broken shelving. The library's loss is your boat's gain.",
+            "combinable": true
+        },
+        {
+            "id": "broken-seal-stamp",
+            "name": "Broken Seal Stamp",
+            "description": "An ancient version of the kingdom's seal, cracked in two. It depicts the same disgruntled badger, but angrier.",
+            "combinable": true
+        },
+        {
+            "id": "coal",
+            "name": "Forge Coal",
+            "description": "Chunks of ancient coal. They've been waiting centuries for someone to burn them. The anticipation is palpable.",
+            "combinable": false
+        },
+        {
+            "id": "ancient-seal",
+            "name": "Ancient Kingdom Seal",
+            "description": "The kingdom's original administrative seal, reforged. The badger on it looks slightly less disgruntled. Progress.",
+            "combinable": false
+        },
+        {
+            "id": "crystal-of-mundanity",
+            "name": "Crystal of Mundanity",
+            "description": "The legendary Crystal of Mundanity. It is, fittingly, completely unremarkable. A plain grey crystal.",
+            "combinable": false
+        },
+        {
+            "id": "original-curse-contract",
+            "name": "Original Curse Contract",
+            "description": "A legal document binding the curse to the kingdom. Clause 47b contains the expiration terms. Of course it does.",
+            "combinable": false
+        },
+        {
+            "id": "kingdom-seal",
+            "name": "Kingdom Administrative Seal",
+            "description": "The official seal of the Kingdom of Erelhain, used for closing governmental proceedings. Different from the royal seal. Bureaucracy demands precision.",
+            "combinable": false
+        },
+        {
+            "id": "treasury-key",
+            "name": "Treasury Key",
+            "description": "An ornate key found in the dungeon. The Clerk had been using it as a paperweight.",
+            "combinable": false
+        },
+        {
+            "id": "clerk-memory-crystal",
+            "name": "Clerk's Memory Crystal",
+            "description": "A crystal containing the Clerk's suppressed memories. It glows with the light of forgotten regret.",
+            "combinable": false
+        },
+        {
+            "id": "gear-spring",
+            "name": "Gear Spring",
+            "description": "A coiled metal spring from the wizard's workshop. Still has bounce, unlike your hopes.",
+            "combinable": false
+        },
+        {
+            "id": "clock-oil",
+            "name": "Clock Oil",
+            "description": "A vial of mechanical lubricant. It smells like progress and mineral spirits.",
+            "combinable": false
+        }
+    ]
+}

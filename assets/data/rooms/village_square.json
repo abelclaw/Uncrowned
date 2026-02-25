@@ -1,0 +1,730 @@
+{
+    "id": "village_square",
+    "name": "Village Square",
+    "description": "The village square is a study in faded grandeur. A fountain stands at its center, though the water has long since stopped flowing -- the stone figures atop it are frozen mid-pose, their surfaces unnervingly smooth and grey. A massive stone toad squats near the eastern road, blocking the way out of the village with the quiet authority of something that weighs as much as a small boulder. Its belly rumbles. A notice board stands nearby, plastered with official-looking documents. A half-petrified merchant stands behind a market stall, frozen mid-sales-pitch.",
+    "background": {
+        "layers": [
+            {
+                "key": "bg-shared-act1-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act1-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-village_square",
+                "scrollFactor": 1
+            }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
+    ],
+    "exits": [
+        {
+            "id": "to-village-path",
+            "zone": {
+                "x": 350,
+                "y": 460,
+                "width": 260,
+                "height": 80
+            },
+            "targetRoom": "village_path",
+            "spawnPoint": {
+                "x": 460,
+                "y": 460
+            },
+            "transition": "fade",
+            "direction": "south",
+            "label": "path"
+        },
+        {
+            "id": "to-watchtower",
+            "zone": {
+                "x": 350,
+                "y": 0,
+                "width": 260,
+                "height": 80
+            },
+            "targetRoom": "old_watchtower",
+            "spawnPoint": {
+                "x": 480,
+                "y": 490
+            },
+            "transition": "fade",
+            "direction": "north",
+            "label": "watchtower"
+        },
+        {
+            "id": "to-bridge",
+            "zone": {
+                "x": 880,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
+            "targetRoom": "forest_bridge",
+            "spawnPoint": {
+                "x": 730,
+                "y": 169
+            },
+            "transition": "slide-right",
+            "direction": "east",
+            "label": "bridge",
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "stone_toad_moved"
+                }
+            ],
+            "blockedMessage": "A massive stone toad squats across the eastern road, blocking the way out of the village. Its belly rumbles with a sound like grinding boulders. It stares at you with ancient, hungry eyes. It doesn't seem inclined to move."
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "stone-toad",
+            "name": "Stone Toad",
+            "zone": {
+                "x": 703,
+                "y": 325,
+                "width": 124,
+                "height": 99
+            },
+            "interactionPoint": {
+                "x": 641,
+                "y": 412
+            },
+            "aliases": [
+                "toad",
+                "stone toad",
+                "frog",
+                "monster",
+                "creature",
+                "beast",
+                "giant toad"
+            ],
+            "spriteId": "stone-toad",
+            "conditions": [
+                {
+                    "type": "flag-not-set",
+                    "flag": "stone_toad_moved"
+                }
+            ],
+            "responses": {
+                "look": "A massive toad, easily the size of a cartwheel, squats across the eastern road out of the village. Its skin is mottled grey-green, half turned to stone by the creeping curse -- but the parts that aren't stone are very much alive. Its throat bulges rhythmically, and its enormous golden eyes track your every movement. Its belly emits a low, grinding rumble. The toad is hungry. Spectacularly, earth-shakingly hungry. It has been sitting here long enough that moss has started growing on its back, which suggests it won't be moving until something changes its mind.",
+                "talk": "You address the toad. It blinks one enormous eye. Then the other. Its throat inflates like a balloon, and it releases a croak so deep it vibrates your ribcage. You're fairly certain that translates to 'I'm hungry and you're not food, but I'm open to revising that assessment.'",
+                "use": "You're not sure how one 'uses' a giant stone toad. It's not a tool, a vehicle, or a piece of furniture. It's a boulder-sized amphibian with an attitude problem and an empty stomach. Using it would require it to cooperate, and it doesn't seem the cooperative type.",
+                "take": "The toad weighs at least as much as you do, is mostly made of stone, and is looking at you with the expression of something deciding whether you're a threat or a snack. Taking it is not an option. Being taken BY it is more likely.",
+                "push": "You brace yourself against the toad and push. It doesn't budge. You might as well be pushing the fountain. The toad's skin is rough as sandstone and disturbingly warm. It croaks once, dismissively, and you step back. Your arms hurt. Your dignity hurts more.",
+                "pull": "You grab the toad's leg and pull. Nothing happens. The toad looks at you with what can only be described as pity. It has been sitting here since before you arrived and will be sitting here long after you've given up. Unless you find what it wants.",
+                "open": "You can't open a toad. They're not hinged. They don't have compartments. This isn't that kind of adventure. ...Actually, it might be, but not with this particular toad.",
+                "default": "The stone toad sits immovably across the eastern road, radiating hunger and geological patience. Its belly grumbles like distant thunder."
+            }
+        },
+        {
+            "id": "petrified-fountain",
+            "name": "Petrified Fountain",
+            "zone": {
+                "x": 400,
+                "y": 350,
+                "width": 100,
+                "height": 80
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 420
+            },
+            "responses": {
+                "look": "A once-grand fountain, now completely petrified. The stone figures atop it -- a king, a knight, and what might be a badger -- are frozen in mid-dance. The water basin is dry and cracked, with dead leaves and dust where water once flowed. Something glints faintly among the debris. The stone has an unnatural smoothness, as though something turned the entire fountain to perfect grey stone overnight. This isn't weathering. This is a curse.",
+                "use": "The fountain hasn't worked in years. Turning the valve produces nothing but a sad grinding sound, like a bureaucrat's soul.",
+                "take": "It's a fountain. Made of stone. In a public square. Even you have limits. Presumably.",
+                "talk": "You address the petrified figures. The king stares blankly. The knight stares blankly. The badger stares blankly but with an air of judgment.",
+                "default": "You examine the fountain. It's deeply, profoundly, aggressively stone.",
+                "open": "Open what, exactly? The fountain basin is an open-air bowl with no lid, no hatch, no secret compartment. Its entire design philosophy is 'being open.' You've mastered the art of solving problems that don't exist.",
+                "push": "You push the Petrified Fountain. It doesn't budge. It has been not budging for longer than you've been alive, and it's not about to stop now.",
+                "pull": "You brace yourself and heave at the fountain. It doesn't budge. It weighs more than your collective life choices. The stone feels disturbingly warm where you touched it. You let go. Quickly."
+            }
+        },
+        {
+            "id": "notice-board",
+            "name": "Notice Board",
+            "zone": {
+                "x": 95,
+                "y": 260,
+                "width": 65,
+                "height": 130
+            },
+            "interactionPoint": {
+                "x": 130,
+                "y": 420
+            },
+            "responses": {
+                "look": "A wooden notice board covered in official proclamations, lost cat posters, and one notice that stands out: a decree with a royal seal, declaring the kingdom 'temporarily inconvenienced' by a petrification curse. The understatement is staggering.",
+                "take": "You pull one of the notices free. It's the official curse proclamation. Might be useful as evidence that things are, in fact, not fine.",
+                "use": "You read the notices more carefully. Most are mundane -- livestock auctions, tax reminders, a suspiciously specific wanted poster for 'anyone who looks like they're up to something.' The curse notice is the only one that matters.",
+                "default": "You peruse the notice board. It's a snapshot of a kingdom in denial.",
+                "talk": "You speak to the notice board. It does not respond, making it the most consistent government communication channel in the kingdom.",
+                "open": "It's a notice board, not a cabinet. The notices are pinned to the front, in plain view, because the kingdom's approach to classified information is 'pin it up in the town square and hope nobody reads it.'",
+                "push": "You shove the notice board. It rocks back on its posts, several notices fluttering to the ground. Civic vandalism: the hobby of the truly desperate.",
+                "pull": "You pull at the notice board. It rocks slightly on its post but holds firm, weighed down by centuries of accumulated notices, each more urgent and ignored than the last."
+            }
+        },
+        {
+            "id": "market-stalls",
+            "name": "Empty Market Stalls",
+            "zone": {
+                "x": 150,
+                "y": 370,
+                "width": 100,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 200,
+                "y": 420
+            },
+            "responses": {
+                "look": "Empty market stalls line one side of the square. Most merchants have fled or been petrified. Their wares -- fruit, cloth, pottery -- sit abandoned, slowly gathering dust and significance. One stall still has a half-petrified merchant behind it.",
+                "take": "Looting abandoned market stalls? You consider it for a shameful moment, then decide against it. The shame lingers.",
+                "use": "You browse the abandoned stalls. There's nothing useful -- just rotting produce and dusty trinkets. The economy here is in worse shape than you are.",
+                "default": "You wander through the empty stalls. It's like a flea market after the apocalypse.",
+                "talk": "You address the empty stalls. The silence that replies is indistinguishable from the customer service they provided when staffed.",
+                "open": "You try the drawer of the nearest stall. It slides open to reveal a dead spider and a single copper coin so tarnished it might be a button. You close it. Some mysteries are better left unsolved.",
+                "push": "You lean against a market stall. It creaks ominously, threatening to collapse into rotting wood and shattered dreams. You step back.",
+                "pull": "You tug at one of the stall's canvas awnings. It tears free with a sad ripping sound, showering you in dust and moth corpses. A fitting metaphor for the local economy."
+            }
+        },
+        {
+            "id": "cobblestones",
+            "name": "Cobblestones",
+            "zone": {
+                "x": 200,
+                "y": 400,
+                "width": 500,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 440
+            },
+            "responses": {
+                "look": "Uneven cobblestones pave the square, each one a slightly different height -- a masterwork of inconsistency that has been turning ankles since the village was founded. Some stones are cracked, others are loose, and at least three are actively trying to trip you.",
+                "take": "You pry at a cobblestone. It refuses to budge, cemented by centuries of foot traffic and civic neglect.",
+                "use": "You stomp on the cobblestones experimentally. They clatter and shift underfoot. Several pedestrians who don't exist give you disapproving looks.",
+                "default": "You look down at the cobblestones. They look up at your feet. An uneasy truce is maintained.",
+                "talk": "You whisper to the cobblestones. They do not whisper back. This is either because they're stones or because they're keeping secrets. Given this village, either is equally likely.",
+                "open": "You pry at the gaps between cobblestones, looking for a hidden compartment. You find dirt, a fossilized crumb, and nothing of value. The square keeps its secrets in plain sight.",
+                "push": "You press down on a loose cobblestone with your foot. It sinks slightly, then pops back up. For one thrilling moment you thought it might be a hidden switch. It's not. It's just bad masonry.",
+                "pull": "You wedge your fingers under a cobblestone and heave. Your fingernails file a formal complaint. The stone remains unmoved, firmly committed to being exactly where it is."
+            }
+        },
+        {
+            "id": "stone-figures",
+            "name": "Stone Figures",
+            "zone": {
+                "x": 410,
+                "y": 355,
+                "width": 80,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 420
+            },
+            "responses": {
+                "look": "Three stone figures atop the fountain: a king, a knight, and what appears to be a badger wearing a tiny crown. They're frozen mid-dance, which raises more questions than it answers. The king's expression suggests he was having a wonderful time. The badger's suggests it was not.",
+                "take": "They're part of the fountain. Chiseled from the same stone. Even if you could pry one loose, explaining why you're carrying a petrified dancing badger would be socially complex.",
+                "use": "You're not sure what you'd use stone figures for. Bookends? Conversation starters? They're ornamental, and their ornamental days are behind them.",
+                "talk": "You address the stone king. He stares back with the fixed grin of someone caught mid-waltz for all eternity. The badger's expression has not improved.",
+                "open": "Stone figures don't open. They are solid stone. The king, the knight, and the badger are all equally unopenable.",
+                "push": "You push one of the figures. It doesn't move. It has been dancing with the same partner for decades and is not about to change now.",
+                "pull": "You try to pull the badger free. It clings to its position with the determination of something that never wanted to be here but refuses to leave."
+            }
+        },
+        {
+            "id": "fountain-valve",
+            "name": "Fountain Valve",
+            "zone": {
+                "x": 430,
+                "y": 400,
+                "width": 40,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 420
+            },
+            "responses": {
+                "look": "A corroded brass valve protrudes from the fountain's base, green with verdigris. It was once used to control water flow. Now it controls nothing, because there's no water, no pressure, and no plumber willing to work in a cursed village.",
+                "take": "The valve is welded to the fountain's plumbing by centuries of corrosion. It's not going anywhere. Neither, to be fair, is the water.",
+                "use": "You grip the valve and turn. It produces a grinding sound like a bureaucrat's soul departing, then nothing. No water. No magic. Just the hollow promise of municipal infrastructure.",
+                "talk": "You address the valve. It drips once -- a single bead of rust-brown water, falling like a tear. Then nothing. Even the plumbing is grieving.",
+                "open": "You twist the valve to the open position. A dry wheeze escapes the pipe. Then silence. The fountain's water supply died long before the curse. This is just regular municipal failure.",
+                "push": "You push the valve handle. It doesn't turn. It's seized solid with corrosion. The valve retired years ago and is not taking new assignments.",
+                "pull": "You pull the valve. It grinds, shrieks, and produces a puff of copper-green dust. No water. The pipe behind it is as dry as the kingdom's treasury."
+            }
+        },
+        {
+            "id": "hat",
+            "name": "Hat",
+            "zone": {
+                "x": 630,
+                "y": 280,
+                "width": 50,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 655,
+                "y": 365
+            },
+            "conditions": [
+                {
+                    "type": "flag-not-set",
+                    "flag": "has_hat"
+                }
+            ],
+            "responses": {
+                "look": "A battered, slightly lopsided hat sits on the merchant's counter. It's seen better days, better decades, and possibly better centuries. But it's the only thing for sale that hasn't been turned to stone.",
+                "take": "The merchant's one mobile eye narrows. 'That's... merchandise... not... charity.' He wants a coin for it.",
+                "use": "You'd need to buy it first. The merchant is eyeing you and the hat with the protective instinct of someone whose entire inventory is one item.",
+                "default": "The hat sits on the counter, waiting for a customer. It's been waiting a while."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "notice-board-posting",
+            "name": "Town Notice",
+            "zone": {
+                "x": 156,
+                "y": 237,
+                "width": 40,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 181,
+                "y": 367
+            },
+            "responses": {
+                "look": "An official notice declaring the kingdom 'temporarily inconvenienced' by a petrification curse. It bears the royal seal -- a disgruntled badger wearing a crown. The bureaucratic understatement is, frankly, impressive.",
+                "use": "You read the notice aloud. It doesn't make the situation better, but it does make it official.",
+                "take": "You reach for the official notice. It's pinned firmly to the board with what appears to be a royal tack.",
+                "talk": "You read the notice aloud. 'The kingdom is temporarily inconvenienced.' Your voice echoes across the empty square. The inconvenience is, evidently, permanent.",
+                "open": "It's a piece of parchment, not an envelope. The text is right there on the front, in the kingdom's finest bureaucratic font.",
+                "push": "You press the notice flat against the board. It was already flat. You've accomplished nothing, but at least the notice looks slightly more official now.",
+                "pull": "You tug at the notice. The royal tack holds firm. Whoever pinned this up used a tack enchanted with the same tenacity as the curse itself."
+            }
+        },
+        {
+            "id": "bridge-toll-coin",
+            "name": "Old Coin",
+            "zone": {
+                "x": 564,
+                "y": 373,
+                "width": 20,
+                "height": 20
+            },
+            "interactionPoint": {
+                "x": 584,
+                "y": 403
+            },
+            "aliases": [
+                "coin",
+                "old coin",
+                "gold coin",
+                "money"
+            ],
+            "responses": {
+                "look": "An old coin sitting in the dry fountain basin, half-hidden among dust and dead leaves. The face on it has worn into a vague smudge. Still legal tender, apparently -- the kingdom has low standards for currency, much like everything else. Someone must have tossed it in when the fountain still worked. Their wish didn't come true.",
+                "use": "A coin is for spending. You'll need to find something -- or someone -- to spend it on.",
+                "take": "You reach into the dry fountain basin and pluck the coin from the dust. Easy enough -- nobody's been making wishes here for a while.",
+                "talk": "You address the coin. It glints dully. Coins are famously poor conversationalists, though this one has been sitting in the fountain long enough to have opinions about local governance.",
+                "open": "It's a coin, not a locket. It has two sides -- heads and tails -- and neither of them opens. That's not how currency works.",
+                "push": "You push the coin across the dry basin. It scrapes against stone with a sad little clink. Not exactly the splash it was expecting when someone tossed it in.",
+                "pull": "You pull the coin toward you across the dusty basin. It slides easily. The fountain has stopped hoarding wishes."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "read-notice-board",
+            "trigger": {
+                "verb": "look",
+                "subject": "notice-board"
+            },
+            "conditions": [
+                {
+                    "type": "flag-not-set",
+                    "flag": "knows_about_curse"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "knows_about_curse"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You read the official notice. The kingdom of Erelhain is under a petrification curse. Plants, buildings, and eventually people are turning to stone from the edges inward. The notice assures citizens this is 'temporary and under review.' It was posted three months ago. The review, apparently, is not going well."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "take-notice",
+            "trigger": {
+                "verb": "take",
+                "subject": "notice-board-posting"
+            },
+            "conditions": [
+                {
+                    "type": "item-not-taken",
+                    "item": "notice-board-posting"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "add-item",
+                    "item": "notice-board-posting"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "knows_about_curse"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You peel the official curse notice from the board. It's written in the kind of careful bureaucratic language that means 'we have absolutely no idea what's happening but we've filed the paperwork.' You pocket it. Evidence of impending doom is always handy."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "take-toll-coin",
+            "trigger": {
+                "verb": "take",
+                "subject": "bridge-toll-coin"
+            },
+            "conditions": [
+                {
+                    "type": "item-not-taken",
+                    "item": "bridge-toll-coin"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "add-item",
+                    "item": "bridge-toll-coin"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You pluck the old coin from the dry fountain basin. It's heavy, tarnished, and features a face so worn it could be anyone -- a king, a queen, or possibly a confused sheep. Someone's wish, abandoned when the water stopped flowing. Legal tender in Erelhain, where the bar for currency is roughly ankle-height."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "feed-toad-use",
+            "trigger": {
+                "verb": "use",
+                "subject": "cave-fish",
+                "target": "stone-toad"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "cave-fish"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "stone_toad_moved"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "cave-fish"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "stone_toad_moved"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You hold the cave fish out toward the stone toad. Its enormous eyes lock onto the wriggling pale shape with laser focus. A tongue -- thick, grey, and fast as a whip crack -- shoots out and snatches the fish from your hand before you can blink.\n\nThe toad chews once. Twice. Swallows with a sound like a boulder settling. Its throat bulges with satisfaction.\n\nThen, with a grinding of stone against stone, the massive creature shifts. One leg moves. Then another. Slowly, ponderously, like a glacier deciding to take a holiday, the stone toad shuffles off the road and settles into the cobblestones beside it. It blinks at you once -- was that gratitude? -- then closes its eyes.\n\nThe eastern road out of the village is clear."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "feed-toad-give",
+            "trigger": {
+                "verb": "give",
+                "subject": "cave-fish",
+                "target": "stone-toad"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "cave-fish"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "stone_toad_moved"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "cave-fish"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "stone_toad_moved"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You offer the cave fish to the stone toad. It doesn't hesitate. A tongue like a grey battering ram fires out, claiming the fish with surgical precision. The toad chews with the satisfaction of something that has been waiting a very long time for exactly this.\n\nWith a grinding rumble, the massive creature hauls itself off the road and into the corner of the square. It settles with a contented croak that vibrates the cobblestones, tucks its legs beneath its bulk, and closes its eyes.\n\nThe way east is open."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "feed-toad-direct",
+            "trigger": {
+                "verb": "use",
+                "subject": "cave-fish"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "cave-fish"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "stone_toad_moved"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "cave-fish"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "stone_toad_moved"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You hold up the cave fish. The stone toad's eyes snap to it with predatory focus. Before you can reconsider, a tongue like a grey whip snatches it from your grip.\n\nOne swallow. One satisfied croak. Then the toad grinds itself off the road with the slow inevitability of tectonic drift, settling into the corner of the square with a thud that shakes the cobblestones.\n\nThe eastern road is clear. The toad is asleep before you take your first step."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "buy-hat-from-merchant",
+            "trigger": {
+                "verb": "use",
+                "subject": "bridge-toll-coin",
+                "target": "stone_merchant"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "bridge-toll-coin"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "has_hat"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "bridge-toll-coin"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "has_hat"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "The merchant's mobile eye lights up. 'A... customer! A REAL... customer!' He reaches under the counter with his good arm and produces a battered, slightly lopsided hat. 'One... coin... and... it's... yours.' You hand over the coin. He places the hat on your head with surprising tenderness. 'Suits... you. Very... adventurer... chic. First... sale... in... three... months.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "buy-hat-direct",
+            "trigger": {
+                "verb": "use",
+                "subject": "hat"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "bridge-toll-coin"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "has_hat"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "bridge-toll-coin"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "has_hat"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "The merchant's mobile eye lights up. 'A... customer! A REAL... customer!' He reaches under the counter with his good arm and produces a battered, slightly lopsided hat. 'One... coin... and... it's... yours.' You hand over the coin. He places the hat on your head with surprising tenderness. 'Suits... you. Very... adventurer... chic. First... sale... in... three... months.'"
+                }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "touch-fountain",
+            "trigger": {
+                "verb": "use",
+                "subject": "petrified-fountain"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "stone-touch"
+                }
+            ]
+        },
+        {
+            "id": "touch-fountain-push",
+            "trigger": {
+                "verb": "push",
+                "subject": "petrified-fountain"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "stone-touch"
+                }
+            ]
+        }
+    ],
+    "deaths": {
+        "stone-touch": {
+            "title": "Death by Tactile Curiosity",
+            "narratorText": "You place your hand on the petrified fountain. The stone is warm -- no, hot. No, it's spreading. The grey creeps up your fingers, your wrist, your arm, with the steady inevitability of a Monday morning. You watch, fascinated and horrified in equal measure, as you become a permanent addition to the village square's already impressive collection of statues. Touching cursed objects: an activity with a 100% regret rate."
+        }
+    },
+    "dynamicDescriptions": {
+        "stone_toad_moved": "The village square stretches before you, its faded grandeur tinged with unease. The stone toad has settled into the corner of the square, sleeping off its meal. The eastern road is clear. The petrified fountain stands silent at the center, its stone figures frozen mid-dance. The half-petrified merchant continues his eternal sales pitch to nobody.",
+        "knows_about_curse": "The village square feels heavier now that you know about the curse. A massive stone toad squats across the eastern road, rumbling with hunger. The petrified fountain isn't art -- it's a warning. The grey stone creeping along the building edges isn't weathering -- it's spreading. The half-petrified merchant behind his stall is a reminder that time is not on anyone's side."
+    },
+    "npcs": [
+        {
+            "id": "stone_merchant",
+            "position": {
+                "x": 655,
+                "y": 365
+            },
+            "interactionPoint": {
+                "x": 688,
+                "y": 343
+            },
+            "zone": {
+                "x": 610,
+                "y": 246,
+                "width": 89,
+                "height": 119
+            },
+            "aliases": [
+                "man",
+                "merchant",
+                "seller",
+                "vendor",
+                "shopkeeper",
+                "guy",
+                "trader",
+                "stone man",
+                "petrified man",
+                "statue"
+            ],
+            "responses": {
+                "look": "The merchant is frozen mid-gesture, one hand raised as if presenting today's special. His expression suggests the special was quite good. His petrified state suggests the curse disagreed.",
+                "talk": "You speak to the stone merchant. He does not respond. This is the most successful sales interaction you've ever had -- nobody is trying to upsell you.",
+                "use": "Using a petrified merchant seems disrespectful. Also impractical. He's solid stone and makes a terrible conversation partner.",
+                "take": "The merchant weighs several hundred pounds of solid stone. Your ambitions exceed your lifting capacity.",
+                "default": "The stone merchant continues his eternal sales pitch to nobody. Business is, predictably, slow.",
+                "push": "You plant both hands on the merchant's chest and shove. He doesn't move. He does, however, continue to judge you with his frozen expression. You've now assaulted a statue. In public. Well done.",
+                "pull": "You tug at the stone merchant's sleeve. He shrugs you off with the practiced irritation of someone who has been grabbed by customers before. 'Hands off the merchandise. That includes me.'",
+                "open": "Open the merchant? He's a person. A stone person, but still a person. You can't just open people. That's not how anatomy works, even in a cursed kingdom."
+            }
+        }
+    ],
+    "audio": {
+        "music": "music-village",
+        "ambient": [
+            {
+                "key": "amb-wind-light",
+                "volume": 0.5
+            }
+        ]
+    },
+    "effects": {
+        "ambient": [
+            {
+                "type": "dust-motes",
+                "intensity": 0.4
+            }
+        ],
+        "lighting": {
+            "tint": "#eeddaa",
+            "brightness": 0.9,
+            "vignette": 0.15
+        }
+    },
+    "puzzleHints": [
+        {
+            "puzzleId": "take-toll-coin",
+            "tiers": [
+                "Bridges cost money, or so I've heard. Perhaps there's a coin hiding somewhere in this square, wedged into a crack or crevice. Not that I'd know.",
+                "There's a coin wedged between the stones near the fountain area. Coins are useful for tolls, or so the bridge-adjacent economy suggests.",
+                "Take the old coin wedged between the stones near the fountain. It might come in handy -- coins usually do."
+            ]
+        },
+        {
+            "puzzleId": "feed-toad-use",
+            "tiers": [
+                "That stone toad is hungry. Very hungry. Perhaps it would move if it had something to eat. Something fishy, from somewhere deep and dark.",
+                "There's a well on the village path to the south. Lower the bucket -- cave fish live in the deep water. The toad would find one irresistible.",
+                "Go south to the village path. Use the well or bucket to catch a pale cave fish. Bring it back here and give it to the stone toad blocking the east road."
+            ]
+        }
+    ],
+    "playerSpawn": {
+        "x": 239,
+        "y": 375
+    }
+}

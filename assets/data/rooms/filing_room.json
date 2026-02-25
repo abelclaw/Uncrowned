@@ -1,0 +1,613 @@
+{
+    "id": "filing_room",
+    "name": "Filing Room",
+    "description": "Row upon row of filing cabinets stretch into the cavern gloom, each labeled with codes that make tax forms look like light reading. The cabinets are organized by a system so complex that understanding it qualifies as an academic achievement. The air smells of old paper, dust, and the faint despair of everyone who has ever had to find a specific form in an infinite filing system.",
+    "background": {
+        "layers": [
+            {
+                "key": "bg-shared-act2-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act2-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-filing_room",
+                "scrollFactor": 1
+            }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
+    ],
+    "exits": [
+        {
+            "id": "to-entrance-hall",
+            "zone": {
+                "x": 0,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
+            "targetRoom": "cavern_entrance_hall",
+            "spawnPoint": {
+                "x": 650,
+                "y": 450
+            },
+            "transition": "slide-left",
+            "direction": "west",
+            "label": "entrance hall"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "filing-cabinets",
+            "name": "Filing Cabinets",
+            "aliases": ["cabinets", "cabinet", "filing cabinet", "files", "drawers", "drawer", "filing drawers", "file cabinets", "file cabinet", "metal cabinets"],
+            "zone": {
+                "x": 300,
+                "y": 350,
+                "width": 200,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 400,
+                "y": 420
+            },
+            "responses": {
+                "look": "Hundreds of filing cabinets, each with tiny labels: '27-A through 27-A Stroke 14,' '27-B through 27-B Stroke 12,' '27-C (CLASSIFIED),' '28-A through 42-Z (DO NOT OPEN).' The system would make a librarian weep. Finding the right form requires patience, literacy, and a willingness to accept that some filing systems are adversarial by design.",
+                "use": "You start searching the cabinets. Drawer after drawer of forms: tax declarations, death certificates, fishing licenses, a form for filing complaints about forms. The organization is hostile but thorough.",
+                "default": "You face the filing cabinets. They face you back with the quiet confidence of systems designed to outlast civilizations.",
+                "take": "The filing cabinets are bolted to the floor, to the wall, and possibly to each other. The Clerk takes document security seriously. You'd need a crowbar and a disregard for administrative law.",
+                "talk": "You address the filing cabinets. They do not reply, which makes them the most agreeable bureaucratic entity you've encountered so far.",
+                "open": "You try drawer after drawer. Most are locked. The ones that aren't are empty, or contain forms requesting permission to open other drawers. Bureaucratic recursion.",
+                "push": "You shove a cabinet. It's part of the wall. The wall is part of the mountain. You are pushing a mountain. Adjust your expectations accordingly.",
+                "pull": "You pull at a cabinet. The metal groans but holds firm. Built to survive the apocalypse. Not because anyone planned for it, but because bureaucratic furniture is simply that stubborn."
+            }
+        },
+        {
+            "id": "hidden-drawer",
+            "name": "Bottom Drawer",
+            "aliases": ["drawer", "hidden drawer", "bottom", "secret drawer", "last drawer", "skip drawer", "ajar drawer", "unlabeled drawer"],
+            "zone": {
+                "x": 700,
+                "y": 400,
+                "width": 60,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 730,
+                "y": 420
+            },
+            "responses": {
+                "look": "A bottom drawer on the last cabinet, slightly ajar. Unlike the others, it's not labeled. Someone has scratched 'SKIP' into the metal -- either a filing code or advice. The drawer sticks when you try to pull it.",
+                "open": "You pull the drawer. It sticks, then slides open with reluctance. Inside: a single rubber stamp marked 'VIP -- SKIP ALL QUEUES.' Someone hid this here. Someone who got very tired of waiting.",
+                "use": "The drawer needs to be opened first. It's stuck, but not locked -- just stubborn. Like most things in this filing system.",
+                "default": "You examine the bottom drawer. It's the only unlabeled drawer in the entire room, which makes it either unimportant or the most important drawer here.",
+                "take": "The hidden drawer is built into the desk. You can't take a drawer without taking the desk, and the desk is built into the floor. It's turtles all the way down.",
+                "talk": "You whisper to the bottom drawer. It says nothing, but its slight ajar-ness feels conspiratorial. You and this drawer share a secret now.",
+                "push": "You push the drawer closed. It slides shut with a click, then slowly creeps back open a crack, like it's winking at you. Some drawers just refuse to stay closed.",
+                "pull": "You pull the drawer. It sticks, resists, then slides open with the reluctance of someone being dragged to a meeting."
+            }
+        },
+        {
+            "id": "file-stacks",
+            "name": "File Stacks",
+            "aliases": ["stacks", "stack", "file stack", "papers", "paper stacks", "piles", "pile", "documents", "records", "paperwork"],
+            "zone": {
+                "x": 50,
+                "y": 50,
+                "width": 200,
+                "height": 400
+            },
+            "interactionPoint": {
+                "x": 150,
+                "y": 430
+            },
+            "responses": {
+                "look": "Filing cabinets stretching to the ceiling, stuffed with the accumulated paperwork of a civilization that confused bureaucracy with governance.",
+                "take": "You pull a random file. It's a complaint about a complaint about a complaint. Recursive misery.",
+                "use": "Finding anything useful would require a cataloging system, which itself would require filing a request.",
+                "default": "You contemplate the file stacks. They contemplate you back, silently and judgmentally.",
+                "talk": "You mutter at the file stacks. Somewhere deep inside, a folder rustles. Probably the draft. Almost certainly the draft.",
+                "open": "You pry open a random drawer from the stacks. Inside: forms, forms, a dried sandwich from what appears to be the Second Age, and more forms. You close it again. Some archaeology is best left undone.",
+                "push": "You lean into the file stack. It sways ominously, and for one terrible moment you envision being buried under centuries of accumulated paperwork. Death by bureaucracy -- the most ironic and least dignified way to go.",
+                "pull": "You pull at a stack of files. Several cascade to the floor in a paper avalanche. You spend a few moments putting them back. They're now in the wrong order, which in this system might actually be an improvement."
+            }
+        },
+        {
+            "id": "cabinet-labels",
+            "name": "Cabinet Labels",
+            "aliases": ["labels", "label", "plaques", "plaque", "brass plaques", "brass plaque", "tags", "tag", "signs", "sign", "codes", "markings"],
+            "zone": {
+                "x": 320,
+                "y": 340,
+                "width": 160,
+                "height": 20
+            },
+            "interactionPoint": {
+                "x": 400,
+                "y": 420
+            },
+            "responses": {
+                "look": "Tiny brass plaques affixed to each drawer, engraved in a font so small it constitutes an act of hostility. The codes follow no logic you can discern: '27-A Stroke 14,' '13-Q Revised (Twice),' 'FORM B-12 (NOT THE VITAMIN).' One label simply reads 'MISCELLANEOUS DOOM.'",
+                "take": "You try to peel off a label. It's riveted on with the kind of permanence usually reserved for tombstone engravings. The bureaucracy does not permit relabeling.",
+                "use": "You trace a finger along the labels, trying to find a pattern. The pattern, if it exists, operates on a level of abstraction that would give philosophers a migraine.",
+                "talk": "You read the labels aloud. It sounds like an incantation. Nothing happens, but you feel a faint sense of bureaucratic oppression, which may be the intended effect.",
+                "open": "The labels don't open. They are small brass plaques. If you're trying to open them, the filing room has already won.",
+                "push": "You push a label into its holder. It clicks satisfyingly. Interacting with labels is the most productive thing you've done in this filing system.",
+                "pull": "You pull a label free. It reads 'MISCELLANEOUS DOOM.' You slide it back. Some things are better left filed.",
+                "default": "The labels stare back at you with the confidence of a system that knows you'll never crack its code."
+            }
+        },
+        {
+            "id": "dust",
+            "name": "Dust",
+            "aliases": ["dirt", "grime", "filth", "powder", "particles", "dust layer", "dusty"],
+            "zone": {
+                "x": 500,
+                "y": 380,
+                "width": 100,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 550,
+                "y": 420
+            },
+            "responses": {
+                "look": "A fine layer of dust coats every surface. It's the kind of dust that has achieved sentience through sheer persistence -- not alive, exactly, but deeply committed to being here.",
+                "take": "You scoop up a handful of dust. It sifts through your fingers and settles right back where it was, like a cat that's been moved off a chair. The dust lives here. You're just visiting.",
+                "use": "You draw a smiley face in the dust on the nearest cabinet. It stares back at you. You've created the happiest thing in this room, which is profoundly depressing.",
+                "talk": "You sneeze. The dust, offended, rises in a small cloud and resettles. Communication achieved.",
+                "open": "You can't open dust. Dust is already as open as a substance can be. It's everywhere, uncommitted to containment.",
+                "push": "You wave at the dust. It billows up, hangs in the air with theatrical indignation, and settles back down exactly where it was. The dust has tenure.",
+                "pull": "You try to pull dust off a cabinet surface. It clings with the determination of someone who has found their calling.",
+                "default": "You regard the dust. The dust regards you. This is the most meaningful relationship available in this room."
+            }
+        },
+        {
+            "id": "cavern-ceiling",
+            "name": "Ceiling",
+            "aliases": ["roof", "cavern ceiling", "cave ceiling", "stalactites", "stalactite", "above", "overhead", "top", "cave roof"],
+            "zone": {
+                "x": 200,
+                "y": 10,
+                "width": 500,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 420
+            },
+            "responses": {
+                "look": "The cavern ceiling disappears into darkness above the filing cabinets. Stalactites hang down like stone fingers, some of them suspiciously close to the taller cabinets. Nature tried to reclaim this space. The filing cabinets held firm.",
+                "take": "You reach for the ceiling. It's about thirty feet up and made of solid rock. Even your ambition has limits.",
+                "use": "There's nothing on the ceiling you can use, unless you count the stalactites as chandeliers. They are not chandeliers. They are geology.",
+                "talk": "You shout at the ceiling. Your voice echoes back, distorted, as though the cavern is mocking you. It probably is.",
+                "open": "The ceiling is not a hatch. It's solid rock. The concept of opening it is ambitious but geologically unfeasible.",
+                "push": "You can't push the ceiling. It's a ceiling. It's already as 'up' as it can go.",
+                "pull": "You can't pull down the ceiling. Although given what you've seen of this filing system, someone has probably filed a form requesting exactly that.",
+                "default": "You crane your neck at the ceiling. It's the most interesting thing you can see that isn't a filing cabinet, which is admittedly a low bar."
+            }
+        },
+        {
+            "id": "old-paper",
+            "name": "Old Paper",
+            "aliases": ["paper", "papers", "loose paper", "loose papers", "scattered papers", "sheets", "sheet", "pages", "page", "parchment", "scraps"],
+            "zone": {
+                "x": 580,
+                "y": 390,
+                "width": 80,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 620,
+                "y": 430
+            },
+            "responses": {
+                "look": "Loose sheets of old paper have escaped from the cabinets and lie scattered on the floor like refugees from a bureaucratic war. You can make out fragments: '...hereby decree that all decrees require a decree...' It's paperwork all the way down.",
+                "take": "You pick up a loose page. It's a tax form from an empire that no longer exists, demanding payment in a currency that no longer has value, from a person who is no longer alive. Somehow, it still feels overdue.",
+                "use": "You could fold it into a paper airplane, but you suspect that would violate at least three municipal codes and a filing regulation you haven't been made aware of.",
+                "talk": "You read aloud from a page. The words are so bureaucratic they form a kind of anti-poetry. If boredom could rhyme, this would be its magnum opus.",
+                "open": "You unfold a crumpled page. It's a memo from one bureaucrat to another: 'Please advise re: whether Form 12-F supersedes Form 12-G, or if both have been superseded by Form 12-F Revised (Unrevised).' There is no reply. There never was.",
+                "push": "You sweep the loose papers into a pile with your foot. They scatter again almost immediately, propelled by a draft that seems to exist solely for this purpose.",
+                "pull": "You pull a sheet free from under a cabinet leg. It tears. The remaining fragment reads: 'VOID IF TORN.' Of course it does.",
+                "default": "You nudge the scattered papers with your foot. They rustle reproachfully. Even dead paperwork demands respect in this place."
+            }
+        },
+        {
+            "id": "room-air",
+            "name": "Air",
+            "aliases": ["smell", "atmosphere", "breeze", "draft", "stale air", "room", "nothing"],
+            "zone": {
+                "x": 450,
+                "y": 300,
+                "width": 60,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 480,
+                "y": 420
+            },
+            "responses": {
+                "look": "The air in here is thick with the smell of old paper, iron filings, and institutional misery. Dust motes drift through the faint light like the ghosts of paperwork past.",
+                "take": "You inhale deeply. You now have lungs full of centuries-old bureaucratic dust. This is the most you'll ever take from this room without filling out a requisition form.",
+                "use": "You breathe. The air tolerates this. It's the closest thing to cooperation you'll get from anything in this filing system.",
+                "talk": "You speak into the stale air. Your words hang there, suspended in dust motes, going nowhere. Much like the forms in these cabinets.",
+                "open": "You can't open air. Air is definitionally open. It's the openest thing there is.",
+                "push": "You wave your arms through the stale air. Dust motes scatter briefly, then resume their purposeless drift.",
+                "pull": "You breathe in deeply. You've pulled the air into your lungs. It tastes of old paper and institutional despair.",
+                "default": "You stand in the stale air of the filing room. It hangs around you like the atmosphere of a place that has given up on ventilation as a concept."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "form-27b-stroke-6",
+            "name": "Form 27-B Stroke 6",
+            "aliases": ["form", "form 27b", "27b", "application", "application form", "bureaucratic form", "paper", "document", "parchment", "worthiness form", "sovereign form", "test form", "27-b stroke 6", "form 27-b", "stroke 6"],
+            "zone": {
+                "x": 420,
+                "y": 395,
+                "width": 30,
+                "height": 20
+            },
+            "interactionPoint": {
+                "x": 435,
+                "y": 420
+            },
+            "responses": {
+                "look": "A bureaucratic form of stunning complexity. 'FORM 27-B STROKE 6: Application for Sovereign Worthiness Test.' It has forty-seven fields, three of which are 'Name' (first, last, and bureaucratic). The fine print requires a microscope and a law degree.",
+                "use": "The form is blank. You'd need ink to fill it out. Ancient, official ink. The kind that takes bureaucracy personally.",
+                "take": "You reach for Form 27-B Stroke 6. The paper is crisp, official, and radiates the quiet authority of documents that control your destiny.",
+                "talk": "You address the form directly. 'I will conquer you,' you announce. The form's forty-seven blank fields stare back, unmoved. Forms have heard this before. Forms have outlasted everyone who said it.",
+                "open": "You unfold the form fully. It's larger than expected -- the back side has another twenty fields, a waiver of liability, and a section titled 'FOR OFFICIAL USE ONLY.' You fold it back up before it gets any bigger.",
+                "push": "You flatten the form against the cabinet. It's already flat. It's a piece of paper. This is like trying to make water wetter.",
+                "pull": "You tug at the corners of the form, testing its structural integrity. It's bureaucratic-grade parchment -- tougher than leather, more resilient than hope."
+            }
+        },
+        {
+            "id": "vip-stamp",
+            "name": "VIP Authorization Stamp",
+            "aliases": ["stamp", "vip stamp", "rubber stamp", "vip", "authorization stamp", "authorization", "skip stamp", "queue stamp", "red stamp", "contraband stamp"],
+            "zone": {
+                "x": 715,
+                "y": 410,
+                "width": 25,
+                "height": 15
+            },
+            "interactionPoint": {
+                "x": 730,
+                "y": 420
+            },
+            "responses": {
+                "look": "An unauthorized stamp that reads 'VIP -- SKIP ALL QUEUES.' Someone left it in a hidden drawer, a small act of rebellion against the system. The rubber is still good. The authorization is technically valid. The Clerk would be furious.",
+                "use": "The stamp needs something to stamp. A ticket, perhaps. A queue ticket that could use some... elevation.",
+                "take": "The VIP stamp is chained to its desk. Even rubber stamps are subject to inventory control in this bureaucracy.",
+                "talk": "You hold the stamp up and address it. 'You're going to change everything,' you whisper. The stamp says nothing, because it's a stamp, but its silence feels loaded with revolutionary potential.",
+                "open": "It's a rubber stamp, not a locket. There's nothing to open. Though if there were a secret compartment inside a rubber stamp, this is exactly the filing room where you'd find it.",
+                "push": "You press the stamp against the nearest surface. It leaves a satisfying red 'VIP -- SKIP ALL QUEUES' impression on a filing cabinet. This accomplishes nothing but feels enormously satisfying.",
+                "pull": "You pull at the rubber pad of the stamp. It's firmly attached. Whoever made this contraband office supply did not skimp on construction."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "take-form",
+            "trigger": {
+                "verb": "take",
+                "subject": "form-27b-stroke-6"
+            },
+            "conditions": [
+                {
+                    "type": "item-not-taken",
+                    "item": "form-27b-stroke-6"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "add-item",
+                    "item": "form-27b-stroke-6"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You take Form 27-B Stroke 6. The form practically vibrates with bureaucratic energy. Forty-seven fields await your attention, your ink, and your will to live. This is the form that stands between you and the Screaming Caverns test. It looks exactly as intimidating as that sounds."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "take-vip-stamp",
+            "trigger": {
+                "verb": "take",
+                "subject": "vip-stamp"
+            },
+            "conditions": [
+                {
+                    "type": "item-not-taken",
+                    "item": "vip-stamp"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "add-item",
+                    "item": "vip-stamp"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You pocket the VIP stamp. It's a small rubber stamp with enormous implications. Whoever hid it here was either a genius or someone who snapped after waiting in the queue for too long. Either way, they've just saved you from waiting behind number 846 other applicants. Bless their bureaucratically rebellious soul."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "fill-form",
+            "trigger": {
+                "verb": "use",
+                "subject": "ancient-ink",
+                "target": "form-27b-stroke-6"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "ancient-ink"
+                },
+                {
+                    "type": "has-item",
+                    "item": "form-27b-stroke-6"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "form_filled"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "ancient-ink"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "form_filled"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You uncork the ancient ink and begin filling out Form 27-B Stroke 6. The ink flows eagerly, as though it has been waiting centuries for this moment. Name: Pip. Occupation: Tinker (reluctant). Reason for visit: Saving the kingdom (allegedly). The form fills itself for the more arcane fields -- bureaucratic ink knows bureaucratic forms. When you're done, the completed form glows faintly. It's ready for the Clerk."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "fill-form-reverse",
+            "trigger": {
+                "verb": "use",
+                "subject": "form-27b-stroke-6",
+                "target": "ancient-ink"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "ancient-ink"
+                },
+                {
+                    "type": "has-item",
+                    "item": "form-27b-stroke-6"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "form_filled"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "ancient-ink"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "form_filled"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You apply ink to form. The ancient ink auto-completes the bureaucratic fields with evident delight. The form is filled, glowing faintly with official power. Ready for the Clerk's scrutiny."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "stamp-ticket",
+            "trigger": {
+                "verb": "use",
+                "subject": "vip-stamp",
+                "target": "queue-ticket"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "vip-stamp"
+                },
+                {
+                    "type": "has-item",
+                    "item": "queue-ticket"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "vip_stamped"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "vip-stamp"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "vip_stamped"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You stamp the queue ticket with the VIP authorization. The stamp leaves a deep red impression: 'VIP -- SKIP ALL QUEUES.' Your ticket number 847 is now ticket number 847-VIP, which means absolutely nothing numerically but everything bureaucratically. The Clerk will hate this. Which makes it perfect."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "stamp-ticket-reverse",
+            "trigger": {
+                "verb": "use",
+                "subject": "queue-ticket",
+                "target": "vip-stamp"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "vip-stamp"
+                },
+                {
+                    "type": "has-item",
+                    "item": "queue-ticket"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "vip_stamped"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "vip-stamp"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "vip_stamped"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "VIP stamp meets queue ticket. Red ink meets bureaucratic destiny. Your ticket now bears the sacred words of queue-skipping authority. The stamp crumbles after use -- it was, like all good rebellions, single-use."
+                }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "trapped-cabinet",
+            "trigger": {
+                "verb": "open",
+                "subject": "filing-cabinets"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "form_filled"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "filed-away"
+                }
+            ]
+        },
+        {
+            "id": "form-weapon",
+            "trigger": {
+                "verb": "use",
+                "subject": "form-27b-stroke-6",
+                "target": "the_clerk"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "form-27b-stroke-6"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "form_filled"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "wrong_form_count_2"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "paper-cut"
+                }
+            ]
+        }
+    ],
+    "deaths": {
+        "filed-away": {
+            "title": "Death by Organization",
+            "narratorText": "You open a random cabinet. This one is trapped -- a spring-loaded mechanism fires a wall of razor-sharp filing tabs directly at your face. The Clerk's filing system is thorough, organized, and apparently weaponized. You are filed under 'D' for 'Deceased,' which is at least alphabetically correct. The cabinet clicks shut behind you with the satisfaction of a system that works exactly as designed."
+        },
+        "paper-cut": {
+            "title": "Death by Irony",
+            "narratorText": "You attempt to weaponize the bureaucratic form. Bureaucracy weaponizes you first. The form's edges are sharper than they have any right to be -- centuries of administrative magic have honed them to a monomolecular edge. The paper cut starts at your finger and keeps going. It turns out forms 27-B are classified as lethal weapons in three jurisdictions. You are now a cautionary tale in the Clerk's incident report."
+        }
+    },
+    "dynamicDescriptions": {},
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            {
+                "key": "amb-cave-drips",
+                "volume": 0.3
+            }
+        ]
+    },
+    "effects": {
+        "ambient": [
+            {
+                "type": "dust-motes",
+                "intensity": 0.6
+            }
+        ],
+        "lighting": {
+            "tint": "#444433",
+            "brightness": 0.5,
+            "vignette": 0.45
+        }
+    },
+    "puzzleHints": [
+        {
+            "puzzleId": "fill-form",
+            "tiers": [
+                "Form 27-B Stroke 6 is impressively blank. It demands ink. Not just any ink -- the kind that's been sitting in a library for centuries, developing a personality and strong opinions about bureaucratic procedure.",
+                "The ancient ink is on the reading desk in the cavern library. Use it on the form to fill it out. The ink auto-completes the arcane fields, which is more helpful than anything else in this filing system.",
+                "Take the ancient ink from the reading desk in the cavern library. Use the ancient ink on Form 27-B Stroke 6. The completed form can then be submitted to the Clerk in the entrance hall."
+            ]
+        },
+        {
+            "puzzleId": "stamp-ticket",
+            "tiers": [
+                "A queue ticket without special authorization is just a number. And your number is 847. Somewhere in this room, a small act of rebellion against the system has been preserved in rubber and red ink.",
+                "The VIP stamp is in the hidden bottom drawer of the last filing cabinet. Use it on your queue ticket to upgrade from 'number 847' to 'number 847-VIP,' which changes everything bureaucratically.",
+                "Open the hidden bottom drawer of the last cabinet to find the VIP stamp. Take it. Then use the VIP stamp on your queue ticket. Show the stamped ticket to the Clerk in the entrance hall."
+            ]
+        }
+    ],
+    "playerSpawn": {
+        "x": 480,
+        "y": 450
+    }
+}

@@ -1,0 +1,983 @@
+{
+    "id": "throne_room",
+    "name": "Throne Room",
+    "description": "The throne room of Castle Erelhain is magnificent in the way that a shipwreck is magnificent -- grand in scale, tragic in outcome. A massive stone throne sits on a raised dais, its velvet cushion moth-eaten and its armrests cracked. Banners hang from the ceiling, faded to the color of old bruises. The air smells of dust, old stone, and the lingering disappointment of a monarchy that ended with an olive.",
+    "background": {
+        "layers": [
+            {
+                "key": "bg-shared-act1-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act1-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-throne_room",
+                "scrollFactor": 1
+            }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
+    ],
+    "exits": [
+        {
+            "id": "to-hallway",
+            "zone": {
+                "x": 0,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
+            "targetRoom": "castle_hallway",
+            "spawnPoint": {
+                "x": 600,
+                "y": 450
+            },
+            "transition": "slide-left",
+            "direction": "west",
+            "label": "hallway"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "throne",
+            "name": "Stone Throne",
+            "aliases": [
+                "throne",
+                "chair",
+                "seat",
+                "stone chair",
+                "king's throne",
+                "royal seat",
+                "royal throne",
+                "stone seat",
+                "king seat",
+                "kings chair"
+            ],
+            "zone": {
+                "x": 450,
+                "y": 340,
+                "width": 80,
+                "height": 80
+            },
+            "interactionPoint": {
+                "x": 490,
+                "y": 420
+            },
+            "responses": {
+                "look": "The throne of Erelhain. Carved from a single block of grey stone, it was once padded with velvet and gold leaf. Now the velvet is moth-eaten and the gold leaf has flaked away, revealing the bare stone beneath. Termites have been at the wooden dais for decades. The whole structure looks like it could collapse if someone so much as looked at it with intent.",
+                "use": "You consider sitting on the throne. The wood creaks ominously beneath your first step on the dais. Perhaps you should think carefully before putting your full weight on centuries-old termite-damaged furniture.",
+                "take": "You can't take a throne. That's called 'seizing power,' and it typically requires an army, not pockets.",
+                "talk": "You address the empty throne. 'Anyone home?' The silence that follows is the most regal thing in the room.",
+                "default": "You study the throne. It sits empty, as it has since King Mortimer's fateful encounter with an olive. The kingdom's problems sit here too, metaphorically. They're much heavier.",
+                "open": "The throne is solid wood and stone. There are no secret compartments, hidden panels, or conveniently placed levers. It's a chair. A grand one, but still a chair.",
+                "push": "You push the stone throne. It doesn't move. It was carved from the castle's own bedrock, which means pushing it is technically pushing the mountain. You lose.",
+                "pull": "You pull at the throne. Several tons of carved stone decline your invitation to relocate. The throne was here before the monarchy and will be here after you."
+            }
+        },
+        {
+            "id": "faded-banners",
+            "name": "Faded Banners",
+            "aliases": [
+                "banners",
+                "banner",
+                "flags",
+                "flag",
+                "tapestry",
+                "tapestries",
+                "crest",
+                "royal crest",
+                "badger",
+                "badger crest",
+                "hanging",
+                "hangings"
+            ],
+            "zone": {
+                "x": 200,
+                "y": 340,
+                "width": 100,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 250,
+                "y": 420
+            },
+            "responses": {
+                "look": "Banners hang from the ceiling, each bearing the royal crest -- the disgruntled badger in a crown. Time has faded them from proud crimson to a color best described as 'exhausted pink.' One banner has fallen entirely and lies in a heap on the floor like a textile casualty.",
+                "take": "You tug at a banner. It disintegrates into dust the moment it separates from the wall. Centuries of decay compressed into one disappointing moment.",
+                "default": "You gaze at the banners. They droop with the weight of history and moths.",
+                "use": "You pull a banner down and drape it over your shoulders like a cape. You look ridiculous. You look like a child playing at being king. You put it back.",
+                "talk": "You address the banners. They hang there, saying nothing, which is exactly the level of counsel the monarchy has been providing for centuries. Consistent, at least.",
+                "open": "You push a banner aside, revealing the stone wall behind it. No secret passage, no hidden alcove -- just wall. The castle is refreshingly honest in its architecture.",
+                "push": "You push a banner aside. It swings back, releasing a cloud of dust and the faint despair of a dynasty that peaked early and declined spectacularly.",
+                "pull": "You tug a banner downward. The ancient fabric tears with a sound like a disappointed sigh. A corner comes away in your hand, trailing threads and centuries of declining relevance."
+            }
+        },
+        {
+            "id": "royal-dais",
+            "name": "Royal Dais",
+            "aliases": [
+                "dais",
+                "platform",
+                "stage",
+                "raised platform",
+                "steps",
+                "throne platform",
+                "wooden platform",
+                "table"
+            ],
+            "zone": {
+                "x": 400,
+                "y": 420,
+                "width": 180,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 490,
+                "y": 430
+            },
+            "responses": {
+                "look": "The raised platform where the throne sits. The wood is soft with termite damage and creaks when you step on it. A small table beside the throne once held the royal seal. The table is still here. The seal... you'll have to look more carefully.",
+                "use": "You step onto the dais. It groans under your weight. You're not heavy -- the dais is just that compromised. Each step sounds like a small argument between wood and gravity.",
+                "default": "You examine the dais. It's held together by habit and structural stubbornness.",
+                "take": "You can't take the Royal Dais. It's firmly attached to its current situation, much like your growing sense of confusion.",
+                "talk": "You address the dais. 'You've seen better days,' you tell it. It has. Every day for the last three centuries has been worse than the one before. The dais could say the same about you.",
+                "open": "You search the dais for hidden compartments. Your fingers find a crack in the stone, but it's just age damage, not a secret. Not everything hides something. Some things are just broken.",
+                "push": "You push against the dais. Stone doesn't push. Stone endures. The dais has endured coronations, funerals, and now you. It rates you somewhere between 'mild inconvenience' and 'forgettable.'",
+                "pull": "You pull at a loose stone on the dais edge. It wiggles but holds. Beneath it: more stone. The dais is solid all the way through, like the disappointment in this room."
+            }
+        },
+        {
+            "id": "curtains",
+            "name": "Curtains",
+            "aliases": [
+                "curtain",
+                "drapes",
+                "drape",
+                "velvet",
+                "red curtains",
+                "red drapes",
+                "fabric",
+                "cloth",
+                "hangings"
+            ],
+            "zone": {
+                "x": 750,
+                "y": 50,
+                "width": 150,
+                "height": 400
+            },
+            "interactionPoint": {
+                "x": 825,
+                "y": 440
+            },
+            "responses": {
+                "look": "Heavy red drapes frame the throne room walls, their velvet moth-eaten and their royal red faded to what might charitably be called a suggestion of red. They hang with the weary dignity of fabric that has witnessed far too many bad decisions.",
+                "take": "You tug experimentally. The curtain rod groans, dust cascades, and you realize that pulling these down would bury you in several hundred pounds of ancient velvet. A theatrical death, but a death nonetheless.",
+                "use": "Hide behind them? Very dramatic. Very dusty. Very much the sort of thing that works in plays and absolutely nowhere else.",
+                "default": "You consider the curtains. Once grand, now threadbare -- a textile metaphor for the entire kingdom.",
+                "talk": "You address the curtains. They hang there, impassive and moth-eaten, like a textile metaphor for the entire government. Their silence is eloquent in its own way.",
+                "open": "You part the curtains. Behind them: stone wall, dust, and a spider that has been living undisturbed for what appears to be generations. The spider is not pleased about the light.",
+                "push": "You shove the curtains aside. They sway heavily, releasing a cascade of dust and a single moth that flutters toward the skylight with the urgency of a refugee.",
+                "pull": "You pull the curtains toward you. The fabric is heavier than expected -- waterlogged with centuries of damp. The curtain rod groans overhead. You let go before something gives way."
+            }
+        },
+        {
+            "id": "skylight",
+            "name": "Skylight",
+            "aliases": [
+                "sky light",
+                "window",
+                "ceiling window",
+                "roof window",
+                "glass",
+                "light",
+                "beam",
+                "light beam",
+                "sunlight",
+                "sun"
+            ],
+            "zone": {
+                "x": 400,
+                "y": 0,
+                "width": 200,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 500,
+                "y": 430
+            },
+            "responses": {
+                "look": "A beam of light falls from the skylight above, thick with dust motes dancing in slow spirals. It's theatrically placed to illuminate the throne, as though the architect understood that monarchs require good lighting to look properly regal.",
+                "take": "You can't pocket sunlight, though the impulse is understandable in a castle this gloomy.",
+                "use": "You stand in the beam and feel momentarily important. The dust motes swirl around you like a very small, very underwhelming coronation ceremony.",
+                "default": "You look up at the skylight. The sky beyond is indifferent to the kingdom's problems, which feels about right.",
+                "talk": "You call up at the skylight. Your voice echoes off the glass and comes back slightly diminished, like hearing your own ambitions reflected back at you.",
+                "open": "The skylight is far above your head and sealed shut. Even if you could reach it, the mechanism is rusted solid. The throne room's one source of natural light is not accepting visitors.",
+                "push": "You can't reach the skylight. It's twenty feet above you, filtering light through decades of grime. You'd need a ladder, scaffolding, or considerably longer arms.",
+                "pull": "The skylight is built into the ceiling. You'd need to fly to reach it, and your attempts at levitation have been consistently unsuccessful."
+            }
+        },
+        {
+            "id": "throne-vines",
+            "name": "Throne Vines",
+            "aliases": [
+                "vines",
+                "vine",
+                "ivy",
+                "creepers",
+                "creeper",
+                "tendrils",
+                "plants",
+                "plant",
+                "climbing vines",
+                "green vines"
+            ],
+            "zone": {
+                "x": 100,
+                "y": 100,
+                "width": 100,
+                "height": 350
+            },
+            "interactionPoint": {
+                "x": 150,
+                "y": 430
+            },
+            "responses": {
+                "look": "Vines have crept in through cracks in the stone and wound themselves around the columns, reclaiming the throne room for nature one tendril at a time. There's something rather poetic about it -- royalty fades, but ivy endures.",
+                "take": "Yank them down? The columns might disagree, and you'd rather not find out what happens when you remove the only thing holding certain masonry together.",
+                "use": "Vines aren't particularly useful to a tinker. They don't fix things, brew things, or unlock things. They just grow, slowly and stubbornly, like problems.",
+                "default": "You examine the vines. They've been growing here undisturbed for long enough to consider this their throne room now.",
+                "talk": "You whisper to the vines. They don't respond, but they've been slowly conquering this room for decades. Plants don't need conversation. They need patience, and they have centuries of it.",
+                "open": "You part the vine curtain. Beneath the green: crumbling mortar, cracks in the stone, and the slow patient work of roots dismantling a kingdom. Nature doesn't rush.",
+                "push": "You push the vines aside. They spring back immediately, having spent years perfecting their grip. The vines have claimed this wall, and they are not accepting counteroffers.",
+                "pull": "You pull at a vine. It resists, then tears free with a sound of ripping roots and falling mortar. The wall behind looks worse without it. The vine was holding things together."
+            }
+        },
+        {
+            "id": "ghost-king",
+            "name": "Ghost King",
+            "aliases": [
+                "ghost",
+                "king",
+                "mortimer",
+                "king mortimer",
+                "spirit",
+                "spectre",
+                "specter",
+                "phantom",
+                "apparition",
+                "ghost king",
+                "dead king",
+                "royal ghost"
+            ],
+            "zone": {
+                "x": 411,
+                "y": 200,
+                "width": 127,
+                "height": 169
+            },
+            "interactionPoint": {
+                "x": 411,
+                "y": 369
+            },
+            "responses": {
+                "look": "The Ghost King hovers beside the throne -- a translucent figure in full regal attire, looking exactly as disappointed as you'd expect from a monarch whose dynasty ended over an olive at a feast. His crown flickers in and out of visibility.",
+                "use": "You cannot 'use' a ghost. They tend to have opinions about that sort of thing.",
+                "take": "You reach toward the Ghost King. Your hand passes through him. He looks at you with the resigned patience of someone who has had this conversation before.",
+                "default": "The Ghost King watches you with an expression that somehow manages to be both regal and profoundly tired.",
+                "talk": "You address the ghost. He flickers, regarding you with hollow eyes that hold centuries of regret. 'The crown weighs nothing now,' he murmurs. 'It weighs everything.'",
+                "open": "You cannot open a ghost. Ghosts are not containers, doors, or envelopes. They are the lingering emotional residue of the deceased. Opening them is not a valid action.",
+                "push": "Your hand passes through the ghost. Cold shoots up your arm like ice water in your veins. The ghost flickers with mild annoyance. 'That,' he says quietly, 'was rude.'",
+                "pull": "You swipe at the ghost. Your hand passes through freezing air that smells faintly of old stone and royal disappointment. The ghost regards you with the weariness of someone who has been grabbed at by the living for centuries."
+            }
+        },
+        {
+            "id": "throne-dais",
+            "name": "Throne Dais",
+            "aliases": [
+                "dais",
+                "platform",
+                "steps",
+                "stone platform",
+                "raised platform",
+                "throne steps",
+                "stage"
+            ],
+            "zone": {
+                "x": 350,
+                "y": 400,
+                "width": 200,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 430
+            },
+            "responses": {
+                "look": "A raised stone platform supporting the throne, its steps worn smooth by centuries of petitioners approaching the seat of power. The dais elevates the throne just enough to make everyone else feel shorter. Classic power architecture.",
+                "take": "It's a raised section of floor. You can't take a floor. Not this floor, not any floor. Floors are non-portable by definition.",
+                "use": "You step up onto the dais. It's three steps higher than the rest of the room. You feel marginally more important. The feeling passes.",
+                "talk": "You address the dais. Stone steps are not conversationalists. They are, however, excellent at making knees ache.",
+                "open": "You search the dais for a hidden compartment or secret passage. The stones are solid. Not every raised platform hides a treasure vault. Just most of them.",
+                "push": "You push against the dais steps. They are part of the floor, which is part of the castle, which is part of the mountain. You are pushing a mountain.",
+                "pull": "You can't pull a dais. It's built into the floor. The floor is built into the earth. You're outmatched."
+            }
+        },
+        {
+            "id": "velvet-cushion",
+            "name": "Moth-Eaten Cushion",
+            "aliases": [
+                "cushion",
+                "pillow",
+                "velvet",
+                "seat cushion",
+                "throne cushion",
+                "purple cushion",
+                "moth cushion",
+                "pad"
+            ],
+            "zone": {
+                "x": 430,
+                "y": 360,
+                "width": 40,
+                "height": 20
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 420
+            },
+            "responses": {
+                "look": "The throne's cushion has seen better centuries. Moth-eaten velvet in what was once royal purple, now a shade best described as 'bruised twilight.' The stuffing pokes through in places like cotton trying to escape.",
+                "take": "You pull at the cushion. It comes away in a puff of dust and moths. The throne looks worse without it, which is impressive. You put it back. Even ruined dignity is better than none.",
+                "use": "You sit on the cushion. A small cloud of moths erupts around you. The cushion wheezes. Something inside it crunches. You stand up quickly, having learned that not all thrones welcome all bottoms.",
+                "talk": "You address the cushion. A moth flies out of it, which you choose to interpret as a response. The cushion has hosted kings. It now hosts larvae. The career trajectory is regrettable.",
+                "open": "You tear the cushion open. Stuffing spills out -- wool, horsehair, and what appears to be a very old love letter. You tuck the stuffing back in. The letter is none of your business.",
+                "push": "You press the cushion. Dust puffs out. It's like deflating something that's already been deflated by history. The cushion sags back into shape, or what passes for shape after three centuries of neglect.",
+                "pull": "You tug the cushion free from the throne seat. Beneath it: a worn impression in the wood, shaped by countless royal posteriors. The throne remembers every king. The cushion just remembers moths.",
+                "default": "The cushion exists in a state between furniture and archaeology. It's unclear whether it supports the throne or the throne supports it."
+            }
+        },
+        {
+            "id": "fallen-banner",
+            "name": "Fallen Banner",
+            "aliases": [
+                "fallen flag",
+                "flag on floor",
+                "banner on floor",
+                "crumpled banner",
+                "fallen flag",
+                "dropped banner",
+                "floor banner",
+                "royal standard"
+            ],
+            "zone": {
+                "x": 100,
+                "y": 400,
+                "width": 60,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 130,
+                "y": 430
+            },
+            "responses": {
+                "look": "One banner has given up entirely, crumpled on the floor like a flag of surrender that nobody bothered to pick up. The royal crest is visible if you squint -- a crown above crossed swords, now covered in dust and defeat.",
+                "take": "You pick up the fallen banner. It's heavier than expected, waterlogged with centuries of damp. The fabric tears slightly as you lift it. Even the flag doesn't want to be carried anymore.",
+                "use": "You could drape the banner over yourself like a royal cape. But wearing a fallen kingdom's flag while its ghost watches feels like the wrong kind of dress-up.",
+                "talk": "You address the fallen banner. 'Get up,' you tell it. It does not get up. Banners, like kingdoms, don't recover from falling just because someone tells them to.",
+                "open": "You unfurl the banner across the floor. The full crest is visible now -- larger than you expected, more detailed than the faded ones still hanging. This was the king's personal standard. It fell with him.",
+                "push": "You nudge the banner with your foot. It slides across the stone floor, trailing dust. Somewhere, a royal protocol officer turns in their grave.",
+                "pull": "You drag the banner toward you. It catches on a crack in the floor, tears slightly. You've now damaged a historical artifact. The ghost-king's expression does not change, which is somehow worse than anger.",
+                "default": "A fallen banner for a fallen kingdom. At least they match."
+            }
+        },
+        {
+            "id": "throne-room-floor",
+            "name": "Stone Floor",
+            "aliases": [
+                "floor",
+                "ground",
+                "tiles",
+                "tile",
+                "stone tiles",
+                "stone ground",
+                "flagstones"
+            ],
+            "zone": {
+                "x": 200,
+                "y": 450,
+                "width": 400,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 400,
+                "y": 460
+            },
+            "responses": {
+                "look": "Cold stone tiles stretch across the throne room, dulled by centuries of footsteps that will never come again. Dust lies thick where courtiers once stood. The occasional crack runs through the stone like a timeline of the kingdom's decline.",
+                "take": "You cannot take the floor. It is, definitionally, below you. This is the most literal dead-end in the castle.",
+                "use": "You're standing on it. That's about all the use a floor offers. It's fulfilling its purpose. You should aspire to the same.",
+                "talk": "You address the floor. The echo returns your voice slightly distorted, as if the room itself is mocking you. Given the acoustics of empty throne rooms, it probably is.",
+                "open": "You search for loose tiles. A few wiggle, but beneath them is only more stone and the foundations of a castle that was built to last longer than the dynasty it housed.",
+                "push": "You press a floor tile with your foot. It rocks slightly. Beneath it: mortar, substrate, and the bedrock of a kingdom's ambitions. Nothing useful. Nothing ever useful.",
+                "pull": "You pry at a loose tile. It comes up, revealing grey foundation stone and a single coin that rolled under here sometime during the last century. Finders keepers.",
+                "default": "The floor endures. That's what floors do. Everything above them falls eventually."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "royal-seal",
+            "name": "Royal Seal",
+            "aliases": [
+                "seal",
+                "stamp",
+                "wax seal",
+                "royal stamp",
+                "crest stamp",
+                "badger seal",
+                "signet",
+                "royal crest"
+            ],
+            "zone": {
+                "x": 508,
+                "y": 347,
+                "width": 30,
+                "height": 25
+            },
+            "interactionPoint": {
+                "x": 523,
+                "y": 367
+            },
+            "responses": {
+                "look": "A heavy wax seal stamp sitting on the small table beside the throne. It bears the royal crest -- the disgruntled badger in a crown, rendered in exquisite detail. The badger looks particularly disgruntled today. This is the Royal Seal of Erelhain, used to authorize official decrees.",
+                "use": "A seal needs something to seal. A decree, perhaps. You don't have one yet, but the potential for forgery is noted with mild excitement.",
+                "take": "You reach for the royal seal. It's cold and heavy with the weight of authority that no one is left to exercise.",
+                "talk": "You speak to the royal seal. It gleams dully, stamped with the authority of a dead king. The seal has pressed its mark on more important documents than you will ever produce.",
+                "open": "The seal is a solid object. It stamps, it presses, it authenticates. It does not open. Not everything needs to open. Some things are complete as they are.",
+                "push": "You press the seal against the table. It leaves a faint impression in the dust -- the royal crest, still sharp after all these years. The king is dead; the paperwork endures.",
+                "pull": "You pull the seal toward you. It's heavier than expected -- solid metal, weighted with authority. The ghost-king watches you handle it with an expression caught between pride and sorrow."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "take-royal-seal",
+            "trigger": {
+                "verb": "take",
+                "subject": "royal-seal"
+            },
+            "conditions": [
+                {
+                    "type": "item-not-taken",
+                    "item": "royal-seal"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "add-item",
+                    "item": "royal-seal"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You pocket the Royal Seal of Erelhain. It's heavy, official, and technically theft of crown property. But since there's no crown to speak of, and the property is a crumbling castle, you decide the ethics are flexible. The badger on the seal glares at you. It was already glaring, but it feels more pointed now."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "sit-on-throne",
+            "trigger": {
+                "verb": "use",
+                "subject": "throne"
+            },
+            "conditions": [
+                {
+                    "type": "flag-not-set",
+                    "flag": "throne-weakened"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "throne-weakened"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You sit on the throne. For one glorious moment, you are the ruler of Erelhain. The velvet is scratchy, the stone is cold, and the termite-weakened dais groans ominously. You stand up quickly. The throne creaks. Something structural just shifted. The dais now looks even less stable than before. Perhaps don't sit there again."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "use-spirit-brew",
+            "trigger": {
+                "verb": "use",
+                "subject": "spirit-brew"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "spirit-brew"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "met_ghost_king"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "spirit-brew"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "met_ghost_king"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You pour the spirit brew onto the throne room floor. The sage-infused water spreads across the stone, and for a moment, nothing happens. Then the temperature drops. The banners stir in a wind that doesn't exist. A faint blue glow coalesces above the throne, taking shape -- a translucent figure in royal robes, wearing a crown and an expression of profound irritation. King Mortimer the Prepared -- or rather, his ghost -- materializes, sitting on the throne he died too early to properly warm. He looks at you. 'Oh, wonderful. Another living person. Let me guess -- you need something.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "use-spirit-brew-on-throne",
+            "trigger": {
+                "verb": "use",
+                "subject": "spirit-brew",
+                "target": "throne"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "spirit-brew"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "met_ghost_king"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "spirit-brew"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "met_ghost_king"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You tip the spirit brew onto the throne. The glowing liquid seeps into the stone, and the air goes cold. Banners flutter in phantom wind. A spectral figure shimmers into existence -- King Mortimer, translucent and thoroughly annoyed. 'I was having a perfectly good eternity of nothing,' he says, 'and you've interrupted it with sage water. This had better be important.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "seal-decree",
+            "trigger": {
+                "verb": "combine",
+                "subject": "royal-seal",
+                "target": "blank-decree"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "royal-seal"
+                },
+                {
+                    "type": "has-item",
+                    "item": "blank-decree"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "royal-seal"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "blank-decree"
+                },
+                {
+                    "type": "add-item",
+                    "item": "sealed-decree"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "decree-sealed"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You press the royal seal onto the blank decree. Hot wax appears from somewhere -- these magical seals are self-heating, apparently -- and the disgruntled badger crest stamps itself into the parchment with authority. You now hold a sealed royal decree. It's blank, it's forged, and it looks absolutely legitimate. Your mother would not approve. The badger on the seal crumbles to dust, its work complete."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "seal-decree-reverse",
+            "trigger": {
+                "verb": "combine",
+                "subject": "blank-decree",
+                "target": "royal-seal"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "royal-seal"
+                },
+                {
+                    "type": "has-item",
+                    "item": "blank-decree"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "royal-seal"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "blank-decree"
+                },
+                {
+                    "type": "add-item",
+                    "item": "sealed-decree"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "decree-sealed"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You stamp the blank decree with the royal seal. The wax sizzles, the badger crest imprints, and just like that, you've committed forgery. The decree looks convincingly official -- the kind of document that makes guards step aside and bureaucrats nod approvingly. The seal dissolves after use, as though embarrassed by its participation."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "use-seal-on-decree",
+            "trigger": {
+                "verb": "use",
+                "subject": "royal-seal",
+                "target": "blank-decree"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "royal-seal"
+                },
+                {
+                    "type": "has-item",
+                    "item": "blank-decree"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "royal-seal"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "blank-decree"
+                },
+                {
+                    "type": "add-item",
+                    "item": "sealed-decree"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "decree-sealed"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You press the royal seal against the decree. Wax, crest, forgery, done. The sealed decree is official-looking enough to fool a dynasty. The seal crumbles in your hand, leaving only the faintly judgmental memory of a badger in a crown."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "show-decree-to-ghost",
+            "trigger": {
+                "verb": "use",
+                "subject": "sealed-decree",
+                "target": "ghost_king"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "sealed-decree"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "met_ghost_king"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "ghost_approved_decree"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "ghost_approved_decree"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You hold up the sealed decree. The Ghost King leans forward, spectral eyes narrowing. 'A royal decree... with MY seal on it. Forged, obviously. I didn't sign this.' He pauses. 'But the seal is genuine, and the intent is sound. You're trying to reach the Screaming Caverns, aren't you? To deal with whatever the Bureaucracy has become.' He sighs -- a sound like wind through an empty throne room. 'Fine. Consider the decree... royally tolerated. The bridge troll will accept it. Now go fix my kingdom before I have to haunt something more proactive.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "show-decree-to-ghost-use",
+            "trigger": {
+                "verb": "use",
+                "subject": "sealed-decree"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "sealed-decree"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "met_ghost_king"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "ghost_approved_decree"
+                },
+                {
+                    "type": "in-room",
+                    "room": "throne_room"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "ghost_approved_decree"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You wave the sealed decree in the general direction of the Ghost King. He squints at it. 'Forged paperwork. How wonderfully administrative of you.' He reads the blank space where the content should be and somehow finds it acceptable. 'The Screaming Caverns await. The bridge troll will honour this -- he's a stickler for official documentation, even fraudulent official documentation. Go. Save my kingdom. Try not to die in an embarrassing way.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "talk-ghost-with-decree",
+            "trigger": {
+                "verb": "talk",
+                "subject": "ghost_king"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "sealed-decree"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "met_ghost_king"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "ghost_approved_decree"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "The Ghost King eyes you. 'You've got something official-looking there. Perhaps you should show it to me -- use the decree, if you want my blessing to proceed to the caverns.'"
+                }
+            ]
+        },
+        {
+            "id": "talk-ghost-no-decree",
+            "trigger": {
+                "verb": "talk",
+                "subject": "ghost_king"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "met_ghost_king"
+                },
+                {
+                    "type": "item-not-taken",
+                    "item": "sealed-decree"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "The Ghost King regards you wearily. 'You wish to break the curse? Then bring me proof of authority -- a sealed decree bearing the royal seal. Without it, you're just another trespasser talking to furniture.'"
+                }
+            ]
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "sit-weakened-throne",
+            "trigger": {
+                "verb": "use",
+                "subject": "throne"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "throne-weakened"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "throne-collapse"
+                }
+            ]
+        },
+        {
+            "id": "insult-ghost-king",
+            "trigger": {
+                "verb": "push",
+                "subject": "ghost_king"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "met_ghost_king"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "ghost-wrath"
+                }
+            ]
+        }
+    ],
+    "deaths": {
+        "throne-collapse": {
+            "title": "Death by Ambition (Seated Edition)",
+            "narratorText": "You sit on the throne again. The weakened dais, already protesting from your first attempt, finally gives up. The wood splinters, the stone shifts, and the entire throne platform collapses with a sound like a building having a nervous breakdown. Centuries of termite damage, one too many monarchs, and your specific body weight conspire to bring the monarchy crashing down. Literally. The throne lands on you. It's the most regal way to die, and also the most embarrassing."
+        },
+        "ghost-wrath": {
+            "title": "Death by Royal Displeasure",
+            "narratorText": "You attempt to antagonize the Ghost King. In his own throne room. While he is a ghost with centuries of accumulated grievances and nothing but time. The temperature drops to absolute zero. The Ghost King's spectral eyes blaze with the cold fury of a monarch who choked on an olive and has been angry about it ever since. A wave of ghostly force hits you like a winter you can't survive. Insulting a ghost king in his own throne room: bold, terminal, and entirely your own fault."
+        }
+    },
+    "dynamicDescriptions": {
+        "met_ghost_king": "The throne room is cold -- unnaturally cold. The Ghost King hovers above his throne, translucent and irritable. Blue spectral light flickers from the banners, and the air tastes of old regret and ectoplasm. King Mortimer watches you with the weary patience of someone who has literally nothing better to do for all eternity.",
+        "decree-sealed": "The throne room echoes with the memory of forged authority. The royal seal is gone, spent on your fraudulent decree. The Ghost King, if present, seems vaguely impressed by your audacity."
+    },
+    "npcs": [
+        {
+            "id": "ghost_king",
+            "position": {
+                "x": 475,
+                "y": 369
+            },
+            "interactionPoint": {
+                "x": 411,
+                "y": 369
+            },
+            "zone": {
+                "x": 411,
+                "y": 200,
+                "width": 127,
+                "height": 169
+            },
+            "aliases": [
+                "king",
+                "ghost",
+                "spirit",
+                "mortimer",
+                "monarch",
+                "spectre",
+                "phantom",
+                "apparition"
+            ],
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "met_ghost_king"
+                }
+            ]
+        }
+    ],
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            {
+                "key": "amb-wind-light",
+                "volume": 0.4
+            }
+        ]
+    },
+    "effects": {
+        "ambient": [
+            {
+                "type": "dust-motes",
+                "intensity": 0.4
+            }
+        ],
+        "lighting": {
+            "tint": "#bbaa88",
+            "brightness": 0.7,
+            "vignette": 0.35,
+            "postfx": [
+                "bloom"
+            ]
+        }
+    },
+    "puzzleHints": [
+        {
+            "puzzleId": "use-spirit-brew",
+            "tiers": [
+                "This throne room feels like it's missing someone. Someone regal. Someone dead. Perhaps a particular beverage could invite an otherworldly guest.",
+                "A spirit brew -- made from water and sage -- could summon the ghost of the dead king. You'll need a chalice filled at the courtyard well, combined with dried sage from the castle garden.",
+                "Use the spirit brew in the throne room to summon King Mortimer's ghost. Make the brew by filling the chalice at the courtyard well, then combining it with dried sage from the garden."
+            ]
+        },
+        {
+            "puzzleId": "seal-decree",
+            "tiers": [
+                "Official documents require official stamps. A blank piece of paper is just paper until the right seal makes it law. Both items are in this castle somewhere.",
+                "The royal seal sits on the table beside the throne. A blank decree is in the servants' quarters, tucked under a diary. Combine them to forge an official document.",
+                "Combine the royal seal with the blank decree. The seal is on the table next to the throne, and the blank decree is under the diary on the writing desk in the servants' quarters."
+            ]
+        },
+        {
+            "puzzleId": "show-decree-to-ghost",
+            "tiers": [
+                "You have an official-looking decree, but perhaps someone of royal authority should approve it before you wave it around. Someone who used to run this kingdom, perhaps.",
+                "The Ghost King might have an opinion on your forged decree. Show it to him -- use the sealed decree while in his presence in the throne room.",
+                "Use the sealed decree on the Ghost King in the throne room to get his approval. You need his blessing before the bridge troll will let you pass to the Screaming Caverns."
+            ]
+        }
+    ],
+    "playerSpawn": {
+        "x": 287,
+        "y": 425
+    }
+}

@@ -1,0 +1,345 @@
+{
+    "id": "rooftop",
+    "name": "Castle Rooftop",
+    "description": "The castle rooftop offers a panoramic view of the end of the world. Or at least, the end of Erelhain. From up here, the petrification is visible in its full terrible scope -- a grey tide rolling inward from every direction, turning forests to stone, fields to granite, rivers to frozen channels of rock. The wind is cold and carries the smell of dust and dying magic. A low parapet runs the edge, crumbling in places. The throne room lies below through a staircase. Up here, you can see everything that's at stake. It's beautiful, and it's dying.",
+    "background": {
+        "layers": [
+            {
+                "key": "bg-shared-act3-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act3-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-rooftop",
+                "scrollFactor": 1
+            }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
+    ],
+    "exits": [
+        {
+            "id": "to-throne-room-act3",
+            "zone": {
+                "x": 440,
+                "y": 450,
+                "width": 80,
+                "height": 80
+            },
+            "targetRoom": "throne_room_act3",
+            "spawnPoint": {
+                "x": 480,
+                "y": 450
+            },
+            "transition": "fade",
+            "direction": "south",
+            "label": "throne room"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "panoramic-view",
+            "name": "Panoramic View",
+            "aliases": [
+                "view",
+                "panorama",
+                "vista",
+                "landscape",
+                "scenery",
+                "horizon",
+                "overlook",
+                "kingdom",
+                "petrification",
+                "grey tide",
+                "cursed landscape"
+            ],
+            "zone": {
+                "x": 300,
+                "y": 340,
+                "width": 300,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 410
+            },
+            "responses": {
+                "look": "From the rooftop, you can see it all. The forest where you arrived, now grey stone. The village where you met the old man, half-petrified. The bridge where Bertram stood. The path to the Screaming Caverns. Every place you've been, turning to stone. Every person you've met, freezing in place. The curse is nearly complete. Only the castle itself still resists, and not for much longer. Cracks are spreading up the walls from below. You can hear the stone groaning. The kingdom needs you. Not a hero. Not a prophecy. Just someone who will do the paperwork.",
+                "use": "You shade your eyes and look out at the cursed landscape. It's comprehensive devastation, viewed from a comfortable vantage point. The irony of watching the world end from a rooftop is not lost on you.",
+                "default": "You take in the panoramic view. It would be breathtaking if it weren't also heartbreaking.",
+                "take": "You try to scoop up the panoramic view and put it in your pocket. The view declines. It's the size of a kingdom. Your pockets are not.",
+                "talk": "You address the dying landscape with a few encouraging words. The landscape does not respond. It's busy turning to stone, which is a full-time commitment.",
+                "open": "You cannot open a view. It's already as open as views get. That's rather the point of being on a rooftop.",
+                "push": "You make a pushing motion at the horizon. The horizon remains unmoved, both literally and emotionally.",
+                "pull": "You reach toward the vista and mime pulling it closer. The vista maintains its professional distance."
+            }
+        },
+        {
+            "id": "parapet",
+            "name": "Crumbling Parapet",
+            "aliases": [
+                "parapet",
+                "wall",
+                "railing",
+                "ledge",
+                "edge",
+                "battlement",
+                "battlements",
+                "stonework",
+                "low wall",
+                "crumbling wall",
+                "barrier",
+                "rampart"
+            ],
+            "zone": {
+                "x": 700,
+                "y": 370,
+                "width": 100,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 750,
+                "y": 420
+            },
+            "responses": {
+                "look": "The parapet is crumbling, half-petrified itself. Gaps in the stonework reveal the dizzying drop to the courtyard below. The wind tugs at your clothes, suggesting activities that your survival instinct firmly vetoes.",
+                "push": "A section of parapet shifts under your hands. Stones tumble into the void below, crashing distantly. That could have been you. Step away from the edge.",
+                "default": "You eye the crumbling parapet with appropriate caution.",
+                "take": "You pry a loose stone from the parapet. It crumbles to grey dust in your hands. The curse has made everything here both fragile and worthless.",
+                "use": "You lean against the crumbling parapet. Stones shift underfoot. The wind tugs at you suggestively. Every instinct says: step back. The view isn't worth the risk.",
+                "talk": "You whisper to the parapet, asking it to hold together just a little longer. The parapet responds by shedding another chunk of masonry into the abyss.",
+                "open": "There is no door in the parapet. It's a wall. A crumbling one. The gaps it already has are generous enough without your help.",
+                "pull": "You tug at a section of parapet. It lurches toward you with the enthusiasm of something that's been wanting to collapse for decades. You let go. Quickly."
+            }
+        },
+        {
+            "id": "castle-spire",
+            "name": "Castle Spire",
+            "aliases": [
+                "spire",
+                "tower",
+                "flag",
+                "banner",
+                "flagpole",
+                "pole",
+                "turret",
+                "pinnacle",
+                "steeple",
+                "badger",
+                "badger flag",
+                "kingdom banner"
+            ],
+            "zone": {
+                "x": 450,
+                "y": 320,
+                "width": 60,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 480,
+                "y": 400
+            },
+            "responses": {
+                "look": "The castle's highest spire rises above you, its stone partially grey with the advancing curse. A flag hangs limp at the top -- the kingdom's banner, a disgruntled badger on a field of blue. The badger looks especially disgruntled today, which seems fair.",
+                "take": "You cannot reach the spire. And even if you could, stealing a kingdom's flag while trying to save that kingdom would be an unusual choice.",
+                "default": "You look up at the castle spire. The flag watches the kingdom's end with the same expression the badger always wears: deeply unimpressed.",
+                "use": "Using the Castle Spire doesn't accomplish anything obvious. Perhaps it needs to be used with something else. Or perhaps it's just decorative.",
+                "talk": "You call up to the flag. The disgruntled badger stares down at you with an expression that suggests it has heard better speeches.",
+                "open": "The spire is solid stone. There's no door, no hatch, no convenient narrative entrance. It's a spire. It points at the sky. That's its entire job.",
+                "push": "You press your hands against the base of the spire and push. The spire, which has stood for centuries, is unmoved by your contribution.",
+                "pull": "You brace your feet and pull at the spire. The architectural community would weep if they could see you. The spire stands. You strain. Physics wins."
+            }
+        },
+        {
+            "id": "sunset",
+            "name": "Sunset",
+            "aliases": [
+                "sun",
+                "sky",
+                "dusk",
+                "twilight",
+                "evening",
+                "golden light",
+                "purple sky",
+                "gold sky",
+                "sunlight",
+                "setting sun"
+            ],
+            "zone": {
+                "x": 400,
+                "y": 0,
+                "width": 400,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 600,
+                "y": 430
+            },
+            "responses": {
+                "look": "A sunset so dramatic it feels personally directed at you, painting the sky in shades of purple and gold.",
+                "take": "You try to capture the moment. It slips through your fingers, as moments do.",
+                "use": "You bask in its glow, briefly forgetting the kingdom is cursed.",
+                "default": "You gaze at the sunset. It's doing its best work tonight, which feels like a farewell performance.",
+                "talk": "You tell the sunset it's doing a wonderful job. The sunset, being a celestial event, offers no reply. But it does seem to intensify slightly. Coincidence, probably.",
+                "open": "You cannot open the sunset. It's not a curtain, despite behaving like a theatrical backdrop for the end of the world.",
+                "push": "You make a futile gesture at the sky. The sun continues its descent at its own pace. It has an appointment with the horizon and it will not be rushed.",
+                "pull": "You reach up as if to drag the sun back above the treeline. The sun, which is ninety-three million miles away, does not notice your effort."
+            }
+        },
+        {
+            "id": "distant-castle",
+            "name": "Distant Castle",
+            "aliases": [
+                "castle",
+                "far castle",
+                "silhouette",
+                "distant building",
+                "other castle",
+                "fortress",
+                "keep",
+                "citadel",
+                "castle silhouette"
+            ],
+            "zone": {
+                "x": 700,
+                "y": 150,
+                "width": 200,
+                "height": 150
+            },
+            "interactionPoint": {
+                "x": 800,
+                "y": 430
+            },
+            "responses": {
+                "look": "The castle rises against the sunset like a fairy tale illustration, except in this fairy tale everything is slowly turning to stone.",
+                "take": "It's miles away and made of stone. Even your ambition has limits.",
+                "use": "You squint at it, trying to spot signs of the curse from here. Everything looks ominous at sunset.",
+                "default": "You study the distant castle silhouette. It looks picturesque and doomed.",
+                "talk": "You shout toward the distant castle. Your voice carries across the valley, gets bored, and gives up somewhere over the river. No one answers.",
+                "open": "The distant castle's gates are several miles away. You'd need to walk there first. And survive the cursed landscape. One problem at a time.",
+                "push": "You extend your arms toward the horizon and push. The distant castle remains distant. This is not how geography works.",
+                "pull": "You make a beckoning gesture at the far-off castle. It does not come closer. Castles rarely do."
+            }
+        },
+        {
+            "id": "river-valley",
+            "name": "River Valley",
+            "aliases": [
+                "river",
+                "valley",
+                "stream",
+                "water",
+                "creek",
+                "brook",
+                "waterway",
+                "silver river",
+                "ravine",
+                "gorge"
+            ],
+            "zone": {
+                "x": 400,
+                "y": 250,
+                "width": 300,
+                "height": 100
+            },
+            "interactionPoint": {
+                "x": 550,
+                "y": 430
+            },
+            "responses": {
+                "look": "A silver river winds through the valley below, indifferent to the curse, the politics, and your personal problems.",
+                "take": "Rivers are notoriously difficult to pocket.",
+                "use": "From up here, you can only admire it. Getting down there is someone else's quest.",
+                "default": "You watch the river wind through the valley. It carries on regardless.",
+                "talk": "You call down to the river. It babbles back, but it was already doing that. Rivers are poor conversationalists. They only talk about themselves and they never stop.",
+                "open": "You cannot open a river valley. It opened itself, over millennia, through the patient work of erosion. You haven't got that kind of time.",
+                "push": "You lean forward and make a shoving motion at the valley far below. The valley was carved by geological forces and is unimpressed by your upper body strength.",
+                "pull": "You try to pull the river valley closer for a better look. The valley stays put. It was here before the kingdom and will be here after."
+            }
+        }
+    ],
+    "items": [],
+    "puzzles": [],
+    "deathTriggers": [
+        {
+            "id": "lean-over-parapet",
+            "trigger": {
+                "verb": "go",
+                "subject": "parapet"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "rooftop-fall"
+                }
+            ]
+        },
+        {
+            "id": "climb-parapet",
+            "trigger": {
+                "verb": "use",
+                "subject": "parapet"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "rooftop-fall"
+                }
+            ]
+        }
+    ],
+    "deaths": {
+        "rooftop-fall": {
+            "title": "Death by Sightseeing",
+            "narratorText": "You lean over the parapet for a better view of the curse's progress. The parapet, which has been crumbling since before you were born, chooses this exact moment to complete its structural journey. The stone gives way under your weight with a resigned crumble. You pitch forward. The view on the way down is spectacular -- you can see the entire kingdom, the spreading curse, the sunset, and the rapidly approaching courtyard. You leaned out to see the curse spreading. The curse appreciated your enthusiasm. Gravity did not."
+        }
+    },
+    "dynamicDescriptions": {
+        "curse-broken": "The rooftop offers a transformed view. Color floods back across the landscape -- green returns to forests, blue to rivers, warmth to stone. People below are moving, shouting, celebrating. The flag on the castle spire catches the wind and snaps proudly. The disgruntled badger looks... slightly less disgruntled. The kingdom lives."
+    },
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            {
+                "key": "amb-wind-light",
+                "volume": 1
+            }
+        ]
+    },
+    "effects": {
+        "weather": {
+            "type": "dust",
+            "intensity": 0.3
+        },
+        "lighting": {
+            "brightness": 0.95,
+            "vignette": 0.15
+        }
+    },
+    "playerSpawn": {
+        "x": 201,
+        "y": 314
+    }
+}

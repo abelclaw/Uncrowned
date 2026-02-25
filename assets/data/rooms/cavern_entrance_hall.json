@@ -1,0 +1,717 @@
+{
+    "id": "cavern_entrance_hall",
+    "name": "Cavern Entrance Hall",
+    "description": "The Screaming Caverns open into a grand entrance hall carved from living rock. The ceiling vaults upward into darkness, and the walls are lined with numbered doors, filing cabinets, and signs pointing in contradictory directions. A registration desk sits at the center, manned by a gaunt figure in spectacles who radiates the energy of someone who has been doing this job for centuries and intends to do it for centuries more. A plaque on the desk reads: 'THE BUREAUCRATIC TEST OF SOVEREIGN WORTHINESS -- Please Take A Number.'",
+    "background": {
+        "layers": [
+            {
+                "key": "bg-shared-act2-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act2-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-cavern_entrance_hall",
+                "scrollFactor": 1
+            }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
+    ],
+    "exits": [
+        {
+            "id": "to-bridge",
+            "zone": {
+                "x": 440,
+                "y": 450,
+                "width": 80,
+                "height": 80
+            },
+            "targetRoom": "forest_bridge",
+            "spawnPoint": {
+                "x": 450,
+                "y": 169
+            },
+            "transition": "fade",
+            "direction": "south",
+            "label": "exit"
+        },
+        {
+            "id": "to-petrified-forest",
+            "zone": {
+                "x": 300,
+                "y": 450,
+                "width": 80,
+                "height": 80
+            },
+            "targetRoom": "petrified_forest",
+            "spawnPoint": {
+                "x": 600,
+                "y": 460
+            },
+            "transition": "fade",
+            "direction": "west",
+            "label": "forest",
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "crystal-of-mundanity"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "guardian-defeated"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "clerk-satisfied"
+                }
+            ],
+            "blockedMessage": "The passage to the petrified forest is magically sealed. You sense you need to prove yourself further before this way opens."
+        },
+        {
+            "id": "to-library",
+            "zone": {
+                "x": 440,
+                "y": 350,
+                "width": 80,
+                "height": 80
+            },
+            "targetRoom": "cavern_library",
+            "spawnPoint": {
+                "x": 480,
+                "y": 450
+            },
+            "transition": "fade",
+            "direction": "north",
+            "label": "library"
+        },
+        {
+            "id": "to-filing",
+            "zone": {
+                "x": 880,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
+            "targetRoom": "filing_room",
+            "spawnPoint": {
+                "x": 320,
+                "y": 450
+            },
+            "transition": "slide-right",
+            "direction": "east",
+            "label": "filing room"
+        },
+        {
+            "id": "to-waiting",
+            "zone": {
+                "x": 0,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
+            "targetRoom": "waiting_room",
+            "spawnPoint": {
+                "x": 640,
+                "y": 450
+            },
+            "transition": "slide-left",
+            "direction": "west",
+            "label": "waiting room",
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "queue-ticket"
+                }
+            ],
+            "blockedMessage": "A velvet rope blocks the entrance to the waiting room. A small sign reads: 'TICKET HOLDERS ONLY. No exceptions. No excuses. No crying.'"
+        },
+        {
+            "id": "to-west-wing",
+            "zone": {
+                "x": 200,
+                "y": 350,
+                "width": 80,
+                "height": 80
+            },
+            "targetRoom": "cavern_west_wing",
+            "spawnPoint": {
+                "x": 600,
+                "y": 460
+            },
+            "transition": "fade",
+            "direction": "west",
+            "label": "west wing",
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "west_wing_unlocked"
+                }
+            ],
+            "blockedMessage": "The west wing corridor is barred by a locked gate. There must be a way to open it from somewhere in the hall."
+        },
+        {
+            "id": "to-east-wing",
+            "zone": {
+                "x": 700,
+                "y": 350,
+                "width": 80,
+                "height": 80
+            },
+            "targetRoom": "cavern_east_wing",
+            "spawnPoint": {
+                "x": 280,
+                "y": 450
+            },
+            "transition": "fade",
+            "direction": "east",
+            "label": "east wing",
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "east_wing_accessed"
+                }
+            ],
+            "blockedMessage": "The east wing passage is blocked. You haven't yet earned access to this part of the cavern."
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "registration-desk",
+            "name": "Registration Desk",
+            "aliases": ["desk", "counter", "front desk", "reception", "reception desk", "stone desk", "clerk desk", "table", "register"],
+            "zone": {
+                "x": 400,
+                "y": 370,
+                "width": 120,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 460,
+                "y": 420
+            },
+            "responses": {
+                "look": "A massive stone desk piled with forms, stamps, and the accumulated paperwork of centuries. A sign reads: 'FORM 27-B STROKE 6 REQUIRED FOR ALL TEST APPLICANTS. NO EXCEPTIONS. NO EXCUSES. NO CRYING.' The desk has more filing systems than some governments.",
+                "use": "The desk is the Clerk's domain. Using it without permission would be like sitting in a pilot's seat and pressing buttons -- technically possible, bureaucratically catastrophic.",
+                "take": "You cannot take a stone desk. The Clerk watches you consider it. His expression suggests he's seen people try.",
+                "default": "You examine the registration desk. It radiates the quiet authority of organized tedium.",
+                "talk": "You address the desk directly. It absorbs your words into its stone surface, where they join centuries of other ignored requests. The Clerk glances up, then back down. The desk is his domain. You are trespassing on furniture.",
+                "open": "You try the desk drawers. Locked. Every single one. The Clerk watches you tug at them with an expression of infinite patience and zero intention of helping.",
+                "push": "You push the registration desk. It weighs roughly the same as the Clerk's contempt for you, which is to say it is immovable. The stone surface doesn't even scratch.",
+                "pull": "You pull at the desk. It doesn't move. It was carved from the cavern floor itself, making it less 'furniture' and more 'geological feature with organizational aspirations.'"
+            }
+        },
+        {
+            "id": "numbered-doors",
+            "name": "Numbered Doors",
+            "aliases": ["doors", "door", "doorway", "doorways", "entrances", "gates", "numbered door", "cave doors", "locked doors"],
+            "zone": {
+                "x": 650,
+                "y": 355,
+                "width": 80,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 690,
+                "y": 420
+            },
+            "responses": {
+                "look": "Doors line the cavern walls, each numbered and labeled in a font so small it requires squinting. 'Door 1: West Wing (Authorized Personnel Only),' 'Door 2: East Wing (Also Authorized Only),' 'Door 3: Broom Closet (Authorized Brooms Only).' The authorization requirements are exhaustive.",
+                "open": "The doors are locked. All of them. Bureaucratically locked. You'd need the Clerk's approval, which requires forms, which require ink, which requires finding ink, which requires forms. It's bureaucracy all the way down.",
+                "use": "Every door requires authorization. The Clerk has a monopoly on authorization. Welcome to the Screaming Caverns.",
+                "default": "You count the doors. There are more doors than seems architecturally necessary. Bureaucracy expands to fill available wall space.",
+                "take": "You try to remove a door from its frame. It's set in solid rock and enchanted to boot. These doors were installed by someone who anticipated exactly this level of desperation.",
+                "talk": "You knock on Door 3. A small plaque lights up: 'Broom Closet hours: Never. Please submit Form 44-C for broom-related inquiries.' The doors communicate exclusively through bureaucratic signage.",
+                "push": "You push Door 1. It rattles but holds. A sign illuminates: 'UNAUTHORIZED ENTRY ATTEMPT LOGGED. Form 19-A (Apology) now required.' The doors are snitches.",
+                "pull": "You pull a door handle. It comes off. The door remains closed. A new sign appears: 'VANDALISM REPORT FILED. See the Clerk for Form 12-D (Handle Replacement Request).'"
+            }
+        },
+        {
+            "id": "contradictory-signs",
+            "name": "Directional Signs",
+            "aliases": ["signs", "sign", "directions", "signpost", "signposts", "arrows", "pointers", "contradictory signs", "wrong signs"],
+            "zone": {
+                "x": 250,
+                "y": 360,
+                "width": 80,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 290,
+                "y": 420
+            },
+            "responses": {
+                "look": "Signs point in every direction. 'WEST WING: This Way' points east. 'EXIT: Follow Arrow' points at the ceiling. 'YOU ARE HERE' points at a different sign that says 'NO YOU AREN'T.' Whoever designed the signage was either incompetent or actively hostile.",
+                "use": "You follow a sign. It leads to another sign. Which leads to another sign. Which leads back to the first sign. The Clerk watches your confusion with professional disinterest.",
+                "default": "You study the signs. They are confidently, aggressively wrong.",
+                "take": "The signs are bolted to the cave wall with bureaucratic thoroughness. Each bolt has a small tag reading 'PROPERTY OF THE DEPARTMENT OF SIGNAGE. THEFT IS PUNISHABLE.'",
+                "talk": "You ask the signs for directions. One points left. Another points right. A third points at you and says 'YOU LOOK LOST.' Helpful.",
+                "open": "The signs are flat boards bolted to the wall. They don't open. Though one of them claims to be a door. It is lying.",
+                "push": "You push a sign. It swivels on its bolt, pointing in a new direction that is equally wrong. The navigational chaos has been democratically redistributed.",
+                "pull": "You yank a sign. It springs back to its original position with a snap, as if offended. The bolt holding it has been enchanted to resist exactly this kind of frustrated intervention."
+            }
+        },
+        {
+            "id": "glowing-runes",
+            "name": "Glowing Runes",
+            "aliases": ["runes", "rune", "symbols", "glyphs", "markings", "blue runes", "glowing symbols", "ancient symbols", "inscriptions", "writing"],
+            "zone": {
+                "x": 50,
+                "y": 100,
+                "width": 100,
+                "height": 250
+            },
+            "interactionPoint": {
+                "x": 100,
+                "y": 430
+            },
+            "responses": {
+                "look": "Ancient symbols pulsing with blue light, their meaning lost to time and budget cuts. They look important in the way that things you can't read always do.",
+                "take": "They're carved into the wall, not stickers. Whoever inscribed them used tools, not adhesive.",
+                "use": "You trace a rune with your finger. Nothing happens. Disappointing, but also not electrocuting, so arguably a win.",
+                "default": "You examine the runes. They glow with quiet authority and zero legibility.",
+                "talk": "You speak to the runes. They pulse once, brightly, then return to their steady glow. Whether that was acknowledgment or irritation is unclear. Ancient magic communicates in lighting cues, not words.",
+                "open": "The runes are carved into solid rock. They're part of the wall. You can't open a wall. Well, you can, but it requires explosives and a disregard for structural integrity that even you haven't reached.",
+                "push": "You press your palm against the runes. They flare warm, then cool. The wall does not move. The runes do not unlock anything. The cavern's magic is decorative, not interactive.",
+                "pull": "You try to peel a rune from the wall. It flares hot under your fingers and you pull back. The runes are carved into the stone itself -- they're not stickers."
+            }
+        },
+        {
+            "id": "blue-portal",
+            "name": "Blue Portal",
+            "aliases": ["portal", "archway", "arch", "gateway", "gate", "magic portal", "magical portal", "blue arch", "blue archway", "entrance", "magical entrance", "energy portal"],
+            "zone": {
+                "x": 400,
+                "y": 50,
+                "width": 160,
+                "height": 300
+            },
+            "interactionPoint": {
+                "x": 480,
+                "y": 430
+            },
+            "responses": {
+                "look": "A shimmering blue archway that screams 'magical entrance' with all the subtlety of a carnival barker. It pulses with energy that makes your fillings tingle.",
+                "take": "You can't pocket a portal. Topology forbids it, and your pockets lack the requisite dimensional capacity.",
+                "use": "It seems to be working already, doing whatever portals do. Standing near it makes your hair stand on end and your sense of self-preservation sit down.",
+                "default": "You regard the blue portal. It regards you with shimmering indifference.",
+                "talk": "You address the portal. It hums in response -- a single resonant note that vibrates your teeth. Whether it understood you or simply vibrated at your frequency is an academic distinction you'd rather not explore.",
+                "open": "The portal is already open, in the sense that portals are permanently in a state of openness. That's their whole thing. You can't make it more open. It's peak portal.",
+                "push": "You push into the portal's energy field. Static crackles across your skin and your hair stands on end. The portal pushes back with the impersonal force of something that exists in multiple dimensions simultaneously.",
+                "pull": "You try to pull the portal toward you. Dimensional gateways are not subject to physical force. The portal continues its eternal shimmer, unbothered by your grasp at the fabric of space-time."
+            }
+        },
+        {
+            "id": "filing-cabinets",
+            "name": "Filing Cabinets",
+            "aliases": ["cabinets", "cabinet", "drawers", "drawer", "files", "filing", "file cabinet", "file cabinets", "stone cabinets", "storage"],
+            "zone": {
+                "x": 770,
+                "y": 360,
+                "width": 80,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 810,
+                "y": 420
+            },
+            "responses": {
+                "look": "Rows of stone filing cabinets line the walls, their drawers labeled with categories ranging from 'Applications A-D' to 'Complaints About the Nature of Time.' One drawer appears to be breathing. You decide not to investigate.",
+                "take": "Each cabinet is carved from solid rock and weighs roughly the same as a small horse. They are not leaving this room. Neither, it seems, are you.",
+                "use": "You try to open a drawer. It's locked. The next one is also locked. The third one opens but is empty except for a note reading 'SEE DRAWER 1.' You close it.",
+                "talk": "You address the filing cabinets. They say nothing, though one drawer rattles. Whether this is a response or a structural issue is anyone's guess.",
+                "open": "Every drawer you try is either locked, empty, or contains a form requesting permission to open other drawers. The bureaucracy is recursive.",
+                "push": "You shove a cabinet. It doesn't move. It was carved from the cavern floor itself. Filing here is permanent in every sense.",
+                "pull": "You pull a drawer handle. It comes off in your hand. The drawer remains closed. You now have a handle and no drawer to use it on. Peak bureaucracy."
+            }
+        },
+        {
+            "id": "velvet-rope",
+            "name": "Velvet Rope",
+            "aliases": ["rope", "barrier", "stanchion", "stanchions", "queue rope", "red rope", "burgundy rope", "crowd control", "velvet barrier", "brass post", "brass posts"],
+            "zone": {
+                "x": 30,
+                "y": 400,
+                "width": 60,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 60,
+                "y": 430
+            },
+            "responses": {
+                "look": "A burgundy velvet rope strung between polished brass stanchions, the universal symbol of 'you aren't important enough.' It glows faintly. Even the crowd control is enchanted. This kingdom takes its queues very seriously.",
+                "take": "You reach for the rope. It shimmers and your hand passes through. Enchanted crowd control. Because a regular rope would have been too easy to circumvent, and the kingdom can't have that.",
+                "use": "You try to unhook the rope from its stanchion. It reattaches itself. You unhook it again. It reattaches. The rope has more determination than you do.",
+                "talk": "You address the velvet rope. It sways slightly, which is either acknowledgment or a draft. In bureaucratic spaces, it's hard to tell the difference.",
+                "open": "The velvet rope is a loop on brass posts. It doesn't open so much as unhook, but the brass clasps are enchanted to resist unauthorized queue-jumping. The bureaucracy thinks of everything.",
+                "push": "You push through the rope. It pushes back. Gently, but with the institutional authority of something that has denied passage to thousands.",
+                "pull": "You yank the rope. It stretches, glows brighter, and snaps back to position. The enchantment holds. Whoever spelled this rope was deeply committed to access control."
+            }
+        }
+    ],
+    "items": [],
+    "puzzles": [
+        {
+            "id": "submit-filled-form",
+            "trigger": {
+                "verb": "use",
+                "subject": "form-27b-stroke-6",
+                "target": "the_clerk"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "form-27b-stroke-6"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "form_filled"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "registered_with_clerk"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "form-27b-stroke-6"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "registered_with_clerk"
+                },
+                {
+                    "type": "add-item",
+                    "item": "queue-ticket"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "The Clerk examines your form with the intensity of someone who has read ten million forms and found fault with nine million nine hundred and ninety-nine thousand of them. His eyes scan each line. His pen hovers. Then -- miraculously -- he stamps it. 'Form 27-B Stroke 6. Correctly completed.' He sounds almost disappointed. 'Take a ticket. Proceed to the Waiting Room.' He slides you a numbered ticket: 847."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "submit-filled-form-desk",
+            "trigger": {
+                "verb": "use",
+                "subject": "form-27b-stroke-6",
+                "target": "registration-desk"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "form-27b-stroke-6"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "form_filled"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "registered_with_clerk"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "form-27b-stroke-6"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "registered_with_clerk"
+                },
+                {
+                    "type": "add-item",
+                    "item": "queue-ticket"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You place the completed form on the desk. The Clerk snatches it up, adjusts his spectacles, and reads every line. Twice. 'Acceptable,' he says, in a tone that implies 'barely.' He stamps it with a stamp the size of your fist and hands you a queue ticket. Number 847. 'The Waiting Room is to the west. Patience is a requirement, not a suggestion.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "submit-unfilled-form",
+            "trigger": {
+                "verb": "use",
+                "subject": "form-27b-stroke-6",
+                "target": "the_clerk"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "form-27b-stroke-6"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "form_filled"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "The Clerk takes one look at the blank form and slides it back. 'This form is not completed. Forms must be filled out in ink -- proper ink, not finger paint, not blood, not tears. Ancient ink is acceptable. Find some.' His expression does not change. It may never have changed."
+                }
+            ]
+        },
+        {
+            "id": "show-vip-ticket",
+            "trigger": {
+                "verb": "use",
+                "subject": "queue-ticket",
+                "target": "the_clerk"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "queue-ticket"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "vip_stamped"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "clerk-satisfied"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "queue-ticket"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "clerk-satisfied"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "west_wing_unlocked"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "east_wing_accessed"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-west-wing"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-east-wing"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "The Clerk takes your VIP-stamped ticket. His left eye twitches. 'VIP authorization. This stamp is...' He examines it. 'This stamp is technically valid.' His voice carries the weight of a man whose bureaucratic fortress has been breached. 'Very well. Both wings are now accessible. The test awaits.' He unlocks the west and east wing doors with two separate keys, each requiring a separate form that he fills out himself, silently, with the grim efficiency of a professional."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "show-vip-ticket-desk",
+            "trigger": {
+                "verb": "use",
+                "subject": "queue-ticket",
+                "target": "registration-desk"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "queue-ticket"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "vip_stamped"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "clerk-satisfied"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "queue-ticket"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "clerk-satisfied"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "west_wing_unlocked"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "east_wing_accessed"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-west-wing"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-east-wing"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You place the VIP ticket on the desk. The Clerk picks it up, reads it, reads it again, and his left eye performs a twitch so subtle it could be seismic. 'VIP access. Granted.' He opens both wing doors. His disapproval is palpable but procedurally invalid."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "talk-clerk-no-form",
+            "trigger": {
+                "verb": "talk",
+                "subject": "the_clerk"
+            },
+            "conditions": [
+                {
+                    "type": "flag-not-set",
+                    "flag": "registered_with_clerk"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "The Clerk looks up from a stack of paperwork that appears to predate the concept of paper. 'Form 27-B Stroke 6. Filed in triplicate. Blue ink only. Next.' He returns to stamping things that don't need stamping."
+                }
+            ]
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "submit-wrong-3",
+            "trigger": {
+                "verb": "use",
+                "subject": "form-27b-stroke-6",
+                "target": "the_clerk"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "wrong_form_count_2"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "clerk-stamped"
+                }
+            ]
+        }
+    ],
+    "deaths": {
+        "clerk-stamped": {
+            "title": "Death by Bureaucracy",
+            "narratorText": "You submit the wrong form for the third time. The Clerk's expression does not change -- it has never changed -- but something shifts in the air. He reaches for his stamp. Not the approval stamp. The OTHER stamp. The one marked 'DENIED (PERMANENTLY).' He stamps you. Not the form. You. The stamp hits your forehead with the force of administrative finality. The ink burns. The bureaucratic magic takes hold. You are filed under 'D' for 'Deceased.' Your application has been permanently rejected."
+        }
+    },
+    "dynamicDescriptions": {
+        "clerk-satisfied": "The Cavern Entrance Hall's bureaucratic atmosphere has shifted slightly. The Clerk sits at his desk, processing paperwork with marginally less hostility. Both wing doors stand open. The test awaits in the depths beyond.",
+        "registered_with_clerk": "The entrance hall hums with institutional energy. You've been registered -- the Clerk's stamp of approval (grudging as it was) opens the waiting room. Your queue ticket burns a hole in your pocket with the urgency of number 847."
+    },
+    "npcs": [
+        {
+            "id": "the_clerk",
+            "position": {
+                "x": 362,
+                "y": 500
+            },
+            "interactionPoint": {
+                "x": 316,
+                "y": 494
+            },
+            "zone": {
+                "x": 316,
+                "y": 377,
+                "width": 92,
+                "height": 123
+            },
+            "aliases": ["clerk", "man", "bureaucrat", "official", "guy"],
+            "responses": {
+                "look": "The Clerk sits behind his desk with the posture of someone who has been sitting behind desks since desks were invented. His spectacles perch on a nose that has looked down at paperwork for so long it has forgotten any other direction exists.",
+                "use": "The Clerk is not an item. He is a bureaucratic institution in spectacles. Submit Form 27-B Stroke 6 if you wish to interact.",
+                "take": "Taking a civil servant is a criminal offense in seven jurisdictions, three of which the Clerk invented specifically to prevent this.",
+                "default": "The Clerk stamps something. The stamp echoes through the hall like a gavel of bureaucratic finality."
+            }
+        }
+    ],
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            {
+                "key": "amb-cave-drips",
+                "volume": 0.5
+            },
+            {
+                "key": "amb-wind-light",
+                "volume": 0.3
+            }
+        ]
+    },
+    "effects": {
+        "weather": {
+            "type": "dust",
+            "intensity": 0.3
+        },
+        "ambient": [
+            {
+                "type": "dust-motes",
+                "intensity": 0.4
+            }
+        ],
+        "lighting": {
+            "tint": "#334455",
+            "brightness": 0.5,
+            "vignette": 0.4,
+            "torchFlicker": true
+        }
+    },
+    "puzzleHints": [
+        {
+            "puzzleId": "submit-filled-form",
+            "tiers": [
+                "The Clerk expects paperwork. Proper paperwork. The kind that's been filled out in ink so ancient it has opinions about your penmanship. Somewhere in these caverns, a form and its matching ink await your bureaucratic destiny.",
+                "You need Form 27-B Stroke 6 from the filing room, filled out with ancient ink from the cavern library. Use the ink on the form, then present the completed form to the Clerk.",
+                "Take Form 27-B Stroke 6 from the filing room. Take the ancient ink from the reading desk in the cavern library. Use the ink on the form to fill it out. Then use the completed form on the Clerk to register."
+            ]
+        },
+        {
+            "puzzleId": "show-vip-ticket",
+            "tiers": [
+                "Your queue ticket says number 847. The Waiting Room suggests you might be here a while. Unless, of course, someone were to upgrade that ticket. Bureaucracies have loopholes, if you know where to look.",
+                "A VIP stamp is hidden in the filing room -- check the bottom drawer of the last cabinet. Stamp your queue ticket with it, then show the VIP ticket to the Clerk to skip the queue entirely.",
+                "Find the VIP stamp in the hidden bottom drawer of the filing room. Use the VIP stamp on your queue ticket. Then use the stamped VIP ticket on the Clerk to gain access to both wings."
+            ]
+        }
+    ],
+    "playerSpawn": {
+        "x": 516,
+        "y": 439
+    }
+}

@@ -1,0 +1,202 @@
+{
+    "id": "cavern_east_wing",
+    "name": "East Wing Corridor",
+    "description": "The East Wing is half-flooded -- dark water fills the lower passages, reflecting your torch-light in oily ripples. The corridor slopes downward into deeper water. Stone walkways remain above the waterline, but barely. The sound of rushing water echoes from deeper within, suggesting a river or underground current. The air is cold and damp, and everything smells like minerals and ancient plumbing.",
+    "background": {
+        "layers": [
+            {
+                "key": "bg-shared-act2-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act2-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-cavern_east_wing",
+                "scrollFactor": 1
+            }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
+    ],
+    "exits": [
+        {
+            "id": "to-entrance-hall",
+            "zone": {
+                "x": 0,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
+            "targetRoom": "cavern_entrance_hall",
+            "spawnPoint": {
+                "x": 650,
+                "y": 450
+            },
+            "transition": "fade",
+            "direction": "west",
+            "label": "entrance hall"
+        },
+        {
+            "id": "to-underground-river",
+            "zone": {
+                "x": 880,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
+            "targetRoom": "underground_river",
+            "spawnPoint": {
+                "x": 300,
+                "y": 450
+            },
+            "transition": "slide-right",
+            "direction": "east",
+            "label": "river"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "dark-water",
+            "name": "Dark Water",
+            "aliases": ["water", "flood", "pool", "lake", "pond", "black water", "flooded area", "deep water", "murky water", "underground water", "river"],
+            "zone": {
+                "x": 300,
+                "y": 420,
+                "width": 300,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 420
+            },
+            "responses": {
+                "look": "Dark water fills the lower passages, still and lightless. Your torch reflects off the surface, revealing nothing beneath. The water is deep -- how deep is impossible to tell. Something moves in the darkness below. Probably fish. Hopefully fish. The kind of fish that doesn't have teeth.",
+                "use": "You dip a hand in. The water is freezing. Something brushes your fingers. You pull your hand out faster than you've ever pulled anything in your life.",
+                "take": "You scoop up some water. It's cold, dark, and smells like cave. You let it drain through your fingers. Some things are better left in their natural habitat.",
+                "default": "You observe the dark water. It observes you back, from multiple angles, with eyes you can't see.",
+                "talk": "You whisper to the dark water. The surface ripples in response. You choose to believe that was the breeze, because the alternative is that the water heard you.",
+                "open": "Open the water? It's not a door. Though if it were, you absolutely should not go through it. The things on the other side have been fasting.",
+                "push": "You push at the water's surface with your palm. It yields, obviously -- it's water. Something nudges back from below. You stop pushing.",
+                "pull": "You can't pull water. That's not how water works. That's not how anything works. You're in a cave arguing with fluid dynamics."
+            }
+        },
+        {
+            "id": "stone-walkway",
+            "name": "Stone Walkway",
+            "aliases": ["walkway", "path", "bridge", "causeway", "footpath", "walkpath", "stone path", "narrow path", "passage", "trail", "catwalk"],
+            "zone": {
+                "x": 500,
+                "y": 390,
+                "width": 100,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 550,
+                "y": 420
+            },
+            "responses": {
+                "look": "A narrow stone walkway runs above the waterline, connecting the entrance to the deeper passages. It's slick with moisture and barely wide enough for one person. The ancient engineers who built this apparently assumed everyone was thin. And had excellent balance.",
+                "default": "You follow the walkway carefully. It's slippery but solid. The water below makes helpful gurgling sounds that are either calming or ominous.",
+                "take": "The stone walkway is carved from the cavern floor. You'd need to dismantle the entire east wing to take it, which feels like an overcommitment for a souvenir.",
+                "use": "Using the Stone Walkway doesn't accomplish anything obvious. Perhaps it needs to be used with something else. Or perhaps it's just decorative.",
+                "talk": "You address the walkway. 'Thank you for existing,' you say. The stone does not respond, but you sense a quiet structural pride.",
+                "open": "It's a walkway, not a trapdoor. Though given the quality of construction down here, there's probably a trapdoor somewhere. Just not this one.",
+                "push": "You push against the walkway with your foot. It holds. It has been holding for centuries. Your foot is not going to be the thing that changes its mind.",
+                "pull": "You crouch and pull at the walkway's edge. It holds fast. The walkway was here before you, and it will be here after you. Especially if you fall into the water."
+            }
+        }
+    ],
+    "items": [],
+    "puzzles": [],
+    "deathTriggers": [
+        {
+            "id": "swim-dark-water",
+            "trigger": {
+                "verb": "go",
+                "subject": "dark-water"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "dark-water"
+                }
+            ]
+        },
+        {
+            "id": "swim-dark-water-use",
+            "trigger": {
+                "verb": "use",
+                "subject": "dark-water"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "dark-water"
+                }
+            ]
+        }
+    ],
+    "deaths": {
+        "dark-water": {
+            "title": "Death by Aquatic Confidence",
+            "narratorText": "You wade into the dark water. The water is dark for a reason. Several reasons, actually. All of them have teeth. The things that live in underground rivers have evolved beyond the need for eyes, but they've compensated with an extraordinary sense of vibration and an appetite that would shame a buffet restaurant. Your thrashing provides a convenient dinner bell. The water goes still again. It was dark before you entered. It is dark after."
+        }
+    },
+    "dynamicDescriptions": {},
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            {
+                "key": "amb-cave-drips",
+                "volume": 0.8
+            },
+            {
+                "key": "amb-wind-light",
+                "volume": 0.2
+            }
+        ]
+    },
+    "effects": {
+        "weather": {
+            "type": "fog",
+            "intensity": 0.3
+        },
+        "ambient": [
+            {
+                "type": "dust-motes",
+                "intensity": 0.2
+            }
+        ],
+        "lighting": {
+            "tint": "#223344",
+            "brightness": 0.4,
+            "vignette": 0.5,
+            "torchFlicker": true
+        }
+    },
+    "playerSpawn": {
+        "x": 380,
+        "y": 450
+    }
+}

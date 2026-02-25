@@ -1,0 +1,643 @@
+{
+    "id": "castle_garden",
+    "name": "Castle Garden",
+    "description": "The castle garden is nature's revenge on neglect. Once a manicured paradise of geometric hedges and prize-winning roses, it's now a tangled wilderness that has clearly been winning its war against civilization for decades. Stone paths vanish under ivy, statues poke out of overgrowth like drowning swimmers, and the petrification curse has turned several ornamental trees to solid stone. An old gardener's shed leans drunkenly in one corner, its door hanging open.",
+    "background": {
+        "layers": [
+            {
+                "key": "bg-shared-act1-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act1-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-castle_garden",
+                "scrollFactor": 1
+            }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
+    ],
+    "exits": [
+        {
+            "id": "to-courtyard",
+            "zone": {
+                "x": 350,
+                "y": 460,
+                "width": 260,
+                "height": 80
+            },
+            "targetRoom": "castle_courtyard",
+            "spawnPoint": {
+                "x": 480,
+                "y": 400
+            },
+            "transition": "fade",
+            "direction": "south",
+            "label": "courtyard",
+            "aliases": ["back"]
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "overgrown-hedges",
+            "name": "Overgrown Hedges",
+            "aliases": [
+                "hedges",
+                "hedge",
+                "bushes",
+                "bush",
+                "overgrown bushes",
+                "shrubs",
+                "shrub",
+                "topiary",
+                "lion hedge",
+                "heraldic hedges",
+                "green hedge"
+            ],
+            "zone": {
+                "x": 300,
+                "y": 350,
+                "width": 120,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 360,
+                "y": 420
+            },
+            "responses": {
+                "look": "The hedges were once trimmed into the shapes of heraldic animals. Now they're trimmed into the shape of 'chaos.' What might have been a lion is now an amorphous green blob. A hedge-badger has merged with a hedge-eagle to form something that defies taxonomy.",
+                "use": "You push through the hedges. Thorns scratch your arms. Somewhere inside the green mass, a bird objects loudly to your intrusion.",
+                "take": "You reach for a branch but it's too thick and your hands too soft. The hedge wins this round.",
+                "default": "You contemplate the hedges. They contemplate growth. Neither of you is winning.",
+                "talk": "You address the hedges. They rustle in the breeze, which is either a response or the wind doing what wind does. Either way, the hedge-badger-eagle hybrid remains inscrutable.",
+                "open": "You try to part the hedges. Thorns immediately introduce themselves to your forearms. The hedges have been growing unchecked for decades and are not accepting visitors.",
+                "push": "You shove into the hedge wall. Branches snap, thorns scratch, and the green mass absorbs your effort like a vegetable sponge. The hedge barely notices.",
+                "pull": "You pull at the overgrown branches. They snap back with the vindictiveness of vegetation that has had decades to fortify itself. The garden fights dirty."
+            }
+        },
+        {
+            "id": "petrified-trees",
+            "name": "Petrified Trees",
+            "aliases": [
+                "trees",
+                "tree",
+                "stone trees",
+                "petrified tree",
+                "grey trees",
+                "gray trees",
+                "ornamental trees",
+                "stone branches",
+                "dead trees"
+            ],
+            "zone": {
+                "x": 600,
+                "y": 345,
+                "width": 80,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 640,
+                "y": 420
+            },
+            "responses": {
+                "look": "Several ornamental trees have been completely petrified, their branches frozen mid-sway in solid stone. The detail is remarkable -- individual leaves, bark texture, even a bird's nest are all perfectly preserved in grey stone. It's beautiful and deeply unsettling, like taxidermy for vegetation.",
+                "use": "You tap a petrified branch. It rings like a bell. The sound echoes through the garden with an eerie purity. You don't tap it again.",
+                "take": "You try to snap off a petrified branch. It's solid stone. You'd need a chisel, not ambition.",
+                "default": "You examine the petrified trees. They were alive last season. The curse works faster than gardeners.",
+                "talk": "You speak to the petrified trees. They stand in mineral silence. They were probably better listeners when they were alive -- at least they swayed in the breeze, which felt more responsive.",
+                "open": "They're trees, not doors. Solid stone trees, at that. The concept of 'opening' a tree is botanical nonsense even when the tree isn't made of rock.",
+                "push": "You push against a petrified trunk. It has the structural integrity of a small monument, because that's essentially what it is now.",
+                "pull": "You try to pull a stone branch. It doesn't bend, flex, or acknowledge your existence. Petrified wood: zero out of ten for cooperative interaction."
+            }
+        },
+        {
+            "id": "gardeners-shed",
+            "name": "Gardener's Shed",
+            "aliases": [
+                "shed",
+                "shack",
+                "hut",
+                "tool shed",
+                "garden shed",
+                "wooden shed",
+                "building",
+                "gardener shed",
+                "small building",
+                "storage shed"
+            ],
+            "zone": {
+                "x": 750,
+                "y": 370,
+                "width": 80,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 790,
+                "y": 420
+            },
+            "responses": {
+                "look": "A small wooden shed, leaning at an angle that suggests it's in a long-term negotiation with gravity. The door hangs open. Inside: rusted tools, empty pots, and the general atmosphere of a hobby abandoned under duress. Something sits on a shelf -- a rat trap, weathered but functional.",
+                "use": "You poke around the shed. Cobwebs, dust, and the lingering smell of potting soil. The shed has character, if 'character' means 'structural instability.'",
+                "open": "The door is already open. It's been open for so long it's forgotten how to close.",
+                "default": "You inspect the shed. It's the kind of building that gets described as 'rustic' in real estate listings and 'condemned' by anyone honest.",
+                "take": "The gardener's shed is a structure built into the garden wall. You cannot pocket a structure. Your ambitions exceed your carrying capacity by a considerable margin.",
+                "talk": "You address the empty shed. 'Hello?' The cobwebs sway. A spider regards you from the doorframe with the quiet judgment of something that actually lives here.",
+                "push": "You lean against the shed wall. It creaks with the weariness of a structure that would rather not be leaned upon. One more push and this becomes firewood.",
+                "pull": "You tug at the shed door. It comes off in your hand. Well, not entirely -- the top hinge holds, leaving the door at an even more dramatic angle."
+            }
+        },
+        {
+            "id": "nightshade-bush",
+            "name": "Dark Berry Bush",
+            "aliases": [
+                "berries",
+                "berry",
+                "bush",
+                "nightshade",
+                "belladonna",
+                "poison berries",
+                "dark berries",
+                "berry bush",
+                "poisonous bush",
+                "shiny berries",
+                "black berries",
+                "deadly nightshade",
+                "plant"
+            ],
+            "zone": {
+                "x": 150,
+                "y": 380,
+                "width": 60,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 180,
+                "y": 420
+            },
+            "responses": {
+                "look": "A bush bearing clusters of shiny, dark berries. They look delicious -- plump, glistening, practically begging to be eaten. A small faded sign at the base reads 'Atropa belladonna.' That's nightshade. Those berries will kill you. Nature is beautiful and utterly duplicitous.",
+                "use": "You reach toward the berries. They look so inviting. So glossy. So completely and utterly poisonous. Some decisions advertise their consequences in advance.",
+                "default": "You examine the berry bush. It's gorgeous, prolific, and lethal. Like most things in this garden.",
+                "take": "You can't take the Dark Berry Bush. It's firmly attached to its current situation, much like your growing sense of confusion.",
+                "talk": "You lean toward the nightshade bush and whisper sweet nothings. The berries glisten back at you, pretty and lethal. It's the most honest relationship you've had in weeks.",
+                "open": "You try to part the bush's branches. Thorns prick your fingers, and you find yourself uncomfortably close to berries that could end your biography.",
+                "push": "You push the nightshade bush aside. Some berries drop to the ground, glistening wetly. One rolls toward your boot like a tiny, beautiful assassination attempt.",
+                "pull": "You yank at the bush. It springs back, and a berry bounces off your cheek. You spend the next thirty seconds frantically wiping your face."
+            }
+        },
+        {
+            "id": "garden-statue",
+            "name": "Garden Statue",
+            "aliases": [
+                "statue",
+                "figure",
+                "sculpture",
+                "stone figure",
+                "pedestal",
+                "monument",
+                "stone statue",
+                "moss statue",
+                "mossy statue"
+            ],
+            "zone": {
+                "x": 250,
+                "y": 100,
+                "width": 150,
+                "height": 250
+            },
+            "interactionPoint": {
+                "x": 325,
+                "y": 440
+            },
+            "responses": {
+                "look": "A moss-covered figure stands on a stone pedestal, its features eroded beyond recognition. It might have been a king, a hero, or a particularly ambitious gardener. Time has rendered the question academic and the answer irrelevant.",
+                "take": "It's stone, it's heavy, and it's attached to a pedestal that's attached to the earth. You'd need to renegotiate with geology.",
+                "use": "Admire it? You do, briefly. It doesn't admire you back. Statues are notoriously poor conversationalists.",
+                "default": "You regard the statue. Whoever it once depicted has been forgotten, which is either tragic or liberating, depending on how you feel about legacy.",
+                "talk": "You address the statue. Moss grows over where its mouth would be, which is either a coincidence or nature's way of telling you this conversation is one-sided.",
+                "open": "It's a solid block of eroded stone. There's nothing to open. Unless you're hoping for a secret compartment, in which case: no. Life is not that generous.",
+                "push": "You push the statue. It rocks slightly on its pedestal, then settles back. For one heart-stopping moment you envision it toppling and crushing you.",
+                "pull": "You grab the statue and heave. It rocks on its pedestal, showering you in moss flakes. Then it settles back, having briefly considered toppling and decided against it."
+            }
+        },
+        {
+            "id": "stone-pavilion",
+            "name": "Stone Pavilion",
+            "aliases": [
+                "pavilion",
+                "gazebo",
+                "shelter",
+                "structure",
+                "ruins",
+                "ruin",
+                "pillars",
+                "columns",
+                "canopy",
+                "pergola",
+                "stone structure"
+            ],
+            "zone": {
+                "x": 550,
+                "y": 100,
+                "width": 250,
+                "height": 250
+            },
+            "interactionPoint": {
+                "x": 675,
+                "y": 440
+            },
+            "responses": {
+                "look": "An open-air pavilion held up by crumbling stone pillars, its roof partially collapsed and its former grandeur now mostly theoretical. Ivy covers what remains, softening the decay into something almost picturesque.",
+                "take": "You can't take a building. Even a small, partially ruined one. That's not how inventory works.",
+                "use": "It would make decent shelter from rain, if it were raining. Since it's not, it's just a scenic ruin -- lovely for contemplation, useless for progress.",
+                "default": "You study the stone pavilion. It has the quiet dignity of something that has accepted its decline and made peace with the ivy.",
+                "talk": "You call into the pavilion. Your voice echoes off the crumbling pillars and returns slightly hollowed out, as if the building absorbed the confidence from your words.",
+                "open": "It's an open-air pavilion. The 'open' part is right there in the name. It couldn't be more open if it tried.",
+                "push": "You push against one of the crumbling pillars. Dust rains down. A chunk of mortar drops at your feet. The pavilion would very much like to remain standing.",
+                "pull": "You pull at a loose stone. It comes free with a grinding sound, and a section of remaining roof sags perceptibly. You've accelerated centuries of architectural decay."
+            }
+        },
+        {
+            "id": "stone-hedges",
+            "name": "Petrified Hedges",
+            "aliases": [
+                "stone hedges",
+                "grey hedges",
+                "gray hedges",
+                "petrified bushes",
+                "stone bushes",
+                "frozen hedges",
+                "stone shrubs",
+                "geometric hedges"
+            ],
+            "zone": {
+                "x": 100,
+                "y": 380,
+                "width": 150,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 175,
+                "y": 420
+            },
+            "responses": {
+                "look": "Once-manicured hedges, now turned to grey stone by the curse. They retain their precise geometric shapes -- the gardener's last masterwork, preserved in mineral. Every leaf, every twig, frozen in place. It's beautiful in the way that taxidermy is beautiful: technically impressive and deeply wrong.",
+                "take": "You try to snap off a stone branch. It crumbles in your hand. Petrified shrubbery makes poor souvenirs.",
+                "use": "The hedges are decorative. They were decorative when alive, and they're decorative now that they're stone. Their function hasn't changed. Only their material.",
+                "talk": "You address the petrified hedges. They stand in rigid silence. They were probably better listeners when they were alive. Or at least they swayed in the breeze, which felt more responsive.",
+                "open": "Hedges don't open. Even stone ones. They're barriers, not doors.",
+                "push": "You push against a petrified hedge. It's solid stone. The curse has given these bushes more structural integrity than most buildings.",
+                "pull": "You pull at a stone hedge branch. It snaps off with a mineral crack. A piece of someone's careful gardening is now rubble. Progress."
+            }
+        },
+        {
+            "id": "stone-paths",
+            "name": "Stone Paths",
+            "aliases": [
+                "paths",
+                "path",
+                "walkway",
+                "walkways",
+                "trail",
+                "trails",
+                "flagstones",
+                "cobblestones",
+                "garden path",
+                "garden paths",
+                "pavement"
+            ],
+            "zone": {
+                "x": 200,
+                "y": 440,
+                "width": 180,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 290,
+                "y": 460
+            },
+            "responses": {
+                "look": "Stone paths wind through the garden, or rather, they used to. Now they're suggestions of paths -- occasional flagstones poking through ivy like the spine of a buried creature.",
+                "take": "You pry at a loose flagstone. It lifts slightly, revealing damp earth and a colony of woodlice who are deeply offended by the sudden daylight. You put it back.",
+                "use": "You follow the remnants of the path. It leads in a meandering circle back to roughly where you started, which feels like a metaphor for something.",
+                "talk": "You address the path. 'Where do you lead?' Nowhere, apparently. The path has been going nowhere for decades, and it's made peace with the journey.",
+                "open": "Paths are already open by definition. That's the entire point of a path. An unopenable path is just 'ground.'",
+                "push": "You push aside the ivy covering the flagstones. Beneath it: more flagstones, more ivy, and the unsettling realization that nature reclaims everything.",
+                "pull": "You pull ivy off a section of path. The stones beneath are cracked and moss-covered but still there, patiently waiting for someone to walk on them again.",
+                "default": "Every garden path leads somewhere, though in this case 'somewhere' and 'nowhere' have become functionally synonymous."
+            }
+        },
+        {
+            "id": "garden-ivy",
+            "name": "Creeping Ivy",
+            "aliases": [
+                "ivy",
+                "vines",
+                "vine",
+                "creeper",
+                "creepers",
+                "climbing plant",
+                "green ivy",
+                "wall ivy",
+                "plant"
+            ],
+            "zone": {
+                "x": 450,
+                "y": 360,
+                "width": 100,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 500,
+                "y": 420
+            },
+            "responses": {
+                "look": "Ivy covers everything -- paths, walls, statues, and most of the shed. It creeps with the patient ambition of something that has nowhere to be and all the time in the world.",
+                "take": "You tear off a length of ivy. It comes away easily, revealing the crumbling stone beneath. The ivy was the only thing holding things together. Some structural lies are best left undisturbed.",
+                "use": "Ivy is decorative at best, destructive at worst, and useful for absolutely nothing in between. It grows, it clings, it slowly demolishes masonry.",
+                "talk": "You speak to the ivy. It continues growing, indifferent to your words. Ivy doesn't care about your feelings. Ivy just grows. There's a lesson there, but it's depressing.",
+                "open": "You part the ivy curtain. Behind it: more wall. The ivy wasn't hiding anything except the disappointing truth that there's nothing to hide.",
+                "push": "You push through the ivy. It drapes across your shoulders like a clingy relative at a family gathering. You emerge covered in tiny leaves and mild resentment.",
+                "pull": "You pull a handful of ivy from the wall. It makes a satisfying ripping sound. The exposed stone beneath looks pale and startled. More ivy immediately begins plotting to reclaim the territory.",
+                "default": "The ivy is the real owner of this garden. Everything else is just temporary."
+            }
+        },
+        {
+            "id": "dead-roses",
+            "name": "Dead Roses",
+            "aliases": [
+                "roses",
+                "rose",
+                "rose bush",
+                "rose bushes",
+                "flowers",
+                "thorns",
+                "dead flowers",
+                "dried roses",
+                "petals"
+            ],
+            "zone": {
+                "x": 80,
+                "y": 370,
+                "width": 60,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 110,
+                "y": 420
+            },
+            "responses": {
+                "look": "The remnants of what were once prize-winning roses. The bushes are still here, thorny and defiant, but the blooms are long gone. A few dried petals cling to stems like confetti at a party that ended years ago.",
+                "take": "You pluck a dried rose stem. It's all thorns and no beauty, which is nature's version of a personality without charm. You drop it. Some souvenirs aren't worth the puncture wounds.",
+                "use": "You could arrange them, press them, or weep over them. All equally productive. Dead roses are good for symbolism and absolutely nothing else.",
+                "talk": "'You were beautiful once,' you tell the dead roses. They were. They aren't now. This conversation is going exactly as well as conversations with dead flowers typically go.",
+                "open": "There's nothing to open on a rose bush. Roses bloom on their own schedule, and this bush's schedule expired sometime during the previous decade.",
+                "push": "You push through the rose bushes. Thorns snag your clothes and scratch your skin. The roses may be dead, but their defense mechanisms are thriving.",
+                "pull": "You pull at a dead rose cane. It snaps with a dry crack, releasing a faint ghost of perfume -- the olfactory equivalent of a sad goodbye.",
+                "default": "Dead roses. Once the pride of the castle garden, now a thorny reminder that beauty is temporary and neglect is permanent."
+            }
+        },
+        {
+            "id": "birds-nest",
+            "name": "Petrified Bird's Nest",
+            "aliases": [
+                "nest",
+                "bird nest",
+                "birds nest",
+                "stone nest",
+                "eggs",
+                "stone eggs",
+                "petrified nest"
+            ],
+            "zone": {
+                "x": 620,
+                "y": 350,
+                "width": 40,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 640,
+                "y": 420
+            },
+            "responses": {
+                "look": "Nestled in a petrified branch, a bird's nest has been turned to solid stone along with its tree. Every twig, every woven strand is preserved in perfect grey detail. If there were eggs inside, they're stone now too.",
+                "take": "The stone nest is fused to the tree -- one continuous piece of rock. The curse didn't distinguish between tree and tenant. Thorough, that curse.",
+                "use": "It's a stone nest in a stone tree. Its days of housing birds are comprehensively over. As a decorative object, it's stunning. As a functional nest, it's a rock.",
+                "talk": "You murmur sympathetically at the petrified nest. Whatever lived here left before the curse, or didn't. Either way, the nest isn't accepting new residents.",
+                "open": "You peer into the nest. Inside: three small stone eggs, perfectly preserved. They'll never hatch. It's the saddest thing in the garden, and the garden has stiff competition.",
+                "push": "You push the nest gently. It's part of the tree now -- solid stone, immovable. The curse fused everything together with the thoroughness of someone who deeply disliked nature.",
+                "pull": "You try to pry the nest loose. Stone doesn't pry. The nest and tree are one object now, united in geological permanence.",
+                "default": "Someone's home, turned to stone mid-existence. The curse didn't care about collateral damage."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "dried-sage",
+            "name": "Dried Sage",
+            "aliases": [
+                "sage",
+                "herbs",
+                "herb",
+                "dried herbs",
+                "bundle",
+                "herb bundle",
+                "sage bundle",
+                "spice",
+                "plant"
+            ],
+            "zone": {
+                "x": 314,
+                "y": 398,
+                "width": 56,
+                "height": 37
+            },
+            "interactionPoint": {
+                "x": 342,
+                "y": 398
+            },
+            "responses": {
+                "look": "A bundle of dried sage growing wild among the overgrown herbs. It's old, dusty, and aromatic in a way that suggests it has opinions about the supernatural. The kind of herb that shows up in rituals, recipes, and grandmother's remedies for 'the spiritual malaise.'",
+                "use": "Sage is typically burned, brewed, or waved around with intent. By itself, it's just a fragrant bundle of dead plant matter.",
+                "take": "You reach for the dried sage bundle. It crumbles slightly at your touch, releasing a pungent aroma.",
+                "talk": "You hold the sage to your ear. It doesn't speak. Herbs communicate through scent, not words, and this one's message is 'I've been dead for a while and I'm fine with it.'",
+                "open": "It's a bundle of dried herbs, not a package. There's nothing to open. What you see is what you get: dead leaves, tied with string, smelling of grandmothers and exorcisms.",
+                "push": "You press the sage bundle. It crumbles slightly, releasing a puff of fragrant dust. Your sinuses object. The sage is indifferent to your sinuses.",
+                "pull": "You pull a sprig from the bundle. It comes away in a shower of tiny dried leaves, like confetti at a funeral for flavor."
+            }
+        },
+        {
+            "id": "rat-trap",
+            "name": "Rat Trap",
+            "aliases": [
+                "trap",
+                "mousetrap",
+                "mouse trap",
+                "spring trap",
+                "rodent trap",
+                "snap trap",
+                "pest trap"
+            ],
+            "zone": {
+                "x": 723,
+                "y": 481,
+                "width": 54,
+                "height": 36
+            },
+            "interactionPoint": {
+                "x": 750,
+                "y": 517
+            },
+            "responses": {
+                "look": "A spring-loaded rat trap on a shelf in the gardener's shed. It's rusty but functional -- the spring still has tension, and the mechanism clicks when you test it gingerly. Someone built this to last. The rats should be concerned.",
+                "use": "The trap needs to be placed somewhere with rats. This shed is notably rat-free. The servants' quarters, on the other hand...",
+                "take": "The rat trap is wedged firmly between the shed and the wall. Whoever placed it was familiar with both rats and adventurers -- neither can be trusted around loose objects.",
+                "talk": "You address the rat trap. It has no opinions. It has a spring, a platform, and a single-minded purpose. More focused than most people you've met.",
+                "open": "You carefully open the trap mechanism. It clicks into the set position, spring coiled, platform ready. One wrong move and it'll snap shut on your fingers.",
+                "push": "You press the trigger plate. The trap snaps shut with a vicious CLACK that echoes through the shed. Your fingers are intact, but your heartbeat takes several seconds to agree.",
+                "pull": "You pull the spring back to reset the trap. The mechanism resists, then clicks into place with the quiet menace of something designed to ruin a rodent's evening."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "take-sage",
+            "trigger": {
+                "verb": "take",
+                "subject": "dried-sage"
+            },
+            "conditions": [
+                {
+                    "type": "item-not-taken",
+                    "item": "dried-sage"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "add-item",
+                    "item": "dried-sage"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You pluck the bundle of dried sage. It crumbles slightly in your hands, releasing a pungent aroma that makes your sinuses file a formal complaint. Sage: the herb that says 'I'm either cooking or communing with spirits, and I'm not sure which.' The garden doesn't notice its absence."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "take-rat-trap",
+            "trigger": {
+                "verb": "take",
+                "subject": "rat-trap"
+            },
+            "conditions": [
+                {
+                    "type": "item-not-taken",
+                    "item": "rat-trap"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "add-item",
+                    "item": "rat-trap"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You carefully take the rat trap from the shed shelf. The spring mechanism clicks ominously. This device was designed by someone who took the rat problem personally. You pocket it carefully, making a mental note not to put your fingers near the business end."
+                }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "eat-nightshade",
+            "trigger": {
+                "verb": "use",
+                "subject": "nightshade-bush"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "poison-herb"
+                }
+            ]
+        },
+        {
+            "id": "eat-nightshade-2",
+            "trigger": {
+                "verb": "take",
+                "subject": "nightshade-bush"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "You reach for the berries, then notice the faded 'Atropa belladonna' sign. Nightshade. Eating those would be... inadvisable. The berries gleam invitingly. They're very good at their job."
+                }
+            ]
+        }
+    ],
+    "deaths": {
+        "poison-herb": {
+            "title": "Death by Botany",
+            "narratorText": "You eat the nightshade berries. They taste wonderful -- sweet, rich, with a subtle note of 'you have made a catastrophic error.' The botanical name 'Atropa belladonna' translates roughly to 'beautiful lady who will absolutely murder you,' which is information you could have used thirty seconds ago. Your vision blurs. The garden seems to spin. The last thing you see is the faded warning sign, which, in your defense, was really quite small."
+        }
+    },
+    "dynamicDescriptions": {},
+    "audio": {
+        "music": "music-forest",
+        "ambient": [
+            {
+                "key": "amb-forest-birds",
+                "volume": 0.6
+            },
+            {
+                "key": "amb-wind-light",
+                "volume": 0.4
+            }
+        ]
+    },
+    "effects": {
+        "ambient": [
+            {
+                "type": "falling-leaves",
+                "intensity": 0.4
+            },
+            {
+                "type": "dust-motes",
+                "intensity": 0.2
+            }
+        ],
+        "lighting": {
+            "tint": "#aabb88",
+            "brightness": 0.85,
+            "vignette": 0.2
+        }
+    },
+    "playerSpawn": {
+        "x": 538,
+        "y": 422
+    }
+}

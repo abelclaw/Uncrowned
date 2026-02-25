@@ -1,0 +1,421 @@
+{
+    "id": "underground_pool",
+    "name": "Underground Pool",
+    "description": "A subterranean pool fills most of this chamber, its surface perfectly still and eerily reflective. The water glows faintly from minerals below, casting rippling light patterns across the ceiling. Something glimmers at the bottom -- a crystal, catching your torch-light and throwing it back with quiet defiance.",
+    "background": {
+        "layers": [
+            {
+                "key": "bg-shared-act1-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act1-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-underground_pool",
+                "scrollFactor": 1
+            }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        {
+            "x": 50,
+            "y": 400
+        },
+        {
+            "x": 910,
+            "y": 400
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
+    ],
+    "exits": [
+        {
+            "id": "to-depths",
+            "zone": {
+                "x": 440,
+                "y": 350,
+                "width": 80,
+                "height": 80
+            },
+            "targetRoom": "cave_depths",
+            "spawnPoint": {
+                "x": 480,
+                "y": 460
+            },
+            "transition": "fade",
+            "direction": "north",
+            "label": "depths",
+            "aliases": ["out", "back", "exit", "leave"]
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "pool-surface",
+            "name": "Pool Surface",
+            "aliases": ["pool", "water", "lake", "pond", "surface", "water surface", "underground pool", "underground lake", "dark water", "still water"],
+            "zone": {
+                "x": 300,
+                "y": 380,
+                "width": 300,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 420
+            },
+            "responses": {
+                "look": "The pool's surface is mirror-still, reflecting the cave ceiling with unsettling clarity. Your reflection stares back at you, looking distinctly more worried than you feel. Or perhaps exactly as worried as you feel. In the depths, something crystalline catches the light. Deeper still, pale shapes rest at the bottom -- bones, if you're not mistaken. Others have tried swimming here. They did not swim back.",
+                "take": "You scoop up a handful of water. It leaks through your fingers immediately, as water is known to do. You've learned nothing.",
+                "talk": "You speak to the pool. Your words ripple across the surface. The pool does not respond, but your reflection mouths something you can't quite read. Unsettling.",
+                "default": "You contemplate the pool. It contemplates you. This is getting existential.",
+                "use": "You dip your hand in the water. It's ice-cold, mineral-heavy, and your fingers immediately go numb. Whatever lives in these depths doesn't appreciate visitors.",
+                "open": "You can't open water. Water is already in its most accessible state. If anything, the problem is that the pool is too open -- open enough to drown in.",
+                "push": "You press your hand against the water's surface. It's ice-cold. Ripples spread outward, disturbing your reflection. The bones at the bottom seem to shift. They didn't. Probably.",
+                "pull": "You scoop water and let it drain through your fingers. It's mineral-rich -- heavy, almost oily. Whatever's dissolved in this pool has been dissolving for a very long time."
+            }
+        },
+        {
+            "id": "cave-crystals",
+            "name": "Crystal Formations",
+            "aliases": ["crystals", "crystal", "formations", "gems", "gemstones", "jewels", "rocks", "mineral", "minerals", "shiny rocks", "sparkly rocks", "rainbow crystals"],
+            "zone": {
+                "x": 700,
+                "y": 370,
+                "width": 80,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 740,
+                "y": 420
+            },
+            "responses": {
+                "look": "Crystal formations jut from the cave walls, refracting your torch-light into dozens of tiny rainbows. They're beautiful, in the way that things you can't eat or sell are beautiful. One cluster near the pool's edge seems particularly vibrant.",
+                "take": "You try to break off a crystal. It's harder than it looks, and it looks very hard. These crystals have been growing for millennia and are not interested in being relocated.",
+                "use": "You tap a crystal. It rings with a clear, pure tone that echoes through the chamber. For a moment, the pool's surface ripples in response. Interesting.",
+                "default": "You admire the crystal formations. They sparkle indifferently.",
+                "talk": "You address the crystal formations. One rings faintly in response -- a harmonic that makes the pool's surface shiver. The crystals have been listening to the cave for millennia. Your voice is a footnote.",
+                "open": "Crystals don't open. They grow, they refract, they look pretty. The concept of 'opening' a geological formation is bold but fundamentally misguided.",
+                "push": "You push against a crystal cluster. It's harder than steel and sharper than your judgment. A small piece chips off and lands in the pool, where it sinks and glows. Another tiny light joining the collection at the bottom.",
+                "pull": "You try to pull a crystal from the wall. It's fused to the rock by millions of years of geological patience. Your fingers are not a compelling counterargument."
+            }
+        },
+        {
+            "id": "pool-reflection",
+            "name": "Strange Reflection",
+            "aliases": ["reflection", "mirror", "image", "my reflection", "face", "reflected", "ripples", "letters", "words", "writing"],
+            "zone": {
+                "x": 400,
+                "y": 420,
+                "width": 100,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 430
+            },
+            "responses": {
+                "look": "You look more closely at the pool's reflection. For a moment, the reflected cave ceiling seems to show... letters? Words? No, it's just the mineral patterns in the water. But for a moment, you could have sworn you saw 'LOOK DEEPER' written in the ripples. The crystal at the bottom glows more brightly.",
+                "use": "You wave your torch over the reflection. The light refracts through the water, and for a brief moment, a pattern of light on the ceiling spells out something you can't quite read. The crystal at the bottom pulses in response.",
+                "default": "You study the reflection. It studies you back. You're both equally confused.",
+                "take": "You can't take a reflection. You can barely take responsibility. The reflection mimics your grasping motion with what looks like amusement.",
+                "talk": "You speak to your reflection. It mouths words back that don't match yours. This is either a magical phenomenon or you're losing your grip on reality. Both are equally likely at this point.",
+                "open": "You wave your hand through the reflection. It shatters into ripples, then reforms. The reflected you looks slightly different each time it returns -- same face, different expression. Watchful.",
+                "push": "You press your hand toward the reflection. The water's surface resists for a moment, then your fingers break through the cold. The reflected hand reaches back toward you from below. You pull away.",
+                "pull": "You try to pull the reflection from the water. Your hand comes back cold and empty. Reflections aren't objects. Though this one seems to have more personality than most."
+            }
+        },
+        {
+            "id": "pool-cave-walls",
+            "name": "Cave Walls",
+            "aliases": ["walls", "wall", "rock wall", "rock walls", "stone wall", "stone walls", "cave wall", "smooth rock", "smooth walls"],
+            "zone": {
+                "x": 50,
+                "y": 50,
+                "width": 150,
+                "height": 300
+            },
+            "interactionPoint": {
+                "x": 125,
+                "y": 430
+            },
+            "responses": {
+                "look": "Smooth rock carved by millennia of water, polished to an almost organic sheen. The walls curve inward like the ribs of some enormous sleeping beast.",
+                "take": "You'd need a quarry's worth of patience and a pickaxe the size of your delusions of grandeur.",
+                "use": "Walls make excellent surfaces for not finding secret passages. You press, push, and prod. Nothing happens, as walls intended.",
+                "default": "You examine the cave walls. They are ancient, wet, and supremely unhelpful.",
+                "talk": "You speak to the cave walls. Your voice bounces back, slightly distorted by the mineral deposits. The cave has been sculpted by water for eons. Your words are the least interesting thing it's heard.",
+                "open": "Caves don't open. They erode, over millennia, with patience you will never possess. The walls here were carved by water, not by impatient adventurers.",
+                "push": "You lean against the cave wall. It's smooth, cold, and slightly wet. The rock doesn't yield. It hasn't yielded to anything in geological time, and you're not about to change that.",
+                "pull": "You try to pull a loose rock from the wall. It's not loose. Nothing here is loose. The cave has been settled into its current form for longer than human memory extends."
+            }
+        },
+        {
+            "id": "light-shaft",
+            "name": "Light Shaft",
+            "aliases": ["light", "shaft", "beam", "sunbeam", "sun", "sunlight", "ray", "rays", "shaft of light", "beam of light", "crack", "hole above"],
+            "zone": {
+                "x": 400,
+                "y": 0,
+                "width": 200,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 500,
+                "y": 430
+            },
+            "responses": {
+                "look": "A shaft of light piercing the darkness from some unseen crack above, impossibly dramatic. Nature's own spotlight, reserved for moments of quiet contemplation and feeling theatrical.",
+                "take": "You reach for the light. It remains intangible, like most good things in life.",
+                "use": "You bask in it briefly, feeling theatrical. The light does not judge. The cave does.",
+                "default": "You stand in the light shaft. For a moment, everything feels meaningful. Then the moment passes.",
+                "talk": "You address the light shaft. Your voice rises with the dust motes, spiraling up toward the crack in the ceiling. Nothing responds. The light simply continues being light, which is more than most things in this cave manage.",
+                "open": "The light comes from a crack far above -- natural, not mechanical. You can't open it wider any more than you can open the sky.",
+                "push": "You wave your hand through the light shaft. Dust motes scatter and swirl. For a moment, the light seems to bend around your fingers. Then physics reasserts itself.",
+                "pull": "You can't pull light toward you. It's already traveling at the maximum speed the universe allows. Your efforts to redirect it are noted and dismissed."
+            }
+        },
+        {
+            "id": "cave-floor",
+            "name": "Cave Floor",
+            "aliases": ["floor", "ground", "rocks", "stone floor", "cave ground", "wet floor", "slippery floor", "stone", "gravel"],
+            "zone": {
+                "x": 50,
+                "y": 460,
+                "width": 860,
+                "height": 60
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 460
+            },
+            "responses": {
+                "look": "The cave floor is uneven stone, slick with moisture from the pool. Near the water's edge, a small crystal shard catches your torch-light with a pinkish glow -- warm and faintly luminous against the cold stone. It's half-buried in silt, pulsing gently as if breathing.",
+                "take": "You scoop up... rock. The cave floor is made of rock. If you want a specific piece of what's down here, try being more specific about which bit interests you.",
+                "use": "The cave floor is beneath your feet, performing its primary function admirably. You're standing on it. What more do you want from it?",
+                "default": "You examine the cave floor. It's wet, uneven, and doing an excellent job of being a floor."
+            }
+        },
+        {
+            "id": "submerged-bones",
+            "name": "Submerged Bones",
+            "aliases": ["bones", "bone", "skeleton", "remains", "skulls", "skull", "pale shapes", "underwater bones", "dead", "corpse"],
+            "zone": {
+                "x": 350,
+                "y": 430,
+                "width": 80,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 390,
+                "y": 430
+            },
+            "responses": {
+                "look": "Pale shapes rest at the bottom of the pool -- bones, bleached white by mineral-rich water. They could be animal. They could be human. The water's surface distorts them just enough to maintain ambiguity. Perhaps that's a mercy.",
+                "take": "The bones are at the bottom of a pool that kills anyone who touches its water. Getting them would require dying first, which rather defeats the purpose.",
+                "use": "You can't use bones at the bottom of a cursed pool. Even if you could reach them, 'wet bones from a death pool' is not a useful inventory category.",
+                "talk": "You address the bones. They say nothing. They've been silent since whatever put them there, and they have no intention of breaking that streak.",
+                "open": "Bones don't open. They're already in their most open state -- separated, scattered, and thoroughly done with being a skeleton.",
+                "push": "You can't reach the bones without touching the water. The water is not safe to touch. This is a problem without a solution you'd survive.",
+                "pull": "The bones are beyond your reach unless you fancy joining them. Which you don't. Presumably."
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "cave-crystal-shard",
+            "name": "Cave Crystal Shard",
+            "aliases": ["crystal", "shard", "crystal shard", "gem", "pink thing", "glowing thing", "pink crystal", "pink gem", "pink rock", "stone", "jewel", "gemstone", "magic crystal", "warm crystal", "glowing crystal", "small crystal", "rock"],
+            "zone": {
+                "x": 816,
+                "y": 461,
+                "width": 30,
+                "height": 20
+            },
+            "interactionPoint": {
+                "x": 831,
+                "y": 451
+            },
+            "responses": {
+                "look": "A small crystal shard at the pool's edge, partially submerged. It hums with faint magical resonance -- warm to the touch, faintly glowing, and deeply unimpressive in appearance. It looks like a piece of enchanted gravel.",
+                "use": "You hold the crystal shard up. It catches the light and throws tiny rainbows across the cave walls. Pretty. Useless, but pretty.",
+                "take": "You can't take the Cave Crystal Shard. It's firmly attached to its current situation, much like your growing sense of confusion.",
+                "talk": "You speak to the crystal shard. It hums in response -- a warm vibration that passes from your fingers into your palm. The shard has been absorbing the cave's sounds for centuries. It has a lot to say, but only in frequencies you can't hear.",
+                "open": "The shard is solid crystal. There's nothing inside to access. Though it glows as if something is trying to get out. Magical resonance, probably. Not sentience. Probably.",
+                "push": "You press the shard against the ground. It leaves a faint glowing mark that fades after a moment. The crystal's magic is gentle -- a whisper, not a shout.",
+                "pull": "You tug the shard from where it rests. It comes free with a reluctant click, trailing a faint phosphorescent residue. The pool's glow dims slightly, as if noticing the loss."
+            }
+        }
+    ],
+    "puzzles": [
+        {
+            "id": "investigate-pool",
+            "trigger": {
+                "verb": "look",
+                "subject": "pool-surface"
+            },
+            "conditions": [
+                {
+                    "type": "flag-not-set",
+                    "flag": "pool_investigated"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "pool_investigated"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "As you peer into the pool, the reflections shift and shimmer. The mineral-laden water catches your torch-light and throws it back in patterns that almost look deliberate. At the pool's shallow edge, a small crystal shard becomes visible, half-buried in silt. It pulses with a faint warmth."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "take-crystal-shard",
+            "trigger": {
+                "verb": "take",
+                "subject": "cave-crystal-shard"
+            },
+            "conditions": [
+                {
+                    "type": "item-not-taken",
+                    "item": "cave-crystal-shard"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "pool_investigated"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "add-item",
+                    "item": "cave-crystal-shard"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "knows_cavern_secret"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You reach into the cold water and pluck the crystal shard from the silt. It's warm in your hand -- warmer than anything in this cave has any right to be. It hums with faint magical resonance, which is either promising or ominous. In your experience, those two things are the same."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "take-crystal-no-investigate",
+            "trigger": {
+                "verb": "take",
+                "subject": "cave-crystal-shard"
+            },
+            "conditions": [
+                {
+                    "type": "item-not-taken",
+                    "item": "cave-crystal-shard"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "pool_investigated"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "You can see something at the pool's edge, but you haven't looked closely enough to tell what it is. Try examining the pool first."
+                }
+            ]
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "swim-in-pool",
+            "trigger": {
+                "verb": "use",
+                "subject": "pool-surface"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "drown-death"
+                }
+            ]
+        },
+        {
+            "id": "swim-command",
+            "trigger": {
+                "verb": "go",
+                "subject": "pool"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "drown-death"
+                }
+            ]
+        }
+    ],
+    "deaths": {
+        "drown-death": {
+            "title": "Death by Overconfidence",
+            "narratorText": "You dive into the underground pool with the confidence of someone who can swim. You cannot swim. This was always true. Nobody thought to mention it, because nobody expected you to voluntarily enter a freezing underground body of water in a cave. The crystal at the bottom watches your final bubbles rise. It is unimpressed."
+        }
+    },
+    "dynamicDescriptions": {
+        "pool_investigated": "The underground pool chamber glows with refracted light. You've examined the pool closely -- its mineral-laden waters hold reflections that seem almost deliberate. A small crystal shard is visible at the shallow edge."
+    },
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            {
+                "key": "amb-cave-drips",
+                "volume": 1
+            }
+        ]
+    },
+    "effects": {
+        "ambient": [
+            {
+                "type": "fireflies",
+                "intensity": 0.5
+            },
+            {
+                "type": "dust-motes",
+                "intensity": 0.3
+            }
+        ]
+    },
+    "puzzleHints": [
+        {
+            "puzzleId": "investigate-pool",
+            "tiers": [
+                "The pool is more than scenic ambiance. Something is down there, catching the light and throwing it back. Perhaps a closer look at the surface would reveal what the depths are hiding.",
+                "Look at the pool surface more carefully. The mineral-laden water obscures what's at the shallow edge. A thorough examination will reveal a crystal shard buried in the silt.",
+                "Look at the pool surface to investigate it. This reveals a cave crystal shard at the pool's edge. You must investigate the pool before you can take the shard."
+            ]
+        },
+        {
+            "puzzleId": "take-crystal-shard",
+            "tiers": [
+                "There's something at the edge of the pool, half-buried and glowing. But you can't just grab blindly at things underwater. Investigate first, then retrieve.",
+                "After examining the pool surface, a cave crystal shard becomes visible at the shallow edge. Now you can take it. The crystal has faint magical resonance -- it may prove useful elsewhere.",
+                "After looking at the pool surface, take the cave crystal shard from the pool's edge. You need to investigate the pool first or the shard won't be accessible."
+            ]
+        }
+    ],
+    "playerSpawn": {
+        "x": 221,
+        "y": 390
+    }
+}

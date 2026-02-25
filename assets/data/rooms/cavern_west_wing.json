@@ -1,0 +1,344 @@
+{
+    "id": "cavern_west_wing",
+    "name": "West Wing Corridor",
+    "description": "The West Wing is a natural cavern corridor lined with bioluminescent mushrooms -- clusters of pale blue, green, and violet fungi that pulse gently in the darkness. The mushrooms can be activated by touch, each one lighting up or dimming in sequence. A pattern is needed -- somewhere in the caverns, someone recorded the correct sequence. Passages lead north to a balcony overlooking a crystal chamber, and south to an echo-filled chamber.",
+    "background": {
+        "layers": [
+            {
+                "key": "bg-shared-act2-sky",
+                "scrollFactor": 0
+            },
+            {
+                "key": "bg-shared-act2-mid",
+                "scrollFactor": 0.3
+            },
+            {
+                "key": "bg-rooms-cavern_west_wing",
+                "scrollFactor": 1
+            }
+        ],
+        "worldWidth": 1920
+    },
+    "walkableArea": [
+        {
+            "x": 50,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 385
+        },
+        {
+            "x": 910,
+            "y": 520
+        },
+        {
+            "x": 50,
+            "y": 520
+        }
+    ],
+    "exits": [
+        {
+            "id": "to-entrance-hall",
+            "zone": {
+                "x": 880,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
+            "targetRoom": "cavern_entrance_hall",
+            "spawnPoint": {
+                "x": 300,
+                "y": 450
+            },
+            "transition": "fade",
+            "direction": "east",
+            "label": "entrance hall"
+        },
+        {
+            "id": "to-crystal-chamber",
+            "zone": {
+                "x": 0,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
+            "targetRoom": "crystal_chamber",
+            "spawnPoint": {
+                "x": 640,
+                "y": 450
+            },
+            "transition": "slide-left",
+            "direction": "west",
+            "label": "crystal chamber",
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "mushroom_pattern_solved"
+                }
+            ],
+            "blockedMessage": "The passage to the crystal chamber is sealed by a strange organic growth. The mushrooms on the walls seem to pulse in a pattern -- perhaps they're the key."
+        },
+        {
+            "id": "to-balcony",
+            "zone": {
+                "x": 440,
+                "y": 350,
+                "width": 80,
+                "height": 80
+            },
+            "targetRoom": "cavern_balcony",
+            "spawnPoint": {
+                "x": 400,
+                "y": 450
+            },
+            "transition": "fade",
+            "direction": "north",
+            "label": "balcony"
+        },
+        {
+            "id": "to-echo-chamber",
+            "zone": {
+                "x": 440,
+                "y": 450,
+                "width": 80,
+                "height": 80
+            },
+            "targetRoom": "echo_chamber",
+            "spawnPoint": {
+                "x": 480,
+                "y": 450
+            },
+            "transition": "fade",
+            "direction": "south",
+            "label": "echo chamber"
+        }
+    ],
+    "hotspots": [
+        {
+            "id": "mushroom-clusters",
+            "name": "Bioluminescent Mushrooms",
+            "aliases": ["mushrooms", "mushroom", "fungi", "fungus", "shrooms", "glowing mushrooms", "bio mushrooms", "luminescent mushrooms", "clusters", "mushroom clusters", "toadstools", "lights", "glowing fungi"],
+            "zone": {
+                "x": 300,
+                "y": 360,
+                "width": 300,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 420
+            },
+            "responses": {
+                "look": "Clusters of bioluminescent mushrooms line the walls in three groups: left, center, and right. Each cluster can be touched to activate it -- they glow brightly when activated and dim after a moment. There must be a specific sequence. The mushrooms pulse patiently, waiting for someone who knows the pattern.",
+                "use": "You touch the mushrooms randomly. They light up in a cascade of color, then dim. Nothing happens. The pattern needs to be specific. Perhaps a book in the library mentioned the correct sequence.",
+                "default": "You examine the mushroom clusters. They're arranged in three groups -- left, center, right -- each waiting for activation in the correct order.",
+                "take": "You can't take the Bioluminescent Mushrooms. It's firmly attached to its current situation, much like your growing sense of confusion.",
+                "talk": "You lean in close to a mushroom and whisper sweet nothings. It pulses faintly, which is either a response or bioluminescent coincidence. Fungi are notoriously poor conversationalists -- they never contribute, they just take up space.",
+                "open": "Mushrooms don't open. They're not doors, envelopes, or particularly complicated jars. They're fungi. They grow, they glow, and they occasionally kill people who eat them. That's their entire job description.",
+                "push": "You press a mushroom cluster firmly. It squishes slightly under your palm and glows brighter for a moment before dimming. Satisfying, but ultimately pointless without the correct sequence.",
+                "pull": "You tug at a mushroom. It stretches slightly, bioluminescent membrane clinging to the cave wall with the tenacity of something that grew here on purpose. Pulling mushrooms is neither the puzzle nor the solution."
+            }
+        },
+        {
+            "id": "cave-path",
+            "name": "Cave Path",
+            "aliases": ["path", "trail", "walkway", "passage", "road", "corridor", "track", "cave trail", "cave floor"],
+            "zone": {
+                "x": 300,
+                "y": 300,
+                "width": 300,
+                "height": 150
+            },
+            "interactionPoint": {
+                "x": 450,
+                "y": 430
+            },
+            "responses": {
+                "look": "A narrow path winds between clusters of glowing mushrooms, their light painting the cave in shades of blue and pink. It's like a nightclub designed by nature.",
+                "take": "You can't take a path. You can only walk it.",
+                "use": "You're already on it. One foot in front of the other.",
+                "default": "You follow the cave path with your eyes. It meanders with no particular urgency.",
+                "talk": "You address the path directly. 'Where do you lead?' The path, being compressed dirt and stone, does not answer. Paths are famously tight-lipped. They prefer to show rather than tell.",
+                "open": "You can't open a path. It's already open. That's the defining characteristic of a path -- its openness. If it were closed, it would be a wall.",
+                "push": "You push the ground with your foot. The ground pushes back, as Newton predicted. Neither of you gains any advantage from this exchange.",
+                "pull": "You crouch down and try to pull the path toward you. The path remains where it is, having been a path for considerably longer than you've been alive."
+            }
+        },
+        {
+            "id": "organic-growth",
+            "name": "Organic Growth",
+            "aliases": ["growth", "membrane", "fungal growth", "organic seal", "seal", "blockage", "obstruction", "fungal wall", "moss", "slime", "mold", "organic barrier", "biological wall", "living wall"],
+            "zone": {
+                "x": 10,
+                "y": 370,
+                "width": 70,
+                "height": 120
+            },
+            "interactionPoint": {
+                "x": 80,
+                "y": 440
+            },
+            "responses": {
+                "look": "A thick membrane of organic matter seals the western passage -- part fungal, part vegetal, entirely uncooperative. It pulses in rhythm with the mushrooms on the walls, like a bouncer at a very exclusive nightclub that only opens for the right sequence.",
+                "take": "You peel at the organic growth. It has the consistency of wet leather and the attitude of something put here on purpose. A small piece comes away, then dissolves into luminescent slime. Nature's way of saying 'no souvenirs.'",
+                "use": "You prod the organic seal. It squelches. It does not open. The growth seems to respond to the mushrooms, not to your increasingly frustrated poking. Perhaps solving the mushroom pattern would convince it to move.",
+                "talk": "You address the organic growth. 'Could you move, please?' It pulses once, which in fungal body language roughly translates to 'absolutely not.'",
+                "open": "You try to pry the organic seal apart. It flexes, absorbs your effort, and springs back like biological rubber. Whatever pattern controls the mushrooms also controls this growth.",
+                "push": "You shove the organic growth with both hands. It yields slightly, like pushing against a mattress made of mushroom flesh, then pushes you gently back.",
+                "pull": "You pull at the organic growth. It stretches like warm taffy, then snaps back with a wet sound. The growth clings to the walls with the tenacity of something that has nowhere better to be."
+            }
+        },
+        {
+            "id": "cave-walls",
+            "name": "Cave Walls",
+            "aliases": ["walls", "wall", "rock wall", "rock walls", "stone wall", "stone walls", "cavern wall", "cavern walls", "rock face"],
+            "zone": {
+                "x": 100,
+                "y": 360,
+                "width": 180,
+                "height": 50
+            },
+            "interactionPoint": {
+                "x": 200,
+                "y": 420
+            },
+            "responses": {
+                "look": "The cave walls are natural stone -- rough, damp, and streaked with mineral deposits that catch the bioluminescent light. Between the mushroom clusters, the rock face is pocked with tiny holes where moisture seeps through.",
+                "take": "You attempt to take the wall. The wall declines. It has been a wall for several hundred million years and has no intention of becoming a souvenir.",
+                "use": "You press your hand against the cave wall. It's cold, damp, and textured like the inside of a geological textbook. It's already doing its job -- preventing the ceiling from meeting the floor.",
+                "talk": "You speak to the wall. It absorbs your words into its mineral surface and offers nothing in return. It's like talking to certain members of the aristocracy, except the wall has better structural integrity.",
+                "open": "The wall is already as open as a wall gets, which is to say not at all. That's the wall's whole thing.",
+                "push": "You push the cave wall. Somewhere deep in the earth, a tectonic plate does not notice. Your shove registers somewhere below 'mild breeze' on its list of concerns.",
+                "pull": "You try to pull the cave wall. It stays exactly where it has been for the last several hundred million years. The wall wins this one, as walls invariably do."
+            }
+        },
+        {
+            "id": "water-droplets",
+            "name": "Water Droplets",
+            "aliases": ["droplets", "drips", "dripping", "water", "drops", "water drops", "drip", "moisture", "condensation", "seepage", "leak", "leaks"],
+            "zone": {
+                "x": 700,
+                "y": 370,
+                "width": 80,
+                "height": 40
+            },
+            "interactionPoint": {
+                "x": 740,
+                "y": 420
+            },
+            "responses": {
+                "look": "Water seeps through the cave ceiling in a slow, patient drip. Each droplet catches the bioluminescent light on its way down, briefly becoming a falling jewel before shattering on the stone floor.",
+                "take": "You hold out your hand and catch a droplet. It's cold, mineral-rich, and tastes like dissolved limestone and regret. You're drinking cave water in the dark. This is what your life has become.",
+                "use": "The droplets are already in use -- they're slowly dissolving the cave, one molecule at a time. It's the most patient demolition project in history.",
+                "talk": "You speak to a droplet mid-fall. By the time you finish your sentence, it has already hit the ground and ceased to exist as a distinct entity. The conversational window with water droplets is narrow.",
+                "open": "You can't open water. It's already in its most diffuse state.",
+                "push": "You swat at a falling droplet. It splatters on your hand. You've defeated a single droplet. More are on the way. They've got geological time on their side.",
+                "pull": "You can't pull a water droplet. They're obeying gravity, which doesn't accept requests, counter-offers, or appeals."
+            }
+        }
+    ],
+    "items": [],
+    "puzzles": [
+        {
+            "id": "solve-mushroom-pattern",
+            "trigger": {
+                "verb": "use",
+                "subject": "mushroom-clusters"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "knows_mushroom_pattern"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "mushroom_pattern_solved"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "mushroom_pattern_solved"
+                },
+                {
+                    "type": "open-exit",
+                    "exit": "to-crystal-chamber"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "Left, right, center, left, center. You touch each mushroom cluster in sequence. They flare to life -- blue, green, violet, blue, violet -- and hold their glow. The cavern fills with bioluminescent light, and a passage to the west grinds open, revealing the Crystal Chamber beyond. The mushrooms pulse contentedly. Someone finally got the pattern right."
+                }
+            ],
+            "once": true
+        }
+    ],
+    "deathTriggers": [
+        {
+            "id": "eat-mushroom",
+            "trigger": {
+                "verb": "take",
+                "subject": "mushroom-clusters"
+            },
+            "conditions": [],
+            "actions": [
+                {
+                    "type": "trigger-death",
+                    "deathId": "mushroom-poison"
+                }
+            ]
+        }
+    ],
+    "deaths": {
+        "mushroom-poison": {
+            "title": "Death by Bioluminescent Snacking",
+            "narratorText": "You pluck a glowing mushroom and eat it. The taste is initially pleasant -- earthy, with notes of cave soil and bad decisions. Then the bioluminescence kicks in. Your stomach glows. Your veins glow. Your eyes glow. You briefly become the most visible thing in the Screaming Caverns, which would be impressive if you weren't also dying. The mushroom was a light source, not a food source. This distinction, like most important distinctions, is learned too late."
+        }
+    },
+    "dynamicDescriptions": {
+        "mushroom_pattern_solved": "The West Wing glows with permanent bioluminescent light. The mushroom clusters hold their activation pattern -- left, right, center, left, center -- illuminating the passage to the Crystal Chamber. The cavern has transformed from darkness to a cathedral of living light."
+    },
+    "audio": {
+        "music": "music-cave",
+        "ambient": [
+            {
+                "key": "amb-cave-drips",
+                "volume": 0.7
+            }
+        ]
+    },
+    "effects": {
+        "ambient": [
+            {
+                "type": "fireflies",
+                "intensity": 0.6
+            },
+            {
+                "type": "dust-motes",
+                "intensity": 0.2
+            }
+        ],
+        "lighting": {
+            "tint": "#224433",
+            "brightness": 0.5,
+            "vignette": 0.35,
+            "postfx": [
+                "glow"
+            ]
+        }
+    },
+    "puzzleHints": [
+        {
+            "puzzleId": "solve-mushroom-pattern",
+            "tiers": [
+                "The mushrooms respond to touch but not to random poking. They want a specific sequence, the kind of sequence that might be documented in a book. In a library. Underground. Where scholars write things down instead of memorizing them.",
+                "The mushroom pattern book in the cavern library has the answer. Read it first -- use the bookshelves there. Once you know the pattern, come back here and use the mushroom clusters to activate them in sequence.",
+                "Read the bookshelves in the cavern library to learn the pattern: left, right, center, left, center. Then use the mushroom clusters here. The passage to the Crystal Chamber opens when the sequence is correct."
+            ]
+        }
+    ],
+    "playerSpawn": {
+        "x": 480,
+        "y": 460
+    }
+}
