@@ -377,7 +377,7 @@
                 "take": "You want to take the forest. The entire forest. You'd need pockets the size of a kingdom, and even then the squirrels would object.",
                 "use": "The forest is too far away to use from here. You'd need to climb down and walk there, like a person who understands how distance works.",
                 "talk": "You address the forest from the watchtower. The trees rustle. Probably the wind. Hopefully the wind. Trees that respond to conversation would be an entirely new category of problem.",
-                "open": "You can't open a forest. You can enter one, sure, but that requires walking there first. The east path leads toward the forest bridge, if you've found enough reason to go.",
+                "open": "You can't open a forest. You can enter one, sure, but that requires walking there first. A path leads down from the village, if you've found enough reason to go.",
                 "push": "Pushing a forest from the top of a watchtower. This is the caliber of problem-solving that got the kingdom cursed in the first place, presumably.",
                 "pull": "You reach toward the distant forest. It does not come to you. Forests are famously sedentary. You'll have to go to it.",
                 "default": "You study the distant forest from the tower. It looks peaceful. Forests always do, right up until they aren't."
@@ -632,7 +632,7 @@
         }
     },
     "dynamicDescriptions": {
-        "knows_cavern_secret": "The watchtower's telescope showed you Castle Erelhain and the clock tower's astronomical marker -- VII:XIII. To the east, an overgrown path leads down through the forest toward a bridge. The bridge -- and whatever's beyond it -- awaits.",
+        "knows_cavern_secret": "The watchtower's telescope showed you Castle Erelhain and the clock tower's astronomical marker -- VII:XIII. The castle looms beyond the forest, grey curse spreading up its walls. Whatever is happening to this kingdom, the answer is out there.",
         "seen_castle": "The watchtower's telescope showed Castle Erelhain in the distance, the grey curse spreading up its walls, and the clock tower's astronomical dial reading VII:XIII -- the seventh hour, the thirteenth minute. You know where you need to go. You just wish you didn't."
     },
     "audio": {
