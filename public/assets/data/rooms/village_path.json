@@ -335,11 +335,7 @@
             },
             "conditions": [
                 {
-                    "type": "flag-not-set",
-                    "flag": "stone_toad_moved"
-                },
-                {
-                    "type": "item-not-taken",
+                    "type": "not-has-item",
                     "item": "cave-fish"
                 }
             ],
@@ -363,11 +359,7 @@
             },
             "conditions": [
                 {
-                    "type": "flag-not-set",
-                    "flag": "stone_toad_moved"
-                },
-                {
-                    "type": "item-not-taken",
+                    "type": "not-has-item",
                     "item": "cave-fish"
                 }
             ],
@@ -391,11 +383,7 @@
             },
             "conditions": [
                 {
-                    "type": "flag-not-set",
-                    "flag": "stone_toad_moved"
-                },
-                {
-                    "type": "item-not-taken",
+                    "type": "not-has-item",
                     "item": "cave-fish"
                 }
             ],

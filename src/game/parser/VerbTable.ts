@@ -139,7 +139,7 @@ export const VERB_TABLE: VerbDefinition[] = [
             /^descend$/i,
             /^ascend$/i,
             // "go back" / "go through X" / "go to X"
-            /^(?:go|walk|move|head|travel|proceed|run|follow|sneak|tiptoe|sprint)\s+(?:back|through|across|over|into|to)\s+(.+)$/i,
+            /^(?:go|walk|move|head|travel|proceed|run|follow|sneak|tiptoe|sprint)\s+(?:back|through|across|over|into|in|to)\s+(.+)$/i,
             /^(?:go|walk|move|head|travel|proceed|run|follow|sneak|tiptoe|sprint|return)\s+(?:to\s+)?(.+)$/i,
             /^(?:enter|exit|leave|climb|jump|leap|cross|crawl|descend|ascend)\s+(?:to\s+)?(.+)$/i,
             /^(?:go|walk|move|head|enter|exit|leave|travel|proceed|run|climb|follow|jump|return)$/i,
