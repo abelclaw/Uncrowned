@@ -48,8 +48,8 @@
             },
             "targetRoom": "forest_bridge",
             "spawnPoint": {
-                "x": 650,
-                "y": 460
+                "x": 200,
+                "y": 169
             },
             "transition": "slide-left",
             "direction": "west",

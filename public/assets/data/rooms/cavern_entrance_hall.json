@@ -49,7 +49,7 @@
             "targetRoom": "forest_bridge",
             "spawnPoint": {
                 "x": 450,
-                "y": 460
+                "y": 169
             },
             "transition": "fade",
             "direction": "south",
