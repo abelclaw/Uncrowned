@@ -1,7 +1,7 @@
 {
     "id": "castle_garden",
     "name": "Castle Garden",
-    "description": "The castle garden is nature's revenge on neglect. Once a manicured paradise of geometric hedges and prize-winning roses, it's now a tangled wilderness that has clearly been winning its war against civilization for decades. Stone paths vanish under ivy, statues poke out of overgrowth like drowning swimmers, and the petrification curse has turned several ornamental trees to solid stone. An old gardener's shed leans drunkenly in one corner, its door hanging open.",
+    "description": "The castle garden is nature's revenge on neglect. Once a manicured paradise of geometric hedges and prize-winning roses, it's now a tangled wilderness that has clearly been winning its war against civilization for decades. Stone paths vanish under ivy, statues poke out of overgrowth like drowning swimmers, and the petrification curse has turned several ornamental trees to solid stone. An old gardener's shed leans drunkenly in one corner, its door hanging open -- something glints on a shelf inside.",
     "background": {
         "layers": [
             {
@@ -607,6 +607,16 @@
             "narratorText": "You eat the nightshade berries. They taste wonderful -- sweet, rich, with a subtle note of 'you have made a catastrophic error.' The botanical name 'Atropa belladonna' translates roughly to 'beautiful lady who will absolutely murder you,' which is information you could have used thirty seconds ago. Your vision blurs. The garden seems to spin. The last thing you see is the faded warning sign, which, in your defense, was really quite small."
         }
     },
+    "puzzleHints": [
+        {
+            "puzzleId": "take-rat-trap",
+            "tiers": [
+                "The gardener's shed has its door hanging open. Might be worth a look inside.",
+                "Look at the shed. There's a rat trap on the shelf -- could be useful if you run into a rodent problem elsewhere in the castle.",
+                "Take the rat trap from the gardener's shed. You'll need it in the servants' quarters to deal with the rats there."
+            ]
+        }
+    ],
     "dynamicDescriptions": {},
     "audio": {
         "music": "music-forest",
