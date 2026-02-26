@@ -820,6 +820,59 @@ export class RoomScene extends Phaser.Scene {
                         sprite.setVisible(visible);
                     }
                 }
+
+                // Also re-evaluate NPC visibility when flags change
+                if (this.roomData.npcs) {
+                    for (const npc of this.roomData.npcs) {
+                        if (!npc.conditions?.length) continue;
+                        const visible = npc.conditions.every(cond => {
+                            if (cond.type === 'flag-set' && cond.flag) {
+                                return this.gameState.isFlagSet(cond.flag);
+                            }
+                            if (cond.type === 'flag-not-set' && cond.flag) {
+                                return !this.gameState.isFlagSet(cond.flag);
+                            }
+                            return true;
+                        });
+                        const existing = this.npcSprites.get(npc.id);
+                        if (visible && !existing) {
+                            // Create NPC sprite on first visibility
+                            const spriteKey = `npc-${npc.id}`;
+                            if (this.textures.exists(spriteKey)) {
+                                const tex = this.textures.get(spriteKey).getSourceImage();
+                                const scale = npc.zone.height / tex.height;
+                                const npcSprite = this.add.image(
+                                    npc.zone.x + npc.zone.width / 2,
+                                    npc.zone.y + npc.zone.height,
+                                    spriteKey
+                                ).setOrigin(0.5, 1).setScale(scale).setDepth(5);
+                                this.npcSprites.set(npc.id, npcSprite);
+                            }
+                            // Also register click zone if not already present
+                            const alreadyRegistered = this.hotspotZones.some(hz => hz.hotspot.id === npc.id);
+                            if (!alreadyRegistered) {
+                                const npcDef = this.npcDefs.find(d => d.id === npc.id);
+                                const npcName = npcDef?.name ?? npc.id;
+                                this.hotspotZones.push({
+                                    rect: new Phaser.Geom.Rectangle(
+                                        npc.zone.x, npc.zone.y, npc.zone.width, npc.zone.height
+                                    ),
+                                    hotspot: {
+                                        id: npc.id,
+                                        name: npcName,
+                                        zone: npc.zone,
+                                        interactionPoint: npc.interactionPoint,
+                                        responses: {
+                                            talk: npcDef?.defaultGreeting ?? `The ${npcName} doesn't seem interested in conversation.`,
+                                        },
+                                    },
+                                });
+                            }
+                        } else if (existing) {
+                            existing.setVisible(visible);
+                        }
+                    }
+                }
             }
         };
         EventBus.on('room-update', this.roomUpdateHandler);
