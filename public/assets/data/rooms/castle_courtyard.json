@@ -154,7 +154,6 @@
                 "well",
                 "water well",
                 "stone well",
-                "water",
                 "bucket",
                 "rope",
                 "fountain",
@@ -644,6 +643,47 @@
                 {
                     "type": "narrator-say",
                     "text": "You crush the sage into the chalice of water. The brew glows. Ghosts are now on the menu. Or at least, on the summoning list."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "use-chalice-on-sage",
+            "trigger": {
+                "verb": "use",
+                "subject": "water-chalice",
+                "target": "dried-sage"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "water-chalice"
+                },
+                {
+                    "type": "has-item",
+                    "item": "dried-sage"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "water-chalice"
+                },
+                {
+                    "type": "remove-item",
+                    "item": "dried-sage"
+                },
+                {
+                    "type": "add-item",
+                    "item": "spirit-brew"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "spirit-brew-made"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You pour the chalice water over the dried sage. The herbs dissolve instantly and the water takes on an ethereal glow. The spirit brew is ready."
                 }
             ],
             "once": true

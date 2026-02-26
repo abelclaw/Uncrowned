@@ -86,18 +86,21 @@
         {
             "id": "dried-sage",
             "name": "Dried Sage",
+            "aliases": ["sage", "herb", "herbs", "bundle", "dried herbs"],
             "description": "A bundle of sage so old it has more in common with dust than herbs. Still technically aromatic.",
             "combinable": true
         },
         {
             "id": "empty-chalice",
             "name": "Empty Chalice",
+            "aliases": ["chalice", "cup", "goblet", "silver chalice"],
             "description": "A dented silver chalice. Once held wine for kings. Now holds your hopes, which are equally intoxicating.",
             "combinable": true
         },
         {
             "id": "water-chalice",
             "name": "Water-Filled Chalice",
+            "aliases": ["water chalice", "chalice of water", "water", "filled chalice", "cup of water", "chalice"],
             "description": "A chalice filled with clear well water. It looks almost regal again. Almost.",
             "combinable": true
         },
