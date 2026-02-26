@@ -1,7 +1,7 @@
 {
     "id": "castle_garden",
     "name": "Castle Garden",
-    "description": "The castle garden is nature's revenge on neglect. Once a manicured paradise of geometric hedges and prize-winning roses, it's now a tangled wilderness that has clearly been winning its war against civilization for decades. Stone paths vanish under ivy, statues poke out of overgrowth like drowning swimmers, and the petrification curse has turned several ornamental trees to solid stone. An old gardener's shed leans drunkenly in one corner, its door hanging open -- something glints on a shelf inside.",
+    "description": "The castle garden is nature's revenge on neglect. Once a manicured paradise of geometric hedges and prize-winning roses, it's now a tangled wilderness that has clearly been winning its war against civilization for decades. Stone paths vanish under ivy, statues poke out of overgrowth like drowning swimmers, and the petrification curse has turned several ornamental trees to solid stone. Something rusty sits in the grass near the base of a tree.",
     "background": {
         "layers": [
             {
@@ -130,42 +130,6 @@
                 "open": "They're trees, not doors. Solid stone trees, at that. The concept of 'opening' a tree is botanical nonsense even when the tree isn't made of rock.",
                 "push": "You push against a petrified trunk. It has the structural integrity of a small monument, because that's essentially what it is now.",
                 "pull": "You try to pull a stone branch. It doesn't bend, flex, or acknowledge your existence. Petrified wood: zero out of ten for cooperative interaction."
-            }
-        },
-        {
-            "id": "gardeners-shed",
-            "name": "Gardener's Shed",
-            "aliases": [
-                "shed",
-                "shack",
-                "hut",
-                "tool shed",
-                "garden shed",
-                "wooden shed",
-                "building",
-                "gardener shed",
-                "small building",
-                "storage shed"
-            ],
-            "zone": {
-                "x": 750,
-                "y": 370,
-                "width": 80,
-                "height": 60
-            },
-            "interactionPoint": {
-                "x": 790,
-                "y": 420
-            },
-            "responses": {
-                "look": "A small wooden shed, leaning at an angle that suggests it's in a long-term negotiation with gravity. The door hangs open. Inside: rusted tools, empty pots, and the general atmosphere of a hobby abandoned under duress. Something sits on a shelf -- a rat trap, weathered but functional.",
-                "use": "You poke around the shed. Cobwebs, dust, and the lingering smell of potting soil. The shed has character, if 'character' means 'structural instability.'",
-                "open": "The door is already open. It's been open for so long it's forgotten how to close.",
-                "default": "You inspect the shed. It's the kind of building that gets described as 'rustic' in real estate listings and 'condemned' by anyone honest.",
-                "take": "The gardener's shed is a structure built into the garden wall. You cannot pocket a structure. Your ambitions exceed your carrying capacity by a considerable margin.",
-                "talk": "You address the empty shed. 'Hello?' The cobwebs sway. A spider regards you from the doorframe with the quiet judgment of something that actually lives here.",
-                "push": "You lean against the shed wall. It creaks with the weariness of a structure that would rather not be leaned upon. One more push and this becomes firewood.",
-                "pull": "You tug at the shed door. It comes off in your hand. Well, not entirely -- the top hinge holds, leaving the door at an even more dramatic angle."
             }
         },
         {
@@ -511,12 +475,12 @@
                 "y": 517
             },
             "responses": {
-                "look": "A spring-loaded rat trap on a shelf in the gardener's shed. It's rusty but functional -- the spring still has tension, and the mechanism clicks when you test it gingerly. Someone built this to last. The rats should be concerned.",
-                "use": "The trap needs to be placed somewhere with rats. This shed is notably rat-free. The servants' quarters, on the other hand...",
-                "take": "The rat trap is wedged firmly between the shed and the wall. Whoever placed it was familiar with both rats and adventurers -- neither can be trusted around loose objects.",
+                "look": "A spring-loaded rat trap sitting in the grass at the base of a tree. It's rusty but functional -- the spring still has tension, and the mechanism clicks when you test it gingerly. Someone left it here to deal with garden pests. The rats should be concerned.",
+                "use": "The trap needs to be placed somewhere with rats. The garden is notably rat-free. The servants' quarters, on the other hand...",
+                "take": "You carefully pick up the rat trap from the grass, minding the spring mechanism.",
                 "talk": "You address the rat trap. It has no opinions. It has a spring, a platform, and a single-minded purpose. More focused than most people you've met.",
                 "open": "You carefully open the trap mechanism. It clicks into the set position, spring coiled, platform ready. One wrong move and it'll snap shut on your fingers.",
-                "push": "You press the trigger plate. The trap snaps shut with a vicious CLACK that echoes through the shed. Your fingers are intact, but your heartbeat takes several seconds to agree.",
+                "push": "You press the trigger plate. The trap snaps shut with a vicious CLACK that echoes through the garden. Your fingers are intact, but your heartbeat takes several seconds to agree.",
                 "pull": "You pull the spring back to reset the trap. The mechanism resists, then clicks into place with the quiet menace of something designed to ruin a rodent's evening."
             }
         }
@@ -565,7 +529,7 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "You carefully take the rat trap from the shed shelf. The spring mechanism clicks ominously. This device was designed by someone who took the rat problem personally. You pocket it carefully, making a mental note not to put your fingers near the business end."
+                    "text": "You carefully pick up the rat trap from the grass. The spring mechanism clicks ominously. This device was designed by someone who took the rat problem personally. You pocket it carefully, making a mental note not to put your fingers near the business end."
                 }
             ],
             "once": true
@@ -611,9 +575,9 @@
         {
             "puzzleId": "take-rat-trap",
             "tiers": [
-                "The gardener's shed has its door hanging open. Might be worth a look inside.",
-                "Look at the shed. There's a rat trap on the shelf -- could be useful if you run into a rodent problem elsewhere in the castle.",
-                "Take the rat trap from the gardener's shed. You'll need it in the servants' quarters to deal with the rats there."
+                "Something rusty is sitting in the grass near the base of a tree. Might be worth a closer look.",
+                "There's a rat trap on the ground by the tree. Could be useful if you run into a rodent problem elsewhere in the castle.",
+                "Take the rat trap from the ground near the tree. You'll need it in the servants' quarters to deal with the rats there."
             ]
         }
     ],
