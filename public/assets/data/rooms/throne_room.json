@@ -41,7 +41,7 @@
         {
             "id": "to-hallway",
             "zone": {
-                "x": 0,
+                "x": 880,
                 "y": 350,
                 "width": 80,
                 "height": 200
@@ -51,8 +51,8 @@
                 "x": 380,
                 "y": 474
             },
-            "transition": "slide-left",
-            "direction": "west",
+            "transition": "slide-right",
+            "direction": "east",
             "label": "hallway"
         },
         {
@@ -69,7 +69,6 @@
                 "y": 482
             },
             "transition": "fade",
-            "direction": "east",
             "label": "caverns",
             "aliases": [
                 "passage",

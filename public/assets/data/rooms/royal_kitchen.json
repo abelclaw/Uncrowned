@@ -41,7 +41,7 @@
         {
             "id": "to-hallway",
             "zone": {
-                "x": 880,
+                "x": 0,
                 "y": 350,
                 "width": 80,
                 "height": 200
@@ -51,8 +51,8 @@
                 "x": 380,
                 "y": 474
             },
-            "transition": "slide-right",
-            "direction": "east",
+            "transition": "slide-left",
+            "direction": "west",
             "label": "hallway"
         }
     ],

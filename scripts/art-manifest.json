@@ -258,8 +258,8 @@
       "act": "act2"
     },
     "cavern_balcony": {
-      "prompt": "natural stone balcony jutting over vast crystal chamber below, vertigo-inducing drop, coiled rope anchored to rocks, no railing, dramatic cave overlook with distant crystal glow beneath",
-      "seed": 200021,
+      "prompt": "natural stone balcony inside vast cavern, stone doorway on left wall leading back into tunnel, narrow rocky path on right side leading into dark cave passage, balcony railing overlooking deep crystal cavern below, coiled rope anchored to rocks, dramatic underground overlook with distant crystal glow beneath, two visible exits left and right",
+      "seed": 200121,
       "output": "public/assets/backgrounds/rooms/cavern_balcony.png",
       "dimensions": {
         "width": 960,
@@ -268,8 +268,8 @@
       "act": "act2"
     },
     "echo_chamber": {
-      "prompt": "dome-shaped cavern with precise acoustics, stalactites hanging in rows at different heights, dripping water creating natural rhythm, ancient carvings on walls depicting sound waves, coal deposits glinting among stalactites",
-      "seed": 200022,
+      "prompt": "dome-shaped cavern with precise acoustics, dark tunnel opening on left wall leading to stone passage, dark tunnel opening on right wall leading to underground river with faint water sounds, stalactites hanging from ceiling at different heights, dripping water, ancient carvings on walls depicting sound waves, coal deposits glinting, two cave tunnel exits visible on left and right walls",
+      "seed": 200122,
       "output": "public/assets/backgrounds/rooms/echo_chamber.png",
       "dimensions": {
         "width": 960,
@@ -288,8 +288,8 @@
       "act": "act2"
     },
     "underground_river": {
-      "prompt": "underground river carving through cavern, swift dark current, old cracked boat pulled up on rocky shore, waterfall in distance, rushing water with confident current, underground waterway",
-      "seed": 200024,
+      "prompt": "underground river flowing through wide cavern, dark tunnel opening on left wall with stone walkway, cave passage ahead going deeper upstream toward distant waterfall, dark tunnel opening on right lower wall behind viewer, old cracked boat pulled up on rocky shore, swift dark water current, three visible cave exits, underground waterway junction",
+      "seed": 200124,
       "output": "public/assets/backgrounds/rooms/underground_river.png",
       "dimensions": {
         "width": 960,
