@@ -41,10 +41,10 @@
         {
             "id": "to-throne-room",
             "zone": {
-                "x": 440,
-                "y": 450,
-                "width": 80,
-                "height": 80
+                "x": 400,
+                "y": 100,
+                "width": 160,
+                "height": 250
             },
             "targetRoom": "throne_room",
             "spawnPoint": {
@@ -52,90 +52,57 @@
                 "y": 505
             },
             "transition": "fade",
-            "direction": "south",
-            "label": "passage back"
+            "label": "portal",
+            "aliases": [
+                "portal",
+                "blue portal",
+                "archway",
+                "arch",
+                "gateway",
+                "gate",
+                "magic portal",
+                "magical portal",
+                "blue arch",
+                "blue archway",
+                "entrance",
+                "magical entrance",
+                "energy portal",
+                "back",
+                "throne room"
+            ]
         },
         {
-            "id": "to-petrified-forest",
-            "zone": {
-                "x": 300,
-                "y": 450,
-                "width": 80,
-                "height": 80
-            },
-            "targetRoom": "petrified_forest",
-            "spawnPoint": {
-                "x": 480,
-                "y": 460
-            },
-            "transition": "fade",
-            "direction": "west",
-            "label": "forest",
-            "conditions": [
-                {
-                    "type": "has-item",
-                    "item": "crystal-of-mundanity"
-                },
-                {
-                    "type": "flag-set",
-                    "flag": "guardian-defeated"
-                },
-                {
-                    "type": "flag-set",
-                    "flag": "clerk-satisfied"
-                }
-            ],
-            "blockedMessage": "The passage to the petrified forest is magically sealed. You sense you need to prove yourself further before this way opens."
-        },
-        {
-            "id": "to-library",
+            "id": "to-filing",
             "zone": {
                 "x": 440,
                 "y": 350,
                 "width": 80,
                 "height": 80
             },
-            "targetRoom": "cavern_library",
-            "spawnPoint": {
-                "x": 417,
-                "y": 489
-            },
-            "transition": "fade",
-            "direction": "north",
-            "label": "library"
-        },
-        {
-            "id": "to-filing",
-            "zone": {
-                "x": 880,
-                "y": 350,
-                "width": 80,
-                "height": 200
-            },
             "targetRoom": "filing_room",
             "spawnPoint": {
                 "x": 542,
                 "y": 439
             },
-            "transition": "slide-right",
-            "direction": "east",
+            "transition": "fade",
+            "direction": "north",
             "label": "filing room"
         },
         {
             "id": "to-waiting",
             "zone": {
-                "x": 0,
-                "y": 350,
+                "x": 440,
+                "y": 450,
                 "width": 80,
-                "height": 200
+                "height": 80
             },
             "targetRoom": "waiting_room",
             "spawnPoint": {
                 "x": 382,
                 "y": 427
             },
-            "transition": "slide-left",
-            "direction": "west",
+            "transition": "fade",
+            "direction": "south",
             "label": "waiting room",
             "conditions": [
                 {
@@ -146,19 +113,36 @@
             "blockedMessage": "A velvet rope blocks the entrance to the waiting room. A small sign reads: 'TICKET HOLDERS ONLY. No exceptions. No excuses. No crying.'"
         },
         {
-            "id": "to-west-wing",
+            "id": "to-library",
             "zone": {
-                "x": 200,
+                "x": 880,
                 "y": 350,
                 "width": 80,
-                "height": 80
+                "height": 200
+            },
+            "targetRoom": "cavern_library",
+            "spawnPoint": {
+                "x": 417,
+                "y": 489
+            },
+            "transition": "slide-right",
+            "direction": "east",
+            "label": "library"
+        },
+        {
+            "id": "to-west-wing",
+            "zone": {
+                "x": 0,
+                "y": 350,
+                "width": 80,
+                "height": 200
             },
             "targetRoom": "cavern_west_wing",
             "spawnPoint": {
                 "x": 534,
                 "y": 477
             },
-            "transition": "fade",
+            "transition": "slide-left",
             "direction": "west",
             "label": "west wing",
             "conditions": [
@@ -168,30 +152,6 @@
                 }
             ],
             "blockedMessage": "The west wing corridor is barred by a locked gate. There must be a way to open it from somewhere in the hall."
-        },
-        {
-            "id": "to-east-wing",
-            "zone": {
-                "x": 700,
-                "y": 350,
-                "width": 80,
-                "height": 80
-            },
-            "targetRoom": "cavern_east_wing",
-            "spawnPoint": {
-                "x": 305,
-                "y": 417
-            },
-            "transition": "fade",
-            "direction": "east",
-            "label": "east wing",
-            "conditions": [
-                {
-                    "type": "flag-set",
-                    "flag": "east_wing_accessed"
-                }
-            ],
-            "blockedMessage": "The east wing passage is blocked. You haven't yet earned access to this part of the cavern."
         }
     ],
     "hotspots": [
@@ -255,7 +215,7 @@
                 "y": 420
             },
             "responses": {
-                "look": "Doors line the cavern walls, each numbered and labeled in a font so small it requires squinting. 'Door 1: West Wing (Authorized Personnel Only),' 'Door 2: East Wing (Also Authorized Only),' 'Door 3: Broom Closet (Authorized Brooms Only).' The authorization requirements are exhaustive.",
+                "look": "Doors line the cavern walls, each numbered and labeled in a font so small it requires squinting. 'Door 1: West Wing (Authorized Personnel Only),' 'Door 2: Broom Closet (Authorized Brooms Only),' 'Door 3: Sub-Broom Closet (Authorized Sub-Brooms Only).' The authorization requirements are exhaustive.",
                 "open": "The doors are locked. All of them. Bureaucratically locked. You'd need the Clerk's approval, which requires forms, which require ink, which requires finding ink, which requires forms. It's bureaucracy all the way down.",
                 "use": "Every door requires authorization. The Clerk has a monopoly on authorization. Welcome to the Screaming Caverns.",
                 "default": "You count the doors. There are more doors than seems architecturally necessary. Bureaucracy expands to fill available wall space.",
@@ -290,7 +250,7 @@
                 "y": 420
             },
             "responses": {
-                "look": "Signs point in every direction. 'WEST WING: This Way' points east. 'EXIT: Follow Arrow' points at the ceiling. 'YOU ARE HERE' points at a different sign that says 'NO YOU AREN'T.' Whoever designed the signage was either incompetent or actively hostile.",
+                "look": "Signs point in every direction. 'WEST WING: This Way' points east. 'FILING ROOM: North' points south. 'EXIT: Follow Arrow' points at the ceiling. 'YOU ARE HERE' points at a different sign that says 'NO YOU AREN'T.' Whoever designed the signage was either incompetent or actively hostile.",
                 "use": "You follow a sign. It leads to another sign. Which leads to another sign. Which leads back to the first sign. The Clerk watches your confusion with professional disinterest.",
                 "default": "You study the signs. They are confidently, aggressively wrong.",
                 "take": "The signs are bolted to the cave wall with bureaucratic thoroughness. Each bolt has a small tag reading 'PROPERTY OF THE DEPARTMENT OF SIGNAGE. THEFT IS PUNISHABLE.'",
@@ -525,7 +485,7 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "You place the completed form on the desk. The Clerk snatches it up, adjusts his spectacles, and reads every line. Twice. 'Acceptable,' he says, in a tone that implies 'barely.' He stamps it with a stamp the size of your fist and hands you a queue ticket. Number 847. 'The Waiting Room is to the west. Patience is a requirement, not a suggestion.'"
+                    "text": "You place the completed form on the desk. The Clerk snatches it up, adjusts his spectacles, and reads every line. Twice. 'Acceptable,' he says, in a tone that implies 'barely.' He stamps it with a stamp the size of your fist and hands you a queue ticket. Number 847. 'The Waiting Room is to the south. Patience is a requirement, not a suggestion.'"
                 }
             ],
             "once": true
@@ -597,12 +557,8 @@
                     "exit": "to-west-wing"
                 },
                 {
-                    "type": "open-exit",
-                    "exit": "to-east-wing"
-                },
-                {
                     "type": "narrator-say",
-                    "text": "The Clerk takes your VIP-stamped ticket. His left eye twitches. 'VIP authorization. This stamp is...' He examines it. 'This stamp is technically valid.' His voice carries the weight of a man whose bureaucratic fortress has been breached. 'Very well. Both wings are now accessible. The test awaits.' He unlocks the west and east wing doors with two separate keys, each requiring a separate form that he fills out himself, silently, with the grim efficiency of a professional."
+                    "text": "The Clerk takes your VIP-stamped ticket. His left eye twitches. 'VIP authorization. This stamp is...' He examines it. 'This stamp is technically valid.' His voice carries the weight of a man whose bureaucratic fortress has been breached. 'Very well. The west wing is now accessible. The test awaits.' He unlocks the west wing door with a key that requires a separate form, which he fills out himself, silently, with the grim efficiency of a professional."
                 }
             ],
             "once": true
@@ -650,12 +606,8 @@
                     "exit": "to-west-wing"
                 },
                 {
-                    "type": "open-exit",
-                    "exit": "to-east-wing"
-                },
-                {
                     "type": "narrator-say",
-                    "text": "You place the VIP ticket on the desk. The Clerk picks it up, reads it, reads it again, and his left eye performs a twitch so subtle it could be seismic. 'VIP access. Granted.' He opens both wing doors. His disapproval is palpable but procedurally invalid."
+                    "text": "You place the VIP ticket on the desk. The Clerk picks it up, reads it, reads it again, and his left eye performs a twitch so subtle it could be seismic. 'VIP access. Granted.' He opens the west wing door. His disapproval is palpable but procedurally invalid."
                 }
             ],
             "once": true
@@ -709,7 +661,7 @@
         }
     },
     "dynamicDescriptions": {
-        "clerk-satisfied": "The Cavern Entrance Hall's bureaucratic atmosphere has shifted slightly. The Clerk sits at his desk, processing paperwork with marginally less hostility. Both wing doors stand open. The test awaits in the depths beyond.",
+        "clerk-satisfied": "The Cavern Entrance Hall's bureaucratic atmosphere has shifted slightly. The Clerk sits at his desk, processing paperwork with marginally less hostility. The west wing door stands open. The test awaits in the depths beyond.",
         "registered_with_clerk": "The entrance hall hums with institutional energy. You've been registered -- the Clerk's stamp of approval (grudging as it was) opens the waiting room. Your queue ticket burns a hole in your pocket with the urgency of number 847."
     },
     "npcs": [
@@ -789,7 +741,7 @@
             "tiers": [
                 "Your queue ticket says number 847. The Waiting Room suggests you might be here a while. Unless, of course, someone were to upgrade that ticket. Bureaucracies have loopholes, if you know where to look.",
                 "A VIP stamp is hidden in the filing room -- check the bottom drawer of the last cabinet. Stamp your queue ticket with it, then show the VIP ticket to the Clerk to skip the queue entirely.",
-                "Find the VIP stamp in the hidden bottom drawer of the filing room. Use the VIP stamp on your queue ticket. Then use the stamped VIP ticket on the Clerk to gain access to both wings."
+                "Find the VIP stamp in the hidden bottom drawer of the filing room. Use the VIP stamp on your queue ticket. Then use the stamped VIP ticket on the Clerk to gain access to the west wing."
             ]
         }
     ],

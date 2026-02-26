@@ -52,8 +52,40 @@
                 "y": 482
             },
             "transition": "slide-left",
-            "direction": "west",
+            "direction": "south",
             "label": "entrance hall"
+        },
+        {
+            "id": "to-petrified-forest",
+            "zone": {
+                "x": 880,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
+            "targetRoom": "petrified_forest",
+            "spawnPoint": {
+                "x": 480,
+                "y": 460
+            },
+            "transition": "fade",
+            "direction": "north",
+            "label": "forest",
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "crystal-of-mundanity"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "guardian-defeated"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "clerk-satisfied"
+                }
+            ],
+            "blockedMessage": "The passage to the petrified forest is magically sealed. You sense you need to prove yourself further before this way opens."
         }
     ],
     "hotspots": [

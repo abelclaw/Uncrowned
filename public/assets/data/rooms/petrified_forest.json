@@ -39,21 +39,21 @@
     ],
     "exits": [
         {
-            "id": "to-cavern",
+            "id": "to-filing-room",
             "zone": {
                 "x": 0,
                 "y": 350,
                 "width": 80,
                 "height": 200
             },
-            "targetRoom": "cavern_entrance_hall",
+            "targetRoom": "filing_room",
             "spawnPoint": {
-                "x": 575,
-                "y": 482
+                "x": 542,
+                "y": 439
             },
             "transition": "fade",
-            "direction": "west",
-            "label": "caverns"
+            "direction": "south",
+            "label": "filing room"
         },
         {
             "id": "to-courtyard-act3",

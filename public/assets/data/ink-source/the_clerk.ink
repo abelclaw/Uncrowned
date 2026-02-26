@@ -50,9 +50,9 @@ The pass rate is zero percent. This is not a concern. The test is functioning as
 === form_info ===
 The Clerk produces a catalogue of forms the size of a small dictionary. #speaker:The Clerk #emotion:neutral
 You require Form 27-B Stroke 6: Application for Sovereign Worthiness Test.
-Available in the Filing Room. East of the entrance hall.
+Available in the Filing Room. North of the entrance hall.
 The form must be completed in proper ink. Ancient bureaucratic ink is acceptable.
-Ink is available in the Cavern Library. North of the entrance hall.
+Ink is available in the Cavern Library. East of the entrance hall.
 Submit the completed form to this desk. A queue ticket will be issued.
 Do not attempt to submit an incomplete form. The consequences are... administrative.
 -> greeting
