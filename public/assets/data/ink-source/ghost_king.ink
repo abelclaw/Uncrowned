@@ -59,6 +59,8 @@ He straightens up.
 Fine. I'll approve it. Not because it's legitimate, but because the kingdom needs someone who is willing to commit fraud in its service. That's the kind of pragmatism we need.
 He touches the decree. It glows with spectral light.
 Consider it blessed. Or cursed. Same thing, really, when a ghost is involved.
+He raises one spectral hand. The eastern wall shudders and splits apart, revealing a dark passage descending into the earth.
+That passage leads to the Screaming Caverns. The kingdom's rot starts there. Go deal with it.
 ~ setFlag("ghost_approved_decree")
 -> greeting
 
@@ -85,7 +87,7 @@ The test to reach it involves bureaucratic puzzles, which I find both appropriat
 
 === artifact_details ===
 The Ghost King lowers his voice, though being a ghost, volume is somewhat optional. #speaker:Ghost King #emotion:serious
-The caverns are north of the forest bridge. You'll need that map from the castle to find the entrance.
+The caverns lie beneath this very castle. Show me proof of authority and I'll open the way.
 Inside, you'll meet the Clerk. An immortal bureaucrat. Very old. Very patient. Very irritating.
 Navigate his paperwork, pass the guardian's test, and the crystal is yours.
 Then bring it back here. The Rite of Administrative Closure requires the crystal, a kingdom seal, and the original curse contract.

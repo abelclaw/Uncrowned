@@ -54,6 +54,30 @@
             "transition": "slide-left",
             "direction": "west",
             "label": "hallway"
+        },
+        {
+            "id": "to-caverns",
+            "zone": {
+                "x": 560,
+                "y": 282,
+                "width": 80,
+                "height": 200
+            },
+            "targetRoom": "cavern_entrance_hall",
+            "spawnPoint": {
+                "x": 575,
+                "y": 482
+            },
+            "transition": "fade",
+            "direction": "east",
+            "label": "caverns",
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "ghost_approved_decree"
+                }
+            ],
+            "blockedMessage": "The eastern wall is solid stone. No visible passage exists -- but then again, secret passages rarely advertise."
         }
     ],
     "hotspots": [
@@ -442,6 +466,48 @@
                 "pull": "You pry at a loose tile. It comes up, revealing grey foundation stone and a single coin that rolled under here sometime during the last century. Finders keepers.",
                 "default": "The floor endures. That's what floors do. Everything above them falls eventually."
             }
+        },
+        {
+            "id": "ghost-passage",
+            "name": "Spectral Passage",
+            "aliases": [
+                "passage",
+                "secret passage",
+                "ghost passage",
+                "shimmer",
+                "shimmering wall",
+                "portal",
+                "cavern entrance",
+                "cavern passage",
+                "east wall",
+                "glowing wall"
+            ],
+            "zone": {
+                "x": 560,
+                "y": 282,
+                "width": 80,
+                "height": 200
+            },
+            "interactionPoint": {
+                "x": 530,
+                "y": 372
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "ghost_approved_decree"
+                }
+            ],
+            "responses": {
+                "look": "Where solid stone once stood, the eastern wall now shimmers with spectral blue light. The passage pulses gently, as though breathing -- a ghostly doorway opened by royal authority. Cold air drifts from the darkness beyond, carrying the scent of ancient stone and bureaucratic dust. The Screaming Caverns lie below.",
+                "use": "You step toward the shimmering passage. The spectral light parts around you like curtains, and the temperature drops sharply. The way to the Screaming Caverns is open.",
+                "default": "The ghost passage shimmers silently, a blue-lit wound in the eastern wall. Whatever lies beyond, it's been waiting a very long time for visitors.",
+                "talk": "You speak into the passage. Your voice echoes back distorted, as though filtered through centuries of bureaucratic sediment. Something down there heard you. Whether it cares is another matter.",
+                "take": "You can't take a passage. It's a hole in reality maintained by a dead king's grudging approval. It's not the sort of thing that fits in a pocket.",
+                "open": "It's already open. The Ghost King saw to that. The real question isn't how to open it -- it's whether you're ready for what's on the other side.",
+                "push": "You push your hand into the shimmer. It passes through like pushing through cold water. Your fingers tingle with residual ghostly energy. The passage is real, and it's waiting.",
+                "pull": "You can't pull a spectral passage closed. Even if you could, why would you? You went through considerable trouble to get it opened."
+            }
         }
     ],
     "items": [
@@ -743,8 +809,12 @@
                     "flag": "ghost_approved_decree"
                 },
                 {
+                    "type": "open-exit",
+                    "exit": "to-caverns"
+                },
+                {
                     "type": "narrator-say",
-                    "text": "You hold up the sealed decree. The Ghost King leans forward, spectral eyes narrowing. 'A royal decree... with MY seal on it. Forged, obviously. I didn't sign this.' He pauses. 'But the seal is genuine, and the intent is sound. You're trying to reach the Screaming Caverns, aren't you? To deal with whatever the Bureaucracy has become.' He sighs -- a sound like wind through an empty throne room. 'Fine. Consider the decree... royally tolerated. The bridge troll will accept it. Now go fix my kingdom before I have to haunt something more proactive.'"
+                    "text": "You hold up the sealed decree. The Ghost King leans forward, spectral eyes narrowing. 'A royal decree... with MY seal on it. Forged, obviously. I didn't sign this.' He pauses. 'But the seal is genuine, and the intent is sound. You're trying to reach the Screaming Caverns, aren't you? To deal with whatever the Bureaucracy has become.' He sighs -- a sound like wind through an empty throne room. 'Fine. Consider the decree... royally tolerated.' He raises one spectral hand. The eastern wall shudders. Stones grind against stones as a hidden passage gapes open, exhaling centuries of stale air and the faint smell of bureaucracy. 'That passage leads to the Screaming Caverns. The kingdom's rot starts there. Now go fix it before I have to haunt something more proactive.'"
                 }
             ],
             "once": true
@@ -779,8 +849,12 @@
                     "flag": "ghost_approved_decree"
                 },
                 {
+                    "type": "open-exit",
+                    "exit": "to-caverns"
+                },
+                {
                     "type": "narrator-say",
-                    "text": "You wave the sealed decree in the general direction of the Ghost King. He squints at it. 'Forged paperwork. How wonderfully administrative of you.' He reads the blank space where the content should be and somehow finds it acceptable. 'The Screaming Caverns await. The bridge troll will honour this -- he's a stickler for official documentation, even fraudulent official documentation. Go. Save my kingdom. Try not to die in an embarrassing way.'"
+                    "text": "You wave the sealed decree in the general direction of the Ghost King. He squints at it. 'Forged paperwork. How wonderfully administrative of you.' He reads the blank space where the content should be and somehow finds it acceptable. He flicks a spectral wrist. The eastern wall groans and splits apart, revealing a dark passage descending into the earth. Cold air rushes out, carrying the scent of damp stone and ancient paperwork. 'The Screaming Caverns,' he says. 'Go. Save my kingdom. Try not to die in an embarrassing way.'"
                 }
             ],
             "once": true
@@ -888,7 +962,8 @@
     },
     "dynamicDescriptions": {
         "met_ghost_king": "The throne room is cold -- unnaturally cold. The Ghost King hovers above his throne, translucent and irritable. Blue spectral light flickers from the banners, and the air tastes of old regret and ectoplasm. King Mortimer watches you with the weary patience of someone who has literally nothing better to do for all eternity.",
-        "decree-sealed": "The throne room echoes with the memory of forged authority. The royal seal is gone, spent on your fraudulent decree. The Ghost King, if present, seems vaguely impressed by your audacity."
+        "decree-sealed": "The throne room echoes with the memory of forged authority. The royal seal is gone, spent on your fraudulent decree. The Ghost King, if present, seems vaguely impressed by your audacity.",
+        "ghost_approved_decree": "The throne room has changed. A gaping passage in the eastern wall leads down into darkness -- the secret route to the Screaming Caverns, opened by the Ghost King's spectral hand. Cold air drifts from the opening, carrying the scent of damp stone and the faint rustle of paperwork. King Mortimer hovers by his throne, watching you with something almost resembling hope."
     },
     "npcs": [
         {
@@ -972,7 +1047,7 @@
             "tiers": [
                 "You have an official-looking decree, but perhaps someone of royal authority should approve it before you wave it around. Someone who used to run this kingdom, perhaps.",
                 "The Ghost King might have an opinion on your forged decree. Show it to him -- use the sealed decree while in his presence in the throne room.",
-                "Use the sealed decree on the Ghost King in the throne room to get his approval. You need his blessing before the bridge troll will let you pass to the Screaming Caverns."
+                "Use the sealed decree on the Ghost King in the throne room to get his approval. His blessing will open a secret passage to the Screaming Caverns."
             ]
         }
     ],

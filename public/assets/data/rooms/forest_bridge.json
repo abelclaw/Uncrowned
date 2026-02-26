@@ -82,42 +82,6 @@
                 }
             ],
             "blockedMessage": "Bertram holds up a hand politely but firmly. 'Riddle first, friend. Bridge Troll regulations. Talk to me and we'll sort it out.'"
-        },
-        {
-            "id": "to-cavern",
-            "zone": {
-                "x": 440,
-                "y": 350,
-                "width": 80,
-                "height": 80
-            },
-            "targetRoom": "cavern_entrance_hall",
-            "spawnPoint": {
-                "x": 575,
-                "y": 482
-            },
-            "transition": "fade",
-            "direction": "north",
-            "label": "cavern",
-            "conditions": [
-                {
-                    "type": "flag-set",
-                    "flag": "decree-sealed"
-                },
-                {
-                    "type": "flag-set",
-                    "flag": "ghost_approved_decree"
-                },
-                {
-                    "type": "has-item",
-                    "item": "castle-map"
-                },
-                {
-                    "type": "flag-set",
-                    "flag": "skeleton-key-used"
-                }
-            ],
-            "blockedMessage": "A hidden path leads north, but you're not ready for what lies beyond. There's more to accomplish in the kingdom first."
         }
     ],
     "hotspots": [

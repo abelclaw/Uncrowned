@@ -537,6 +537,11 @@ export class RoomScene extends Phaser.Scene {
             console.log('[RoomScene] Canvas renderer detected, effects reduced');
         }
 
+        // Ghost passage shimmer: activate if flag already set on room entry
+        if (this.roomData.id === 'throne_room' && this.gameState.isFlagSet('ghost_approved_decree')) {
+            this.effectsManager.createGhostPassage(560, 282, 80, 200);
+        }
+
         // Listen for command-submitted events from the input bar
         this.commandSubmittedHandler = async (text: string) => {
             // Dialogue mode: route input to choice selection
@@ -783,6 +788,11 @@ export class RoomScene extends Phaser.Scene {
                         img.setTexture(swap.to);
                     }
                 }
+            }
+
+            // Ghost passage shimmer: activate when ghost approves decree
+            if (action.type === 'set-flag' && action.flag === 'ghost_approved_decree' && this.roomData.id === 'throne_room') {
+                this.effectsManager.createGhostPassage(560, 282, 80, 200);
             }
 
             // Swap player sprite when hat is purchased

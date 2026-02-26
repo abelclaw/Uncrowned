@@ -51,6 +51,10 @@ export class EffectsManager {
     private postFXActive: boolean = false;
     private baseOverlayAlpha: number = 0;
 
+    // Ghost passage effect
+    private ghostPassageGlow: Phaser.GameObjects.Rectangle | null = null;
+    private ghostPassageEmitter: Phaser.GameObjects.Particles.ParticleEmitter | null = null;
+
     private constructor() {}
 
     /**
@@ -510,11 +514,68 @@ export class EffectsManager {
     }
 
     /**
+     * Create a spectral shimmer effect at the given world position.
+     * Used for the ghost passage in the throne room: a pulsing blue glow
+     * with drifting spectral particles.
+     */
+    createGhostPassage(worldX: number, worldY: number, width: number, height: number): void {
+        if (!this.initialized) return;
+        this.destroyGhostPassage();
+
+        // Spectral shimmer rectangle — visible ethereal glow
+        this.ghostPassageGlow = this.scene.add.rectangle(
+            worldX + width / 2, worldY + height / 2, width * 1.5, height * 1.2, 0x2244aa, 0.55
+        );
+        this.ghostPassageGlow.setDepth(AMBIENT_DEPTH - 1);
+
+        this.scene.tweens.add({
+            targets: this.ghostPassageGlow,
+            alpha: { from: 0.4, to: 0.65 },
+            duration: 2500,
+            yoyo: true,
+            repeat: -1,
+            ease: 'Sine.easeInOut',
+        });
+
+        // Spectral particles drifting out of the passage
+        const multiplier = this.getQualityMultiplier();
+        if (multiplier > 0) {
+            this.ghostPassageEmitter = this.scene.add.particles(0, 0, PARTICLE_TEXTURE, {
+                emitZone: randomZone(new Phaser.Geom.Rectangle(worldX - 10, worldY - 10, width + 20, height + 20)),
+                quantity: 2,
+                frequency: Math.round(150 / multiplier),
+                speed: { min: 8, max: 35 },
+                angle: { min: 150, max: 210 },
+                lifespan: 3000,
+                scale: { min: 1, max: 3 },
+                alpha: [0, 0.5, 0.3, 0.6, 0],
+                tint: [0x6688dd, 0x8899ee, 0x5577cc],
+            });
+            this.ghostPassageEmitter.setDepth(AMBIENT_DEPTH);
+        }
+    }
+
+    /**
+     * Remove ghost passage effects if active.
+     */
+    private destroyGhostPassage(): void {
+        if (this.ghostPassageGlow) {
+            this.ghostPassageGlow.destroy();
+            this.ghostPassageGlow = null;
+        }
+        if (this.ghostPassageEmitter) {
+            this.ghostPassageEmitter.destroy();
+            this.ghostPassageEmitter = null;
+        }
+    }
+
+    /**
      * Remove all effects. Call from RoomScene shutdown.
      * Does NOT destroy the singleton -- only clears active emitters.
      */
     cleanup(): void {
         this.clearAll();
+        this.destroyGhostPassage();
         this.initialized = false;
     }
 }

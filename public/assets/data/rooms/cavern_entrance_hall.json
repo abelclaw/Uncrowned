@@ -39,21 +39,21 @@
     ],
     "exits": [
         {
-            "id": "to-bridge",
+            "id": "to-throne-room",
             "zone": {
                 "x": 440,
                 "y": 450,
                 "width": 80,
                 "height": 80
             },
-            "targetRoom": "forest_bridge",
+            "targetRoom": "throne_room",
             "spawnPoint": {
-                "x": 724,
-                "y": 206
+                "x": 355,
+                "y": 505
             },
             "transition": "fade",
             "direction": "south",
-            "label": "exit"
+            "label": "passage back"
         },
         {
             "id": "to-petrified-forest",
