@@ -54,6 +54,23 @@
             "transition": "fade",
             "direction": "south",
             "label": "west wing"
+        },
+        {
+            "id": "to-echo-chamber",
+            "zone": {
+                "x": 880,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
+            "targetRoom": "echo_chamber",
+            "spawnPoint": {
+                "x": 689,
+                "y": 469
+            },
+            "transition": "slide-right",
+            "direction": "east",
+            "label": "echo chamber"
         }
     ],
     "hotspots": [

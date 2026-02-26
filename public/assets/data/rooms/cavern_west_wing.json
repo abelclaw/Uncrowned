@@ -1,7 +1,7 @@
 {
     "id": "cavern_west_wing",
     "name": "West Wing Corridor",
-    "description": "The West Wing is a natural cavern corridor lined with bioluminescent mushrooms -- clusters of pale blue, green, and violet fungi that pulse gently in the darkness. The mushrooms can be activated by touch, each one lighting up or dimming in sequence. A pattern is needed -- somewhere in the caverns, someone recorded the correct sequence. Passages lead north to a balcony overlooking a crystal chamber, and south to an echo-filled chamber.",
+    "description": "The West Wing is a natural cavern corridor lined with bioluminescent mushrooms -- clusters of pale blue, green, and violet fungi that pulse gently in the darkness. The mushrooms can be activated by touch, each one lighting up or dimming in sequence. A pattern is needed -- somewhere in the caverns, someone recorded the correct sequence. A passage leads north to a balcony overlooking the crystal chamber below.",
     "background": {
         "layers": [
             {
@@ -41,10 +41,10 @@
         {
             "id": "to-entrance-hall",
             "zone": {
-                "x": 880,
-                "y": 350,
+                "x": 440,
+                "y": 450,
                 "width": 80,
-                "height": 200
+                "height": 80
             },
             "targetRoom": "cavern_entrance_hall",
             "spawnPoint": {
@@ -52,32 +52,8 @@
                 "y": 482
             },
             "transition": "fade",
-            "direction": "east",
+            "direction": "south",
             "label": "entrance hall"
-        },
-        {
-            "id": "to-crystal-chamber",
-            "zone": {
-                "x": 0,
-                "y": 350,
-                "width": 80,
-                "height": 200
-            },
-            "targetRoom": "crystal_chamber",
-            "spawnPoint": {
-                "x": 259,
-                "y": 463
-            },
-            "transition": "slide-left",
-            "direction": "west",
-            "label": "crystal chamber",
-            "conditions": [
-                {
-                    "type": "flag-set",
-                    "flag": "mushroom_pattern_solved"
-                }
-            ],
-            "blockedMessage": "The passage to the crystal chamber is sealed by a strange organic growth. The mushrooms on the walls seem to pulse in a pattern -- perhaps they're the key."
         },
         {
             "id": "to-balcony",
@@ -97,21 +73,36 @@
             "label": "balcony"
         },
         {
-            "id": "to-echo-chamber",
+            "id": "to-crystal-chamber",
             "zone": {
-                "x": 440,
-                "y": 450,
+                "x": 0,
+                "y": 350,
                 "width": 80,
-                "height": 80
+                "height": 200
             },
-            "targetRoom": "echo_chamber",
+            "targetRoom": "crystal_chamber",
             "spawnPoint": {
-                "x": 689,
-                "y": 469
+                "x": 259,
+                "y": 463
             },
-            "transition": "fade",
-            "direction": "south",
-            "label": "echo chamber"
+            "transition": "slide-left",
+            "label": "crystal passage",
+            "aliases": [
+                "crystal passage",
+                "passage",
+                "crystal chamber",
+                "opening",
+                "wall opening",
+                "organic passage",
+                "mushroom passage"
+            ],
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "mushroom_pattern_solved"
+                }
+            ],
+            "blockedMessage": "The passage to the crystal chamber is sealed by a strange organic growth. The mushrooms on the walls seem to pulse in a pattern -- perhaps they're the key."
         }
     ],
     "hotspots": [
@@ -219,7 +210,7 @@
                 "y": 440
             },
             "responses": {
-                "look": "A thick membrane of organic matter seals the western passage -- part fungal, part vegetal, entirely uncooperative. It pulses in rhythm with the mushrooms on the walls, like a bouncer at a very exclusive nightclub that only opens for the right sequence.",
+                "look": "A thick membrane of organic matter seals a passage in the wall -- part fungal, part vegetal, entirely uncooperative. It pulses in rhythm with the mushrooms on the walls, like a bouncer at a very exclusive nightclub that only opens for the right sequence.",
                 "take": "You peel at the organic growth. It has the consistency of wet leather and the attitude of something put here on purpose. A small piece comes away, then dissolves into luminescent slime. Nature's way of saying 'no souvenirs.'",
                 "use": "You prod the organic seal. It squelches. It does not open. The growth seems to respond to the mushrooms, not to your increasingly frustrated poking. Perhaps solving the mushroom pattern would convince it to move.",
                 "talk": "You address the organic growth. 'Could you move, please?' It pulses once, which in fungal body language roughly translates to 'absolutely not.'",
@@ -329,7 +320,7 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "Left, right, center, left, center. You touch each mushroom cluster in sequence. They flare to life -- blue, green, violet, blue, violet -- and hold their glow. The cavern fills with bioluminescent light, and a passage to the west grinds open, revealing the Crystal Chamber beyond. The mushrooms pulse contentedly. Someone finally got the pattern right."
+                    "text": "Left, right, center, left, center. You touch each mushroom cluster in sequence. They flare to life -- blue, green, violet, blue, violet -- and hold their glow. The cavern fills with bioluminescent light, and an organic membrane on the wall peels apart, revealing a passage to the Crystal Chamber beyond. The mushrooms pulse contentedly. Someone finally got the pattern right."
                 }
             ],
             "once": true

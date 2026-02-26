@@ -39,21 +39,21 @@
     ],
     "exits": [
         {
-            "id": "to-west-wing",
+            "id": "to-balcony",
             "zone": {
-                "x": 440,
-                "y": 450,
+                "x": 0,
+                "y": 350,
                 "width": 80,
-                "height": 80
+                "height": 200
             },
-            "targetRoom": "cavern_west_wing",
+            "targetRoom": "cavern_balcony",
             "spawnPoint": {
-                "x": 534,
-                "y": 477
+                "x": 204,
+                "y": 287
             },
-            "transition": "fade",
-            "direction": "south",
-            "label": "west wing"
+            "transition": "slide-left",
+            "direction": "west",
+            "label": "balcony"
         }
     ],
     "hotspots": [
