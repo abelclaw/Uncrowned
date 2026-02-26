@@ -84,9 +84,9 @@
                 "y": 420
             },
             "responses": {
-                "look": "A small writing desk with a dusty diary lying open. The diary belongs to the head servant -- the last entry reads: 'Rats ate the flour again. Cook is furious. King dead. Curse spreading. Priorities unclear.' Tucked under the diary is a sheet of official-looking parchment. Blank. But very, very official-looking.",
-                "use": "You flip through the diary. Most entries concern meal schedules, staff complaints, and an ongoing feud between the laundry department and the kitchen. The final entries grow increasingly panicked as the curse spreads. The blank parchment underneath seems important.",
-                "open": "You open the diary wider. The spine cracks with the sound of neglected literature. The blank decree underneath shifts into view.",
+                "look": "A small writing desk with a dusty diary lying open. The diary belongs to the head servant -- the last entry reads: 'Rats ate the flour again. Cook is furious. King dead. Curse spreading. Priorities unclear.' The desk drawers are empty. Whoever worked here left in a hurry.",
+                "use": "You flip through the diary. Most entries concern meal schedules, staff complaints, and an ongoing feud between the laundry department and the kitchen. The final entries grow increasingly panicked as the curse spreads. The last page just says 'HHHH' -- the head servant appears to have given up on language entirely.",
+                "open": "You open the diary wider. The spine cracks with the sound of neglected literature. The pages detail the slow collapse of castle operations, one cancelled banquet at a time.",
                 "default": "You study the desk. It's the only evidence that someone in this castle once cared about record-keeping.",
                 "take": "The writing desk is built into the wall -- servants' furniture was designed to be functional, not portable. Someone carved their initials in it: 'M.L. was here.' M.L. is probably still here.",
                 "talk": "You address the writing desk. It does not respond, which puts it on par with most of the castle's administrative staff.",
@@ -162,12 +162,12 @@
                 "y": 430
             },
             "responses": {
-                "look": "A row of narrow bunks, each barely wider than a coffin and roughly as comfortable. The blankets are thin, the pillows are flat, and the mattresses have given up any pretense of being soft. Someone has carved 'I QUIT' into the headboard of the nearest bunk, a sentiment apparently shared by the rest of the staff.",
+                "look": "A row of narrow bunks, each barely wider than a coffin and roughly as comfortable. The blankets are thin, the pillows are flat, and the mattresses have given up any pretense of being soft. Someone has carved 'I QUIT' into the headboard of the nearest bunk, a sentiment apparently shared by the rest of the staff. Something stiff is poking out from under one of the pillows -- a corner of parchment, very official-looking.",
                 "take": "Too large, too depressing, and too structurally unsound to move. The bunks are staying right where generations of underpaid servants left them.",
-                "use": "Tempting to nap, but you have a kingdom to save. The mattress seems to understand, sagging in quiet resignation as you move on.",
+                "use": "You lie down on the nearest bunk. The mattress sags with a defeated wheeze. As your head hits the pillow, you feel something underneath -- a sheet of parchment, stiff and official. A blank royal decree, tucked away by some servant who either forgot about it or was saving it for a rainy day. Every day in this kingdom is a rainy day.",
                 "default": "You examine the bunk beds. They've hosted the dreams of countless servants, most of whom were probably dreaming about better beds.",
                 "talk": "You whisper goodnight to the bunks. The silence that answers is the most restful thing these beds have produced in years.",
-                "open": "The bunks don't open. They're beds, not treasure chests. Though given the state of this castle, the distinction is increasingly academic.",
+                "open": "You lift a blanket and check under the pillow. There's a sheet of parchment here -- blank, but bearing the watermark of the Royal Paper Mill. A blank royal decree. Someone hid it where no one would think to look: under the least comfortable pillow in the kingdom.",
                 "push": "You shove a bunk. The frame groans, shifts two inches, and reveals a colony of dust bunnies that have achieved sentience. They scatter.",
                 "pull": "You pull a bunk away from the wall. Behind it: more wall. The servants didn't even get a secret passage."
             }
@@ -226,19 +226,19 @@
                 "proclamation"
             ],
             "zone": {
-                "x": 710,
-                "y": 129,
-                "width": 30,
-                "height": 20
+                "x": 140,
+                "y": 280,
+                "width": 60,
+                "height": 30
             },
             "interactionPoint": {
-                "x": 725,
-                "y": 159
+                "x": 170,
+                "y": 430
             },
             "responses": {
-                "look": "A sheet of parchment so official-looking it could probably govern a small nation. Which is sort of the point. It bears the watermark of the Royal Paper Mill and has the texture of authority. It's completely blank, which makes it either useless or incredibly dangerous.",
+                "look": "A sheet of parchment so official-looking it could probably govern a small nation. Which is sort of the point. It bears the watermark of the Royal Paper Mill and has the texture of authority. It's completely blank, which makes it either useless or incredibly dangerous. It was hidden under a pillow on one of the bunks.",
                 "use": "A blank decree needs a seal to become an official decree. Without one, it's just very fancy scratch paper.",
-                "take": "The blank decree is pinned to the wall with an ornate brass tack. It's either a deliberate display piece or someone ran out of things to decree and gave up mid-thought.",
+                "take": "The blank decree is tucked under a pillow, hidden by some servant who had either grand plans or terrible organizational skills.",
                 "talk": "You address the blank decree. It says nothing, which is both its current state and its primary feature.",
                 "open": "It's a rolled parchment. You unroll it. Both sides are blank, waiting for someone with the authority -- or audacity -- to write something official on them.",
                 "push": "You nudge the decree across the desk. Even blank, it moves with more authority than most of the castle's remaining staff.",
@@ -301,7 +301,7 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "You slide the blank decree from under the diary. The parchment practically hums with potential. A blank official document in a kingdom without a king -- this is either a bureaucratic emergency or an opportunity for creative governance. Your mother definitely would not approve."
+                    "text": "You pull the blank decree from under the pillow. The parchment practically hums with potential. A blank official document in a kingdom without a king -- this is either a bureaucratic emergency or an opportunity for creative governance. Your mother definitely would not approve."
                 }
             ],
             "once": true
