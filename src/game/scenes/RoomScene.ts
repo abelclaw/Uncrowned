@@ -795,6 +795,22 @@ export class RoomScene extends Phaser.Scene {
                 this.effectsManager.createGhostPassage(560, 282, 80, 200);
             }
 
+            // open-exit: register the exit zone mid-scene so the player can walk through immediately
+            if (action.type === 'open-exit' && action.exit) {
+                const exit = this.roomData.exits.find(e => e.id === action.exit);
+                if (exit) {
+                    const alreadyOpen = this.exitZones.some(ez => ez.exit.id === exit.id);
+                    if (!alreadyOpen) {
+                        this.exitZones.push({
+                            rect: new Phaser.Geom.Rectangle(
+                                exit.zone.x, exit.zone.y, exit.zone.width, exit.zone.height
+                            ),
+                            exit,
+                        });
+                    }
+                }
+            }
+
             // Swap player sprite when hat is purchased
             if (action.type === 'set-flag' && action.flag === 'has_hat' && this.playerImg) {
                 if (this.textures.exists('player-with-hat')) {
@@ -802,10 +818,10 @@ export class RoomScene extends Phaser.Scene {
                 }
             }
 
-            // Hide/show hotspot sprites when flag changes affect their conditions
+            // Hide/show hotspot sprites and register/remove click zones when flag changes
             if (action.type === 'set-flag') {
                 for (const hotspot of this.roomData.hotspots) {
-                    if (!hotspot.spriteId || !hotspot.conditions?.length) continue;
+                    if (!hotspot.conditions?.length) continue;
                     const visible = hotspot.conditions.every(cond => {
                         if (cond.type === 'flag-set' && cond.flag) {
                             return this.gameState.isFlagSet(cond.flag);
@@ -815,9 +831,22 @@ export class RoomScene extends Phaser.Scene {
                         }
                         return true;
                     });
+                    // Toggle sprite visibility if hotspot has a sprite
                     const sprite = this.hotspotSprites.get(hotspot.id);
                     if (sprite) {
                         sprite.setVisible(visible);
+                    }
+                    // Register click zone if hotspot just became visible
+                    if (visible) {
+                        const alreadyRegistered = this.hotspotZones.some(hz => hz.hotspot.id === hotspot.id);
+                        if (!alreadyRegistered) {
+                            this.hotspotZones.push({
+                                rect: new Phaser.Geom.Rectangle(
+                                    hotspot.zone.x, hotspot.zone.y, hotspot.zone.width, hotspot.zone.height
+                                ),
+                                hotspot,
+                            });
+                        }
                     }
                 }
 

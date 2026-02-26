@@ -337,6 +337,12 @@
                 "x": 411,
                 "y": 369
             },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "met_ghost_king"
+                }
+            ],
             "responses": {
                 "look": "The Ghost King hovers beside the throne -- a translucent figure in full regal attire, looking exactly as disappointed as you'd expect from a monarch whose dynasty ended over an olive at a feast. His crown flickers in and out of visibility.",
                 "use": "You cannot 'use' a ghost. They tend to have opinions about that sort of thing.",
