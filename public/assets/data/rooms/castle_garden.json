@@ -290,7 +290,9 @@
                 "cobblestones",
                 "garden path",
                 "garden paths",
-                "pavement"
+                "pavement",
+                "ground",
+                "floor"
             ],
             "zone": {
                 "x": 200,
@@ -338,7 +340,7 @@
                 "y": 420
             },
             "responses": {
-                "look": "Ivy covers everything -- paths, walls, statues, and most of the shed. It creeps with the patient ambition of something that has nowhere to be and all the time in the world.",
+                "look": "Ivy covers everything -- paths, walls, statues, even the pavilion columns. It creeps with the patient ambition of something that has nowhere to be and all the time in the world.",
                 "take": "You tear off a length of ivy. It comes away easily, revealing the crumbling stone beneath. The ivy was the only thing holding things together. Some structural lies are best left undisturbed.",
                 "use": "Ivy is decorative at best, destructive at worst, and useful for absolutely nothing in between. It grows, it clings, it slowly demolishes masonry.",
                 "talk": "You speak to the ivy. It continues growing, indifferent to your words. Ivy doesn't care about your feelings. Ivy just grows. There's a lesson there, but it's depressing.",
@@ -486,6 +488,63 @@
         }
     ],
     "puzzles": [
+        {
+            "id": "look-ground-trap",
+            "trigger": {
+                "verb": "look",
+                "subject": "stone-paths"
+            },
+            "conditions": [
+                {
+                    "type": "item-not-taken",
+                    "item": "rat-trap"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "Stone paths wind through the garden, half-swallowed by ivy. Near the base of a petrified tree, something rusty catches your eye in the grass."
+                }
+            ]
+        },
+        {
+            "id": "look-tree-trap",
+            "trigger": {
+                "verb": "look",
+                "subject": "petrified-trees"
+            },
+            "conditions": [
+                {
+                    "type": "item-not-taken",
+                    "item": "rat-trap"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "Several ornamental trees have been completely petrified, their branches frozen mid-sway in solid stone. The detail is remarkable -- individual leaves, bark texture, even a bird's nest preserved in grey stone. At the base of the nearest tree, something rusty sits half-hidden in the grass."
+                }
+            ]
+        },
+        {
+            "id": "look-bushes-trap",
+            "trigger": {
+                "verb": "look",
+                "subject": "overgrown-hedges"
+            },
+            "conditions": [
+                {
+                    "type": "item-not-taken",
+                    "item": "rat-trap"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "The hedges were once trimmed into the shapes of heraldic animals. Now they're chaos. Through a gap in the overgrowth, you notice something rusty lying in the grass near the base of a tree."
+                }
+            ]
+        },
         {
             "id": "take-sage",
             "trigger": {
