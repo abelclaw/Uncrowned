@@ -687,6 +687,80 @@
                 }
             ],
             "once": true
+        },
+        {
+            "id": "combine-stamp-ticket",
+            "trigger": {
+                "verb": "combine",
+                "subject": "vip-stamp",
+                "target": "queue-ticket"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "vip-stamp"
+                },
+                {
+                    "type": "has-item",
+                    "item": "queue-ticket"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "vip_stamped"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "vip-stamp"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "vip_stamped"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You stamp the queue ticket with VIP authorization. Red ink, bureaucratic revolution. Ticket #847 is now #847-VIP. The Clerk will hate this."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "combine-ticket-stamp",
+            "trigger": {
+                "verb": "combine",
+                "subject": "queue-ticket",
+                "target": "vip-stamp"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "vip-stamp"
+                },
+                {
+                    "type": "has-item",
+                    "item": "queue-ticket"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "vip_stamped"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "vip-stamp"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "vip_stamped"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You press the ticket against the VIP stamp. The sacred words 'SKIP ALL QUEUES' embed into the paper. Your ticket is upgraded. The system is defeated."
+                }
+            ],
+            "once": true
         }
     ],
     "deathTriggers": [

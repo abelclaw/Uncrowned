@@ -151,14 +151,16 @@
         {
             "id": "queue-ticket",
             "name": "Queue Ticket #847",
+            "aliases": ["ticket", "queue ticket", "number", "number 847"],
             "description": "A numbered ticket. You are number 847. Currently serving: 3. This may take a while.",
-            "combinable": false
+            "combinable": true
         },
         {
             "id": "vip-stamp",
             "name": "VIP Authorization Stamp",
+            "aliases": ["stamp", "vip stamp", "rubber stamp", "vip"],
             "description": "An unauthorized stamp that says 'VIP -- SKIP ALL QUEUES.' Someone left it in a filing cabinet. Bless them.",
-            "combinable": false
+            "combinable": true
         },
         {
             "id": "old-boat",
