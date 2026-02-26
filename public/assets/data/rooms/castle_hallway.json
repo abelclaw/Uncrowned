@@ -1,7 +1,7 @@
 {
     "id": "castle_hallway",
     "name": "Castle Hallway",
-    "description": "A long stone corridor stretches through the castle's interior. Portraits of past monarchs line the walls, each one looking more disappointed than the last -- a dynasty of escalating disapproval. Doors branch off in every direction: south to the courtyard, east to the throne room, and north to the servants' quarters. One door to the west is conspicuously locked, its keyhole shaped like a bone. A faded carpet runs the length of the hall, threadbare and stained with centuries of royal foot traffic.",
+    "description": "A long stone corridor stretches through the castle's interior. Portraits of past monarchs line the walls, each one looking more disappointed than the last -- a dynasty of escalating disapproval. Doors branch off in every direction: south to the courtyard, west to the kitchen, and north to the servants' quarters. The massive doors to the east leading to the throne room are conspicuously sealed, the keyhole shaped like a bone. A faded carpet runs the length of the hall, threadbare and stained with centuries of royal foot traffic.",
     "background": {
         "layers": [
             {
@@ -70,7 +70,14 @@
             },
             "transition": "slide-right",
             "direction": "east",
-            "label": "throne room"
+            "label": "throne room",
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "skeleton-key-used"
+                }
+            ],
+            "blockedMessage": "The throne room doors are sealed shut. A large, ornate keyhole shaped like a bone suggests this requires no ordinary key -- something skeletal, perhaps."
         },
         {
             "id": "to-servants",
@@ -104,14 +111,7 @@
             },
             "transition": "slide-left",
             "direction": "west",
-            "label": "kitchen",
-            "conditions": [
-                {
-                    "type": "flag-set",
-                    "flag": "skeleton-key-used"
-                }
-            ],
-            "blockedMessage": "The kitchen door is locked. A large, ornate keyhole suggests this requires no ordinary key -- something skeletal, perhaps."
+            "label": "kitchen"
         }
     ],
     "hotspots": [
@@ -158,34 +158,37 @@
             "name": "Locked Door",
             "aliases": [
                 "door",
-                "kitchen door",
+                "throne door",
+                "throne room door",
                 "locked door",
                 "bone keyhole",
                 "keyhole",
-                "wooden door",
-                "west door",
+                "heavy door",
+                "east door",
                 "lock",
-                "bone lock"
+                "bone lock",
+                "sealed door",
+                "ornate door"
             ],
             "zone": {
-                "x": 50,
+                "x": 850,
                 "y": 370,
                 "width": 60,
                 "height": 70
             },
             "interactionPoint": {
-                "x": 100,
+                "x": 880,
                 "y": 420
             },
             "responses": {
-                "look": "A sturdy wooden door with a keyhole shaped distinctly like a bone. The door itself is unremarkable except for a small plaque reading 'Kitchen & Stores -- Staff Only.' Whoever locked it clearly didn't want casual visitors wandering in. The keyhole is ornate enough that a regular key won't work.",
-                "use": "The door is locked. The keyhole is shaped like a bone -- you'd need a skeleton key, which is either a pun or a very specific security measure. Possibly both.",
-                "open": "Locked. The bone-shaped keyhole mocks your keyless state. You rattle the handle. The door rattles back. Neither of you gains ground.",
-                "push": "You lean against the door. It holds firm. This door was built to resist exactly this amount of determination.",
-                "default": "You examine the locked door. It's locked. That's its primary characteristic and it's doing an excellent job.",
-                "take": "You attempt to remove the door from its hinges through sheer willpower. The door, being a door, remains exactly where doors are supposed to be.",
-                "talk": "You knock politely. 'Hello? Anyone in the kitchen?' The silence from beyond suggests either nobody's home, or the kitchen staff have a very strict policy about answering doors.",
-                "pull": "You pull at the locked door handle. The lock holds with the quiet confidence of something that has been keeping people out for generations."
+                "look": "Massive double doors seal the eastern passage to the throne room. A keyhole shaped distinctly like a bone sits at the center, too ornate for any common key. The doors are carved with the royal crest -- a crown above crossed olive branches. Whoever locked them clearly intended to keep the throne room sealed until the right person came along.",
+                "use": "The doors are locked. The keyhole is shaped like a bone -- you'd need a skeleton key, which is either a pun or a very specific security measure. Possibly both.",
+                "open": "Locked. The bone-shaped keyhole mocks your keyless state. You rattle the handles. The doors rattle back. Neither of you gains ground.",
+                "push": "You lean against the doors. They hold firm. These doors were built to resist exactly this amount of determination.",
+                "default": "You examine the locked doors. They're locked. That's their primary characteristic and they're doing an excellent job.",
+                "take": "You attempt to remove the doors from their hinges through sheer willpower. The doors, being doors, remain exactly where doors are supposed to be.",
+                "talk": "You knock politely. 'Hello? Anyone in the throne room?' The silence from beyond suggests either nobody's home, or the royal court has a very strict policy about answering doors.",
+                "pull": "You pull at the door handles. The lock holds with the quiet confidence of something that has been keeping people out for generations."
             }
         },
         {
@@ -364,7 +367,7 @@
                 },
                 {
                     "type": "open-exit",
-                    "exit": "to-kitchen"
+                    "exit": "to-throne-room"
                 },
                 {
                     "type": "add-item",
@@ -372,7 +375,7 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "The skeleton key slides into the bone-shaped keyhole with a satisfying click. The door swings open, revealing the castle kitchen beyond -- and on the wall just inside, a detailed map of the kingdom. You pull it down. It shows routes through the forest, past the bridge, and deep into the earth: the Screaming Caverns. Someone marked the path with a dotted line and the annotation 'HERE BE BUREAUCRACY.' The key crumbles to bone dust in your hand."
+                    "text": "The skeleton key slides into the bone-shaped keyhole with a satisfying click. The massive doors groan open, revealing the throne room beyond -- and pinned to the wall just inside, a detailed map of the kingdom. You pull it down. It shows routes through the forest, past the bridge, and deep into the earth: the Screaming Caverns. Someone marked the path with a dotted line and the annotation 'HERE BE BUREAUCRACY.' The key crumbles to bone dust in your hand."
                 }
             ],
             "once": true
@@ -404,7 +407,7 @@
                 },
                 {
                     "type": "open-exit",
-                    "exit": "to-kitchen"
+                    "exit": "to-throne-room"
                 },
                 {
                     "type": "add-item",
@@ -412,7 +415,7 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "You try the skeleton key in the door. It fits perfectly -- bone to bone. The lock turns, the door opens. Inside, among kitchen supplies, you spot a map pinned to the wall -- a map of the kingdom showing the route to the Screaming Caverns. You take it. The key disintegrates. Job done."
+                    "text": "You try the skeleton key in the doors. It fits perfectly -- bone to bone. The lock turns, the doors swing open, revealing the throne room. Pinned to the wall just inside is a map of the kingdom showing the route to the Screaming Caverns. You take it. The key disintegrates. Job done."
                 }
             ],
             "once": true
@@ -455,7 +458,7 @@
         }
     },
     "dynamicDescriptions": {
-        "skeleton-key-used": "The castle hallway stretches before you, portraits judging from every wall. The door to the kitchen now stands open, the bone-shaped keyhole empty. The smell of dust and spices drifts from beyond. All paths are now accessible -- for better or worse."
+        "skeleton-key-used": "The castle hallway stretches before you, portraits judging from every wall. The throne room doors now stand open, the bone-shaped keyhole empty. All paths are now accessible -- for better or worse."
     },
     "audio": {
         "music": "music-village",
@@ -483,9 +486,9 @@
         {
             "puzzleId": "use-skeleton-key",
             "tiers": [
-                "That locked door to the west has a bone-shaped keyhole. An oddly specific security measure. One imagines the matching key would be equally... skeletal.",
-                "The bone-shaped keyhole requires a skeleton key. Martha the Cook in the royal kitchen has one -- she found it in a sock drawer. She might trade it for something she desperately needs.",
-                "Give flour to Martha the Cook in the kitchen to get the skeleton key. Then use the skeleton key on the locked door. The flour is in the servants' quarters, behind the rat-infested crates."
+                "The sealed throne room doors have a bone-shaped keyhole. An oddly specific security measure. One imagines the matching key would be equally... skeletal.",
+                "The bone-shaped keyhole requires a skeleton key. Martha the Cook in the kitchen to the west has one -- she found it in a sock drawer. She might trade it for something she desperately needs.",
+                "Give flour to Martha the Cook in the kitchen to get the skeleton key. Then use the skeleton key on the locked throne room door. The flour is in the servants' quarters, behind the rat-infested crates."
             ]
         }
     ],
