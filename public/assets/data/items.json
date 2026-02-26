@@ -3,6 +3,7 @@
         {
             "id": "rusty-key",
             "name": "Rusty Key",
+            "aliases": ["key", "old key", "rusty", "corroded key"],
             "description": "A key so corroded it might unlock a door or give you tetanus. Possibly both.",
             "combinable": false
         },
@@ -16,6 +17,7 @@
         {
             "id": "stick",
             "name": "Sturdy Stick",
+            "aliases": ["stick", "branch", "wood", "twig"],
             "description": "A stick. Not just any stick -- this one has character. And splinters.",
             "combinable": true
         },
@@ -43,12 +45,14 @@
         {
             "id": "telescope-lens",
             "name": "Telescope Lens",
+            "aliases": ["lens", "glass", "telescope", "magnifying lens"],
             "description": "A cracked but functional lens. It magnifies your view and your insecurities.",
             "combinable": false
         },
         {
             "id": "notice-board-posting",
             "name": "Town Notice",
+            "aliases": ["notice", "posting", "announcement", "flyer"],
             "description": "An official notice declaring the kingdom 'temporarily inconvenienced' by a petrification curse. Bureaucratic understatement at its finest.",
             "combinable": false
         },
@@ -62,24 +66,28 @@
         {
             "id": "cave-fish",
             "name": "Pale Cave Fish",
+            "aliases": ["fish", "cave fish", "pale fish", "blind fish"],
             "description": "A blind, translucent fish from deep in the well. It wriggles feebly in your hands, confused by the concept of 'up.'",
             "combinable": false
         },
         {
             "id": "royal-seal",
             "name": "Royal Seal",
+            "aliases": ["seal", "wax seal", "royal stamp", "crest"],
             "description": "A heavy wax seal stamp bearing the royal crest: a disgruntled badger wearing a crown. Historically accurate, unfortunately.",
             "combinable": true
         },
         {
             "id": "blank-decree",
             "name": "Blank Royal Decree",
+            "aliases": ["decree", "blank decree", "parchment", "blank parchment", "royal decree"],
             "description": "A sheet of parchment so official-looking it could probably govern a small nation. Which is sort of the point.",
             "combinable": true
         },
         {
             "id": "sealed-decree",
             "name": "Sealed Royal Decree",
+            "aliases": ["decree", "sealed decree", "royal decree", "document"],
             "description": "A forged royal document bearing the royal crest. Your mother would be so disappointed.",
             "combinable": false
         },
@@ -107,30 +115,35 @@
         {
             "id": "spirit-brew",
             "name": "Spirit Brew",
+            "aliases": ["brew", "potion", "sage water", "glowing water"],
             "description": "A chalice of sage-infused water that glows faintly. It smells like a retirement home for ghosts.",
             "combinable": false
         },
         {
             "id": "rat-trap",
             "name": "Rat Trap",
+            "aliases": ["trap", "mousetrap", "rat catcher"],
             "description": "A rusty spring-loaded contraption that has seen better days. So have the rats, to be fair.",
             "combinable": false
         },
         {
             "id": "flour-sack",
             "name": "Flour Sack",
+            "aliases": ["flour", "sack", "bag of flour", "sack of flour"],
             "description": "A sack of flour that the rats didn't get to. Miracles do happen.",
             "combinable": false
         },
         {
             "id": "skeleton-key",
             "name": "Skeleton Key",
+            "aliases": ["key", "bone key", "skeleton"],
             "description": "A key shaped from actual bone. Whether human or animal is a question best left unasked.",
             "combinable": false
         },
         {
             "id": "castle-map",
             "name": "Castle Map",
+            "aliases": ["map", "kingdom map", "chart"],
             "description": "A map of the kingdom showing routes to the Screaming Caverns. Includes a helpful 'You are here' arrow pointing at nothing.",
             "combinable": false
         },
@@ -165,78 +178,91 @@
         {
             "id": "old-boat",
             "name": "Old Boat",
+            "aliases": ["boat", "raft", "vessel", "dinghy"],
             "description": "A boat in the loosest possible definition. It floats. Mostly. When it feels like it.",
             "combinable": true
         },
         {
             "id": "rope",
             "name": "Climbing Rope",
+            "aliases": ["rope", "climbing rope", "cord", "line"],
             "description": "A length of rope that looks like it was last inspected during the previous dynasty. It holds. Probably.",
             "combinable": true
         },
         {
             "id": "wood-planks",
             "name": "Wood Planks",
+            "aliases": ["planks", "wood", "boards", "lumber", "timber"],
             "description": "Planks salvaged from broken shelving. The library's loss is your boat's gain.",
             "combinable": true
         },
         {
             "id": "broken-seal-stamp",
             "name": "Broken Seal Stamp",
+            "aliases": ["broken seal", "broken stamp", "cracked seal", "seal pieces"],
             "description": "An ancient version of the kingdom's seal, cracked in two. It depicts the same disgruntled badger, but angrier.",
             "combinable": true
         },
         {
             "id": "coal",
             "name": "Forge Coal",
+            "aliases": ["coal", "charcoal", "fuel", "embers"],
             "description": "Chunks of ancient coal. They've been waiting centuries for someone to burn them. The anticipation is palpable.",
             "combinable": false
         },
         {
             "id": "ancient-seal",
             "name": "Ancient Kingdom Seal",
+            "aliases": ["seal", "kingdom seal", "reforged seal", "ancient stamp"],
             "description": "The kingdom's original administrative seal, reforged. The badger on it looks slightly less disgruntled. Progress.",
             "combinable": false
         },
         {
             "id": "crystal-of-mundanity",
             "name": "Crystal of Mundanity",
+            "aliases": ["crystal", "mundanity crystal", "grey crystal", "gray crystal"],
             "description": "The legendary Crystal of Mundanity. It is, fittingly, completely unremarkable. A plain grey crystal.",
             "combinable": false
         },
         {
             "id": "original-curse-contract",
             "name": "Original Curse Contract",
+            "aliases": ["contract", "curse contract", "legal document", "curse document"],
             "description": "A legal document binding the curse to the kingdom. Clause 47b contains the expiration terms. Of course it does.",
             "combinable": false
         },
         {
             "id": "kingdom-seal",
             "name": "Kingdom Administrative Seal",
+            "aliases": ["seal", "administrative seal", "official seal"],
             "description": "The official seal of the Kingdom of Erelhain, used for closing governmental proceedings. Different from the royal seal. Bureaucracy demands precision.",
             "combinable": false
         },
         {
             "id": "treasury-key",
             "name": "Treasury Key",
+            "aliases": ["key", "ornate key", "treasury"],
             "description": "An ornate key found in the dungeon. The Clerk had been using it as a paperweight.",
             "combinable": false
         },
         {
             "id": "clerk-memory-crystal",
             "name": "Clerk's Memory Crystal",
+            "aliases": ["memory crystal", "crystal", "memory", "clerk crystal"],
             "description": "A crystal containing the Clerk's suppressed memories. It glows with the light of forgotten regret.",
             "combinable": false
         },
         {
             "id": "gear-spring",
             "name": "Gear Spring",
+            "aliases": ["spring", "gear", "coil", "metal spring"],
             "description": "A coiled metal spring from the wizard's workshop. Still has bounce, unlike your hopes.",
             "combinable": false
         },
         {
             "id": "clock-oil",
             "name": "Clock Oil",
+            "aliases": ["oil", "lubricant", "vial", "vial of oil"],
             "description": "A vial of mechanical lubricant. It smells like progress and mineral spirits.",
             "combinable": false
         }
