@@ -71,6 +71,20 @@
             "transition": "fade",
             "direction": "east",
             "label": "caverns",
+            "aliases": [
+                "passage",
+                "spectral passage",
+                "ghost passage",
+                "secret passage",
+                "portal",
+                "door",
+                "glow",
+                "glowing wall",
+                "blue glow",
+                "shimmer",
+                "cavern",
+                "screaming caverns"
+            ],
             "conditions": [
                 {
                     "type": "flag-set",
