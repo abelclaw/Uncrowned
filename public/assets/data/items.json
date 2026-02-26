@@ -137,14 +137,16 @@
         {
             "id": "form-27b-stroke-6",
             "name": "Form 27-B Stroke 6",
+            "aliases": ["form", "form 27b", "bureaucratic form", "application", "paperwork", "document"],
             "description": "A bureaucratic form of such stunning complexity that reading it counts as a puzzle in itself.",
-            "combinable": false
+            "combinable": true
         },
         {
             "id": "ancient-ink",
             "name": "Ancient Ink",
+            "aliases": ["ink", "bottle of ink", "ink bottle", "blue ink", "old ink"],
             "description": "Ink so old it has developed opinions. Still writes, grudgingly.",
-            "combinable": false
+            "combinable": true
         },
         {
             "id": "queue-ticket",

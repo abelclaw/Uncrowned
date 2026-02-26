@@ -541,6 +541,80 @@
             "once": true
         },
         {
+            "id": "combine-ink-form",
+            "trigger": {
+                "verb": "combine",
+                "subject": "ancient-ink",
+                "target": "form-27b-stroke-6"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "ancient-ink"
+                },
+                {
+                    "type": "has-item",
+                    "item": "form-27b-stroke-6"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "form_filled"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "ancient-ink"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "form_filled"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You uncork the ancient ink and begin filling out Form 27-B Stroke 6. The ink flows eagerly, auto-completing the bureaucratic fields with evident delight. The completed form glows faintly. It's ready for the Clerk."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "combine-form-ink",
+            "trigger": {
+                "verb": "combine",
+                "subject": "form-27b-stroke-6",
+                "target": "ancient-ink"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "ancient-ink"
+                },
+                {
+                    "type": "has-item",
+                    "item": "form-27b-stroke-6"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "form_filled"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "ancient-ink"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "form_filled"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You apply the ancient ink to the form. It auto-completes the forty-seven fields with bureaucratic precision. The form glows with official power. Ready for the Clerk."
+                }
+            ],
+            "once": true
+        },
+        {
             "id": "stamp-ticket",
             "trigger": {
                 "verb": "use",
