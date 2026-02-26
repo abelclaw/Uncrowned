@@ -54,6 +54,23 @@
             "transition": "slide-left",
             "direction": "west",
             "label": "balcony"
+        },
+        {
+            "id": "to-underground-river",
+            "zone": {
+                "x": 880,
+                "y": 350,
+                "width": 80,
+                "height": 200
+            },
+            "targetRoom": "underground_river",
+            "spawnPoint": {
+                "x": 480,
+                "y": 460
+            },
+            "transition": "slide-right",
+            "direction": "east",
+            "label": "underground river"
         }
     ],
     "hotspots": [

@@ -120,8 +120,14 @@
                 "y": 379
             },
             "transition": "fade",
-            "direction": "north",
-            "label": "wizard tower"
+            "label": "wizard tower",
+            "aliases": [
+                "tower",
+                "wizard tower",
+                "wizard's tower",
+                "wizards tower",
+                "spire"
+            ]
         },
         {
             "id": "to-mirror-hall",
@@ -137,8 +143,14 @@
                 "y": 449
             },
             "transition": "fade",
-            "direction": "east",
-            "label": "hall of mirrors"
+            "label": "hall of mirrors",
+            "aliases": [
+                "mirrors",
+                "hall of mirrors",
+                "mirror hall",
+                "mirror room",
+                "hall"
+            ]
         },
         {
             "id": "to-dungeon",

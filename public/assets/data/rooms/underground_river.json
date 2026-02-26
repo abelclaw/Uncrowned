@@ -78,6 +78,23 @@
                 }
             ],
             "blockedMessage": "The forge lies across the underground river, but there's no way to cross. The water is too deep and fast to swim. You'd need some kind of vessel."
+        },
+        {
+            "id": "to-echo-chamber",
+            "zone": {
+                "x": 440,
+                "y": 450,
+                "width": 80,
+                "height": 80
+            },
+            "targetRoom": "echo_chamber",
+            "spawnPoint": {
+                "x": 689,
+                "y": 469
+            },
+            "transition": "fade",
+            "direction": "south",
+            "label": "echo chamber"
         }
     ],
     "hotspots": [
