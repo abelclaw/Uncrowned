@@ -597,6 +597,116 @@
                 }
             ],
             "once": true
+        },
+        {
+            "id": "repair-seal-targetless",
+            "trigger": {
+                "verb": "use",
+                "subject": "broken-seal-stamp"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "broken-seal-stamp"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "forge_lit"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "broken-seal-stamp"
+                },
+                {
+                    "type": "add-item",
+                    "item": "ancient-seal"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "seal_repaired"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You hold out the broken seal. The dwarven spirit rises, takes the halves in ghostly hands, and places them on the anvil. His hammer falls. The metal glows, fuses, becomes whole. The Ancient Kingdom Seal is restored. The badger on the crest looks slightly less disgruntled. 'Good metal,' the spirit says. The highest compliment a dwarven smith can give."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "repair-seal-reversed",
+            "trigger": {
+                "verb": "use",
+                "subject": "ancient-forge",
+                "target": "broken-seal-stamp"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "broken-seal-stamp"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "forge_lit"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "broken-seal-stamp"
+                },
+                {
+                    "type": "add-item",
+                    "item": "ancient-seal"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "seal_repaired"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You bring the broken seal to the forge. The dwarven spirit rises, places the halves on the anvil, and strikes. The metal glows, fuses, becomes whole. The Ancient Kingdom Seal is restored. 'Good metal,' the spirit nods."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "repair-seal-anvil-reversed",
+            "trigger": {
+                "verb": "use",
+                "subject": "forge-anvil",
+                "target": "broken-seal-stamp"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "broken-seal-stamp"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "forge_lit"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "broken-seal-stamp"
+                },
+                {
+                    "type": "add-item",
+                    "item": "ancient-seal"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "seal_repaired"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You set the broken seal on the anvil. The dwarven spirit does the rest. Ghostly hammer meets ancient metal. The seal fuses, mends, becomes whole. The Ancient Kingdom Seal is restored."
+                }
+            ],
+            "once": true
         }
     ],
     "deathTriggers": [

@@ -79,7 +79,8 @@ export const VERB_TABLE: VerbDefinition[] = [
             'turn', 'twist', 'rotate', 'flip', 'activate', 'operate', 'touch', 'rub',
             'throw', 'toss', 'cut', 'sit', 'wind', 'crank', 'swim', 'ride', 'wield',
             'dip', 'ring', 'wave', 'play', 'blow', 'stoke', 'insert', 'drop', 'wear',
-            'lower', 'feed', 'raise', 'hoist', 'buy', 'purchase', 'trade', 'pay'],
+            'lower', 'feed', 'raise', 'hoist', 'buy', 'purchase', 'trade', 'pay',
+            'fix', 'repair', 'mend', 'forge', 'reforge', 'restore', 'heat', 'smelt', 'craft'],
         patterns: [
             // "give/show/offer/hand X to Y" → use X on Y
             /^(?:give|show|offer|hand)\s+(.+?)\s+(?:to)\s+(.+)$/i,
@@ -115,9 +116,13 @@ export const VERB_TABLE: VerbDefinition[] = [
             /^(?:lower|raise|hoist)\s+(.+?)\s+(?:into|in|down|up)\s+(.+)$/i,
             // "feed X to Y" → use X on Y
             /^feed\s+(.+?)\s+(?:to)\s+(.+)$/i,
+            // "fix/repair/mend X with/on/at Y" → use X on Y
+            /^(?:fix|repair|mend|reforge|restore)\s+(.+?)\s+(?:with|on|at|in|using)\s+(.+)$/i,
+            // "forge/smelt/craft X on/at/in Y" → use X on Y
+            /^(?:forge|reforge|smelt|craft|heat)\s+(.+?)\s+(?:on|at|in|with)\s+(.+)$/i,
             // Bare verb + subject: "drink bottle", "light torch", "turn crank", "ring bell" etc.
             // Excludes give/show/offer/hand (need a target: "give X to Y")
-            /^(?:use|apply|pour|fill|drink|eat|consume|light|place|put|turn|twist|rotate|flip|activate|operate|throw|toss|cut|wind|crank|wield|dip|ring|wave|play|blow|stoke|insert|drop|wear|lower|feed|raise|hoist)\s+(.+)$/i,
+            /^(?:use|apply|pour|fill|drink|eat|consume|light|place|put|turn|twist|rotate|flip|activate|operate|throw|toss|cut|wind|crank|wield|dip|ring|wave|play|blow|stoke|insert|drop|wear|lower|feed|raise|hoist|fix|repair|mend|forge|reforge|restore|heat|smelt|craft)\s+(.+)$/i,
             /^(?:use|apply)$/i,
         ],
     },
