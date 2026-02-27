@@ -65,8 +65,8 @@
             },
             "targetRoom": "cavern_balcony",
             "spawnPoint": {
-                "x": 204,
-                "y": 287
+                "x": 436,
+                "y": 474
             },
             "transition": "fade",
             "direction": "north",

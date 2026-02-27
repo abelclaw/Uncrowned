@@ -198,8 +198,8 @@
       "act": "act1"
     },
     "cavern_entrance_hall": {
-      "prompt": "grand cavern entrance hall carved from living rock, vaulted ceiling into darkness, numbered doors and filing cabinets lining walls, contradictory direction signs, registration desk at center, underground bureaucratic office",
-      "seed": 200015,
+      "prompt": "grand cavern entrance hall carved from living rock, glowing blue magical energy portal on back wall swirling with light like a doorway to another realm, vaulted stone ceiling, numbered doors and passages on left and right walls, filing cabinets lining walls, contradictory direction signs, registration desk, underground bureaucratic office with magical portal prominently visible",
+      "seed": 200115,
       "output": "public/assets/backgrounds/rooms/cavern_entrance_hall.png",
       "dimensions": {
         "width": 960,
