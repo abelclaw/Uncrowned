@@ -376,6 +376,11 @@ export class CommandDispatcher {
             return this.handleOverviewQuery(roomData);
         }
 
+        // "where am i" -> room name
+        if (action.subject === '__room_name__') {
+            return { response: `You are in the ${roomData.name}.`, handled: true };
+        }
+
         // Bare "look" -> check dynamic descriptions based on game flags
         if (!action.subject) {
             // Check dynamic descriptions

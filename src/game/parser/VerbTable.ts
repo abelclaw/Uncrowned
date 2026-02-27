@@ -152,7 +152,7 @@ export const VERB_TABLE: VerbDefinition[] = [
     },
     {
         canonical: 'talk',
-        synonyms: ['talk', 'speak', 'say', 'ask', 'chat', 'greet', 'hello', 'call', 'yell', 'shout', 'whisper', 'hail', 'address', 'question', 'interrogate', 'converse', 'tell', 'answer', 'reply', 'respond'],
+        synonyms: ['talk', 'speak', 'say', 'ask', 'chat', 'greet', 'hello', 'call', 'yell', 'shout', 'whisper', 'hail', 'address', 'question', 'interrogate', 'converse', 'tell', 'answer', 'reply', 'respond', 'solve', 'attempt', 'begin'],
         patterns: [
             // "ask X about Y", "question X about Y", "interrogate X about Y"
             /^(?:ask|question|interrogate)\s+(.+?)\s+(?:about|regarding|on)\s+(.+)$/i,
@@ -167,6 +167,8 @@ export const VERB_TABLE: VerbDefinition[] = [
             /^(?:talk|speak|chat)\s+(.+)$/i,
             /^(?:ask|question|interrogate|address|hail)\s+(.+)$/i,
             /^(?:say|answer|reply|respond|greet|hello|whisper|yell|shout|call)\s+(.+)$/i,
+            // "solve/attempt/begin X" → talk X (for riddles, tests, challenges)
+            /^(?:solve|attempt|begin|start)\s+(?:the\s+)?(.+)$/i,
             // "say hello" / bare verbs
             /^(?:say\s+(?:hello|hi|hey))$/i,
         ],

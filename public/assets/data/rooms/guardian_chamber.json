@@ -97,7 +97,15 @@
                 "automaton",
                 "figure",
                 "stone statue",
-                "stone golem"
+                "stone golem",
+                "riddle",
+                "riddles",
+                "questions",
+                "question",
+                "test",
+                "quiz",
+                "challenge",
+                "trial"
             ],
             "zone": {
                 "x": 400,

@@ -63,6 +63,14 @@ export class TextParser {
             };
         }
 
+        // "where am i" / "what room" queries
+        if (/^(?:where\s+am\s+i|what\s+room(?:\s+(?:am\s+i|is\s+this))?|what\s+(?:is\s+this|place\s+is\s+this)|where\s+(?:is\s+this|are\s+we)|which\s+room|current\s+(?:room|location)|location)$/.test(normalized)) {
+            return {
+                success: true,
+                action: { verb: 'look', subject: '__room_name__', target: null, rawInput },
+            };
+        }
+
         // "wait" / "z" — common adventure game idle command
         if (/^(?:wait|z)$/i.test(normalized)) {
             return {
