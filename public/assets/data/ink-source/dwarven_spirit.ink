@@ -26,7 +26,7 @@ EXTERNAL getDeathCount()
 }
 
 === menu ===
-+ [Ask about the forge] -> forge_info
++ [What do you need to get the forge working?] -> forge_info
 + [Ask about the seal] -> seal_info
 + [Ask about the kingdom's founding] -> founding_info
 + {hasItem("broken-seal-stamp")} [Show the broken seal] -> show_seal

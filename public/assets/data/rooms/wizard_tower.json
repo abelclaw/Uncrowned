@@ -603,7 +603,9 @@
                 "ghost",
                 "spirit",
                 "mage",
-                "old man"
+                "old man",
+                "man",
+                "figure"
             ],
             "responses": {
                 "look": "The spectral wizard drifts between shelves, muttering about reagent prices and the declining quality of modern cursework. He doesn't seem to notice you, or perhaps he simply doesn't care. His robes shimmer between purple and transparent.",

@@ -342,7 +342,10 @@
                 "spectre",
                 "patient ghost",
                 "waiting ghost",
-                "phantom"
+                "phantom",
+                "man",
+                "figure",
+                "person"
             ],
             "position": {
                 "x": 824,

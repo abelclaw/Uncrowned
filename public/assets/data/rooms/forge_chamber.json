@@ -416,6 +416,42 @@
             "once": true
         },
         {
+            "id": "light-forge-targetless",
+            "trigger": {
+                "verb": "use",
+                "subject": "ancient-forge"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "coal"
+                },
+                {
+                    "type": "has-item",
+                    "item": "makeshift-torch"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "forge_lit"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "coal"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "forge_lit"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You load coal into the fire pit and touch your torch to it. The ancient fuel catches immediately. Flames leap. The forge roars to life. The dwarven spirit opens both eyes, nods approvingly, and cracks his ghostly knuckles. The forge is operational."
+                }
+            ],
+            "once": true
+        },
+        {
             "id": "light-forge-alt",
             "trigger": {
                 "verb": "use",
@@ -448,6 +484,42 @@
                 {
                     "type": "narrator-say",
                     "text": "You stack coal in the forge and light it with your torch. The ancient fuel ignites with enthusiasm. The forge bellows awaken. Heat fills the chamber. The dwarven spirit nods. The forge is ready."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "light-forge-firepit",
+            "trigger": {
+                "verb": "use",
+                "subject": "fire-pit"
+            },
+            "conditions": [
+                {
+                    "type": "has-item",
+                    "item": "coal"
+                },
+                {
+                    "type": "has-item",
+                    "item": "makeshift-torch"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "forge_lit"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "remove-item",
+                    "item": "coal"
+                },
+                {
+                    "type": "set-flag",
+                    "flag": "forge_lit"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You dump coal into the fire pit and touch your torch to it. The ancient fuel catches immediately. Flames leap. The forge roars to life. The dwarven spirit opens both eyes, nods approvingly, and cracks his ghostly knuckles. The forge is operational."
                 }
             ],
             "once": true
@@ -585,7 +657,13 @@
                 "ghost",
                 "smith",
                 "blacksmith",
-                "forgemaster"
+                "forgemaster",
+                "man",
+                "figure",
+                "dwarven spirit",
+                "dwarven smith",
+                "ghost dwarf",
+                "spectral dwarf"
             ],
             "responses": {
                 "look": "A translucent dwarven figure sits cross-legged near the forge, eyes closed in what might be meditation or might be the afterlife equivalent of a nap. His spectral beard is magnificent -- braided with care that death has not diminished.",

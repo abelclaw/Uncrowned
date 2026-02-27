@@ -361,7 +361,9 @@
                 "face",
                 "reflection",
                 "entity",
-                "ghost"
+                "ghost",
+                "figure",
+                "voice"
             ]
         }
     ],
