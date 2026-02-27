@@ -54,6 +54,23 @@
             "transition": "slide-right",
             "direction": "east",
             "label": "west wing"
+        },
+        {
+            "id": "to-guardian",
+            "zone": {
+                "x": 440,
+                "y": 450,
+                "width": 80,
+                "height": 80
+            },
+            "targetRoom": "guardian_chamber",
+            "spawnPoint": {
+                "x": 692,
+                "y": 497
+            },
+            "transition": "fade",
+            "direction": "south",
+            "label": "guardian chamber"
         }
     ],
     "hotspots": [

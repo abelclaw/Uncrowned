@@ -152,6 +152,28 @@
                 }
             ],
             "blockedMessage": "The west wing corridor is barred by a locked gate. There must be a way to open it from somewhere in the hall."
+        },
+        {
+            "id": "to-east-wing",
+            "zone": {
+                "x": 880,
+                "y": 150,
+                "width": 80,
+                "height": 150
+            },
+            "targetRoom": "cavern_east_wing",
+            "spawnPoint": {
+                "x": 305,
+                "y": 417
+            },
+            "transition": "slide-right",
+            "label": "east wing",
+            "aliases": [
+                "east wing",
+                "east corridor",
+                "east passage",
+                "east tunnel"
+            ]
         }
     ],
     "hotspots": [
