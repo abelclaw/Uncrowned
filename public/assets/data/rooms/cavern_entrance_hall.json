@@ -106,8 +106,8 @@
             "label": "waiting room",
             "conditions": [
                 {
-                    "type": "has-item",
-                    "item": "queue-ticket"
+                    "type": "flag-set",
+                    "flag": "registered_with_clerk"
                 }
             ],
             "blockedMessage": "A velvet rope blocks the entrance to the waiting room. A small sign reads: 'TICKET HOLDERS ONLY. No exceptions. No excuses. No crying.'"

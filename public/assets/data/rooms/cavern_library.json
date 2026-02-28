@@ -85,14 +85,120 @@
                 "y": 420
             },
             "responses": {
-                "look": "Rows of bookshelves crammed with texts in languages that range from 'archaic' to 'possibly invented.' Titles include 'A Bureaucrat's Guide to Immortality,' 'Mushroom Patterns and Their Meanings,' and 'How to Answer Guardian Questions Without Dying (Third Edition).' Several are bookmarked at suspiciously relevant pages.",
-                "use": "You browse the shelves. Most texts are incomprehensible, but one book -- 'Mushroom Patterns' -- contains a diagram showing a specific sequence: left, right, center, left, center. It's circled in ancient ink. Someone wanted this pattern remembered.",
+                "look": "Rows of bookshelves crammed with texts in languages that range from 'archaic' to 'possibly invented.' Most are illegible, but a few titles catch your eye: a slim volume on 'Mushroom Patterns,' a thick tome titled 'A Bureaucrat's Guide to Immortality,' and a leather-bound 'History of the Screaming Caverns.' The reading desk has an open book about the Guardian Chamber.",
+                "use": "You browse the shelves methodically. A few books stand out: 'Mushroom Patterns and Their Connection to the Crystal Barrier,' 'A Bureaucrat's Guide to Immortality,' and 'History of the Screaming Caverns.' The reading desk also has an open book worth examining.",
                 "take": "You try to remove a book. The shelf groans. Removing structural literature is inadvisable.",
-                "default": "You survey the library. It's the kind of place where knowledge goes to retire.",
+                "default": "You survey the shelves. A few titles stand out among the academic wreckage: a book on mushroom patterns, a bureaucrat's guide, and a cavern history.",
                 "talk": "You address the bookshelves. They do not respond. Literature is a one-way conversation, which is probably for the best -- these books have seen things.",
                 "open": "Most of the books are already open, in the sense that their spines have given up entirely. The ones still sealed shut are sealed for a reason.",
                 "push": "You lean into the shelves. They creak ominously. The last person who pushed a bookshelf in here created the 'collapsed shelves' section. Learn from history.",
                 "pull": "You pull at a shelf. Books cascade onto your feet with the enthusiasm of knowledge freed from its prison. The library disapproves. You can tell by the dust."
+            }
+        },
+        {
+            "id": "mushroom-book",
+            "name": "Mushroom Patterns Book",
+            "aliases": [
+                "mushroom book",
+                "mushroom patterns",
+                "fungi book",
+                "mushroom volume",
+                "pattern book",
+                "slim volume",
+                "mushroom text",
+                "bioluminescent book",
+                "fungi text",
+                "mushroom guide"
+            ],
+            "zone": {
+                "x": 220,
+                "y": 355,
+                "width": 40,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 240,
+                "y": 420
+            },
+            "responses": {
+                "look": "A slim volume titled 'On the Bioluminescent Fungi of the West Wing and Their Connection to the Crystal Barrier.' The cover is worn but the pages inside are crisp. Someone bookmarked a diagram with a dried mushroom cap. Scholarly dedication or snacking evidence -- hard to tell.",
+                "use": "You open the book to the bookmarked page. The diagram is clear and carefully annotated.",
+                "take": "You tug the book free. The shelf groans but holds. On reflection, the book is more useful here where you can reference it. Memorize the pattern instead.",
+                "default": "You examine the mushroom book. It's thinner than you'd expect for something so important.",
+                "talk": "You read aloud from the mushroom book. The words echo through the library: 'Left, right, center, left, center.' The acoustics make it sound like an incantation. It basically is one.",
+                "open": "You crack open the book. A faint glow escapes from the pages -- bioluminescent ink, naturally. The author was committed to the theme.",
+                "push": "You push the book back into its slot. It slides in reluctantly, as though it enjoyed being the center of attention.",
+                "pull": "You pull the book from the shelf. A thin trail of bioluminescent dust drifts from its pages. Even the book glows in here."
+            }
+        },
+        {
+            "id": "bureaucracy-guide",
+            "name": "Bureaucrat's Guide",
+            "aliases": [
+                "bureaucrat guide",
+                "bureaucrat's guide",
+                "bureaucracy book",
+                "immortality book",
+                "guide to immortality",
+                "thick book",
+                "thick tome",
+                "bureaucrat book",
+                "bureaucratic guide"
+            ],
+            "zone": {
+                "x": 260,
+                "y": 355,
+                "width": 40,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 280,
+                "y": 420
+            },
+            "responses": {
+                "look": "A thick tome titled 'A Bureaucrat's Guide to Immortality, or: How I Learned to Stop Worrying and Love the Queue.' The author is listed as 'The Clerk (First Edition, Final Edition).' It's eight hundred pages long. The table of contents alone takes forty pages.",
+                "use": "You open to a random page. Chapter 47: 'On the Proper Filing of Mortality Waivers.' It reads: 'Death is merely a clerical error that has not yet been corrected. Submit Form 66-D (Request for Continued Existence) in triplicate. Processing time: eternity.' You close the book, slightly more afraid of paperwork than before.",
+                "take": "The book weighs roughly the same as a bureaucratic institution. You'd need a cart, a mule, and a very good reason.",
+                "default": "You regard the bureaucrat's guide. Eight hundred pages of administrative immortality advice. The Clerk wrote this. Of course he did.",
+                "talk": "You read a passage aloud: 'The secret to immortality is simple: never finish your paperwork. As long as one form remains unfiled, the universe cannot close your account.' The library absorbs this wisdom with dusty indifference.",
+                "open": "You open the book. The spine cracks with the authority of a tome that has been closed for centuries and is not pleased about being disturbed.",
+                "push": "You push the tome. It barely moves. Eight hundred pages of bureaucratic wisdom have significant mass.",
+                "pull": "You pull the book free. It's so heavy the shelf bounces back with relief."
+            }
+        },
+        {
+            "id": "cavern-history",
+            "name": "Cavern History Book",
+            "aliases": [
+                "history book",
+                "cavern history",
+                "history tome",
+                "leather book",
+                "leather-bound",
+                "screaming caverns book",
+                "history of the caverns",
+                "history volume",
+                "historical text"
+            ],
+            "zone": {
+                "x": 300,
+                "y": 355,
+                "width": 40,
+                "height": 30
+            },
+            "interactionPoint": {
+                "x": 320,
+                "y": 420
+            },
+            "responses": {
+                "look": "A leather-bound volume titled 'History of the Screaming Caverns: From Natural Wonder to Bureaucratic Nightmare.' The leather is suspiciously supple for something this old. The author is anonymous, which is either humility or self-preservation.",
+                "use": "You read a chapter at random. 'The Screaming Caverns were named not for any acoustic property, but for the reaction of the first tax inspector who discovered the paperwork backlog within. His scream lasted forty-seven seconds and is still echoing in the Echo Chamber.' You learn nothing useful but feel culturally enriched.",
+                "take": "The book is chained to the shelf with a tiny brass chain. Someone wanted this history preserved. Or imprisoned. With books, it's the same thing.",
+                "default": "You examine the history book. It's surprisingly well-preserved, as though the caverns themselves are invested in their own narrative.",
+                "talk": "You read from the history book: 'The caverns were first settled by dwarves who mistook bureaucracy for civilization. The mistake proved permanent.' The library seems to nod in agreement, though that might be structural settling.",
+                "open": "You open the book. A small cloud of dust rises from the pages and forms, briefly, the shape of a filing cabinet. Then disperses. The caverns have a sense of humor.",
+                "push": "You push the book. The chain catches. It swings back to its spot on the shelf like a pendulum of historical determinism.",
+                "pull": "You pull the book. The chain goes taut. The book opens to a random page: 'Chapter 12: Why Every Escape Route Requires a Form.' You stop pulling."
             }
         },
         {
@@ -367,8 +473,8 @@
         {
             "id": "read-mushroom-book",
             "trigger": {
-                "verb": "use",
-                "subject": "bookshelves"
+                "verb": "look",
+                "subject": "mushroom-book"
             },
             "conditions": [
                 {
@@ -383,7 +489,31 @@
                 },
                 {
                     "type": "narrator-say",
-                    "text": "You find the mushroom pattern book. The diagram is clear: activate mushrooms in the sequence left, right, center, left, center. The book notes: 'This pattern reveals the Crystal Chamber viewing passage from the West Wing. Do NOT eat the mushrooms. This warning should not be necessary but historical data suggests otherwise.'"
+                    "text": "You open the mushroom book to the bookmarked page. The diagram is clear: activate mushrooms in the sequence left, right, center, left, center. A note in the margin reads: 'The mushrooms channel energy to the crystal's barrier. Activating them in sequence disrupts the flow. Do NOT eat the mushrooms. This warning should not be necessary but historical data suggests otherwise.'"
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "read-mushroom-book-use",
+            "trigger": {
+                "verb": "use",
+                "subject": "mushroom-book"
+            },
+            "conditions": [
+                {
+                    "type": "flag-not-set",
+                    "flag": "knows_mushroom_pattern"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "knows_mushroom_pattern"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You open the mushroom book to the bookmarked page. The diagram is clear: activate mushrooms in the sequence left, right, center, left, center. A note in the margin reads: 'The mushrooms channel energy to the crystal's barrier. Activating them in sequence disrupts the flow. Do NOT eat the mushrooms. This warning should not be necessary but historical data suggests otherwise.'"
                 }
             ],
             "once": true
@@ -392,6 +522,30 @@
             "id": "read-guardian-book",
             "trigger": {
                 "verb": "use",
+                "subject": "reading-desk"
+            },
+            "conditions": [
+                {
+                    "type": "flag-not-set",
+                    "flag": "knows_guardian_answers"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "set-flag",
+                    "flag": "knows_guardian_answers"
+                },
+                {
+                    "type": "narrator-say",
+                    "text": "You study the open book carefully. The Guardian's questions: First -- 'In what year was the kingdom founded?' Answer: 847. Second -- 'What was the name of the first kingdom bureaucrat?' Answer: Aldric the Fastidious. Third -- the page is torn. The answer to the third question must be elsewhere in the caverns."
+                }
+            ],
+            "once": true
+        },
+        {
+            "id": "read-guardian-book-look",
+            "trigger": {
+                "verb": "look",
                 "subject": "reading-desk"
             },
             "conditions": [
@@ -450,7 +604,7 @@
         }
     },
     "dynamicDescriptions": {
-        "knows_mushroom_pattern": "The cavern library hums with scholarly energy. You've found the mushroom pattern sequence -- left, right, center, left, center -- and the guardian's first two answers. The third answer remains tantalizingly absent, somewhere deeper in the caverns."
+        "knows_mushroom_pattern": "The cavern library hums with scholarly energy. You've found the mushroom pattern sequence -- left, right, center, left, center -- and its connection to the crystal's barrier."
     },
     "audio": {
         "music": "music-cave",
@@ -479,17 +633,17 @@
         {
             "puzzleId": "read-mushroom-book",
             "tiers": [
-                "The bookshelves here contain more than just dust and scholarly despair. Somewhere among the collapsed literature is practical knowledge about bioluminescent fungi and the specific order in which they respond to being poked.",
-                "Use the bookshelves to find a book about mushroom patterns. It contains a diagram showing the activation sequence for the West Wing mushrooms: a specific left-right-center combination.",
-                "Use the bookshelves to read the mushroom pattern book. The sequence is left, right, center, left, center. You'll need this to open the Crystal Chamber passage in the West Wing."
+                "The library shelves have a few readable books among the academic wreckage. One of them -- a slim volume on mushroom patterns -- seems particularly relevant to the crystal's barrier.",
+                "Look at the bookshelves to see what's available, then read the mushroom patterns book. It contains the activation sequence for the West Wing mushrooms and explains their connection to the crystal's force barrier.",
+                "Read the mushroom book on the shelves. The sequence is left, right, center, left, center. Go to the West Wing and use the mushroom clusters to weaken the crystal's barrier."
             ]
         },
         {
             "puzzleId": "read-guardian-book",
             "tiers": [
-                "The reading desk has a book open to a rather informative page. Someone was researching the Guardian's test questions before the curse interrupted their study session. Two out of three answers are here.",
-                "Use the reading desk to study the Guardian's questions. You'll learn the founding year of the kingdom and the name of the first bureaucrat. The third answer is missing -- you'll need to find it elsewhere in the caverns.",
-                "Use the reading desk to learn two answers: 847 (founding year) and Aldric the Fastidious (first bureaucrat). The third answer must be found in the echo chamber, east of the balcony above the West Wing."
+                "The reading desk has a book open to a rather informative page. Someone was researching the Guardian's test questions before the curse interrupted their study session.",
+                "Read the open book on the reading desk. You'll learn the founding year of the kingdom and the name of the first bureaucrat. The third answer is missing -- you'll need to find it elsewhere in the caverns.",
+                "Read the book on the reading desk to learn two answers: 847 (founding year) and Aldric the Fastidious (first bureaucrat). The third answer must be found in the echo chamber."
             ]
         }
     ],

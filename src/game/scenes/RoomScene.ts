@@ -188,6 +188,27 @@ export class RoomScene extends Phaser.Scene {
                             spriteKey
                         ).setDisplaySize(item.zone.width, item.zone.height).setDepth(5);
                         this.itemSprites.set(item.id, itemSprite);
+
+                        // Apply glow effect if item has glow config
+                        const fx = item.effects;
+                        if (fx?.glow) {
+                            const glow = itemSprite.preFX?.addGlow(
+                                fx.glow.color ?? 0xffffff,
+                                fx.glow.outerStrength ?? 4,
+                                fx.glow.innerStrength ?? 0,
+                                false
+                            );
+                            if (glow && fx.glow.pulse) {
+                                this.tweens.add({
+                                    targets: glow,
+                                    outerStrength: (fx.glow.outerStrength ?? 4) * 2,
+                                    duration: 1500,
+                                    yoyo: true,
+                                    repeat: -1,
+                                    ease: 'Sine.easeInOut',
+                                });
+                            }
+                        }
                     }
                 }
             }

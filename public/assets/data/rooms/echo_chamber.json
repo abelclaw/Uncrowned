@@ -39,38 +39,38 @@
     ],
     "exits": [
         {
+            "id": "to-west-wing",
+            "zone": {
+                "x": 440,
+                "y": 450,
+                "width": 80,
+                "height": 80
+            },
+            "targetRoom": "cavern_west_wing",
+            "spawnPoint": {
+                "x": 534,
+                "y": 477
+            },
+            "transition": "fade",
+            "direction": "south",
+            "label": "west wing"
+        },
+        {
             "id": "to-balcony",
             "zone": {
-                "x": 0,
+                "x": 440,
                 "y": 350,
                 "width": 80,
-                "height": 200
+                "height": 80
             },
             "targetRoom": "cavern_balcony",
             "spawnPoint": {
                 "x": 436,
                 "y": 474
             },
-            "transition": "slide-left",
-            "direction": "west",
+            "transition": "fade",
+            "direction": "north",
             "label": "balcony"
-        },
-        {
-            "id": "to-underground-river",
-            "zone": {
-                "x": 880,
-                "y": 350,
-                "width": 80,
-                "height": 200
-            },
-            "targetRoom": "underground_river",
-            "spawnPoint": {
-                "x": 480,
-                "y": 460
-            },
-            "transition": "slide-right",
-            "direction": "east",
-            "label": "underground river"
         }
     ],
     "hotspots": [

@@ -156,6 +156,15 @@ export interface RoomItemData {
     interactionPoint: { x: number; y: number };
     /** Verb-specific text responses (same structure as hotspot responses) */
     responses?: HotspotResponses;
+    /** Optional visual effects for the item sprite */
+    effects?: {
+        glow?: {
+            color?: number;
+            outerStrength?: number;
+            innerStrength?: number;
+            pulse?: boolean;
+        };
+    };
 }
 
 /**

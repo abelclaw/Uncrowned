@@ -39,23 +39,6 @@
     ],
     "exits": [
         {
-            "id": "to-west-wing",
-            "zone": {
-                "x": 880,
-                "y": 350,
-                "width": 80,
-                "height": 200
-            },
-            "targetRoom": "cavern_west_wing",
-            "spawnPoint": {
-                "x": 534,
-                "y": 477
-            },
-            "transition": "slide-right",
-            "direction": "east",
-            "label": "west wing"
-        },
-        {
             "id": "to-guardian",
             "zone": {
                 "x": 440,
@@ -410,14 +393,22 @@
                 "treasure"
             ],
             "zone": {
-                "x": 506,
-                "y": 315,
-                "width": 78,
-                "height": 65
+                "x": 486,
+                "y": 285,
+                "width": 118,
+                "height": 100
             },
             "interactionPoint": {
                 "x": 545,
                 "y": 432
+            },
+            "effects": {
+                "glow": {
+                    "color": 6737151,
+                    "outerStrength": 6,
+                    "innerStrength": 2,
+                    "pulse": true
+                }
             },
             "responses": {
                 "look": "The Crystal of Mundanity. Grey. Plain. Hovering. It is the most important artifact in the kingdom, and it looks like a piece of enchanted gravel. The universe has a sense of humor, and that humor is anticlimactic.",
@@ -441,6 +432,10 @@
                 {
                     "type": "flag-set",
                     "flag": "crystal_barrier_down"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "mushroom_pattern_solved"
                 },
                 {
                     "type": "item-not-taken",
@@ -473,12 +468,62 @@
                 {
                     "type": "flag-not-set",
                     "flag": "crystal_barrier_down"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "mushroom_pattern_solved"
                 }
             ],
             "actions": [
                 {
                     "type": "narrator-say",
-                    "text": "The force barrier crackles between you and the crystal. You can see it. You can almost taste the mundanity. But the barrier remains firm. The Guardian Chamber holds the key to dropping it."
+                    "text": "The force barrier crackles between you and the crystal. You can see it. You can almost taste the mundanity. But the barrier remains firm. Two ancient locks hold it in place -- the Guardian's test and the bioluminescent mushrooms in the West Wing."
+                }
+            ]
+        },
+        {
+            "id": "take-crystal-need-mushrooms",
+            "trigger": {
+                "verb": "take",
+                "subject": "crystal-of-mundanity"
+            },
+            "conditions": [
+                {
+                    "type": "flag-set",
+                    "flag": "crystal_barrier_down"
+                },
+                {
+                    "type": "flag-not-set",
+                    "flag": "mushroom_pattern_solved"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "The Guardian's test is complete, but the barrier still hums with residual energy. One lock remains -- the bioluminescent mushrooms in the West Wing still channel power to the barrier. Find the correct sequence and disrupt the flow."
+                }
+            ]
+        },
+        {
+            "id": "take-crystal-need-guardian",
+            "trigger": {
+                "verb": "take",
+                "subject": "crystal-of-mundanity"
+            },
+            "conditions": [
+                {
+                    "type": "flag-not-set",
+                    "flag": "crystal_barrier_down"
+                },
+                {
+                    "type": "flag-set",
+                    "flag": "mushroom_pattern_solved"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "narrator-say",
+                    "text": "The mushroom pattern weakened the barrier, but it still holds. The Guardian's test remains unsolved -- the stone sentinel in the Guardian Chamber holds the other key."
                 }
             ]
         }
@@ -570,9 +615,9 @@
         {
             "puzzleId": "take-crystal",
             "tiers": [
-                "The Crystal of Mundanity hovers tantalizingly behind a force barrier. The barrier won't respond to brute force -- fourteen warning signs confirm this. The key to dropping it lies deeper in the caverns, with something large, stone, and fond of asking questions.",
-                "The Guardian in the Guardian Chamber controls the force barrier. Defeat the Guardian's three-question test to deactivate the barrier. Then you can take the crystal. You'll need the ancient seal to wake the Guardian.",
-                "Complete the Guardian's test: activate it with the ancient seal (reforged at the forge), then answer 847, Aldric the Fastidious, and Service. The barrier drops. Take the Crystal of Mundanity."
+                "The Crystal of Mundanity hovers behind a force barrier with two locks. One is deep in the caverns, guarded by something large and fond of asking questions. The other involves bioluminescent fungi and the correct sequence of pokes.",
+                "The barrier has two locks: the Guardian's three-question test in the Guardian Chamber, and the mushroom pattern in the West Wing. Both must be solved. The library has clues for both.",
+                "Complete the Guardian's test (ancient seal + answers: 847, Aldric the Fastidious, Service) AND solve the mushroom pattern in the West Wing (left, right, center, left, center). Both locks must be opened to take the crystal."
             ]
         }
     ],

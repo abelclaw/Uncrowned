@@ -1,7 +1,7 @@
 {
     "id": "cavern_west_wing",
     "name": "West Wing Corridor",
-    "description": "The West Wing is a natural cavern corridor lined with bioluminescent mushrooms -- clusters of pale blue, green, and violet fungi that pulse gently in the darkness. The mushrooms can be activated by touch, each one lighting up or dimming in sequence. A pattern is needed -- somewhere in the caverns, someone recorded the correct sequence. A passage leads north to a balcony overlooking the crystal chamber below.",
+    "description": "The West Wing is a natural cavern corridor lined with bioluminescent mushrooms -- clusters of pale blue, green, and violet fungi that pulse gently in the darkness. The mushrooms are arranged in three distinct groups along the walls: left, center, and right. They respond to touch, each one lighting up or dimming in sequence. Water drips from the ceiling, catching the light on its way down.",
     "background": {
         "layers": [
             {
@@ -56,53 +56,21 @@
             "label": "entrance hall"
         },
         {
-            "id": "to-balcony",
+            "id": "to-echo-chamber",
             "zone": {
                 "x": 440,
                 "y": 350,
                 "width": 80,
                 "height": 80
             },
-            "targetRoom": "cavern_balcony",
+            "targetRoom": "echo_chamber",
             "spawnPoint": {
-                "x": 436,
-                "y": 474
+                "x": 689,
+                "y": 469
             },
             "transition": "fade",
             "direction": "north",
-            "label": "balcony"
-        },
-        {
-            "id": "to-crystal-chamber",
-            "zone": {
-                "x": 0,
-                "y": 350,
-                "width": 80,
-                "height": 200
-            },
-            "targetRoom": "crystal_chamber",
-            "spawnPoint": {
-                "x": 259,
-                "y": 463
-            },
-            "transition": "slide-left",
-            "label": "crystal passage",
-            "aliases": [
-                "crystal passage",
-                "passage",
-                "crystal chamber",
-                "opening",
-                "wall opening",
-                "organic passage",
-                "mushroom passage"
-            ],
-            "conditions": [
-                {
-                    "type": "flag-set",
-                    "flag": "mushroom_pattern_solved"
-                }
-            ],
-            "blockedMessage": "The passage to the crystal chamber is sealed by a strange organic growth. The mushrooms on the walls seem to pulse in a pattern -- perhaps they're the key."
+            "label": "echo chamber"
         }
     ],
     "hotspots": [
@@ -135,8 +103,8 @@
                 "y": 420
             },
             "responses": {
-                "look": "Clusters of bioluminescent mushrooms line the walls in three groups: left, center, and right. Each cluster can be touched to activate it -- they glow brightly when activated and dim after a moment. There must be a specific sequence. The mushrooms pulse patiently, waiting for someone who knows the pattern.",
-                "use": "You touch the mushrooms randomly. They light up in a cascade of color, then dim. Nothing happens. The pattern needs to be specific. Perhaps a book in the library mentioned the correct sequence.",
+                "look": "Clusters of bioluminescent mushrooms line the walls in three groups: left, center, and right. Each cluster responds to touch -- they glow brightly when activated and dim after a moment. The pattern seems important. Somewhere in the caverns, someone must have recorded the correct sequence.",
+                "use": "You touch the mushrooms randomly. They light up in a cascade of colour, then dim. Nothing happens. The pattern needs to be specific. Perhaps a book in the library mentioned the correct sequence.",
                 "default": "You examine the mushroom clusters. They're arranged in three groups -- left, center, right -- each waiting for activation in the correct order.",
                 "take": "You can't take the Bioluminescent Mushrooms. It's firmly attached to its current situation, much like your growing sense of confusion.",
                 "talk": "You lean in close to a mushroom and whisper sweet nothings. It pulses faintly, which is either a response or bioluminescent coincidence. Fungi are notoriously poor conversationalists -- they never contribute, they just take up space.",
@@ -178,45 +146,6 @@
                 "open": "You can't open a path. It's already open. That's the defining characteristic of a path -- its openness. If it were closed, it would be a wall.",
                 "push": "You push the ground with your foot. The ground pushes back, as Newton predicted. Neither of you gains any advantage from this exchange.",
                 "pull": "You crouch down and try to pull the path toward you. The path remains where it is, having been a path for considerably longer than you've been alive."
-            }
-        },
-        {
-            "id": "organic-growth",
-            "name": "Organic Growth",
-            "aliases": [
-                "growth",
-                "membrane",
-                "fungal growth",
-                "organic seal",
-                "seal",
-                "blockage",
-                "obstruction",
-                "fungal wall",
-                "moss",
-                "slime",
-                "mold",
-                "organic barrier",
-                "biological wall",
-                "living wall"
-            ],
-            "zone": {
-                "x": 10,
-                "y": 370,
-                "width": 70,
-                "height": 120
-            },
-            "interactionPoint": {
-                "x": 80,
-                "y": 440
-            },
-            "responses": {
-                "look": "A thick membrane of organic matter seals a passage in the wall -- part fungal, part vegetal, entirely uncooperative. It pulses in rhythm with the mushrooms on the walls, like a bouncer at a very exclusive nightclub that only opens for the right sequence.",
-                "take": "You peel at the organic growth. It has the consistency of wet leather and the attitude of something put here on purpose. A small piece comes away, then dissolves into luminescent slime. Nature's way of saying 'no souvenirs.'",
-                "use": "You prod the organic seal. It squelches. It does not open. The growth seems to respond to the mushrooms, not to your increasingly frustrated poking. Perhaps solving the mushroom pattern would convince it to move.",
-                "talk": "You address the organic growth. 'Could you move, please?' It pulses once, which in fungal body language roughly translates to 'absolutely not.'",
-                "open": "You try to pry the organic seal apart. It flexes, absorbs your effort, and springs back like biological rubber. Whatever pattern controls the mushrooms also controls this growth.",
-                "push": "You shove the organic growth with both hands. It yields slightly, like pushing against a mattress made of mushroom flesh, then pushes you gently back.",
-                "pull": "You pull at the organic growth. It stretches like warm taffy, then snaps back with a wet sound. The growth clings to the walls with the tenacity of something that has nowhere better to be."
             }
         },
         {
@@ -315,12 +244,8 @@
                     "flag": "mushroom_pattern_solved"
                 },
                 {
-                    "type": "open-exit",
-                    "exit": "to-crystal-chamber"
-                },
-                {
                     "type": "narrator-say",
-                    "text": "Left, right, center, left, center. You touch each mushroom cluster in sequence. They flare to life -- blue, green, violet, blue, violet -- and hold their glow. The cavern fills with bioluminescent light, and an organic membrane on the wall peels apart, revealing a passage to the Crystal Chamber beyond. The mushrooms pulse contentedly. Someone finally got the pattern right."
+                    "text": "Left, right, center, left, center. You touch each mushroom cluster in sequence. They flare to life -- blue, green, violet, blue, violet -- and hold their glow. The cavern fills with bioluminescent light. Deep in the mountain, something shifts. A distant hum changes pitch. The mushrooms pulse contentedly. Whatever lock they were part of has just been opened -- somewhere far below, the crystal feels it."
                 }
             ],
             "once": true
@@ -349,7 +274,7 @@
         }
     },
     "dynamicDescriptions": {
-        "mushroom_pattern_solved": "The West Wing glows with permanent bioluminescent light. The mushroom clusters hold their activation pattern -- left, right, center, left, center -- illuminating the passage to the Crystal Chamber. The cavern has transformed from darkness to a cathedral of living light."
+        "mushroom_pattern_solved": "The West Wing glows with permanent bioluminescent light. The mushroom clusters hold their activation pattern -- blue, green, violet -- illuminating the corridor in a cathedral of living light. Whatever ancient mechanism they're connected to, it's been activated."
     },
     "audio": {
         "music": "music-cave",
@@ -384,9 +309,9 @@
         {
             "puzzleId": "solve-mushroom-pattern",
             "tiers": [
-                "The mushrooms respond to touch but not to random poking. They want a specific sequence, the kind of sequence that might be documented in a book. In a library. Underground. Where scholars write things down instead of memorizing them.",
-                "The mushroom pattern book in the cavern library has the answer. Read it first -- use the bookshelves there. Once you know the pattern, come back here and use the mushroom clusters to activate them in sequence.",
-                "Read the bookshelves in the cavern library to learn the pattern: left, right, center, left, center. Then use the mushroom clusters here. The passage to the Crystal Chamber opens when the sequence is correct."
+                "The mushrooms respond to touch but not to random poking. They want a specific sequence, the kind of sequence that might be documented in a book. In a library. Underground.",
+                "The mushroom pattern book in the cavern library has the answer. Read it first -- use the bookshelves there. Once you know the pattern, come back here and use the mushroom clusters.",
+                "Read the bookshelves in the cavern library to learn the pattern: left, right, center, left, center. Then use the mushroom clusters here. The mushrooms are connected to the crystal's barrier."
             ]
         }
     ],
